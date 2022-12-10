@@ -119,9 +119,11 @@ const MatchCriterion =
    MATCH_ONLY_ONE: i ++,
 };
 
-Namespace_default().set ("x_ite/Browser/Picking/MatchCriterion", MatchCriterion);
-/* harmony default export */ const Picking_MatchCriterion = (MatchCriterion);
+const __default__ = MatchCriterion;
+;
 
+Namespace_default().set ("x_ite/Browser/Picking/MatchCriterion", __default__);
+/* harmony default export */ const Picking_MatchCriterion = (__default__);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Picking/IntersectionType.js
 /*******************************************************************************
  *
@@ -178,9 +180,11 @@ const IntersectionType =
    GEOMETRY: IntersectionType_i ++,
 };
 
-Namespace_default().set ("x_ite/Browser/Picking/IntersectionType", IntersectionType);
-/* harmony default export */ const Picking_IntersectionType = (IntersectionType);
+const IntersectionType_default_ = IntersectionType;
+;
 
+Namespace_default().set ("x_ite/Browser/Picking/IntersectionType", IntersectionType_default_);
+/* harmony default export */ const Picking_IntersectionType = (IntersectionType_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Picking/SortOrder.js
 /*******************************************************************************
  *
@@ -239,9 +243,11 @@ const SortOrder =
    ALL_SORTED: SortOrder_i ++,
 };
 
-Namespace_default().set ("x_ite/Browser/Picking/SortOrder", SortOrder);
-/* harmony default export */ const Picking_SortOrder = (SortOrder);
+const SortOrder_default_ = SortOrder;
+;
 
+Namespace_default().set ("x_ite/Browser/Picking/SortOrder", SortOrder_default_);
+/* harmony default export */ const Picking_SortOrder = (SortOrder_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix4\")"
 const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.2.1a")] .require ("standard/Math/Numbers/Matrix4");
 var Matrix4_default = /*#__PURE__*/__webpack_require__.n(Matrix4_namespaceObject);
@@ -681,9 +687,11 @@ X3DPickSensorNode .prototype = Object .assign (Object .create ((X3DSensorNode_de
    },
 });
 
-Namespace_default().set ("x_ite/Components/Picking/X3DPickSensorNode", X3DPickSensorNode);
-/* harmony default export */ const Picking_X3DPickSensorNode = (X3DPickSensorNode);
+const X3DPickSensorNode_default_ = X3DPickSensorNode;
+;
 
+Namespace_default().set ("x_ite/Components/Picking/X3DPickSensorNode", X3DPickSensorNode_default_);
+/* harmony default export */ const Picking_X3DPickSensorNode = (X3DPickSensorNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
 const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.2.1a")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
@@ -1017,9 +1025,11 @@ LinePickSensor .prototype = Object .assign (Object .create (Picking_X3DPickSenso
    })(),
 });
 
-Namespace_default().set ("x_ite/Components/Picking/LinePickSensor", LinePickSensor);
-/* harmony default export */ const Picking_LinePickSensor = (LinePickSensor);
+const LinePickSensor_default_ = LinePickSensor;
+;
 
+Namespace_default().set ("x_ite/Components/Picking/LinePickSensor", LinePickSensor_default_);
+/* harmony default export */ const Picking_LinePickSensor = (LinePickSensor_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Grouping/X3DGroupingNode\")"
 const X3DGroupingNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.2.1a")] .require ("x_ite/Components/Grouping/X3DGroupingNode");
 var X3DGroupingNode_default = /*#__PURE__*/__webpack_require__.n(X3DGroupingNode_namespaceObject);
@@ -1105,9 +1115,11 @@ X3DPickableObject .prototype =
    dispose: function () { },
 };
 
-Namespace_default().set ("x_ite/Components/Picking/X3DPickableObject", X3DPickableObject);
-/* harmony default export */ const Picking_X3DPickableObject = (X3DPickableObject);
+const X3DPickableObject_default_ = X3DPickableObject;
+;
 
+Namespace_default().set ("x_ite/Components/Picking/X3DPickableObject", X3DPickableObject_default_);
+/* harmony default export */ const Picking_X3DPickableObject = (X3DPickableObject_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Picking/PickableGroup.js
 /*******************************************************************************
  *
@@ -1316,9 +1328,11 @@ PickableGroup .prototype = Object .assign (Object .create ((X3DGroupingNode_defa
    },
 });
 
-Namespace_default().set ("x_ite/Components/Picking/PickableGroup", PickableGroup);
-/* harmony default export */ const Picking_PickableGroup = (PickableGroup);
+const PickableGroup_default_ = PickableGroup;
+;
 
+Namespace_default().set ("x_ite/Components/Picking/PickableGroup", PickableGroup_default_);
+/* harmony default export */ const Picking_PickableGroup = (PickableGroup_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
 const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.2.1a")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
@@ -1505,9 +1519,11 @@ VolumePicker .prototype =
    })(),
 };
 
-Namespace_default().set ("x_ite/Browser/Picking/VolumePicker", VolumePicker);
-/* harmony default export */ const Picking_VolumePicker = (VolumePicker);
+const VolumePicker_default_ = VolumePicker;
+;
 
+Namespace_default().set ("x_ite/Browser/Picking/VolumePicker", VolumePicker_default_);
+/* harmony default export */ const Picking_VolumePicker = (VolumePicker_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Picking/PointPickSensor.js
 /*******************************************************************************
  *
@@ -1843,9 +1859,11 @@ PointPickSensor .prototype = Object .assign (Object .create (Picking_X3DPickSens
    })(),
 });
 
-Namespace_default().set ("x_ite/Components/Picking/PointPickSensor", PointPickSensor);
-/* harmony default export */ const Picking_PointPickSensor = (PointPickSensor);
+const PointPickSensor_default_ = PointPickSensor;
+;
 
+Namespace_default().set ("x_ite/Components/Picking/PointPickSensor", PointPickSensor_default_);
+/* harmony default export */ const Picking_PointPickSensor = (PointPickSensor_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Picking/PrimitivePickSensor.js
 /*******************************************************************************
  *
@@ -2101,9 +2119,11 @@ PrimitivePickSensor .prototype = Object .assign (Object .create (Picking_X3DPick
    })(),
 });
 
-Namespace_default().set ("x_ite/Components/Picking/PrimitivePickSensor", PrimitivePickSensor);
-/* harmony default export */ const Picking_PrimitivePickSensor = (PrimitivePickSensor);
+const PrimitivePickSensor_default_ = PrimitivePickSensor;
+;
 
+Namespace_default().set ("x_ite/Components/Picking/PrimitivePickSensor", PrimitivePickSensor_default_);
+/* harmony default export */ const Picking_PrimitivePickSensor = (PrimitivePickSensor_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Picking/VolumePickSensor.js
 /*******************************************************************************
  *
@@ -2334,9 +2354,11 @@ VolumePickSensor .prototype = Object .assign (Object .create (Picking_X3DPickSen
    })(),
 });
 
-Namespace_default().set ("x_ite/Components/Picking/VolumePickSensor", VolumePickSensor);
-/* harmony default export */ const Picking_VolumePickSensor = (VolumePickSensor);
+const VolumePickSensor_default_ = VolumePickSensor;
+;
 
+Namespace_default().set ("x_ite/Components/Picking/VolumePickSensor", VolumePickSensor_default_);
+/* harmony default export */ const Picking_VolumePickSensor = (VolumePickSensor_default_);
 ;// CONCATENATED MODULE: ./src/assets/components/Picking.js
 /*******************************************************************************
  *
@@ -2411,8 +2433,10 @@ Components_default().addComponent ({
    },
 });
 
-Namespace_default().set ("assets/components/Picking", undefined);
-/* harmony default export */ const Picking = ((/* unused pure expression or super */ null && (undefined)));
+const Picking_default_ = undefined;
+;
 
+Namespace_default().set ("assets/components/Picking", Picking_default_);
+/* harmony default export */ const Picking = ((/* unused pure expression or super */ null && (Picking_default_)));
 /******/ })()
 ;
