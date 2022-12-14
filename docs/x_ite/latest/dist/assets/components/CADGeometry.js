@@ -1,4 +1,4 @@
-/* X_ITE v8.2.0 */(() => { // webpackBootstrap
+/* X_ITE v8.3.0 */(() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
 /******/ 	var __webpack_require__ = {};
@@ -39,26 +39,29 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.2.0")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.3.0")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.2.0")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.3.0")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.2.0")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.3.0")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.2.0")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.3.0")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Grouping/X3DGroupingNode\")"
-const X3DGroupingNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.2.0")] .require ("x_ite/Components/Grouping/X3DGroupingNode");
+const X3DGroupingNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.3.0")] .require ("x_ite/Components/Grouping/X3DGroupingNode");
 var X3DGroupingNode_default = /*#__PURE__*/__webpack_require__.n(X3DGroupingNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DChildNode\")"
-const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.2.0")] .require ("x_ite/Components/Core/X3DChildNode");
+const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.3.0")] .require ("x_ite/Components/Core/X3DChildNode");
 var X3DChildNode_default = /*#__PURE__*/__webpack_require__.n(X3DChildNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.2.0")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.3.0")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
+;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.3.0")] .require ("x_ite/Namespace");
+var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/CADGeometry/X3DProductStructureChildNode.js
 /*******************************************************************************
  *
@@ -122,8 +125,11 @@ X3DProductStructureChildNode .prototype = Object .assign (Object .create ((X3DCh
    constructor: X3DProductStructureChildNode,
 });
 
-/* harmony default export */ const CADGeometry_X3DProductStructureChildNode = (X3DProductStructureChildNode);
+const __default__ = X3DProductStructureChildNode;
+;
 
+Namespace_default().set ("x_ite/Components/CADGeometry/X3DProductStructureChildNode", __default__);
+/* harmony default export */ const CADGeometry_X3DProductStructureChildNode = (__default__);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/CADGeometry/CADAssembly.js
 /*******************************************************************************
  *
@@ -216,13 +222,16 @@ CADAssembly .prototype = Object .assign (Object .create ((X3DGroupingNode_defaul
    },
 });
 
-/* harmony default export */ const CADGeometry_CADAssembly = (CADAssembly);
+const CADAssembly_default_ = CADAssembly;
+;
 
+Namespace_default().set ("x_ite/Components/CADGeometry/CADAssembly", CADAssembly_default_);
+/* harmony default export */ const CADGeometry_CADAssembly = (CADAssembly_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Grouping/X3DBoundedObject\")"
-const X3DBoundedObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.2.0")] .require ("x_ite/Components/Grouping/X3DBoundedObject");
+const X3DBoundedObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.3.0")] .require ("x_ite/Components/Grouping/X3DBoundedObject");
 var X3DBoundedObject_default = /*#__PURE__*/__webpack_require__.n(X3DBoundedObject_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Rendering/TraverseType\")"
-const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.2.0")] .require ("x_ite/Rendering/TraverseType");
+const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.3.0")] .require ("x_ite/Rendering/TraverseType");
 var TraverseType_default = /*#__PURE__*/__webpack_require__.n(TraverseType_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/CADGeometry/CADFace.js
 /*******************************************************************************
@@ -494,8 +503,11 @@ CADFace .prototype = Object .assign (Object .create (CADGeometry_X3DProductStruc
    },
 });
 
-/* harmony default export */ const CADGeometry_CADFace = (CADFace);
+const CADFace_default_ = CADFace;
+;
 
+Namespace_default().set ("x_ite/Components/CADGeometry/CADFace", CADFace_default_);
+/* harmony default export */ const CADGeometry_CADFace = (CADFace_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/CADGeometry/CADLayer.js
 /*******************************************************************************
  *
@@ -585,10 +597,13 @@ CADLayer .prototype = Object .assign (Object .create ((X3DGroupingNode_default()
    },
 });
 
-/* harmony default export */ const CADGeometry_CADLayer = (CADLayer);
+const CADLayer_default_ = CADLayer;
+;
 
+Namespace_default().set ("x_ite/Components/CADGeometry/CADLayer", CADLayer_default_);
+/* harmony default export */ const CADGeometry_CADLayer = (CADLayer_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Grouping/X3DTransformNode\")"
-const X3DTransformNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.2.0")] .require ("x_ite/Components/Grouping/X3DTransformNode");
+const X3DTransformNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.3.0")] .require ("x_ite/Components/Grouping/X3DTransformNode");
 var X3DTransformNode_default = /*#__PURE__*/__webpack_require__.n(X3DTransformNode_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/CADGeometry/CADPart.js
 /*******************************************************************************
@@ -687,10 +702,13 @@ CADPart .prototype = Object .assign (Object .create ((X3DTransformNode_default()
    },
 });
 
-/* harmony default export */ const CADGeometry_CADPart = (CADPart);
+const CADPart_default_ = CADPart;
+;
 
+Namespace_default().set ("x_ite/Components/CADGeometry/CADPart", CADPart_default_);
+/* harmony default export */ const CADGeometry_CADPart = (CADPart_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Rendering/X3DComposedGeometryNode\")"
-const X3DComposedGeometryNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.2.0")] .require ("x_ite/Components/Rendering/X3DComposedGeometryNode");
+const X3DComposedGeometryNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.3.0")] .require ("x_ite/Components/Rendering/X3DComposedGeometryNode");
 var X3DComposedGeometryNode_default = /*#__PURE__*/__webpack_require__.n(X3DComposedGeometryNode_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/CADGeometry/IndexedQuadSet.js
 /*******************************************************************************
@@ -815,8 +833,11 @@ IndexedQuadSet .prototype = Object .assign (Object .create ((X3DComposedGeometry
    },
 });
 
-/* harmony default export */ const CADGeometry_IndexedQuadSet = (IndexedQuadSet);
+const IndexedQuadSet_default_ = IndexedQuadSet;
+;
 
+Namespace_default().set ("x_ite/Components/CADGeometry/IndexedQuadSet", IndexedQuadSet_default_);
+/* harmony default export */ const CADGeometry_IndexedQuadSet = (IndexedQuadSet_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/CADGeometry/QuadSet.js
 /*******************************************************************************
  *
@@ -935,8 +956,11 @@ QuadSet .prototype = Object .assign (Object .create ((X3DComposedGeometryNode_de
    },
 });
 
-/* harmony default export */ const CADGeometry_QuadSet = (QuadSet);
+const QuadSet_default_ = QuadSet;
+;
 
+Namespace_default().set ("x_ite/Components/CADGeometry/QuadSet", QuadSet_default_);
+/* harmony default export */ const CADGeometry_QuadSet = (QuadSet_default_);
 ;// CONCATENATED MODULE: ./src/assets/components/CADGeometry.js
 /*******************************************************************************
  *
@@ -1011,7 +1035,10 @@ Components_default().addComponent ({
    },
 });
 
-/* harmony default export */ const CADGeometry = ((/* unused pure expression or super */ null && (undefined)));
+const CADGeometry_default_ = undefined;
+;
 
+Namespace_default().set ("assets/components/CADGeometry", CADGeometry_default_);
+/* harmony default export */ const CADGeometry = ((/* unused pure expression or super */ null && (CADGeometry_default_)));
 /******/ })()
 ;
