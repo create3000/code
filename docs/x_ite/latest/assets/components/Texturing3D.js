@@ -1,7 +1,7 @@
-/* X_ITE v8.5.5 */(() => { // webpackBootstrap
+/* X_ITE v8.6.0 */(() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 870:
+/***/ 73:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var __dirname = "/";
@@ -38,7 +38,7 @@ var Ib=[cx,_q,cr,Yr,as,fs,hs,Hu,Su,cx,cx,cx,cx,cx,cx,cx];var Jb=[dx,si,gi,Wh,Kh,
 
 /***/ }),
 
-/***/ 765:
+/***/ 853:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var __dirname = "/";
@@ -72,7 +72,7 @@ var _a=[yj,od,ef,yj];var $a=[zj,Li,di,bi,Kb,Lb,Mb,Nb,Rc,Sc,Uc,jd,xd,Ye,lf,yd,zd,
 
 /***/ }),
 
-/***/ 764:
+/***/ 689:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 /*! dicom-parser - 1.8.12 - 2022-12-05 | (c) 2017 Chris Hafey | https://github.com/cornerstonejs/dicomParser */
@@ -4028,7 +4028,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_zlib__;
 
 /***/ }),
 
-/***/ 325:
+/***/ 891:
 /***/ ((module) => {
 
 /* -*- tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- /
@@ -5183,7 +5183,7 @@ function decode(jpegData, userOpts = {}) {
 
 /***/ }),
 
-/***/ 43:
+/***/ 419:
 /***/ ((module) => {
 
 (function(f){if(true){module.exports=f()}else { var g; }})(function(){var define,module,exports;return (function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=undefined;if(!u&&a)return require(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=undefined;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
@@ -6952,7 +6952,7 @@ if ((moduleType !== 'undefined') && module.exports) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("lib/jquery");
+module.exports = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("lib/jquery");
 
 /***/ }),
 
@@ -7056,25 +7056,25 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Texturing/X3DSingleTextureNode\")"
-const X3DSingleTextureNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Components/Texturing/X3DSingleTextureNode");
+const X3DSingleTextureNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Components/Texturing/X3DSingleTextureNode");
 var X3DSingleTextureNode_default = /*#__PURE__*/__webpack_require__.n(X3DSingleTextureNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing3D/X3DTexture3DNode.js
 /*******************************************************************************
@@ -7187,14 +7187,6 @@ X3DTexture3DNode .prototype = Object .assign (Object .create ((X3DSingleTextureN
    {
       return this .depth;
    },
-   getFlipY: function ()
-   {
-      return false;
-   },
-   getData: function ()
-   {
-      return this .data;
-   },
    clearTexture: function ()
    {
       const gl = this .getBrowser () .getContext ();
@@ -7250,7 +7242,7 @@ const __default__ = X3DTexture3DNode;
 Namespace_default().set ("x_ite/Components/Texturing3D/X3DTexture3DNode", __default__);
 /* harmony default export */ const Texturing3D_X3DTexture3DNode = (__default__);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
-const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Base/X3DCast");
+const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing3D/ComposedTexture3D.js
 /*******************************************************************************
@@ -7313,7 +7305,8 @@ function ComposedTexture3D (executionContext)
 
    this .addType ((X3DConstants_default()).ComposedTexture3D);
 
-   this .addChildObjects ("loadState", new (Fields_default()).SFInt32 ((X3DConstants_default()).NOT_STARTED_STATE));
+   this .addChildObjects ("loadState", new (Fields_default()).SFInt32 ((X3DConstants_default()).NOT_STARTED_STATE),
+                          "update",    new (Fields_default()).SFTime ());
 
    this .textureNodes = [ ];
 }
@@ -7346,7 +7339,12 @@ ComposedTexture3D .prototype = Object .assign (Object .create (Texturing3D_X3DTe
    {
       Texturing3D_X3DTexture3DNode.prototype.initialize.call (this);
 
+      const gl = this .getBrowser () .getContext ();
+
+      this .frameBuffer = gl .createFramebuffer ();
+
       this ._texture .addInterest ("set_texture__", this);
+      this ._update  .addInterest ("update",        this);
 
       this .set_texture__ ();
    },
@@ -7359,7 +7357,7 @@ ComposedTexture3D .prototype = Object .assign (Object .create (Texturing3D_X3DTe
       const textureNodes = this .textureNodes;
 
       for (const textureNode of textureNodes)
-         textureNode .removeInterest ("update", this);
+         textureNode .removeInterest ("set_update__", this);
 
       textureNodes .length = 0;
 
@@ -7372,17 +7370,23 @@ ComposedTexture3D .prototype = Object .assign (Object .create (Texturing3D_X3DTe
       }
 
       for (const textureNode of textureNodes)
-         textureNode .addInterest ("update", this);
+         textureNode .addInterest ("set_update__", this);
 
-      this .update ();
+      this .set_update__ ();
+   },
+   set_update__: function ()
+   {
+      this ._update .addEvent ();
+   },
+   isComplete: function ()
+   {
+      return this .textureNodes .every (textureNode => textureNode .checkLoadState () === (X3DConstants_default()).COMPLETE_STATE || textureNode .getWidth ());
    },
    update: function ()
    {
-      const
-         textureNodes = this .textureNodes,
-         complete     = textureNodes .every (function (textureNode) { return textureNode .checkLoadState () === (X3DConstants_default()).COMPLETE_STATE; });
+      const textureNodes = this .textureNodes
 
-      if (textureNodes .length === 0 || !complete)
+      if (textureNodes .length === 0 || !this .isComplete ())
       {
          this .clearTexture ();
 
@@ -7391,27 +7395,24 @@ ComposedTexture3D .prototype = Object .assign (Object .create (Texturing3D_X3DTe
       else
       {
          const
-            gl           = this .getBrowser () .getContext (),
-            textureNode0 = textureNodes [0],
-            width        = textureNode0 .getWidth (),
-            height       = textureNode0 .getHeight (),
-            depth        = textureNodes .length,
-            size         = width * height * 4,
-            data         = new Uint8Array (size * depth);
+            gl         = this .getBrowser () .getContext (),
+            width      = textureNodes [0] .getWidth (),
+            height     = textureNodes [0] .getHeight (),
+            depth      = textureNodes .length,
+            lastBuffer = gl .getParameter (gl .FRAMEBUFFER_BINDING);
 
-         let transparent = 0;
+         gl .bindFramebuffer (gl .FRAMEBUFFER, this .frameBuffer);
+         gl .texImage3D (gl .TEXTURE_3D, 0, gl .RGBA, width, height, depth, 0, gl .RGBA, gl .UNSIGNED_BYTE, null);
 
-         for (let i = 0, d = 0; i < depth; ++ i, d += size)
+         for (const [i, textureNode] of this .textureNodes .entries ())
          {
-            const
-               textureNode = this .textureNodes [i],
-               tData       = textureNode .getData ();
-
             if (textureNode .getWidth () === width && textureNode .getHeight () === height)
             {
-               transparent += textureNode .getTransparent ();
+               gl .bindTexture (gl .TEXTURE_2D, textureNode .getTexture ());
+               gl .framebufferTexture2D (gl .FRAMEBUFFER, gl .COLOR_ATTACHMENT0, gl .TEXTURE_2D, textureNode .getTexture (), 0);
 
-               data .set (tData, d);
+               gl .bindTexture (gl .TEXTURE_3D, this .getTexture ());
+               gl .copyTexSubImage3D (gl .TEXTURE_3D, 0, 0, 0, i, 0, 0, width, height);
             }
             else
             {
@@ -7419,7 +7420,11 @@ ComposedTexture3D .prototype = Object .assign (Object .create (Texturing3D_X3DTe
             }
          }
 
-         this .setTexture (width, height, depth, !!transparent, gl .RGBA, data);
+         gl .bindFramebuffer (gl .FRAMEBUFFER, lastBuffer);
+
+         this .setTransparent (textureNodes .some (textureNode => textureNode .isTransparent ()));
+         this .updateTextureParameters ();
+
          this ._loadState = (X3DConstants_default()).COMPLETE_STATE;
       }
    },
@@ -7431,10 +7436,10 @@ const ComposedTexture3D_default_ = ComposedTexture3D;
 Namespace_default().set ("x_ite/Components/Texturing3D/ComposedTexture3D", ComposedTexture3D_default_);
 /* harmony default export */ const Texturing3D_ComposedTexture3D = (ComposedTexture3D_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Networking/X3DUrlObject\")"
-const X3DUrlObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Components/Networking/X3DUrlObject");
+const X3DUrlObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Components/Networking/X3DUrlObject");
 var X3DUrlObject_default = /*#__PURE__*/__webpack_require__.n(X3DUrlObject_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Parser/Expressions\")"
-const Expressions_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Parser/Expressions");
+const Expressions_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Parser/Expressions");
 var Expressions_default = /*#__PURE__*/__webpack_require__.n(Expressions_namespaceObject);
 // EXTERNAL MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"lib/jquery\")"
 var jquery_ = __webpack_require__(355);
@@ -7903,11 +7908,11 @@ const NRRDParser_default_ = NRRDParser;
 Namespace_default().set ("x_ite/Browser/Texturing3D/NRRDParser", NRRDParser_default_);
 /* harmony default export */ const Texturing3D_NRRDParser = (NRRDParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Texturing3D/DICOMParser.js
-/* provided dependency */ var dicomParser = __webpack_require__(764);
-/* provided dependency */ var JpegImage = __webpack_require__(325);
-/* provided dependency */ var jpeg = __webpack_require__(43);
-/* provided dependency */ var CharLS = __webpack_require__(870);
-/* provided dependency */ var OpenJPEG = __webpack_require__(765);
+/* provided dependency */ var dicomParser = __webpack_require__(689);
+/* provided dependency */ var JpegImage = __webpack_require__(891);
+/* provided dependency */ var jpeg = __webpack_require__(419);
+/* provided dependency */ var CharLS = __webpack_require__(73);
+/* provided dependency */ var OpenJPEG = __webpack_require__(853);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -9010,7 +9015,7 @@ const DICOMParser_default_ = DicomParser;
 Namespace_default().set ("x_ite/Browser/Texturing3D/DICOMParser", DICOMParser_default_);
 /* harmony default export */ const DICOMParser = (DICOMParser_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/InputOutput/FileLoader\")"
-const FileLoader_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/InputOutput/FileLoader");
+const FileLoader_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/InputOutput/FileLoader");
 var FileLoader_default = /*#__PURE__*/__webpack_require__.n(FileLoader_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing3D/ImageTexture3D.js
 /*******************************************************************************
@@ -9186,7 +9191,7 @@ const ImageTexture3D_default_ = ImageTexture3D;
 Namespace_default().set ("x_ite/Components/Texturing3D/ImageTexture3D", ImageTexture3D_default_);
 /* harmony default export */ const Texturing3D_ImageTexture3D = (ImageTexture3D_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/DEBUG\")"
-const DEBUG_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/DEBUG");
+const DEBUG_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/DEBUG");
 var DEBUG_default = /*#__PURE__*/__webpack_require__.n(DEBUG_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing3D/ImageTextureAtlas.js
 /* provided dependency */ var $ = __webpack_require__(355);
@@ -9636,10 +9641,10 @@ const PixelTexture3D_default_ = PixelTexture3D;
 Namespace_default().set ("x_ite/Components/Texturing3D/PixelTexture3D", PixelTexture3D_default_);
 /* harmony default export */ const Texturing3D_PixelTexture3D = (PixelTexture3D_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Texturing/X3DSingleTextureCoordinateNode\")"
-const X3DSingleTextureCoordinateNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Components/Texturing/X3DSingleTextureCoordinateNode");
+const X3DSingleTextureCoordinateNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Components/Texturing/X3DSingleTextureCoordinateNode");
 var X3DSingleTextureCoordinateNode_default = /*#__PURE__*/__webpack_require__.n(X3DSingleTextureCoordinateNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector4\")"
-const Vector4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("standard/Math/Numbers/Vector4");
+const Vector4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("standard/Math/Numbers/Vector4");
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing3D/TextureCoordinate3D.js
 /*******************************************************************************
  *
@@ -9767,7 +9772,18 @@ TextureCoordinate3D .prototype = Object .assign (Object .create ((X3DSingleTextu
          return vector .set (0, 0, 0, 1);
       }
    },
-   addTexCoordToChannel: function (index, array)
+   getPoints: function (array)
+   {
+      const
+         point  = this .point,
+         length = this .length;
+
+      for (let i = 0, p = 0; i < length; ++ i, p += 3)
+         array .push (point [p], point [p + 1], point [p + 2], 1);
+
+      return array;
+   },
+   addPointToChannel: function (index, array)
    {
       if (index >= 0 && index < this .length)
       {
@@ -9790,17 +9806,6 @@ TextureCoordinate3D .prototype = Object .assign (Object .create ((X3DSingleTextu
       {
          array .push (0, 0, 0, 1);
       }
-   },
-   getTexCoord: function (array)
-   {
-      const
-         point  = this .point,
-         length = this .length;
-
-      for (let i = 0, p = 0; i < length; ++ i, p += 3)
-         array .push (point [p], point [p + 1], point [p + 2], 1);
-
-      return array;
    },
 });
 
@@ -9936,7 +9941,18 @@ TextureCoordinate4D .prototype = Object .assign (Object .create ((X3DSingleTextu
          return vector .set (0, 0, 0, 1);
       }
    },
-   addTexCoordToChannel: function (index, array)
+   getPoints: function (array)
+   {
+      const
+         point  = this .point,
+         length = this .length;
+
+      for (let i = 0, p = 0; i < length; ++ i, p += 4)
+         array .push (point [p], point [p + 1], point [p + 2], point [p + 3]);
+
+      return array;
+   },
+   addPointToChannel: function (index, array)
    {
       if (index >= 0 && index < this .length)
       {
@@ -9960,17 +9976,6 @@ TextureCoordinate4D .prototype = Object .assign (Object .create ((X3DSingleTextu
          array .push (0, 0, 0, 1);
       }
    },
-   getTexCoord: function (array)
-   {
-      const
-         point  = this .point,
-         length = this .length;
-
-      for (let i = 0, p = 0; i < length; ++ i, p += 4)
-         array .push (point [p], point [p + 1], point [p + 2], point [p + 3]);
-
-      return array;
-   },
 });
 
 const TextureCoordinate4D_default_ = TextureCoordinate4D;
@@ -9979,16 +9984,16 @@ const TextureCoordinate4D_default_ = TextureCoordinate4D;
 Namespace_default().set ("x_ite/Components/Texturing3D/TextureCoordinate4D", TextureCoordinate4D_default_);
 /* harmony default export */ const Texturing3D_TextureCoordinate4D = (TextureCoordinate4D_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Texturing/X3DSingleTextureTransformNode\")"
-const X3DSingleTextureTransformNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Components/Texturing/X3DSingleTextureTransformNode");
+const X3DSingleTextureTransformNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Components/Texturing/X3DSingleTextureTransformNode");
 var X3DSingleTextureTransformNode_default = /*#__PURE__*/__webpack_require__.n(X3DSingleTextureTransformNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
-const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("standard/Math/Numbers/Vector3");
+const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Rotation4\")"
-const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("standard/Math/Numbers/Rotation4");
+const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("standard/Math/Numbers/Rotation4");
 var Rotation4_default = /*#__PURE__*/__webpack_require__.n(Rotation4_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix4\")"
-const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("standard/Math/Numbers/Matrix4");
+const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("standard/Math/Numbers/Matrix4");
 var Matrix4_default = /*#__PURE__*/__webpack_require__.n(Matrix4_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing3D/TextureTransform3D.js
 /*******************************************************************************

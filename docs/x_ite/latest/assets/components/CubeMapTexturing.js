@@ -1,11 +1,11 @@
-/* X_ITE v8.5.5 */(() => { // webpackBootstrap
+/* X_ITE v8.6.0 */(() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 355:
 /***/ ((module) => {
 
-module.exports = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("lib/jquery");
+module.exports = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("lib/jquery");
 
 /***/ })
 
@@ -73,25 +73,25 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Texturing/X3DSingleTextureNode\")"
-const X3DSingleTextureNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Components/Texturing/X3DSingleTextureNode");
+const X3DSingleTextureNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Components/Texturing/X3DSingleTextureNode");
 var X3DSingleTextureNode_default = /*#__PURE__*/__webpack_require__.n(X3DSingleTextureNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/CubeMapTexturing/X3DEnvironmentTextureNode.js
 /*******************************************************************************
@@ -195,6 +195,8 @@ X3DEnvironmentTextureNode .prototype = Object .assign (Object .create ((X3DSingl
 
          for (const target of this .getTargets ())
             gl .texImage2D (target, 0, gl .RGBA, 1, 1, 0, gl .RGBA, gl .UNSIGNED_BYTE, defaultData);
+
+         this .setTransparent (false);
       };
    })(),
    updateTextureParameters: function ()
@@ -225,10 +227,10 @@ const __default__ = X3DEnvironmentTextureNode;
 Namespace_default().set ("x_ite/Components/CubeMapTexturing/X3DEnvironmentTextureNode", __default__);
 /* harmony default export */ const CubeMapTexturing_X3DEnvironmentTextureNode = (__default__);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
-const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Base/X3DCast");
+const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Utility/BitSet\")"
-const BitSet_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("standard/Utility/BitSet");
+const BitSet_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("standard/Utility/BitSet");
 var BitSet_default = /*#__PURE__*/__webpack_require__.n(BitSet_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/CubeMapTexturing/ComposedCubeMapTexture.js
 /*******************************************************************************
@@ -292,15 +294,19 @@ function ComposedCubeMapTexture (executionContext)
 
    this .addType ((X3DConstants_default()).ComposedCubeMapTexture);
 
-   this .addAlias ("front",  this ._frontTexture);
-   this .addAlias ("back",   this ._backTexture);
-   this .addAlias ("left",   this ._leftTexture);
-   this .addAlias ("right",  this ._rightTexture);
-   this .addAlias ("bottom", this ._bottomTexture);
-   this .addAlias ("top",    this ._topTexture);
+   if (executionContext .getSpecificationVersion () < 4)
+   {
+      this .addAlias ("front",  this ._frontTexture);
+      this .addAlias ("back",   this ._backTexture);
+      this .addAlias ("left",   this ._leftTexture);
+      this .addAlias ("right",  this ._rightTexture);
+      this .addAlias ("bottom", this ._bottomTexture);
+      this .addAlias ("top",    this ._topTexture);
+   }
 
-   this .textures      = [null, null, null, null, null, null];
-   this .symbols       = [Symbol (), Symbol (), Symbol (), Symbol (), Symbol (), Symbol ()];
+   this .addChildObjects ("update", new (Fields_default()).SFTime ());
+
+   this .textureNodes  = [null, null, null, null, null, null];
    this .loadStateBits = new (BitSet_default()) ();
 }
 
@@ -334,6 +340,10 @@ ComposedCubeMapTexture .prototype = Object .assign (Object .create (CubeMapTextu
    {
       CubeMapTexturing_X3DEnvironmentTextureNode.prototype.initialize.call (this);
 
+      const gl = this .getBrowser () .getContext ();
+
+      this .frameBuffer = gl .createFramebuffer ();
+
       // Upload default data.
 
       this .clearTexture ();
@@ -346,6 +356,7 @@ ComposedCubeMapTexture .prototype = Object .assign (Object .create (CubeMapTextu
       this ._rightTexture  .addInterest ("set_texture__", this, 3);
       this ._topTexture    .addInterest ("set_texture__", this, 5);
       this ._bottomTexture .addInterest ("set_texture__", this, 4);
+      this ._update        .addInterest ("update",        this);
 
       this .set_texture__ (this ._frontTexture,  0);
       this .set_texture__ (this ._backTexture,   1);
@@ -356,36 +367,30 @@ ComposedCubeMapTexture .prototype = Object .assign (Object .create (CubeMapTextu
    },
    set_texture__: function (node, index)
    {
-      let texture = this .textures [index];
+      let textureNode = this .textureNodes [index];
 
-      if (texture)
-      {
-         texture .removeInterest ("set_loadState__", this);
-         texture ._loadState .removeFieldCallback (this .symbols [index]);
-      }
+      if (textureNode)
+         textureNode .removeInterest ("set_loadState__", this);
 
-      texture = this .textures [index] = X3DCast_default() ((X3DConstants_default()).X3DTexture2DNode, node);
+      textureNode = this .textureNodes [index] = X3DCast_default() ((X3DConstants_default()).X3DTexture2DNode, node);
 
-      if (texture)
-      {
-         texture .addInterest ("set_loadState__", this, texture, index);
-         texture ._loadState .addFieldCallback (this .symbols [index], this .set_loadState__ .bind (this, texture, index));
-      }
+      if (textureNode)
+         textureNode .addInterest ("set_loadState__", this, textureNode, index);
 
-      this .set_loadState__ (texture, index);
+      this .set_loadState__ (textureNode, index);
    },
-   set_loadState__: function (texture, index)
+   set_loadState__: function (textureNode, index)
    {
-      if (texture)
-         this .setLoadStateBit (index, texture .checkLoadState (), texture .getData ());
+      if (textureNode)
+         this .setLoadStateBit (index, textureNode, textureNode .checkLoadState ());
       else
-         this .setLoadStateBit (index, (X3DConstants_default()).NOT_STARTED, null);
+         this .setLoadStateBit (index, textureNode, (X3DConstants_default()).NOT_STARTED);
 
-      this .updateTextures ();
+      this ._update .addEvent ();
    },
-   setLoadStateBit: function (bit, loadState, data)
+   setLoadStateBit: function (bit, textureNode, loadState)
    {
-      this .loadStateBits .set (bit, loadState === (X3DConstants_default()).COMPLETE_STATE || data);
+      this .loadStateBits .set (bit, loadState === (X3DConstants_default()).COMPLETE_STATE || textureNode .getWidth ());
    },
    isComplete: function ()
    {
@@ -393,78 +398,73 @@ ComposedCubeMapTexture .prototype = Object .assign (Object .create (CubeMapTextu
          return false;
 
       const
-         textures = this .textures,
-         size     = textures [0] .getWidth ();
+         textureNodes = this .textureNodes,
+         size         = textureNodes [0] .getWidth ();
 
-      for (const texture of textures)
+      for (const textureNode of textureNodes)
       {
-         if (texture .getWidth () !== size)
+         if (textureNode .getWidth () !== size)
             return false;
 
-         if (texture .getHeight () !== size)
+         if (textureNode .getHeight () !== size)
             return false;
       }
 
       return true;
    },
-   updateTextures: function ()
+   update: function ()
    {
-      const gl = this .getBrowser () .getContext ();
-
-      gl .bindTexture (this .getTarget (), this .getTexture ());
-
       if (this .isComplete ())
       {
-         const textures = this .textures;
+         const
+            gl           = this .getBrowser () .getContext (),
+            textureNodes = this .textureNodes,
+            lastBuffer   = gl .getParameter (gl .FRAMEBUFFER_BINDING);
+
+         gl .bindFramebuffer (gl .FRAMEBUFFER, this .frameBuffer);
 
          for (let i = 0; i < 6; ++ i)
          {
             const
-               texture = textures [i],
-               width   = texture .getWidth (),
-               height  = texture .getHeight (),
-               data    = texture .getData ();
+               textureNode = textureNodes [i],
+               width       = textureNode .getWidth (),
+               height      = textureNode .getHeight ();
 
-            gl .pixelStorei (gl .UNPACK_FLIP_Y_WEBGL, !texture .getFlipY ());
+            // Copy color texture.
 
-            if (data instanceof Uint8Array)
+            switch (textureNode .getType () .at (-1))
             {
-               gl .texImage2D (this .getTargets () [i], 0, gl .RGBA, width, height, false, gl .RGBA, gl .UNSIGNED_BYTE, data);
-            }
-            else
-            {
-               gl .texImage2D (this .getTargets () [i], 0, gl .RGBA, gl .RGBA, gl .UNSIGNED_BYTE, data);
+               case (X3DConstants_default()).ImageTexture:
+               case (X3DConstants_default()).MovieTexture:
+               {
+                  gl .bindTexture (this .getTarget (), this .getTexture ());
+                  gl .pixelStorei (gl .UNPACK_FLIP_Y_WEBGL, textureNode ._flipVertically .getValue ());
+                  gl .texImage2D (this .getTargets () [i], 0, gl .RGBA, width, height, 0, gl .RGBA, gl .UNSIGNED_BYTE, textureNode .getElement ());
+                  break;
+               }
+               default:
+               {
+                  gl .bindTexture (gl .TEXTURE_2D, textureNode .getTexture ());
+                  gl .framebufferTexture2D (gl .FRAMEBUFFER, gl .COLOR_ATTACHMENT0, gl .TEXTURE_2D, textureNode .getTexture (), 0);
+
+                  gl .bindTexture (this .getTarget (), this .getTexture ());
+                  gl .texImage2D (this .getTargets () [i], 0, gl .RGBA, width, height, 0, gl .RGBA, gl .UNSIGNED_BYTE, null);
+                  gl .copyTexSubImage2D (this .getTargets () [i], 0, 0, 0, 0, 0, width, height);
+                  break;
+               }
             }
          }
 
          gl .pixelStorei (gl .UNPACK_FLIP_Y_WEBGL, false);
+         gl .bindFramebuffer (gl .FRAMEBUFFER, lastBuffer);
 
+         this .setTransparent (textureNodes .some (textureNode => textureNode .isTransparent ()));
          this .updateTextureParameters ();
       }
       else
       {
          this .clearTexture ();
       }
-
-      this .set_transparent__ ();
-   },
-   set_transparent__: function ()
-   {
-      const transparent = false;
-
-      if (this .isComplete ())
-      {
-         for (const texture of this .textures)
-         {
-            if (texture ._transparent .getValue ())
-            {
-               transparent = true;
-               break;
-            }
-         }
-      }
-
-      this .setTransparent (transparent);
    },
 });
 
@@ -474,13 +474,13 @@ const ComposedCubeMapTexture_default_ = ComposedCubeMapTexture;
 Namespace_default().set ("x_ite/Components/CubeMapTexturing/ComposedCubeMapTexture", ComposedCubeMapTexture_default_);
 /* harmony default export */ const CubeMapTexturing_ComposedCubeMapTexture = (ComposedCubeMapTexture_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DBaseNode\")"
-const X3DBaseNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Base/X3DBaseNode");
+const X3DBaseNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Base/X3DBaseNode");
 var X3DBaseNode_default = /*#__PURE__*/__webpack_require__.n(X3DBaseNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Rendering/X3DRenderObject\")"
-const X3DRenderObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Rendering/X3DRenderObject");
+const X3DRenderObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Rendering/X3DRenderObject");
 var X3DRenderObject_default = /*#__PURE__*/__webpack_require__.n(X3DRenderObject_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Rendering/TraverseType\")"
-const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Rendering/TraverseType");
+const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Rendering/TraverseType");
 var TraverseType_default = /*#__PURE__*/__webpack_require__.n(TraverseType_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Rendering/DependentRenderer.js
 /*******************************************************************************
@@ -621,28 +621,28 @@ const DependentRenderer_default_ = DependentRenderer;
 Namespace_default().set ("x_ite/Rendering/DependentRenderer", DependentRenderer_default_);
 /* harmony default export */ const Rendering_DependentRenderer = (DependentRenderer_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Rendering/TextureBuffer\")"
-const TextureBuffer_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Rendering/TextureBuffer");
+const TextureBuffer_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Rendering/TextureBuffer");
 var TextureBuffer_default = /*#__PURE__*/__webpack_require__.n(TextureBuffer_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Camera\")"
-const Camera_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("standard/Math/Geometry/Camera");
+const Camera_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("standard/Math/Geometry/Camera");
 var Camera_default = /*#__PURE__*/__webpack_require__.n(Camera_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/ViewVolume\")"
-const ViewVolume_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("standard/Math/Geometry/ViewVolume");
+const ViewVolume_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("standard/Math/Geometry/ViewVolume");
 var ViewVolume_default = /*#__PURE__*/__webpack_require__.n(ViewVolume_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Rotation4\")"
-const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("standard/Math/Numbers/Rotation4");
+const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("standard/Math/Numbers/Rotation4");
 var Rotation4_default = /*#__PURE__*/__webpack_require__.n(Rotation4_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
-const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("standard/Math/Numbers/Vector3");
+const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector4\")"
-const Vector4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("standard/Math/Numbers/Vector4");
+const Vector4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("standard/Math/Numbers/Vector4");
 var Vector4_default = /*#__PURE__*/__webpack_require__.n(Vector4_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix4\")"
-const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("standard/Math/Numbers/Matrix4");
+const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("standard/Math/Numbers/Matrix4");
 var Matrix4_default = /*#__PURE__*/__webpack_require__.n(Matrix4_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Algorithm\")"
-const Algorithm_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("standard/Math/Algorithm");
+const Algorithm_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("standard/Math/Algorithm");
 var Algorithm_default = /*#__PURE__*/__webpack_require__.n(Algorithm_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/CubeMapTexturing/GeneratedCubeMapTexture.js
 /*******************************************************************************
@@ -775,6 +775,8 @@ GeneratedCubeMapTexture .prototype = Object .assign (Object .create (CubeMapText
          for (const target of this .getTargets ())
             gl .texImage2D (target, 0, gl .RGBA, size, size, 0, gl .RGBA, gl .UNSIGNED_BYTE, defaultData);
 
+         this .updateTextureParameters ();
+
          // Properties
 
          this .viewport    = new (Vector4_default()) (0, 0, size, size);
@@ -844,9 +846,11 @@ GeneratedCubeMapTexture .prototype = Object .assign (Object .create (CubeMapText
             headlight          = navigationInfo ._headlight .getValue (),
             nearValue          = navigationInfo .getNearValue (),
             farValue           = navigationInfo .getFarValue (viewpoint),
-            projectionMatrix   = Camera_default().perspective (Algorithm_default().radians (90.0), nearValue, farValue, 1, 1, this .projectionMatrix);
+            projectionMatrix   = Camera_default().perspective (Algorithm_default().radians (90.0), nearValue, farValue, 1, 1, this .projectionMatrix),
+            width              = this .frameBuffer .getWidth (),
+            height             = this .frameBuffer .getHeight ();
 
-         this .setTransparent (background .getTransparent ());
+         this .setTransparent (background .isTransparent ());
 
          this .frameBuffer .bind ();
 
@@ -872,8 +876,8 @@ GeneratedCubeMapTexture .prototype = Object .assign (Object .create (CubeMapText
 
             if (headlight)
             {
-               headlightContainer .getModelViewMatrix () .pushMatrix (invCameraSpaceMatrix);
-               headlightContainer .getModelViewMatrix () .multLeft (viewpoint .getCameraSpaceMatrix ());
+               headlightContainer .modelViewMatrix .pushMatrix (invCameraSpaceMatrix);
+               headlightContainer .modelViewMatrix .multLeft (viewpoint .getCameraSpaceMatrix ());
             }
 
             // Render layer's children.
@@ -883,7 +887,7 @@ GeneratedCubeMapTexture .prototype = Object .assign (Object .create (CubeMapText
             // Pop matrices.
 
             if (headlight)
-               headlightContainer .getModelViewMatrix () .pop ();
+               headlightContainer .modelViewMatrix .pop ();
 
             dependentRenderer .getModelViewMatrix ()   .pop ();
             dependentRenderer .getCameraSpaceMatrix () .pop ();
@@ -891,13 +895,8 @@ GeneratedCubeMapTexture .prototype = Object .assign (Object .create (CubeMapText
 
             // Transfer image.
 
-            const
-               data   = this .frameBuffer .readPixels (),
-               width  = this .frameBuffer .getWidth (),
-               height = this .frameBuffer .getHeight ();
-
             gl .bindTexture (this .getTarget (), this .getTexture ());
-            gl .texImage2D (this .getTargets () [i], 0, gl .RGBA, width, height, false, gl .RGBA, gl .UNSIGNED_BYTE, data);
+            gl .copyTexSubImage2D (this .getTargets () [i], 0, 0, 0, 0, 0, width, height);
          }
 
          this .updateTextureParameters ();
@@ -931,13 +930,13 @@ const GeneratedCubeMapTexture_default_ = GeneratedCubeMapTexture;
 Namespace_default().set ("x_ite/Components/CubeMapTexturing/GeneratedCubeMapTexture", GeneratedCubeMapTexture_default_);
 /* harmony default export */ const CubeMapTexturing_GeneratedCubeMapTexture = (GeneratedCubeMapTexture_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Networking/X3DUrlObject\")"
-const X3DUrlObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/Components/Networking/X3DUrlObject");
+const X3DUrlObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/Components/Networking/X3DUrlObject");
 var X3DUrlObject_default = /*#__PURE__*/__webpack_require__.n(X3DUrlObject_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector2\")"
-const Vector2_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("standard/Math/Numbers/Vector2");
+const Vector2_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("standard/Math/Numbers/Vector2");
 var Vector2_default = /*#__PURE__*/__webpack_require__.n(Vector2_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/DEBUG\")"
-const DEBUG_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.5.5")] .require ("x_ite/DEBUG");
+const DEBUG_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.6.0")] .require ("x_ite/DEBUG");
 var DEBUG_default = /*#__PURE__*/__webpack_require__.n(DEBUG_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/CubeMapTexturing/ImageCubeMapTexture.js
 /* provided dependency */ var $ = __webpack_require__(355);
