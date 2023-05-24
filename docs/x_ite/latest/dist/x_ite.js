@@ -1,4 +1,4 @@
-/* X_ITE v8.7.4 */(function webpackUniversalModuleDefinition(root, factory) {
+/* X_ITE v8.7.5 */(function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
@@ -11,11 +11,11 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 66:
+/***/ 822:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* provided dependency */ var jQuery = __webpack_require__(917);
+/* provided dependency */ var jQuery = __webpack_require__(994);
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
 /**
@@ -387,10 +387,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
 /***/ }),
 
-/***/ 936:
+/***/ 53:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-/* provided dependency */ var jQuery = __webpack_require__(917);
+/* provided dependency */ var jQuery = __webpack_require__(994);
 /**
  * @preserve jquery.fullscreen 1.1.5
  * https://github.com/code-lts/jquery-fullscreen-plugin
@@ -586,7 +586,7 @@ installFullScreenHandlers();
 
 /***/ }),
 
-/***/ 132:
+/***/ 6:
 /***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -600,7 +600,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 (function (factory) {
     if ( true ) {
         // AMD. Register as an anonymous module.
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(917)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(994)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 		(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -811,7 +811,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
-/***/ 917:
+/***/ 994:
 /***/ (function(module, exports) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11523,7 +11523,7 @@ return jQuery;
 
 /***/ }),
 
-/***/ 836:
+/***/ 870:
 /***/ ((module) => {
 
 /**
@@ -16302,7 +16302,7 @@ if (true) {
 
 /***/ }),
 
-/***/ 480:
+/***/ 444:
 /***/ (function(__unused_webpack_module, exports) {
 
 
@@ -19547,7 +19547,7 @@ if (true) {
 
 /***/ }),
 
-/***/ 168:
+/***/ 361:
 /***/ (function(module, exports) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -22880,14 +22880,16 @@ X3DInfoArray .prototype = {
 for (const key of Reflect .ownKeys (X3DInfoArray .prototype))
    Object .defineProperty (X3DInfoArray .prototype, key, { enumerable: false });
 
-Object .defineProperty (X3DInfoArray .prototype, "length",
+Object .defineProperties (X3DInfoArray .prototype,
 {
-   get: function () { return this [_array] .length; },
-});
-
-Object .defineProperty (X3DInfoArray .prototype, Symbol .toStringTag,
-{
-   get: function () { return this .getTypeName (); },
+   length:
+   {
+      get: function () { return this [_array] .length; },
+   },
+   [Symbol .toStringTag]:
+   {
+      get: function () { return this .getTypeName (); },
+   },
 });
 
 const X3DInfoArray_default_ = X3DInfoArray;
@@ -23654,7 +23656,6 @@ function Color3 (r, g, b)
 Color3 .prototype =
 {
    constructor: Color3,
-   length: 3,
    [Symbol .iterator]: function* ()
    {
       yield this [_r];
@@ -23770,35 +23771,28 @@ Color3 .prototype =
 const r = {
    get: function () { return this [_r]; },
    set: function (value) { this [_r] = clamp (value, 0, 1); },
-   enumerable: true,
-   configurable: false
 };
 
 const g = {
    get: function () { return this [_g]; },
    set: function (value) { this [_g] = clamp (value, 0, 1); },
-   enumerable: true,
-   configurable: false
 };
 
 const b = {
    get: function () { return this [_b]; },
    set: function (value) { this [_b] = clamp (value, 0, 1); },
-   enumerable: true,
-   configurable: false
 };
 
-Object .defineProperty (Color3 .prototype, "r", r);
-Object .defineProperty (Color3 .prototype, "g", g);
-Object .defineProperty (Color3 .prototype, "b", b);
-
-r .enumerable = false;
-g .enumerable = false;
-b .enumerable = false;
-
-Object .defineProperty (Color3 .prototype, "0", r);
-Object .defineProperty (Color3 .prototype, "1", g);
-Object .defineProperty (Color3 .prototype, "2", b);
+Object .defineProperties (Color3 .prototype,
+{
+   length: { value: 3 },
+   0: r,
+   1: g,
+   2: b,
+   r: Object .assign ({ enumerable: true }, r),
+   g: Object .assign ({ enumerable: true }, g),
+   b: Object .assign ({ enumerable: true }, b),
+});
 
 Object .assign (Color3,
 {
@@ -23983,7 +23977,7 @@ SFColor .prototype = Object .assign (Object .create (Base_X3DField.prototype),
          destination .getValue () .getHSV (d),
          Numbers_Color3.lerp (s, d, t, r),
 
-         result .setHSV (r [0], r [1], r [2], r [3]);
+         result .setHSV (r [0], r [1], r [2]);
 
          return result;
       };
@@ -24050,7 +24044,6 @@ const SFColor_r = {
       this .getValue () .r = +value;
       this .addEvent ();
    },
-   enumerable: true,
 };
 
 const SFColor_g = {
@@ -24063,7 +24056,6 @@ const SFColor_g = {
       this .getValue () .g = +value;
       this .addEvent ();
    },
-   enumerable: true,
 };
 
 const SFColor_b = {
@@ -24076,20 +24068,17 @@ const SFColor_b = {
       this .getValue () .b = +value;
       this .addEvent ();
    },
-   enumerable: true,
 };
 
-Object .defineProperty (SFColor .prototype, "r", SFColor_r);
-Object .defineProperty (SFColor .prototype, "g", SFColor_g);
-Object .defineProperty (SFColor .prototype, "b", SFColor_b);
-
-SFColor_r .enumerable = false;
-SFColor_g .enumerable = false;
-SFColor_b .enumerable = false;
-
-Object .defineProperty (SFColor .prototype, "0", SFColor_r);
-Object .defineProperty (SFColor .prototype, "1", SFColor_g);
-Object .defineProperty (SFColor .prototype, "2", SFColor_b);
+Object .defineProperties (SFColor .prototype,
+{
+   0: SFColor_r,
+   1: SFColor_g,
+   2: SFColor_b,
+   r: Object .assign ({ enumerable: true }, SFColor_r),
+   g: Object .assign ({ enumerable: true }, SFColor_g),
+   b: Object .assign ({ enumerable: true }, SFColor_b),
+});
 
 const SFColor_default_ = SFColor;
 ;
@@ -24166,7 +24155,6 @@ function Color4 (r, g, b, a)
 Color4 .prototype =
 {
    constructor: Color4,
-   length: 4,
    [Symbol .iterator]: function* ()
    {
       yield this [Color4_r];
@@ -24234,45 +24222,35 @@ Color4 .prototype =
 const Numbers_Color4_r = {
    get: function () { return this [Color4_r]; },
    set: function (value) { this [Color4_r] = Color4_clamp (value, 0, 1); },
-   enumerable: true,
-   configurable: false
 };
 
 const Numbers_Color4_g = {
    get: function () { return this [Color4_g]; },
    set: function (value) { this [Color4_g] = Color4_clamp (value, 0, 1); },
-   enumerable: true,
-   configurable: false
 };
 
 const Numbers_Color4_b = {
    get: function () { return this [Color4_b]; },
    set: function (value) { this [Color4_b] = Color4_clamp (value, 0, 1); },
-   enumerable: true,
-   configurable: false
 };
 
 const a = {
    get: function () { return this [_a]; },
    set: function (value) { this [_a] = Color4_clamp (value, 0, 1); },
-   enumerable: true,
-   configurable: false
 };
 
-Object .defineProperty (Color4 .prototype, "r", Numbers_Color4_r);
-Object .defineProperty (Color4 .prototype, "g", Numbers_Color4_g);
-Object .defineProperty (Color4 .prototype, "b", Numbers_Color4_b);
-Object .defineProperty (Color4 .prototype, "a", a);
-
-Numbers_Color4_r .enumerable = false;
-Numbers_Color4_g .enumerable = false;
-Numbers_Color4_b .enumerable = false;
-a .enumerable = false;
-
-Object .defineProperty (Color4 .prototype, "0", Numbers_Color4_r);
-Object .defineProperty (Color4 .prototype, "1", Numbers_Color4_g);
-Object .defineProperty (Color4 .prototype, "2", Numbers_Color4_b);
-Object .defineProperty (Color4 .prototype, "3", a);
+Object .defineProperties (Color4 .prototype,
+{
+   length: { value: 4 },
+   0: Numbers_Color4_r,
+   1: Numbers_Color4_g,
+   2: Numbers_Color4_b,
+   3: a,
+   r: Object .assign ({ enumerable: true }, Numbers_Color4_r),
+   g: Object .assign ({ enumerable: true }, Numbers_Color4_g),
+   b: Object .assign ({ enumerable: true }, Numbers_Color4_b),
+   a: Object .assign ({ enumerable: true }, a),
+});
 
 Object .assign (Color4,
 {
@@ -24445,7 +24423,6 @@ const SFColorRGBA_r = {
       this .getValue () .r = +value;
       this .addEvent ();
    },
-   enumerable: true,
 };
 
 const SFColorRGBA_g = {
@@ -24458,7 +24435,6 @@ const SFColorRGBA_g = {
       this .getValue () .g = +value;
       this .addEvent ();
    },
-   enumerable: true,
 };
 
 const SFColorRGBA_b = {
@@ -24471,7 +24447,6 @@ const SFColorRGBA_b = {
       this .getValue () .b = +value;
       this .addEvent ();
    },
-   enumerable: true,
 };
 
 const SFColorRGBA_a = {
@@ -24484,23 +24459,19 @@ const SFColorRGBA_a = {
       this .getValue () .a = +value;
       this .addEvent ();
    },
-   enumerable: true,
 };
 
-Object .defineProperty (SFColorRGBA .prototype, "r", SFColorRGBA_r);
-Object .defineProperty (SFColorRGBA .prototype, "g", SFColorRGBA_g);
-Object .defineProperty (SFColorRGBA .prototype, "b", SFColorRGBA_b);
-Object .defineProperty (SFColorRGBA .prototype, "a", SFColorRGBA_a);
-
-SFColorRGBA_r .enumerable = false;
-SFColorRGBA_g .enumerable = false;
-SFColorRGBA_b .enumerable = false;
-SFColorRGBA_a .enumerable = false;
-
-Object .defineProperty (SFColorRGBA .prototype, "0", SFColorRGBA_r);
-Object .defineProperty (SFColorRGBA .prototype, "1", SFColorRGBA_g);
-Object .defineProperty (SFColorRGBA .prototype, "2", SFColorRGBA_b);
-Object .defineProperty (SFColorRGBA .prototype, "3", SFColorRGBA_a);
+Object .defineProperties (SFColorRGBA .prototype,
+{
+   0: SFColorRGBA_r,
+   1: SFColorRGBA_g,
+   2: SFColorRGBA_b,
+   3: SFColorRGBA_a,
+   r: Object .assign ({ enumerable: true }, SFColorRGBA_r),
+   g: Object .assign ({ enumerable: true }, SFColorRGBA_g),
+   b: Object .assign ({ enumerable: true }, SFColorRGBA_b),
+   a: Object .assign ({ enumerable: true }, SFColorRGBA_a),
+});
 
 const SFColorRGBA_default_ = SFColorRGBA;
 ;
@@ -24895,12 +24866,13 @@ x_ite_Namespace.set ("x_ite/Fields/SFInt32", SFInt32_default_);
 
 
 
-function SFMatrixPrototypeTemplate (TypeName, Type, Matrix, SFVec, double)
+function SFMatrixPrototypeTemplate (Constructor, TypeName, Type, Matrix, SFVec, double)
 {
    const _formatter = double ? "DoubleFormat" : "FloatFormat";
 
    return Object .assign (Object .create (Base_X3DField.prototype),
    {
+      constructor: Constructor,
       [Symbol .iterator]: function* ()
       {
          yield* this .getValue ();
@@ -24955,19 +24927,19 @@ function SFMatrixPrototypeTemplate (TypeName, Type, Matrix, SFVec, double)
       },
       transpose: function ()
       {
-         return new (this .constructor) (Matrix .transpose (this .getValue ()));
+         return new (this .constructor) (this .getValue () .copy () .transpose ());
       },
       inverse: function ()
       {
-         return new (this .constructor) (Matrix .inverse (this .getValue ()));
+         return new (this .constructor) (this .getValue () .copy () .inverse ());
       },
       multLeft: function (matrix)
       {
-         return new (this .constructor) (Matrix .multLeft (this .getValue (), matrix .getValue ()));
+         return new (this .constructor) (this .getValue () .copy () .multLeft (matrix .getValue ()));
       },
       multRight: function (matrix)
       {
-         return new (this .constructor) (Matrix .multRight (this .getValue (), matrix .getValue ()));
+         return new (this .constructor) (this .getValue () .copy () .multRight (matrix .getValue ()));
       },
       multVecMatrix: function (vector)
       {
@@ -25090,12 +25062,13 @@ x_ite_Namespace.set ("x_ite/Fields/SFMatrixPrototypeTemplate", SFMatrixPrototype
 
 
 
-function SFVecPrototypeTemplate (TypeName, Type, ValueType, double)
+function SFVecPrototypeTemplate (Constructor, TypeName, Type, ValueType, double)
 {
    const _formatter = double ? "DoubleFormat" : "FloatFormat";
 
    return Object .assign (Object .create (Base_X3DField.prototype),
    {
+      constructor: Constructor,
       [Symbol .iterator]: function* ()
       {
          yield* this .getValue ();
@@ -25126,11 +25099,11 @@ function SFVecPrototypeTemplate (TypeName, Type, ValueType, double)
       },
       abs: function ()
       {
-         return new (this .constructor) (ValueType .abs (this .getValue ()));
+         return new (this .constructor) (this .getValue () .copy () .abs ());
       },
       add: function (vector)
       {
-         return new (this .constructor) (ValueType .add (this .getValue (), vector .getValue ()));
+         return new (this .constructor) (this .getValue () .copy () .add (vector .getValue ()));
       },
       distance: function (vector)
       {
@@ -25138,11 +25111,11 @@ function SFVecPrototypeTemplate (TypeName, Type, ValueType, double)
       },
       divide: function (value)
       {
-         return new (this .constructor) (ValueType .divide (this .getValue (), value));
+         return new (this .constructor) (this .getValue () .copy () .divide (value));
       },
       divVec: function (vector)
       {
-         return new (this .constructor) (ValueType .divVec (this .getValue (), vector .getValue ()));
+         return new (this .constructor) (this .getValue () .copy () .divVec (vector .getValue ()));
       },
       dot: function (vector)
       {
@@ -25150,7 +25123,7 @@ function SFVecPrototypeTemplate (TypeName, Type, ValueType, double)
       },
       inverse: function ()
       {
-         return new (this .constructor) (ValueType .inverse (this .getValue ()));
+         return new (this .constructor) (this .getValue () .copy () .inverse ());
       },
       length: function ()
       {
@@ -25158,35 +25131,35 @@ function SFVecPrototypeTemplate (TypeName, Type, ValueType, double)
       },
       lerp: function (destination, t)
       {
-         return new (this .constructor) (ValueType .lerp (this .getValue (), destination, t));
+         return new (this .constructor) (this .getValue () .copy () .lerp (destination, t));
       },
       max: function (vector)
       {
-         return new (this .constructor) (ValueType .max (this .getValue (), vector .getValue ()));
+         return new (this .constructor) (this .getValue () .copy () .max (vector .getValue ()));
       },
       min: function (vector)
       {
-         return new (this .constructor) (ValueType .min (this .getValue (), vector .getValue ()));
+         return new (this .constructor) (this .getValue () .copy () .min (vector .getValue ()));
       },
       multiply: function (value)
       {
-         return new (this .constructor) (ValueType .multiply (this .getValue (), value));
+         return new (this .constructor) (this .getValue () .copy () .multiply (value));
       },
       multVec: function (vector)
       {
-         return new (this .constructor) (ValueType .multVec (this .getValue (), vector .getValue ()));
+         return new (this .constructor) (this .getValue () .copy () .multVec (vector .getValue ()));
       },
       negate: function ()
       {
-         return new (this .constructor) (ValueType .negate (this .getValue ()));
+         return new (this .constructor) (this .getValue () .copy () .negate ());
       },
       normalize: function (vector)
       {
-         return new (this .constructor) (ValueType .normalize (this .getValue ()));
+         return new (this .constructor) (this .getValue () .copy () .normalize ());
       },
       subtract: function (vector)
       {
-         return new (this .constructor) (ValueType .subtract (this .getValue (), vector .getValue ()));
+         return new (this .constructor) (this .getValue () .copy () .subtract (vector .getValue ()));
       },
       toStream: function (generator)
       {
@@ -25302,7 +25275,6 @@ function Vector2 (x, y)
 Vector2 .prototype =
 {
    constructor: Vector2,
-   length: 2,
    [Symbol .iterator]: function* ()
    {
       yield this .x;
@@ -25462,20 +25434,19 @@ Vector2 .prototype =
    }
 };
 
-Object .defineProperty (Vector2 .prototype, "0",
+Object .defineProperties (Vector2 .prototype,
 {
-   get: function () { return this .x; },
-   set: function (value) { this .x = value; },
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Vector2 .prototype, "1",
-{
-   get: function () { return this .y; },
-   set: function (value) { this .y = value; },
-   enumerable: false,
-   configurable: false
+   length: { value: 2 },
+   0:
+   {
+      get: function () { return this .x; },
+      set: function (value) { this .x = value; },
+   },
+   1:
+   {
+      get: function () { return this .y; },
+      set: function (value) { this .y = value; },
+   },
 });
 
 Object .assign (Vector2,
@@ -25627,11 +25598,7 @@ function SFVec2Template (TypeName, Type, double)
       throw new Error ("Invalid arguments.");
    }
 
-   SFVec2 .prototype = Object .assign (Object .create (Base_X3DField.prototype),
-      Fields_SFVecPrototypeTemplate (TypeName, Type, Numbers_Vector2, double),
-   {
-      constructor: SFVec2,
-   });
+   SFVec2 .prototype = Fields_SFVecPrototypeTemplate (SFVec2, TypeName, Type, Numbers_Vector2, double);
 
    for (const key of Reflect .ownKeys (SFVec2 .prototype))
       Object .defineProperty (SFVec2 .prototype, key, { enumerable: false });
@@ -25646,7 +25613,6 @@ function SFVec2Template (TypeName, Type, double)
          this .getValue () .x = +value;
          this .addEvent ();
       },
-      enumerable: true,
    };
 
    const y = {
@@ -25659,17 +25625,15 @@ function SFVec2Template (TypeName, Type, double)
          this .getValue () .y = +value;
          this .addEvent ();
       },
-      enumerable: true,
    };
 
-   Object .defineProperty (SFVec2 .prototype, "x", x);
-   Object .defineProperty (SFVec2 .prototype, "y", y);
-
-   x .enumerable = false;
-   y .enumerable = false;
-
-   Object .defineProperty (SFVec2 .prototype, "0", x);
-   Object .defineProperty (SFVec2 .prototype, "1", y);
+   Object .defineProperties (SFVec2 .prototype,
+   {
+      0: x,
+      1: y,
+      x: Object .assign ({ enumerable: true }, x),
+      y: Object .assign ({ enumerable: true }, y),
+   });
 
    return SFVec2;
 }
@@ -25744,7 +25708,6 @@ function Vector3 (x, y, z)
 Vector3 .prototype =
 {
    constructor: Vector3,
-   length: 3,
    [Symbol .iterator]: function* ()
    {
       yield this .x;
@@ -25949,28 +25912,24 @@ Vector3 .prototype =
    }
 };
 
-Object .defineProperty (Vector3 .prototype, "0",
+Object .defineProperties (Vector3 .prototype,
 {
-   get: function () { return this .x; },
-   set: function (value) { this .x = value; },
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Vector3 .prototype, "1",
-{
-   get: function () { return this .y; },
-   set: function (value) { this .y = value; },
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Vector3 .prototype, "2",
-{
-   get: function () { return this .z; },
-   set: function (value) { this .z = value; },
-   enumerable: false,
-   configurable: false
+   length: { value: 3 },
+   0:
+   {
+      get: function () { return this .x; },
+      set: function (value) { this .x = value; },
+   },
+   1:
+   {
+      get: function () { return this .y; },
+      set: function (value) { this .y = value; },
+   },
+   2:
+   {
+      get: function () { return this .z; },
+      set: function (value) { this .z = value; },
+   },
 });
 
 Object .assign (Vector3,
@@ -26109,7 +26068,6 @@ x_ite_Namespace.set ("standard/Math/Numbers/Vector3", Vector3_default_);
 
 
 
-
 function Matrix2 ()
 {
    if (arguments .length)
@@ -26126,13 +26084,9 @@ function Matrix2 ()
 Matrix2 .prototype =
 {
    constructor: Matrix2,
-   order: 2,
-   length: 4,
    [Symbol .iterator]: function* ()
    {
-      const length = this .length;
-
-      for (let i = 0; i < length; ++ i)
+      for (let i = 0; i < 4; ++ i)
          yield this [i];
    },
    copy: function ()
@@ -26298,49 +26252,40 @@ Matrix2 .prototype =
    },
 };
 
-Object .defineProperty (Matrix2 .prototype, "x",
+Object .defineProperties (Matrix2 .prototype,
 {
-   get: (function ()
+   order: { value: 2 },
+   length: { value: 4 },
+   x:
    {
-      const vector = new Numbers_Vector2 (0, 0);
+      get: (function ()
+      {
+         const vector = new Numbers_Vector2 (0, 0);
 
-      return function () { return vector .set (this [0], this [1]); };
-   })(),
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Matrix2 .prototype, "y",
-{
-   get: (function ()
+         return function () { return vector .set (this [0], this [1]); };
+      })(),
+   },
+   y:
    {
-      const vector = new Numbers_Vector2 (0, 0);
+      get: (function ()
+      {
+         const vector = new Numbers_Vector2 (0, 0);
 
-      return function () { return vector .set (this [2], this [3]); };
-   })(),
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Matrix2 .prototype, "xAxis",
-{
-   get: function () { return this [0]; },
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Matrix2 .prototype, "origin",
-{
-   get: function () { return this [2]; },
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Matrix2 .prototype, "submatrix",
-{
-   get: function () { return this [0]; },
-   enumerable: false,
-   configurable: false
+         return function () { return vector .set (this [2], this [3]); };
+      })(),
+   },
+   xAxis:
+   {
+      get: function () { return this [0]; },
+   },
+   origin:
+   {
+      get: function () { return this [2]; },
+   },
+   submatrix:
+   {
+      get: function () { return this [0]; },
+   },
 });
 
 Object .assign (Matrix2,
@@ -26411,23 +26356,23 @@ function eigen_decomposition (matrix, result)
 {
    const
       ORDER   = matrix .order,
+      SIZE    = matrix .length,
       values  = result .values,
       vectors = result .vectors;
 
    let
-      sm,                // smallest entry
-      theta,             // angle for Jacobi rotation
-      c, s, t,           // cosine, sine, tangent of theta
-      tau,               // sine / (1 + cos)
-      h, g,              // two scrap values
-      thresh,            // threshold below which no rotation done
-      p, q, i, j,
-      SIZE = matrix .length;
+      sm,         // smallest entry
+      theta,      // angle for Jacobi rotation
+      c, s, t,    // cosine, sine, tangent of theta
+      tau,        // sine / (1 + cos)
+      h, g,       // two scrap values
+      thresh,     // threshold below which no rotation done
+      p, q, i, j; // indices
 
    // initializations
    for (i = 0; i < ORDER; ++ i)
    {
-      eigen_decomposition_a [i] = eigen_decomposition_a [i] || new Array (ORDER);
+      eigen_decomposition_a [i] = eigen_decomposition_a [i] ?? [ ];
       eigen_decomposition_b [i] = values [i] = matrix .get1 (i, i);
       z [i] = 0;
 
@@ -26617,13 +26562,9 @@ function Matrix3 ()
 Matrix3 .prototype =
 {
    constructor: Matrix3,
-   order: 3,
-   length: 9,
    [Symbol .iterator]: function* ()
    {
-      const length = this .length;
-
-      for (let i = 0; i < length; ++ i)
+      for (let i = 0; i < 9; ++ i)
          yield this [i];
    },
    copy: function ()
@@ -26656,7 +26597,7 @@ Matrix3 .prototype =
    },
    rotation: function ()
    {
-      return math .atan2 (this [1], this [0]);
+      return Math .atan2 (this [1], this [0]);
    },
    set1: function (r, c, value)
    {
@@ -27129,93 +27070,78 @@ Matrix3 .prototype =
    },
 };
 
-Object .defineProperty (Matrix3 .prototype, "x",
+Object .defineProperties (Matrix3 .prototype,
 {
-   get: (function ()
+   order: { value: 3 },
+   length: { value: 9 },
+   x:
    {
-      const vector = new Numbers_Vector3 (0, 0, 0);
-
-      return function () { return vector .set (this [0], this [1], this [2]); };
-   })(),
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Matrix3 .prototype, "y",
-{
-   get: (function ()
-   {
-      const vector = new Numbers_Vector3 (0, 0, 0);
-
-      return function () { return vector .set (this [3], this [4], this [5]); };
-   })(),
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Matrix3 .prototype, "z",
-{
-   get: (function ()
-   {
-      const vector = new Numbers_Vector3 (0, 0, 0);
-
-      return function () { return vector .set (this [6], this [7], this [8]); };
-   })(),
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Matrix3 .prototype, "xAxis",
-{
-   get: (function ()
-   {
-      const vector = new Numbers_Vector2 (0, 0);
-
-      return function () { return vector .set (this [0], this [1]); };
-   })(),
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Matrix3 .prototype, "yAxis",
-{
-   get: (function ()
-   {
-      const vector = new Numbers_Vector2 (0, 0);
-
-      return function () { return vector .set (this [3], this [4]); };
-   })(),
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Matrix3 .prototype, "origin",
-{
-   get: (function ()
-   {
-      const vector = new Numbers_Vector2 (0, 0);
-
-      return function () { return vector .set (this [6], this [7]); };
-   })(),
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Matrix3 .prototype, "submatrix",
-{
-   get: (function ()
-   {
-      const matrix = new Numbers_Matrix2 ();
-
-      return function ()
+      get: (function ()
       {
-         matrix [0] = this [0]; matrix [1] = this [1];
-         matrix [2] = this [3]; matrix [3] = this [4];
-         return matrix;
-      };
-   })(),
-   enumerable: false,
-   configurable: false
+         const vector = new Numbers_Vector3 (0, 0, 0);
+
+         return function () { return vector .set (this [0], this [1], this [2]); };
+      })(),
+   },
+   y:
+   {
+      get: (function ()
+      {
+         const vector = new Numbers_Vector3 (0, 0, 0);
+
+         return function () { return vector .set (this [3], this [4], this [5]); };
+      })(),
+   },
+   z:
+   {
+      get: (function ()
+      {
+         const vector = new Numbers_Vector3 (0, 0, 0);
+
+         return function () { return vector .set (this [6], this [7], this [8]); };
+      })(),
+   },
+   xAxis:
+   {
+      get: (function ()
+      {
+         const vector = new Numbers_Vector2 (0, 0);
+
+         return function () { return vector .set (this [0], this [1]); };
+      })(),
+   },
+   yAxis:
+   {
+      get: (function ()
+      {
+         const vector = new Numbers_Vector2 (0, 0);
+
+         return function () { return vector .set (this [3], this [4]); };
+      })(),
+   },
+   origin:
+   {
+      get: (function ()
+      {
+         const vector = new Numbers_Vector2 (0, 0);
+
+         return function () { return vector .set (this [6], this [7]); };
+      })(),
+   },
+   submatrix:
+   {
+      get: (function ()
+      {
+         const matrix = new Numbers_Matrix2 ();
+
+         return function ()
+         {
+            matrix [0] = this [0]; matrix [1] = this [1];
+            matrix [2] = this [3]; matrix [3] = this [4];
+            return matrix;
+         };
+      })(),
+   },
 });
 
 Object .assign (Matrix3,
@@ -27236,22 +27162,6 @@ Object .assign (Matrix3,
       return new Matrix3 (matrix [0], matrix [1], 0,
                           matrix [2], matrix [3], 0,
                           0, 0, 1);
-   },
-   transpose: function (matrix)
-   {
-      return matrix .copy () .transpose ();
-   },
-   inverse: function (matrix)
-   {
-      return matrix .copy () .inverse ();
-   },
-   multLeft: function (lhs, rhs)
-   {
-      return lhs .copy () .multLeft (rhs);
-   },
-   multRight: function (lhs, rhs)
-   {
-      return lhs .copy () .multRight (rhs);
    },
 });
 
@@ -27350,10 +27260,8 @@ function SFMatrix3Template (TypeName, Type, SFVec2, double)
       throw new Error ("Invalid arguments.");
    }
 
-   SFMatrix3 .prototype = Object .assign (Object .create (Base_X3DField.prototype),
-      Fields_SFMatrixPrototypeTemplate (TypeName, Type, Numbers_Matrix3, SFVec2, double),
+   SFMatrix3 .prototype = Object .assign (Fields_SFMatrixPrototypeTemplate (SFMatrix3, TypeName, Type, Numbers_Matrix3, SFVec2, double),
    {
-      constructor: SFMatrix3,
       setTransform: function (translation, rotation, scale, scaleOrientation, center)
       {
          translation      = translation      ? translation      .getValue () : null;
@@ -27474,10 +27382,8 @@ function SFVec3Template (TypeName, Type, double)
       throw new Error ("Invalid arguments.");
    }
 
-   SFVec3 .prototype = Object .assign (Object .create (Base_X3DField.prototype),
-      Fields_SFVecPrototypeTemplate (TypeName, Type, Numbers_Vector3, double),
+   SFVec3 .prototype = Object .assign (Fields_SFVecPrototypeTemplate (SFVec3, TypeName, Type, Numbers_Vector3, double),
    {
-      constructor: SFVec3,
       cross: function (vector)
       {
          return new (this .constructor) (Numbers_Vector3.cross (this .getValue (), vector .getValue ()));
@@ -27497,7 +27403,6 @@ function SFVec3Template (TypeName, Type, double)
          this .getValue () .x = +value;
          this .addEvent ();
       },
-      enumerable: true,
    };
 
    const y = {
@@ -27510,7 +27415,6 @@ function SFVec3Template (TypeName, Type, double)
          this .getValue () .y = +value;
          this .addEvent ();
       },
-      enumerable: true,
    };
 
    const z = {
@@ -27523,20 +27427,17 @@ function SFVec3Template (TypeName, Type, double)
          this .getValue () .z = +value;
          this .addEvent ();
       },
-      enumerable: true,
    };
 
-   Object .defineProperty (SFVec3 .prototype, "x", x);
-   Object .defineProperty (SFVec3 .prototype, "y", y);
-   Object .defineProperty (SFVec3 .prototype, "z", z);
-
-   x .enumerable = false;
-   y .enumerable = false;
-   z .enumerable = false;
-
-   Object .defineProperty (SFVec3 .prototype, "0", x);
-   Object .defineProperty (SFVec3 .prototype, "1", y);
-   Object .defineProperty (SFVec3 .prototype, "2", z);
+   Object .defineProperties (SFVec3 .prototype,
+   {
+      0: x,
+      1: y,
+      2: z,
+      x: Object .assign ({ enumerable: true }, x),
+      y: Object .assign ({ enumerable: true }, y),
+      z: Object .assign ({ enumerable: true }, z),
+   });
 
    return SFVec3;
 }
@@ -27610,7 +27511,6 @@ function Vector4 (x, y, z, w)
 Vector4 .prototype =
 {
    constructor: Vector4,
-   length: 4,
    [Symbol .iterator]: function* ()
    {
       yield this .x;
@@ -27825,36 +27725,29 @@ Vector4 .prototype =
    },
 };
 
-Object .defineProperty (Vector4 .prototype, "0",
+Object .defineProperties (Vector4 .prototype,
 {
-   get: function () { return this .x; },
-   set: function (value) { this .x = value; },
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Vector4 .prototype, "1",
-{
-   get: function () { return this .y; },
-   set: function (value) { this .y = value; },
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Vector4 .prototype, "2",
-{
-   get: function () { return this .z; },
-   set: function (value) { this .z = value; },
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Vector4 .prototype, "3",
-{
-   get: function () { return this .w; },
-   set: function (value) { this .w = value; },
-   enumerable: false,
-   configurable: false
+   length: { value: 4 },
+   0:
+   {
+      get: function () { return this .x; },
+      set: function (value) { this .x = value; },
+   },
+   1:
+   {
+      get: function () { return this .y; },
+      set: function (value) { this .y = value; },
+   },
+   2:
+   {
+      get: function () { return this .z; },
+      set: function (value) { this .z = value; },
+   },
+   3:
+   {
+      get: function () { return this .w; },
+      set: function (value) { this .w = value; },
+   },
 });
 
 Object .assign (Vector4,
@@ -27999,7 +27892,6 @@ function Quaternion (x, y, z, w)
 Quaternion .prototype =
 {
    constructor: Quaternion,
-   length: 4,
    [Symbol .iterator]: function* ()
    {
       yield this .x;
@@ -28034,24 +27926,22 @@ Quaternion .prototype =
    },
    setMatrix: function (matrix)
    {
-      let i;
-
       // First, find largest diagonal in matrix:
       if (matrix [0] > matrix [4])
       {
-         i = matrix [0] > matrix [8] ? 0 : 2;
+         var i = matrix [0] > matrix [8] ? 0 : 2;
       }
       else
       {
-         i = matrix [4] > matrix [8] ? 1 : 2;
+         var i = matrix [4] > matrix [8] ? 1 : 2;
       }
 
-      const scalerow = matrix [0] + matrix [4] + matrix [8];
+      const scaleRow = matrix [0] + matrix [4] + matrix [8];
 
-      if (scalerow > matrix [i * 3 + i])
+      if (scaleRow > matrix [i * 3 + i])
       {
          // Compute w first:
-         this [3] = Math .sqrt (scalerow + 1) / 2;
+         this [3] = Math .sqrt (scaleRow + 1) / 2;
 
          // And compute other values:
          const d = 4 * this [3];
@@ -28199,9 +28089,9 @@ Quaternion .prototype =
       const
          { x: qx, y: qy, z: qz, w: qw } = this,
          { x: vx, y: vy, z: vz } = vector,
-         a  = qw * qw - qx * qx - qy * qy - qz * qz,
-         b  = 2 * (vx * qx + vy * qy + vz * qz),
-         c  = 2 * qw;
+         a = qw * qw - qx * qx - qy * qy - qz * qz,
+         b = 2 * (vx * qx + vy * qy + vz * qz),
+         c = 2 * qw;
 
       vector .x = a * vx + b * qx + c * (qy * vz - qz * vy);
       vector .y = a * vy + b * qy + c * (qz * vx - qx * vz);
@@ -28214,9 +28104,9 @@ Quaternion .prototype =
       const
          { x: qx, y: qy, z: qz, w: qw } = this,
          { x: vx, y: vy, z: vz } = vector,
-         a  = qw * qw - qx * qx - qy * qy - qz * qz,
-         b  = 2 * (vx * qx + vy * qy + vz * qz),
-         c  = 2 * qw;
+         a = qw * qw - qx * qx - qy * qy - qz * qz,
+         b = 2 * (vx * qx + vy * qy + vz * qz),
+         c = 2 * qw;
 
       vector .x = a * vx + b * qx - c * (qy * vz - qz * vy);
       vector .y = a * vy + b * qy - c * (qz * vx - qx * vz);
@@ -28341,60 +28231,47 @@ Quaternion .prototype =
    },
 };
 
-Object .defineProperty (Quaternion .prototype, "0",
+Object .defineProperties (Quaternion .prototype,
 {
-   get: function () { return this .x; },
-   set: function (value) { this .x = value; },
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Quaternion .prototype, "1",
-{
-   get: function () { return this .y; },
-   set: function (value) { this .y = value; },
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Quaternion .prototype, "2",
-{
-   get: function () { return this .z; },
-   set: function (value) { this .z = value; },
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Quaternion .prototype, "3",
-{
-   get: function () { return this .w; },
-   set: function (value) { this .w = value; },
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Quaternion .prototype, "real",
-{
-   get: function () { return this .w; },
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Quaternion .prototype, "imag",
-{
-   get: (function ()
+   length: { value: 4 },
+   0:
    {
-      const result = new Numbers_Vector3 (0, 0, 0);
-
-      return function ()
+      get: function () { return this .x; },
+      set: function (value) { this .x = value; },
+   },
+   1:
+   {
+      get: function () { return this .y; },
+      set: function (value) { this .y = value; },
+   },
+   2:
+   {
+      get: function () { return this .z; },
+      set: function (value) { this .z = value; },
+   },
+   3:
+   {
+      get: function () { return this .w; },
+      set: function (value) { this .w = value; },
+   },
+   real:
+   {
+      get: function () { return this .w; },
+   },
+   imag:
+   {
+      get: (function ()
       {
-         return result .set (this .x,
-                             this .y,
-                             this .z);
-      };
-   })(),
-   enumerable: false,
-   configurable: false
+         const result = new Numbers_Vector3 (0, 0, 0);
+
+         return function ()
+         {
+            return result .set (this .x,
+                                this .y,
+                                this .z);
+         };
+      })(),
+   },
 });
 
 Object .assign (Quaternion,
@@ -28602,7 +28479,6 @@ function Rotation4 (x, y, z, angle)
 Rotation4 .prototype =
 {
    constructor: Rotation4,
-   length: 4,
    [Symbol .iterator]: function* ()
    {
       yield this [_x];
@@ -28873,7 +28749,6 @@ const x = {
       this .set (x, this [_y], this [_z], this [_angle]);
    },
    enumerable: true,
-   configurable: false
 };
 
 const y = {
@@ -28887,7 +28762,6 @@ const y = {
       this .set (this [_x], y, this [_z], this [_angle]);
    },
    enumerable: true,
-   configurable: false
 };
 
 const Rotation4_z = {
@@ -28901,7 +28775,6 @@ const Rotation4_z = {
       this .set (this [_x], this [_y], z, this [_angle]);
    },
    enumerable: true,
-   configurable: false
 };
 
 const angle = {
@@ -28915,23 +28788,29 @@ const angle = {
       this .set (this [_x], this [_y], this [_z], angle);
    },
    enumerable: true,
-   configurable: false
 };
 
-Object .defineProperty (Rotation4 .prototype, "x",     x);
-Object .defineProperty (Rotation4 .prototype, "y",     y);
-Object .defineProperty (Rotation4 .prototype, "z",     Rotation4_z);
-Object .defineProperty (Rotation4 .prototype, "angle", angle);
+Object .defineProperties (Rotation4 .prototype,
+{
+   length: { value: 4 },
+   x: x,
+   y: y,
+   z: Rotation4_z,
+   angle: angle,
+});
 
 x     .enumerable = false;
 y     .enumerable = false;
 Rotation4_z     .enumerable = false;
 angle .enumerable = false;
 
-Object .defineProperty (Rotation4 .prototype, "0", x);
-Object .defineProperty (Rotation4 .prototype, "1", y);
-Object .defineProperty (Rotation4 .prototype, "2", Rotation4_z);
-Object .defineProperty (Rotation4 .prototype, "3", angle);
+Object .defineProperties (Rotation4 .prototype,
+{
+   0: x,
+   1: y,
+   2: Rotation4_z,
+   3: angle,
+});
 
 Object .assign (Rotation4,
 {
@@ -29050,13 +28929,9 @@ function Matrix4_Matrix4 ()
 Matrix4_Matrix4 .prototype =
 {
    constructor: Matrix4_Matrix4,
-   order: 4,
-   length: 16,
    [Symbol .iterator]: function* ()
    {
-      const length = this .length;
-
-      for (let i = 0; i < length; ++ i)
+      for (let i = 0; i < 16; ++ i)
          yield this [i];
    },
    copy: function ()
@@ -29654,118 +29529,97 @@ Matrix4_Matrix4 .prototype =
    },
 };
 
-Object .defineProperty (Matrix4_Matrix4 .prototype, "x",
+Object .defineProperties (Matrix4_Matrix4 .prototype,
 {
-   get: (function ()
+   order: { value: 4 },
+   length: { value: 16 },
+   x:
    {
-      const vector = new Numbers_Vector4 (0, 0, 0, 0);
-
-      return function () { return vector .set (this [0], this [1], this [2], this [3]); };
-   })(),
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Matrix4_Matrix4 .prototype, "y",
-{
-   get: (function ()
-   {
-      const vector = new Numbers_Vector4 (0, 0, 0, 0);
-
-      return function () { return vector .set (this [4], this [5], this [6], this [7]); };
-   })(),
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Matrix4_Matrix4 .prototype, "z",
-{
-   get: (function ()
-   {
-      const vector = new Numbers_Vector4 (0, 0, 0, 0);
-
-      return function () { return vector .set (this [8], this [9], this [10], this [11]); };
-   })(),
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Matrix4_Matrix4 .prototype, "w",
-{
-   get: (function ()
-   {
-      const vector = new Numbers_Vector4 (0, 0, 0, 0);
-
-      return function () { return vector .set (this [12], this [13], this [14], this [15]); };
-   })(),
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Matrix4_Matrix4 .prototype, "xAxis",
-{
-   get: (function ()
-   {
-      const vector = new Numbers_Vector3 (0, 0, 0);
-
-      return function () { return vector .set (this [0], this [1], this [2]); };
-   })(),
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Matrix4_Matrix4 .prototype, "yAxis",
-{
-   get: (function ()
-   {
-      const vector = new Numbers_Vector3 (0, 0, 0);
-
-      return function () { return vector .set (this [4], this [5], this [6]); };
-   })(),
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Matrix4_Matrix4 .prototype, "zAxis",
-{
-   get: (function ()
-   {
-      const vector = new Numbers_Vector3 (0, 0, 0);
-
-      return function () { return vector .set (this [8], this [9], this [10]); };
-   })(),
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Matrix4_Matrix4 .prototype, "origin",
-{
-   get: (function ()
-   {
-      const vector = new Numbers_Vector3 (0, 0, 0);
-
-      return function () { return vector .set (this [12], this [13], this [14]); };
-   })(),
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Matrix4_Matrix4 .prototype, "submatrix",
-{
-   get: (function ()
-   {
-      const matrix = new Numbers_Matrix3 ();
-
-      return function ()
+      get: (function ()
       {
-         matrix [0] = this [0]; matrix [1] = this [1]; matrix [2] = this [ 2];
-         matrix [3] = this [4]; matrix [4] = this [5]; matrix [5] = this [ 6];
-         matrix [6] = this [8]; matrix [7] = this [9]; matrix [8] = this [10];
-         return matrix;
-      };
-   })(),
-   enumerable: false,
-   configurable: false
+         const vector = new Numbers_Vector4 (0, 0, 0, 0);
+
+         return function () { return vector .set (this [0], this [1], this [2], this [3]); };
+      })(),
+   },
+   y:
+   {
+      get: (function ()
+      {
+         const vector = new Numbers_Vector4 (0, 0, 0, 0);
+
+         return function () { return vector .set (this [4], this [5], this [6], this [7]); };
+      })(),
+   },
+   z:
+   {
+      get: (function ()
+      {
+         const vector = new Numbers_Vector4 (0, 0, 0, 0);
+
+         return function () { return vector .set (this [8], this [9], this [10], this [11]); };
+      })(),
+   },
+   w:
+   {
+      get: (function ()
+      {
+         const vector = new Numbers_Vector4 (0, 0, 0, 0);
+
+         return function () { return vector .set (this [12], this [13], this [14], this [15]); };
+      })(),
+   },
+   xAxis:
+   {
+      get: (function ()
+      {
+         const vector = new Numbers_Vector3 (0, 0, 0);
+
+         return function () { return vector .set (this [0], this [1], this [2]); };
+      })(),
+   },
+   yAxis:
+   {
+      get: (function ()
+      {
+         const vector = new Numbers_Vector3 (0, 0, 0);
+
+         return function () { return vector .set (this [4], this [5], this [6]); };
+      })(),
+   },
+   zAxis:
+   {
+      get: (function ()
+      {
+         const vector = new Numbers_Vector3 (0, 0, 0);
+
+         return function () { return vector .set (this [8], this [9], this [10]); };
+      })(),
+   },
+   origin:
+   {
+      get: (function ()
+      {
+         const vector = new Numbers_Vector3 (0, 0, 0);
+
+         return function () { return vector .set (this [12], this [13], this [14]); };
+      })(),
+   },
+   submatrix:
+   {
+      get: (function ()
+      {
+         const matrix = new Numbers_Matrix3 ();
+
+         return function ()
+         {
+            matrix [0] = this [0]; matrix [1] = this [1]; matrix [2] = this [ 2];
+            matrix [3] = this [4]; matrix [4] = this [5]; matrix [5] = this [ 6];
+            matrix [6] = this [8]; matrix [7] = this [9]; matrix [8] = this [10];
+            return matrix;
+         };
+      })(),
+   },
 });
 
 Object .assign (Matrix4_Matrix4,
@@ -29792,22 +29646,6 @@ Object .assign (Matrix4_Matrix4,
                           matrix [3], matrix [4], matrix [5], 0,
                           matrix [6], matrix [7], matrix [8], 0,
                           0, 0, 0, 1);
-   },
-   transpose: function (matrix)
-   {
-      return matrix .copy () .transpose ();
-   },
-   inverse: function (matrix)
-   {
-      return matrix .copy () .inverse ();
-   },
-   multLeft: function (lhs, rhs)
-   {
-      return lhs .copy () .multLeft (rhs);
-   },
-   multRight: function (lhs, rhs)
-   {
-      return lhs .copy () .multRight (rhs);
    },
 });
 
@@ -29912,11 +29750,7 @@ function SFMatrix4Template (TypeName, Type, SFVec3, double)
       throw new Error ("Invalid arguments.");
    }
 
-   SFMatrix4 .prototype = Object .assign (Object .create (Base_X3DField.prototype),
-      Fields_SFMatrixPrototypeTemplate (TypeName, Type, Numbers_Matrix4, SFVec3, double),
-   {
-      constructor: SFMatrix4,
-   });
+   SFMatrix4 .prototype = Fields_SFMatrixPrototypeTemplate (SFMatrix4, TypeName, Type, Numbers_Matrix4, SFVec3, double);
 
    for (const key of Reflect .ownKeys (SFMatrix4 .prototype))
       Object .defineProperty (SFMatrix4 .prototype, key, { enumerable: false });
@@ -30684,11 +30518,11 @@ SFRotation .prototype = Object .assign (Object .create (Base_X3DField.prototype)
    },
    inverse: function ()
    {
-      return new SFRotation (Numbers_Rotation4.inverse (this .getValue ()));
+      return new SFRotation (this .getValue () .copy () .inverse ());
    },
    multiply: function (rotation)
    {
-      return new SFRotation (Numbers_Rotation4.multRight (this .getValue (), rotation .getValue ()));
+      return new SFRotation (this .getValue () .copy () .multRight (rotation .getValue ()));
    },
    multVec: function (vector)
    {
@@ -30696,7 +30530,7 @@ SFRotation .prototype = Object .assign (Object .create (Base_X3DField.prototype)
    },
    slerp: function (rotation, t)
    {
-      return new SFRotation (Numbers_Rotation4.slerp (this .getValue (), rotation .getValue (), t));
+      return new SFRotation (this .getValue () .copy () .slerp (rotation .getValue (), t));
    },
    toStream: function (generator)
    {
@@ -30758,7 +30592,6 @@ const SFRotation_x = {
       this .getValue () .x = +value;
       this .addEvent ();
    },
-   enumerable: true,
 };
 
 const SFRotation_y = {
@@ -30771,7 +30604,6 @@ const SFRotation_y = {
       this .getValue () .y = +value;
       this .addEvent ();
    },
-   enumerable: true,
 };
 
 const SFRotation_z = {
@@ -30784,7 +30616,6 @@ const SFRotation_z = {
       this .getValue () .z = +value;
       this .addEvent ();
    },
-   enumerable: true,
 };
 
 const SFRotation_angle = {
@@ -30797,23 +30628,19 @@ const SFRotation_angle = {
       this .getValue () .angle = +value;
       this .addEvent ();
    },
-   enumerable: true,
 };
 
-Object .defineProperty (SFRotation .prototype, "x",     SFRotation_x);
-Object .defineProperty (SFRotation .prototype, "y",     SFRotation_y);
-Object .defineProperty (SFRotation .prototype, "z",     SFRotation_z);
-Object .defineProperty (SFRotation .prototype, "angle", SFRotation_angle);
-
-SFRotation_x     .enumerable = false;
-SFRotation_y     .enumerable = false;
-SFRotation_z     .enumerable = false;
-SFRotation_angle .enumerable = false;
-
-Object .defineProperty (SFRotation .prototype, "0", SFRotation_x);
-Object .defineProperty (SFRotation .prototype, "1", SFRotation_y);
-Object .defineProperty (SFRotation .prototype, "2", SFRotation_z);
-Object .defineProperty (SFRotation .prototype, "3", SFRotation_angle);
+Object .defineProperties (SFRotation .prototype,
+{
+   0: SFRotation_x,
+   1: SFRotation_y,
+   2: SFRotation_z,
+   3: SFRotation_angle,
+   x: Object .assign ({ enumerable: true }, SFRotation_x),
+   y: Object .assign ({ enumerable: true }, SFRotation_y),
+   z: Object .assign ({ enumerable: true }, SFRotation_z),
+   angle: Object .assign ({ enumerable: true }, SFRotation_angle),
+});
 
 const SFRotation_default_ = SFRotation;
 ;
@@ -30953,7 +30780,6 @@ Object .defineProperty (SFString .prototype, "length",
    {
       return this .getValue () .length;
    },
-   enumerable: true,
 });
 
 const SFString_default_ = SFString;
@@ -31143,11 +30969,7 @@ function SFVec4Template (TypeName, Type, double)
       throw new Error ("Invalid arguments.");
    }
 
-   SFVec4 .prototype = Object .assign (Object .create (Base_X3DField.prototype),
-      Fields_SFVecPrototypeTemplate (TypeName, Type, Numbers_Vector4, double),
-   {
-      constructor: SFVec4,
-   });
+   SFVec4 .prototype = Fields_SFVecPrototypeTemplate (SFVec4, TypeName, Type, Numbers_Vector4, double);
 
    for (const key of Reflect .ownKeys (SFVec4 .prototype))
       Object .defineProperty (SFVec4 .prototype, key, { enumerable: false });
@@ -31162,7 +30984,6 @@ function SFVec4Template (TypeName, Type, double)
          this .getValue () .x = +value;
          this .addEvent ();
       },
-      enumerable: true,
    };
 
    const y = {
@@ -31175,7 +30996,6 @@ function SFVec4Template (TypeName, Type, double)
          this .getValue () .y = +value;
          this .addEvent ();
       },
-      enumerable: true,
    };
 
    const z = {
@@ -31188,7 +31008,6 @@ function SFVec4Template (TypeName, Type, double)
          this .getValue () .z = +value;
          this .addEvent ();
       },
-      enumerable: true,
    };
 
    const w = {
@@ -31201,23 +31020,19 @@ function SFVec4Template (TypeName, Type, double)
          this .getValue () .w = +value;
          this .addEvent ();
       },
-      enumerable: true,
    };
 
-   Object .defineProperty (SFVec4 .prototype, "x", x);
-   Object .defineProperty (SFVec4 .prototype, "y", y);
-   Object .defineProperty (SFVec4 .prototype, "z", z);
-   Object .defineProperty (SFVec4 .prototype, "w", w);
-
-   x .enumerable = false;
-   y .enumerable = false;
-   z .enumerable = false;
-   w .enumerable = false;
-
-   Object .defineProperty (SFVec4 .prototype, "0", x);
-   Object .defineProperty (SFVec4 .prototype, "1", y);
-   Object .defineProperty (SFVec4 .prototype, "2", z);
-   Object .defineProperty (SFVec4 .prototype, "3", w);
+   Object .defineProperties (SFVec4 .prototype,
+   {
+      0: x,
+      1: y,
+      2: z,
+      3: w,
+      x: Object .assign ({ enumerable: true }, x),
+      y: Object .assign ({ enumerable: true }, y),
+      z: Object .assign ({ enumerable: true }, z),
+      w: Object .assign ({ enumerable: true }, w),
+   });
 
    return SFVec4;
 }
@@ -33661,17 +33476,18 @@ x_ite_Namespace.set ("x_ite/Fields/ArrayFields", ArrayFields_default_);
 
 
 
+
+const MFInt32 = Fields_ArrayFields.MFInt32;
+
 /*
  *  Image
  */
 
 function Image (width, height, comp, array)
 {
-   const MFInt32 = Fields_ArrayFields.MFInt32;
-
-   this .width  = width|0;
-   this .height = height|0;
-   this .comp   = comp|0;
+   this .width  = Math .max (width|0, 0);
+   this .height = Math .max (height|0, 0);
+   this .comp   = Algorithm.clamp (comp|0, 0, 4);
    this .array  = new MFInt32 ();
    this .array .setValue (array);
    this .array .length = this .width * this .height;
@@ -33707,8 +33523,8 @@ Image .prototype =
    },
    setWidth: function (value)
    {
-      this .width = value|0;
-      this .array .length = this .width  * this .height;
+      this .width = Math .max (value|0, 0);
+      this .array .length = this .width * this .height;
    },
    getWidth: function ()
    {
@@ -33716,8 +33532,8 @@ Image .prototype =
    },
    setHeight: function (value)
    {
-      this .height = value|0;
-      this .array .length = this .width  * this .height;
+      this .height = Math .max (value|0, 0);
+      this .array .length = this .width * this .height;
    },
    getHeight: function ()
    {
@@ -33725,7 +33541,7 @@ Image .prototype =
    },
    setComp: function (value)
    {
-      this .comp = value|0;
+      this .comp = Algorithm.clamp (value|0, 0, 4);
    },
    getComp: function ()
    {
@@ -33734,7 +33550,7 @@ Image .prototype =
    setArray: function (value)
    {
       this .array .setValue (value);
-      this .array .length = this .width  * this .height;
+      this .array .length = this .width * this .height;
    },
    getArray: function ()
    {
@@ -33750,14 +33566,23 @@ const _set_size = Symbol ();
 
 function SFImage (width, height, comp, array)
 {
-   const MFInt32 = Fields_ArrayFields.MFInt32;
-
-   if (arguments [0] instanceof Image)
-      Base_X3DField.call (this, arguments [0]);
-   else if (arguments .length === 4)
-      Base_X3DField.call (this, new Image (width, height, comp, array));
-   else
-      Base_X3DField.call (this, new Image (0, 0, 0, new MFInt32 ()));
+   switch (arguments .length)
+   {
+      case 0:
+         Base_X3DField.call (this, new Image (0, 0, 0, new MFInt32 ()));
+         break;
+      case 1:
+         Base_X3DField.call (this, arguments [0]);
+         break;
+      case 3:
+         Base_X3DField.call (this, new Image (width, height, comp, new MFInt32 ()));
+         break;
+      case 4:
+         Base_X3DField.call (this, new Image (width, height, comp, array));
+         break;
+      default:
+         throw new Error ("Invalid arguments.");
+   }
 
    this .getValue () .getArray () .addParent (this);
    this .addInterest (_set_size, this);
@@ -33919,7 +33744,6 @@ const width = {
       this .getValue () .setWidth (value);
       this .addEvent ();
    },
-   enumerable: true,
 };
 
 const height = {
@@ -33932,7 +33756,6 @@ const height = {
       this .getValue () .setHeight (value);
       this .addEvent ();
    },
-   enumerable: true,
 };
 
 const comp = {
@@ -33945,7 +33768,6 @@ const comp = {
       this .getValue () .setComp (value);
       this .addEvent ();
    },
-   enumerable: true,
 };
 
 const array = {
@@ -33958,19 +33780,17 @@ const array = {
       this .getValue () .setArray (value);
       this .addEvent ();
    },
-   enumerable: true,
 };
 
-Object .defineProperty (SFImage .prototype, "width",  width);
-Object .defineProperty (SFImage .prototype, "height", height);
-Object .defineProperty (SFImage .prototype, "comp",   comp);
-Object .defineProperty (SFImage .prototype, "array",  array);
-
-width  .enumerable = false;
-height .enumerable = false;
-
-Object .defineProperty (SFImage .prototype, "x", width);
-Object .defineProperty (SFImage .prototype, "y", height);
+Object .defineProperties (SFImage .prototype,
+{
+   x: width,
+   y: height,
+   width:  Object .assign ({ enumerable: true }, width),
+   height: Object .assign ({ enumerable: true }, height),
+   comp:   Object .assign ({ enumerable: true }, comp),
+   array:  Object .assign ({ enumerable: true }, array),
+});
 
 const SFImage_default_ = SFImage;
 ;
@@ -34789,7 +34609,7 @@ x_ite_Namespace.set ("x_ite/Base/X3DBaseNode", X3DBaseNode_default_);
  *
  ******************************************************************************/
 
-const VERSION_default_ = "8.7.4";
+const VERSION_default_ = "8.7.5";
 ;
 
 x_ite_Namespace.set ("x_ite/Browser/VERSION", VERSION_default_);
@@ -35708,7 +35528,7 @@ const gettext_default_ = gettext;
 x_ite_Namespace.set ("locale/gettext", gettext_default_);
 /* harmony default export */ const locale_gettext = (gettext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/BrowserTimings.js
-/* provided dependency */ var $ = __webpack_require__(917);
+/* provided dependency */ var $ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -36206,7 +36026,7 @@ const TextureQuality_default_ = TextureQuality;
 x_ite_Namespace.set ("x_ite/Browser/Core/TextureQuality", TextureQuality_default_);
 /* harmony default export */ const Core_TextureQuality = (TextureQuality_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/BrowserOptions.js
-/* provided dependency */ var BrowserOptions_$ = __webpack_require__(917);
+/* provided dependency */ var BrowserOptions_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -36750,7 +36570,7 @@ const RenderingProperties_default_ = RenderingProperties;
 x_ite_Namespace.set ("x_ite/Browser/Core/RenderingProperties", RenderingProperties_default_);
 /* harmony default export */ const Core_RenderingProperties = (RenderingProperties_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/Notification.js
-/* provided dependency */ var Notification_$ = __webpack_require__(917);
+/* provided dependency */ var Notification_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -36872,8 +36692,8 @@ const Notification_default_ = Notification;
 x_ite_Namespace.set ("x_ite/Browser/Core/Notification", Notification_default_);
 /* harmony default export */ const Core_Notification = (Notification_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/ContextMenu.js
-/* provided dependency */ var jquery_fullscreen = __webpack_require__(936);
-/* provided dependency */ var ContextMenu_$ = __webpack_require__(917);
+/* provided dependency */ var jquery_fullscreen = __webpack_require__(53);
+/* provided dependency */ var ContextMenu_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -39841,40 +39661,40 @@ X3DImportedNode .prototype = Object .assign (Object .create (Core_X3DNode.protot
 for (const key of Reflect .ownKeys (X3DImportedNode .prototype))
    Object .defineProperty (X3DImportedNode .prototype, key, { enumerable: false });
 
-Object .defineProperty (X3DImportedNode .prototype, "inlineNode",
+Object .defineProperties (X3DImportedNode .prototype,
 {
-   get: function ()
+   inlineNode:
    {
-      return Fields_SFNodeCache.get (this [_inlineNode]);
+      get: function ()
+      {
+         return Fields_SFNodeCache.get (this [_inlineNode]);
+      },
+      enumerable: true,
    },
-   enumerable: true,
-});
-
-Object .defineProperty (X3DImportedNode .prototype, "exportedName",
-{
-   get: function ()
+   exportedName:
    {
-      return this [_exportedName];
+      get: function ()
+      {
+         return this [_exportedName];
+      },
+      enumerable: true,
    },
-   enumerable: true,
-});
-
-Object .defineProperty (X3DImportedNode .prototype, "exportedNode",
-{
-   get: function ()
+   exportedNode:
    {
-      return this [_inlineNode] .getInternalScene () .getExportedNode (this [_exportedName]);
+      get: function ()
+      {
+         return this [_inlineNode] .getInternalScene () .getExportedNode (this [_exportedName]);
+      },
+      enumerable: true,
    },
-   enumerable: true,
-});
-
-Object .defineProperty (X3DImportedNode .prototype, "importedName",
-{
-   get: function ()
+   importedName:
    {
-      return this [_importedName];
+      get: function ()
+      {
+         return this [_importedName];
+      },
+      enumerable: true,
    },
-   enumerable: true,
 });
 
 const X3DImportedNode_default_ = X3DImportedNode;
@@ -41640,22 +41460,23 @@ X3DProtoDeclaration .prototype = Object .assign (Object .create (Prototype_X3DPr
 for (const key of Reflect .ownKeys (X3DProtoDeclaration .prototype))
    Object .defineProperty (X3DProtoDeclaration .prototype, key, { enumerable: false });
 
-Object .defineProperty (X3DProtoDeclaration .prototype, "name",
+Object .defineProperties (X3DProtoDeclaration .prototype,
 {
-   get: X3DProtoDeclaration .prototype .getName,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DProtoDeclaration .prototype, "fields",
-{
-   get: X3DProtoDeclaration .prototype .getFieldDefinitions,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DProtoDeclaration .prototype, "isExternProto",
-{
-   value: false,
-   enumerable: true,
+   name:
+   {
+      get: X3DProtoDeclaration .prototype .getName,
+      enumerable: true,
+   },
+   fields:
+   {
+      get: X3DProtoDeclaration .prototype .getFieldDefinitions,
+      enumerable: true,
+   },
+   isExternProto:
+   {
+      value: false,
+      enumerable: true,
+   },
 });
 
 const X3DProtoDeclaration_default_ = X3DProtoDeclaration;
@@ -41946,7 +41767,7 @@ const X3DUrlObject_default_ = X3DUrlObject;
 x_ite_Namespace.set ("x_ite/Components/Networking/X3DUrlObject", X3DUrlObject_default_);
 /* harmony default export */ const Networking_X3DUrlObject = (X3DUrlObject_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/X3DParser.js
-/* provided dependency */ var X3DParser_$ = __webpack_require__(917);
+/* provided dependency */ var X3DParser_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -45128,7 +44949,7 @@ const VRMLParser_default_ = VRMLParser;
 x_ite_Namespace.set ("x_ite/Parser/VRMLParser", VRMLParser_default_);
 /* harmony default export */ const Parser_VRMLParser = (VRMLParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/XMLParser.js
-/* provided dependency */ var XMLParser_$ = __webpack_require__(917);
+/* provided dependency */ var XMLParser_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -46855,7 +46676,7 @@ X3DOptimizer .prototype = {
    },
    optimizeNodes: function (nodes, combine, removedNodes)
    {
-      return nodes .flatMap (node => this .optimizeNode (node, combine, removedNodes));
+      return [... nodes] .flatMap (node => this .optimizeNode (node, combine, removedNodes));
    },
    optimizeNode: function (node, combine, removedNodes)
    {
@@ -46983,7 +46804,7 @@ const X3DOptimizer_default_ = X3DOptimizer;
 x_ite_Namespace.set ("x_ite/Parser/X3DOptimizer", X3DOptimizer_default_);
 /* harmony default export */ const Parser_X3DOptimizer = (X3DOptimizer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GLTF2Parser.js
-/* provided dependency */ var GLTF2Parser_$ = __webpack_require__(917);
+/* provided dependency */ var GLTF2Parser_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -49449,7 +49270,7 @@ const GLTF2Parser_default_ = GLTF2Parser;
 x_ite_Namespace.set ("x_ite/Parser/GLTF2Parser", GLTF2Parser_default_);
 /* harmony default export */ const Parser_GLTF2Parser = (GLTF2Parser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GLB2Parser.js
-/* provided dependency */ var GLB2Parser_$ = __webpack_require__(917);
+/* provided dependency */ var GLB2Parser_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -49602,7 +49423,7 @@ const GLB2Parser_default_ = GLB2Parser;
 x_ite_Namespace.set ("x_ite/Parser/GLB2Parser", GLB2Parser_default_);
 /* harmony default export */ const Parser_GLB2Parser = (GLB2Parser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/OBJParser.js
-/* provided dependency */ var OBJParser_$ = __webpack_require__(917);
+/* provided dependency */ var OBJParser_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -51301,7 +51122,6 @@ function Complex (real, imag)
 Complex .prototype =
 {
    constructor: Complex,
-   length: 2,
    [Symbol .iterator]: function* ()
    {
       yield this .real;
@@ -51403,75 +51223,81 @@ Complex .prototype =
    },
    toString: function ()
    {
-      if (this .imag)
-         return this .real + " " + this .imag + "i";
+      let string = "";
 
-      return String (this .real);
+      string += this .real;
+
+      if (this .imag < 0)
+      {
+         string += this .imag;
+         string += "i";
+      }
+      else if (this .imag > 0)
+      {
+         string += "+";
+         string += this .imag;
+         string += "i";
+      }
+
+      return string;
    },
 };
 
-Object .defineProperty (Complex .prototype, "0",
+Object .defineProperties (Complex .prototype,
 {
-   get: function ()
+   length: { value: 2 },
+   0:
    {
-      return this .real;
-   },
-   set: function (value)
-   {
-      this .real = value;
-   },
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Complex .prototype, "1",
-{
-   get: function ()
-   {
-      return this .imag;
-   },
-   set: function (value)
-   {
-      this .imag = value;
-   },
-   enumerable: false,
-   configurable: false
-});
-
-Object .defineProperty (Complex .prototype, "magnitude",
-{
-   get: function ()
-   {
-      if (this .real)
+      get: function ()
       {
-         if (this .imag)
-            return Math .hypot (this .real, this .imag);
-
-         return Math .abs (this .real);
-      }
-
-      return Math .abs (this .imag);
+         return this .real;
+      },
+      set: function (value)
+      {
+         this .real = value;
+      },
    },
-   set: function (magnitude)
+   1:
    {
-      this .setPolar (magnitude, this .angle);
+      get: function ()
+      {
+         return this .imag;
+      },
+      set: function (value)
+      {
+         this .imag = value;
+      },
    },
-   enumerable: false,
-   configurable: false
-});
+   magnitude:
+   {
+      get: function ()
+      {
+         if (this .real)
+         {
+            if (this .imag)
+               return Math .hypot (this .real, this .imag);
 
-Object .defineProperty (Complex .prototype, "angle",
-{
-   get: function ()
-   {
-      return Math .atan2 (this .imag, this .real);
+            return Math .abs (this .real);
+         }
+
+         return Math .abs (this .imag);
+      },
+      set: function (magnitude)
+      {
+         this .setPolar (magnitude, this .angle);
+      },
    },
-   set: function (angle)
+   angle:
    {
-      this .setPolar (this .magnitude, angle);
+      get: function ()
+      {
+         return Math .atan2 (this .imag, this .real);
+      },
+      set: function (angle)
+      {
+         this .setPolar (this .magnitude, angle);
+      },
    },
-   enumerable: false,
-   configurable: false
 });
 
 Object .assign (Complex,
@@ -51701,33 +51527,33 @@ Box2 .prototype =
    },
 };
 
-Object .defineProperty (Box2 .prototype, "size",
+Object .defineProperties (Box2 .prototype,
 {
-   get: (function ()
+   size:
    {
-      const
-         min = new Numbers_Vector2 (0, 0),
-         max = new Numbers_Vector2 (0, 0);
-
-      return function ()
+      get: (function ()
       {
-         this .getAbsoluteExtents (min, max);
+         const
+            min = new Numbers_Vector2 (0, 0),
+            max = new Numbers_Vector2 (0, 0);
 
-         return max .subtract (min);
-      };
-   })(),
-   enumerable: true,
-   configurable: false
-});
+         return function ()
+         {
+            this .getAbsoluteExtents (min, max);
 
-Object .defineProperty (Box2 .prototype, "center",
-{
-   get: function ()
-   {
-      return this .matrix .origin;
+            return max .subtract (min);
+         };
+      })(),
+      enumerable: true,
    },
-   enumerable: true,
-   configurable: false
+   center:
+   {
+      get: function ()
+      {
+         return this .matrix .origin;
+      },
+      enumerable: true,
+   },
 });
 
 const Box2_default_ = Box2;
@@ -52092,8 +51918,8 @@ const MatrixStack_default_ = MatrixStack;
 x_ite_Namespace.set ("standard/Math/Utility/MatrixStack", MatrixStack_default_);
 /* harmony default export */ const Utility_MatrixStack = (MatrixStack_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/SVGParser.js
-/* provided dependency */ var SVGParser_$ = __webpack_require__(917);
-/* provided dependency */ var libtess = __webpack_require__(836);
+/* provided dependency */ var SVGParser_$ = __webpack_require__(994);
+/* provided dependency */ var libtess = __webpack_require__(870);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -53273,7 +53099,7 @@ SVGParser .prototype = Object .assign (Object .create (Parser_X3DParser.prototyp
       m .scale (new Numbers_Vector2 (1, -1));
 
       if (g .units === "userSpaceOnUse")
-         m .multLeft (Numbers_Matrix3.inverse (bbox .matrix));
+         m .multLeft (bbox .matrix .copy () .inverse ());
       else
          m .multLeft (new Numbers_Matrix3 (2, 0, 0, 0, 2, 0, -1, -1, 1));
 
@@ -54786,7 +54612,7 @@ SVGParser .prototype = Object .assign (Object .create (Parser_X3DParser.prototyp
       const
          scene        = this .getExecutionContext (),
          texCoordNode = scene .createNode ("TextureCoordinate"),
-         invMatrix    = Numbers_Matrix3.inverse (bbox .matrix);
+         invMatrix    = bbox .matrix .copy () .inverse ();
 
       for (const point of coordinateNode .point)
          texCoordNode .point .push (invMatrix .multVecMatrix (new Numbers_Vector2 (point .x, point .y)) .add (Numbers_Vector2.One) .divide (2));
@@ -54862,7 +54688,7 @@ const SVGParser_default_ = SVGParser;
 x_ite_Namespace.set ("x_ite/Parser/SVGParser", SVGParser_default_);
 /* harmony default export */ const Parser_SVGParser = (SVGParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GoldenGate.js
-/* provided dependency */ var GoldenGate_$ = __webpack_require__(917);
+/* provided dependency */ var GoldenGate_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -55191,7 +55017,7 @@ const Plane3_default_ = Plane3;
 x_ite_Namespace.set ("standard/Math/Geometry/Plane3", Plane3_default_);
 /* harmony default export */ const Geometry_Plane3 = (Plane3_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Triangle3.js
-/* provided dependency */ var Triangle3_libtess = __webpack_require__(836);
+/* provided dependency */ var Triangle3_libtess = __webpack_require__(870);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -57041,33 +56867,33 @@ Box3 .prototype =
    },
 };
 
-Object .defineProperty (Box3 .prototype, "size",
+Object .defineProperties (Box3 .prototype,
 {
-   get: (function ()
+   size:
    {
-      const
-         min = new Numbers_Vector3 (0, 0, 0),
-         max = new Numbers_Vector3 (0, 0, 0);
-
-      return function ()
+      get: (function ()
       {
-         this .getAbsoluteExtents (min, max);
+         const
+            min = new Numbers_Vector3 (0, 0, 0),
+            max = new Numbers_Vector3 (0, 0, 0);
 
-         return max .subtract (min);
-      };
-   })(),
-   enumerable: true,
-   configurable: false
-});
+         return function ()
+         {
+            this .getAbsoluteExtents (min, max);
 
-Object .defineProperty (Box3 .prototype, "center",
-{
-   get: function ()
-   {
-      return this .matrix .origin;
+            return max .subtract (min);
+         };
+      })(),
+      enumerable: true,
    },
-   enumerable: true,
-   configurable: false
+   center:
+   {
+      get: function ()
+      {
+         return this .matrix .origin;
+      },
+      enumerable: true,
+   },
 });
 
 const Box3_default_ = Box3;
@@ -62475,7 +62301,7 @@ const X3DTexture2DNode_default_ = X3DTexture2DNode;
 x_ite_Namespace.set ("x_ite/Components/Texturing/X3DTexture2DNode", X3DTexture2DNode_default_);
 /* harmony default export */ const Texturing_X3DTexture2DNode = (X3DTexture2DNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/ImageTexture.js
-/* provided dependency */ var ImageTexture_$ = __webpack_require__(917);
+/* provided dependency */ var ImageTexture_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -63132,7 +62958,7 @@ X3DLayerNode .prototype = Object .assign (Object .create (Core_X3DNode.prototype
    {
       const
          viewpointNode = this .getViewpoint (),
-         bbox          = this .getBBox (new Geometry_Box3 ()) .multRight (Numbers_Matrix4.inverse (viewpointNode .getModelMatrix ()));
+         bbox          = this .getBBox (new Geometry_Box3 ()) .multRight (viewpointNode .getModelMatrix () .copy () .inverse ());
 
       viewpointNode .lookAt (this, bbox .center, viewpointNode .getLookAtDistance (bbox), factor, straighten);
    },
@@ -65027,8 +64853,7 @@ X3DViewpointNode .prototype = Object .assign (Object .create (Core_X3DBindableNo
    lookAtPoint: function (layerNode, point, factor, straighten)
    {
       this .getCameraSpaceMatrix () .multVecMatrix (point);
-
-      Numbers_Matrix4.inverse (this .getModelMatrix ()) .multVecMatrix (point);
+      this .getModelMatrix () .copy () .inverse () .multVecMatrix (point);
 
       const minDistance = layerNode .getNavigationInfo () .getNearValue () * 2;
 
@@ -65036,7 +64861,7 @@ X3DViewpointNode .prototype = Object .assign (Object .create (Core_X3DBindableNo
    },
    lookAtBBox: function (layerNode, bbox, factor, straighten)
    {
-      bbox = bbox .copy () .multRight (Numbers_Matrix4.inverse (this .getModelMatrix ()));
+      bbox = bbox .copy () .multRight (this .getModelMatrix () .copy () .inverse ());
 
       const minDistance = Math .max (layerNode .getNavigationInfo () .getNearValue () * 2, this .getLookAtDistance (bbox));
 
@@ -66815,7 +66640,7 @@ const X3DWorld_default_ = X3DWorld;
 x_ite_Namespace.set ("x_ite/Execution/X3DWorld", X3DWorld_default_);
 /* harmony default export */ const Execution_X3DWorld = (X3DWorld_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/InputOutput/FileLoader.js
-/* provided dependency */ var FileLoader_$ = __webpack_require__(917);
+/* provided dependency */ var FileLoader_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -67571,34 +67396,33 @@ X3DExternProtoDeclaration .prototype = Object .assign (Object .create (Prototype
 for (const key of Reflect .ownKeys (X3DExternProtoDeclaration .prototype))
    Object .defineProperty (X3DExternProtoDeclaration .prototype, key, { enumerable: false });
 
-Object .defineProperty (X3DExternProtoDeclaration .prototype, "name",
+Object .defineProperties (X3DExternProtoDeclaration .prototype,
 {
-   get: X3DExternProtoDeclaration .prototype .getName,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DExternProtoDeclaration .prototype, "fields",
-{
-   get: X3DExternProtoDeclaration .prototype .getFieldDefinitions,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DExternProtoDeclaration .prototype, "isExternProto",
-{
-   value: true,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DExternProtoDeclaration .prototype, "urls",
-{
-   get: function () { return this ._url; },
-   enumerable: true,
-});
-
-Object .defineProperty (X3DExternProtoDeclaration .prototype, "loadState",
-{
-   get: X3DExternProtoDeclaration .prototype .checkLoadState,
-   enumerable: true,
+   name:
+   {
+      get: X3DExternProtoDeclaration .prototype .getName,
+      enumerable: true,
+   },
+   fields:
+   {
+      get: X3DExternProtoDeclaration .prototype .getFieldDefinitions,
+      enumerable: true,
+   },
+   isExternProto:
+   {
+      value: true,
+      enumerable: true,
+   },
+   urls:
+   {
+      get: function () { return this ._url; },
+      enumerable: true,
+   },
+   loadState:
+   {
+      get: X3DExternProtoDeclaration .prototype .checkLoadState,
+      enumerable: true,
+   },
 });
 
 const X3DExternProtoDeclaration_default_ = X3DExternProtoDeclaration;
@@ -67831,6 +67655,7 @@ function X3DRoute (executionContext, sourceNode, sourceField, destinationNode, d
 
 X3DRoute .prototype = Object .assign (Object .create (Base_X3DObject.prototype),
 {
+   constructor: X3DRoute,
    getTypeName: function ()
    {
       return "X3DRoute";
@@ -68015,40 +67840,40 @@ X3DRoute .prototype = Object .assign (Object .create (Base_X3DObject.prototype),
 for (const key of Reflect .ownKeys (X3DRoute .prototype))
    Object .defineProperty (X3DRoute .prototype, key, { enumerable: false });
 
-Object .defineProperty (X3DRoute .prototype, "sourceNode",
+Object .defineProperties (X3DRoute .prototype,
 {
-   get: function ()
+   sourceNode:
    {
-      return Fields_SFNodeCache.get (this [_sourceNode]);
+      get: function ()
+      {
+         return Fields_SFNodeCache.get (this [_sourceNode]);
+      },
+      enumerable: true,
    },
-   enumerable: true,
-});
-
-Object .defineProperty (X3DRoute .prototype, "sourceField",
-{
-   get: function ()
+   sourceField:
    {
-      return this [_sourceField] .getName ();
+      get: function ()
+      {
+         return this [_sourceField] .getName ();
+      },
+      enumerable: true,
    },
-   enumerable: true,
-});
-
-Object .defineProperty (X3DRoute .prototype, "destinationNode",
-{
-   get: function ()
+   destinationNode:
    {
-      return Fields_SFNodeCache.get (this [_destinationNode]);
+      get: function ()
+      {
+         return Fields_SFNodeCache.get (this [_destinationNode]);
+      },
+      enumerable: true,
    },
-   enumerable: true,
-});
-
-Object .defineProperty (X3DRoute .prototype, "destinationField",
-{
-   get: function ()
+   destinationField:
    {
-      return this [_destinationField] .getName ();
+      get: function ()
+      {
+         return this [_destinationField] .getName ();
+      },
+      enumerable: true,
    },
-   enumerable: true,
 });
 
 const X3DRoute_default_ = X3DRoute;
@@ -69072,65 +68897,59 @@ X3DExecutionContext .prototype = Object .assign (Object .create (Base_X3DBaseNod
 for (const key of Reflect .ownKeys (X3DExecutionContext .prototype))
    Object .defineProperty (X3DExecutionContext .prototype, key, { enumerable: false });
 
-Object .defineProperty (X3DExecutionContext .prototype, "specificationVersion",
+Object .defineProperties (X3DExecutionContext .prototype,
 {
-   get: X3DExecutionContext .prototype .getSpecificationVersion,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DExecutionContext .prototype, "encoding",
-{
-   get: X3DExecutionContext .prototype .getEncoding,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DExecutionContext .prototype, "profile",
-{
-   get: X3DExecutionContext .prototype .getProfile,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DExecutionContext .prototype, "components",
-{
-   get: X3DExecutionContext .prototype .getComponents,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DExecutionContext .prototype, "worldURL",
-{
-   get: X3DExecutionContext .prototype .getWorldURL,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DExecutionContext .prototype, "units",
-{
-   get: X3DExecutionContext .prototype .getUnits,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DExecutionContext .prototype, "rootNodes",
-{
-   get: X3DExecutionContext .prototype .getRootNodes,
-   set: X3DExecutionContext .prototype .setRootNodes,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DExecutionContext .prototype, "protos",
-{
-   get: X3DExecutionContext .prototype .getProtoDeclarations,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DExecutionContext .prototype, "externprotos",
-{
-   get: X3DExecutionContext .prototype .getExternProtoDeclarations,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DExecutionContext .prototype, "routes",
-{
-   get: X3DExecutionContext .prototype .getRoutes,
-   enumerable: true,
+   specificationVersion:
+   {
+      get: X3DExecutionContext .prototype .getSpecificationVersion,
+      enumerable: true,
+   },
+   encoding:
+   {
+      get: X3DExecutionContext .prototype .getEncoding,
+      enumerable: true,
+   },
+   profile:
+   {
+      get: X3DExecutionContext .prototype .getProfile,
+      enumerable: true,
+   },
+   components:
+   {
+      get: X3DExecutionContext .prototype .getComponents,
+      enumerable: true,
+   },
+   worldURL:
+   {
+      get: X3DExecutionContext .prototype .getWorldURL,
+      enumerable: true,
+   },
+   units:
+   {
+      get: X3DExecutionContext .prototype .getUnits,
+      enumerable: true,
+   },
+   rootNodes:
+   {
+      get: X3DExecutionContext .prototype .getRootNodes,
+      set: X3DExecutionContext .prototype .setRootNodes,
+      enumerable: true,
+   },
+   protos:
+   {
+      get: X3DExecutionContext .prototype .getProtoDeclarations,
+      enumerable: true,
+   },
+   externprotos:
+   {
+      get: X3DExecutionContext .prototype .getExternProtoDeclarations,
+      enumerable: true,
+   },
+   routes:
+   {
+      get: X3DExecutionContext .prototype .getRoutes,
+      enumerable: true,
+   },
 });
 
 const X3DExecutionContext_default_ = X3DExecutionContext;
@@ -69771,22 +69590,24 @@ X3DExportedNode .prototype = Object .assign (Object .create (Base_X3DObject.prot
 for (const key of Reflect .ownKeys (X3DExportedNode .prototype))
    Object .defineProperty (X3DExportedNode .prototype, key, { enumerable: false });
 
-Object .defineProperty (X3DExportedNode .prototype, "exportedName",
+Object .defineProperties (X3DExportedNode .prototype,
 {
-   get: function ()
+   exportedName:
    {
-      return Fields_SFNodeCache.get (this [X3DExportedNode_exportedName]);
+      get: function ()
+      {
+         return Fields_SFNodeCache.get (this [X3DExportedNode_exportedName]);
+      },
+      enumerable: true,
    },
-   enumerable: true,
-});
-
-Object .defineProperty (X3DExportedNode .prototype, "localNode",
-{
-   get: function ()
+   localNode:
    {
-      return Fields_SFNodeCache.get (this [_localNode]);
+      get: function ()
+      {
+         return Fields_SFNodeCache.get (this [_localNode]);
+      },
+      enumerable: true,
    },
-   enumerable: true,
 });
 
 const X3DExportedNode_default_ = X3DExportedNode;
@@ -69931,6 +69752,7 @@ x_ite_Namespace.set ("x_ite/Execution/ExportedNodesArray", ExportedNodesArray_de
 Configuration_SupportedNodes.addAbstractType ("X3DScene", X3DScene);
 
 const
+   X3DScene_browser              = Symbol .for ("X_ITE.X3DEventObject.browser"),
    _specificationVersion = Symbol (),
    _encoding             = Symbol (),
    _profile              = Symbol (),
@@ -69938,13 +69760,16 @@ const
    _worldURL             = Symbol (),
    _units                = Symbol (),
    _metadata             = Symbol (),
-   _exportedNodes        = Symbol ();
+   _exportedNodes        = Symbol (),
+   _loadingObjects       = Symbol ();
 
-const LATEST_VERSION = "4.0";
+const X3D_LATEST_VERSION = "4.0";
 
-function X3DScene (executionContext)
+function X3DScene (browser)
 {
-   Execution_X3DExecutionContext.call (this, executionContext);
+   this [X3DScene_browser] = browser;
+
+   Execution_X3DExecutionContext.call (this, this);
 
    this .addType (Base_X3DConstants.X3DScene)
 
@@ -69952,9 +69777,11 @@ function X3DScene (executionContext)
                           "components_changed",    new x_ite_Fields.SFTime (),
                           "units_changed",         new x_ite_Fields.SFTime (),
                           "metadata_changed",      new x_ite_Fields.SFTime (),
-                          "exportedNodes_changed", new x_ite_Fields.SFTime ())
+                          "exportedNodes_changed", new x_ite_Fields.SFTime (),
+                          "initLoadCount",         new x_ite_Fields.SFInt32 (),
+                          "loadCount",             new x_ite_Fields.SFInt32 ())
 
-   this [_specificationVersion] = LATEST_VERSION;
+   this [_specificationVersion] = X3D_LATEST_VERSION;
    this [_encoding]             = "SCRIPTED";
    this [_profile]              = null;
    this [_components]           = new Configuration_ComponentInfoArray ([ ]);
@@ -69966,8 +69793,9 @@ function X3DScene (executionContext)
    this [_units] .add ("length", new Configuration_UnitInfo ("length", "metre",    1));
    this [_units] .add ("mass",   new Configuration_UnitInfo ("mass",   "kilogram", 1));
 
-   this [_metadata]      = new Map ();
-   this [_exportedNodes] = new Execution_ExportedNodesArray ();
+   this [_metadata]       = new Map ();
+   this [_exportedNodes]  = new Execution_ExportedNodesArray ();
+   this [_loadingObjects] = new Set ();
 
    this .getRootNodes () .setAccessType (Base_X3DConstants.inputOutput);
 
@@ -70125,7 +69953,7 @@ X3DScene .prototype = Object .assign (Object .create (Execution_X3DExecutionCont
       if (!name .length)
          throw new Error ("Couldn't add metadata: name is empty.");
 
-      if (! Array .isArray (values))
+      if (!Array .isArray (values))
          values = [String (values)];
 
       if (!values .length)
@@ -70268,7 +70096,7 @@ X3DScene .prototype = Object .assign (Object .create (Execution_X3DExecutionCont
    {
       generator .string += generator .Indent ();
       generator .string += "#X3D V";
-      generator .string += LATEST_VERSION;
+      generator .string += X3D_LATEST_VERSION;
       generator .string += generator .Space ();
       generator .string += "utf8";
       generator .string += generator .Space ();
@@ -70360,9 +70188,9 @@ X3DScene .prototype = Object .assign (Object .create (Execution_X3DExecutionCont
          generator .string += generator .TidyBreak ();
          generator .string += generator .Indent ();
          generator .string += "<!DOCTYPE X3D PUBLIC \"ISO//Web3D//DTD X3D ";
-         generator .string += LATEST_VERSION;
+         generator .string += X3D_LATEST_VERSION;
          generator .string += "//EN\" \"http://www.web3d.org/specifications/x3d-";
-         generator .string += LATEST_VERSION;
+         generator .string += X3D_LATEST_VERSION;
          generator .string += ".dtd\">";
          generator .string += generator .TidyBreak ();
       }
@@ -70375,13 +70203,13 @@ X3DScene .prototype = Object .assign (Object .create (Execution_X3DExecutionCont
       generator .string += "'";
       generator .string += generator .Space ();
       generator .string += "version='";
-      generator .string += LATEST_VERSION;
+      generator .string += X3D_LATEST_VERSION;
       generator .string += "'";
       generator .string += generator .Space ();
       generator .string += "xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance'";
       generator .string += generator .Space ();
       generator .string += "xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-";
-      generator .string += LATEST_VERSION;
+      generator .string += X3D_LATEST_VERSION;
       generator .string += ".xsd'>";
       generator .string += generator .TidyBreak ();
 
@@ -70541,7 +70369,7 @@ X3DScene .prototype = Object .assign (Object .create (Execution_X3DExecutionCont
       generator .string += ':';
       generator .string += generator .TidySpace ();
       generator .string += '"';
-      generator .string += LATEST_VERSION;
+      generator .string += X3D_LATEST_VERSION;
       generator .string += '"';
       generator .string += ',';
       generator .string += generator .TidyBreak ();
@@ -70557,7 +70385,7 @@ X3DScene .prototype = Object .assign (Object .create (Execution_X3DExecutionCont
       generator .string += generator .TidySpace ();
       generator .string += '"';
       generator .string += "http://www.web3d.org/specifications/x3d-";
-      generator .string += LATEST_VERSION;
+      generator .string += X3D_LATEST_VERSION;
       generator .string += ".xsd";
       generator .string += '"';
       generator .string += ',';
@@ -70574,7 +70402,7 @@ X3DScene .prototype = Object .assign (Object .create (Execution_X3DExecutionCont
       generator .string += generator .TidySpace ();
       generator .string += '"';
       generator .string += "http://www.web3d.org/specifications/x3d-";
-      generator .string += LATEST_VERSION;
+      generator .string += X3D_LATEST_VERSION;
       generator .string += "-JSONSchema.json";
       generator .string += '"';
       generator .string += ',';
@@ -70828,132 +70656,11 @@ X3DScene .prototype = Object .assign (Object .create (Execution_X3DExecutionCont
       generator .string += generator .Indent ();
       generator .string += '}';
    },
-});
-
-for (const key of Reflect .ownKeys (X3DScene .prototype))
-   Object .defineProperty (X3DScene .prototype, key, { enumerable: false });
-
-Object .defineProperty (X3DScene .prototype, "specificationVersion",
+},
 {
-   get: X3DScene .prototype .getSpecificationVersion,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DScene .prototype, "encoding",
-{
-   get: X3DScene .prototype .getEncoding,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DScene .prototype, "profile",
-{
-   get: X3DScene .prototype .getProfile,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DScene .prototype, "components",
-{
-   get: X3DScene .prototype .getComponents,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DScene .prototype, "worldURL",
-{
-   get: X3DScene .prototype .getWorldURL,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DScene .prototype, "units",
-{
-   get: X3DScene .prototype .getUnits,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DScene .prototype, "rootNodes",
-{
-   get: X3DScene .prototype .getRootNodes,
-   set: X3DScene .prototype .setRootNodes,
-   enumerable: true,
-});
-
-const X3DScene_default_ = X3DScene;
-;
-
-x_ite_Namespace.set ("x_ite/Execution/X3DScene", X3DScene_default_);
-/* harmony default export */ const Execution_X3DScene = (X3DScene_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Execution/Scene.js
-/*******************************************************************************
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
- *
- * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
- *
- * The copyright notice above does not evidence any actual of intended
- * publication of such source code, and is an unpublished work by create3000.
- * This material contains CONFIDENTIAL INFORMATION that is the property of
- * create3000.
- *
- * No permission is granted to copy, distribute, or create derivative works from
- * the contents of this software, in whole or in part, without the prior written
- * permission of create3000.
- *
- * NON-MILITARY USE ONLY
- *
- * All create3000 software are effectively free software with a non-military use
- * restriction. It is free. Well commented source is provided. You may reuse the
- * source in any way you please with the exception anything that uses it must be
- * marked to indicate is contains 'non-military use only' components.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
- *
- * This file is part of the X_ITE Project.
- *
- * X_ITE is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License version 3 only, as published by the
- * Free Software Foundation.
- *
- * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
- * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
- * details (a copy is included in the LICENSE file that accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version 3
- * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
- * copy of the GPLv3 License.
- *
- * For Silvio, Joy and Adi.
- *
- ******************************************************************************/
-
-
-
-
-const
-   Scene_browser        = Symbol .for ("X_ITE.X3DEventObject.browser"),
-   _loadingObjects = Symbol ();
-
-function Scene (browser)
-{
-   this [Scene_browser] = browser;
-
-   Execution_X3DScene.call (this, this);
-
-   this .addChildObjects ("initLoadCount", new x_ite_Fields.SFInt32 (),  // Pre load count, must be zero before the scene can be passed to the requester.
-                          "loadCount",     new x_ite_Fields.SFInt32 ()); // Load count of all X3DUrlObjects.
-
-   this [_loadingObjects] = new Set ();
-}
-
-Scene .prototype = Object .assign (Object .create (Execution_X3DScene.prototype),
-{
-   constructor: Scene,
    setExecutionContext: function (value)
    {
-      if (! this .isMainScene ())
+      if (!this .isMainScene ())
       {
          const scene = this .getScene ();
 
@@ -70961,9 +70668,9 @@ Scene .prototype = Object .assign (Object .create (Execution_X3DScene.prototype)
             scene .removeLoadingObject (object);
       }
 
-      Execution_X3DScene.prototype.setExecutionContext.call (this, value);
+      Execution_X3DExecutionContext.prototype.setExecutionContext.call (this, value);
 
-      if (! this .isMainScene ())
+      if (!this .isMainScene ())
       {
          const scene = this .getScene ();
 
@@ -70999,7 +70706,7 @@ Scene .prototype = Object .assign (Object .create (Execution_X3DScene.prototype)
       if (this === browser .getExecutionContext () || this .loader === browser .loader)
          browser .addLoadingObject (node);
 
-      if (! this .isMainScene ())
+      if (!this .isMainScene ())
          scene .addLoadingObject (node);
    },
    removeLoadingObject: function (node)
@@ -71018,19 +70725,59 @@ Scene .prototype = Object .assign (Object .create (Execution_X3DScene.prototype)
       if (this === browser .getExecutionContext () || this .loader === browser .loader)
          browser .removeLoadingObject (node);
 
-      if (! this .isMainScene ())
+      if (!this .isMainScene ())
          scene .removeLoadingObject (node);
    },
 });
 
-for (const key of Reflect .ownKeys (Scene .prototype))
-   Object .defineProperty (Scene .prototype, key, { enumerable: false });
+for (const key of Reflect .ownKeys (X3DScene .prototype))
+   Object .defineProperty (X3DScene .prototype, key, { enumerable: false });
 
-const Scene_default_ = Scene;
+Object .defineProperties (X3DScene .prototype,
+{
+   specificationVersion:
+   {
+      get: X3DScene .prototype .getSpecificationVersion,
+      enumerable: true,
+   },
+   encoding:
+   {
+      get: X3DScene .prototype .getEncoding,
+      enumerable: true,
+   },
+   profile:
+   {
+      get: X3DScene .prototype .getProfile,
+      enumerable: true,
+   },
+   components:
+   {
+      get: X3DScene .prototype .getComponents,
+      enumerable: true,
+   },
+   worldURL:
+   {
+      get: X3DScene .prototype .getWorldURL,
+      enumerable: true,
+   },
+   units:
+   {
+      get: X3DScene .prototype .getUnits,
+      enumerable: true,
+   },
+   rootNodes:
+   {
+      get: X3DScene .prototype .getRootNodes,
+      set: X3DScene .prototype .setRootNodes,
+      enumerable: true,
+   },
+});
+
+const X3DScene_default_ = X3DScene;
 ;
 
-x_ite_Namespace.set ("x_ite/Execution/Scene", Scene_default_);
-/* harmony default export */ const Execution_Scene = (Scene_default_);
+x_ite_Namespace.set ("x_ite/Execution/X3DScene", X3DScene_default_);
+/* harmony default export */ const Execution_X3DScene = (X3DScene_default_);
 ;// CONCATENATED MODULE: ./src/standard/Utility/DataStorage.js
 /*******************************************************************************
  *
@@ -71169,7 +70916,7 @@ const DataStorage_default_ = DataStorage;
 x_ite_Namespace.set ("standard/Utility/DataStorage", DataStorage_default_);
 /* harmony default export */ const Utility_DataStorage = (DataStorage_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/X3DCoreContext.js
-/* provided dependency */ var X3DCoreContext_$ = __webpack_require__(917);
+/* provided dependency */ var X3DCoreContext_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -71442,9 +71189,9 @@ X3DCoreContext .prototype =
       if (this [_privateScene])
          return this [_privateScene];
 
-      // Scene for default nodes.
+      // X3DScene for default nodes.
 
-      this [_privateScene] = new Execution_Scene (this);
+      this [_privateScene] = new Execution_X3DScene (this);
 
       this [_privateScene] .setPrivate (true);
       this [_privateScene] .setLive (true);
@@ -77294,8 +77041,8 @@ const OrientationChaser_default_ = OrientationChaser;
 x_ite_Namespace.set ("x_ite/Components/Followers/OrientationChaser", OrientationChaser_default_);
 /* harmony default export */ const Followers_OrientationChaser = (OrientationChaser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/ExamineViewer.js
-/* provided dependency */ var jquery_mousewheel = __webpack_require__(132);
-/* provided dependency */ var ExamineViewer_$ = __webpack_require__(917);
+/* provided dependency */ var jquery_mousewheel = __webpack_require__(6);
+/* provided dependency */ var ExamineViewer_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -78159,8 +77906,8 @@ const ExamineViewer_default_ = ExamineViewer;
 x_ite_Namespace.set ("x_ite/Browser/Navigation/ExamineViewer", ExamineViewer_default_);
 /* harmony default export */ const Navigation_ExamineViewer = (ExamineViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/X3DFlyViewer.js
-/* provided dependency */ var X3DFlyViewer_jquery_mousewheel = __webpack_require__(132);
-/* provided dependency */ var X3DFlyViewer_$ = __webpack_require__(917);
+/* provided dependency */ var X3DFlyViewer_jquery_mousewheel = __webpack_require__(6);
+/* provided dependency */ var X3DFlyViewer_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -79108,8 +78855,8 @@ const FlyViewer_default_ = FlyViewer;
 x_ite_Namespace.set ("x_ite/Browser/Navigation/FlyViewer", FlyViewer_default_);
 /* harmony default export */ const Navigation_FlyViewer = (FlyViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/PlaneViewer.js
-/* provided dependency */ var PlaneViewer_jquery_mousewheel = __webpack_require__(132);
-/* provided dependency */ var PlaneViewer_$ = __webpack_require__(917);
+/* provided dependency */ var PlaneViewer_jquery_mousewheel = __webpack_require__(6);
+/* provided dependency */ var PlaneViewer_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -79418,8 +79165,8 @@ const NoneViewer_default_ = NoneViewer;
 x_ite_Namespace.set ("x_ite/Browser/Navigation/NoneViewer", NoneViewer_default_);
 /* harmony default export */ const Navigation_NoneViewer = (NoneViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/LookAtViewer.js
-/* provided dependency */ var LookAtViewer_jquery_mousewheel = __webpack_require__(132);
-/* provided dependency */ var LookAtViewer_$ = __webpack_require__(917);
+/* provided dependency */ var LookAtViewer_jquery_mousewheel = __webpack_require__(6);
+/* provided dependency */ var LookAtViewer_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -81051,8 +80798,8 @@ const X3DPickingContext_default_ = X3DPickingContext;
 x_ite_Namespace.set ("x_ite/Browser/Picking/X3DPickingContext", X3DPickingContext_default_);
 /* harmony default export */ const Picking_X3DPickingContext = (X3DPickingContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/PointingDeviceSensor/PointingDevice.js
-/* provided dependency */ var PointingDevice_jquery_mousewheel = __webpack_require__(132);
-/* provided dependency */ var PointingDevice_$ = __webpack_require__(917);
+/* provided dependency */ var PointingDevice_jquery_mousewheel = __webpack_require__(6);
+/* provided dependency */ var PointingDevice_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -82090,8 +81837,8 @@ const MultiSampleFrameBuffer_default_ = MultiSampleFrameBuffer;
 x_ite_Namespace.set ("x_ite/Rendering/MultiSampleFrameBuffer", MultiSampleFrameBuffer_default_);
 /* harmony default export */ const Rendering_MultiSampleFrameBuffer = (MultiSampleFrameBuffer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Rendering/X3DRenderingContext.js
-/* provided dependency */ var X3DRenderingContext_$ = __webpack_require__(917);
-/* provided dependency */ var ResizeSensor = __webpack_require__(66);
+/* provided dependency */ var X3DRenderingContext_$ = __webpack_require__(994);
+/* provided dependency */ var ResizeSensor = __webpack_require__(822);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -87984,7 +87731,7 @@ const X3DShaderNode_default_ = X3DShaderNode;
 x_ite_Namespace.set ("x_ite/Components/Shaders/X3DShaderNode", X3DShaderNode_default_);
 /* harmony default export */ const Shaders_X3DShaderNode = (X3DShaderNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/X3DProgrammableShaderObject.js
-/* provided dependency */ var X3DProgrammableShaderObject_$ = __webpack_require__(917);
+/* provided dependency */ var X3DProgrammableShaderObject_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -90761,7 +90508,7 @@ const ShaderCompiler_default_ = ShaderCompiler;
 x_ite_Namespace.set ("x_ite/Browser/Shaders/ShaderCompiler", ShaderCompiler_default_);
 /* harmony default export */ const Shaders_ShaderCompiler = (ShaderCompiler_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/ShaderPart.js
-/* provided dependency */ var ShaderPart_$ = __webpack_require__(917);
+/* provided dependency */ var ShaderPart_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -94016,14 +93763,14 @@ function X3DBrowserContext (element)
                           "displayEvents",  new Fields_SFTime (),
                           "finishedEvents", new Fields_SFTime ());
 
-   this [_changedTime]     = 0;
-   this [_previousTime]    = 0;
-   this [_renderCallback]  = this [_traverse] .bind (this);
-   this [_systemTime]      = new Time_StopWatch ();
-   this [_browserTime]     = new Time_StopWatch ();
-   this [_cameraTime]      = new Time_StopWatch ();
-   this [_collisionTime]   = new Time_StopWatch ();
-   this [_displayTime]     = new Time_StopWatch ();
+   this [_changedTime]    = 0;
+   this [_previousTime]   = 0;
+   this [_renderCallback] = this [_traverse] .bind (this);
+   this [_systemTime]     = new Time_StopWatch ();
+   this [_browserTime]    = new Time_StopWatch ();
+   this [_cameraTime]     = new Time_StopWatch ();
+   this [_collisionTime]  = new Time_StopWatch ();
+   this [_displayTime]    = new Time_StopWatch ();
 };
 
 X3DBrowserContext .prototype = Object .assign (Object .create (Base_X3DBaseNode.prototype),
@@ -113173,7 +112920,7 @@ const X3DSoundSourceNode_default_ = X3DSoundSourceNode;
 x_ite_Namespace.set ("x_ite/Components/Sound/X3DSoundSourceNode", X3DSoundSourceNode_default_);
 /* harmony default export */ const Sound_X3DSoundSourceNode = (X3DSoundSourceNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/AudioClip.js
-/* provided dependency */ var AudioClip_$ = __webpack_require__(917);
+/* provided dependency */ var AudioClip_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -116072,8 +115819,8 @@ const GIFMedia_default_ = GifMedia;
 x_ite_Namespace.set ("x_ite/Browser/Texturing/GIFMedia", GIFMedia_default_);
 /* harmony default export */ const GIFMedia = (GIFMedia_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/MovieTexture.js
-/* provided dependency */ var MovieTexture_$ = __webpack_require__(917);
-/* provided dependency */ var SuperGif = __webpack_require__(168);
+/* provided dependency */ var MovieTexture_$ = __webpack_require__(994);
+/* provided dependency */ var SuperGif = __webpack_require__(361);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -117036,7 +116783,7 @@ const MultiTextureTransform_default_ = MultiTextureTransform;
 x_ite_Namespace.set ("x_ite/Components/Texturing/MultiTextureTransform", MultiTextureTransform_default_);
 /* harmony default export */ const Texturing_MultiTextureTransform = (MultiTextureTransform_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/PixelTexture.js
-/* provided dependency */ var PixelTexture_$ = __webpack_require__(917);
+/* provided dependency */ var PixelTexture_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -117747,7 +117494,7 @@ const Components_default_ = Components;
 x_ite_Namespace.set ("x_ite/Components", Components_default_);
 /* harmony default export */ const x_ite_Components = ((/* unused pure expression or super */ null && (Components_default_)));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/DOMIntegration.js
-/* provided dependency */ var DOMIntegration_$ = __webpack_require__(917);
+/* provided dependency */ var DOMIntegration_$ = __webpack_require__(994);
 /*******************************************************************************
  * MIT License
  *
@@ -118988,7 +118735,7 @@ const SupportedProfiles_default_ = SupportedProfiles;
 x_ite_Namespace.set ("x_ite/Configuration/SupportedProfiles", SupportedProfiles_default_);
 /* harmony default export */ const Configuration_SupportedProfiles = (SupportedProfiles_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/X3DBrowser.js
-/* provided dependency */ var X3DBrowser_$ = __webpack_require__(917);
+/* provided dependency */ var X3DBrowser_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -119035,7 +118782,6 @@ x_ite_Namespace.set ("x_ite/Configuration/SupportedProfiles", SupportedProfiles_
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
-
 
 
 
@@ -119254,7 +119000,7 @@ X3DBrowser .prototype = Object .assign (Object .create (Browser_X3DBrowserContex
    },
    createScene: function (profile, component1 /*, ...*/)
    {
-      const scene = new Execution_Scene (this);
+      const scene = new Execution_X3DScene (this);
 
       if (arguments .length)
       {
@@ -119840,75 +119586,69 @@ X3DBrowser .prototype = Object .assign (Object .create (Browser_X3DBrowserContex
 for (const key of Reflect .ownKeys (X3DBrowser .prototype))
    Object .defineProperty (X3DBrowser .prototype, key, { enumerable: false });
 
-Object .defineProperty (X3DBrowser .prototype, "name",
+Object .defineProperties (X3DBrowser .prototype,
 {
-   get: X3DBrowser .prototype .getName,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DBrowser .prototype, "version",
-{
-   get: X3DBrowser .prototype .getVersion,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DBrowser .prototype, "providerUrl",
-{
-   get: X3DBrowser .prototype .getProviderUrl,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DBrowser .prototype, "currentFrameRate",
-{
-   get: X3DBrowser .prototype .getCurrentFrameRate,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DBrowser .prototype, "currentSpeed",
-{
-   get: X3DBrowser .prototype .getCurrentSpeed,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DBrowser .prototype, "description",
-{
-   get: X3DBrowser .prototype .getDescription,
-   set: X3DBrowser .prototype .setDescription,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DBrowser .prototype, "baseURL",
-{
-   get: X3DBrowser .prototype .getBaseURL,
-   set: X3DBrowser .prototype .setBaseURL,
-   enumerable: true,
-});
-
-Object .defineProperty (X3DBrowser .prototype, "currentScene",
-{
-   get: function ()
+   name:
    {
-      return this .getScriptStack () .at (-1) .getExecutionContext ();
+      get: X3DBrowser .prototype .getName,
+      enumerable: true,
    },
-   enumerable: true,
-});
-
-Object .defineProperty (X3DBrowser .prototype, "supportedProfiles",
-{
-   get: function ()
+   version:
    {
-      return Configuration_SupportedProfiles;
+      get: X3DBrowser .prototype .getVersion,
+      enumerable: true,
    },
-   enumerable: true,
-});
-
-Object .defineProperty (X3DBrowser .prototype, "supportedComponents",
-{
-   get: function ()
+   providerUrl:
    {
-      return Configuration_SupportedComponents;
+      get: X3DBrowser .prototype .getProviderUrl,
+      enumerable: true,
    },
-   enumerable: true,
+   currentFrameRate:
+   {
+      get: X3DBrowser .prototype .getCurrentFrameRate,
+      enumerable: true,
+   },
+   currentSpeed:
+   {
+      get: X3DBrowser .prototype .getCurrentSpeed,
+      enumerable: true,
+   },
+   description:
+   {
+      get: X3DBrowser .prototype .getDescription,
+      set: X3DBrowser .prototype .setDescription,
+      enumerable: true,
+   },
+   baseURL:
+   {
+      get: X3DBrowser .prototype .getBaseURL,
+      set: X3DBrowser .prototype .setBaseURL,
+      enumerable: true,
+   },
+   currentScene:
+   {
+      get: function ()
+      {
+         return this .getScriptStack () .at (-1) .getExecutionContext ();
+      },
+      enumerable: true,
+   },
+   supportedProfiles:
+   {
+      get: function ()
+      {
+         return Configuration_SupportedProfiles;
+      },
+      enumerable: true,
+   },
+   supportedComponents:
+   {
+      get: function ()
+      {
+         return Configuration_SupportedComponents;
+      },
+      enumerable: true,
+   },
 });
 
 const X3DBrowser_default_ = X3DBrowser;
@@ -119917,7 +119657,7 @@ const X3DBrowser_default_ = X3DBrowser;
 x_ite_Namespace.set ("x_ite/Browser/X3DBrowser", X3DBrowser_default_);
 /* harmony default export */ const Browser_X3DBrowser = (X3DBrowser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fallback.js
-/* provided dependency */ var Fallback_$ = __webpack_require__(917);
+/* provided dependency */ var Fallback_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -120096,8 +119836,8 @@ const MicroTime_default_ = undefined;
 x_ite_Namespace.set ("standard/Time/MicroTime", MicroTime_default_);
 /* harmony default export */ const MicroTime = ((/* unused pure expression or super */ null && (MicroTime_default_)));
 ;// CONCATENATED MODULE: ./src/lib/jquery.js
-/* provided dependency */ var jquery_$ = __webpack_require__(917);
-/* provided dependency */ var pako = __webpack_require__(480);
+/* provided dependency */ var jquery_$ = __webpack_require__(994);
+/* provided dependency */ var pako = __webpack_require__(444);
 jquery_$.decodeText = function (input)
 {
    if (typeof input === "string")
@@ -120129,14 +119869,14 @@ const jquery_default_ = jquery_$;
 x_ite_Namespace.set ("lib/jquery", jquery_default_);
 /* harmony default export */ const jquery = ((/* unused pure expression or super */ null && (jquery_default_)));
 ;// CONCATENATED MODULE: ./src/lib/libtess.js
-/* provided dependency */ var libtess_libtess = __webpack_require__(836);
+/* provided dependency */ var libtess_libtess = __webpack_require__(870);
 const libtess_default_ = libtess_libtess;
 ;
 
 x_ite_Namespace.set ("lib/libtess", libtess_default_);
 /* harmony default export */ const lib_libtess = ((/* unused pure expression or super */ null && (libtess_default_)));
 ;// CONCATENATED MODULE: ./src/x_ite/X3D.js
-/* provided dependency */ var X3D_$ = __webpack_require__(917);
+/* provided dependency */ var X3D_$ = __webpack_require__(994);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -120648,7 +120388,7 @@ x_ite_Namespace.set ("shim", shim_default_);
 
 // Assign X3D to global namespace.
 
-window [Symbol .for ("X_ITE.X3D-8.7.4")] = x_ite_X3D;
+window [Symbol .for ("X_ITE.X3D-8.7.5")] = x_ite_X3D;
 
 customElements .define ("x3d-canvas", x_ite_X3DCanvasElement);
 
