@@ -1,4 +1,4 @@
-/* X_ITE v8.7.5 */(function webpackUniversalModuleDefinition(root, factory) {
+/* X_ITE v8.7.6 */(function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
@@ -11,11 +11,11 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 822:
+/***/ 681:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* provided dependency */ var jQuery = __webpack_require__(994);
+/* provided dependency */ var jQuery = __webpack_require__(756);
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
 /**
@@ -387,10 +387,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
 /***/ }),
 
-/***/ 53:
+/***/ 554:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-/* provided dependency */ var jQuery = __webpack_require__(994);
+/* provided dependency */ var jQuery = __webpack_require__(756);
 /**
  * @preserve jquery.fullscreen 1.1.5
  * https://github.com/code-lts/jquery-fullscreen-plugin
@@ -586,7 +586,7 @@ installFullScreenHandlers();
 
 /***/ }),
 
-/***/ 6:
+/***/ 596:
 /***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -600,7 +600,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 (function (factory) {
     if ( true ) {
         // AMD. Register as an anonymous module.
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(994)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(756)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 		(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -811,7 +811,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
-/***/ 994:
+/***/ 756:
 /***/ (function(module, exports) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11523,7 +11523,7 @@ return jQuery;
 
 /***/ }),
 
-/***/ 870:
+/***/ 405:
 /***/ ((module) => {
 
 /**
@@ -16302,7 +16302,7 @@ if (true) {
 
 /***/ }),
 
-/***/ 444:
+/***/ 879:
 /***/ (function(__unused_webpack_module, exports) {
 
 
@@ -19547,7 +19547,7 @@ if (true) {
 
 /***/ }),
 
-/***/ 361:
+/***/ 857:
 /***/ (function(module, exports) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -21919,16 +21919,9 @@ X3DObject .prototype =
    {
       return this [_name];
    },
-   getInterestId: function (callbackName, object)
-   {
-      if (typeof callbackName === "symbol")
-         return X3DObject .getId (object) + ".Symbol(" + SymbolId (callbackName) + ")";
-
-      return X3DObject .getId (object) + "." + String (callbackName);
-   },
    hasInterest: function (callbackName, object)
    {
-      return this [_interests] .has (this .getInterestId (callbackName, object));
+      return this [_interests] .has (X3DObject .getInterestId (callbackName, object));
    },
    addInterest: function (callbackName, object, ... args)
    {
@@ -21939,14 +21932,14 @@ X3DObject .prototype =
       }
 
       const
-         interestId = this .getInterestId (callbackName, object),
+         interestId = X3DObject .getInterestId (callbackName, object),
          callback   = object [callbackName];
 
       this [_interests] .set (interestId, callback .bind (object, ... args, this));
    },
    removeInterest: function (callbackName, object)
    {
-      this [_interests] .delete (this .getInterestId (callbackName, object));
+      this [_interests] .delete (X3DObject .getInterestId (callbackName, object));
    },
    getInterests: function ()
    {
@@ -22021,7 +22014,7 @@ X3DObject .prototype =
    },
    toStream: function (generator)
    {
-      generator .string = "[object " + this .getTypeName () + "]";
+      generator .string = `[object ${this .getTypeName ()}]`;
    },
    dispose: function ()
    {
@@ -22044,7 +22037,7 @@ Object .assign (X3DObject,
    {
       const map = new WeakMap ();
 
-      let counter = 0;
+      let counter = 0; // In the future we can use a bigint here (0n).
 
       return function (object)
       {
@@ -22058,27 +22051,11 @@ Object .assign (X3DObject,
          return counter;
       };
    })(),
-});
-
-// In the future we can use getId, because WeakMap will accept Symbols as key.
-const SymbolId = (function ()
-{
-   const map = new Map ();
-
-   let counter = 0;
-
-   return function (object)
+   getInterestId: function (callbackName, object)
    {
-      const id = map .get (object);
-
-      if (id !== undefined)
-         return id;
-
-      map .set (object, ++ counter);
-
-      return counter;
-   };
-})();
+      return `${this .getId (object)}.${this .getId (object [callbackName])}`;
+   },
+});
 
 const X3DObject_default_ = X3DObject;
 ;
@@ -25062,7 +25039,7 @@ x_ite_Namespace.set ("x_ite/Fields/SFMatrixPrototypeTemplate", SFMatrixPrototype
 
 
 
-function SFVecPrototypeTemplate (Constructor, TypeName, Type, ValueType, double)
+function SFVecPrototypeTemplate (Constructor, TypeName, Type, Vector, double)
 {
    const _formatter = double ? "DoubleFormat" : "FloatFormat";
 
@@ -25091,7 +25068,7 @@ function SFVecPrototypeTemplate (Constructor, TypeName, Type, ValueType, double)
       },
       isDefaultValue: function ()
       {
-         return this .getValue () .equals (ValueType .Zero);
+         return this .getValue () .equals (Vector .Zero);
       },
       set: function (value)
       {
@@ -25455,70 +25432,6 @@ Object .assign (Vector2,
    One: new Vector2 (1, 1),
    xAxis: new Vector2 (1, 0),
    yAxis: new Vector2 (0, 1),
-   negate: function (vector)
-   {
-      return vector .copy () .negate ();
-   },
-   inverse: function (vector)
-   {
-      return vector .copy () .inverse ();
-   },
-   add: function (lhs, rhs)
-   {
-      return lhs .copy () .add (rhs);
-   },
-   subtract: function (lhs, rhs)
-   {
-      return lhs .copy () .subtract (rhs);
-   },
-   multiply: function (lhs, rhs)
-   {
-      return lhs .copy () .multiply (rhs);
-   },
-   multVec: function (lhs, rhs)
-   {
-      return lhs .copy () .multVec (rhs);
-   },
-   divide: function (lhs, rhs)
-   {
-      return lhs .copy () .divide (rhs);
-   },
-   divVec: function (lhs, rhs)
-   {
-      return lhs .copy () .divVec (rhs);
-   },
-   normalize: function (vector)
-   {
-      return vector .copy () .normalize ();
-   },
-   dot: function (lhs, rhs)
-   {
-      return lhs .dot (rhs);
-   },
-   magnitude: function (vector)
-   {
-      return vector .magnitude ();
-   },
-   distance: function (lhs, rhs)
-   {
-      return lhs .distance (rhs);
-   },
-   lerp: function (source, destination, t)
-   {
-      return source .copy () .lerp (destination, t);
-   },
-   abs: function (vector)
-   {
-      return vector .copy () .abs ();
-   },
-   min: function (lhs, rhs)
-   {
-      return this .prototype .min .apply (lhs .copy (), arguments);
-   },
-   max: function (lhs, rhs)
-   {
-      return this .prototype .max .apply (lhs .copy (), arguments);
-   },
 });
 
 const Vector2_default_ = Vector2;
@@ -25939,78 +25852,6 @@ Object .assign (Vector3,
    xAxis: new Vector3 (1, 0, 0),
    yAxis: new Vector3 (0, 1, 0),
    zAxis: new Vector3 (0, 0, 1),
-   negate: function (vector)
-   {
-      return vector .copy () .negate ();
-   },
-   inverse: function (vector)
-   {
-      return vector .copy () .inverse ();
-   },
-   add: function (lhs, rhs)
-   {
-      return lhs .copy () .add (rhs);
-   },
-   subtract: function (lhs, rhs)
-   {
-      return lhs .copy () .subtract (rhs);
-   },
-   multiply: function (lhs, rhs)
-   {
-      return lhs .copy () .multiply (rhs);
-   },
-   multVec: function (lhs, rhs)
-   {
-      return lhs .copy () .multVec (rhs);
-   },
-   divide: function (lhs, rhs)
-   {
-      return lhs .copy () .divide (rhs);
-   },
-   divVec: function (lhs, rhs)
-   {
-      return lhs .copy () .divVec (rhs);
-   },
-   cross: function (lhs, rhs)
-   {
-      return lhs .copy () .cross (rhs);
-   },
-   normalize: function (vector)
-   {
-      return vector .copy () .normalize ();
-   },
-   dot: function (lhs, rhs)
-   {
-      return lhs .dot (rhs);
-   },
-   magnitude: function (vector)
-   {
-      return vector .magnitude ();
-   },
-   distance: function (lhs, rhs)
-   {
-      return lhs .distance (rhs);
-   },
-   lerp: function (source, destination, t)
-   {
-      return source .copy () .lerp (destination, t);
-   },
-   slerp: function (source, destination, t)
-   {
-      return source .copy () .slerp (destination, t);
-   },
-   abs: function (vector)
-   {
-      return vector .copy () .abs ();
-   },
-   min: function (lhs, rhs)
-   {
-      return this .prototype .min .apply (lhs .copy (), arguments);
-   },
-   max: function (lhs, rhs)
-   {
-      return this .prototype .max .apply (lhs .copy (), arguments);
-   },
 });
 
 const Vector3_default_ = Vector3;
@@ -27386,7 +27227,7 @@ function SFVec3Template (TypeName, Type, double)
    {
       cross: function (vector)
       {
-         return new (this .constructor) (Numbers_Vector3.cross (this .getValue (), vector .getValue ()));
+         return new (this .constructor) (this .getValue () .copy () .cross (vector .getValue ()));
       },
    });
 
@@ -27758,70 +27599,6 @@ Object .assign (Vector4,
    yAxis: new Vector4 (0, 1, 0, 0),
    zAxis: new Vector4 (0, 0, 1, 0),
    wAxis: new Vector4 (0, 0, 0, 1),
-   negate: function (vector)
-   {
-      return vector .copy () .negate ();
-   },
-   inverse: function (vector)
-   {
-      return vector .copy () .inverse ();
-   },
-   add: function (lhs, rhs)
-   {
-      return lhs .copy () .add (rhs);
-   },
-   subtract: function (lhs, rhs)
-   {
-      return lhs .copy () .subtract (rhs);
-   },
-   multiply: function (lhs, rhs)
-   {
-      return lhs .copy () .multiply (rhs);
-   },
-   multVec: function (lhs, rhs)
-   {
-      return lhs .copy () .multVec (rhs);
-   },
-   divide: function (lhs, rhs)
-   {
-      return lhs .copy () .divide (rhs);
-   },
-   divVec: function (lhs, rhs)
-   {
-      return lhs .copy () .divVec (rhs);
-   },
-   normalize: function (vector)
-   {
-      return vector .copy () .normalize ();
-   },
-   dot: function (lhs, rhs)
-   {
-      return lhs .dot (rhs);
-   },
-   magnitude: function (vector)
-   {
-      return vector .magnitude ();
-   },
-   distance: function (lhs, rhs)
-   {
-      return lhs .distance (rhs);
-   },
-   lerp: function (source, destination, t)
-   {
-      return source .copy () .lerp (destination, t);
-   },
-   abs: function (vector)
-   {
-      return vector .copy () .abs ();
-   },
-   min: function (lhs, rhs)
-   {
-      return this .prototype .min .apply (lhs .copy (), arguments);
-   },
-   max: function (lhs, rhs)
-   {
-      return this .prototype .max .apply (lhs .copy (), arguments);
-   },
 });
 
 const Vector4_default_ = Vector4;
@@ -28276,92 +28053,46 @@ Object .defineProperties (Quaternion .prototype,
 
 Object .assign (Quaternion,
 {
-   negate: function (quat)
+   Identity: new Quaternion (0, 0, 0, 1),
+   spline: (function ()
    {
-      return quat .copy () .negate ();
-   },
-   inverse: function (quat)
-   {
-      return quat .copy () .inverse ();
-   },
-   add: function (lhs, rhs)
-   {
-      return lhs .copy () .add (rhs);
-   },
-   subtract: function (lhs, rhs)
-   {
-      return lhs .copy () .subtract (rhs);
-   },
-   multiply: function (lhs, rhs)
-   {
-      return lhs .copy () .multiply (rhs);
-   },
-   multLeft: function (lhs, rhs)
-   {
-      return lhs .copy () .multLeft (rhs);
-   },
-   multRight: function (lhs, rhs)
-   {
-      return lhs .copy () .multRight (rhs);
-   },
-   divide: function (lhs, rhs)
-   {
-      return lhs .copy () .divide (rhs);
-   },
-   normalize: function (quat)
-   {
-      return quat .copy () .normalize ();
-   },
-   slerp: function (source, destination, t)
-   {
-      return source .copy () .slerp (destination, t);
-   },
-   squad: function (source, a, b, destination, t)
-   {
-      return source .copy () .squad (a, b, destination, t);
-   },
-   /*
-   bezier: function (q0, a, b, q1, t)
-   {
-      return q0 .copy () .squad (a, b, q1, t);
-   },
-   */
-   spline: function (Q0, Q1, Q2)
-   {
-      q0 .assign (Q0);
-      q1 .assign (Q1);
-      q2 .assign (Q2);
+      const
+         q0   = new Quaternion (0, 0, 0, 1),
+         q1   = new Quaternion (0, 0, 0, 1),
+         q2   = new Quaternion (0, 0, 0, 1),
+         q1_i = new Quaternion (0, 0, 0, 1);
 
-      // If the dot product is smaller than 0 we must negate the quaternion to prevent flipping. If we negate all
-      // the terms we get a different quaternion but it represents the same rotation.
+      return function (Q0, Q1, Q2)
+      {
+         q0 .assign (Q0);
+         q1 .assign (Q1);
+         q2 .assign (Q2);
 
-      if (q0 .dot (q1) < 0)
-         q0 .negate ();
+         // If the dot product is smaller than 0 we must negate the quaternion to prevent flipping. If we negate all
+         // the terms we get a different quaternion but it represents the same rotation.
 
-      if (q2 .dot (q1) < 0)
-         q2 .negate ();
+         if (q0 .dot (q1) < 0)
+            q0 .negate ();
 
-      q1_i .assign (q1) .inverse ();
+         if (q2 .dot (q1) < 0)
+            q2 .negate ();
 
-      // The result must be normalized as it will be used in slerp and we can only slerp normalized vectors.
+         q1_i .assign (q1) .inverse ();
 
-      return q1 .multRight (
-         t1 .assign (q1_i) .multRight (q0) .log () .add (t2 .assign (q1_i) .multRight (q2) .log ()) .divide (-4) .exp ()
-      )
-      .normalize () .copy ();
-   },
+         // The result must be normalized as it will be used in slerp and we can only slerp normalized vectors.
+
+         return q1 .multRight (
+            t1 .assign (q1_i) .multRight (q0) .log () .add (t2 .assign (q1_i) .multRight (q2) .log ()) .divide (-4) .exp ()
+         )
+         .normalize () .copy ();
+      };
+   })(),
 });
 
 const
    t1 = new Quaternion (0, 0, 0, 1),
    t2 = new Quaternion (0, 0, 0, 1),
    t3 = new Quaternion (0, 0, 0, 1);
-
-const
-   q0   = new Quaternion (0, 0, 0, 1),
-   q1   = new Quaternion (0, 0, 0, 1),
-   q2   = new Quaternion (0, 0, 0, 1),
-   q1_i = new Quaternion (0, 0, 0, 1);
 
 const Quaternion_default_ = Quaternion;
 ;
@@ -28815,35 +28546,6 @@ Object .defineProperties (Rotation4 .prototype,
 Object .assign (Rotation4,
 {
    Identity: new Rotation4 (),
-   inverse: function (rotation)
-   {
-      return rotation .copy () .inverse ();
-   },
-   multRight: function (lhs, rhs)
-   {
-      return lhs .copy () .multRight (rhs);
-   },
-   normalize: function (rotation)
-   {
-      return rotation .copy () .normalize ();
-   },
-   slerp: function (source, destination, t)
-   {
-      return source .copy () .slerp (destination, t);
-   },
-   squad: function (source, a, b, destination, t)
-   {
-      return source .copy () .squad (a, b, destination, t);
-   },
-   /*
-   bezier: function (source, a, b, destination, t)
-   {
-      const copy = Object .create (this .prototype);
-      copy [_quaternion] = Quaternion .bezier (source [_quaternion], a, b, destination [_quaternion], t);
-      copy .update ();
-      return copy;
-   },
-   */
    spline: function (r0, r1, r2)
    {
       const copy = Object .create (this .prototype);
@@ -29873,11 +29575,11 @@ function dispose ()
       target = this [_target],
       value  = target .getValue ();
 
-   cache .delete (value);
+   Base_X3DField.prototype.dispose.call (target);
 
    value ?.dispose ();
 
-   Base_X3DField.prototype.dispose.call (target);
+   cache .delete (value);
 }
 
 const SFNodeCache_default_ = SFNodeCache;
@@ -31229,8 +30931,7 @@ x_ite_Namespace.set ("x_ite/Base/X3DArrayField", X3DArrayField_default_);
 
 const
    X3DObjectArrayField_target = Symbol (),
-   X3DObjectArrayField_proxy  = Symbol (),
-   _find   = Symbol ();
+   X3DObjectArrayField_proxy  = Symbol ();
 
 const X3DObjectArrayField_handler =
 {
@@ -31372,6 +31073,10 @@ X3DObjectArrayField .prototype = Object .assign (Object .create (Base_X3DArrayFi
 
       return true;
    },
+   isDefaultValue: function ()
+   {
+      return this .length === 0;
+   },
    set: function (value)
    {
       const target = this [X3DObjectArrayField_target];
@@ -31382,10 +31087,6 @@ X3DObjectArrayField .prototype = Object .assign (Object .create (Base_X3DArrayFi
 
       for (let i = 0, length = value .length; i < length; ++ i)
          array [i] .set (value [i] instanceof Base_X3DField ? value [i] .getValue () : value [i]);
-   },
-   isDefaultValue: function ()
-   {
-      return this .length === 0;
    },
    setValue: function (value)
    {
@@ -31421,10 +31122,14 @@ X3DObjectArrayField .prototype = Object .assign (Object .create (Base_X3DArrayFi
 
       if (array .length)
       {
-         const field = array .shift ();
+         const
+            field  = array .shift (),
+            result = field .valueOf ();
+
          target .removeChildObject (field);
          target .addEvent ();
-         return field .valueOf ();
+
+         return result;
       }
    },
    push: function (value)
@@ -31454,10 +31159,14 @@ X3DObjectArrayField .prototype = Object .assign (Object .create (Base_X3DArrayFi
 
       if (array .length)
       {
-         const field = array .pop ();
+         const
+            field  = array .pop (),
+            result = field .valueOf ();
+
          target .removeChildObject (field);
          target .addEvent ();
-         return field .valueOf ();
+
+         return result;
       }
    },
    splice: function (index, deleteCount, ... insertValues)
@@ -31498,53 +31207,28 @@ X3DObjectArrayField .prototype = Object .assign (Object .create (Base_X3DArrayFi
 
       target .addEvent ();
    },
-   [_find]: function (first, last, value)
-   {
-      const
-         target = this [X3DObjectArrayField_target],
-         values = target .getValue ();
-
-      if (typeof value === "function")
-      {
-         for (let i = first; i < last; ++ i)
-         {
-            if (value (values [i] .valueOf ()))
-               return i;
-         }
-
-         return last;
-      }
-
-      for (let i = first; i < last; ++ i)
-      {
-         if (values [i] .equals (value))
-            return i;
-      }
-
-      return last;
-   },
    remove: function (first, last, value)
    {
       const
          target = this [X3DObjectArrayField_target],
-         values = target .getValue ();
+         array  = target .getValue ();
 
       if (typeof value === "function")
       {
-         first = target [_find] (first, last, value);
+         first = array .findIndex ((current, index) => index >= first && value (current .valueOf ()))
 
-         if (first !== last)
+         if (first !== -1)
          {
             for (let i = first; ++ i < last; )
             {
-               const current = values [i];
+               const current = array [i];
 
                if (!value (current .valueOf ()))
                {
-                  const tmp = values [first];
+                  const tmp = array [first];
 
-                  values [first ++] = current;
-                  values [i]        = tmp;
+                  array [first ++] = current;
+                  array [i]        = tmp;
                }
             }
          }
@@ -31555,25 +31239,25 @@ X3DObjectArrayField .prototype = Object .assign (Object .create (Base_X3DArrayFi
          return first;
       }
 
-      first = target [_find] (first, last, value);
+      first = array .findIndex ((current, index) => index >= first && current .equals (value))
 
-      if (first !== last)
+      if (first !== -1)
       {
          for (let i = first; ++ i < last; )
          {
-            const current = values [i];
+            const current = array [i];
 
             if (!current .equals (value))
             {
-               const tmp = values [first];
+               const tmp = array [first];
 
-               values [first ++] = current;
-               values [i]        = tmp;
+               array [first ++] = current;
+               array [i]        = tmp;
             }
          }
       }
 
-      if (first !== last)
+      if (first !== -1)
          target .addEvent ();
 
       return first;
@@ -31582,14 +31266,15 @@ X3DObjectArrayField .prototype = Object .assign (Object .create (Base_X3DArrayFi
    {
       const
          target = this [X3DObjectArrayField_target],
-         values = target .getValue () .splice (first, last - first);
+         values = target .getValue () .splice (first, last - first),
+         result = new (target .constructor) (values);
 
       for (const value of values)
          target .removeChildObject (value);
 
       target .addEvent ();
 
-      return new (target .constructor) (values);
+      return result;
    },
    resize: function (size, value, silently)
    {
@@ -31632,6 +31317,7 @@ X3DObjectArrayField .prototype = Object .assign (Object .create (Base_X3DArrayFi
    removeChildObject: function (value)
    {
       value .removeParent (this [X3DObjectArrayField_proxy]);
+      value .dispose ();
    },
    reverse: function ()
    {
@@ -31775,19 +31461,6 @@ X3DObjectArrayField .prototype = Object .assign (Object .create (Base_X3DArrayFi
          generator .string += generator .TidySpace ();
          generator .string += ']';
       }
-   },
-   dispose: function ()
-   {
-      const
-         target = this [X3DObjectArrayField_target],
-         array  = target .getValue ();
-
-      for (const value of array)
-         target .removeChildObject (value);
-
-      array .length = 0;
-
-      Base_X3DArrayField.prototype.dispose.call (target);
    },
 });
 
@@ -33233,7 +32906,7 @@ MFNode .prototype = Object .assign (Object .create (Base_X3DObjectArrayField.pro
    {
       const target = this .getTarget ();
 
-      target .resize (0, undefined, true);
+      target .resize (0, undefined, false);
       target .processInterests ();
 
       Base_X3DObjectArrayField.prototype.dispose.call (target);
@@ -34609,7 +34282,7 @@ x_ite_Namespace.set ("x_ite/Base/X3DBaseNode", X3DBaseNode_default_);
  *
  ******************************************************************************/
 
-const VERSION_default_ = "8.7.5";
+const VERSION_default_ = "8.7.6";
 ;
 
 x_ite_Namespace.set ("x_ite/Browser/VERSION", VERSION_default_);
@@ -35528,7 +35201,7 @@ const gettext_default_ = gettext;
 x_ite_Namespace.set ("locale/gettext", gettext_default_);
 /* harmony default export */ const locale_gettext = (gettext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/BrowserTimings.js
-/* provided dependency */ var $ = __webpack_require__(994);
+/* provided dependency */ var $ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -36026,7 +35699,7 @@ const TextureQuality_default_ = TextureQuality;
 x_ite_Namespace.set ("x_ite/Browser/Core/TextureQuality", TextureQuality_default_);
 /* harmony default export */ const Core_TextureQuality = (TextureQuality_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/BrowserOptions.js
-/* provided dependency */ var BrowserOptions_$ = __webpack_require__(994);
+/* provided dependency */ var BrowserOptions_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -36112,6 +35785,7 @@ BrowserOptions .prototype = Object .assign (Object .create (Base_X3DBaseNode.pro
       new Base_X3DFieldDefinition (Base_X3DConstants.inputOutput, "QualityWhenMoving",      new x_ite_Fields.SFString ("SAME")),
       new Base_X3DFieldDefinition (Base_X3DConstants.inputOutput, "Shading",                new x_ite_Fields.SFString ("GOURAUD")),
       new Base_X3DFieldDefinition (Base_X3DConstants.inputOutput, "MotionBlur",             new x_ite_Fields.SFBool ()),
+      new Base_X3DFieldDefinition (Base_X3DConstants.inputOutput, "AutoUpdate",             new x_ite_Fields.SFBool (false)),
       new Base_X3DFieldDefinition (Base_X3DConstants.inputOutput, "Cache",                  new x_ite_Fields.SFBool (true)),
       new Base_X3DFieldDefinition (Base_X3DConstants.inputOutput, "ContentScale",           new x_ite_Fields.SFDouble (1)),
       new Base_X3DFieldDefinition (Base_X3DConstants.inputOutput, "ContextMenu",            new x_ite_Fields.SFBool (true)),
@@ -36155,6 +35829,7 @@ BrowserOptions .prototype = Object .assign (Object .create (Base_X3DBaseNode.pro
       this ._TextureQuality         .addInterest ("set_textureQuality__",         this);
       this ._Shading                .addInterest ("set_shading__",                this);
       this ._StraightenHorizon      .addInterest ("set_straightenHorizon__",      this);
+      this ._AutoUpdate             .addInterest ("set_autoUpdate__",             this);
       this ._ContentScale           .addInterest ("set_contentScale__",           this);
       this ._LogarithmicDepthBuffer .addInterest ("set_logarithmicDepthBuffer__", this);
       this ._Multisampling          .addInterest ("set_multisampling__",          this);
@@ -36172,6 +35847,7 @@ BrowserOptions .prototype = Object .assign (Object .create (Base_X3DBaseNode.pro
    {
       const attributes = new Set ([
          "Antialiased",
+         "AutoUpdate",
          "Cache",
          "ContentScale",
          "ContextMenu",
@@ -36324,6 +36000,40 @@ BrowserOptions .prototype = Object .assign (Object .create (Base_X3DBaseNode.pro
       browser .getRenderingProperties () ._ContentScale = window .devicePixelRatio;
 
       browser .reshape ();
+   },
+   set_autoUpdate__: function (autoUpdate)
+   {
+      const events = ["resize", "scroll", "load"]
+         .map (event => `${event}.${this .getTypeName ()}${this .getId ()}`)
+         .join (" ");
+
+      if (autoUpdate .getValue ())
+      {
+         const
+            browser = this .getBrowser (),
+            element = browser .getElement ();
+
+         const checkUpdate = () =>
+         {
+            if (element .isInViewport ())
+            {
+               if (!browser .isLive ())
+                  browser .beginUpdate ();
+            }
+            else
+            {
+               if (browser .isLive ())
+                  browser .endUpdate ();
+            }
+         };
+
+         BrowserOptions_$(window) .on (events, checkUpdate);
+         checkUpdate ();
+      }
+      else
+      {
+         BrowserOptions_$(window) .off (events);
+      }
    },
    set_contentScale__: function (contentScale)
    {
@@ -36570,7 +36280,7 @@ const RenderingProperties_default_ = RenderingProperties;
 x_ite_Namespace.set ("x_ite/Browser/Core/RenderingProperties", RenderingProperties_default_);
 /* harmony default export */ const Core_RenderingProperties = (RenderingProperties_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/Notification.js
-/* provided dependency */ var Notification_$ = __webpack_require__(994);
+/* provided dependency */ var Notification_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -36692,8 +36402,8 @@ const Notification_default_ = Notification;
 x_ite_Namespace.set ("x_ite/Browser/Core/Notification", Notification_default_);
 /* harmony default export */ const Core_Notification = (Notification_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/ContextMenu.js
-/* provided dependency */ var jquery_fullscreen = __webpack_require__(53);
-/* provided dependency */ var ContextMenu_$ = __webpack_require__(994);
+/* provided dependency */ var jquery_fullscreen = __webpack_require__(554);
+/* provided dependency */ var ContextMenu_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -41767,7 +41477,7 @@ const X3DUrlObject_default_ = X3DUrlObject;
 x_ite_Namespace.set ("x_ite/Components/Networking/X3DUrlObject", X3DUrlObject_default_);
 /* harmony default export */ const Networking_X3DUrlObject = (X3DUrlObject_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/X3DParser.js
-/* provided dependency */ var X3DParser_$ = __webpack_require__(994);
+/* provided dependency */ var X3DParser_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -44949,7 +44659,7 @@ const VRMLParser_default_ = VRMLParser;
 x_ite_Namespace.set ("x_ite/Parser/VRMLParser", VRMLParser_default_);
 /* harmony default export */ const Parser_VRMLParser = (VRMLParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/XMLParser.js
-/* provided dependency */ var XMLParser_$ = __webpack_require__(994);
+/* provided dependency */ var XMLParser_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -46804,7 +46514,7 @@ const X3DOptimizer_default_ = X3DOptimizer;
 x_ite_Namespace.set ("x_ite/Parser/X3DOptimizer", X3DOptimizer_default_);
 /* harmony default export */ const Parser_X3DOptimizer = (X3DOptimizer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GLTF2Parser.js
-/* provided dependency */ var GLTF2Parser_$ = __webpack_require__(994);
+/* provided dependency */ var GLTF2Parser_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -49270,7 +48980,7 @@ const GLTF2Parser_default_ = GLTF2Parser;
 x_ite_Namespace.set ("x_ite/Parser/GLTF2Parser", GLTF2Parser_default_);
 /* harmony default export */ const Parser_GLTF2Parser = (GLTF2Parser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GLB2Parser.js
-/* provided dependency */ var GLB2Parser_$ = __webpack_require__(994);
+/* provided dependency */ var GLB2Parser_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -49423,7 +49133,7 @@ const GLB2Parser_default_ = GLB2Parser;
 x_ite_Namespace.set ("x_ite/Parser/GLB2Parser", GLB2Parser_default_);
 /* harmony default export */ const Parser_GLB2Parser = (GLB2Parser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/OBJParser.js
-/* provided dependency */ var OBJParser_$ = __webpack_require__(994);
+/* provided dependency */ var OBJParser_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -51310,10 +51020,6 @@ Object .assign (Complex,
    {
       return lhs .copy () .multiply (rhs);
    },
-   multComp: function (lhs, rhs)
-   {
-      return lhs .copy () .multComp (rhs);
-   },
 });
 
 const Complex_default_ = Complex;
@@ -51417,10 +51123,11 @@ Box2 .prototype =
 
             return this;
          }
-         case 3:
-         {
-            return this .setExtents (arguments [0], arguments [1]);
-         }
+         // case 3:
+         // {
+         //    console .trace ()
+         //    return this .setExtents (arguments [0], arguments [1]);
+         // }
       }
    },
    setExtents: function (min, max)
@@ -51460,7 +51167,7 @@ Box2 .prototype =
          this .getExtents (lhs_min, lhs_max);
          box  .getExtents (rhs_min, rhs_max);
 
-         return this .set (lhs_min .min (rhs_min), lhs_max .max (rhs_max), true);
+         return this .setExtents (lhs_min .min (rhs_min), lhs_max .max (rhs_max));
       };
    })(),
    multLeft: function (matrix)
@@ -51526,6 +51233,18 @@ Box2 .prototype =
       return this .size + ", " + this .center;
    },
 };
+
+Object .assign (Box2,
+{
+   Extents: function (min, max)
+   {
+      return new Box2 () .setExtents (min, max);
+   },
+   Points: function (... points)
+   {
+      return new Box2 () .setExtents (points [0] .copy () .min (... points), points [0] .copy () .max (... points));
+   },
+});
 
 Object .defineProperties (Box2 .prototype,
 {
@@ -51918,8 +51637,8 @@ const MatrixStack_default_ = MatrixStack;
 x_ite_Namespace.set ("standard/Math/Utility/MatrixStack", MatrixStack_default_);
 /* harmony default export */ const Utility_MatrixStack = (MatrixStack_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/SVGParser.js
-/* provided dependency */ var SVGParser_$ = __webpack_require__(994);
-/* provided dependency */ var libtess = __webpack_require__(870);
+/* provided dependency */ var SVGParser_$ = __webpack_require__(756);
+/* provided dependency */ var libtess = __webpack_require__(405);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -52840,7 +52559,7 @@ SVGParser .prototype = Object .assign (Object .create (Parser_X3DParser.prototyp
          bbox          = new Geometry_Box2 ();
 
       for (const points of contours)
-         bbox .add (new Geometry_Box2 (Numbers_Vector2.min (... points), Numbers_Vector2.max (... points), true));
+         bbox .add (Geometry_Box2.Points (... points));
 
       this .groupNodes .push (transformNode);
 
@@ -54688,7 +54407,7 @@ const SVGParser_default_ = SVGParser;
 x_ite_Namespace.set ("x_ite/Parser/SVGParser", SVGParser_default_);
 /* harmony default export */ const Parser_SVGParser = (SVGParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GoldenGate.js
-/* provided dependency */ var GoldenGate_$ = __webpack_require__(994);
+/* provided dependency */ var GoldenGate_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -54983,7 +54702,7 @@ Plane3 .prototype =
    },
    getDistanceToPoint: function (point)
    {
-      return Numbers_Vector3.dot (point, this .normal) - this .distanceFromOrigin;
+      return point .dot (this .normal) - this .distanceFromOrigin;
    },
    intersectsLine: function (line, intersection)
    {
@@ -55017,7 +54736,7 @@ const Plane3_default_ = Plane3;
 x_ite_Namespace.set ("standard/Math/Geometry/Plane3", Plane3_default_);
 /* harmony default export */ const Geometry_Plane3 = (Plane3_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Triangle3.js
-/* provided dependency */ var Triangle3_libtess = __webpack_require__(870);
+/* provided dependency */ var Triangle3_libtess = __webpack_require__(405);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -56357,10 +56076,11 @@ Box3 .prototype =
 
             return this;
          }
-         case 3:
-         {
-            return this .setExtents (arguments [0], arguments [1]);
-         }
+         // case 3:
+         // {
+         //    console .trace ()
+         //    return this .setExtents (arguments [0], arguments [1]);
+         // }
       }
    },
    setExtents: function (min, max)
@@ -56629,7 +56349,7 @@ Box3 .prototype =
          this .getExtents (lhs_min, lhs_max);
          box  .getExtents (rhs_min, rhs_max);
 
-         return this .set (lhs_min .min (rhs_min), lhs_max .max (rhs_max), true);
+         return this .setExtents (lhs_min .min (rhs_min), lhs_max .max (rhs_max));
       };
    })(),
    multLeft: function (matrix)
@@ -56866,6 +56586,18 @@ Box3 .prototype =
       return this .size + ", " + this .center;
    },
 };
+
+Object .assign (Box3,
+{
+   Extents: function (min, max)
+   {
+      return new Box3 () .setExtents (min, max);
+   },
+   Points: function (... points)
+   {
+      return new Box3 () .setExtents (points [0] .copy () .min (... points), points [0] .copy () .max (... points));
+   },
+});
 
 Object .defineProperties (Box3 .prototype,
 {
@@ -57130,7 +56862,7 @@ Line3 .Points = function (point1, point2)
 {
    const line = Object .create (Line3 .prototype);
    line .point     = point1 .copy ();
-   line .direction = Numbers_Vector3.subtract (point2, point1) .normalize ();
+   line .direction = point2 .copy () .subtract (point1) .normalize ();
    return line;
 };
 
@@ -57491,9 +57223,9 @@ X3DRenderObject .prototype =
       const
          projectionMatrix            = new Numbers_Matrix4 (),
          cameraSpaceProjectionMatrix = new Numbers_Matrix4 (),
-         localOrientation            = new Numbers_Rotation4 (0, 0, 1, 0),
+         localOrientation            = new Numbers_Rotation4 (),
          vector                      = new Numbers_Vector3 (0, 0, 0),
-         rotation                    = new Numbers_Rotation4 (0, 0, 1, 0);
+         rotation                    = new Numbers_Rotation4 ();
 
       return function (direction)
       {
@@ -57947,7 +57679,7 @@ X3DRenderObject .prototype =
          projectionMatrix            = new Numbers_Matrix4 (),
          cameraSpaceProjectionMatrix = new Numbers_Matrix4 (),
          translation                 = new Numbers_Vector3 (0, 0, 0),
-         rotation                    = new Numbers_Rotation4 (0, 0, 1, 0);
+         rotation                    = new Numbers_Rotation4 ();
 
       return function ()
       {
@@ -59726,7 +59458,7 @@ function X3DGeometryNode (executionContext)
 
    this .min                      = new Numbers_Vector3 (0, 0, 0);
    this .max                      = new Numbers_Vector3 (0, 0, 0);
-   this .bbox                     = new Geometry_Box3 (this .min, this .max, true);
+   this .bbox                     = Geometry_Box3.Extents (this .min, this .max);
    this .solid                    = true;
    this .primitiveMode            = browser .getContext () .TRIANGLES;
    this .geometryType             = 3;
@@ -62301,7 +62033,7 @@ const X3DTexture2DNode_default_ = X3DTexture2DNode;
 x_ite_Namespace.set ("x_ite/Components/Texturing/X3DTexture2DNode", X3DTexture2DNode_default_);
 /* harmony default export */ const Texturing_X3DTexture2DNode = (X3DTexture2DNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/ImageTexture.js
-/* provided dependency */ var ImageTexture_$ = __webpack_require__(994);
+/* provided dependency */ var ImageTexture_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -64286,8 +64018,8 @@ OrientationInterpolator .prototype = Object .assign (Object .create (Interpolati
    interpolate: (function ()
    {
       const
-         keyValue0 = new Numbers_Rotation4 (0, 0, 1, 0),
-         keyValue1 = new Numbers_Rotation4 (0, 0, 1, 0);
+         keyValue0 = new Numbers_Rotation4 (),
+         keyValue1 = new Numbers_Rotation4 ();
 
       return function (index0, index1, weight)
       {
@@ -64497,7 +64229,7 @@ function X3DViewpointNode (executionContext)
                           "fieldOfViewScale",       new x_ite_Fields.SFFloat (1));
 
    this .userPosition         = new Numbers_Vector3 (0, 1, 0);
-   this .userOrientation      = new Numbers_Rotation4 (0, 0, 1, 0);
+   this .userOrientation      = new Numbers_Rotation4 ();
    this .userCenterOfRotation = new Numbers_Vector3 (0, 0, 0);
    this .modelMatrix          = new Numbers_Matrix4 ();
    this .cameraSpaceMatrix    = new Numbers_Matrix4 (1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0,  10, 1);
@@ -64806,9 +64538,9 @@ X3DViewpointNode .prototype = Object .assign (Object .create (Core_X3DBindableNo
    {
       const
          position         = new Numbers_Vector3 (0, 0, 0),
-         orientation      = new Numbers_Rotation4 (0, 0, 1, 0),
+         orientation      = new Numbers_Rotation4 (),
          scale            = new Numbers_Vector3 (0, 0, 0),
-         scaleOrientation = new Numbers_Rotation4 (0, 0, 1, 0);
+         scaleOrientation = new Numbers_Rotation4 ();
 
       return function (fromViewpointNode)
       {
@@ -64883,14 +64615,14 @@ X3DViewpointNode .prototype = Object .assign (Object .create (Core_X3DBindableNo
       this .easeInEaseOut ._easeInEaseOut = new x_ite_Fields.MFVec2f (new x_ite_Fields.SFVec2f (0, 1), new x_ite_Fields.SFVec2f (1, 0));
 
       const
-         translation = Numbers_Vector3.lerp (this ._positionOffset .getValue (), offset, factor),
-         direction   = Numbers_Vector3.add (this .getPosition (), translation) .subtract (point);
+         translation = this ._positionOffset .getValue () .copy () .lerp (offset, factor),
+         direction   = this .getPosition () .copy () .add (translation) .subtract (point);
 
-      let rotation = Numbers_Rotation4.multRight (this ._orientationOffset .getValue (), new Numbers_Rotation4 (this .getUserOrientation () .multVecRot (new Numbers_Vector3 (0, 0, 1)), direction));
+      let rotation = this ._orientationOffset .getValue () .copy () .multRight (new Numbers_Rotation4 (this .getUserOrientation () .multVecRot (new Numbers_Vector3 (0, 0, 1)), direction));
 
       if (straighten)
       {
-         rotation = Numbers_Rotation4.inverse (this .getOrientation ()) .multRight (this .straightenHorizon (Numbers_Rotation4.multRight (this .getOrientation (), rotation)));
+         rotation = this .getOrientation () .copy () .inverse () .multRight (this .straightenHorizon (this .getOrientation () .copy () .multRight (rotation)));
       }
 
       this .positionInterpolator         ._keyValue = new x_ite_Fields.MFVec3f (this ._positionOffset, translation);
@@ -64901,7 +64633,7 @@ X3DViewpointNode .prototype = Object .assign (Object .create (Core_X3DBindableNo
       const relative = this .getRelativeTransformation (this);
 
       this ._fieldOfViewScale       = 1;
-      this ._centerOfRotationOffset = Numbers_Vector3.subtract (point, this .getCenterOfRotation ());
+      this ._centerOfRotationOffset = point .copy () .subtract (this .getCenterOfRotation ());
       this .nearDistance            = Math .min (distance / 2, 0.125);
       this .farDistance             = this .nearDistance * this .getMaxFarValue () / 0.125;
 
@@ -64919,7 +64651,7 @@ X3DViewpointNode .prototype = Object .assign (Object .create (Core_X3DBindableNo
 
       this .easeInEaseOut ._easeInEaseOut = new x_ite_Fields.MFVec2f (new x_ite_Fields.SFVec2f (0, 1), new x_ite_Fields.SFVec2f (1, 0));
 
-      const rotation = Numbers_Rotation4.multRight (Numbers_Rotation4.inverse (this .getOrientation ()), this .straightenHorizon (this .getUserOrientation ()));
+      const rotation = this .getOrientation () .copy () .inverse () .multRight (this .straightenHorizon (this .getUserOrientation ()));
 
       this .positionInterpolator         ._keyValue = new x_ite_Fields.MFVec3f (this ._positionOffset, this ._positionOffset);
       this .orientationInterpolator      ._keyValue = new x_ite_Fields.MFRotation (this ._orientationOffset, rotation);
@@ -64937,7 +64669,7 @@ X3DViewpointNode .prototype = Object .assign (Object .create (Core_X3DBindableNo
       const
          localXAxis  = new Numbers_Vector3 (0, 0, 0),
          localZAxis  = new Numbers_Vector3 (0, 0, 0),
-         rotation    = new Numbers_Rotation4 (0, 0, 1, 0);
+         rotation    = new Numbers_Rotation4 ();
 
       return function (orientation, upVector = this .getUpVector (true))
       {
@@ -66640,7 +66372,7 @@ const X3DWorld_default_ = X3DWorld;
 x_ite_Namespace.set ("x_ite/Execution/X3DWorld", X3DWorld_default_);
 /* harmony default export */ const Execution_X3DWorld = (X3DWorld_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/InputOutput/FileLoader.js
-/* provided dependency */ var FileLoader_$ = __webpack_require__(994);
+/* provided dependency */ var FileLoader_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -70916,7 +70648,7 @@ const DataStorage_default_ = DataStorage;
 x_ite_Namespace.set ("standard/Utility/DataStorage", DataStorage_default_);
 /* harmony default export */ const Utility_DataStorage = (DataStorage_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/X3DCoreContext.js
-/* provided dependency */ var X3DCoreContext_$ = __webpack_require__(994);
+/* provided dependency */ var X3DCoreContext_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -71291,6 +71023,24 @@ X3DCoreContext .prototype =
          case "timings":
          {
             this .setBrowserOption ("Timings", this .parseBooleanAttribute (newValue, false));
+            break;
+         }
+         case "update":
+         {
+            if (newValue === "auto")
+            {
+               this .setBrowserOption ("AutoUpdate", true);
+            }
+            else
+            {
+               this .setBrowserOption ("AutoUpdate", false);
+
+               if (this .parseBooleanAttribute (newValue, true))
+                  this .beginUpdate ();
+               else
+                  this .endUpdate ();
+            }
+
             break;
          }
          case "url":
@@ -76968,8 +76718,8 @@ x_ite_Namespace.set ("x_ite/Components/Followers/PositionChaser", PositionChaser
 
 
 var
-   OrientationChaser_a        = new Numbers_Rotation4 (0, 0, 1, 0),
-   rotation = new Numbers_Rotation4 (0, 0, 1, 0);
+   OrientationChaser_a        = new Numbers_Rotation4 (),
+   rotation = new Numbers_Rotation4 ();
 
 function OrientationChaser (executionContext)
 {
@@ -77015,7 +76765,7 @@ OrientationChaser .prototype = Object .assign (Object .create (Followers_X3DChas
    },
    getVector: function ()
    {
-      return new Numbers_Rotation4 (0, 0, 1, 0);
+      return new Numbers_Rotation4 ();
    },
    equals: function (lhs, rhs, tolerance)
    {
@@ -77041,8 +76791,8 @@ const OrientationChaser_default_ = OrientationChaser;
 x_ite_Namespace.set ("x_ite/Components/Followers/OrientationChaser", OrientationChaser_default_);
 /* harmony default export */ const Followers_OrientationChaser = (OrientationChaser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/ExamineViewer.js
-/* provided dependency */ var jquery_mousewheel = __webpack_require__(6);
-/* provided dependency */ var ExamineViewer_$ = __webpack_require__(994);
+/* provided dependency */ var jquery_mousewheel = __webpack_require__(596);
+/* provided dependency */ var ExamineViewer_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -77121,12 +76871,12 @@ function ExamineViewer (executionContext, navigationInfo)
    Navigation_X3DViewer.call (this, executionContext, navigationInfo);
 
    this .button                   = -1;
-   this .orientationOffset        = new Numbers_Rotation4 (0, 0, 1, 0);
+   this .orientationOffset        = new Numbers_Rotation4 ();
    this .fromVector               = new Numbers_Vector3 (0, 0, 0);
    this .toVector                 = new Numbers_Vector3 (0, 0, 0);
    this .fromPoint                = new Numbers_Vector3 (0, 0, 0);
    this .toPoint                  = new Numbers_Vector3 (0, 0, 0);
-   this .rotation                 = new Numbers_Rotation4 (0, 0, 1, 0);
+   this .rotation                 = new Numbers_Rotation4 ();
    this .direction                = new Numbers_Vector3 (0, 0, 0);
    this .axis                     = new Numbers_Vector3 (0, 0, 0);
    this .pressTime                = 0;
@@ -77139,7 +76889,7 @@ function ExamineViewer (executionContext, navigationInfo)
    this .dblTapInterval           = 0.4;
 
    this .initialPositionOffset    = new Numbers_Vector3 (0, 0, 0);
-   this .initialOrientationOffset = new Numbers_Rotation4 (0, 0, 1, 0);
+   this .initialOrientationOffset = new Numbers_Rotation4 ();
    this .positionChaser           = new Followers_PositionChaser (executionContext);
    this .centerOfRotationChaser   = new Followers_PositionChaser (executionContext);
    this .rotationChaser           = new Followers_OrientationChaser (executionContext);
@@ -77681,7 +77431,7 @@ ExamineViewer .prototype = Object .assign (Object .create (Navigation_X3DViewer.
             viewpoint            = this .getActiveViewpoint (),
             userPosition         = viewpoint .getUserPosition (),
             userCenterOfRotation = viewpoint .getUserCenterOfRotation (),
-            direction            = Numbers_Vector3.subtract (userPosition, userCenterOfRotation),
+            direction            = userPosition .copy () .subtract (userCenterOfRotation),
             rotation             = this .getHorizonRotation (rotationChange),
             axis                 = viewpoint .getUpVector (true);
 
@@ -77800,7 +77550,7 @@ ExamineViewer .prototype = Object .assign (Object .create (Navigation_X3DViewer.
       const
          distance = new Numbers_Vector3 (0, 0, 0),
          d        = new Numbers_Vector3 (0, 0, 0),
-         oob      = new Numbers_Rotation4 (0, 0, 1, 0);
+         oob      = new Numbers_Rotation4 ();
 
       return function (positionOffsetBefore, orientationOffsetBefore, orientationOffsetAfter)
       {
@@ -77818,8 +77568,8 @@ ExamineViewer .prototype = Object .assign (Object .create (Navigation_X3DViewer.
    getOrientationOffset: (function ()
    {
       const
-         userOrientation   = new Numbers_Rotation4 (0, 0, 1, 0),
-         orientationOffset = new Numbers_Rotation4 (0, 0, 1, 0),
+         userOrientation   = new Numbers_Rotation4 (),
+         orientationOffset = new Numbers_Rotation4 (),
          zAxis             = new Numbers_Vector3 (0, 0, 0);
 
       return function (rotation, orientationOffsetBefore, _throw)
@@ -77867,8 +77617,8 @@ ExamineViewer .prototype = Object .assign (Object .create (Navigation_X3DViewer.
       {
          const
             V = rotation .multVecRot (zAxis .assign (Numbers_Vector3.zAxis)),
-            N = Numbers_Vector3.cross (Numbers_Vector3.yAxis, V),
-            H = Numbers_Vector3.cross (N, Numbers_Vector3.yAxis),
+            N = Numbers_Vector3.yAxis.copy () .cross (V),
+            H = N .copy () .cross (Numbers_Vector3.yAxis),
             r = new Numbers_Rotation4 (Numbers_Vector3.zAxis, H);
 
          return r;
@@ -77906,8 +77656,8 @@ const ExamineViewer_default_ = ExamineViewer;
 x_ite_Namespace.set ("x_ite/Browser/Navigation/ExamineViewer", ExamineViewer_default_);
 /* harmony default export */ const Navigation_ExamineViewer = (ExamineViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/X3DFlyViewer.js
-/* provided dependency */ var X3DFlyViewer_jquery_mousewheel = __webpack_require__(6);
-/* provided dependency */ var X3DFlyViewer_$ = __webpack_require__(994);
+/* provided dependency */ var X3DFlyViewer_jquery_mousewheel = __webpack_require__(596);
+/* provided dependency */ var X3DFlyViewer_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -78320,9 +78070,9 @@ X3DFlyViewer .prototype = Object .assign (Object .create (Navigation_X3DViewer.p
          upVector           = new Numbers_Vector3 (0, 0, 0),
          direction          = new Numbers_Vector3 (0, 0, 0),
          axis               = new Numbers_Vector3 (0, 0, 0),
-         userOrientation    = new Numbers_Rotation4 (0, 0, 1, 0),
-         orientationOffset  = new Numbers_Rotation4 (0, 0, 1, 0),
-         rubberBandRotation = new Numbers_Rotation4 (0, 0, 1, 0);
+         userOrientation    = new Numbers_Rotation4 (),
+         orientationOffset  = new Numbers_Rotation4 (),
+         rubberBandRotation = new Numbers_Rotation4 ();
 
       return function ()
       {
@@ -78453,8 +78203,8 @@ X3DFlyViewer .prototype = Object .assign (Object .create (Navigation_X3DViewer.p
    addRoll: (function ()
    {
       const
-         orientationOffset = new Numbers_Rotation4 (0, 0, 1, 0),
-         roll              = new Numbers_Rotation4 (0, 0, 1, 0);
+         orientationOffset = new Numbers_Rotation4 (),
+         roll              = new Numbers_Rotation4 ();
 
       return function (rollAngle)
       {
@@ -78490,8 +78240,8 @@ X3DFlyViewer .prototype = Object .assign (Object .create (Navigation_X3DViewer.p
    addRotation: (function ()
    {
       const
-         userOrientation   = new Numbers_Rotation4 (0, 0, 1, 0),
-         orientationOffset = new Numbers_Rotation4 (0, 0, 1, 0);
+         userOrientation   = new Numbers_Rotation4 (),
+         orientationOffset = new Numbers_Rotation4 ();
 
       return function (fromVector, toVector)
       {
@@ -78724,8 +78474,8 @@ WalkViewer .prototype = Object .assign (Object .create (Navigation_X3DFlyViewer.
    {
       const
          localYAxis      = new Numbers_Vector3 (0, 0, 0),
-         userOrientation = new Numbers_Rotation4 (0, 0, 1, 0),
-         rotation        = new Numbers_Rotation4 (0, 0, 1, 0);
+         userOrientation = new Numbers_Rotation4 (),
+         rotation        = new Numbers_Rotation4 ();
 
       return function (velocity)
       {
@@ -78855,8 +78605,8 @@ const FlyViewer_default_ = FlyViewer;
 x_ite_Namespace.set ("x_ite/Browser/Navigation/FlyViewer", FlyViewer_default_);
 /* harmony default export */ const Navigation_FlyViewer = (FlyViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/PlaneViewer.js
-/* provided dependency */ var PlaneViewer_jquery_mousewheel = __webpack_require__(6);
-/* provided dependency */ var PlaneViewer_$ = __webpack_require__(994);
+/* provided dependency */ var PlaneViewer_jquery_mousewheel = __webpack_require__(596);
+/* provided dependency */ var PlaneViewer_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -79165,8 +78915,8 @@ const NoneViewer_default_ = NoneViewer;
 x_ite_Namespace.set ("x_ite/Browser/Navigation/NoneViewer", NoneViewer_default_);
 /* harmony default export */ const Navigation_NoneViewer = (NoneViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/LookAtViewer.js
-/* provided dependency */ var LookAtViewer_jquery_mousewheel = __webpack_require__(6);
-/* provided dependency */ var LookAtViewer_$ = __webpack_require__(994);
+/* provided dependency */ var LookAtViewer_jquery_mousewheel = __webpack_require__(596);
+/* provided dependency */ var LookAtViewer_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -79539,7 +79289,7 @@ LookAtViewer .prototype = Object .assign (Object .create (Navigation_X3DViewer.p
 
                   event .deltaY     = delta;
                   event .zoomFactor = Math .abs (delta) / LookAtViewer_$(window) .width ();
-                  
+
                   event .pageX  = (touches [0] .pageX + touches [1] .pageX) / 2;
                   event .pageY  = (touches [0] .pageY + touches [1] .pageY) / 2;
 
@@ -79625,8 +79375,8 @@ LookAtViewer .prototype = Object .assign (Object .create (Navigation_X3DViewer.p
    addRotation: (function ()
    {
       const
-         userOrientation   = new Numbers_Rotation4 (0, 0, 1, 0),
-         orientationOffset = new Numbers_Rotation4 (0, 0, 1, 0);
+         userOrientation   = new Numbers_Rotation4 (),
+         orientationOffset = new Numbers_Rotation4 ();
 
       return function (fromVector, toVector)
       {
@@ -80798,8 +80548,8 @@ const X3DPickingContext_default_ = X3DPickingContext;
 x_ite_Namespace.set ("x_ite/Browser/Picking/X3DPickingContext", X3DPickingContext_default_);
 /* harmony default export */ const Picking_X3DPickingContext = (X3DPickingContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/PointingDeviceSensor/PointingDevice.js
-/* provided dependency */ var PointingDevice_jquery_mousewheel = __webpack_require__(6);
-/* provided dependency */ var PointingDevice_$ = __webpack_require__(994);
+/* provided dependency */ var PointingDevice_jquery_mousewheel = __webpack_require__(596);
+/* provided dependency */ var PointingDevice_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -81837,8 +81587,8 @@ const MultiSampleFrameBuffer_default_ = MultiSampleFrameBuffer;
 x_ite_Namespace.set ("x_ite/Rendering/MultiSampleFrameBuffer", MultiSampleFrameBuffer_default_);
 /* harmony default export */ const Rendering_MultiSampleFrameBuffer = (MultiSampleFrameBuffer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Rendering/X3DRenderingContext.js
-/* provided dependency */ var X3DRenderingContext_$ = __webpack_require__(994);
-/* provided dependency */ var ResizeSensor = __webpack_require__(822);
+/* provided dependency */ var X3DRenderingContext_$ = __webpack_require__(756);
+/* provided dependency */ var ResizeSensor = __webpack_require__(681);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -87731,7 +87481,7 @@ const X3DShaderNode_default_ = X3DShaderNode;
 x_ite_Namespace.set ("x_ite/Components/Shaders/X3DShaderNode", X3DShaderNode_default_);
 /* harmony default export */ const Shaders_X3DShaderNode = (X3DShaderNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/X3DProgrammableShaderObject.js
-/* provided dependency */ var X3DProgrammableShaderObject_$ = __webpack_require__(994);
+/* provided dependency */ var X3DProgrammableShaderObject_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -90508,7 +90258,7 @@ const ShaderCompiler_default_ = ShaderCompiler;
 x_ite_Namespace.set ("x_ite/Browser/Shaders/ShaderCompiler", ShaderCompiler_default_);
 /* harmony default export */ const Shaders_ShaderCompiler = (ShaderCompiler_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/ShaderPart.js
-/* provided dependency */ var ShaderPart_$ = __webpack_require__(994);
+/* provided dependency */ var ShaderPart_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -90796,7 +90546,6 @@ x_ite_Namespace.set ("x_ite/Components/Shaders/ShaderPart", ShaderPart_default_)
 const
    _wireframe      = Symbol (),
    _primitiveModes = Symbol (),
-   _defaultShader  = Symbol (),
    _shaderNodes    = Symbol ();
 
 function X3DShadersContext ()
@@ -95787,7 +95536,7 @@ ProximitySensor .prototype = Object .assign (Object .create (EnvironmentalSensor
          invModelMatrix         = new Numbers_Matrix4 (),
          centerOfRotationMatrix = new Numbers_Matrix4 (),
          position               = new Numbers_Vector3 (0, 0, 0),
-         orientation            = new Numbers_Rotation4 (0, 0, 1, 0),
+         orientation            = new Numbers_Rotation4 (),
          centerOfRotation       = new Numbers_Vector3 (0, 0, 0);
 
       return function ()
@@ -96125,7 +95874,7 @@ TransformSensor .prototype = Object .assign (Object .create (EnvironmentalSensor
    {
       const
          position    = new Numbers_Vector3 (0, 0, 0),
-         orientation = new Numbers_Rotation4 (0, 0, 1, 0);
+         orientation = new Numbers_Rotation4 ();
 
       return function ()
       {
@@ -97454,8 +97203,8 @@ x_ite_Namespace.set ("x_ite/Components/Followers/CoordinateDamper", CoordinateDa
 
 
 var
-   OrientationDamper_a        = new Numbers_Rotation4 (0, 0, 1, 0),
-   OrientationDamper_rotation = new Numbers_Rotation4 (0, 0, 1, 0);
+   OrientationDamper_a        = new Numbers_Rotation4 (),
+   OrientationDamper_rotation = new Numbers_Rotation4 ();
 
 function OrientationDamper (executionContext)
 {
@@ -97503,7 +97252,7 @@ OrientationDamper .prototype = Object .assign (Object .create (Followers_X3DDamp
    },
    getVector: function ()
    {
-      return new Numbers_Rotation4 (0, 0, 1, 0);
+      return new Numbers_Rotation4 ();
    },
    equals: function (lhs, rhs, tolerance)
    {
@@ -98513,14 +98262,11 @@ Box .prototype = Object .assign (Object .create (Rendering_X3DGeometryNode.proto
          else
          {
             const
-               scale           = Numbers_Vector3.divide (size, 2),
+               x               = Math .abs (size .x / 2),
+               y               = Math .abs (size .y / 2),
+               z               = Math .abs (size .z / 2),
                defaultVertices = geometry .getVertices () .getValue (),
                vertexArray     = this .getVertices ();
-
-            let
-               x = scale .x,
-               y = scale .y,
-               z = scale .z;
 
             for (let i = 0, length = defaultVertices .length; i < length; i += 4)
             {
@@ -98529,10 +98275,6 @@ Box .prototype = Object .assign (Object .create (Rendering_X3DGeometryNode.proto
                                   z * defaultVertices [i + 2],
                                   1);
             }
-
-            x = Math .abs (x);
-            y = Math .abs (y);
-            z = Math .abs (z);
 
             this .getMin () .set (-x, -y, -z);
             this .getMax () .set ( x,  y,  z);
@@ -98725,7 +98467,7 @@ Cone .prototype = Object .assign (Object .create (Rendering_X3DGeometryNode.prot
                u     = i / xDimension,
                theta = 2 * Math .PI * u,
                t     = Numbers_Complex.Polar (-1, theta),
-               p     = Numbers_Complex.multiply (t, bottomRadius);
+               p     = t .copy () .multiply (bottomRadius);
 
             texCoord .push (new Numbers_Vector2 ((t .imag + 1) / 2, (t .real + 1) / 2));
             points   .push (new Numbers_Vector3 (p .imag, y2, p .real));
@@ -98918,13 +98660,13 @@ Cylinder .prototype = Object .assign (Object .create (Rendering_X3DGeometryNode.
                u1     = i / xDimension,
                theta1 = 2 * Math .PI * u1,
                n1     = Numbers_Complex.Polar (-1, theta1),
-               p1     = Numbers_Complex.multiply (n1, radius);
+               p1     = n1 .copy () .multiply (radius);
 
             const
                u2     = (i + 1) / xDimension,
                theta2 = 2 * Math .PI * u2,
                n2     = Numbers_Complex.Polar (-1, theta2),
-               p2     = Numbers_Complex.multiply (n2, radius);
+               p2     = n2 .copy () .multiply (radius);
 
             // p1 - p4
             //  | \ |
@@ -99707,7 +99449,7 @@ Extrusion .prototype = Object .assign (Object .create (Rendering_X3DGeometryNode
 
          const
          vector3  = new Numbers_Vector3 (0, 0, 0),
-         rotation = new Numbers_Rotation4 (0, 0, 1, 0);
+         rotation = new Numbers_Rotation4 ();
 
       return function ()
       {
@@ -100129,7 +99871,7 @@ Extrusion .prototype = Object .assign (Object .create (Rendering_X3DGeometryNode
                      point = points [index] .copy ();
 
                   point .index     = index;
-                  texCoord [index] = Numbers_Vector2.subtract (crossSection [numCapPoints - 1 - k] .getValue (), min) .divide (capMax);
+                  texCoord [index] = crossSection [numCapPoints - 1 - k] .getValue () .copy () .subtract (min) .divide (capMax);
                   polygon .push (convex ? index : point);
                }
 
@@ -100169,7 +99911,7 @@ Extrusion .prototype = Object .assign (Object .create (Rendering_X3DGeometryNode
                      point = points [index] .copy ();
 
                   point .index     = index;
-                  texCoord [index] = Numbers_Vector2.subtract (crossSection [k] .getValue (), min) .divide (capMax);
+                  texCoord [index] = crossSection [k] .getValue () .copy () .subtract (min) .divide (capMax);
                   polygon .push (convex ? index : point);
                }
 
@@ -102267,7 +102009,7 @@ function CatmullRomSplineInterpolatorTemplate (Type)
       constructor: CatmullRomSplineInterpolatorInstance,
       create: function ()
       {
-         return new Type (0, 0, 0, 0);
+         return Type .Zero .copy ();
       },
       copy: function (value)
       {
@@ -102275,15 +102017,15 @@ function CatmullRomSplineInterpolatorTemplate (Type)
       },
       subtract: function (lhs, rhs)
       {
-         return Type .subtract (lhs, rhs);
+         return lhs .copy () .subtract (rhs);
       },
       multiply: function (lhs, rhs)
       {
-         return Type .multiply (lhs, rhs);
+         return lhs .copy () .multiply (rhs);
       },
       divide: function (lhs, rhs)
       {
-         return Type .divide (lhs, rhs);
+         return lhs .copy () .divide (rhs);
       },
       magnitude: function (value)
       {
@@ -102999,8 +102741,6 @@ x_ite_Namespace.set ("x_ite/Components/Interpolation/SplineScalarInterpolator", 
 
 
 
-const result = new Numbers_Rotation4 (0, 0, 1, 0);
-
 function SquatInterpolator ()
 {
    this .s = [ ];
@@ -103047,14 +102787,21 @@ SquatInterpolator .prototype =
          }
       }
       else if (key .length > 0)
+      {
          s .push (keyValue [0] .getValue () .copy ());
+      }
    },
-   interpolate: function (index0, index1, weight, keyValue)
+   interpolate: (function ()
    {
-      return result .assign (keyValue [index0] .getValue ()) .squad (this .s [index0],
-                                                                     this .s [index1],
-                                                                     keyValue [index1] .getValue (), weight);
-   },
+      const result = new Numbers_Rotation4 ();
+
+      return function (index0, index1, weight, keyValue)
+      {
+         return result .assign (keyValue [index0] .getValue ()) .squad (this .s [index0],
+                                                                        this .s [index1],
+                                                                        keyValue [index1] .getValue (), weight);
+      };
+   })(),
 };
 
 const SquatInterpolator_default_ = SquatInterpolator;
@@ -104408,7 +104155,7 @@ Billboard .prototype = Object .assign (Object .create (Grouping_X3DGroupingNode.
          y                      = new Numbers_Vector3 (0, 0, 0),
          N1                     = new Numbers_Vector3 (0, 0, 0),
          N2                     = new Numbers_Vector3 (0, 0, 0),
-         rotation               = new Numbers_Rotation4 (0, 0, 1, 0);
+         rotation               = new Numbers_Rotation4 ();
 
       return function (modelViewMatrix)
       {
@@ -106501,7 +106248,7 @@ Cylinder3 .prototype =
 
       // find the given line un-translated
       const
-         point             = Numbers_Vector3.subtract (line .point, this .axis .point),
+         point             = line .point .copy () .subtract (this .axis .point),
          noTranslationLine = new Geometry_Line3 (point, line .direction);
 
       // find the un-translated line in unit cylinder's space
@@ -106696,7 +106443,7 @@ CylinderSensor .prototype = Object .assign (Object .create (PointingDeviceSensor
       this .szNormal    = null;
       this .behind      = false;
       this .fromVector  = new Numbers_Vector3 (0, 0, 0);
-      this .startOffset = new Numbers_Rotation4 (0, 0, 1, 0);
+      this .startOffset = new Numbers_Rotation4 ();
    },
    isBehind: function (hitRay, hitPoint)
    {
@@ -106706,7 +106453,7 @@ CylinderSensor .prototype = Object .assign (Object .create (PointingDeviceSensor
 
       this .cylinder .intersectsLine (hitRay, enter, exit);
 
-      return Numbers_Vector3.subtract (hitPoint, enter) .magnitude () > Numbers_Vector3.subtract (hitPoint, exit) .magnitude ();
+      return hitPoint .distance (enter) > hitPoint .distance (exit);
    },
    getTrackPoint: function (hitRay, trackPoint)
    {
@@ -106715,7 +106462,7 @@ CylinderSensor .prototype = Object .assign (Object .create (PointingDeviceSensor
       this .zPlane .intersectsLine (hitRay, zPoint);
 
       const
-         axisPoint = Numbers_Vector3.add (zPoint, this .cylinder .axis .getPerpendicularVectorToPoint (zPoint, new Numbers_Vector3 (0, 0, 0))),
+         axisPoint = zPoint .copy () .add (this .cylinder .axis .getPerpendicularVectorToPoint (zPoint, new Numbers_Vector3 (0, 0, 0))),
          distance  = this .sxPlane .getDistanceToPoint (zPoint) / this .cylinder .radius,
          section   = Math .floor ((distance + 1) / 2);
 
@@ -106732,7 +106479,7 @@ CylinderSensor .prototype = Object .assign (Object .create (PointingDeviceSensor
    },
    getAngle: function (rotation)
    {
-      if (Numbers_Vector3.dot (rotation .getAxis (new Numbers_Vector3 (0, 0, 0)), this .cylinder .axis .direction) > 0)
+      if (rotation .getAxis (new Numbers_Vector3 (0, 0, 0)) .dot (this .cylinder .axis .direction) > 0)
          return rotation .angle;
 
       else
@@ -106760,7 +106507,7 @@ CylinderSensor .prototype = Object .assign (Object .create (PointingDeviceSensor
             radius = axis .getPerpendicularVectorToPoint (hitPoint, new Numbers_Vector3 (0, 0, 0)) .magnitude ();
 
          this .cylinder = new Geometry_Cylinder3 (axis, radius);
-         this .disk     = Math .abs (Numbers_Vector3.dot (cameraBack, yAxis)) > Math .cos (this ._diskAngle .getValue ());
+         this .disk     = Math .abs (cameraBack .dot (yAxis)) > Math .cos (this ._diskAngle .getValue ());
          this .behind   = this .isBehind (hitRay, hitPoint);
          this .yPlane   = new Geometry_Plane3 (hitPoint, yAxis);             // Sensor aligned y-plane
          this .zPlane   = new Geometry_Plane3 (hitPoint, cameraBack);        // Screen aligned z-plane
@@ -106768,10 +106515,10 @@ CylinderSensor .prototype = Object .assign (Object .create (PointingDeviceSensor
          // Compute normal like in Billboard with yAxis as axis of rotation.
          const
             billboardToViewer = this .invModelViewMatrix .origin,
-            sxNormal          = Numbers_Vector3.cross (yAxis, billboardToViewer) .normalize ();
+            sxNormal          = yAxis .copy () .cross (billboardToViewer) .normalize ();
 
          this .sxPlane  = new Geometry_Plane3 (new Numbers_Vector3 (0, 0, 0), sxNormal);   // Billboarded special x-plane made parallel to sensors axis.
-         this .szNormal = Numbers_Vector3.cross (sxNormal, yAxis) .normalize (); // Billboarded special z-normal made parallel to sensors axis.
+         this .szNormal = sxNormal .copy () .cross (yAxis) .normalize (); // Billboarded special z-normal made parallel to sensors axis.
 
          const trackPoint = new Numbers_Vector3 (0, 0, 0);
 
@@ -107020,7 +106767,7 @@ Line2 .Points = function (point1, point2)
 {
    const line = Object .create (Line2 .prototype);
    line .point     = point1 .copy ();
-   line .direction = Numbers_Vector2.subtract (point2, point1) .normalize ();
+   line .direction = point2 .copy () .subtract (point1) .normalize ();
    return line;
 };
 
@@ -107300,7 +107047,7 @@ PlaneSensor .prototype = Object .assign (Object .create (PointingDeviceSensor_X3
    {
       const
          axisRotation = this ._axisRotation .getValue (),
-         translation  = Numbers_Rotation4.inverse (axisRotation) .multVecRot (endPoint .add (this .startOffset) .subtract (this .startPoint));
+         translation  = axisRotation .copy () .inverse () .multVecRot (endPoint .add (this .startOffset) .subtract (this .startPoint));
 
       // X component
 
@@ -107459,8 +107206,8 @@ Sphere3 .prototype =
          const
             rr   = r * r,
             V    = AB .cross (AC),
-            d    = Numbers_Vector3.dot (A, V),
-            e    = Numbers_Vector3.dot (V, V),
+            d    = A .dot (V),
+            e    = V .dot (V),
             sep1 = d * d > rr * e;
 
          if (sep1)
@@ -107468,12 +107215,12 @@ Sphere3 .prototype =
 
          // Testing if sphere lies outside a triangle vertex.
          const
-            aa   = Numbers_Vector3.dot (A, A),
-            ab   = Numbers_Vector3.dot (A, B),
-            ac   = Numbers_Vector3.dot (A, C),
-            bb   = Numbers_Vector3.dot (B, B),
-            bc   = Numbers_Vector3.dot (B, C),
-            cc   = Numbers_Vector3.dot (C, C),
+            aa   = A .dot (A),
+            ab   = A .dot (B),
+            ac   = A .dot (C),
+            bb   = B .dot (B),
+            bc   = B .dot (C),
+            cc   = C .dot (C),
             sep2 = (aa > rr) && (ab > aa) && (ac > aa),
             sep3 = (bb > rr) && (ab > bb) && (bc > bb),
             sep4 = (cc > rr) && (ac > cc) && (bc > cc);
@@ -107491,9 +107238,9 @@ Sphere3 .prototype =
             d1   = ab - aa,
             d2   = bc - bb,
             d3   = ac - cc,
-            e1   = Numbers_Vector3.dot (AB, AB),
-            e2   = Numbers_Vector3.dot (BC, BC),
-            e3   = Numbers_Vector3.dot (CA, CA);
+            e1   = AB .dot (AB),
+            e2   = BC .dot (BC),
+            e3   = CA .dot (CA);
 
          Q1 .assign (A) .multiply (e1) .subtract (AB .multiply (d1));
          Q2 .assign (B) .multiply (e2) .subtract (BC .multiply (d2));
@@ -107503,9 +107250,9 @@ Sphere3 .prototype =
             QC   = C .multiply (e1) .subtract (Q1),
             QA   = A .multiply (e2) .subtract (Q2),
             QB   = B .multiply (e3) .subtract (Q3),
-            sep5 = (Numbers_Vector3.dot (Q1, Q1) > rr * e1 * e1) && (Numbers_Vector3.dot (Q1, QC) > 0),
-            sep6 = (Numbers_Vector3.dot (Q2, Q2) > rr * e2 * e2) && (Numbers_Vector3.dot (Q2, QA) > 0),
-            sep7 = (Numbers_Vector3.dot (Q3, Q3) > rr * e3 * e3) && (Numbers_Vector3.dot (Q3, QB) > 0);
+            sep5 = (Q1 .dot (Q1) > rr * e1 * e1) && (Q1 .dot (QC) > 0),
+            sep6 = (Q2 .dot (Q2) > rr * e2 * e2) && (Q2 .dot (QA) > 0),
+            sep7 = (Q3 .dot (Q3) > rr * e3 * e3) && (Q3 .dot (QB) > 0);
 
          if (sep5 || sep6 || sep7)
             return false;
@@ -107634,7 +107381,7 @@ SphereSensor .prototype = Object .assign (Object .create (PointingDeviceSensor_X
       this .behind      = false;
       this .fromVector  = new Numbers_Vector3 (0, 0, 0);
       this .startPoint  = new Numbers_Vector3 (0, 0, 0);
-      this .startOffset = new Numbers_Rotation4 (0, 0, 1, 0);
+      this .startOffset = new Numbers_Rotation4 ();
    },
    getTrackPoint: function (hitRay, trackPoint, behind)
    {
@@ -107642,7 +107389,7 @@ SphereSensor .prototype = Object .assign (Object .create (PointingDeviceSensor_X
 
       if (this .sphere .intersectsLine (hitRay, trackPoint, exit))
       {
-         if ((Numbers_Vector3.subtract (hitRay .point, exit) .magnitude () < Numbers_Vector3.subtract (hitRay .point, trackPoint) .magnitude ()) - behind)
+         if ((hitRay .point .distance (exit) < hitRay .point .distance (trackPoint)) - behind)
             trackPoint .assign (exit);
 
          return true;
@@ -107700,7 +107447,7 @@ SphereSensor .prototype = Object .assign (Object .create (PointingDeviceSensor_X
 
          this .zPlane .intersectsLine (hitRay, tangentPoint);
 
-         hitRay .set (tangentPoint, Numbers_Vector3.subtract (this .sphere .center, tangentPoint) .normalize ());
+         hitRay .set (tangentPoint, this .sphere .center .copy () .subtract (tangentPoint) .normalize ());
 
          //console .log (hitRay .toString ());
 
@@ -107710,12 +107457,12 @@ SphereSensor .prototype = Object .assign (Object .create (PointingDeviceSensor_X
 
          const
             triNormal     = Geometry_Triangle3.normal (this .sphere .center, trackPoint, this .startPoint, new Numbers_Vector3 (0, 0, 0)),
-            dirFromCenter = Numbers_Vector3.subtract (trackPoint, this .sphere .center) .normalize (),
-            normal        = Numbers_Vector3.cross (triNormal, dirFromCenter) .normalize ();
+            dirFromCenter = trackPoint .copy () .subtract (this .sphere .center) .normalize (),
+            normal        = triNormal .copy () .cross (dirFromCenter) .normalize ();
 
-         const point1 = Numbers_Vector3.subtract (trackPoint, normal .multiply (Numbers_Vector3.subtract (tangentPoint, trackPoint) .magnitude ()));
+         const point1 = trackPoint .copy () .subtract (normal .multiply (tangentPoint .copy () .subtract (trackPoint) .magnitude ()));
 
-         hitRay .set (point1, Numbers_Vector3.subtract (this .sphere .center, point1) .normalize ());
+         hitRay .set (point1, this .sphere .center .copy () .subtract (point1) .normalize ());
 
          this .getTrackPoint (hitRay, trackPoint, false);
       }
@@ -107723,13 +107470,13 @@ SphereSensor .prototype = Object .assign (Object .create (PointingDeviceSensor_X
       this ._trackPoint_changed = trackPoint;
 
       const
-         toVector = Numbers_Vector3.subtract (trackPoint, this .sphere .center),
+         toVector = trackPoint .copy () .subtract (this .sphere .center),
          rotation = new Numbers_Rotation4 (this .fromVector, toVector);
 
       if (this .behind)
          rotation .inverse ();
 
-      this ._rotation_changed = Numbers_Rotation4.multRight (this .startOffset, rotation);
+      this ._rotation_changed = this .startOffset .copy () .multRight (rotation);
    },
 });
 
@@ -112920,7 +112667,7 @@ const X3DSoundSourceNode_default_ = X3DSoundSourceNode;
 x_ite_Namespace.set ("x_ite/Components/Sound/X3DSoundSourceNode", X3DSoundSourceNode_default_);
 /* harmony default export */ const Sound_X3DSoundSourceNode = (X3DSoundSourceNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/AudioClip.js
-/* provided dependency */ var AudioClip_$ = __webpack_require__(994);
+/* provided dependency */ var AudioClip_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -115819,8 +115566,8 @@ const GIFMedia_default_ = GifMedia;
 x_ite_Namespace.set ("x_ite/Browser/Texturing/GIFMedia", GIFMedia_default_);
 /* harmony default export */ const GIFMedia = (GIFMedia_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/MovieTexture.js
-/* provided dependency */ var MovieTexture_$ = __webpack_require__(994);
-/* provided dependency */ var SuperGif = __webpack_require__(361);
+/* provided dependency */ var MovieTexture_$ = __webpack_require__(756);
+/* provided dependency */ var SuperGif = __webpack_require__(857);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -116783,7 +116530,7 @@ const MultiTextureTransform_default_ = MultiTextureTransform;
 x_ite_Namespace.set ("x_ite/Components/Texturing/MultiTextureTransform", MultiTextureTransform_default_);
 /* harmony default export */ const Texturing_MultiTextureTransform = (MultiTextureTransform_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/PixelTexture.js
-/* provided dependency */ var PixelTexture_$ = __webpack_require__(994);
+/* provided dependency */ var PixelTexture_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -117494,7 +117241,7 @@ const Components_default_ = Components;
 x_ite_Namespace.set ("x_ite/Components", Components_default_);
 /* harmony default export */ const x_ite_Components = ((/* unused pure expression or super */ null && (Components_default_)));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/DOMIntegration.js
-/* provided dependency */ var DOMIntegration_$ = __webpack_require__(994);
+/* provided dependency */ var DOMIntegration_$ = __webpack_require__(756);
 /*******************************************************************************
  * MIT License
  *
@@ -118735,7 +118482,7 @@ const SupportedProfiles_default_ = SupportedProfiles;
 x_ite_Namespace.set ("x_ite/Configuration/SupportedProfiles", SupportedProfiles_default_);
 /* harmony default export */ const Configuration_SupportedProfiles = (SupportedProfiles_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/X3DBrowser.js
-/* provided dependency */ var X3DBrowser_$ = __webpack_require__(994);
+/* provided dependency */ var X3DBrowser_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -119551,18 +119298,18 @@ X3DBrowser .prototype = Object .assign (Object .create (Browser_X3DBrowserContex
       this .setLive (false);
       this .getExecutionContext () .setLive (false);
    },
-   print: function ()
+   print: function (... args)
    {
-      const string = Array .prototype .join .call (arguments, "");
+      const string = args .join ("");
 
       console .log (string);
 
       for (const element of this [_console])
          element .append (document .createTextNode (string));
    },
-   println: function ()
+   println: function (... args)
    {
-      const string = Array .prototype .join .call (arguments, "");
+      const string = args .join ("");
 
       console .log (string);
 
@@ -119657,7 +119404,7 @@ const X3DBrowser_default_ = X3DBrowser;
 x_ite_Namespace.set ("x_ite/Browser/X3DBrowser", X3DBrowser_default_);
 /* harmony default export */ const Browser_X3DBrowser = (X3DBrowser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fallback.js
-/* provided dependency */ var Fallback_$ = __webpack_require__(994);
+/* provided dependency */ var Fallback_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -119836,8 +119583,8 @@ const MicroTime_default_ = undefined;
 x_ite_Namespace.set ("standard/Time/MicroTime", MicroTime_default_);
 /* harmony default export */ const MicroTime = ((/* unused pure expression or super */ null && (MicroTime_default_)));
 ;// CONCATENATED MODULE: ./src/lib/jquery.js
-/* provided dependency */ var jquery_$ = __webpack_require__(994);
-/* provided dependency */ var pako = __webpack_require__(444);
+/* provided dependency */ var jquery_$ = __webpack_require__(756);
+/* provided dependency */ var pako = __webpack_require__(879);
 jquery_$.decodeText = function (input)
 {
    if (typeof input === "string")
@@ -119863,20 +119610,33 @@ jquery_$.toLowerCaseFirst = function (string)
    return string [0] .toLowerCase () + string .slice (1);
 };
 
+jquery_$.fn.isInViewport = function ()
+{
+   const
+      $this          = jquery_$(this),
+      $window        = jquery_$(window),
+      elementTop     = $this .offset () .top,
+      elementBottom  = elementTop + $this .outerHeight (),
+      viewportTop    = $window .scrollTop (),
+      viewportBottom = viewportTop + $window .height ();
+
+   return elementBottom > viewportTop && elementTop < viewportBottom;
+};
+
 const jquery_default_ = jquery_$;
 ;
 
 x_ite_Namespace.set ("lib/jquery", jquery_default_);
 /* harmony default export */ const jquery = ((/* unused pure expression or super */ null && (jquery_default_)));
 ;// CONCATENATED MODULE: ./src/lib/libtess.js
-/* provided dependency */ var libtess_libtess = __webpack_require__(870);
+/* provided dependency */ var libtess_libtess = __webpack_require__(405);
 const libtess_default_ = libtess_libtess;
 ;
 
 x_ite_Namespace.set ("lib/libtess", libtess_default_);
 /* harmony default export */ const lib_libtess = ((/* unused pure expression or super */ null && (libtess_default_)));
 ;// CONCATENATED MODULE: ./src/x_ite/X3D.js
-/* provided dependency */ var X3D_$ = __webpack_require__(994);
+/* provided dependency */ var X3D_$ = __webpack_require__(756);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -120215,6 +119975,7 @@ class X3DCanvasElement extends HTMLElement
          "splashscreen",
          "src",
          "timings",
+         "update",
          "url",
       ];
    }
@@ -120388,7 +120149,7 @@ x_ite_Namespace.set ("shim", shim_default_);
 
 // Assign X3D to global namespace.
 
-window [Symbol .for ("X_ITE.X3D-8.7.5")] = x_ite_X3D;
+window [Symbol .for ("X_ITE.X3D-8.7.6")] = x_ite_X3D;
 
 customElements .define ("x3d-canvas", x_ite_X3DCanvasElement);
 
