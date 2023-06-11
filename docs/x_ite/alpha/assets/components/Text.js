@@ -1,7 +1,7 @@
-/* X_ITE v8.7.9 */(() => { // webpackBootstrap
+/* X_ITE v8.8.0 */(() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 475:
+/***/ 49:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 /**
@@ -14488,7 +14488,7 @@
 /***/ ((module) => {
 
 "use strict";
-module.exports = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("lib/jquery");
+module.exports = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("lib/jquery");
 
 /***/ }),
 
@@ -14564,25 +14564,25 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DNode\")"
-const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("x_ite/Components/Core/X3DNode");
+const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("x_ite/Components/Core/X3DNode");
 var X3DNode_default = /*#__PURE__*/__webpack_require__.n(X3DNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Networking/X3DUrlObject\")"
-const X3DUrlObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("x_ite/Components/Networking/X3DUrlObject");
+const X3DUrlObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("x_ite/Components/Networking/X3DUrlObject");
 var X3DUrlObject_default = /*#__PURE__*/__webpack_require__.n(X3DUrlObject_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Text/TextAlignment.js
 /*******************************************************************************
@@ -14648,13 +14648,13 @@ const __default__ = TextAlignment;
 Namespace_default().set ("x_ite/Browser/Text/TextAlignment", __default__);
 /* harmony default export */ const Text_TextAlignment = (__default__);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/InputOutput/FileLoader\")"
-const FileLoader_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("x_ite/InputOutput/FileLoader");
+const FileLoader_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("x_ite/InputOutput/FileLoader");
 var FileLoader_default = /*#__PURE__*/__webpack_require__.n(FileLoader_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Browser/Networking/URLs\")"
-const URLs_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("x_ite/Browser/Networking/URLs");
+const URLs_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("x_ite/Browser/Networking/URLs");
 var URLs_default = /*#__PURE__*/__webpack_require__.n(URLs_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Text/X3DFontStyleNode.js
 /*******************************************************************************
@@ -14745,25 +14745,25 @@ function X3DFontStyleNode (executionContext)
 
    this .addType ((X3DConstants_default()).X3DFontStyleNode);
 
-   this .addChildObjects ("load",                 new (Fields_default()).SFBool (true),
+   this .addChildObjects ("url",                  this ._family,
+                          "load",                 new (Fields_default()).SFBool (true),
                           "autoRefresh",          new (Fields_default()).SFTime (),
                           "autoRefreshTimeLimit", new (Fields_default()).SFTime (3600));
 
-   this .addAlias ("url", this ._family);
+   this ._family .setName ("family");
 
    this .familyStack = [ ];
    this .alignments  = [ ];
    this .loader      = new (FileLoader_default()) (this);
 }
 
-X3DFontStyleNode .prototype = Object .assign (Object .create ((X3DNode_default()).prototype),
+Object .assign (Object .setPrototypeOf (X3DFontStyleNode .prototype, (X3DNode_default()).prototype),
    (X3DUrlObject_default()).prototype,
 {
-   constructor: X3DFontStyleNode,
-   initialize: function ()
+   initialize ()
    {
-      X3DNode_default().prototype.initialize.call (this);
-      X3DUrlObject_default().prototype.initialize.call (this);
+      X3DNode_default().prototype .initialize .call (this);
+      X3DUrlObject_default().prototype .initialize .call (this);
 
       this ._style   .addInterest ("set_style__",   this);
       this ._justify .addInterest ("set_justify__", this);
@@ -14776,7 +14776,7 @@ X3DFontStyleNode .prototype = Object .assign (Object .create ((X3DNode_default()
 
       this .requestImmediateLoad () .catch (Function .prototype);
    },
-   set_style__: function ()
+   set_style__ ()
    {
       if (!this ._load .getValue ())
          return;
@@ -14785,29 +14785,29 @@ X3DFontStyleNode .prototype = Object .assign (Object .create ((X3DNode_default()
 
       this .requestImmediateLoad () .catch (Function .prototype);
    },
-   set_justify__: function ()
+   set_justify__ ()
    {
       const majorNormal = this ._horizontal .getValue () ? this ._leftToRight .getValue () : this ._topToBottom .getValue ();
 
       this .alignments [0] = this ._justify .length > 0
                              ? this .getAlignment (0, majorNormal)
-                             : majorNormal ? Text_TextAlignment.BEGIN : Text_TextAlignment.END;
+                             : majorNormal ? Text_TextAlignment .BEGIN : Text_TextAlignment .END;
 
       const minorNormal = this ._horizontal .getValue () ? this ._topToBottom .getValue () : this ._leftToRight .getValue ();
 
       this .alignments [1] = this ._justify .length > 1
                              ? this .getAlignment (1, minorNormal)
-                             : minorNormal ? Text_TextAlignment.FIRST : Text_TextAlignment.END;
+                             : minorNormal ? Text_TextAlignment .FIRST : Text_TextAlignment .END;
    },
-   getMajorAlignment: function ()
+   getMajorAlignment ()
    {
       return this .alignments [0];
    },
-   getMinorAlignment: function ()
+   getMinorAlignment ()
    {
       return this .alignments [1];
    },
-   getAlignment: function (index, normal)
+   getAlignment (index, normal)
    {
       if (normal)
       {
@@ -14815,10 +14815,10 @@ X3DFontStyleNode .prototype = Object .assign (Object .create ((X3DNode_default()
 
          switch (this ._justify [index])
          {
-            case "FIRST":  return Text_TextAlignment.FIRST;
-            case "BEGIN":  return Text_TextAlignment.BEGIN;
-            case "MIDDLE": return Text_TextAlignment.MIDDLE;
-            case "END":    return Text_TextAlignment.END;
+            case "FIRST":  return Text_TextAlignment .FIRST;
+            case "BEGIN":  return Text_TextAlignment .BEGIN;
+            case "MIDDLE": return Text_TextAlignment .MIDDLE;
+            case "END":    return Text_TextAlignment .END;
          }
       }
       else
@@ -14827,16 +14827,16 @@ X3DFontStyleNode .prototype = Object .assign (Object .create ((X3DNode_default()
 
          switch (this ._justify [index])
          {
-            case "FIRST":  return Text_TextAlignment.END;
-            case "BEGIN":  return Text_TextAlignment.END;
-            case "MIDDLE": return Text_TextAlignment.MIDDLE;
-            case "END":    return Text_TextAlignment.BEGIN;
+            case "FIRST":  return Text_TextAlignment .END;
+            case "BEGIN":  return Text_TextAlignment .END;
+            case "MIDDLE": return Text_TextAlignment .MIDDLE;
+            case "END":    return Text_TextAlignment .BEGIN;
          }
       }
 
-      return index ? Text_TextAlignment.FIRST : Text_TextAlignment.BEGIN;
+      return index ? Text_TextAlignment .FIRST : Text_TextAlignment .BEGIN;
    },
-   getDefaultFont: function (familyName)
+   getDefaultFont (familyName)
    {
       const family = Fonts [familyName];
 
@@ -14845,7 +14845,7 @@ X3DFontStyleNode .prototype = Object .assign (Object .create ((X3DNode_default()
 
       return;
    },
-   loadData: function ()
+   loadData ()
    {
       // Add default font to family array.
 
@@ -14862,7 +14862,7 @@ X3DFontStyleNode .prototype = Object .assign (Object .create ((X3DNode_default()
 
       this .loadNext ();
    },
-   loadNext: function ()
+   loadNext ()
    {
       try
       {
@@ -14891,28 +14891,42 @@ X3DFontStyleNode .prototype = Object .assign (Object .create ((X3DNode_default()
          this .setError (error .message);
       }
    },
-   setError: function (error)
+   setError (error)
    {
       if (this .URL .protocol !== "data:")
-         console .warn ("Error loading font '" + decodeURI (this .URL .href) + "':", error);
+         console .warn (`Error loading font '${decodeURI (this .URL .href)}':`, error);
 
       this .loadNext ();
    },
-   setFont: function (font)
+   setFont (font)
    {
       this .font = font;
 
       this .setLoadState ((X3DConstants_default()).COMPLETE_STATE);
       this .addNodeEvent ();
    },
-   getFont: function ()
+   getFont ()
    {
       return this .font;
    },
-   dispose: function ()
+   dispose ()
    {
-      X3DUrlObject_default().prototype.dispose.call (this);
-      X3DNode_default().prototype.dispose.call (this);
+      X3DUrlObject_default().prototype .dispose .call (this);
+      X3DNode_default().prototype .dispose .call (this);
+   },
+});
+
+Object .defineProperties (X3DFontStyleNode,
+{
+   typeName:
+   {
+      value: "X3DFontStyleNode",
+      enumerable: true,
+   },
+   componentName:
+   {
+      value: "Text",
+      enumerable: true,
    },
 });
 
@@ -14922,19 +14936,19 @@ const X3DFontStyleNode_default_ = X3DFontStyleNode;
 Namespace_default().set ("x_ite/Components/Text/X3DFontStyleNode", X3DFontStyleNode_default_);
 /* harmony default export */ const Text_X3DFontStyleNode = (X3DFontStyleNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Browser/Core/PrimitiveQuality\")"
-const PrimitiveQuality_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("x_ite/Browser/Core/PrimitiveQuality");
+const PrimitiveQuality_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("x_ite/Browser/Core/PrimitiveQuality");
 var PrimitiveQuality_default = /*#__PURE__*/__webpack_require__.n(PrimitiveQuality_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Box2\")"
-const Box2_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("standard/Math/Geometry/Box2");
+const Box2_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("standard/Math/Geometry/Box2");
 var Box2_default = /*#__PURE__*/__webpack_require__.n(Box2_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Box3\")"
-const Box3_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("standard/Math/Geometry/Box3");
+const Box3_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("standard/Math/Geometry/Box3");
 var Box3_default = /*#__PURE__*/__webpack_require__.n(Box3_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector2\")"
-const Vector2_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("standard/Math/Numbers/Vector2");
+const Vector2_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("standard/Math/Numbers/Vector2");
 var Vector2_default = /*#__PURE__*/__webpack_require__.n(Vector2_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
-const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("standard/Math/Numbers/Vector3");
+const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Text/X3DTextGeometry.js
 /*******************************************************************************
@@ -15024,46 +15038,45 @@ function X3DTextGeometry (text, fontStyle)
    this .bbox           = new (Box3_default()) ();
 }
 
-X3DTextGeometry .prototype =
+Object .assign (X3DTextGeometry .prototype,
 {
-   constructor: X3DTextGeometry,
-   getBrowser: function ()
+   getBrowser ()
    {
       return this .browser;
    },
-   getText: function ()
+   getText ()
    {
       return this .text;
    },
-   getFontStyle: function ()
+   getFontStyle ()
    {
       return this .fontStyle;
    },
-   getGlyphs: function ()
+   getGlyphs ()
    {
       return this .glyphs;
    },
-   getMinorAlignment: function ()
+   getMinorAlignment ()
    {
       return this .minorAlignment;
    },
-   getTranslations: function ()
+   getTranslations ()
    {
       return this .translations;
    },
-   getCharSpacings: function ()
+   getCharSpacings ()
    {
       return this .charSpacings;
    },
-   getBearing: function ()
+   getBearing ()
    {
       return this .bearing;
    },
-   getBBox: function ()
+   getBBox ()
    {
       return this .bbox;
    },
-   update: function ()
+   update ()
    {
       var
          text      = this .text,
@@ -15104,7 +15117,7 @@ X3DTextGeometry .prototype =
          this .vertical (text, fontStyle);
       }
    },
-   resizeArray: function (array, size)
+   resizeArray (array, size)
    {
       // Resize array in grow only fashion.
 
@@ -15113,7 +15126,7 @@ X3DTextGeometry .prototype =
 
       array .length = size;
    },
-   horizontal: function (text, fontStyle)
+   horizontal (text, fontStyle)
    {
       var
          font        = fontStyle .getFont (),
@@ -15174,14 +15187,14 @@ X3DTextGeometry .prototype =
 
          switch (fontStyle .getMajorAlignment ())
          {
-            case Text_TextAlignment.BEGIN:
-            case Text_TextAlignment.FIRST:
+            case Text_TextAlignment .BEGIN:
+            case Text_TextAlignment .FIRST:
                this .translations [ll] .set (0, -ll * spacing);
                break;
-            case Text_TextAlignment.MIDDLE:
+            case Text_TextAlignment .MIDDLE:
                this .translations [ll] .set (-min .x - size .x / 2, -ll * spacing);
                break;
-            case Text_TextAlignment.END:
+            case Text_TextAlignment .END:
                this .translations [ll] .set (-min .x - size .x, -ll * spacing);
                break;
          }
@@ -15212,16 +15225,16 @@ X3DTextGeometry .prototype =
 
       switch (fontStyle .getMinorAlignment ())
       {
-         case Text_TextAlignment.BEGIN:
+         case Text_TextAlignment .BEGIN:
             this .minorAlignment .assign (this .bearing);
             break;
-         case Text_TextAlignment.FIRST:
+         case Text_TextAlignment .FIRST:
             this .minorAlignment .set (0, 0);
             break;
-         case Text_TextAlignment.MIDDLE:
+         case Text_TextAlignment .MIDDLE:
             this .minorAlignment .set (0, size .y / 2 - max .y);
             break;
-         case Text_TextAlignment.END:
+         case Text_TextAlignment .END:
             this .minorAlignment .set (0, (numLines - 1) * spacing * scale);
             break;
       }
@@ -15238,7 +15251,7 @@ X3DTextGeometry .prototype =
       this .bbox .setExtents (min3 .set (min .x, min .y, 0),
                               max3 .set (max .x, max .y, 0));
    },
-   vertical: function (text, fontStyle)
+   vertical (text, fontStyle)
    {
       var
          font             = fontStyle .getFont (),
@@ -15343,14 +15356,14 @@ X3DTextGeometry .prototype =
 
          switch (fontStyle .getMajorAlignment ())
          {
-            case Text_TextAlignment.BEGIN:
-            case Text_TextAlignment.FIRST:
+            case Text_TextAlignment .BEGIN:
+            case Text_TextAlignment .FIRST:
                translation .set (lineNumber * spacing, -1);
                break;
-            case Text_TextAlignment.MIDDLE:
+            case Text_TextAlignment .MIDDLE:
                translation .set (lineNumber * spacing, (size .y / 2 - max .y));
                break;
-            case Text_TextAlignment.END:
+            case Text_TextAlignment .END:
             {
                // This is needed to make maxExtend and charSpacing work.
                if (numChars)
@@ -15380,14 +15393,14 @@ X3DTextGeometry .prototype =
 
          switch (fontStyle .getMajorAlignment ())
          {
-            case Text_TextAlignment.BEGIN:
-            case Text_TextAlignment.FIRST:
+            case Text_TextAlignment .BEGIN:
+            case Text_TextAlignment .FIRST:
                yPad [l] = max .y + translation .y;
                break;
-            case Text_TextAlignment.MIDDLE:
+            case Text_TextAlignment .MIDDLE:
                yPad [l] = 0;
                break;
-            case Text_TextAlignment.END:
+            case Text_TextAlignment .END:
                yPad [l] = min .y + translation .y;
                break;
          }
@@ -15411,8 +15424,8 @@ X3DTextGeometry .prototype =
 
       switch (fontStyle .getMajorAlignment ())
       {
-         case Text_TextAlignment.BEGIN:
-         case Text_TextAlignment.FIRST:
+         case Text_TextAlignment .BEGIN:
+         case Text_TextAlignment .FIRST:
          {
             var lineBounds = text ._lineBounds;
 
@@ -15421,9 +15434,9 @@ X3DTextGeometry .prototype =
 
             break;
          }
-         case Text_TextAlignment.MIDDLE:
+         case Text_TextAlignment .MIDDLE:
             break;
-         case Text_TextAlignment.END:
+         case Text_TextAlignment .END:
          {
             var lineBounds = text ._lineBounds;
 
@@ -15440,28 +15453,28 @@ X3DTextGeometry .prototype =
 
       switch (fontStyle .getMajorAlignment ())
       {
-         case Text_TextAlignment.BEGIN:
-         case Text_TextAlignment.FIRST:
+         case Text_TextAlignment .BEGIN:
+         case Text_TextAlignment .FIRST:
             this .bearing .set (-min .x, max .y);
             break;
-         case Text_TextAlignment.MIDDLE:
+         case Text_TextAlignment .MIDDLE:
             this .bearing .set (-min .x, 0);
             break;
-         case Text_TextAlignment.END:
+         case Text_TextAlignment .END:
             this .bearing .set (-min .x, min .y);
             break;
       }
 
       switch (fontStyle .getMinorAlignment ())
       {
-         case Text_TextAlignment.BEGIN:
-         case Text_TextAlignment.FIRST:
+         case Text_TextAlignment .BEGIN:
+         case Text_TextAlignment .FIRST:
             this .minorAlignment .set (-min .x, 0);
             break;
-         case Text_TextAlignment.MIDDLE:
+         case Text_TextAlignment .MIDDLE:
             this .minorAlignment .set (-min .x - size .x / 2, 0);
             break;
-         case Text_TextAlignment.END:
+         case Text_TextAlignment .END:
             this .minorAlignment .set (-min .x - size .x, 0);
             break;
       }
@@ -15478,7 +15491,7 @@ X3DTextGeometry .prototype =
       this .bbox .setExtents (min3 .set (min .x, min .y, 0),
                               max3 .set (max .x, max .y, 0));
    },
-   stringToGlyphs: function (font, line, normal, lineNumber)
+   stringToGlyphs (font, line, normal, lineNumber)
    {
       var glypes = this .glyphs [lineNumber];
 
@@ -15497,7 +15510,7 @@ X3DTextGeometry .prototype =
 
       return glypes;
    },
-   getHorizontalLineExtents: function (fontStyle, line, min, max, lineNumber)
+   getHorizontalLineExtents (fontStyle, line, min, max, lineNumber)
    {
       var
          font             = fontStyle .getFont (),
@@ -15539,17 +15552,17 @@ X3DTextGeometry .prototype =
 
       switch (fontStyle .getMajorAlignment ())
       {
-         case Text_TextAlignment.BEGIN:
-         case Text_TextAlignment.FIRST:
+         case Text_TextAlignment .BEGIN:
+         case Text_TextAlignment .FIRST:
             min .x = 0;
             break;
       }
 
       return glyphs;
    },
-   traverse: function (type, renderObject)
+   traverse (type, renderObject)
    { },
-};
+});
 
 const X3DTextGeometry_default_ = X3DTextGeometry;
 ;
@@ -15557,16 +15570,16 @@ const X3DTextGeometry_default_ = X3DTextGeometry;
 Namespace_default().set ("x_ite/Browser/Text/X3DTextGeometry", X3DTextGeometry_default_);
 /* harmony default export */ const Text_X3DTextGeometry = (X3DTextGeometry_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Rendering/X3DGeometryNode\")"
-const X3DGeometryNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("x_ite/Components/Rendering/X3DGeometryNode");
+const X3DGeometryNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("x_ite/Components/Rendering/X3DGeometryNode");
 var X3DGeometryNode_default = /*#__PURE__*/__webpack_require__.n(X3DGeometryNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix4\")"
-const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("standard/Math/Numbers/Matrix4");
+const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("standard/Math/Numbers/Matrix4");
 var Matrix4_default = /*#__PURE__*/__webpack_require__.n(Matrix4_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Algorithms/Bezier\")"
-const Bezier_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("standard/Math/Algorithms/Bezier");
+const Bezier_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("standard/Math/Algorithms/Bezier");
 var Bezier_default = /*#__PURE__*/__webpack_require__.n(Bezier_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"lib/libtess\")"
-const libtess_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("lib/libtess");
+const libtess_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("lib/libtess");
 var libtess_default = /*#__PURE__*/__webpack_require__.n(libtess_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Text/PolygonText.js
 /*******************************************************************************
@@ -15626,21 +15639,20 @@ var libtess_default = /*#__PURE__*/__webpack_require__.n(libtess_namespaceObject
 
 function PolygonText (text, fontStyle)
 {
-   Text_X3DTextGeometry.call (this, text, fontStyle);
+   Text_X3DTextGeometry .call (this, text, fontStyle);
 
    text ._transparent = false;
 
    this .texCoordArray = X3DGeometryNode_default().createArray ();
 }
 
-PolygonText .prototype = Object .assign (Object .create (Text_X3DTextGeometry.prototype),
+Object .assign (Object .setPrototypeOf (PolygonText .prototype, Text_X3DTextGeometry .prototype),
 {
-   constructor: PolygonText,
-   isTransparent: function ()
+   isTransparent ()
    {
       return false;
    },
-   getMatrix: function ()
+   getMatrix ()
    {
       return (Matrix4_default()).Identity;
    },
@@ -15762,7 +15774,7 @@ PolygonText .prototype = Object .assign (Object .create (Text_X3DTextGeometry.pr
          }
       };
    })(),
-   getGlyphExtents: function (font, glyph, primitiveQuality, min, max)
+   getGlyphExtents (font, glyph, primitiveQuality, min, max)
    {
       const
          glyphCache = this .getBrowser () .getGlyph (font, primitiveQuality, glyph .index),
@@ -15794,7 +15806,7 @@ PolygonText .prototype = Object .assign (Object .create (Text_X3DTextGeometry.pr
          extents .max = max .copy ();
       }
    },
-   getGlyphGeometry: function (font, glyph, primitiveQuality)
+   getGlyphGeometry (font, glyph, primitiveQuality)
    {
       const
          glyphCache    = this .getBrowser () .getGlyph (font, primitiveQuality, glyph .index),
@@ -15813,7 +15825,7 @@ PolygonText .prototype = Object .assign (Object .create (Text_X3DTextGeometry.pr
          return glyphGeometry;
       }
    },
-   createGlyphGeometry: function (glyph, vertices, primitiveQuality)
+   createGlyphGeometry (glyph, vertices, primitiveQuality)
    {
       // Get contours for the current glyph.
 
@@ -15869,7 +15881,7 @@ PolygonText .prototype = Object .assign (Object .create (Text_X3DTextGeometry.pr
 
       return this .triangulatePolygon (contours, vertices);
    },
-   getBezierSteps: function (primitiveQuality)
+   getBezierSteps (primitiveQuality)
    {
       switch (primitiveQuality)
       {
@@ -15897,9 +15909,9 @@ PolygonText .prototype = Object .assign (Object .create (Text_X3DTextGeometry.pr
 
       const tessy = new (libtess_default()).GluTesselator ();
 
-      tessy .gluTessCallback ((libtess_default()).gluEnum.GLU_TESS_VERTEX_DATA,  vertexCallback);
-      tessy .gluTessCallback ((libtess_default()).gluEnum.GLU_TESS_COMBINE,      combineCallback);
-      tessy .gluTessProperty ((libtess_default()).gluEnum.GLU_TESS_WINDING_RULE, (libtess_default()).windingRule.GLU_TESS_WINDING_ODD);
+      tessy .gluTessCallback ((libtess_default()).gluEnum .GLU_TESS_VERTEX_DATA,  vertexCallback);
+      tessy .gluTessCallback ((libtess_default()).gluEnum .GLU_TESS_COMBINE,      combineCallback);
+      tessy .gluTessProperty ((libtess_default()).gluEnum .GLU_TESS_WINDING_RULE, (libtess_default()).windingRule .GLU_TESS_WINDING_ODD);
       tessy .gluTessNormal (0, 0, 1);
 
       return function (contours, triangles)
@@ -15921,11 +15933,11 @@ PolygonText .prototype = Object .assign (Object .create (Text_X3DTextGeometry.pr
          return triangles;
       };
    })(),
-   display: function (gl, renderContext)
+   display (gl, renderContext)
    { },
-   transformLine: function (line)
+   transformLine (line)
    { },
-   transformMatrix: function (matrix)
+   transformMatrix (matrix)
    { },
 });
 
@@ -15991,51 +16003,62 @@ Namespace_default().set ("x_ite/Browser/Text/PolygonText", PolygonText_default_)
 
 function FontStyle (executionContext)
 {
-   Text_X3DFontStyleNode.call (this, executionContext);
+   Text_X3DFontStyleNode .call (this, executionContext);
 
    this .addType ((X3DConstants_default()).FontStyle);
 
    this ._size .setUnit ("length");
 }
 
-FontStyle .prototype = Object .assign (Object .create (Text_X3DFontStyleNode.prototype),
+Object .assign (Object .setPrototypeOf (FontStyle .prototype, Text_X3DFontStyleNode .prototype),
 {
-   constructor: FontStyle,
-   [Symbol .for ("X_ITE.X3DBaseNode.fieldDefinitions")]: new (FieldDefinitionArray_default()) ([
-      new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "metadata",    new (Fields_default()).SFNode ()),
-      new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "language",    new (Fields_default()).SFString ()),
-      new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "family",      new (Fields_default()).MFString ("SERIF")),
-      new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "style",       new (Fields_default()).SFString ("PLAIN")),
-      new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "size",        new (Fields_default()).SFFloat (1)),
-      new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "spacing",     new (Fields_default()).SFFloat (1)),
-      new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "horizontal",  new (Fields_default()).SFBool (true)),
-      new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "leftToRight", new (Fields_default()).SFBool (true)),
-      new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "topToBottom", new (Fields_default()).SFBool (true)),
-      new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "justify",     new (Fields_default()).MFString ("BEGIN")),
-   ]),
-   getTypeName: function ()
-   {
-      return "FontStyle";
-   },
-   getComponentName: function ()
-   {
-      return "Text";
-   },
-   getContainerField: function ()
-   {
-      return "fontStyle";
-   },
-   getSpecificationRange: function ()
-   {
-      return ["2.0", "Infinity"];
-   },
-   getTextGeometry: function (text)
+   getTextGeometry (text)
    {
       return new Text_PolygonText (text, this);
    },
-   getScale: function ()
+   getScale ()
    {
       return this ._size .getValue ();
+   },
+});
+
+Object .defineProperties (FontStyle,
+{
+   typeName:
+   {
+      value: "FontStyle",
+      enumerable: true,
+   },
+   componentName:
+   {
+      value: "Text",
+      enumerable: true,
+   },
+   containerField:
+   {
+      value: "fontStyle",
+      enumerable: true,
+   },
+   specificationRange:
+   {
+      value: Object .freeze (["2.0", "Infinity"]),
+      enumerable: true,
+   },
+   fieldDefinitions:
+   {
+      value: new (FieldDefinitionArray_default()) ([
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "metadata",    new (Fields_default()).SFNode ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "language",    new (Fields_default()).SFString ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "family",      new (Fields_default()).MFString ("SERIF")),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "style",       new (Fields_default()).SFString ("PLAIN")),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "size",        new (Fields_default()).SFFloat (1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "spacing",     new (Fields_default()).SFFloat (1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "horizontal",  new (Fields_default()).SFBool (true)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "leftToRight", new (Fields_default()).SFBool (true)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "topToBottom", new (Fields_default()).SFBool (true)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "justify",     new (Fields_default()).MFString ("BEGIN")),
+      ]),
+      enumerable: true,
    },
 });
 
@@ -16046,7 +16069,7 @@ Namespace_default().set ("x_ite/Components/Text/FontStyle", FontStyle_default_);
 /* harmony default export */ const Text_FontStyle = (FontStyle_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Text/X3DTextContext.js
 /* provided dependency */ var $ = __webpack_require__(355);
-/* provided dependency */ var opentype = __webpack_require__(475);
+/* provided dependency */ var opentype = __webpack_require__(49);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -16107,9 +16130,9 @@ function X3DTextContext ()
    this [_glyphCache] = new Map (); // [font] [primitiveQuality] [glyphIndex]
 }
 
-X3DTextContext .prototype =
+Object .assign (X3DTextContext .prototype,
 {
-   getDefaultFontStyle: function ()
+   getDefaultFontStyle ()
    {
       this [_defaultFontStyle] = new Text_FontStyle (this .getPrivateScene ());
       this [_defaultFontStyle] .setPrivate (true);
@@ -16121,7 +16144,7 @@ X3DTextContext .prototype =
 
       return this [_defaultFontStyle];
    },
-   getFont: function (url)
+   getFont (url)
    {
       url = url .toString ();
 
@@ -16136,14 +16159,14 @@ X3DTextContext .prototype =
 
       return deferred;
    },
-   setFont: function (deferred, error, font)
+   setFont (deferred, error, font)
    {
       if (error)
          deferred .reject (error);
       else
          deferred .resolve (font);
    },
-   getGlyph: function (font, primitiveQuality, glyphIndex)
+   getGlyph (font, primitiveQuality, glyphIndex)
    {
       let cachedFont = this [_glyphCache] .get (font);
 
@@ -16162,7 +16185,7 @@ X3DTextContext .prototype =
 
       return cachedGlyph;
    },
-};
+});
 
 const X3DTextContext_default_ = X3DTextContext;
 ;
@@ -16170,7 +16193,7 @@ const X3DTextContext_default_ = X3DTextContext;
 Namespace_default().set ("x_ite/Browser/Text/X3DTextContext", X3DTextContext_default_);
 /* harmony default export */ const Text_X3DTextContext = (X3DTextContext_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
-const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.7.9")] .require ("x_ite/Base/X3DCast");
+const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.8.0")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Text/Text.js
 /*******************************************************************************
@@ -16240,65 +16263,37 @@ function Text (executionContext)
    this ._lineBounds .setUnit ("length");
 }
 
-Text .prototype = Object .assign (Object .create ((X3DGeometryNode_default()).prototype),
+Object .assign (Object .setPrototypeOf (Text .prototype, (X3DGeometryNode_default()).prototype),
 {
-   constructor: Text,
-   [Symbol .for ("X_ITE.X3DBaseNode.fieldDefinitions")]: new (FieldDefinitionArray_default()) ([
-      new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "metadata",   new (Fields_default()).SFNode ()),
-      new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "string",     new (Fields_default()).MFString ()),
-      new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "length",     new (Fields_default()).MFFloat ()),
-      new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "maxExtent",  new (Fields_default()).SFFloat ()),
-      new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "solid",      new (Fields_default()).SFBool ()),
-      new (X3DFieldDefinition_default()) ((X3DConstants_default()).outputOnly,     "origin",     new (Fields_default()).SFVec3f ()),
-      new (X3DFieldDefinition_default()) ((X3DConstants_default()).outputOnly,     "textBounds", new (Fields_default()).SFVec2f ()),
-      new (X3DFieldDefinition_default()) ((X3DConstants_default()).outputOnly,     "lineBounds", new (Fields_default()).MFVec2f ()),
-      new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "fontStyle",  new (Fields_default()).SFNode ()),
-   ]),
-   getTypeName: function ()
+   initialize ()
    {
-      return "Text";
-   },
-   getComponentName: function ()
-   {
-      return "Text";
-   },
-   getContainerField: function ()
-   {
-      return "geometry";
-   },
-   getSpecificationRange: function ()
-   {
-      return ["2.0", "Infinity"];
-   },
-   initialize: function ()
-   {
-      X3DGeometryNode_default().prototype.initialize.call (this);
+      X3DGeometryNode_default().prototype .initialize .call (this);
 
       this ._fontStyle .addInterest ("set_fontStyle__", this);
 
       this .set_fontStyle__ ();
    },
-   getMatrix: function ()
+   getMatrix ()
    {
       return this .textGeometry .getMatrix ();
    },
-   getLength: function (index)
+   getLength (index)
    {
       if (index < this ._length .length)
          return Math .max (0, this ._length [index]);
 
       return 0;
    },
-   set_live__: function ()
+   set_live__ ()
    {
-       X3DGeometryNode_default().prototype.set_live__.call (this);
+       X3DGeometryNode_default().prototype .set_live__ .call (this);
 
       if (this .getLive () .getValue ())
          this .getBrowser () .getBrowserOptions () ._PrimitiveQuality .addInterest ("requestRebuild", this);
       else
          this .getBrowser () .getBrowserOptions () ._PrimitiveQuality .removeInterest ("requestRebuild", this);
    },
-   set_fontStyle__: function ()
+   set_fontStyle__ ()
    {
       this .fontStyleNode ?.removeInterest ("requestRebuild", this);
 
@@ -16313,36 +16308,75 @@ Text .prototype = Object .assign (Object .create ((X3DGeometryNode_default()).pr
 
       this .setTransparent (this .textGeometry .isTransparent ());
    },
-   build: function ()
+   build ()
    {
       this .textGeometry .update ();
       this .textGeometry .build ();
 
       this .setSolid (this ._solid .getValue ());
    },
-   traverse: function (type, renderObject)
+   traverse (type, renderObject)
    {
       this .textGeometry .traverse (type, renderObject);
 
-      X3DGeometryNode_default().prototype.traverse.call (this, type, renderObject);
+      X3DGeometryNode_default().prototype .traverse .call (this, type, renderObject);
    },
-   display: function (gl, renderContext)
+   display (gl, renderContext)
    {
       this .textGeometry .display (gl, renderContext);
 
-      X3DGeometryNode_default().prototype.display.call (this, gl, renderContext);
+      X3DGeometryNode_default().prototype .display .call (this, gl, renderContext);
 
       renderContext .textureNode = null;
    },
-   transformLine: function (line)
+   transformLine (line)
    {
       // Apply sceen nodes transformation in place here.
       return this .textGeometry .transformLine (line);
    },
-   transformMatrix: function (matrix)
+   transformMatrix (matrix)
    {
       // Apply sceen nodes transformation in place here.
       return this .textGeometry .transformMatrix (matrix);
+   },
+});
+
+Object .defineProperties (Text,
+{
+   typeName:
+   {
+      value: "Text",
+      enumerable: true,
+   },
+   componentName:
+   {
+      value: "Text",
+      enumerable: true,
+   },
+   containerField:
+   {
+      value: "geometry",
+      enumerable: true,
+   },
+   specificationRange:
+   {
+      value: Object .freeze (["2.0", "Infinity"]),
+      enumerable: true,
+   },
+   fieldDefinitions:
+   {
+      value: new (FieldDefinitionArray_default()) ([
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "metadata",   new (Fields_default()).SFNode ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "string",     new (Fields_default()).MFString ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "length",     new (Fields_default()).MFFloat ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "maxExtent",  new (Fields_default()).SFFloat ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "solid",      new (Fields_default()).SFBool ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).outputOnly,     "origin",     new (Fields_default()).SFVec3f ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).outputOnly,     "textBounds", new (Fields_default()).SFVec2f ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).outputOnly,     "lineBounds", new (Fields_default()).MFVec2f ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "fontStyle",  new (Fields_default()).SFNode ()),
+      ]),
+      enumerable: true,
    },
 });
 
@@ -16405,17 +16439,17 @@ Namespace_default().set ("x_ite/Components/Text/Text", Text_default_);
 
 
 
-Components_default().addComponent ({
+Components_default().add ({
    name: "Text",
-   types:
-   {
-      FontStyle: Text_FontStyle,
-      Text: Text_Text,
-   },
-   abstractTypes:
-   {
-      X3DFontStyleNode: Text_X3DFontStyleNode,
-   },
+   concreteNodes:
+   [
+      Text_FontStyle,
+      Text_Text,
+   ],
+   abstractNodes:
+   [
+      Text_X3DFontStyleNode,
+   ],
    browserContext: Text_X3DTextContext,
 });
 
