@@ -1,4 +1,4 @@
-/* X_ITE v8.11.16 */(() => { // webpackBootstrap
+/* X_ITE v8.11.17 */(() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
 /******/ 	var __webpack_require__ = {};
@@ -39,13 +39,13 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/KeyDeviceSensor/X3DKeyDeviceSensorContext.js
 /*******************************************************************************
@@ -147,19 +147,19 @@ Object .assign (X3DKeyDeviceSensorContext .prototype,
 const __default__ = X3DKeyDeviceSensorContext;
 ;
 
-Namespace_default().set ("x_ite/Browser/KeyDeviceSensor/X3DKeyDeviceSensorContext", __default__);
+Namespace_default().add ("X3DKeyDeviceSensorContext", "x_ite/Browser/KeyDeviceSensor/X3DKeyDeviceSensorContext", __default__);
 /* harmony default export */ const KeyDeviceSensor_X3DKeyDeviceSensorContext = (__default__);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DSensorNode\")"
-const X3DSensorNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("x_ite/Components/Core/X3DSensorNode");
+const X3DSensorNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("x_ite/Components/Core/X3DSensorNode");
 var X3DSensorNode_default = /*#__PURE__*/__webpack_require__.n(X3DSensorNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/KeyDeviceSensor/X3DKeyDeviceSensorNode.js
 /*******************************************************************************
@@ -284,7 +284,7 @@ Object .defineProperties (X3DKeyDeviceSensorNode,
 const X3DKeyDeviceSensorNode_default_ = X3DKeyDeviceSensorNode;
 ;
 
-Namespace_default().set ("x_ite/Components/KeyDeviceSensor/X3DKeyDeviceSensorNode", X3DKeyDeviceSensorNode_default_);
+Namespace_default().add ("X3DKeyDeviceSensorNode", "x_ite/Components/KeyDeviceSensor/X3DKeyDeviceSensorNode", X3DKeyDeviceSensorNode_default_);
 /* harmony default export */ const KeyDeviceSensor_X3DKeyDeviceSensorNode = (X3DKeyDeviceSensorNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/KeyDeviceSensor/KeySensor.js
 /*******************************************************************************
@@ -668,7 +668,7 @@ Object .defineProperties (KeySensor,
 const KeySensor_default_ = KeySensor;
 ;
 
-Namespace_default().set ("x_ite/Components/KeyDeviceSensor/KeySensor", KeySensor_default_);
+Namespace_default().add ("KeySensor", "x_ite/Components/KeyDeviceSensor/KeySensor", KeySensor_default_);
 /* harmony default export */ const KeyDeviceSensor_KeySensor = (KeySensor_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/KeyDeviceSensor/StringSensor.js
 /*******************************************************************************
@@ -837,7 +837,7 @@ Object .defineProperties (StringSensor,
 const StringSensor_default_ = StringSensor;
 ;
 
-Namespace_default().set ("x_ite/Components/KeyDeviceSensor/StringSensor", StringSensor_default_);
+Namespace_default().add ("StringSensor", "x_ite/Components/KeyDeviceSensor/StringSensor", StringSensor_default_);
 /* harmony default export */ const KeyDeviceSensor_StringSensor = (StringSensor_default_);
 ;// CONCATENATED MODULE: ./src/assets/components/KeyDeviceSensor.js
 /*******************************************************************************
@@ -910,7 +910,7 @@ Components_default().add ({
 const KeyDeviceSensor_default_ = undefined;
 ;
 
-Namespace_default().set ("assets/components/KeyDeviceSensor", KeyDeviceSensor_default_);
+Namespace_default().add ("KeyDeviceSensor", "assets/components/KeyDeviceSensor", KeyDeviceSensor_default_);
 /* harmony default export */ const KeyDeviceSensor = ((/* unused pure expression or super */ null && (KeyDeviceSensor_default_)));
 /******/ })()
 ;

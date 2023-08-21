@@ -1,4 +1,4 @@
-/* X_ITE v8.11.16 */(() => { // webpackBootstrap
+/* X_ITE v8.11.17 */(() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 573:
@@ -80,31 +80,31 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DNode\")"
-const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("x_ite/Components/Core/X3DNode");
+const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("x_ite/Components/Core/X3DNode");
 var X3DNode_default = /*#__PURE__*/__webpack_require__.n(X3DNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
-const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("x_ite/Base/X3DCast");
+const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix4\")"
-const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("standard/Math/Numbers/Matrix4");
+const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("standard/Math/Numbers/Matrix4");
 var Matrix4_default = /*#__PURE__*/__webpack_require__.n(Matrix4_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/X3DRigidJointNode.js
 /*******************************************************************************
@@ -330,10 +330,10 @@ Object .defineProperties (X3DRigidJointNode,
 const __default__ = X3DRigidJointNode;
 ;
 
-Namespace_default().set ("x_ite/Components/RigidBodyPhysics/X3DRigidJointNode", __default__);
+Namespace_default().add ("X3DRigidJointNode", "x_ite/Components/RigidBodyPhysics/X3DRigidJointNode", __default__);
 /* harmony default export */ const RigidBodyPhysics_X3DRigidJointNode = (__default__);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
-const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("standard/Math/Numbers/Vector3");
+const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/lib/ammojs/ammo.js
 var ammo_dirname = "/";
@@ -374,7 +374,7 @@ var ga=[oI,Un,ZF,rz,IF,OF,lD,Fp,Ep,Fp,oI,oI,oI,oI,oI,oI];var ha=[QH,Uv];var ia=[
 const ammo_default_ = Ammo;
 ;
 
-Namespace_default().set ("lib/ammojs/ammo", ammo_default_);
+Namespace_default().add ("ammo", "lib/ammojs/ammo", ammo_default_);
 /* harmony default export */ const ammo = (ammo_default_);
 ;// CONCATENATED MODULE: ./src/lib/ammojs/AmmoClass.js
 /*******************************************************************************
@@ -429,7 +429,7 @@ Namespace_default().set ("lib/ammojs/ammo", ammo_default_);
 const AmmoClass_default_ = new ammo ();
 ;
 
-Namespace_default().set ("lib/ammojs/AmmoClass", AmmoClass_default_);
+Namespace_default().add ("AmmoClass", "lib/ammojs/AmmoClass", AmmoClass_default_);
 /* harmony default export */ const AmmoClass = (AmmoClass_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/BallJoint.js
 /*******************************************************************************
@@ -644,13 +644,13 @@ Object .defineProperties (BallJoint,
 const BallJoint_default_ = BallJoint;
 ;
 
-Namespace_default().set ("x_ite/Components/RigidBodyPhysics/BallJoint", BallJoint_default_);
+Namespace_default().add ("BallJoint", "x_ite/Components/RigidBodyPhysics/BallJoint", BallJoint_default_);
 /* harmony default export */ const RigidBodyPhysics_BallJoint = (BallJoint_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DChildNode\")"
-const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("x_ite/Components/Core/X3DChildNode");
+const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("x_ite/Components/Core/X3DChildNode");
 var X3DChildNode_default = /*#__PURE__*/__webpack_require__.n(X3DChildNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Grouping/X3DBoundedObject\")"
-const X3DBoundedObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("x_ite/Components/Grouping/X3DBoundedObject");
+const X3DBoundedObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("x_ite/Components/Grouping/X3DBoundedObject");
 var X3DBoundedObject_default = /*#__PURE__*/__webpack_require__.n(X3DBoundedObject_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/X3DNBodyCollidableNode.js
 /*******************************************************************************
@@ -822,10 +822,10 @@ Object .defineProperties (X3DNBodyCollidableNode,
 const X3DNBodyCollidableNode_default_ = X3DNBodyCollidableNode;
 ;
 
-Namespace_default().set ("x_ite/Components/RigidBodyPhysics/X3DNBodyCollidableNode", X3DNBodyCollidableNode_default_);
+Namespace_default().add ("X3DNBodyCollidableNode", "x_ite/Components/RigidBodyPhysics/X3DNBodyCollidableNode", X3DNBodyCollidableNode_default_);
 /* harmony default export */ const RigidBodyPhysics_X3DNBodyCollidableNode = (X3DNBodyCollidableNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Rendering/TraverseType\")"
-const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("x_ite/Rendering/TraverseType");
+const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("x_ite/Rendering/TraverseType");
 var TraverseType_default = /*#__PURE__*/__webpack_require__.n(TraverseType_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/CollidableOffset.js
 /*******************************************************************************
@@ -920,7 +920,7 @@ Object .assign (Object .setPrototypeOf (CollidableOffset .prototype, RigidBodyPh
          this .collidableNode ._isCameraObject   .removeFieldInterest (this ._isCameraObject);
          this .collidableNode ._isPickableObject .removeFieldInterest (this ._isPickableObject);
 
-         this .collidableNode ._visible     .removeInterest ("set_visible__",     this);
+         this .collidableNode ._display     .removeInterest ("set_display__",     this);
          this .collidableNode ._bboxDisplay .removeInterest ("set_bboxDisplay__", this);
       }
 
@@ -934,7 +934,7 @@ Object .assign (Object .setPrototypeOf (CollidableOffset .prototype, RigidBodyPh
          this .collidableNode ._isCameraObject   .addFieldInterest (this ._isCameraObject);
          this .collidableNode ._isPickableObject .addFieldInterest (this ._isPickableObject);
 
-         this .collidableNode ._visible     .addInterest ("set_visible__",     this);
+         this .collidableNode ._display     .addInterest ("set_display__",     this);
          this .collidableNode ._bboxDisplay .addInterest ("set_bboxDisplay__", this);
 
          this .setCameraObject   (this .collidableNode .isCameraObject ());
@@ -950,7 +950,7 @@ Object .assign (Object .setPrototypeOf (CollidableOffset .prototype, RigidBodyPh
          this .traverse = Function .prototype;
       }
 
-      this .set_visible__ ();
+      this .set_display__ ();
       this .set_bboxDisplay__ ();
       this .set_collidableGeometry__ ();
    },
@@ -958,10 +958,10 @@ Object .assign (Object .setPrototypeOf (CollidableOffset .prototype, RigidBodyPh
    {
       this .setCameraObject (!!this .visibleNode ?.isCameraObject ());
    },
-   set_visible__ ()
+   set_display__ ()
    {
       if (this .collidableNode)
-         this .visibleNode = this .collidableNode ._visible .getValue () ? this .collidableNode : null;
+         this .visibleNode = this .collidableNode ._display .getValue () ? this .collidableNode : null;
       else
          this .visibleNode = this .collidableNode;
 
@@ -1091,7 +1091,7 @@ Object .defineProperties (CollidableOffset,
 const CollidableOffset_default_ = CollidableOffset;
 ;
 
-Namespace_default().set ("x_ite/Components/RigidBodyPhysics/CollidableOffset", CollidableOffset_default_);
+Namespace_default().add ("CollidableOffset", "x_ite/Components/RigidBodyPhysics/CollidableOffset", CollidableOffset_default_);
 /* harmony default export */ const RigidBodyPhysics_CollidableOffset = (CollidableOffset_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/CollidableShape.js
 /*******************************************************************************
@@ -1250,7 +1250,7 @@ Object .assign (Object .setPrototypeOf (CollidableShape .prototype, RigidBodyPhy
          this .shapeNode ._isCameraObject   .removeFieldInterest (this ._isCameraObject);
          this .shapeNode ._isPickableObject .removeFieldInterest (this ._isPickableObject);
 
-         this .shapeNode ._visible     .removeInterest ("set_visible__",     this);
+         this .shapeNode ._display     .removeInterest ("set_display__",     this);
          this .shapeNode ._bboxDisplay .removeInterest ("set_bboxDisplay__", this);
 
          this .shapeNode ._geometry .removeInterest ("set_geometry__", this);
@@ -1263,7 +1263,7 @@ Object .assign (Object .setPrototypeOf (CollidableShape .prototype, RigidBodyPhy
          this .shapeNode ._isCameraObject   .addFieldInterest (this ._isCameraObject);
          this .shapeNode ._isPickableObject .addFieldInterest (this ._isPickableObject);
 
-         this .shapeNode ._visible     .addInterest ("set_visible__",     this);
+         this .shapeNode ._display     .addInterest ("set_display__",     this);
          this .shapeNode ._bboxDisplay .addInterest ("set_bboxDisplay__", this);
 
          this .shapeNode ._geometry .addInterest ("set_geometry__", this);
@@ -1281,7 +1281,7 @@ Object .assign (Object .setPrototypeOf (CollidableShape .prototype, RigidBodyPhy
          this .traverse = Function .prototype;
       }
 
-      this .set_visible__ ();
+      this .set_display__ ();
       this .set_bboxDisplay__ ();
       this .set_geometry__ ();
    },
@@ -1289,10 +1289,10 @@ Object .assign (Object .setPrototypeOf (CollidableShape .prototype, RigidBodyPhy
    {
       this .setCameraObject (!!this .visibleNode ?.isCameraObject ());
    },
-   set_visible__ ()
+   set_display__ ()
    {
       if (this .shapeNode)
-         this .visibleNode = this .shapeNode ._visible .getValue () ? this .shapeNode : null;
+         this .visibleNode = this .shapeNode ._display .getValue () ? this .shapeNode : null;
       else
          this .visibleNode = this .shapeNode;
 
@@ -1593,7 +1593,7 @@ Object .defineProperties (CollidableShape,
 const CollidableShape_default_ = CollidableShape;
 ;
 
-Namespace_default().set ("x_ite/Components/RigidBodyPhysics/CollidableShape", CollidableShape_default_);
+Namespace_default().add ("CollidableShape", "x_ite/Components/RigidBodyPhysics/CollidableShape", CollidableShape_default_);
 /* harmony default export */ const RigidBodyPhysics_CollidableShape = (CollidableShape_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/RigidBodyPhysics/AppliedParametersType.js
 /*******************************************************************************
@@ -1661,7 +1661,7 @@ const AppliedParametersType =
 const AppliedParametersType_default_ = AppliedParametersType;
 ;
 
-Namespace_default().set ("x_ite/Browser/RigidBodyPhysics/AppliedParametersType", AppliedParametersType_default_);
+Namespace_default().add ("AppliedParametersType", "x_ite/Browser/RigidBodyPhysics/AppliedParametersType", AppliedParametersType_default_);
 /* harmony default export */ const RigidBodyPhysics_AppliedParametersType = (AppliedParametersType_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/CollisionCollection.js
 /*******************************************************************************
@@ -1880,10 +1880,10 @@ Object .defineProperties (CollisionCollection,
 const CollisionCollection_default_ = CollisionCollection;
 ;
 
-Namespace_default().set ("x_ite/Components/RigidBodyPhysics/CollisionCollection", CollisionCollection_default_);
+Namespace_default().add ("CollisionCollection", "x_ite/Components/RigidBodyPhysics/CollisionCollection", CollisionCollection_default_);
 /* harmony default export */ const RigidBodyPhysics_CollisionCollection = (CollisionCollection_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DSensorNode\")"
-const X3DSensorNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("x_ite/Components/Core/X3DSensorNode");
+const X3DSensorNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("x_ite/Components/Core/X3DSensorNode");
 var X3DSensorNode_default = /*#__PURE__*/__webpack_require__.n(X3DSensorNode_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/CollisionSensor.js
 /*******************************************************************************
@@ -2169,7 +2169,7 @@ Object .defineProperties (CollisionSensor,
 const CollisionSensor_default_ = CollisionSensor;
 ;
 
-Namespace_default().set ("x_ite/Components/RigidBodyPhysics/CollisionSensor", CollisionSensor_default_);
+Namespace_default().add ("CollisionSensor", "x_ite/Components/RigidBodyPhysics/CollisionSensor", CollisionSensor_default_);
 /* harmony default export */ const RigidBodyPhysics_CollisionSensor = (CollisionSensor_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/X3DNBodyCollisionSpaceNode.js
 /*******************************************************************************
@@ -2263,7 +2263,7 @@ Object .defineProperties (X3DNBodyCollisionSpaceNode,
 const X3DNBodyCollisionSpaceNode_default_ = X3DNBodyCollisionSpaceNode;
 ;
 
-Namespace_default().set ("x_ite/Components/RigidBodyPhysics/X3DNBodyCollisionSpaceNode", X3DNBodyCollisionSpaceNode_default_);
+Namespace_default().add ("X3DNBodyCollisionSpaceNode", "x_ite/Components/RigidBodyPhysics/X3DNBodyCollisionSpaceNode", X3DNBodyCollisionSpaceNode_default_);
 /* harmony default export */ const RigidBodyPhysics_X3DNBodyCollisionSpaceNode = (X3DNBodyCollisionSpaceNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/CollisionSpace.js
 /*******************************************************************************
@@ -2448,7 +2448,7 @@ Object .defineProperties (CollisionSpace,
 const CollisionSpace_default_ = CollisionSpace;
 ;
 
-Namespace_default().set ("x_ite/Components/RigidBodyPhysics/CollisionSpace", CollisionSpace_default_);
+Namespace_default().add ("CollisionSpace", "x_ite/Components/RigidBodyPhysics/CollisionSpace", CollisionSpace_default_);
 /* harmony default export */ const RigidBodyPhysics_CollisionSpace = (CollisionSpace_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/Contact.js
 /*******************************************************************************
@@ -2571,10 +2571,10 @@ Object .defineProperties (Contact,
 const Contact_default_ = Contact;
 ;
 
-Namespace_default().set ("x_ite/Components/RigidBodyPhysics/Contact", Contact_default_);
+Namespace_default().add ("Contact", "x_ite/Components/RigidBodyPhysics/Contact", Contact_default_);
 /* harmony default export */ const RigidBodyPhysics_Contact = (Contact_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Rotation4\")"
-const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("standard/Math/Numbers/Rotation4");
+const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("standard/Math/Numbers/Rotation4");
 var Rotation4_default = /*#__PURE__*/__webpack_require__.n(Rotation4_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/DoubleAxisHingeJoint.js
 /*******************************************************************************
@@ -2871,7 +2871,7 @@ Object .defineProperties (DoubleAxisHingeJoint,
 const DoubleAxisHingeJoint_default_ = DoubleAxisHingeJoint;
 ;
 
-Namespace_default().set ("x_ite/Components/RigidBodyPhysics/DoubleAxisHingeJoint", DoubleAxisHingeJoint_default_);
+Namespace_default().add ("DoubleAxisHingeJoint", "x_ite/Components/RigidBodyPhysics/DoubleAxisHingeJoint", DoubleAxisHingeJoint_default_);
 /* harmony default export */ const RigidBodyPhysics_DoubleAxisHingeJoint = (DoubleAxisHingeJoint_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/MotorJoint.js
 /*******************************************************************************
@@ -3008,10 +3008,10 @@ Object .defineProperties (MotorJoint,
 const MotorJoint_default_ = MotorJoint;
 ;
 
-Namespace_default().set ("x_ite/Components/RigidBodyPhysics/MotorJoint", MotorJoint_default_);
+Namespace_default().add ("MotorJoint", "x_ite/Components/RigidBodyPhysics/MotorJoint", MotorJoint_default_);
 /* harmony default export */ const RigidBodyPhysics_MotorJoint = (MotorJoint_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Quaternion\")"
-const Quaternion_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.16")] .require ("standard/Math/Numbers/Quaternion");
+const Quaternion_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.11.17")] .require ("standard/Math/Numbers/Quaternion");
 var Quaternion_default = /*#__PURE__*/__webpack_require__.n(Quaternion_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/RigidBody.js
 /*******************************************************************************
@@ -3534,7 +3534,7 @@ Object .defineProperties (RigidBody,
 const RigidBody_default_ = RigidBody;
 ;
 
-Namespace_default().set ("x_ite/Components/RigidBodyPhysics/RigidBody", RigidBody_default_);
+Namespace_default().add ("RigidBody", "x_ite/Components/RigidBodyPhysics/RigidBody", RigidBody_default_);
 /* harmony default export */ const RigidBodyPhysics_RigidBody = (RigidBody_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/RigidBodyCollection.js
 /*******************************************************************************
@@ -3928,7 +3928,7 @@ Object .defineProperties (RigidBodyCollection,
 const RigidBodyCollection_default_ = RigidBodyCollection;
 ;
 
-Namespace_default().set ("x_ite/Components/RigidBodyPhysics/RigidBodyCollection", RigidBodyCollection_default_);
+Namespace_default().add ("RigidBodyCollection", "x_ite/Components/RigidBodyPhysics/RigidBodyCollection", RigidBodyCollection_default_);
 /* harmony default export */ const RigidBodyPhysics_RigidBodyCollection = (RigidBodyCollection_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/SingleAxisHingeJoint.js
 /*******************************************************************************
@@ -4184,7 +4184,7 @@ Object .defineProperties (SingleAxisHingeJoint,
 const SingleAxisHingeJoint_default_ = SingleAxisHingeJoint;
 ;
 
-Namespace_default().set ("x_ite/Components/RigidBodyPhysics/SingleAxisHingeJoint", SingleAxisHingeJoint_default_);
+Namespace_default().add ("SingleAxisHingeJoint", "x_ite/Components/RigidBodyPhysics/SingleAxisHingeJoint", SingleAxisHingeJoint_default_);
 /* harmony default export */ const RigidBodyPhysics_SingleAxisHingeJoint = (SingleAxisHingeJoint_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/SliderJoint.js
 /*******************************************************************************
@@ -4419,7 +4419,7 @@ Object .defineProperties (SliderJoint,
 const SliderJoint_default_ = SliderJoint;
 ;
 
-Namespace_default().set ("x_ite/Components/RigidBodyPhysics/SliderJoint", SliderJoint_default_);
+Namespace_default().add ("SliderJoint", "x_ite/Components/RigidBodyPhysics/SliderJoint", SliderJoint_default_);
 /* harmony default export */ const RigidBodyPhysics_SliderJoint = (SliderJoint_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/UniversalJoint.js
 /*******************************************************************************
@@ -4538,7 +4538,7 @@ Object .defineProperties (UniversalJoint,
 const UniversalJoint_default_ = UniversalJoint;
 ;
 
-Namespace_default().set ("x_ite/Components/RigidBodyPhysics/UniversalJoint", UniversalJoint_default_);
+Namespace_default().add ("UniversalJoint", "x_ite/Components/RigidBodyPhysics/UniversalJoint", UniversalJoint_default_);
 /* harmony default export */ const RigidBodyPhysics_UniversalJoint = (UniversalJoint_default_);
 ;// CONCATENATED MODULE: ./src/assets/components/RigidBodyPhysics.js
 /*******************************************************************************
@@ -4637,7 +4637,7 @@ Components_default().add ({
 const RigidBodyPhysics_default_ = undefined;
 ;
 
-Namespace_default().set ("assets/components/RigidBodyPhysics", RigidBodyPhysics_default_);
+Namespace_default().add ("RigidBodyPhysics", "assets/components/RigidBodyPhysics", RigidBodyPhysics_default_);
 /* harmony default export */ const RigidBodyPhysics = ((/* unused pure expression or super */ null && (RigidBodyPhysics_default_)));
 })();
 

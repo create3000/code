@@ -1,4 +1,4 @@
-/* X_ITE v8.11.16 */(function webpackUniversalModuleDefinition(root, factory) {
+/* X_ITE v8.11.17 */(function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
@@ -11,11 +11,11 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 489:
+/***/ 833:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* provided dependency */ var jQuery = __webpack_require__(508);
+/* provided dependency */ var jQuery = __webpack_require__(757);
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
 /**
@@ -387,10 +387,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
 /***/ }),
 
-/***/ 174:
+/***/ 32:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-/* provided dependency */ var jQuery = __webpack_require__(508);
+/* provided dependency */ var jQuery = __webpack_require__(757);
 /**
  * @preserve jquery.fullscreen 1.1.5
  * https://github.com/code-lts/jquery-fullscreen-plugin
@@ -586,7 +586,7 @@ installFullScreenHandlers();
 
 /***/ }),
 
-/***/ 993:
+/***/ 716:
 /***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -600,7 +600,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 (function (factory) {
     if ( true ) {
         // AMD. Register as an anonymous module.
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(508)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(757)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 		(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -811,7 +811,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
-/***/ 508:
+/***/ 757:
 /***/ (function(module, exports) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11523,7 +11523,7 @@ return jQuery;
 
 /***/ }),
 
-/***/ 366:
+/***/ 986:
 /***/ ((module) => {
 
 /**
@@ -16302,7 +16302,7 @@ if (true) {
 
 /***/ }),
 
-/***/ 258:
+/***/ 308:
 /***/ (function(__unused_webpack_module, exports) {
 
 
@@ -19547,7 +19547,7 @@ if (true) {
 
 /***/ }),
 
-/***/ 648:
+/***/ 33:
 /***/ (function(module, exports) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -20664,7 +20664,30 @@ __webpack_require__.d(__webpack_exports__, {
 
 const Namespace = new Map ();
 
-Namespace .set ("x_ite/Namespace", Namespace);
+Object .defineProperty (Namespace, "add",
+{
+   value (name, path, module)
+   {
+      if (Namespace .hasOwnProperty (name))
+      {
+         // if (!path .match (/\/components\/\w+$/i))
+         //    console .warn (`Module ${name} (${path}) already defined.`);
+      }
+      else
+      {
+         const X3D = window [Symbol .for ("X_ITE.X3D-8.11.17")];
+
+         if (X3D)
+            X3D [name] = module;
+
+         Namespace [name] = module;
+      }
+
+      Namespace .set (path, module);
+   },
+});
+
+Namespace .add ("Namespace", "x_ite/Namespace", Namespace);
 
 /* harmony default export */ const x_ite_Namespace = (Namespace);
 
@@ -20817,94 +20840,8 @@ Object .defineProperty (X3DConstants, "addNode",
 const __default__ = X3DConstants;
 ;
 
-x_ite_Namespace .set ("x_ite/Base/X3DConstants", __default__);
+x_ite_Namespace .add ("X3DConstants", "x_ite/Base/X3DConstants", __default__);
 /* harmony default export */ const Base_X3DConstants = (__default__);
-;// CONCATENATED MODULE: ./src/x_ite/Execution/NamedNodesHandling.js
-/*******************************************************************************
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
- *
- * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
- *
- * The copyright notice above does not evidence any actual of intended
- * publication of such source code, and is an unpublished work by create3000.
- * This material contains CONFIDENTIAL INFORMATION that is the property of
- * create3000.
- *
- * No permission is granted to copy, distribute, or create derivative works from
- * the contents of this software, in whole or in part, without the prior written
- * permission of create3000.
- *
- * NON-MILITARY USE ONLY
- *
- * All create3000 software are effectively free software with a non-military use
- * restriction. It is free. Well commented source is provided. You may reuse the
- * source in any way you please with the exception anything that uses it must be
- * marked to indicate is contains 'non-military use only' components.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
- *
- * This file is part of the X_ITE Project.
- *
- * X_ITE is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License version 3 only, as published by the
- * Free Software Foundation.
- *
- * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
- * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
- * details (a copy is included in the LICENSE file that accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version 3
- * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
- * copy of the GPLv3 License.
- *
- * For Silvio, Joy and Adi.
- *
- ******************************************************************************/
-
-const getUniqueName = function (array, name = "", number = false)
-{
-   name = String (name) .replace (/_\d+$/, "");
-
-   let
-      newName = number ? `${name}_1` : name,
-      lo      = 1,
-      hi      = 1;
-
-   while (array .has (newName) || newName .length === 0)
-   {
-      lo   = hi;
-      hi <<= 1;
-
-      newName = `${name}_${lo}`;
-   }
-
-   lo >>>= 1;
-   hi >>>= 1;
-
-   if (lo && hi)
-   {
-      while (lo < hi)
-      {
-         const m = (lo + hi) >>> 1;
-
-         if (array .has (`${name}_${m}`))
-            lo = m + 1;
-         else
-            hi = m;
-      }
-
-      newName = `${name}_${lo}`;
-   }
-
-   return newName;
-};
-
 ;// CONCATENATED MODULE: ./src/standard/Math/Algorithm.js
 /*******************************************************************************
  *
@@ -21145,7 +21082,7 @@ const Algorithm =
 const Algorithm_default_ = Algorithm;
 ;
 
-x_ite_Namespace .set ("standard/Math/Algorithm", Algorithm_default_);
+x_ite_Namespace .add ("Algorithm", "standard/Math/Algorithm", Algorithm_default_);
 /* harmony default export */ const Math_Algorithm = (Algorithm_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/InputOutput/Generator.js
 /*******************************************************************************
@@ -21198,16 +21135,15 @@ x_ite_Namespace .set ("standard/Math/Algorithm", Algorithm_default_);
 
 
 
-
 function Generator ({ style = "TIDY", indent = "", precision = 7, doublePrecision = 15, html = false, closingTags = false })
 {
-   this .string           = "";
-   this .indent           = indent;
-   this .listIndent       = indent;
-   this .precision        = Math_Algorithm .clamp (precision, 1, 21);
-   this .doublePrecision  = Math_Algorithm .clamp (doublePrecision, 1, 21);
-   this .html             = html;
-   this .closingTags      = html || closingTags;
+   this .string          = "";
+   this .indent          = indent;
+   this .listIndent      = indent;
+   this .precision       = Math_Algorithm .clamp (precision, 1, 21);
+   this .doublePrecision = Math_Algorithm .clamp (doublePrecision, 1, 21);
+   this .html            = html;
+   this .closingTags     = html || closingTags;
 
    this .floatFormat = new Intl .NumberFormat ("en", {
       notation: "standard",
@@ -21235,7 +21171,7 @@ function Generator ({ style = "TIDY", indent = "", precision = 7, doublePrecisio
 
    this .Style (style);
 
-   this .executionContextStack = [ null ];
+   this .executionContextStack = [ ];
    this .importedNodesIndex    = new Map ();
    this .exportedNodesIndex    = new Map ();
    this .nodes                 = new Set ();
@@ -21248,7 +21184,7 @@ function Generator ({ style = "TIDY", indent = "", precision = 7, doublePrecisio
    this .units                 = true;
    this .unitCategories        = [ ];
 
-   this .names .set (null, Object .assign (new Set (), { index: 0 }));
+   this .PushExecutionContext (null);
 }
 
 Object .assign (Generator .prototype,
@@ -21454,19 +21390,27 @@ Object .assign (Generator .prototype,
          this .importedNames .clear ();
       }
    },
+   NamedNodes (namedNodes)
+   {
+      const
+         names       = this .names .get (this .ExecutionContext ()),
+         namesByNode = this .namesByNode;
+
+      for (const node of namedNodes)
+      {
+         if (node .getNodeName () .match (/^_\d+$/))
+            continue;
+
+         names .add (node .getNodeName ());
+         namesByNode .set (node .getValue (), node .getNodeName ())
+      }
+   },
    ExportedNodes (exportedNodes)
    {
       const index = this .exportedNodesIndex .get (this .ExecutionContext ());
 
       for (const exportedNode of exportedNodes)
-      {
-         try
-         {
-            index .add (exportedNode .getLocalNode ())
-         }
-         catch
-         { }
-      }
+         index .add (exportedNode .getLocalNode ())
    },
    ImportedNodes (importedNodes)
    {
@@ -21520,26 +21464,14 @@ Object .assign (Generator .prototype,
       }
       else
       {
-         const
-            name  = baseNode .getName (),
-            match = name .match (/^(.*?)(_\d+)?$/),
-            names = this .names .get (this .ExecutionContext ());
+         const names = this .names .get (this .ExecutionContext ());
 
-         if (match [1])
-         {
-            // The node has a name.
+         // The node has no name.
 
-            var newName = getUniqueName (names, name, !! match [2]);
-         }
-         else
-         {
-            // The node has no name.
+         if (!this .NeedsName (baseNode))
+            return "";
 
-            if (!this .NeedsName (baseNode))
-               return "";
-
-            var newName = `_${++ names .index}`;
-         }
+         const newName = `_${++ names .index}`;
 
          // Add to indices.
 
@@ -21742,7 +21674,7 @@ for (const key of Object .keys (Generator .prototype))
 const Generator_default_ = Generator;
 ;
 
-x_ite_Namespace .set ("x_ite/InputOutput/Generator", Generator_default_);
+x_ite_Namespace .add ("Generator", "x_ite/InputOutput/Generator", Generator_default_);
 /* harmony default export */ const InputOutput_Generator = (Generator_default_);
 ;// CONCATENATED MODULE: ./src/standard/Utility/MapUtilities.js
 /*******************************************************************************
@@ -21830,7 +21762,7 @@ const MapUtilities =
 const MapUtilities_default_ = MapUtilities;
 ;
 
-x_ite_Namespace .set ("standard/Utility/MapUtilities", MapUtilities_default_);
+x_ite_Namespace .add ("MapUtilities", "standard/Utility/MapUtilities", MapUtilities_default_);
 /* harmony default export */ const Utility_MapUtilities = (MapUtilities_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/DEVELOPMENT.js
 /*******************************************************************************
@@ -21885,7 +21817,7 @@ x_ite_Namespace .set ("standard/Utility/MapUtilities", MapUtilities_default_);
 const DEVELOPMENT_default_ = false;
 ;
 
-x_ite_Namespace .set ("x_ite/DEVELOPMENT", DEVELOPMENT_default_);
+x_ite_Namespace .add ("DEVELOPMENT", "x_ite/DEVELOPMENT", DEVELOPMENT_default_);
 /* harmony default export */ const DEVELOPMENT = (DEVELOPMENT_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DObject.js
 /*******************************************************************************
@@ -22009,18 +21941,32 @@ Object .assign (X3DObject .prototype,
    },
    getUserData (key)
    {
-      return this [_userData] .get (key);
+      return this [_userData] .get (key)
+         ?? this [_userData] .map ?.get (key);
    },
    setUserData (key, value)
    {
-      if (this [_userData] === X3DObject .prototype [_userData])
-         this [_userData] = new Map ();
+      try
+      {
+         if (this [_userData] === X3DObject .prototype [_userData])
+            this [_userData] = new WeakMap ();
 
-      this [_userData] .set (key, value);
+         this [_userData] .set (key, value);
+      }
+      catch
+      {
+         if (!this [_userData] .map)
+            this [_userData] .map = new Map ();
+
+         this [_userData] .map .set (key, value);
+      }
    },
    removeUserData (key)
    {
-      this [_userData] .delete (key);
+      if (this [_userData] .delete (key))
+         return;
+
+      this [_userData] .map ?.delete (key);
    },
    toString (options = Object .prototype)
    {
@@ -22073,7 +22019,7 @@ Object .assign (X3DObject .prototype,
    dispose ()
    {
       this [_interests] .clear ();
-      this [_userData]  .clear ();
+      this [_userData] .map ?.clear ();
    },
 });
 
@@ -22144,7 +22090,7 @@ Object .assign (X3DObject,
 const X3DObject_default_ = X3DObject;
 ;
 
-x_ite_Namespace .set ("x_ite/Base/X3DObject", X3DObject_default_);
+x_ite_Namespace .add ("X3DObject", "x_ite/Base/X3DObject", X3DObject_default_);
 /* harmony default export */ const Base_X3DObject = (X3DObject_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DChildObject.js
 /*******************************************************************************
@@ -22414,7 +22360,7 @@ for (const key of Object .keys (X3DChildObject .prototype))
 const X3DChildObject_default_ = X3DChildObject;
 ;
 
-x_ite_Namespace .set ("x_ite/Base/X3DChildObject", X3DChildObject_default_);
+x_ite_Namespace .add ("X3DChildObject", "x_ite/Base/X3DChildObject", X3DChildObject_default_);
 /* harmony default export */ const Base_X3DChildObject = (X3DChildObject_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Base/Events.js
 /*******************************************************************************
@@ -22492,7 +22438,7 @@ for (const key of Object .keys (Events))
 const Events_default_ = Events;
 ;
 
-x_ite_Namespace .set ("x_ite/Base/Events", Events_default_);
+x_ite_Namespace .add ("Events", "x_ite/Base/Events", Events_default_);
 /* harmony default export */ const Base_Events = (Events_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DFieldDefinition.js
 /*******************************************************************************
@@ -22572,7 +22518,7 @@ Object .defineProperties (X3DFieldDefinition,
 const X3DFieldDefinition_default_ = X3DFieldDefinition;
 ;
 
-x_ite_Namespace .set ("x_ite/Base/X3DFieldDefinition", X3DFieldDefinition_default_);
+x_ite_Namespace .add ("X3DFieldDefinition", "x_ite/Base/X3DFieldDefinition", X3DFieldDefinition_default_);
 /* harmony default export */ const Base_X3DFieldDefinition = (X3DFieldDefinition_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DInfoArray.js
 /*******************************************************************************
@@ -22958,7 +22904,7 @@ Object .defineProperties (X3DInfoArray .prototype,
 const X3DInfoArray_default_ = X3DInfoArray;
 ;
 
-x_ite_Namespace .set ("x_ite/Base/X3DInfoArray", X3DInfoArray_default_);
+x_ite_Namespace .add ("X3DInfoArray", "x_ite/Base/X3DInfoArray", X3DInfoArray_default_);
 /* harmony default export */ const Base_X3DInfoArray = (X3DInfoArray_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Base/FieldDefinitionArray.js
 /*******************************************************************************
@@ -23033,7 +22979,7 @@ Object .defineProperties (FieldDefinitionArray,
 const FieldDefinitionArray_default_ = FieldDefinitionArray;
 ;
 
-x_ite_Namespace .set ("x_ite/Base/FieldDefinitionArray", FieldDefinitionArray_default_);
+x_ite_Namespace .add ("FieldDefinitionArray", "x_ite/Base/FieldDefinitionArray", FieldDefinitionArray_default_);
 /* harmony default export */ const Base_FieldDefinitionArray = (FieldDefinitionArray_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DField.js
 /*******************************************************************************
@@ -23467,7 +23413,7 @@ for (const key of Object .keys (X3DField .prototype))
 const X3DField_default_ = X3DField;
 ;
 
-x_ite_Namespace .set ("x_ite/Base/X3DField", X3DField_default_);
+x_ite_Namespace .add ("X3DField", "x_ite/Base/X3DField", X3DField_default_);
 /* harmony default export */ const Base_X3DField = (X3DField_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Base/FieldArray.js
 /*******************************************************************************
@@ -23542,7 +23488,7 @@ Object .defineProperties (FieldArray,
 const FieldArray_default_ = FieldArray;
 ;
 
-x_ite_Namespace .set ("x_ite/Base/FieldArray", FieldArray_default_);
+x_ite_Namespace .add ("FieldArray", "x_ite/Base/FieldArray", FieldArray_default_);
 /* harmony default export */ const Base_FieldArray = (FieldArray_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFBool.js
 /*******************************************************************************
@@ -23651,7 +23597,7 @@ Object .defineProperties (SFBool,
 const SFBool_default_ = SFBool;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/SFBool", SFBool_default_);
+x_ite_Namespace .add ("SFBool", "x_ite/Fields/SFBool", SFBool_default_);
 /* harmony default export */ const Fields_SFBool = (SFBool_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Color3.js
 /*******************************************************************************
@@ -23914,7 +23860,7 @@ Object .assign (Color3,
 const Color3_default_ = Color3;
 ;
 
-x_ite_Namespace .set ("standard/Math/Numbers/Color3", Color3_default_);
+x_ite_Namespace .add ("Color3", "standard/Math/Numbers/Color3", Color3_default_);
 /* harmony default export */ const Numbers_Color3 = (Color3_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFColor.js
 /*******************************************************************************
@@ -24150,7 +24096,7 @@ Object .defineProperties (SFColor,
 const SFColor_default_ = SFColor;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/SFColor", SFColor_default_);
+x_ite_Namespace .add ("SFColor", "x_ite/Fields/SFColor", SFColor_default_);
 /* harmony default export */ const Fields_SFColor = (SFColor_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Color4.js
 /*******************************************************************************
@@ -24343,7 +24289,7 @@ Object .assign (Color4,
 const Color4_default_ = Color4;
 ;
 
-x_ite_Namespace .set ("standard/Math/Numbers/Color4", Color4_default_);
+x_ite_Namespace .add ("Color4", "standard/Math/Numbers/Color4", Color4_default_);
 /* harmony default export */ const Numbers_Color4 = (Color4_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFColorRGBA.js
 /*******************************************************************************
@@ -24546,7 +24492,7 @@ Object .defineProperties (SFColorRGBA,
 const SFColorRGBA_default_ = SFColorRGBA;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/SFColorRGBA", SFColorRGBA_default_);
+x_ite_Namespace .add ("SFColorRGBA", "x_ite/Fields/SFColorRGBA", SFColorRGBA_default_);
 /* harmony default export */ const Fields_SFColorRGBA = (SFColorRGBA_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFDouble.js
 /*******************************************************************************
@@ -24659,7 +24605,7 @@ Object .defineProperties (SFDouble,
 const SFDouble_default_ = SFDouble;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/SFDouble", SFDouble_default_);
+x_ite_Namespace .add ("SFDouble", "x_ite/Fields/SFDouble", SFDouble_default_);
 /* harmony default export */ const Fields_SFDouble = (SFDouble_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFFloat.js
 /*******************************************************************************
@@ -24772,7 +24718,7 @@ Object .defineProperties (SFFloat,
 const SFFloat_default_ = SFFloat;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/SFFloat", SFFloat_default_);
+x_ite_Namespace .add ("SFFloat", "x_ite/Fields/SFFloat", SFFloat_default_);
 /* harmony default export */ const Fields_SFFloat = (SFFloat_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFInt32.js
 /*******************************************************************************
@@ -24881,7 +24827,7 @@ Object .defineProperties (SFInt32,
 const SFInt32_default_ = SFInt32;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/SFInt32", SFInt32_default_);
+x_ite_Namespace .add ("SFInt32", "x_ite/Fields/SFInt32", SFInt32_default_);
 /* harmony default export */ const Fields_SFInt32 = (SFInt32_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFMatrixPrototypeTemplate.js
 /*******************************************************************************
@@ -25077,7 +25023,7 @@ function SFMatrixPrototypeTemplate (Constructor, TypeName, Matrix, SFVec, double
 const SFMatrixPrototypeTemplate_default_ = SFMatrixPrototypeTemplate;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/SFMatrixPrototypeTemplate", SFMatrixPrototypeTemplate_default_);
+x_ite_Namespace .add ("SFMatrixPrototypeTemplate", "x_ite/Fields/SFMatrixPrototypeTemplate", SFMatrixPrototypeTemplate_default_);
 /* harmony default export */ const Fields_SFMatrixPrototypeTemplate = (SFMatrixPrototypeTemplate_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFVecPrototypeTemplate.js
 /*******************************************************************************
@@ -25283,7 +25229,7 @@ function SFVecPrototypeTemplate (Constructor, TypeName, Vector, double)
 const SFVecPrototypeTemplate_default_ = SFVecPrototypeTemplate;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/SFVecPrototypeTemplate", SFVecPrototypeTemplate_default_);
+x_ite_Namespace .add ("SFVecPrototypeTemplate", "x_ite/Fields/SFVecPrototypeTemplate", SFVecPrototypeTemplate_default_);
 /* harmony default export */ const Fields_SFVecPrototypeTemplate = (SFVecPrototypeTemplate_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Vector2.js
 /*******************************************************************************
@@ -25526,7 +25472,7 @@ Object .assign (Vector2,
 const Vector2_default_ = Vector2;
 ;
 
-x_ite_Namespace .set ("standard/Math/Numbers/Vector2", Vector2_default_);
+x_ite_Namespace .add ("Vector2", "standard/Math/Numbers/Vector2", Vector2_default_);
 /* harmony default export */ const Numbers_Vector2 = (Vector2_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFVec2.js
 /*******************************************************************************
@@ -25651,7 +25597,7 @@ const SFVec2 = {
 const SFVec2_default_ = SFVec2;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/SFVec2", SFVec2_default_);
+x_ite_Namespace .add ("SFVec2", "x_ite/Fields/SFVec2", SFVec2_default_);
 /* harmony default export */ const Fields_SFVec2 = (SFVec2_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Vector3.js
 /*******************************************************************************
@@ -25948,7 +25894,7 @@ Object .assign (Vector3,
 const Vector3_default_ = Vector3;
 ;
 
-x_ite_Namespace .set ("standard/Math/Numbers/Vector3", Vector3_default_);
+x_ite_Namespace .add ("Vector3", "standard/Math/Numbers/Vector3", Vector3_default_);
 /* harmony default export */ const Numbers_Vector3 = (Vector3_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Matrix2.js
 /*******************************************************************************
@@ -26227,7 +26173,7 @@ Object .assign (Matrix2,
 const Matrix2_default_ = Matrix2;
 ;
 
-x_ite_Namespace .set ("standard/Math/Numbers/Matrix2", Matrix2_default_);
+x_ite_Namespace .add ("Matrix2", "standard/Math/Numbers/Matrix2", Matrix2_default_);
 /* harmony default export */ const Numbers_Matrix2 = (Matrix2_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Algorithms/eigen_decomposition.js
 /*******************************************************************************
@@ -26422,7 +26368,7 @@ function eigen_decomposition (matrix, result)
 const eigen_decomposition_default_ = eigen_decomposition;
 ;
 
-x_ite_Namespace .set ("standard/Math/Algorithms/eigen_decomposition", eigen_decomposition_default_);
+x_ite_Namespace .add ("eigen_decomposition", "standard/Math/Algorithms/eigen_decomposition", eigen_decomposition_default_);
 /* harmony default export */ const Algorithms_eigen_decomposition = (eigen_decomposition_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Matrix3.js
 /*******************************************************************************
@@ -27100,7 +27046,7 @@ const m = new Matrix3 ();
 const Matrix3_default_ = Matrix3;
 ;
 
-x_ite_Namespace .set ("standard/Math/Numbers/Matrix3", Matrix3_default_);
+x_ite_Namespace .add ("Matrix3", "standard/Math/Numbers/Matrix3", Matrix3_default_);
 /* harmony default export */ const Numbers_Matrix3 = (Matrix3_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFMatrix3.js
 /*******************************************************************************
@@ -27245,7 +27191,7 @@ const SFMatrix3 = {
 const SFMatrix3_default_ = SFMatrix3;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/SFMatrix3", SFMatrix3_default_);
+x_ite_Namespace .add ("SFMatrix3", "x_ite/Fields/SFMatrix3", SFMatrix3_default_);
 /* harmony default export */ const Fields_SFMatrix3 = (SFMatrix3_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFVec3.js
 /*******************************************************************************
@@ -27390,7 +27336,7 @@ const SFVec3 = {
 const SFVec3_default_ = SFVec3;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/SFVec3", SFVec3_default_);
+x_ite_Namespace .add ("SFVec3", "x_ite/Fields/SFVec3", SFVec3_default_);
 /* harmony default export */ const Fields_SFVec3 = (SFVec3_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Vector4.js
 /*******************************************************************************
@@ -27702,7 +27648,7 @@ Object .assign (Vector4,
 const Vector4_default_ = Vector4;
 ;
 
-x_ite_Namespace .set ("standard/Math/Numbers/Vector4", Vector4_default_);
+x_ite_Namespace .add ("Vector4", "standard/Math/Numbers/Vector4", Vector4_default_);
 /* harmony default export */ const Numbers_Vector4 = (Vector4_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Quaternion.js
 /*******************************************************************************
@@ -28372,7 +28318,7 @@ const
 const Quaternion_default_ = Quaternion;
 ;
 
-x_ite_Namespace .set ("standard/Math/Numbers/Quaternion", Quaternion_default_);
+x_ite_Namespace .add ("Quaternion", "standard/Math/Numbers/Quaternion", Quaternion_default_);
 /* harmony default export */ const Numbers_Quaternion = (Quaternion_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Rotation4.js
 /*******************************************************************************
@@ -28855,7 +28801,7 @@ Object .assign (Rotation4,
 const Rotation4_default_ = Rotation4;
 ;
 
-x_ite_Namespace .set ("standard/Math/Numbers/Rotation4", Rotation4_default_);
+x_ite_Namespace .add ("Rotation4", "standard/Math/Numbers/Rotation4", Rotation4_default_);
 /* harmony default export */ const Numbers_Rotation4 = (Rotation4_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Matrix4.js
 /*******************************************************************************
@@ -29654,7 +29600,7 @@ const
 const Matrix4_default_ = Matrix4_Matrix4;
 ;
 
-x_ite_Namespace .set ("standard/Math/Numbers/Matrix4", Matrix4_default_);
+x_ite_Namespace .add ("Matrix4", "standard/Math/Numbers/Matrix4", Matrix4_default_);
 /* harmony default export */ const Numbers_Matrix4 = (Matrix4_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFMatrix4.js
 /*******************************************************************************
@@ -29792,7 +29738,7 @@ const SFMatrix4 = {
 const SFMatrix4_default_ = SFMatrix4;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/SFMatrix4", SFMatrix4_default_);
+x_ite_Namespace .add ("SFMatrix4", "x_ite/Fields/SFMatrix4", SFMatrix4_default_);
 /* harmony default export */ const Fields_SFMatrix4 = (SFMatrix4_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFNodeCache.js
 /*******************************************************************************
@@ -29905,7 +29851,7 @@ function dispose ()
 const SFNodeCache_default_ = SFNodeCache;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/SFNodeCache", SFNodeCache_default_);
+x_ite_Namespace .add ("SFNodeCache", "x_ite/Fields/SFNodeCache", SFNodeCache_default_);
 /* harmony default export */ const Fields_SFNodeCache = (SFNodeCache_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFNode.js
 /*******************************************************************************
@@ -30194,6 +30140,17 @@ Object .assign (Object .setPrototypeOf (SFNode .prototype, Base_X3DField .protot
 
       throw new Error ("SFNode.getFieldDefinitions: node is null.");
    },
+   getField (name)
+   {
+      const
+         target = this [_target],
+         value  = target .getValue ();
+
+      if (value)
+         return value .getField (name);
+
+      throw new Error ("SFNode is disposed.")
+   },
    addFieldCallback (name, key, object)
    {
       const target = this [_target];
@@ -30345,7 +30302,7 @@ Object .defineProperties (SFNode,
 const SFNode_default_ = SFNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/SFNode", SFNode_default_);
+x_ite_Namespace .add ("SFNode", "x_ite/Fields/SFNode", SFNode_default_);
 /* harmony default export */ const Fields_SFNode = (SFNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFRotation.js
 /*******************************************************************************
@@ -30625,7 +30582,7 @@ Object .defineProperties (SFRotation,
 const SFRotation_default_ = SFRotation;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/SFRotation", SFRotation_default_);
+x_ite_Namespace .add ("SFRotation", "x_ite/Fields/SFRotation", SFRotation_default_);
 /* harmony default export */ const Fields_SFRotation = (SFRotation_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFString.js
 /*******************************************************************************
@@ -30764,7 +30721,7 @@ Object .assign (SFString,
 const SFString_default_ = SFString;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/SFString", SFString_default_);
+x_ite_Namespace .add ("SFString", "x_ite/Fields/SFString", SFString_default_);
 /* harmony default export */ const Fields_SFString = (SFString_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFTime.js
 /*******************************************************************************
@@ -30873,7 +30830,7 @@ Object .defineProperties (SFTime,
 const SFTime_default_ = SFTime;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/SFTime", SFTime_default_);
+x_ite_Namespace .add ("SFTime", "x_ite/Fields/SFTime", SFTime_default_);
 /* harmony default export */ const Fields_SFTime = (SFTime_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFVec4.js
 /*******************************************************************************
@@ -31026,7 +30983,7 @@ const SFVec4 = {
 const SFVec4_default_ = SFVec4;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/SFVec4", SFVec4_default_);
+x_ite_Namespace .add ("SFVec4", "x_ite/Fields/SFVec4", SFVec4_default_);
 /* harmony default export */ const Fields_SFVec4 = (SFVec4_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DArrayField.js
 /*******************************************************************************
@@ -31169,7 +31126,7 @@ for (const key of Object .keys (X3DArrayField .prototype))
 const X3DArrayField_default_ = X3DArrayField;
 ;
 
-x_ite_Namespace .set ("x_ite/Base/X3DArrayField", X3DArrayField_default_);
+x_ite_Namespace .add ("X3DArrayField", "x_ite/Base/X3DArrayField", X3DArrayField_default_);
 /* harmony default export */ const Base_X3DArrayField = (X3DArrayField_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DObjectArrayField.js
 /*******************************************************************************
@@ -31715,7 +31672,7 @@ Object .defineProperty (X3DObjectArrayField .prototype, "length",
 const X3DObjectArrayField_default_ = X3DObjectArrayField;
 ;
 
-x_ite_Namespace .set ("x_ite/Base/X3DObjectArrayField", X3DObjectArrayField_default_);
+x_ite_Namespace .add ("X3DObjectArrayField", "x_ite/Base/X3DObjectArrayField", X3DObjectArrayField_default_);
 /* harmony default export */ const Base_X3DObjectArrayField = (X3DObjectArrayField_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DTypedArrayField.js
 /*******************************************************************************
@@ -32738,7 +32695,7 @@ function addEvent (index, components, value)
 const X3DTypedArrayField_default_ = X3DTypedArrayField;
 ;
 
-x_ite_Namespace .set ("x_ite/Base/X3DTypedArrayField", X3DTypedArrayField_default_);
+x_ite_Namespace .add ("X3DTypedArrayField", "x_ite/Base/X3DTypedArrayField", X3DTypedArrayField_default_);
 /* harmony default export */ const Base_X3DTypedArrayField = (X3DTypedArrayField_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/ArrayFields.js
 /*******************************************************************************
@@ -33235,7 +33192,7 @@ const ArrayFields =
 const ArrayFields_default_ = ArrayFields;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/ArrayFields", ArrayFields_default_);
+x_ite_Namespace .add ("ArrayFields", "x_ite/Fields/ArrayFields", ArrayFields_default_);
 /* harmony default export */ const Fields_ArrayFields = (ArrayFields_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFImage.js
 /*******************************************************************************
@@ -33610,7 +33567,7 @@ Object .defineProperties (SFImage,
 const SFImage_default_ = SFImage;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields/SFImage", SFImage_default_);
+x_ite_Namespace .add ("SFImage", "x_ite/Fields/SFImage", SFImage_default_);
 /* harmony default export */ const Fields_SFImage = (SFImage_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Fields.js
 /*******************************************************************************
@@ -33702,7 +33659,7 @@ const Fields = {
 const Fields_default_ = Fields;
 ;
 
-x_ite_Namespace .set ("x_ite/Fields", Fields_default_);
+x_ite_Namespace .add ("Fields", "x_ite/Fields", Fields_default_);
 /* harmony default export */ const x_ite_Fields = (Fields_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/HTMLSupport.js
 /*******************************************************************************
@@ -33781,7 +33738,7 @@ const HTMLSupport =
 const HTMLSupport_default_ = HTMLSupport;
 ;
 
-x_ite_Namespace .set ("x_ite/Parser/HTMLSupport", HTMLSupport_default_);
+x_ite_Namespace .add ("HTMLSupport", "x_ite/Parser/HTMLSupport", HTMLSupport_default_);
 /* harmony default export */ const Parser_HTMLSupport = (HTMLSupport_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DBaseNode.js
 /*******************************************************************************
@@ -34431,8 +34388,98 @@ Object .defineProperties (X3DBaseNode .prototype,
 const X3DBaseNode_default_ = X3DBaseNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Base/X3DBaseNode", X3DBaseNode_default_);
+x_ite_Namespace .add ("X3DBaseNode", "x_ite/Base/X3DBaseNode", X3DBaseNode_default_);
 /* harmony default export */ const Base_X3DBaseNode = (X3DBaseNode_default_);
+;// CONCATENATED MODULE: ./src/x_ite/Browser/Legacy.js
+/* provided dependency */ var $ = __webpack_require__(757);
+/*******************************************************************************
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
+ *
+ * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * The copyright notice above does not evidence any actual of intended
+ * publication of such source code, and is an unpublished work by create3000.
+ * This material contains CONFIDENTIAL INFORMATION that is the property of
+ * create3000.
+ *
+ * No permission is granted to copy, distribute, or create derivative works from
+ * the contents of this software, in whole or in part, without the prior written
+ * permission of create3000.
+ *
+ * NON-MILITARY USE ONLY
+ *
+ * All create3000 software are effectively free software with a non-military use
+ * restriction. It is free. Well commented source is provided. You may reuse the
+ * source in any way you please with the exception anything that uses it must be
+ * marked to indicate is contains 'non-military use only' components.
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * This file is part of the X_ITE Project.
+ *
+ * X_ITE is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License version 3 only, as published by the
+ * Free Software Foundation.
+ *
+ * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
+ * details (a copy is included in the LICENSE file that accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version 3
+ * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
+ * copy of the GPLv3 License.
+ *
+ * For Silvio, Joy and Adi.
+ *
+ ******************************************************************************/
+
+const Legacy =
+{
+   elements (elements, X3DBrowser)
+   {
+      if (elements .length)
+      {
+         console .warn ("Use of <X3DCanvas> element is depreciated, please use <x3d-canvas> element instead. See https://create3000.github.io/x_ite/#embedding-x_ite-within-a-web-page.");
+
+         $.map (elements, element => new X3DBrowser (element));
+      }
+   },
+   browser (browser)
+   {
+      const element = browser .getElement ();
+
+      if (element .prop ("nodeName") .toUpperCase () !== "X3DCANVAS")
+         return;
+
+      if (element .attr ("src"))
+         browser .attributeChangedCallback ("src", undefined, element .attr ("src"));
+      else if (element .attr ("url"))
+         browser .attributeChangedCallback ("url", undefined, element .attr ("url"));
+
+      // Make element focusable.
+      element .attr ("tabindex", element .attr ("tabindex") ?? 0);
+   },
+   error (elements, error)
+   {
+      console .error (error);
+
+      // <X3DCanvas>
+      elements .children (".x_ite-private-browser") .hide ();
+      elements .children (":not(.x_ite-private-browser)") .show ();
+   },
+};
+
+const Legacy_default_ = Legacy;
+;
+
+x_ite_Namespace .add ("Legacy", "x_ite/Browser/Legacy", Legacy_default_);
+/* harmony default export */ const Browser_Legacy = (Legacy_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/VERSION.js
 /*******************************************************************************
  *
@@ -34481,10 +34528,10 @@ x_ite_Namespace .set ("x_ite/Base/X3DBaseNode", X3DBaseNode_default_);
  *
  ******************************************************************************/
 
-const VERSION_default_ = "8.11.16";
+const VERSION_default_ = "8.11.17";
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/VERSION", VERSION_default_);
+x_ite_Namespace .add ("VERSION", "x_ite/Browser/VERSION", VERSION_default_);
 /* harmony default export */ const VERSION = (VERSION_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/X3DNode.js
 /*******************************************************************************
@@ -35882,7 +35929,7 @@ Object .defineProperties (X3DNode,
 const X3DNode_default_ = X3DNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Core/X3DNode", X3DNode_default_);
+x_ite_Namespace .add ("X3DNode", "x_ite/Components/Core/X3DNode", X3DNode_default_);
 /* harmony default export */ const Core_X3DNode = (X3DNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/X3DMetadataObject.js
 /*******************************************************************************
@@ -35962,7 +36009,7 @@ Object .defineProperties (X3DMetadataObject,
 const X3DMetadataObject_default_ = X3DMetadataObject;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Core/X3DMetadataObject", X3DMetadataObject_default_);
+x_ite_Namespace .add ("X3DMetadataObject", "x_ite/Components/Core/X3DMetadataObject", X3DMetadataObject_default_);
 /* harmony default export */ const Core_X3DMetadataObject = (X3DMetadataObject_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/MetadataBoolean.js
 /*******************************************************************************
@@ -36086,7 +36133,7 @@ Object .defineProperties (MetadataBoolean,
 const MetadataBoolean_default_ = MetadataBoolean;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Core/MetadataBoolean", MetadataBoolean_default_);
+x_ite_Namespace .add ("MetadataBoolean", "x_ite/Components/Core/MetadataBoolean", MetadataBoolean_default_);
 /* harmony default export */ const Core_MetadataBoolean = (MetadataBoolean_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/MetadataDouble.js
 /*******************************************************************************
@@ -36210,7 +36257,7 @@ Object .defineProperties (MetadataDouble,
 const MetadataDouble_default_ = MetadataDouble;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Core/MetadataDouble", MetadataDouble_default_);
+x_ite_Namespace .add ("MetadataDouble", "x_ite/Components/Core/MetadataDouble", MetadataDouble_default_);
 /* harmony default export */ const Core_MetadataDouble = (MetadataDouble_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/MetadataFloat.js
 /*******************************************************************************
@@ -36334,7 +36381,7 @@ Object .defineProperties (MetadataFloat,
 const MetadataFloat_default_ = MetadataFloat;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Core/MetadataFloat", MetadataFloat_default_);
+x_ite_Namespace .add ("MetadataFloat", "x_ite/Components/Core/MetadataFloat", MetadataFloat_default_);
 /* harmony default export */ const Core_MetadataFloat = (MetadataFloat_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/MetadataInteger.js
 /*******************************************************************************
@@ -36458,7 +36505,7 @@ Object .defineProperties (MetadataInteger,
 const MetadataInteger_default_ = MetadataInteger;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Core/MetadataInteger", MetadataInteger_default_);
+x_ite_Namespace .add ("MetadataInteger", "x_ite/Components/Core/MetadataInteger", MetadataInteger_default_);
 /* harmony default export */ const Core_MetadataInteger = (MetadataInteger_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/MetadataSet.js
 /*******************************************************************************
@@ -36582,7 +36629,7 @@ Object .defineProperties (MetadataSet,
 const MetadataSet_default_ = MetadataSet;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Core/MetadataSet", MetadataSet_default_);
+x_ite_Namespace .add ("MetadataSet", "x_ite/Components/Core/MetadataSet", MetadataSet_default_);
 /* harmony default export */ const Core_MetadataSet = (MetadataSet_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/MetadataString.js
 /*******************************************************************************
@@ -36706,7 +36753,7 @@ Object .defineProperties (MetadataString,
 const MetadataString_default_ = MetadataString;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Core/MetadataString", MetadataString_default_);
+x_ite_Namespace .add ("MetadataString", "x_ite/Components/Core/MetadataString", MetadataString_default_);
 /* harmony default export */ const Core_MetadataString = (MetadataString_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/X3DChildNode.js
 /*******************************************************************************
@@ -36793,6 +36840,10 @@ Object .assign (Object .setPrototypeOf (X3DChildNode .prototype, Core_X3DNode .p
    {
       return this ._isPickableObject .getValue ();
    },
+   getMustDisplay ()
+   {
+      return false
+   },
 });
 
 Object .defineProperties (X3DChildNode,
@@ -36812,7 +36863,7 @@ Object .defineProperties (X3DChildNode,
 const X3DChildNode_default_ = X3DChildNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Core/X3DChildNode", X3DChildNode_default_);
+x_ite_Namespace .add ("X3DChildNode", "x_ite/Components/Core/X3DChildNode", X3DChildNode_default_);
 /* harmony default export */ const Core_X3DChildNode = (X3DChildNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/X3DInfoNode.js
 /*******************************************************************************
@@ -36891,7 +36942,7 @@ Object .defineProperties (X3DInfoNode,
 const X3DInfoNode_default_ = X3DInfoNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Core/X3DInfoNode", X3DInfoNode_default_);
+x_ite_Namespace .add ("X3DInfoNode", "x_ite/Components/Core/X3DInfoNode", X3DInfoNode_default_);
 /* harmony default export */ const Core_X3DInfoNode = (X3DInfoNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/WorldInfo.js
 /*******************************************************************************
@@ -37006,7 +37057,7 @@ Object .defineProperties (WorldInfo,
 const WorldInfo_default_ = WorldInfo;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Core/WorldInfo", WorldInfo_default_);
+x_ite_Namespace .add ("WorldInfo", "x_ite/Components/Core/WorldInfo", WorldInfo_default_);
 /* harmony default export */ const Core_WorldInfo = (WorldInfo_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/X3DBindableNode.js
 /*******************************************************************************
@@ -37119,8 +37170,94 @@ Object .defineProperties (X3DBindableNode,
 const X3DBindableNode_default_ = X3DBindableNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Core/X3DBindableNode", X3DBindableNode_default_);
+x_ite_Namespace .add ("X3DBindableNode", "x_ite/Components/Core/X3DBindableNode", X3DBindableNode_default_);
 /* harmony default export */ const Core_X3DBindableNode = (X3DBindableNode_default_);
+;// CONCATENATED MODULE: ./src/x_ite/Execution/NamedNodesHandling.js
+/*******************************************************************************
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
+ *
+ * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * The copyright notice above does not evidence any actual of intended
+ * publication of such source code, and is an unpublished work by create3000.
+ * This material contains CONFIDENTIAL INFORMATION that is the property of
+ * create3000.
+ *
+ * No permission is granted to copy, distribute, or create derivative works from
+ * the contents of this software, in whole or in part, without the prior written
+ * permission of create3000.
+ *
+ * NON-MILITARY USE ONLY
+ *
+ * All create3000 software are effectively free software with a non-military use
+ * restriction. It is free. Well commented source is provided. You may reuse the
+ * source in any way you please with the exception anything that uses it must be
+ * marked to indicate is contains 'non-military use only' components.
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * This file is part of the X_ITE Project.
+ *
+ * X_ITE is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License version 3 only, as published by the
+ * Free Software Foundation.
+ *
+ * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
+ * details (a copy is included in the LICENSE file that accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version 3
+ * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
+ * copy of the GPLv3 License.
+ *
+ * For Silvio, Joy and Adi.
+ *
+ ******************************************************************************/
+
+const getUniqueName = function (array, name = "", number = false)
+{
+   name = String (name) .replace (/_\d+$/, "");
+
+   let
+      newName = number ? `${name}_1` : name,
+      lo      = 1,
+      hi      = 1;
+
+   while (array .has (newName) || newName .length === 0)
+   {
+      lo   = hi;
+      hi <<= 1;
+
+      newName = `${name}_${lo}`;
+   }
+
+   lo >>>= 1;
+   hi >>>= 1;
+
+   if (lo && hi)
+   {
+      while (lo < hi)
+      {
+         const m = (lo + hi) >>> 1;
+
+         if (array .has (`${name}_${m}`))
+            lo = m + 1;
+         else
+            hi = m;
+      }
+
+      newName = `${name}_${lo}`;
+   }
+
+   return newName;
+};
+
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/NamedNodesArray.js
 /*******************************************************************************
  *
@@ -37194,7 +37331,7 @@ Object .defineProperties (NamedNodesArray,
 const NamedNodesArray_default_ = NamedNodesArray;
 ;
 
-x_ite_Namespace .set ("x_ite/Execution/NamedNodesArray", NamedNodesArray_default_);
+x_ite_Namespace .add ("NamedNodesArray", "x_ite/Execution/NamedNodesArray", NamedNodesArray_default_);
 /* harmony default export */ const Execution_NamedNodesArray = (NamedNodesArray_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/X3DImportedNode.js
 /*******************************************************************************
@@ -37775,7 +37912,7 @@ Object .defineProperties (X3DImportedNode,
 const X3DImportedNode_default_ = X3DImportedNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Execution/X3DImportedNode", X3DImportedNode_default_);
+x_ite_Namespace .add ("X3DImportedNode", "x_ite/Execution/X3DImportedNode", X3DImportedNode_default_);
 /* harmony default export */ const Execution_X3DImportedNode = (X3DImportedNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/ImportedNodesArray.js
 /*******************************************************************************
@@ -37850,7 +37987,7 @@ Object .defineProperties (ImportedNodesArray,
 const ImportedNodesArray_default_ = ImportedNodesArray;
 ;
 
-x_ite_Namespace .set ("x_ite/Execution/ImportedNodesArray", ImportedNodesArray_default_);
+x_ite_Namespace .add ("ImportedNodesArray", "x_ite/Execution/ImportedNodesArray", ImportedNodesArray_default_);
 /* harmony default export */ const Execution_ImportedNodesArray = (ImportedNodesArray_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Networking/X3DUrlObject.js
 /*******************************************************************************
@@ -38151,7 +38288,7 @@ Object .defineProperties (X3DUrlObject,
 const X3DUrlObject_default_ = X3DUrlObject;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Networking/X3DUrlObject", X3DUrlObject_default_);
+x_ite_Namespace .add ("X3DUrlObject", "x_ite/Components/Networking/X3DUrlObject", X3DUrlObject_default_);
 /* harmony default export */ const Networking_X3DUrlObject = (X3DUrlObject_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Prototype/X3DProtoDeclarationNode.js
 /*******************************************************************************
@@ -38268,10 +38405,10 @@ Base_X3DConstants .addNode (X3DProtoDeclarationNode);
 const X3DProtoDeclarationNode_default_ = X3DProtoDeclarationNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Prototype/X3DProtoDeclarationNode", X3DProtoDeclarationNode_default_);
+x_ite_Namespace .add ("X3DProtoDeclarationNode", "x_ite/Prototype/X3DProtoDeclarationNode", X3DProtoDeclarationNode_default_);
 /* harmony default export */ const Prototype_X3DProtoDeclarationNode = (X3DProtoDeclarationNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/X3DParser.js
-/* provided dependency */ var $ = __webpack_require__(508);
+/* provided dependency */ var X3DParser_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -38389,8 +38526,8 @@ Object .assign (X3DParser .prototype,
    convertColor (value, defaultColor = "white")
    {
       const
-         wrap   = $("<div></div>") .hide () .css ("color", defaultColor) .appendTo ($("body")),
-         div    = $("<div></div>").css ("color", value) .appendTo (wrap),
+         wrap   = X3DParser_$("<div></div>") .hide () .css ("color", defaultColor) .appendTo (X3DParser_$("body")),
+         div    = X3DParser_$("<div></div>").css ("color", value) .appendTo (wrap),
          rgb    = window .getComputedStyle (div [0]) .color,
          values = rgb .replace (/^rgba?\(|\)$/g, "") .split (/[\s,]+/) .map (s => parseFloat (s));
 
@@ -38426,7 +38563,7 @@ Object .assign (X3DParser .prototype,
 const X3DParser_default_ = X3DParser;
 ;
 
-x_ite_Namespace .set ("x_ite/Parser/X3DParser", X3DParser_default_);
+x_ite_Namespace .add ("X3DParser", "x_ite/Parser/X3DParser", X3DParser_default_);
 /* harmony default export */ const Parser_X3DParser = (X3DParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/Expressions.js
 /*******************************************************************************
@@ -38516,7 +38653,7 @@ function Expressions (Grammar)
 const Expressions_default_ = Expressions;
 ;
 
-x_ite_Namespace .set ("x_ite/Parser/Expressions", Expressions_default_);
+x_ite_Namespace .add ("Expressions", "x_ite/Parser/Expressions", Expressions_default_);
 /* harmony default export */ const Parser_Expressions = (Expressions_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Prototype/X3DProtoDeclaration.js
 /*******************************************************************************
@@ -39093,10 +39230,10 @@ Base_X3DConstants .addNode (X3DProtoDeclaration);
 const X3DProtoDeclaration_default_ = X3DProtoDeclaration;
 ;
 
-x_ite_Namespace .set ("x_ite/Prototype/X3DProtoDeclaration", X3DProtoDeclaration_default_);
+x_ite_Namespace .add ("X3DProtoDeclaration", "x_ite/Prototype/X3DProtoDeclaration", X3DProtoDeclaration_default_);
 /* harmony default export */ const Prototype_X3DProtoDeclaration = (X3DProtoDeclaration_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/VRMLParser.js
-/* provided dependency */ var VRMLParser_$ = __webpack_require__(508);
+/* provided dependency */ var VRMLParser_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -39428,39 +39565,31 @@ Object .assign (Object .setPrototypeOf (VRMLParser .prototype, Parser_X3DParser 
    {
       const VRML =
       [
-         "Core",
-         "EnvironmentalEffects",
          "EnvironmentalSensor",
-         "Geometry3D",
-         "Grouping",
-         "Interpolation",
-         "Lighting",
-         "Navigation",
-         "Networking",
          "PointingDeviceSensor",
-         "Rendering",
          "Scripting",
-         "Shape",
          "Sound",
          "Text",
-         "Texturing",
-         "Time",
       ];
 
       return function ()
       {
+         const
+            browser = this .getBrowser (),
+            scene   = this .getScene ();
+
          this .headerStatement ();
          this .profileStatement ();
          this .componentStatements ();
          this .unitStatements ();
          this .metaStatements ();
 
-         if (this .getScene () .getSpecificationVersion () === "2.0")
+         if (scene .getSpecificationVersion () === "2.0")
          {
-            this .getScene () .setProfile (this .getBrowser () .getProfile ("Core"));
+            scene .setProfile (browser .getProfile ("Interchange"));
 
             for (const componentName of VRML)
-               this .getScene () .updateComponent (this .getBrowser () .getComponent (componentName));
+               scene .updateComponent (browser .getComponent (componentName));
          }
 
          if (this .resolve)
@@ -39474,7 +39603,7 @@ Object .assign (Object .setPrototypeOf (VRMLParser .prototype, Parser_X3DParser 
                   if (this .lastIndex < this .input .length)
                      throw new Error ("Unknown statement.");
 
-                  this .resolve (this .getScene ());
+                  this .resolve (scene);
                }
                catch (error)
                {
@@ -41647,10 +41776,10 @@ Base_X3DField .prototype .fromString = function (string, scene)
 const VRMLParser_default_ = VRMLParser;
 ;
 
-x_ite_Namespace .set ("x_ite/Parser/VRMLParser", VRMLParser_default_);
+x_ite_Namespace .add ("VRMLParser", "x_ite/Parser/VRMLParser", VRMLParser_default_);
 /* harmony default export */ const Parser_VRMLParser = (VRMLParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/XMLParser.js
-/* provided dependency */ var XMLParser_$ = __webpack_require__(508);
+/* provided dependency */ var XMLParser_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -42842,7 +42971,7 @@ const HTMLParser =
 const XMLParser_default_ = XMLParser;
 ;
 
-x_ite_Namespace .set ("x_ite/Parser/XMLParser", XMLParser_default_);
+x_ite_Namespace .add ("XMLParser", "x_ite/Parser/XMLParser", XMLParser_default_);
 /* harmony default export */ const Parser_XMLParser = (XMLParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/JSONParser.js
 /*******************************************************************************
@@ -43261,7 +43390,7 @@ Object .assign (Object .setPrototypeOf (JSONParser .prototype, Parser_X3DParser 
 const JSONParser_default_ = JSONParser;
 ;
 
-x_ite_Namespace .set ("x_ite/Parser/JSONParser", JSONParser_default_);
+x_ite_Namespace .add ("JSONParser", "x_ite/Parser/JSONParser", JSONParser_default_);
 /* harmony default export */ const Parser_JSONParser = (JSONParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/X3DOptimizer.js
 /*******************************************************************************
@@ -43486,7 +43615,7 @@ Object .assign (X3DOptimizer .prototype,
 const X3DOptimizer_default_ = X3DOptimizer;
 ;
 
-x_ite_Namespace .set ("x_ite/Parser/X3DOptimizer", X3DOptimizer_default_);
+x_ite_Namespace .add ("X3DOptimizer", "x_ite/Parser/X3DOptimizer", X3DOptimizer_default_);
 /* harmony default export */ const Parser_X3DOptimizer = (X3DOptimizer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Features.js
 /*******************************************************************************
@@ -43550,7 +43679,7 @@ const Features =
 const Features_default_ = Features;
 ;
 
-x_ite_Namespace .set ("x_ite/Features", Features_default_);
+x_ite_Namespace .add ("Features", "x_ite/Features", Features_default_);
 /* harmony default export */ const x_ite_Features = (Features_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Networking/URLs.js
 /*******************************************************************************
@@ -43658,10 +43787,10 @@ const URLs =
 const URLs_default_ = URLs;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Networking/URLs", URLs_default_);
+x_ite_Namespace .add ("URLs", "x_ite/Browser/Networking/URLs", URLs_default_);
 /* harmony default export */ const Networking_URLs = (URLs_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GLTF2Parser.js
-/* provided dependency */ var GLTF2Parser_$ = __webpack_require__(508);
+/* provided dependency */ var GLTF2Parser_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -46721,10 +46850,10 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
 const GLTF2Parser_default_ = GLTF2Parser;
 ;
 
-x_ite_Namespace .set ("x_ite/Parser/GLTF2Parser", GLTF2Parser_default_);
+x_ite_Namespace .add ("GLTF2Parser", "x_ite/Parser/GLTF2Parser", GLTF2Parser_default_);
 /* harmony default export */ const Parser_GLTF2Parser = (GLTF2Parser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GLB2Parser.js
-/* provided dependency */ var GLB2Parser_$ = __webpack_require__(508);
+/* provided dependency */ var GLB2Parser_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -46873,10 +47002,10 @@ Object .assign (Object .setPrototypeOf (GLB2Parser .prototype, Parser_X3DParser 
 const GLB2Parser_default_ = GLB2Parser;
 ;
 
-x_ite_Namespace .set ("x_ite/Parser/GLB2Parser", GLB2Parser_default_);
+x_ite_Namespace .add ("GLB2Parser", "x_ite/Parser/GLB2Parser", GLB2Parser_default_);
 /* harmony default export */ const Parser_GLB2Parser = (GLB2Parser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/OBJParser.js
-/* provided dependency */ var OBJParser_$ = __webpack_require__(508);
+/* provided dependency */ var OBJParser_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -47970,7 +48099,7 @@ Object .assign (MaterialParser .prototype,
 const OBJParser_default_ = OBJParser;
 ;
 
-x_ite_Namespace .set ("x_ite/Parser/OBJParser", OBJParser_default_);
+x_ite_Namespace .add ("OBJParser", "x_ite/Parser/OBJParser", OBJParser_default_);
 /* harmony default export */ const Parser_OBJParser = (OBJParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/STLAParser.js
 /*******************************************************************************
@@ -48352,7 +48481,7 @@ Object .assign (Object .setPrototypeOf (STLAParser .prototype, Parser_X3DParser 
 const STLAParser_default_ = STLAParser;
 ;
 
-x_ite_Namespace .set ("x_ite/Parser/STLAParser", STLAParser_default_);
+x_ite_Namespace .add ("STLAParser", "x_ite/Parser/STLAParser", STLAParser_default_);
 /* harmony default export */ const Parser_STLAParser = (STLAParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/STLBParser.js
 /*******************************************************************************
@@ -48512,7 +48641,7 @@ Object .assign (Object .setPrototypeOf (STLBParser .prototype, Parser_X3DParser 
 const STLBParser_default_ = STLBParser;
 ;
 
-x_ite_Namespace .set ("x_ite/Parser/STLBParser", STLBParser_default_);
+x_ite_Namespace .add ("STLBParser", "x_ite/Parser/STLBParser", STLBParser_default_);
 /* harmony default export */ const Parser_STLBParser = (STLBParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/PLYAParser.js
 /*******************************************************************************
@@ -49132,7 +49261,7 @@ Object .assign (Object .setPrototypeOf (PLYAParser .prototype, Parser_X3DParser 
 const PLYAParser_default_ = PLYAParser;
 ;
 
-x_ite_Namespace .set ("x_ite/Parser/PLYAParser", PLYAParser_default_);
+x_ite_Namespace .add ("PLYAParser", "x_ite/Parser/PLYAParser", PLYAParser_default_);
 /* harmony default export */ const Parser_PLYAParser = (PLYAParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/PLYBParser.js
 /*******************************************************************************
@@ -49359,7 +49488,7 @@ Object .assign (Object .setPrototypeOf (PLYBParser .prototype, Parser_PLYAParser
 const PLYBParser_default_ = PLYBParser;
 ;
 
-x_ite_Namespace .set ("x_ite/Parser/PLYBParser", PLYBParser_default_);
+x_ite_Namespace .add ("PLYBParser", "x_ite/Parser/PLYBParser", PLYBParser_default_);
 /* harmony default export */ const Parser_PLYBParser = (PLYBParser_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Complex.js
 /*******************************************************************************
@@ -49610,7 +49739,7 @@ Object .assign (Complex,
 const Complex_default_ = Complex;
 ;
 
-x_ite_Namespace .set ("standard/Math/Numbers/Complex", Complex_default_);
+x_ite_Namespace .add ("Complex", "standard/Math/Numbers/Complex", Complex_default_);
 /* harmony default export */ const Numbers_Complex = (Complex_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Box2.js
 /*******************************************************************************
@@ -49872,7 +50001,7 @@ Object .defineProperties (Box2 .prototype,
 const Box2_default_ = Box2;
 ;
 
-x_ite_Namespace .set ("standard/Math/Geometry/Box2", Box2_default_);
+x_ite_Namespace .add ("Box2", "standard/Math/Geometry/Box2", Box2_default_);
 /* harmony default export */ const Geometry_Box2 = (Box2_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Algorithms/Bezier.js
 /*******************************************************************************
@@ -50109,7 +50238,7 @@ const Bezier =
 const Bezier_default_ = Bezier;
 ;
 
-x_ite_Namespace .set ("standard/Math/Algorithms/Bezier", Bezier_default_);
+x_ite_Namespace .add ("Bezier", "standard/Math/Algorithms/Bezier", Bezier_default_);
 /* harmony default export */ const Algorithms_Bezier = (Bezier_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Utility/MatrixStack.js
 /*******************************************************************************
@@ -50228,11 +50357,11 @@ function MatrixStack (Type)
 const MatrixStack_default_ = MatrixStack;
 ;
 
-x_ite_Namespace .set ("standard/Math/Utility/MatrixStack", MatrixStack_default_);
+x_ite_Namespace .add ("MatrixStack", "standard/Math/Utility/MatrixStack", MatrixStack_default_);
 /* harmony default export */ const Utility_MatrixStack = (MatrixStack_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/SVGParser.js
-/* provided dependency */ var SVGParser_$ = __webpack_require__(508);
-/* provided dependency */ var libtess = __webpack_require__(366);
+/* provided dependency */ var SVGParser_$ = __webpack_require__(757);
+/* provided dependency */ var libtess = __webpack_require__(986);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -52997,10 +53126,10 @@ Object .defineProperty (SVGParser .prototype, "style",
 const SVGParser_default_ = SVGParser;
 ;
 
-x_ite_Namespace .set ("x_ite/Parser/SVGParser", SVGParser_default_);
+x_ite_Namespace .add ("SVGParser", "x_ite/Parser/SVGParser", SVGParser_default_);
 /* harmony default export */ const Parser_SVGParser = (SVGParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GoldenGate.js
-/* provided dependency */ var GoldenGate_$ = __webpack_require__(508);
+/* provided dependency */ var GoldenGate_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -53166,7 +53295,7 @@ GoldenGate .Parser = [
 const GoldenGate_default_ = GoldenGate;
 ;
 
-x_ite_Namespace .set ("x_ite/Parser/GoldenGate", GoldenGate_default_);
+x_ite_Namespace .add ("GoldenGate", "x_ite/Parser/GoldenGate", GoldenGate_default_);
 /* harmony default export */ const Parser_GoldenGate = (GoldenGate_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Plane3.js
 /*******************************************************************************
@@ -53334,10 +53463,10 @@ Object .assign (Plane3 .prototype,
 const Plane3_default_ = Plane3;
 ;
 
-x_ite_Namespace .set ("standard/Math/Geometry/Plane3", Plane3_default_);
+x_ite_Namespace .add ("Plane3", "standard/Math/Geometry/Plane3", Plane3_default_);
 /* harmony default export */ const Geometry_Plane3 = (Plane3_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Triangle3.js
-/* provided dependency */ var Triangle3_libtess = __webpack_require__(366);
+/* provided dependency */ var Triangle3_libtess = __webpack_require__(986);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -53480,7 +53609,7 @@ const Triangle3 =
 const Triangle3_default_ = Triangle3;
 ;
 
-x_ite_Namespace .set ("standard/Math/Geometry/Triangle3", Triangle3_default_);
+x_ite_Namespace .add ("Triangle3", "standard/Math/Geometry/Triangle3", Triangle3_default_);
 /* harmony default export */ const Geometry_Triangle3 = (Triangle3_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Algorithms/SAT.js
 /*******************************************************************************
@@ -53594,7 +53723,7 @@ function is_between (value, lowerBound, upperBound)
 const SAT_default_ = SAT;
 ;
 
-x_ite_Namespace .set ("standard/Math/Algorithms/SAT", SAT_default_);
+x_ite_Namespace .add ("SAT", "standard/Math/Algorithms/SAT", SAT_default_);
 /* harmony default export */ const Algorithms_SAT = (SAT_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/ViewVolume.js
 /*******************************************************************************
@@ -54021,7 +54150,7 @@ Object .assign (ViewVolume,
 const ViewVolume_default_ = ViewVolume;
 ;
 
-x_ite_Namespace .set ("standard/Math/Geometry/ViewVolume", ViewVolume_default_);
+x_ite_Namespace .add ("ViewVolume", "standard/Math/Geometry/ViewVolume", ViewVolume_default_);
 /* harmony default export */ const Geometry_ViewVolume = (ViewVolume_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Rendering/TextureBuffer.js
 /*******************************************************************************
@@ -54257,7 +54386,7 @@ for (const key of Object .keys (TextureBuffer .prototype))
 const TextureBuffer_default_ = TextureBuffer;
 ;
 
-x_ite_Namespace .set ("x_ite/Rendering/TextureBuffer", TextureBuffer_default_);
+x_ite_Namespace .add ("TextureBuffer", "x_ite/Rendering/TextureBuffer", TextureBuffer_default_);
 /* harmony default export */ const Rendering_TextureBuffer = (TextureBuffer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Rendering/TraverseType.js
 /*******************************************************************************
@@ -54322,7 +54451,7 @@ const TraverseType =
 const TraverseType_default_ = TraverseType;
 ;
 
-x_ite_Namespace .set ("x_ite/Rendering/TraverseType", TraverseType_default_);
+x_ite_Namespace .add ("TraverseType", "x_ite/Rendering/TraverseType", TraverseType_default_);
 /* harmony default export */ const Rendering_TraverseType = (TraverseType_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Algorithms/MergeSort.js
 /*******************************************************************************
@@ -54431,7 +54560,7 @@ Object .assign (MergeSort .prototype,
 const MergeSort_default_ = MergeSort;
 ;
 
-x_ite_Namespace .set ("standard/Math/Algorithms/MergeSort", MergeSort_default_);
+x_ite_Namespace .add ("MergeSort", "standard/Math/Algorithms/MergeSort", MergeSort_default_);
 /* harmony default export */ const Algorithms_MergeSort = (MergeSort_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Camera.js
 /*******************************************************************************
@@ -54563,7 +54692,7 @@ const Camera =
 const Camera_default_ = Camera;
 ;
 
-x_ite_Namespace .set ("standard/Math/Geometry/Camera", Camera_default_);
+x_ite_Namespace .add ("Camera", "standard/Math/Geometry/Camera", Camera_default_);
 /* harmony default export */ const Geometry_Camera = (Camera_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Box3.js
 /*******************************************************************************
@@ -55233,7 +55362,7 @@ Object .defineProperties (Box3 .prototype,
 const Box3_default_ = Box3;
 ;
 
-x_ite_Namespace .set ("standard/Math/Geometry/Box3", Box3_default_);
+x_ite_Namespace .add ("Box3", "standard/Math/Geometry/Box3", Box3_default_);
 /* harmony default export */ const Geometry_Box3 = (Box3_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Line3.js
 /*******************************************************************************
@@ -55473,7 +55602,7 @@ Object .assign (Line3,
 const Line3_default_ = Line3;
 ;
 
-x_ite_Namespace .set ("standard/Math/Geometry/Line3", Line3_default_);
+x_ite_Namespace .add ("Line3", "standard/Math/Geometry/Line3", Line3_default_);
 /* harmony default export */ const Geometry_Line3 = (Line3_default_);
 ;// CONCATENATED MODULE: ./src/standard/Time/StopWatch.js
 /*******************************************************************************
@@ -55562,7 +55691,7 @@ class StopWatch
 const StopWatch_default_ = StopWatch;
 ;
 
-x_ite_Namespace .set ("standard/Time/StopWatch", StopWatch_default_);
+x_ite_Namespace .add ("StopWatch", "standard/Time/StopWatch", StopWatch_default_);
 /* harmony default export */ const Time_StopWatch = (StopWatch_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Rendering/X3DRenderObject.js
 /*******************************************************************************
@@ -55645,6 +55774,7 @@ function X3DRenderObject (executionContext)
    this .cameraSpaceMatrixArray   = new Float32Array (16);
    this .hitRay                   = new Geometry_Line3 (Numbers_Vector3 .Zero, Numbers_Vector3 .Zero);
    this .sensors                  = [[ ]];
+   this .viewpointGroups          = [ ];
    this .localObjectsCount        = [0, 0, 0];
    this .globalObjects            = [ ];
    this .localObjects             = [ ];
@@ -55733,6 +55863,10 @@ Object .assign (X3DRenderObject .prototype,
    getSensors ()
    {
       return this .sensors;
+   },
+   getViewpointGroups ()
+   {
+      return this .viewpointGroups;
    },
    getGlobalObjects ()
    {
@@ -56711,7 +56845,7 @@ function X3DRenderObject_assign (lhs, rhs)
 const X3DRenderObject_default_ = X3DRenderObject;
 ;
 
-x_ite_Namespace .set ("x_ite/Rendering/X3DRenderObject", X3DRenderObject_default_);
+x_ite_Namespace .add ("X3DRenderObject", "x_ite/Rendering/X3DRenderObject", X3DRenderObject_default_);
 /* harmony default export */ const Rendering_X3DRenderObject = (X3DRenderObject_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/BindableStack.js
 /*******************************************************************************
@@ -56879,7 +57013,7 @@ Object .defineProperties (BindableStack,
 const BindableStack_default_ = BindableStack;
 ;
 
-x_ite_Namespace .set ("x_ite/Execution/BindableStack", BindableStack_default_);
+x_ite_Namespace .add ("BindableStack", "x_ite/Execution/BindableStack", BindableStack_default_);
 /* harmony default export */ const Execution_BindableStack = (BindableStack_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/BindableList.js
 /*******************************************************************************
@@ -57087,7 +57221,7 @@ Object .defineProperties (BindableList,
 const BindableList_default_ = BindableList;
 ;
 
-x_ite_Namespace .set ("x_ite/Execution/BindableList", BindableList_default_);
+x_ite_Namespace .add ("BindableList", "x_ite/Execution/BindableList", BindableList_default_);
 /* harmony default export */ const Execution_BindableList = (BindableList_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Navigation/NavigationInfo.js
 /*******************************************************************************
@@ -57436,7 +57570,7 @@ Object .defineProperties (NavigationInfo,
 const NavigationInfo_default_ = NavigationInfo;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Navigation/NavigationInfo", NavigationInfo_default_);
+x_ite_Namespace .add ("NavigationInfo", "x_ite/Components/Navigation/NavigationInfo", NavigationInfo_default_);
 /* harmony default export */ const Navigation_NavigationInfo = (NavigationInfo_default_);
 ;// CONCATENATED MODULE: ./src/standard/Utility/ObjectCache.js
 /*******************************************************************************
@@ -57513,7 +57647,7 @@ function ObjectCache (Type)
 const ObjectCache_default_ = ObjectCache;
 ;
 
-x_ite_Namespace .set ("standard/Utility/ObjectCache", ObjectCache_default_);
+x_ite_Namespace .add ("ObjectCache", "standard/Utility/ObjectCache", ObjectCache_default_);
 /* harmony default export */ const Utility_ObjectCache = (ObjectCache_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalEffects/X3DFogObject.js
 /*******************************************************************************
@@ -57607,9 +57741,10 @@ function X3DFogObject (executionContext)
 {
    this .addType (Base_X3DConstants .X3DFogObject);
 
+   this .addChildObjects (Base_X3DConstants .inputOutput, "hidden", new x_ite_Fields .SFBool ());
+
    this ._visibilityRange .setUnit ("length");
 
-   this .hidden     = false;
    this .colorArray = new Float32Array (3);
 }
 
@@ -57617,6 +57752,7 @@ Object .assign (X3DFogObject .prototype,
 {
    initialize ()
    {
+      this ._hidden          .addInterest ("set_fogType__",         this);
       this ._fogType         .addInterest ("set_fogType__",         this);
       this ._color           .addInterest ("set_color__",           this);
       this ._visibilityRange .addInterest ("set_visibilityRange__", this);
@@ -57626,14 +57762,14 @@ Object .assign (X3DFogObject .prototype,
    },
    isHidden ()
    {
-      return this .hidden;
+      return this ._hidden .getValue ();
    },
    setHidden (value)
    {
-      this .hidden = value;
+      if (value === this ._hidden .getValue ())
+         return;
 
-      this .set_fogType__ ();
-      this .getBrowser () .addBrowserEvent ();
+      this ._hidden = value;
    },
    getFogType ()
    {
@@ -57652,7 +57788,7 @@ Object .assign (X3DFogObject .prototype,
 
       return function ()
       {
-         if (this .hidden || this .visibilityRange === 0)
+         if (this ._hidden .getValue () || this .visibilityRange === 0)
             this .fogType = 0;
          else
             this .fogType = fogTypes .get (this ._fogType .getValue ()) || 1;
@@ -57694,7 +57830,7 @@ Object .defineProperties (X3DFogObject,
 const X3DFogObject_default_ = X3DFogObject;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/EnvironmentalEffects/X3DFogObject", X3DFogObject_default_);
+x_ite_Namespace .add ("X3DFogObject", "x_ite/Components/EnvironmentalEffects/X3DFogObject", X3DFogObject_default_);
 /* harmony default export */ const EnvironmentalEffects_X3DFogObject = (X3DFogObject_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalEffects/Fog.js
 /*******************************************************************************
@@ -57831,7 +57967,7 @@ Object .defineProperties (Fog,
 const Fog_default_ = Fog;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/EnvironmentalEffects/Fog", Fog_default_);
+x_ite_Namespace .add ("Fog", "x_ite/Components/EnvironmentalEffects/Fog", Fog_default_);
 /* harmony default export */ const EnvironmentalEffects_Fog = (Fog_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Rendering/VertexArray.js
 /*******************************************************************************
@@ -57931,7 +58067,7 @@ Object .assign (VertexArray .prototype,
 const VertexArray_default_ = VertexArray;
 ;
 
-x_ite_Namespace .set ("x_ite/Rendering/VertexArray", VertexArray_default_);
+x_ite_Namespace .add ("VertexArray", "x_ite/Rendering/VertexArray", VertexArray_default_);
 /* harmony default export */ const Rendering_VertexArray = (VertexArray_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/Shading.js
 /*******************************************************************************
@@ -57995,7 +58131,7 @@ const Shading =
 const Shading_default_ = Shading;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Core/Shading", Shading_default_);
+x_ite_Namespace .add ("Shading", "x_ite/Browser/Core/Shading", Shading_default_);
 /* harmony default export */ const Core_Shading = (Shading_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/X3DGeometryNode.js
 /*******************************************************************************
@@ -59189,7 +59325,7 @@ Object .defineProperties (X3DGeometryNode,
 const X3DGeometryNode_default_ = X3DGeometryNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/X3DGeometryNode", X3DGeometryNode_default_);
+x_ite_Namespace .add ("X3DGeometryNode", "x_ite/Components/Rendering/X3DGeometryNode", X3DGeometryNode_default_);
 /* harmony default export */ const Rendering_X3DGeometryNode = (X3DGeometryNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Shape/AlphaMode.js
 /*******************************************************************************
@@ -59252,7 +59388,7 @@ const AlphaMode =
 const AlphaMode_default_ = AlphaMode;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Shape/AlphaMode", AlphaMode_default_);
+x_ite_Namespace .add ("AlphaMode", "x_ite/Browser/Shape/AlphaMode", AlphaMode_default_);
 /* harmony default export */ const Shape_AlphaMode = (AlphaMode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Rendering/GeometryContext.js
 /*******************************************************************************
@@ -59340,7 +59476,7 @@ Object .assign (GeometryContext .prototype,
 const GeometryContext_default_ = GeometryContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Rendering/GeometryContext", GeometryContext_default_);
+x_ite_Namespace .add ("GeometryContext", "x_ite/Browser/Rendering/GeometryContext", GeometryContext_default_);
 /* harmony default export */ const Rendering_GeometryContext = (GeometryContext_default_);
 ;// CONCATENATED MODULE: ./src/standard/Utility/BitSet.js
 /*******************************************************************************
@@ -59462,7 +59598,7 @@ Object .defineProperty (BitSet .prototype, "size",
 const BitSet_default_ = BitSet;
 ;
 
-x_ite_Namespace .set ("standard/Utility/BitSet", BitSet_default_);
+x_ite_Namespace .add ("BitSet", "standard/Utility/BitSet", BitSet_default_);
 /* harmony default export */ const Utility_BitSet = (BitSet_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalEffects/X3DBackgroundNode.js
 /*******************************************************************************
@@ -59525,6 +59661,7 @@ x_ite_Namespace .set ("standard/Utility/BitSet", BitSet_default_);
 
 
 
+
 const
    RADIUS = 1,
    SIZE   = Math .SQRT2 / 2;
@@ -59535,10 +59672,11 @@ function X3DBackgroundNode (executionContext)
 
    this .addType (Base_X3DConstants .X3DBackgroundNode);
 
+   this .addChildObjects (Base_X3DConstants .inputOutput, "hidden", new x_ite_Fields .SFBool ());
+
    this ._skyAngle    .setUnit ("angle");
    this ._groundAngle .setUnit ("angle");
 
-   this .hidden                = false;
    this .projectionMatrixArray = new Float32Array (16);
    this .modelMatrix           = new Numbers_Matrix4 ();
    this .modelViewMatrixArray  = new Float32Array (16);
@@ -59580,17 +59718,18 @@ Object .assign (Object .setPrototypeOf (X3DBackgroundNode .prototype, Core_X3DBi
    },
    isHidden ()
    {
-      return this .hidden;
+      return this ._hidden .getValue ();
    },
    setHidden (value)
    {
-      this .hidden = value;
+      if (value === this ._hidden .getValue ())
+         return;
 
-      this .getBrowser () .addBrowserEvent ();
+      this ._hidden = value;
    },
    isTransparent ()
    {
-      if (this .hidden)
+      if (this ._hidden .getValue ())
          return true;
 
       if (this ._transparency .getValue () <= 0)
@@ -59928,7 +60067,7 @@ Object .assign (Object .setPrototypeOf (X3DBackgroundNode .prototype, Core_X3DBi
 
       return function (gl, renderObject, viewport)
       {
-         if (this .hidden)
+         if (this ._hidden .getValue ())
             return;
 
          // Setup context.
@@ -60080,7 +60219,7 @@ Object .defineProperties (X3DBackgroundNode,
 const X3DBackgroundNode_default_ = X3DBackgroundNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/EnvironmentalEffects/X3DBackgroundNode", X3DBackgroundNode_default_);
+x_ite_Namespace .add ("X3DBackgroundNode", "x_ite/Components/EnvironmentalEffects/X3DBackgroundNode", X3DBackgroundNode_default_);
 /* harmony default export */ const EnvironmentalEffects_X3DBackgroundNode = (X3DBackgroundNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/X3DAppearanceChildNode.js
 /*******************************************************************************
@@ -60159,7 +60298,7 @@ Object .defineProperties (X3DAppearanceChildNode,
 const X3DAppearanceChildNode_default_ = X3DAppearanceChildNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shape/X3DAppearanceChildNode", X3DAppearanceChildNode_default_);
+x_ite_Namespace .add ("X3DAppearanceChildNode", "x_ite/Components/Shape/X3DAppearanceChildNode", X3DAppearanceChildNode_default_);
 /* harmony default export */ const Shape_X3DAppearanceChildNode = (X3DAppearanceChildNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/X3DTextureNode.js
 /*******************************************************************************
@@ -60252,7 +60391,7 @@ Object .defineProperties (X3DTextureNode,
 const X3DTextureNode_default_ = X3DTextureNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Texturing/X3DTextureNode", X3DTextureNode_default_);
+x_ite_Namespace .add ("X3DTextureNode", "x_ite/Components/Texturing/X3DTextureNode", X3DTextureNode_default_);
 /* harmony default export */ const Texturing_X3DTextureNode = (X3DTextureNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DCast.js
 /*******************************************************************************
@@ -60332,7 +60471,7 @@ function X3DCast (type, node, innerNode = true)
 const X3DCast_default_ = X3DCast;
 ;
 
-x_ite_Namespace .set ("x_ite/Base/X3DCast", X3DCast_default_);
+x_ite_Namespace .add ("X3DCast", "x_ite/Base/X3DCast", X3DCast_default_);
 /* harmony default export */ const Base_X3DCast = (X3DCast_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/X3DSingleTextureNode.js
 /*******************************************************************************
@@ -60532,7 +60671,7 @@ Object .defineProperties (X3DSingleTextureNode,
 const X3DSingleTextureNode_default_ = X3DSingleTextureNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Texturing/X3DSingleTextureNode", X3DSingleTextureNode_default_);
+x_ite_Namespace .add ("X3DSingleTextureNode", "x_ite/Components/Texturing/X3DSingleTextureNode", X3DSingleTextureNode_default_);
 /* harmony default export */ const Texturing_X3DSingleTextureNode = (X3DSingleTextureNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/X3DTexture2DNode.js
 /*******************************************************************************
@@ -60709,10 +60848,10 @@ Object .defineProperties (X3DTexture2DNode,
 const X3DTexture2DNode_default_ = X3DTexture2DNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Texturing/X3DTexture2DNode", X3DTexture2DNode_default_);
+x_ite_Namespace .add ("X3DTexture2DNode", "x_ite/Components/Texturing/X3DTexture2DNode", X3DTexture2DNode_default_);
 /* harmony default export */ const Texturing_X3DTexture2DNode = (X3DTexture2DNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/ImageTexture.js
-/* provided dependency */ var ImageTexture_$ = __webpack_require__(508);
+/* provided dependency */ var ImageTexture_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -60910,7 +61049,7 @@ Object .assign (Object .setPrototypeOf (ImageTexture .prototype, Texturing_X3DTe
          this .setError ({ type: error .message });
       }
    },
-   getImageData: async function (image, colorspace = true)
+   getImageData: async function (image, colorspaceConversion = true)
    {
       const
          gl          = this .getBrowser () .getContext (),
@@ -60920,7 +61059,7 @@ Object .assign (Object .setPrototypeOf (ImageTexture .prototype, Texturing_X3DTe
 
       gl .bindFramebuffer (gl .FRAMEBUFFER, framebuffer);
       gl .bindTexture (gl .TEXTURE_2D, texture);
-      gl .pixelStorei (gl .UNPACK_COLORSPACE_CONVERSION_WEBGL, colorspace ? gl .BROWSER_DEFAULT_WEBGL : gl .NONE);
+      gl .pixelStorei (gl .UNPACK_COLORSPACE_CONVERSION_WEBGL, colorspaceConversion ? gl .BROWSER_DEFAULT_WEBGL : gl .NONE);
       gl .texImage2D (gl .TEXTURE_2D, 0, gl .RGBA, gl .RGBA, gl .UNSIGNED_BYTE, image);
       gl .pixelStorei (gl .UNPACK_COLORSPACE_CONVERSION_WEBGL, gl .BROWSER_DEFAULT_WEBGL);
       gl .framebufferTexture2D (gl .FRAMEBUFFER, gl .COLOR_ATTACHMENT0, gl .TEXTURE_2D, texture, 0);
@@ -61009,7 +61148,7 @@ Object .defineProperties (ImageTexture,
 const ImageTexture_default_ = ImageTexture;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Texturing/ImageTexture", ImageTexture_default_);
+x_ite_Namespace .add ("ImageTexture", "x_ite/Components/Texturing/ImageTexture", ImageTexture_default_);
 /* harmony default export */ const Texturing_ImageTexture = (ImageTexture_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalEffects/Background.js
 /*******************************************************************************
@@ -61173,7 +61312,7 @@ Object .defineProperties (Background,
 const Background_default_ = Background;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/EnvironmentalEffects/Background", Background_default_);
+x_ite_Namespace .add ("Background", "x_ite/Components/EnvironmentalEffects/Background", Background_default_);
 /* harmony default export */ const EnvironmentalEffects_Background = (Background_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Layering/X3DLayerNode.js
 /*******************************************************************************
@@ -61237,12 +61376,16 @@ x_ite_Namespace .set ("x_ite/Components/EnvironmentalEffects/Background", Backgr
 
 
 
+
 function X3DLayerNode (executionContext, defaultViewpoint, groupNode)
 {
    Core_X3DNode         .call (this, executionContext);
    Rendering_X3DRenderObject .call (this, executionContext);
 
    this .addType (Base_X3DConstants .X3DLayerNode);
+
+   this .addChildObjects (Base_X3DConstants .inputOutput, "hidden",  new x_ite_Fields .SFBool (),
+                          Base_X3DConstants .outputOnly,  "display", new x_ite_Fields .SFBool (true));
 
    if (executionContext .getSpecificationVersion () <= 3.3)
       this .addAlias ("isPickable", this ._pickable);
@@ -61293,30 +61436,40 @@ Object .assign (Object .setPrototypeOf (X3DLayerNode .prototype, Core_X3DNode .p
       this .backgrounds     .setup ();
       this .fogs            .setup ();
 
-      this ._viewport .addInterest ("set_viewport__", this);
+      this ._hidden   .addInterest ("set_visible_and_hidden__", this);
+      this ._visible  .addInterest ("set_visible_and_hidden__", this);
+      this ._viewport .addInterest ("set_viewport__",           this);
 
+      this .set_visible_and_hidden__ ();
       this .set_viewport__ ();
    },
-   isLayer0 (value)
+   isHidden ()
    {
-      this .layer0 = value;
-      this .defaultBackground .setHidden (! value);
+      return this ._hidden .getValue ();
    },
-   getLayer ()
+   setHidden (value)
    {
-      return this;
+      if (value === this ._hidden .getValue ())
+         return;
+
+      this ._hidden = value;
    },
    getBBox (bbox, shadows)
    {
       return this .groupNode .getBBox (bbox, shadows);
    },
+   setLayer0 (value)
+   {
+      this .layer0 = value;
+      this .defaultBackground .setHidden (!value);
+   },
+   getLayer ()
+   {
+      return this;
+   },
    getGroup ()
    {
       return this .groupNode;
-   },
-   setGroup (groupNode)
-   {
-      this .groupNode = groupNode;
    },
    getViewport ()
    {
@@ -61398,11 +61551,20 @@ Object .assign (Object .setPrototypeOf (X3DLayerNode .prototype, Core_X3DNode .p
    {
       this .getViewpoint () .straightenView (this);
    },
+   set_visible_and_hidden__ ()
+   {
+      const value = this ._visible .getValue () && !this ._hidden .getValue ();
+
+      if (value === this ._display .getValue ())
+         return;
+
+      this ._display = value;
+   },
    set_viewport__ ()
    {
       this .viewportNode = Base_X3DCast (Base_X3DConstants .X3DViewportNode, this ._viewport);
 
-      if (! this .viewportNode)
+      if (!this .viewportNode)
          this .viewportNode = this .getBrowser () .getDefaultViewport ();
    },
    bindBindables (viewpointName)
@@ -61488,7 +61650,7 @@ Object .assign (Object .setPrototypeOf (X3DLayerNode .prototype, Core_X3DNode .p
    },
    camera (type, renderObject)
    {
-      if (this ._visible .getValue ())
+      if (this ._display .getValue ())
       {
          this .getModelViewMatrix () .pushMatrix (Numbers_Matrix4 .Identity);
 
@@ -61525,7 +61687,7 @@ Object .assign (Object .setPrototypeOf (X3DLayerNode .prototype, Core_X3DNode .p
 
       return function (type, renderObject)
       {
-         if (this ._visible .getValue ())
+         if (this ._display .getValue ())
          {
             const navigationInfo = this .getNavigationInfo ();
 
@@ -61554,7 +61716,7 @@ Object .assign (Object .setPrototypeOf (X3DLayerNode .prototype, Core_X3DNode .p
    })(),
    display (type, renderObject)
    {
-      if (this ._visible .getValue ())
+      if (this ._display .getValue ())
       {
          this .getNavigationInfo () .enable (type, renderObject);
          this .getModelViewMatrix () .pushMatrix (this .getViewMatrix () .get ());
@@ -61585,7 +61747,7 @@ Object .defineProperties (X3DLayerNode,
 const X3DLayerNode_default_ = X3DLayerNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Layering/X3DLayerNode", X3DLayerNode_default_);
+x_ite_Namespace .add ("X3DLayerNode", "x_ite/Components/Layering/X3DLayerNode", X3DLayerNode_default_);
 /* harmony default export */ const Layering_X3DLayerNode = (X3DLayerNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/X3DSensorNode.js
 /*******************************************************************************
@@ -61664,7 +61826,7 @@ Object .defineProperties (X3DSensorNode,
 const X3DSensorNode_default_ = X3DSensorNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Core/X3DSensorNode", X3DSensorNode_default_);
+x_ite_Namespace .add ("X3DSensorNode", "x_ite/Components/Core/X3DSensorNode", X3DSensorNode_default_);
 /* harmony default export */ const Core_X3DSensorNode = (X3DSensorNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Time/X3DTimeDependentNode.js
 /*******************************************************************************
@@ -62038,7 +62200,7 @@ Object .defineProperties (X3DTimeDependentNode,
 const X3DTimeDependentNode_default_ = X3DTimeDependentNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Time/X3DTimeDependentNode", X3DTimeDependentNode_default_);
+x_ite_Namespace .add ("X3DTimeDependentNode", "x_ite/Components/Time/X3DTimeDependentNode", X3DTimeDependentNode_default_);
 /* harmony default export */ const Time_X3DTimeDependentNode = (X3DTimeDependentNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Time/TimeSensor.js
 /*******************************************************************************
@@ -62266,7 +62428,7 @@ Object .defineProperties (TimeSensor,
 const TimeSensor_default_ = TimeSensor;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Time/TimeSensor", TimeSensor_default_);
+x_ite_Namespace .add ("TimeSensor", "x_ite/Components/Time/TimeSensor", TimeSensor_default_);
 /* harmony default export */ const Time_TimeSensor = (TimeSensor_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/X3DInterpolatorNode.js
 /*******************************************************************************
@@ -62408,7 +62570,7 @@ Object .defineProperties (X3DInterpolatorNode,
 const X3DInterpolatorNode_default_ = X3DInterpolatorNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Interpolation/X3DInterpolatorNode", X3DInterpolatorNode_default_);
+x_ite_Namespace .add ("X3DInterpolatorNode", "x_ite/Components/Interpolation/X3DInterpolatorNode", X3DInterpolatorNode_default_);
 /* harmony default export */ const Interpolation_X3DInterpolatorNode = (X3DInterpolatorNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/EaseInEaseOut.js
 /*******************************************************************************
@@ -62562,7 +62724,7 @@ Object .defineProperties (EaseInEaseOut,
 const EaseInEaseOut_default_ = EaseInEaseOut;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Interpolation/EaseInEaseOut", EaseInEaseOut_default_);
+x_ite_Namespace .add ("EaseInEaseOut", "x_ite/Components/Interpolation/EaseInEaseOut", EaseInEaseOut_default_);
 /* harmony default export */ const Interpolation_EaseInEaseOut = (EaseInEaseOut_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/PositionInterpolator.js
 /*******************************************************************************
@@ -62692,7 +62854,7 @@ Object .defineProperties (PositionInterpolator,
 const PositionInterpolator_default_ = PositionInterpolator;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Interpolation/PositionInterpolator", PositionInterpolator_default_);
+x_ite_Namespace .add ("PositionInterpolator", "x_ite/Components/Interpolation/PositionInterpolator", PositionInterpolator_default_);
 /* harmony default export */ const Interpolation_PositionInterpolator = (PositionInterpolator_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/OrientationInterpolator.js
 /*******************************************************************************
@@ -62831,7 +62993,7 @@ Object .defineProperties (OrientationInterpolator,
 const OrientationInterpolator_default_ = OrientationInterpolator;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Interpolation/OrientationInterpolator", OrientationInterpolator_default_);
+x_ite_Namespace .add ("OrientationInterpolator", "x_ite/Components/Interpolation/OrientationInterpolator", OrientationInterpolator_default_);
 /* harmony default export */ const Interpolation_OrientationInterpolator = (OrientationInterpolator_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/ScalarInterpolator.js
 /*******************************************************************************
@@ -62956,7 +63118,7 @@ Object .defineProperties (ScalarInterpolator,
 const ScalarInterpolator_default_ = ScalarInterpolator;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Interpolation/ScalarInterpolator", ScalarInterpolator_default_);
+x_ite_Namespace .add ("ScalarInterpolator", "x_ite/Components/Interpolation/ScalarInterpolator", ScalarInterpolator_default_);
 /* harmony default export */ const Interpolation_ScalarInterpolator = (ScalarInterpolator_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Navigation/X3DViewpointNode.js
 /*******************************************************************************
@@ -63035,6 +63197,7 @@ function X3DViewpointNode (executionContext)
                           Base_X3DConstants .inputOutput, "centerOfRotationOffset", new x_ite_Fields .SFVec3f (),
                           Base_X3DConstants .inputOutput, "fieldOfViewScale",       new x_ite_Fields .SFFloat (1));
 
+   this .descriptions         = [ ];
    this .userPosition         = new Numbers_Vector3 (0, 1, 0);
    this .userOrientation      = new Numbers_Rotation4 ();
    this .userCenterOfRotation = new Numbers_Vector3 (0, 0, 0);
@@ -63157,6 +63320,10 @@ Object .assign (Object .setPrototypeOf (X3DViewpointNode .prototype, Core_X3DBin
          return;
 
       navigationInfoNode ._transitionComplete = true;
+   },
+   getDescriptions ()
+   {
+      return this .descriptions;
    },
    setInterpolators () { },
    getPosition ()
@@ -63521,6 +63688,22 @@ Object .assign (Object .setPrototypeOf (X3DViewpointNode .prototype, Core_X3DBin
       if (this .navigationInfoNode)
          this .navigationInfoNode .traverse (type, renderObject);
 
+      this .descriptions .length = 0;
+
+      if (this ._description .getValue ())
+      {
+         if (renderObject .getViewpointGroups () .every (viewpointGroupNode => viewpointGroupNode ._displayed .getValue ()))
+         {
+            for (const viewpointGroupNode of renderObject .getViewpointGroups ())
+            {
+               if (viewpointGroupNode ._description .getValue ())
+                  this .descriptions .push (viewpointGroupNode ._description .getValue ());
+            }
+
+            this .descriptions .push (this ._description .getValue ());
+         }
+      }
+
       renderObject .getLayer () .getViewpoints () .push (this);
 
       this .modelMatrix .assign (renderObject .getModelViewMatrix () .get ());
@@ -63555,7 +63738,7 @@ Object .defineProperties (X3DViewpointNode,
 const X3DViewpointNode_default_ = X3DViewpointNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Navigation/X3DViewpointNode", X3DViewpointNode_default_);
+x_ite_Namespace .add ("X3DViewpointNode", "x_ite/Components/Navigation/X3DViewpointNode", X3DViewpointNode_default_);
 /* harmony default export */ const Navigation_X3DViewpointNode = (X3DViewpointNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Navigation/Viewpoint.js
 /*******************************************************************************
@@ -63760,7 +63943,7 @@ Object .defineProperties (Viewpoint,
 const Viewpoint_default_ = Viewpoint;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Navigation/Viewpoint", Viewpoint_default_);
+x_ite_Namespace .add ("Viewpoint", "x_ite/Components/Navigation/Viewpoint", Viewpoint_default_);
 /* harmony default export */ const Navigation_Viewpoint = (Viewpoint_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping/X3DBoundedObject.js
 /*******************************************************************************
@@ -63820,7 +64003,9 @@ function X3DBoundedObject (executionContext)
 {
    this .addType (Base_X3DConstants .X3DBoundedObject);
 
-   this .addChildObjects (Base_X3DConstants .outputOnly, "transformSensors_changed", new x_ite_Fields .SFTime ());
+   this .addChildObjects (Base_X3DConstants .inputOutput, "hidden",                   new x_ite_Fields .SFBool (),
+                          Base_X3DConstants .outputOnly,  "display",                  new x_ite_Fields .SFBool (true),
+                          Base_X3DConstants .outputOnly,  "transformSensors_changed", new x_ite_Fields .SFTime ());
 
    this ._bboxSize   .setUnit ("length");
    this ._bboxCenter .setUnit ("length");
@@ -63831,7 +64016,24 @@ function X3DBoundedObject (executionContext)
 
 Object .assign (X3DBoundedObject .prototype,
 {
-   initialize () { },
+   initialize ()
+   {
+      this ._hidden  .addInterest ("set_visible_and_hidden__", this);
+      this ._visible .addInterest ("set_visible_and_hidden__", this);
+
+      this .set_visible_and_hidden__ ();
+   },
+   isHidden ()
+   {
+      return this ._hidden .getValue ();
+   },
+   setHidden (value)
+   {
+      if (value === this ._hidden .getValue ())
+         return;
+
+      this ._hidden = value;
+   },
    getDefaultBBoxSize: (() =>
    {
       const defaultBBoxSize = new Numbers_Vector3 (-1, -1, -1);
@@ -63895,6 +64097,15 @@ Object .assign (X3DBoundedObject .prototype,
    {
       return this .transformSensorNodes;
    },
+   set_visible_and_hidden__ ()
+   {
+      const value = this ._visible .getValue () && !this ._hidden .getValue ();
+
+      if (value === this ._display .getValue ())
+         return;
+
+      this ._display = value;
+   },
    dispose () { },
 });
 
@@ -63915,7 +64126,7 @@ Object .defineProperties (X3DBoundedObject,
 const X3DBoundedObject_default_ = X3DBoundedObject;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Grouping/X3DBoundedObject", X3DBoundedObject_default_);
+x_ite_Namespace .add ("X3DBoundedObject", "x_ite/Components/Grouping/X3DBoundedObject", X3DBoundedObject_default_);
 /* harmony default export */ const Grouping_X3DBoundedObject = (X3DBoundedObject_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping/X3DGroupingNode.js
 /*******************************************************************************
@@ -63978,7 +64189,6 @@ function X3DGroupingNode (executionContext)
 
    this .addType (Base_X3DConstants .X3DGroupingNode);
 
-   this .hidden                    = false;
    this .allowedTypes              = new Set ();
    this .clipPlaneNodes            = [ ];
    this .localFogNodes             = [ ];
@@ -64023,20 +64233,6 @@ Object .assign (Object .setPrototypeOf (X3DGroupingNode .prototype, Core_X3DChil
          return Grouping_X3DBoundedObject .prototype .getBBox .call (this, this .visibleNodes, bbox, shadows);
 
       return bbox .set (this ._bboxSize .getValue (), this ._bboxCenter .getValue ());
-   },
-   isHidden ()
-   {
-      return this .hidden;
-   },
-   setHidden (value)
-   {
-      if (value === this .hidden)
-         return;
-
-      this .hidden = value;
-
-      this .set_children__ ();
-      this .getBrowser () .addBrowserEvent ();
    },
    setAllowedTypes (/* type, ... */)
    {
@@ -64111,8 +64307,8 @@ Object .assign (Object .setPrototypeOf (X3DGroupingNode .prototype, Core_X3DChil
 
          if (Base_X3DCast (Base_X3DConstants .X3DBoundedObject, childNode))
          {
-            childNode ._visible     .removeInterest ("set_visibles__",      this);
-            childNode ._bboxDisplay .removeInterest ("set_bboxDisplays__",  this);
+            childNode ._display     .removeInterest ("set_displays_",     this);
+            childNode ._bboxDisplay .removeInterest ("set_bboxDisplays__", this);
          }
       }
 
@@ -64127,252 +64323,253 @@ Object .assign (Object .setPrototypeOf (X3DGroupingNode .prototype, Core_X3DChil
    },
    add (children)
    {
-      if (this .hidden)
-         return;
-
       for (const child of children)
       {
-         if (!child)
+         const childNode = Base_X3DCast (Base_X3DConstants .X3DChildNode, child);
+
+         if (!childNode)
             continue;
 
-         try
+         const type = childNode .getType ();
+
+         for (let t = type .length - 1; t >= 0; -- t)
          {
-            const
-               innerNode = child .getValue () .getInnerNode (),
-               type      = innerNode .getType ();
+            // if (this .allowedTypes .size)
+            // {
+            //    if (!childNode .getType () .some (Set .prototype .has, this .allowedTypes))
+            //       continue;
+            // }
 
-            for (let t = type .length - 1; t >= 0; -- t)
+            switch (type [t])
             {
-               // if (this .allowedTypes .size)
-               // {
-               //    if (!innerNode .getType () .some (Set .prototype .has, this .allowedTypes))
-               //       continue;
-               // }
-
-               switch (type [t])
+               case Base_X3DConstants .X3DPointingDeviceSensorNode:
                {
-                  case Base_X3DConstants .X3DPointingDeviceSensorNode:
-                  {
-                     this .pointingDeviceSensorNodes .push (innerNode);
-                     break;
-                  }
-                  case Base_X3DConstants .ClipPlane:
-                  {
-                     this .clipPlaneNodes .push (innerNode);
-                     break;
-                  }
-                  case Base_X3DConstants .LocalFog:
-                  {
-                     this .localFogNodes .push (innerNode);
-                     break;
-                  }
-                  case Base_X3DConstants .X3DTextureProjectorNode:
-                  {
-                     this .textureProjectorNodes .push (innerNode);
-                     break;
-                  }
-                  case Base_X3DConstants .X3DLightNode:
-                  {
-                     this .lightNodes .push (innerNode);
-                     break;
-                  }
-                  case Base_X3DConstants .X3DBindableNode:
-                  {
-                     this .maybeCameraObjects .push (innerNode);
-                     break;
-                  }
-                  case Base_X3DConstants .TransformSensor:
-                  case Base_X3DConstants .X3DPickSensorNode:
-                  {
-                     innerNode ._isPickableObject .addInterest ("set_pickableObjects__", this);
-
-                     this .maybePickableSensorNodes .push (innerNode);
-                     break;
-                  }
-                  case Base_X3DConstants .X3DBackgroundNode:
-                  case Base_X3DConstants .X3DChildNode:
-                  {
-                     innerNode ._isCameraObject   .addInterest ("set_cameraObjects__",   this);
-                     innerNode ._isPickableObject .addInterest ("set_pickableObjects__", this);
-
-                     if (Base_X3DCast (Base_X3DConstants .X3DBoundedObject, innerNode))
-                     {
-                        innerNode ._visible     .addInterest ("set_visibles__",     this);
-                        innerNode ._bboxDisplay .addInterest ("set_bboxDisplays__", this);
-                     }
-
-                     this .maybeCameraObjects .push (innerNode);
-                     this .childNodes .push (innerNode);
-                     break;
-                  }
-                  case Base_X3DConstants .BooleanFilter:
-                  case Base_X3DConstants .BooleanToggle:
-                  case Base_X3DConstants .HAnimMotion:
-                  case Base_X3DConstants .NurbsOrientationInterpolator:
-                  case Base_X3DConstants .NurbsPositionInterpolator:
-                  case Base_X3DConstants .NurbsSurfaceInterpolator:
-                  case Base_X3DConstants .TimeSensor:
-                  case Base_X3DConstants .X3DFollowerNode:
-                  case Base_X3DConstants .X3DInfoNode:
-                  case Base_X3DConstants .X3DInterpolatorNode:
-                  case Base_X3DConstants .X3DKeyDeviceSensorNode:
-                  case Base_X3DConstants .X3DLayoutNode:
-                  case Base_X3DConstants .X3DScriptNode:
-                  case Base_X3DConstants .X3DSequencerNode:
-                  case Base_X3DConstants .X3DTriggerNode:
-                     break;
-                  default:
-                     continue;
+                  this .pointingDeviceSensorNodes .push (childNode);
+                  break;
                }
+               case Base_X3DConstants .ClipPlane:
+               {
+                  this .clipPlaneNodes .push (childNode);
+                  break;
+               }
+               case Base_X3DConstants .LocalFog:
+               {
+                  this .localFogNodes .push (childNode);
+                  break;
+               }
+               case Base_X3DConstants .X3DTextureProjectorNode:
+               {
+                  this .textureProjectorNodes .push (childNode);
+                  break;
+               }
+               case Base_X3DConstants .X3DLightNode:
+               {
+                  this .lightNodes .push (childNode);
+                  break;
+               }
+               case Base_X3DConstants .X3DBindableNode:
+               {
+                  this .maybeCameraObjects .push (childNode);
+                  break;
+               }
+               case Base_X3DConstants .TransformSensor:
+               case Base_X3DConstants .X3DPickSensorNode:
+               {
+                  childNode ._isPickableObject .addInterest ("set_pickableObjects__", this);
 
-               break;
+                  this .maybePickableSensorNodes .push (childNode);
+                  break;
+               }
+               case Base_X3DConstants .X3DBackgroundNode:
+               case Base_X3DConstants .X3DChildNode:
+               {
+                  childNode ._isCameraObject   .addInterest ("set_cameraObjects__",   this);
+                  childNode ._isPickableObject .addInterest ("set_pickableObjects__", this);
+
+                  if (Base_X3DCast (Base_X3DConstants .X3DBoundedObject, childNode))
+                  {
+                     childNode ._display     .addInterest ("set_displays_",     this);
+                     childNode ._bboxDisplay .addInterest ("set_bboxDisplays__", this);
+                  }
+
+                  this .maybeCameraObjects .push (childNode);
+                  this .childNodes .push (childNode);
+                  break;
+               }
+               case Base_X3DConstants .BooleanFilter:
+               case Base_X3DConstants .BooleanToggle:
+               case Base_X3DConstants .HAnimMotion:
+               case Base_X3DConstants .NurbsOrientationInterpolator:
+               case Base_X3DConstants .NurbsPositionInterpolator:
+               case Base_X3DConstants .NurbsSurfaceInterpolator:
+               case Base_X3DConstants .TimeSensor:
+               case Base_X3DConstants .X3DFollowerNode:
+               case Base_X3DConstants .X3DInfoNode:
+               case Base_X3DConstants .X3DInterpolatorNode:
+               case Base_X3DConstants .X3DKeyDeviceSensorNode:
+               case Base_X3DConstants .X3DLayoutNode:
+               case Base_X3DConstants .X3DScriptNode:
+               case Base_X3DConstants .X3DSequencerNode:
+               case Base_X3DConstants .X3DTriggerNode:
+                  break;
+               default:
+                  continue;
             }
+
+            break;
          }
-         catch
-         { }
+
+         if (childNode .getMustDisplay ())
+         {
+            if (!this .childNodes .includes (childNode))
+               this .childNodes .push (childNode);
+         }
       }
 
       this .set_pickableObjects__ ()
       this .set_displayNodes__ ()
-      this .set_visibles__ ()
+      this .set_displays_ ()
       this .set_bboxDisplays__ ();
    },
    remove (children)
    {
       for (const child of children)
       {
-         if (!child)
+         const childNode = Base_X3DCast (Base_X3DConstants .X3DChildNode, child);
+
+         if (!childNode)
             continue;
 
-         try
+         if (childNode .getMustDisplay ())
          {
-            const
-               innerNode = child .getValue () .getInnerNode (),
-               type      = innerNode .getType ();
+            const index = this .childNodes .indexOf (childNode);
 
-            for (let t = type .length - 1; t >= 0; -- t)
-            {
-               switch (type [t])
-               {
-                  case Base_X3DConstants .X3DPointingDeviceSensorNode:
-                  {
-                     const index = this .pointingDeviceSensorNodes .indexOf (innerNode);
-
-                     if (index >= 0)
-                        this .pointingDeviceSensorNodes .splice (index, 1);
-
-                     break;
-                  }
-                  case Base_X3DConstants .ClipPlane:
-                  {
-                     const index = this .clipPlaneNodes .indexOf (innerNode);
-
-                     if (index >= 0)
-                        this .clipPlaneNodes .splice (index, 1);
-
-                     break;
-                  }
-                  case Base_X3DConstants .LocalFog:
-                  {
-                     const index = this .localFogNodes .indexOf (innerNode);
-
-                     if (index >= 0)
-                        this .localFogNodes .splice (index, 1);
-
-                     break;
-                  }
-                  case Base_X3DConstants .X3DTextureProjectorNode:
-                  {
-                     const index = this .textureProjectorNodes .indexOf (innerNode);
-
-                     if (index >= 0)
-                        this .textureProjectorNodes .splice (index, 1);
-
-                     break;
-                  }
-                  case Base_X3DConstants .X3DLightNode:
-                  {
-                     const index = this .lightNodes .indexOf (innerNode);
-
-                     if (index >= 0)
-                        this .lightNodes .splice (index, 1);
-
-                     break;
-                  }
-                  case Base_X3DConstants .X3DBindableNode:
-                  {
-                     const index = this .maybeCameraObjects .indexOf (innerNode);
-
-                     if (index >= 0)
-                        this .maybeCameraObjects .splice (index, 1);
-
-                     break;
-                  }
-                  case Base_X3DConstants .TransformSensor:
-                  case Base_X3DConstants .X3DPickSensorNode:
-                  {
-                     innerNode ._isPickableObject .removeInterest ("set_pickableObjects__", this);
-
-                     const index = this .maybePickableSensorNodes .indexOf (innerNode);
-
-                     if (index >= 0)
-                        this .maybePickableSensorNodes .splice (index, 1);
-
-                     break;
-                  }
-                  case Base_X3DConstants .X3DBackgroundNode:
-                  case Base_X3DConstants .X3DChildNode:
-                  {
-                     innerNode ._isCameraObject   .removeInterest ("set_cameraObjects__",   this);
-                     innerNode ._isPickableObject .removeInterest ("set_pickableObjects__", this);
-
-                     if (Base_X3DCast (Base_X3DConstants .X3DBoundedObject, innerNode))
-                     {
-                        innerNode ._visible     .removeInterest ("set_visibles__",     this);
-                        innerNode ._bboxDisplay .removeInterest ("set_bboxDisplays__", this);
-                     }
-
-                     var index = this .maybeCameraObjects .indexOf (innerNode);
-
-                     if (index >= 0)
-                        this .maybeCameraObjects .splice (index, 1);
-
-                     var index = this .childNodes .indexOf (innerNode);
-
-                     if (index >= 0)
-                        this .childNodes .splice (index, 1);
-
-                     break;
-                  }
-                  case Base_X3DConstants .BooleanFilter:
-                  case Base_X3DConstants .BooleanToggle:
-                  case Base_X3DConstants .HAnimMotion:
-                  case Base_X3DConstants .NurbsOrientationInterpolator:
-                  case Base_X3DConstants .NurbsPositionInterpolator:
-                  case Base_X3DConstants .NurbsSurfaceInterpolator:
-                  case Base_X3DConstants .TimeSensor:
-                  case Base_X3DConstants .X3DFollowerNode:
-                  case Base_X3DConstants .X3DInfoNode:
-                  case Base_X3DConstants .X3DInterpolatorNode:
-                  case Base_X3DConstants .X3DKeyDeviceSensorNode:
-                  case Base_X3DConstants .X3DLayoutNode:
-                  case Base_X3DConstants .X3DScriptNode:
-                  case Base_X3DConstants .X3DSequencerNode:
-                  case Base_X3DConstants .X3DTriggerNode:
-                     break;
-                  default:
-                     continue;
-               }
-
-               break;
-            }
+            if (index >= 0)
+               this .childNodes .splice (index, 1);
          }
-         catch
-         { }
+
+         const type = childNode .getType ();
+
+         for (let t = type .length - 1; t >= 0; -- t)
+         {
+            switch (type [t])
+            {
+               case Base_X3DConstants .X3DPointingDeviceSensorNode:
+               {
+                  const index = this .pointingDeviceSensorNodes .indexOf (childNode);
+
+                  if (index >= 0)
+                     this .pointingDeviceSensorNodes .splice (index, 1);
+
+                  break;
+               }
+               case Base_X3DConstants .ClipPlane:
+               {
+                  const index = this .clipPlaneNodes .indexOf (childNode);
+
+                  if (index >= 0)
+                     this .clipPlaneNodes .splice (index, 1);
+
+                  break;
+               }
+               case Base_X3DConstants .LocalFog:
+               {
+                  const index = this .localFogNodes .indexOf (childNode);
+
+                  if (index >= 0)
+                     this .localFogNodes .splice (index, 1);
+
+                  break;
+               }
+               case Base_X3DConstants .X3DTextureProjectorNode:
+               {
+                  const index = this .textureProjectorNodes .indexOf (childNode);
+
+                  if (index >= 0)
+                     this .textureProjectorNodes .splice (index, 1);
+
+                  break;
+               }
+               case Base_X3DConstants .X3DLightNode:
+               {
+                  const index = this .lightNodes .indexOf (childNode);
+
+                  if (index >= 0)
+                     this .lightNodes .splice (index, 1);
+
+                  break;
+               }
+               case Base_X3DConstants .X3DBindableNode:
+               {
+                  const index = this .maybeCameraObjects .indexOf (childNode);
+
+                  if (index >= 0)
+                     this .maybeCameraObjects .splice (index, 1);
+
+                  break;
+               }
+               case Base_X3DConstants .TransformSensor:
+               case Base_X3DConstants .X3DPickSensorNode:
+               {
+                  childNode ._isPickableObject .removeInterest ("set_pickableObjects__", this);
+
+                  const index = this .maybePickableSensorNodes .indexOf (childNode);
+
+                  if (index >= 0)
+                     this .maybePickableSensorNodes .splice (index, 1);
+
+                  break;
+               }
+               case Base_X3DConstants .X3DBackgroundNode:
+               case Base_X3DConstants .X3DChildNode:
+               {
+                  childNode ._isCameraObject   .removeInterest ("set_cameraObjects__",   this);
+                  childNode ._isPickableObject .removeInterest ("set_pickableObjects__", this);
+
+                  if (Base_X3DCast (Base_X3DConstants .X3DBoundedObject, childNode))
+                  {
+                     childNode ._display     .removeInterest ("set_displays_",     this);
+                     childNode ._bboxDisplay .removeInterest ("set_bboxDisplays__", this);
+                  }
+
+                  var index = this .maybeCameraObjects .indexOf (childNode);
+
+                  if (index >= 0)
+                     this .maybeCameraObjects .splice (index, 1);
+
+                  var index = this .childNodes .indexOf (childNode);
+
+                  if (index >= 0)
+                     this .childNodes .splice (index, 1);
+
+                  break;
+               }
+               case Base_X3DConstants .BooleanFilter:
+               case Base_X3DConstants .BooleanToggle:
+               case Base_X3DConstants .HAnimMotion:
+               case Base_X3DConstants .NurbsOrientationInterpolator:
+               case Base_X3DConstants .NurbsPositionInterpolator:
+               case Base_X3DConstants .NurbsSurfaceInterpolator:
+               case Base_X3DConstants .TimeSensor:
+               case Base_X3DConstants .X3DFollowerNode:
+               case Base_X3DConstants .X3DInfoNode:
+               case Base_X3DConstants .X3DInterpolatorNode:
+               case Base_X3DConstants .X3DKeyDeviceSensorNode:
+               case Base_X3DConstants .X3DLayoutNode:
+               case Base_X3DConstants .X3DScriptNode:
+               case Base_X3DConstants .X3DSequencerNode:
+               case Base_X3DConstants .X3DTriggerNode:
+                  break;
+               default:
+                  continue;
+            }
+
+            break;
+         }
       }
 
       this .set_displayNodes__ ();
-      this .set_visibles__ ();
+      this .set_displays_ ();
       this .set_bboxDisplays__ ();
    },
    set_cameraObjects__ ()
@@ -64388,7 +64585,7 @@ Object .assign (Object .setPrototypeOf (X3DGroupingNode .prototype, Core_X3DChil
 
          if (Base_X3DCast (Base_X3DConstants .X3DBoundedObject, childNode))
          {
-            if (childNode ._visible .getValue ())
+            if (childNode ._display .getValue ())
                cameraObjects .push (childNode);
          }
          else
@@ -64444,7 +64641,7 @@ Object .assign (Object .setPrototypeOf (X3DGroupingNode .prototype, Core_X3DChil
       for (const node of this .textureProjectorNodes)
          displayNodes .push (node);
    },
-   set_visibles__ ()
+   set_displays_ ()
    {
       const visibleNodes = this .visibleNodes;
 
@@ -64454,7 +64651,7 @@ Object .assign (Object .setPrototypeOf (X3DGroupingNode .prototype, Core_X3DChil
       {
          if (Base_X3DCast (Base_X3DConstants .X3DBoundedObject, childNode))
          {
-            if (childNode ._visible .getValue ())
+            if (childNode ._display .getValue ())
                visibleNodes .push (childNode);
          }
          else
@@ -64642,7 +64839,7 @@ Object .defineProperties (X3DGroupingNode,
 const X3DGroupingNode_default_ = X3DGroupingNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Grouping/X3DGroupingNode", X3DGroupingNode_default_);
+x_ite_Namespace .add ("X3DGroupingNode", "x_ite/Components/Grouping/X3DGroupingNode", X3DGroupingNode_default_);
 /* harmony default export */ const Grouping_X3DGroupingNode = (X3DGroupingNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping/Group.js
 /*******************************************************************************
@@ -64748,7 +64945,7 @@ Object .defineProperties (Group,
 const Group_default_ = Group;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Grouping/Group", Group_default_);
+x_ite_Namespace .add ("Group", "x_ite/Components/Grouping/Group", Group_default_);
 /* harmony default export */ const Grouping_Group = (Group_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Layering/Layer.js
 /*******************************************************************************
@@ -64873,7 +65070,7 @@ Object .defineProperties (Layer,
 const Layer_default_ = Layer;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Layering/Layer", Layer_default_);
+x_ite_Namespace .add ("Layer", "x_ite/Components/Layering/Layer", Layer_default_);
 /* harmony default export */ const Layering_Layer = (Layer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Layering/LayerSet.js
 /*******************************************************************************
@@ -64951,7 +65148,7 @@ Object .assign (Object .setPrototypeOf (LayerSet .prototype, Core_X3DNode .proto
 
       this .layerNode0 .setPrivate (true);
       this .layerNode0 .setup ();
-      this .layerNode0 .isLayer0 (true);
+      this .layerNode0 .setLayer0 (true);
 
       this ._activeLayer .addInterest ("set_activeLayer__", this);
       this ._order       .addInterest ("set_layers__", this);
@@ -65086,7 +65283,7 @@ Object .defineProperties (LayerSet,
 const LayerSet_default_ = LayerSet;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Layering/LayerSet", LayerSet_default_);
+x_ite_Namespace .add ("LayerSet", "x_ite/Components/Layering/LayerSet", LayerSet_default_);
 /* harmony default export */ const Layering_LayerSet = (LayerSet_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/X3DWorld.js
 /*******************************************************************************
@@ -65172,7 +65369,7 @@ Object .assign (Object .setPrototypeOf (X3DWorld .prototype, Base_X3DBaseNode .p
       this .set_rootNodes__ ();
 
       this .layer0 .setPrivate (true);
-      this .layer0 .isLayer0 (true);
+      this .layer0 .setLayer0 (true);
       this .layer0 .setup ();
 
       this .set_activeLayer__ ();
@@ -65251,10 +65448,10 @@ Base_X3DConstants .addNode (X3DWorld);
 const X3DWorld_default_ = X3DWorld;
 ;
 
-x_ite_Namespace .set ("x_ite/Execution/X3DWorld", X3DWorld_default_);
+x_ite_Namespace .add ("X3DWorld", "x_ite/Execution/X3DWorld", X3DWorld_default_);
 /* harmony default export */ const Execution_X3DWorld = (X3DWorld_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/InputOutput/FileLoader.js
-/* provided dependency */ var FileLoader_$ = __webpack_require__(508);
+/* provided dependency */ var FileLoader_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -65581,7 +65778,7 @@ for (const key of Object .keys (FileLoader .prototype))
 const FileLoader_default_ = FileLoader;
 ;
 
-x_ite_Namespace .set ("x_ite/InputOutput/FileLoader", FileLoader_default_);
+x_ite_Namespace .add ("FileLoader", "x_ite/InputOutput/FileLoader", FileLoader_default_);
 /* harmony default export */ const InputOutput_FileLoader = (FileLoader_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Prototype/X3DExternProtoDeclaration.js
 /*******************************************************************************
@@ -66032,7 +66229,7 @@ Base_X3DConstants .addNode (X3DExternProtoDeclaration);
 const X3DExternProtoDeclaration_default_ = X3DExternProtoDeclaration;
 ;
 
-x_ite_Namespace .set ("x_ite/Prototype/X3DExternProtoDeclaration", X3DExternProtoDeclaration_default_);
+x_ite_Namespace .add ("X3DExternProtoDeclaration", "x_ite/Prototype/X3DExternProtoDeclaration", X3DExternProtoDeclaration_default_);
 /* harmony default export */ const Prototype_X3DExternProtoDeclaration = (X3DExternProtoDeclaration_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Prototype/ExternProtoDeclarationArray.js
 /*******************************************************************************
@@ -66107,7 +66304,7 @@ Object .defineProperties (ExternProtoDeclarationArray,
 const ExternProtoDeclarationArray_default_ = ExternProtoDeclarationArray;
 ;
 
-x_ite_Namespace .set ("x_ite/Prototype/ExternProtoDeclarationArray", ExternProtoDeclarationArray_default_);
+x_ite_Namespace .add ("ExternProtoDeclarationArray", "x_ite/Prototype/ExternProtoDeclarationArray", ExternProtoDeclarationArray_default_);
 /* harmony default export */ const Prototype_ExternProtoDeclarationArray = (ExternProtoDeclarationArray_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Prototype/ProtoDeclarationArray.js
 /*******************************************************************************
@@ -66182,7 +66379,7 @@ Object .defineProperties (ProtoDeclarationArray,
 const ProtoDeclarationArray_default_ = ProtoDeclarationArray;
 ;
 
-x_ite_Namespace .set ("x_ite/Prototype/ProtoDeclarationArray", ProtoDeclarationArray_default_);
+x_ite_Namespace .add ("ProtoDeclarationArray", "x_ite/Prototype/ProtoDeclarationArray", ProtoDeclarationArray_default_);
 /* harmony default export */ const Prototype_ProtoDeclarationArray = (ProtoDeclarationArray_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Routing/X3DRoute.js
 /*******************************************************************************
@@ -66503,7 +66700,7 @@ Object .assign (X3DRoute,
 const X3DRoute_default_ = X3DRoute;
 ;
 
-x_ite_Namespace .set ("x_ite/Routing/X3DRoute", X3DRoute_default_);
+x_ite_Namespace .add ("X3DRoute", "x_ite/Routing/X3DRoute", X3DRoute_default_);
 /* harmony default export */ const Routing_X3DRoute = (X3DRoute_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Routing/RouteArray.js
 /*******************************************************************************
@@ -66578,7 +66775,7 @@ Object .defineProperties (RouteArray,
 const RouteArray_default_ = RouteArray;
 ;
 
-x_ite_Namespace .set ("x_ite/Routing/RouteArray", RouteArray_default_);
+x_ite_Namespace .add ("RouteArray", "x_ite/Routing/RouteArray", RouteArray_default_);
 /* harmony default export */ const Routing_RouteArray = (RouteArray_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/X3DExecutionContext.js
 /*******************************************************************************
@@ -67372,6 +67569,7 @@ Object .assign (Object .setPrototypeOf (X3DExecutionContext .prototype, Base_X3D
    {
       generator .PushExecutionContext (this);
       generator .EnterScope ();
+      generator .NamedNodes (this .getNamedNodes ());
       generator .ImportedNodes (this .getImportedNodes ());
 
       // Output extern protos
@@ -67432,6 +67630,7 @@ Object .assign (Object .setPrototypeOf (X3DExecutionContext .prototype, Base_X3D
    {
       generator .PushExecutionContext (this);
       generator .EnterScope ();
+      generator .NamedNodes (this .getNamedNodes ());
       generator .ImportedNodes (this .getImportedNodes ());
 
       // Output extern protos
@@ -67468,6 +67667,7 @@ Object .assign (Object .setPrototypeOf (X3DExecutionContext .prototype, Base_X3D
    {
       generator .PushExecutionContext (this);
       generator .EnterScope ();
+      generator .NamedNodes (this .getNamedNodes ());
       generator .ImportedNodes (this .getImportedNodes ());
 
 
@@ -67614,7 +67814,7 @@ Base_X3DConstants .addNode (X3DExecutionContext);
 const X3DExecutionContext_default_ = X3DExecutionContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Execution/X3DExecutionContext", X3DExecutionContext_default_);
+x_ite_Namespace .add ("X3DExecutionContext", "x_ite/Execution/X3DExecutionContext", X3DExecutionContext_default_);
 /* harmony default export */ const Execution_X3DExecutionContext = (X3DExecutionContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/X3DPrototypeInstance.js
 /*******************************************************************************
@@ -68631,7 +68831,7 @@ Object .defineProperties (X3DPrototypeInstance,
 const X3DPrototypeInstance_default_ = X3DPrototypeInstance;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Core/X3DPrototypeInstance", X3DPrototypeInstance_default_);
+x_ite_Namespace .add ("X3DPrototypeInstance", "x_ite/Components/Core/X3DPrototypeInstance", X3DPrototypeInstance_default_);
 /* harmony default export */ const Core_X3DPrototypeInstance = (X3DPrototypeInstance_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core.js
 /*******************************************************************************
@@ -68721,7 +68921,7 @@ const Core_default_ = {
 };
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Core", Core_default_);
+x_ite_Namespace .add ("Core", "x_ite/Components/Core", Core_default_);
 /* harmony default export */ const Core = (Core_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/X3DGeometricPropertyNode.js
 /*******************************************************************************
@@ -68800,7 +69000,7 @@ Object .defineProperties (X3DGeometricPropertyNode,
 const X3DGeometricPropertyNode_default_ = X3DGeometricPropertyNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/X3DGeometricPropertyNode", X3DGeometricPropertyNode_default_);
+x_ite_Namespace .add ("X3DGeometricPropertyNode", "x_ite/Components/Rendering/X3DGeometricPropertyNode", X3DGeometricPropertyNode_default_);
 /* harmony default export */ const Rendering_X3DGeometricPropertyNode = (X3DGeometricPropertyNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalEffects/FogCoordinate.js
 /*******************************************************************************
@@ -68890,16 +69090,16 @@ Object .assign (Object .setPrototypeOf (FogCoordinate .prototype, Rendering_X3DG
    },
    addDepth (index, array)
    {
-      if (index < this .length)
-         array .push (this .depth [index]);
-
-      else if (this .length)
-         array .push (this .depth [this .length - 1]);
-
+      if (index >= 0 && this .length)
+      {
+         return array .push (this .depth [index % this .length]);
+      }
       else
+      {
          array .push (0);
+      }
    },
-   addDepths (array, min)
+   addDepths (array, min = this .length)
    {
       const length = this .length;
 
@@ -68907,19 +69107,16 @@ Object .assign (Object .setPrototypeOf (FogCoordinate .prototype, Rendering_X3DG
       {
          const depth = this .depth;
 
-         for (let index = 0; index < length; ++ index)
-            array .push (depth [index]);
-
-         const last = depth [length - 1];
-
-         for (let index = length; index < min; ++ index)
-            array .push (last);
+         for (let index = 0; index < min; ++ index)
+            array .push (depth [index % length]);
       }
       else
       {
          for (let index = 0; index < min; ++ index)
             array .push (0);
       }
+
+      return array;
    },
 });
 
@@ -68958,7 +69155,7 @@ Object .defineProperties (FogCoordinate,
 const FogCoordinate_default_ = FogCoordinate;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/EnvironmentalEffects/FogCoordinate", FogCoordinate_default_);
+x_ite_Namespace .add ("FogCoordinate", "x_ite/Components/EnvironmentalEffects/FogCoordinate", FogCoordinate_default_);
 /* harmony default export */ const EnvironmentalEffects_FogCoordinate = (FogCoordinate_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalEffects/LocalFog.js
 /*******************************************************************************
@@ -69092,7 +69289,7 @@ Object .defineProperties (LocalFog,
 const LocalFog_default_ = LocalFog;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/EnvironmentalEffects/LocalFog", LocalFog_default_);
+x_ite_Namespace .add ("LocalFog", "x_ite/Components/EnvironmentalEffects/LocalFog", LocalFog_default_);
 /* harmony default export */ const EnvironmentalEffects_LocalFog = (LocalFog_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalEffects/TextureBackground.js
 /*******************************************************************************
@@ -69230,7 +69427,7 @@ Object .defineProperties (TextureBackground,
 const TextureBackground_default_ = TextureBackground;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/EnvironmentalEffects/TextureBackground", TextureBackground_default_);
+x_ite_Namespace .add ("TextureBackground", "x_ite/Components/EnvironmentalEffects/TextureBackground", TextureBackground_default_);
 /* harmony default export */ const EnvironmentalEffects_TextureBackground = (TextureBackground_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalEffects.js
 /*******************************************************************************
@@ -69306,7 +69503,7 @@ const EnvironmentalEffects_default_ = {
 };
 ;
 
-x_ite_Namespace .set ("x_ite/Components/EnvironmentalEffects", EnvironmentalEffects_default_);
+x_ite_Namespace .add ("EnvironmentalEffects", "x_ite/Components/EnvironmentalEffects", EnvironmentalEffects_default_);
 /* harmony default export */ const EnvironmentalEffects = (EnvironmentalEffects_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalSensor/X3DEnvironmentalSensorNode.js
 /*******************************************************************************
@@ -69454,7 +69651,7 @@ Object .defineProperties (X3DEnvironmentalSensorNode,
 const X3DEnvironmentalSensorNode_default_ = X3DEnvironmentalSensorNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/EnvironmentalSensor/X3DEnvironmentalSensorNode", X3DEnvironmentalSensorNode_default_);
+x_ite_Namespace .add ("X3DEnvironmentalSensorNode", "x_ite/Components/EnvironmentalSensor/X3DEnvironmentalSensorNode", X3DEnvironmentalSensorNode_default_);
 /* harmony default export */ const EnvironmentalSensor_X3DEnvironmentalSensorNode = (X3DEnvironmentalSensorNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalSensor/ProximitySensor.js
 /*******************************************************************************
@@ -69739,7 +69936,7 @@ Object .defineProperties (ProximitySensor,
 const ProximitySensor_default_ = ProximitySensor;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/EnvironmentalSensor/ProximitySensor", ProximitySensor_default_);
+x_ite_Namespace .add ("ProximitySensor", "x_ite/Components/EnvironmentalSensor/ProximitySensor", ProximitySensor_default_);
 /* harmony default export */ const EnvironmentalSensor_ProximitySensor = (ProximitySensor_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalSensor/TransformSensor.js
 /*******************************************************************************
@@ -70063,7 +70260,7 @@ Object .defineProperties (TransformSensor,
 const TransformSensor_default_ = TransformSensor;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/EnvironmentalSensor/TransformSensor", TransformSensor_default_);
+x_ite_Namespace .add ("TransformSensor", "x_ite/Components/EnvironmentalSensor/TransformSensor", TransformSensor_default_);
 /* harmony default export */ const EnvironmentalSensor_TransformSensor = (TransformSensor_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalSensor/VisibilitySensor.js
 /*******************************************************************************
@@ -70245,7 +70442,7 @@ Object .defineProperties (VisibilitySensor,
 const VisibilitySensor_default_ = VisibilitySensor;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/EnvironmentalSensor/VisibilitySensor", VisibilitySensor_default_);
+x_ite_Namespace .add ("VisibilitySensor", "x_ite/Components/EnvironmentalSensor/VisibilitySensor", VisibilitySensor_default_);
 /* harmony default export */ const EnvironmentalSensor_VisibilitySensor = (VisibilitySensor_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalSensor.js
 /*******************************************************************************
@@ -70315,7 +70512,7 @@ const EnvironmentalSensor_default_ = {
 };
 ;
 
-x_ite_Namespace .set ("x_ite/Components/EnvironmentalSensor", EnvironmentalSensor_default_);
+x_ite_Namespace .add ("EnvironmentalSensor", "x_ite/Components/EnvironmentalSensor", EnvironmentalSensor_default_);
 /* harmony default export */ const EnvironmentalSensor = (EnvironmentalSensor_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/X3DFollowerNode.js
 /*******************************************************************************
@@ -70471,7 +70668,7 @@ Object .defineProperties (X3DFollowerNode,
 const X3DFollowerNode_default_ = X3DFollowerNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Followers/X3DFollowerNode", X3DFollowerNode_default_);
+x_ite_Namespace .add ("X3DFollowerNode", "x_ite/Components/Followers/X3DFollowerNode", X3DFollowerNode_default_);
 /* harmony default export */ const Followers_X3DFollowerNode = (X3DFollowerNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/X3DChaserNode.js
 /*******************************************************************************
@@ -70717,7 +70914,7 @@ Object .defineProperties (X3DChaserNode,
 const X3DChaserNode_default_ = X3DChaserNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Followers/X3DChaserNode", X3DChaserNode_default_);
+x_ite_Namespace .add ("X3DChaserNode", "x_ite/Components/Followers/X3DChaserNode", X3DChaserNode_default_);
 /* harmony default export */ const Followers_X3DChaserNode = (X3DChaserNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/ColorChaser.js
 /*******************************************************************************
@@ -70869,7 +71066,7 @@ Object .defineProperties (ColorChaser,
 const ColorChaser_default_ = ColorChaser;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Followers/ColorChaser", ColorChaser_default_);
+x_ite_Namespace .add ("ColorChaser", "x_ite/Components/Followers/ColorChaser", ColorChaser_default_);
 /* harmony default export */ const Followers_ColorChaser = (ColorChaser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/X3DDamperNode.js
 /*******************************************************************************
@@ -71050,7 +71247,7 @@ Object .defineProperties (X3DDamperNode,
 const X3DDamperNode_default_ = X3DDamperNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Followers/X3DDamperNode", X3DDamperNode_default_);
+x_ite_Namespace .add ("X3DDamperNode", "x_ite/Components/Followers/X3DDamperNode", X3DDamperNode_default_);
 /* harmony default export */ const Followers_X3DDamperNode = (X3DDamperNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/ColorDamper.js
 /*******************************************************************************
@@ -71200,7 +71397,7 @@ Object .defineProperties (ColorDamper,
 const ColorDamper_default_ = ColorDamper;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Followers/ColorDamper", ColorDamper_default_);
+x_ite_Namespace .add ("ColorDamper", "x_ite/Components/Followers/ColorDamper", ColorDamper_default_);
 /* harmony default export */ const Followers_ColorDamper = (ColorDamper_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Followers/X3DArrayFollowerTemplate.js
 /*******************************************************************************
@@ -71381,7 +71578,7 @@ function X3DArrayFollowerTemplate (Type)
 const X3DArrayFollowerTemplate_default_ = X3DArrayFollowerTemplate;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Followers/X3DArrayFollowerTemplate", X3DArrayFollowerTemplate_default_);
+x_ite_Namespace .add ("X3DArrayFollowerTemplate", "x_ite/Browser/Followers/X3DArrayFollowerTemplate", X3DArrayFollowerTemplate_default_);
 /* harmony default export */ const Followers_X3DArrayFollowerTemplate = (X3DArrayFollowerTemplate_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Followers/X3DArrayChaserTemplate.js
 /*******************************************************************************
@@ -71464,7 +71661,7 @@ function X3DArrayChaserTemplate (Type)
 const X3DArrayChaserTemplate_default_ = X3DArrayChaserTemplate;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Followers/X3DArrayChaserTemplate", X3DArrayChaserTemplate_default_);
+x_ite_Namespace .add ("X3DArrayChaserTemplate", "x_ite/Browser/Followers/X3DArrayChaserTemplate", X3DArrayChaserTemplate_default_);
 /* harmony default export */ const Followers_X3DArrayChaserTemplate = (X3DArrayChaserTemplate_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/CoordinateChaser.js
 /*******************************************************************************
@@ -71582,7 +71779,7 @@ Object .defineProperties (CoordinateChaser,
 const CoordinateChaser_default_ = CoordinateChaser;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Followers/CoordinateChaser", CoordinateChaser_default_);
+x_ite_Namespace .add ("CoordinateChaser", "x_ite/Components/Followers/CoordinateChaser", CoordinateChaser_default_);
 /* harmony default export */ const Followers_CoordinateChaser = (CoordinateChaser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/CoordinateDamper.js
 /*******************************************************************************
@@ -71702,7 +71899,7 @@ Object .defineProperties (CoordinateDamper,
 const CoordinateDamper_default_ = CoordinateDamper;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Followers/CoordinateDamper", CoordinateDamper_default_);
+x_ite_Namespace .add ("CoordinateDamper", "x_ite/Components/Followers/CoordinateDamper", CoordinateDamper_default_);
 /* harmony default export */ const Followers_CoordinateDamper = (CoordinateDamper_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/OrientationChaser.js
 /*******************************************************************************
@@ -71841,7 +72038,7 @@ Object .defineProperties (OrientationChaser,
 const OrientationChaser_default_ = OrientationChaser;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Followers/OrientationChaser", OrientationChaser_default_);
+x_ite_Namespace .add ("OrientationChaser", "x_ite/Components/Followers/OrientationChaser", OrientationChaser_default_);
 /* harmony default export */ const Followers_OrientationChaser = (OrientationChaser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/OrientationDamper.js
 /*******************************************************************************
@@ -71976,7 +72173,7 @@ Object .defineProperties (OrientationDamper,
 const OrientationDamper_default_ = OrientationDamper;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Followers/OrientationDamper", OrientationDamper_default_);
+x_ite_Namespace .add ("OrientationDamper", "x_ite/Components/Followers/OrientationDamper", OrientationDamper_default_);
 /* harmony default export */ const Followers_OrientationDamper = (OrientationDamper_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/PositionChaser.js
 /*******************************************************************************
@@ -72089,7 +72286,7 @@ Object .defineProperties (PositionChaser,
 const PositionChaser_default_ = PositionChaser;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Followers/PositionChaser", PositionChaser_default_);
+x_ite_Namespace .add ("PositionChaser", "x_ite/Components/Followers/PositionChaser", PositionChaser_default_);
 /* harmony default export */ const Followers_PositionChaser = (PositionChaser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/PositionChaser2D.js
 /*******************************************************************************
@@ -72202,7 +72399,7 @@ Object .defineProperties (PositionChaser2D,
 const PositionChaser2D_default_ = PositionChaser2D;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Followers/PositionChaser2D", PositionChaser2D_default_);
+x_ite_Namespace .add ("PositionChaser2D", "x_ite/Components/Followers/PositionChaser2D", PositionChaser2D_default_);
 /* harmony default export */ const Followers_PositionChaser2D = (PositionChaser2D_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/PositionDamper.js
 /*******************************************************************************
@@ -72317,7 +72514,7 @@ Object .defineProperties (PositionDamper,
 const PositionDamper_default_ = PositionDamper;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Followers/PositionDamper", PositionDamper_default_);
+x_ite_Namespace .add ("PositionDamper", "x_ite/Components/Followers/PositionDamper", PositionDamper_default_);
 /* harmony default export */ const Followers_PositionDamper = (PositionDamper_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/PositionDamper2D.js
 /*******************************************************************************
@@ -72432,7 +72629,7 @@ Object .defineProperties (PositionDamper2D,
 const PositionDamper2D_default_ = PositionDamper2D;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Followers/PositionDamper2D", PositionDamper2D_default_);
+x_ite_Namespace .add ("PositionDamper2D", "x_ite/Components/Followers/PositionDamper2D", PositionDamper2D_default_);
 /* harmony default export */ const Followers_PositionDamper2D = (PositionDamper2D_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/ScalarChaser.js
 /*******************************************************************************
@@ -72573,7 +72770,7 @@ Object .defineProperties (ScalarChaser,
 const ScalarChaser_default_ = ScalarChaser;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Followers/ScalarChaser", ScalarChaser_default_);
+x_ite_Namespace .add ("ScalarChaser", "x_ite/Components/Followers/ScalarChaser", ScalarChaser_default_);
 /* harmony default export */ const Followers_ScalarChaser = (ScalarChaser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/ScalarDamper.js
 /*******************************************************************************
@@ -72704,7 +72901,7 @@ Object .defineProperties (ScalarDamper,
 const ScalarDamper_default_ = ScalarDamper;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Followers/ScalarDamper", ScalarDamper_default_);
+x_ite_Namespace .add ("ScalarDamper", "x_ite/Components/Followers/ScalarDamper", ScalarDamper_default_);
 /* harmony default export */ const Followers_ScalarDamper = (ScalarDamper_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/TexCoordChaser2D.js
 /*******************************************************************************
@@ -72822,7 +73019,7 @@ Object .defineProperties (TexCoordChaser2D,
 const TexCoordChaser2D_default_ = TexCoordChaser2D;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Followers/TexCoordChaser2D", TexCoordChaser2D_default_);
+x_ite_Namespace .add ("TexCoordChaser2D", "x_ite/Components/Followers/TexCoordChaser2D", TexCoordChaser2D_default_);
 /* harmony default export */ const Followers_TexCoordChaser2D = (TexCoordChaser2D_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/TexCoordDamper2D.js
 /*******************************************************************************
@@ -72942,7 +73139,7 @@ Object .defineProperties (TexCoordDamper2D,
 const TexCoordDamper2D_default_ = TexCoordDamper2D;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Followers/TexCoordDamper2D", TexCoordDamper2D_default_);
+x_ite_Namespace .add ("TexCoordDamper2D", "x_ite/Components/Followers/TexCoordDamper2D", TexCoordDamper2D_default_);
 /* harmony default export */ const Followers_TexCoordDamper2D = (TexCoordDamper2D_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers.js
 /*******************************************************************************
@@ -73038,7 +73235,7 @@ const Followers_default_ = {
 };
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Followers", Followers_default_);
+x_ite_Namespace .add ("Followers", "x_ite/Components/Followers", Followers_default_);
 /* harmony default export */ const Followers = (Followers_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geometry3D/Box.js
 /*******************************************************************************
@@ -73189,7 +73386,7 @@ Object .defineProperties (Box,
 const Box_default_ = Box;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Geometry3D/Box", Box_default_);
+x_ite_Namespace .add ("Box", "x_ite/Components/Geometry3D/Box", Box_default_);
 /* harmony default export */ const Geometry3D_Box = (Box_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geometry3D/Cone.js
 /*******************************************************************************
@@ -73442,7 +73639,7 @@ Object .defineProperties (Cone,
 const Cone_default_ = Cone;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Geometry3D/Cone", Cone_default_);
+x_ite_Namespace .add ("Cone", "x_ite/Components/Geometry3D/Cone", Cone_default_);
 /* harmony default export */ const Geometry3D_Cone = (Cone_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geometry3D/Cylinder.js
 /*******************************************************************************
@@ -73756,7 +73953,7 @@ Object .defineProperties (Cylinder,
 const Cylinder_default_ = Cylinder;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Geometry3D/Cylinder", Cylinder_default_);
+x_ite_Namespace .add ("Cylinder", "x_ite/Components/Geometry3D/Cylinder", Cylinder_default_);
 /* harmony default export */ const Geometry3D_Cylinder = (Cylinder_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geometry3D/ElevationGrid.js
 /*******************************************************************************
@@ -74200,7 +74397,7 @@ Object .defineProperties (ElevationGrid,
 const ElevationGrid_default_ = ElevationGrid;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Geometry3D/ElevationGrid", ElevationGrid_default_);
+x_ite_Namespace .add ("ElevationGrid", "x_ite/Components/Geometry3D/ElevationGrid", ElevationGrid_default_);
 /* harmony default export */ const Geometry3D_ElevationGrid = (ElevationGrid_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geometry3D/Extrusion.js
 /*******************************************************************************
@@ -74934,7 +75131,7 @@ Object .defineProperties (Extrusion,
 const Extrusion_default_ = Extrusion;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Geometry3D/Extrusion", Extrusion_default_);
+x_ite_Namespace .add ("Extrusion", "x_ite/Components/Geometry3D/Extrusion", Extrusion_default_);
 /* harmony default export */ const Geometry3D_Extrusion = (Extrusion_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/X3DComposedGeometryNode.js
 /*******************************************************************************
@@ -75302,7 +75499,7 @@ Object .defineProperties (X3DComposedGeometryNode,
 const X3DComposedGeometryNode_default_ = X3DComposedGeometryNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/X3DComposedGeometryNode", X3DComposedGeometryNode_default_);
+x_ite_Namespace .add ("X3DComposedGeometryNode", "x_ite/Components/Rendering/X3DComposedGeometryNode", X3DComposedGeometryNode_default_);
 /* harmony default export */ const Rendering_X3DComposedGeometryNode = (X3DComposedGeometryNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geometry3D/IndexedFaceSet.js
 /*******************************************************************************
@@ -75778,7 +75975,7 @@ Object .defineProperties (IndexedFaceSet,
 const IndexedFaceSet_default_ = IndexedFaceSet;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Geometry3D/IndexedFaceSet", IndexedFaceSet_default_);
+x_ite_Namespace .add ("IndexedFaceSet", "x_ite/Components/Geometry3D/IndexedFaceSet", IndexedFaceSet_default_);
 /* harmony default export */ const Geometry3D_IndexedFaceSet = (IndexedFaceSet_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geometry3D/Sphere.js
 /*******************************************************************************
@@ -75929,7 +76126,7 @@ Object .defineProperties (Sphere,
 const Sphere_default_ = Sphere;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Geometry3D/Sphere", Sphere_default_);
+x_ite_Namespace .add ("Sphere", "x_ite/Components/Geometry3D/Sphere", Sphere_default_);
 /* harmony default export */ const Geometry3D_Sphere = (Sphere_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geometry3D.js
 /*******************************************************************************
@@ -76005,7 +76202,7 @@ const Geometry3D_default_ = {
 };
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Geometry3D", Geometry3D_default_);
+x_ite_Namespace .add ("Geometry3D", "x_ite/Components/Geometry3D", Geometry3D_default_);
 /* harmony default export */ const Geometry3D = (Geometry3D_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping/StaticGroup.js
 /*******************************************************************************
@@ -76254,7 +76451,7 @@ Object .defineProperties (StaticGroup,
 const StaticGroup_default_ = StaticGroup;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Grouping/StaticGroup", StaticGroup_default_);
+x_ite_Namespace .add ("StaticGroup", "x_ite/Components/Grouping/StaticGroup", StaticGroup_default_);
 /* harmony default export */ const Grouping_StaticGroup = (StaticGroup_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping/Switch.js
 /*******************************************************************************
@@ -76361,7 +76558,7 @@ Object .assign (Object .setPrototypeOf (Switch .prototype, Grouping_X3DGroupingN
 
       if (Base_X3DCast (Base_X3DConstants .X3DBoundedObject, this .childNode))
       {
-         this .childNode ._visible     .removeInterest ("set_visible__",     this);
+         this .childNode ._display     .removeInterest ("set_display__",     this);
          this .childNode ._bboxDisplay .removeInterest ("set_bboxDisplay__", this);
       }
 
@@ -76378,7 +76575,7 @@ Object .assign (Object .setPrototypeOf (Switch .prototype, Grouping_X3DGroupingN
 
             if (Base_X3DCast (Base_X3DConstants .X3DBoundedObject, this .childNode))
             {
-               this .childNode ._visible     .addInterest ("set_visible__",     this);
+               this .childNode ._display     .addInterest ("set_display__",     this);
                this .childNode ._bboxDisplay .addInterest ("set_bboxDisplay__", this);
             }
 
@@ -76392,7 +76589,7 @@ Object .assign (Object .setPrototypeOf (Switch .prototype, Grouping_X3DGroupingN
          this .traverse = Function .prototype;
       }
 
-      this .set_visible__ ();
+      this .set_display__ ();
       this .set_bboxDisplay__ ();
    },
    set_cameraObject__ ()
@@ -76403,10 +76600,10 @@ Object .assign (Object .setPrototypeOf (Switch .prototype, Grouping_X3DGroupingN
    {
       this .setPickableObject (!!(this .getTransformSensors () .size || this .visibleNode ?.isPickableObject ()));
    },
-   set_visible__ ()
+   set_display__ ()
    {
       if (Base_X3DCast (Base_X3DConstants .X3DBoundedObject, this .childNode))
-         this .visibleNode = this .childNode ._visible .getValue () ? this .childNode : null;
+         this .visibleNode = this .childNode ._display .getValue () ? this .childNode : null;
       else
          this .visibleNode = this .childNode;
 
@@ -76516,7 +76713,7 @@ Object .defineProperties (Switch,
 const Switch_default_ = Switch;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Grouping/Switch", Switch_default_);
+x_ite_Namespace .add ("Switch", "x_ite/Components/Grouping/Switch", Switch_default_);
 /* harmony default export */ const Grouping_Switch = (Switch_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping/X3DTransformMatrix3DNode.js
 /*******************************************************************************
@@ -76656,7 +76853,7 @@ Object .defineProperties (X3DTransformMatrix3DNode,
 const X3DTransformMatrix3DNode_default_ = X3DTransformMatrix3DNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Grouping/X3DTransformMatrix3DNode", X3DTransformMatrix3DNode_default_);
+x_ite_Namespace .add ("X3DTransformMatrix3DNode", "x_ite/Components/Grouping/X3DTransformMatrix3DNode", X3DTransformMatrix3DNode_default_);
 /* harmony default export */ const Grouping_X3DTransformMatrix3DNode = (X3DTransformMatrix3DNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping/X3DTransformNode.js
 /*******************************************************************************
@@ -76756,7 +76953,7 @@ Object .defineProperties (X3DTransformNode,
 const X3DTransformNode_default_ = X3DTransformNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Grouping/X3DTransformNode", X3DTransformNode_default_);
+x_ite_Namespace .add ("X3DTransformNode", "x_ite/Components/Grouping/X3DTransformNode", X3DTransformNode_default_);
 /* harmony default export */ const Grouping_X3DTransformNode = (X3DTransformNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping/Transform.js
 /*******************************************************************************
@@ -76867,7 +77064,7 @@ Object .defineProperties (Transform,
 const Transform_default_ = Transform;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Grouping/Transform", Transform_default_);
+x_ite_Namespace .add ("Transform", "x_ite/Components/Grouping/Transform", Transform_default_);
 /* harmony default export */ const Grouping_Transform = (Transform_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping.js
 /*******************************************************************************
@@ -76945,7 +77142,7 @@ const Grouping_default_ = {
 };
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Grouping", Grouping_default_);
+x_ite_Namespace .add ("Grouping", "x_ite/Components/Grouping", Grouping_default_);
 /* harmony default export */ const Grouping = (Grouping_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/ColorInterpolator.js
 /*******************************************************************************
@@ -77082,7 +77279,7 @@ Object .defineProperties (ColorInterpolator,
 const ColorInterpolator_default_ = ColorInterpolator;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Interpolation/ColorInterpolator", ColorInterpolator_default_);
+x_ite_Namespace .add ("ColorInterpolator", "x_ite/Components/Interpolation/ColorInterpolator", ColorInterpolator_default_);
 /* harmony default export */ const Interpolation_ColorInterpolator = (ColorInterpolator_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/CoordinateInterpolator.js
 /*******************************************************************************
@@ -77219,7 +77416,7 @@ Object .defineProperties (CoordinateInterpolator,
 const CoordinateInterpolator_default_ = CoordinateInterpolator;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Interpolation/CoordinateInterpolator", CoordinateInterpolator_default_);
+x_ite_Namespace .add ("CoordinateInterpolator", "x_ite/Components/Interpolation/CoordinateInterpolator", CoordinateInterpolator_default_);
 /* harmony default export */ const Interpolation_CoordinateInterpolator = (CoordinateInterpolator_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/CoordinateInterpolator2D.js
 /*******************************************************************************
@@ -77353,7 +77550,7 @@ Object .defineProperties (CoordinateInterpolator2D,
 const CoordinateInterpolator2D_default_ = CoordinateInterpolator2D;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Interpolation/CoordinateInterpolator2D", CoordinateInterpolator2D_default_);
+x_ite_Namespace .add ("CoordinateInterpolator2D", "x_ite/Components/Interpolation/CoordinateInterpolator2D", CoordinateInterpolator2D_default_);
 /* harmony default export */ const Interpolation_CoordinateInterpolator2D = (CoordinateInterpolator2D_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/NormalInterpolator.js
 /*******************************************************************************
@@ -77516,7 +77713,7 @@ Object .defineProperties (NormalInterpolator,
 const NormalInterpolator_default_ = NormalInterpolator;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Interpolation/NormalInterpolator", NormalInterpolator_default_);
+x_ite_Namespace .add ("NormalInterpolator", "x_ite/Components/Interpolation/NormalInterpolator", NormalInterpolator_default_);
 /* harmony default export */ const Interpolation_NormalInterpolator = (NormalInterpolator_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/PositionInterpolator2D.js
 /*******************************************************************************
@@ -77646,7 +77843,7 @@ Object .defineProperties (PositionInterpolator2D,
 const PositionInterpolator2D_default_ = PositionInterpolator2D;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Interpolation/PositionInterpolator2D", PositionInterpolator2D_default_);
+x_ite_Namespace .add ("PositionInterpolator2D", "x_ite/Components/Interpolation/PositionInterpolator2D", PositionInterpolator2D_default_);
 /* harmony default export */ const Interpolation_PositionInterpolator2D = (PositionInterpolator2D_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Interpolation/CatmullRomSplineInterpolator.js
 /*******************************************************************************
@@ -77837,7 +78034,7 @@ Object .assign (CatmullRomSplineInterpolator .prototype,
 const CatmullRomSplineInterpolator_default_ = CatmullRomSplineInterpolator;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Interpolation/CatmullRomSplineInterpolator", CatmullRomSplineInterpolator_default_);
+x_ite_Namespace .add ("CatmullRomSplineInterpolator", "x_ite/Browser/Interpolation/CatmullRomSplineInterpolator", CatmullRomSplineInterpolator_default_);
 /* harmony default export */ const Interpolation_CatmullRomSplineInterpolator = (CatmullRomSplineInterpolator_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Interpolation/CatmullRomSplineInterpolatorTemplate.js
 /*******************************************************************************
@@ -77949,7 +78146,7 @@ function CatmullRomSplineInterpolatorTemplate (Type)
 const CatmullRomSplineInterpolatorTemplate_default_ = CatmullRomSplineInterpolatorTemplate;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Interpolation/CatmullRomSplineInterpolatorTemplate", CatmullRomSplineInterpolatorTemplate_default_);
+x_ite_Namespace .add ("CatmullRomSplineInterpolatorTemplate", "x_ite/Browser/Interpolation/CatmullRomSplineInterpolatorTemplate", CatmullRomSplineInterpolatorTemplate_default_);
 /* harmony default export */ const Interpolation_CatmullRomSplineInterpolatorTemplate = (CatmullRomSplineInterpolatorTemplate_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Interpolation/CatmullRomSplineInterpolator3.js
 /*******************************************************************************
@@ -78007,7 +78204,7 @@ const CatmullRomSplineInterpolator3 = Interpolation_CatmullRomSplineInterpolator
 const CatmullRomSplineInterpolator3_default_ = CatmullRomSplineInterpolator3;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Interpolation/CatmullRomSplineInterpolator3", CatmullRomSplineInterpolator3_default_);
+x_ite_Namespace .add ("CatmullRomSplineInterpolator3", "x_ite/Browser/Interpolation/CatmullRomSplineInterpolator3", CatmullRomSplineInterpolator3_default_);
 /* harmony default export */ const Interpolation_CatmullRomSplineInterpolator3 = (CatmullRomSplineInterpolator3_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/SplinePositionInterpolator.js
 /*******************************************************************************
@@ -78159,7 +78356,7 @@ Object .defineProperties (SplinePositionInterpolator,
 const SplinePositionInterpolator_default_ = SplinePositionInterpolator;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Interpolation/SplinePositionInterpolator", SplinePositionInterpolator_default_);
+x_ite_Namespace .add ("SplinePositionInterpolator", "x_ite/Components/Interpolation/SplinePositionInterpolator", SplinePositionInterpolator_default_);
 /* harmony default export */ const Interpolation_SplinePositionInterpolator = (SplinePositionInterpolator_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Interpolation/CatmullRomSplineInterpolator2.js
 /*******************************************************************************
@@ -78217,7 +78414,7 @@ const CatmullRomSplineInterpolator2 = Interpolation_CatmullRomSplineInterpolator
 const CatmullRomSplineInterpolator2_default_ = CatmullRomSplineInterpolator2;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Interpolation/CatmullRomSplineInterpolator2", CatmullRomSplineInterpolator2_default_);
+x_ite_Namespace .add ("CatmullRomSplineInterpolator2", "x_ite/Browser/Interpolation/CatmullRomSplineInterpolator2", CatmullRomSplineInterpolator2_default_);
 /* harmony default export */ const Interpolation_CatmullRomSplineInterpolator2 = (CatmullRomSplineInterpolator2_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/SplinePositionInterpolator2D.js
 /*******************************************************************************
@@ -78369,7 +78566,7 @@ Object .defineProperties (SplinePositionInterpolator2D,
 const SplinePositionInterpolator2D_default_ = SplinePositionInterpolator2D;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Interpolation/SplinePositionInterpolator2D", SplinePositionInterpolator2D_default_);
+x_ite_Namespace .add ("SplinePositionInterpolator2D", "x_ite/Components/Interpolation/SplinePositionInterpolator2D", SplinePositionInterpolator2D_default_);
 /* harmony default export */ const Interpolation_SplinePositionInterpolator2D = (SplinePositionInterpolator2D_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Interpolation/CatmullRomSplineInterpolator1.js
 /*******************************************************************************
@@ -78461,7 +78658,7 @@ Object .assign (Object .setPrototypeOf (CatmullRomSplineInterpolator1 .prototype
 const CatmullRomSplineInterpolator1_default_ = CatmullRomSplineInterpolator1;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Interpolation/CatmullRomSplineInterpolator1", CatmullRomSplineInterpolator1_default_);
+x_ite_Namespace .add ("CatmullRomSplineInterpolator1", "x_ite/Browser/Interpolation/CatmullRomSplineInterpolator1", CatmullRomSplineInterpolator1_default_);
 /* harmony default export */ const Interpolation_CatmullRomSplineInterpolator1 = (CatmullRomSplineInterpolator1_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/SplineScalarInterpolator.js
 /*******************************************************************************
@@ -78613,7 +78810,7 @@ Object .defineProperties (SplineScalarInterpolator,
 const SplineScalarInterpolator_default_ = SplineScalarInterpolator;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Interpolation/SplineScalarInterpolator", SplineScalarInterpolator_default_);
+x_ite_Namespace .add ("SplineScalarInterpolator", "x_ite/Components/Interpolation/SplineScalarInterpolator", SplineScalarInterpolator_default_);
 /* harmony default export */ const Interpolation_SplineScalarInterpolator = (SplineScalarInterpolator_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Interpolation/SquatInterpolator.js
 /*******************************************************************************
@@ -78730,7 +78927,7 @@ Object .assign (SquatInterpolator .prototype,
 const SquatInterpolator_default_ = SquatInterpolator;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Interpolation/SquatInterpolator", SquatInterpolator_default_);
+x_ite_Namespace .add ("SquatInterpolator", "x_ite/Browser/Interpolation/SquatInterpolator", SquatInterpolator_default_);
 /* harmony default export */ const Interpolation_SquatInterpolator = (SquatInterpolator_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/SquadOrientationInterpolator.js
 /*******************************************************************************
@@ -78872,7 +79069,7 @@ Object .defineProperties (SquadOrientationInterpolator,
 const SquadOrientationInterpolator_default_ = SquadOrientationInterpolator;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Interpolation/SquadOrientationInterpolator", SquadOrientationInterpolator_default_);
+x_ite_Namespace .add ("SquadOrientationInterpolator", "x_ite/Components/Interpolation/SquadOrientationInterpolator", SquadOrientationInterpolator_default_);
 /* harmony default export */ const Interpolation_SquadOrientationInterpolator = (SquadOrientationInterpolator_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation.js
 /*******************************************************************************
@@ -78962,7 +79159,7 @@ const Interpolation_default_ = {
 };
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Interpolation", Interpolation_default_);
+x_ite_Namespace .add ("Interpolation", "x_ite/Components/Interpolation", Interpolation_default_);
 /* harmony default export */ const Interpolation = (Interpolation_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Layering/X3DViewportNode.js
 /*******************************************************************************
@@ -79041,7 +79238,7 @@ Object .defineProperties (X3DViewportNode,
 const X3DViewportNode_default_ = X3DViewportNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Layering/X3DViewportNode", X3DViewportNode_default_);
+x_ite_Namespace .add ("X3DViewportNode", "x_ite/Components/Layering/X3DViewportNode", X3DViewportNode_default_);
 /* harmony default export */ const Layering_X3DViewportNode = (X3DViewportNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Layering/Viewport.js
 /*******************************************************************************
@@ -79226,7 +79423,7 @@ Object .defineProperties (Viewport,
 const Viewport_default_ = Viewport;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Layering/Viewport", Viewport_default_);
+x_ite_Namespace .add ("Viewport", "x_ite/Components/Layering/Viewport", Viewport_default_);
 /* harmony default export */ const Layering_Viewport = (Viewport_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Layering.js
 /*******************************************************************************
@@ -79298,7 +79495,7 @@ const Layering_default_ = {
 };
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Layering", Layering_default_);
+x_ite_Namespace .add ("Layering", "x_ite/Components/Layering", Layering_default_);
 /* harmony default export */ const Layering = (Layering_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Lighting/X3DLightNode.js
 /*******************************************************************************
@@ -79525,7 +79722,7 @@ Object .defineProperties (X3DLightNode,
 const X3DLightNode_default_ = X3DLightNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Lighting/X3DLightNode", X3DLightNode_default_);
+x_ite_Namespace .add ("X3DLightNode", "x_ite/Components/Lighting/X3DLightNode", X3DLightNode_default_);
 /* harmony default export */ const Lighting_X3DLightNode = (X3DLightNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Lighting/DirectionalLight.js
 /*******************************************************************************
@@ -79821,7 +80018,7 @@ Object .defineProperties (DirectionalLight,
 const DirectionalLight_default_ = DirectionalLight;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Lighting/DirectionalLight", DirectionalLight_default_);
+x_ite_Namespace .add ("DirectionalLight", "x_ite/Components/Lighting/DirectionalLight", DirectionalLight_default_);
 /* harmony default export */ const Lighting_DirectionalLight = (DirectionalLight_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Lighting/EnvironmentLight.js
 /*******************************************************************************
@@ -79891,10 +80088,6 @@ Object .assign (EnvironmentLightContainer .prototype,
 {
    set (lightNode, groupNode, modelViewMatrix)
    {
-   },
-   setGroup (groupNode)
-   {
-      this .groupNode = groupNode;
    },
    getModelViewMatrix ()
    {
@@ -79983,7 +80176,7 @@ Object .defineProperties (EnvironmentLight,
 const EnvironmentLight_default_ = EnvironmentLight;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Lighting/EnvironmentLight", EnvironmentLight_default_);
+x_ite_Namespace .add ("EnvironmentLight", "x_ite/Components/Lighting/EnvironmentLight", EnvironmentLight_default_);
 /* harmony default export */ const Lighting_EnvironmentLight = (EnvironmentLight_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Lighting/PointLight.js
 /*******************************************************************************
@@ -80329,7 +80522,7 @@ Object .defineProperties (PointLight,
 const PointLight_default_ = PointLight;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Lighting/PointLight", PointLight_default_);
+x_ite_Namespace .add ("PointLight", "x_ite/Components/Lighting/PointLight", PointLight_default_);
 /* harmony default export */ const Lighting_PointLight = (PointLight_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Lighting/SpotLight.js
 /*******************************************************************************
@@ -80694,7 +80887,7 @@ Object .defineProperties (SpotLight,
 const SpotLight_default_ = SpotLight;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Lighting/SpotLight", SpotLight_default_);
+x_ite_Namespace .add ("SpotLight", "x_ite/Components/Lighting/SpotLight", SpotLight_default_);
 /* harmony default export */ const Lighting_SpotLight = (SpotLight_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Lighting.js
 /*******************************************************************************
@@ -80766,7 +80959,7 @@ const Lighting_default_ = {
 };
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Lighting", Lighting_default_);
+x_ite_Namespace .add ("Lighting", "x_ite/Components/Lighting", Lighting_default_);
 /* harmony default export */ const Lighting = (Lighting_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Navigation/Billboard.js
 /*******************************************************************************
@@ -80959,7 +81152,7 @@ Object .defineProperties (Billboard,
 const Billboard_default_ = Billboard;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Navigation/Billboard", Billboard_default_);
+x_ite_Namespace .add ("Billboard", "x_ite/Components/Navigation/Billboard", Billboard_default_);
 /* harmony default export */ const Navigation_Billboard = (Billboard_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Navigation/Collision.js
 /*******************************************************************************
@@ -81148,7 +81341,7 @@ Object .defineProperties (Collision,
 const Collision_default_ = Collision;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Navigation/Collision", Collision_default_);
+x_ite_Namespace .add ("Collision", "x_ite/Components/Navigation/Collision", Collision_default_);
 /* harmony default export */ const Navigation_Collision = (Collision_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Navigation/LOD.js
 /*******************************************************************************
@@ -81263,7 +81456,7 @@ Object .assign (Object .setPrototypeOf (LOD .prototype, Grouping_X3DGroupingNode
 
       if (Base_X3DCast (Base_X3DConstants .X3DBoundedObject, this .childNode))
       {
-         this .childNode ._visible     .removeInterest ("set_visible__",     this);
+         this .childNode ._display     .removeInterest ("set_display__",     this);
          this .childNode ._bboxDisplay .removeInterest ("set_bboxDisplay__", this);
       }
 
@@ -81278,7 +81471,7 @@ Object .assign (Object .setPrototypeOf (LOD .prototype, Grouping_X3DGroupingNode
 
             if (Base_X3DCast (Base_X3DConstants .X3DBoundedObject, this .childNode))
             {
-               this .childNode ._visible     .addInterest ("set_visible__",     this);
+               this .childNode ._display     .addInterest ("set_display__",     this);
                this .childNode ._bboxDisplay .addInterest ("set_bboxDisplay__", this);
             }
 
@@ -81292,7 +81485,7 @@ Object .assign (Object .setPrototypeOf (LOD .prototype, Grouping_X3DGroupingNode
          //this .traverse = Function .prototype; // Don't do that.
       }
 
-      this .set_visible__ ();
+      this .set_display__ ();
       this .set_bboxDisplay__ ();
    },
    set_cameraObject__ ()
@@ -81303,10 +81496,10 @@ Object .assign (Object .setPrototypeOf (LOD .prototype, Grouping_X3DGroupingNode
    {
       this .setPickableObject (!!(this .getTransformSensors () .size || this .visibleNode ?.isPickableObject ()));
    },
-   set_visible__ ()
+   set_display__ ()
    {
       if (Base_X3DCast (Base_X3DConstants .X3DBoundedObject, this .childNode))
-         this .visibleNode = this .childNode ._visible .getValue () ? this .childNode : null;
+         this .visibleNode = this .childNode ._display .getValue () ? this .childNode : null;
       else
          this .visibleNode = this .childNode;
 
@@ -81488,7 +81681,7 @@ Object .defineProperties (LOD,
 const LOD_default_ = LOD;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Navigation/LOD", LOD_default_);
+x_ite_Namespace .add ("LOD", "x_ite/Components/Navigation/LOD", LOD_default_);
 /* harmony default export */ const Navigation_LOD = (LOD_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Navigation/OrthoViewpoint.js
 /*******************************************************************************
@@ -81849,7 +82042,7 @@ Object .defineProperties (OrthoViewpoint,
 const OrthoViewpoint_default_ = OrthoViewpoint;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Navigation/OrthoViewpoint", OrthoViewpoint_default_);
+x_ite_Namespace .add ("OrthoViewpoint", "x_ite/Components/Navigation/OrthoViewpoint", OrthoViewpoint_default_);
 /* harmony default export */ const Navigation_OrthoViewpoint = (OrthoViewpoint_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Navigation/ViewpointGroup.js
 /*******************************************************************************
@@ -81908,6 +82101,7 @@ x_ite_Namespace .set ("x_ite/Components/Navigation/OrthoViewpoint", OrthoViewpoi
 
 
 
+
 function ViewpointGroup (executionContext)
 {
    Core_X3DChildNode .call (this, executionContext);
@@ -81916,6 +82110,8 @@ function ViewpointGroup (executionContext)
 
    this ._size   .setUnit ("length");
    this ._center .setUnit ("length");
+
+   this .setCameraObject (true);
 
    this .proximitySensor  = new EnvironmentalSensor_ProximitySensor (executionContext);
    this .cameraObjects    = [ ];
@@ -81936,140 +82132,86 @@ Object .assign (Object .setPrototypeOf (ViewpointGroup .prototype, Core_X3DChild
       this .proximitySensor ._size   = this ._size;
       this .proximitySensor ._center = this ._center;
 
-      this ._displayed .addInterest ("set_displayed__", this);
-      this ._size      .addInterest ("set_displayed__", this);
+      this ._size      .addInterest ("set_size__",     this);
       this ._children  .addInterest ("set_children__", this);
 
-      this .set_displayed__ ();
+      this .set_size__ ();
       this .set_children__ ();
    },
-   isActive ()
+   set_size__ ()
    {
-      return this .proximitySensor ._isActive .getValue ();
-   },
-   set_displayed__ ()
-   {
-      var
-         proxy     = ! this ._size .getValue () .equals (Numbers_Vector3 .Zero),
-         displayed = this ._displayed .getValue ();
-
-      this .proximitySensor ._enabled = displayed && proxy;
-
-      if (displayed && proxy)
-      {
-         this .proximitySensor ._isCameraObject   .addFieldInterest (this ._isCameraObject);
-         this .proximitySensor ._isPickableObject .addFieldInterest (this ._isPickableObject);
-
-         this .setCameraObject   (this .proximitySensor .isCameraObject ());
-         this .setPickableObject (this .proximitySensor .isPickableObject ());
-
-         this .traverse = traverseWithProximitySensor;
-      }
-      else
-      {
-         this .proximitySensor ._isCameraObject    .removeFieldInterest (this ._isCameraObject);
-         this .proximitySensor ._isPickableObject .removeFieldInterest (this ._isPickableObject);
-
-         this .setCameraObject   (displayed);
-         this .setPickableObject (false);
-
-         if (displayed)
-            this .traverse = traverse;
-         else
-            delete this .traverse;
-      }
+      this .proximitySensor ._enabled = !this ._size .getValue () .equals (Numbers_Vector3 .Zero);
    },
    set_children__ ()
    {
       this .cameraObjects   .length = 0;
       this .viewpointGroups .length = 0;
 
-      var children = this ._children;
-
-      for (var i = 0, length = children .length; i < length; ++ i)
+      for (const child of this ._children)
       {
-         try
-         {
-            var
-               innerNode = children [i] .getValue () .getInnerNode (),
-               type      = innerNode .getType ();
+         const childNode = Base_X3DCast (Base_X3DConstants .X3DChildNode, child);
 
-            for (var t = type .length - 1; t >= 0; -- t)
+         if (!childNode)
+            continue;
+
+         const type = childNode .getType ();
+
+         for (let t = type .length - 1; t >= 0; -- t)
+         {
+            switch (type [t])
             {
-               switch (type [t])
+               case Base_X3DConstants .X3DViewpointNode:
                {
-                  case Base_X3DConstants .X3DViewpointNode:
-                  {
-                     this .cameraObjects .push (innerNode);
-                     break;
-                  }
-                  case Base_X3DConstants .ViewpointGroup:
-                  {
-                     this .cameraObjects   .push (innerNode);
-                     this .viewpointGroups .push (innerNode);
-                     break;
-                  }
+                  this .cameraObjects .push (childNode);
+                  break;
+               }
+               case Base_X3DConstants .ViewpointGroup:
+               {
+                  this .cameraObjects   .push (childNode);
+                  this .viewpointGroups .push (childNode);
+                  break;
                }
             }
          }
-         catch
-         { }
       }
    },
-   traverse () { },
+   traverse (type, renderObject)
+   {
+      const proximitySensor = this .proximitySensor;
+
+      switch (type)
+      {
+         case Rendering_TraverseType .CAMERA:
+         {
+            proximitySensor .traverse (type, renderObject);
+
+            if (proximitySensor ._isActive .getValue () || !proximitySensor ._enabled .getValue ())
+            {
+               renderObject .getViewpointGroups () .push (this);
+
+               for (const cameraObject of this .cameraObjects)
+                  cameraObject .traverse (type, renderObject);
+
+               renderObject .getViewpointGroups () .pop ();
+            }
+
+            return;
+         }
+         case Rendering_TraverseType .DISPLAY:
+         {
+            proximitySensor .traverse (type, renderObject);
+
+            if (proximitySensor ._isActive .getValue () || !proximitySensor ._enabled .getValue ())
+            {
+               for (const viewpointGroup of this .viewpointGroups)
+                  viewpointGroup .traverse (type, renderObject);
+            }
+
+            return;
+         }
+      }
+   },
 });
-
-function traverseWithProximitySensor (type, renderObject)
-{
-   switch (type)
-   {
-      case Rendering_TraverseType .CAMERA:
-      {
-         this .proximitySensor .traverse (type, renderObject);
-
-         if (this .proximitySensor ._isActive .getValue ())
-         {
-            for (var i = 0, length = this .cameraObjects .length; i < length; ++ i)
-               this .cameraObjects [i] .traverse (type, renderObject);
-         }
-
-         return;
-      }
-      case Rendering_TraverseType .DISPLAY:
-      {
-         this .proximitySensor .traverse (type, renderObject);
-
-         if (this .proximitySensor ._isActive .getValue ())
-         {
-            for (var i = 0, length = this .viewpointGroups .length; i < length; ++ i)
-               this .viewpointGroups [i] .traverse (type, renderObject);
-         }
-
-         return;
-      }
-   }
-}
-
-function traverse (type, renderObject)
-{
-   switch (type)
-   {
-      case Rendering_TraverseType .CAMERA:
-      {
-         for (var i = 0, length = this .cameraObjects .length; i < length; ++ i)
-            this .cameraObjects [i] .traverse (type, renderObject);
-
-         return;
-      }
-      case Rendering_TraverseType .DISPLAY:
-      {
-         for (var i = 0, length = this .viewpointGroups .length; i < length; ++ i)
-            this .viewpointGroups [i] .traverse (type, renderObject);
-
-         return;
-      }
-   }
-}
 
 Object .defineProperties (ViewpointGroup,
 {
@@ -82111,7 +82253,7 @@ Object .defineProperties (ViewpointGroup,
 const ViewpointGroup_default_ = ViewpointGroup;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Navigation/ViewpointGroup", ViewpointGroup_default_);
+x_ite_Namespace .add ("ViewpointGroup", "x_ite/Components/Navigation/ViewpointGroup", ViewpointGroup_default_);
 /* harmony default export */ const Navigation_ViewpointGroup = (ViewpointGroup_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Navigation.js
 /*******************************************************************************
@@ -82189,7 +82331,7 @@ const Navigation_default_ = {
 };
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Navigation", Navigation_default_);
+x_ite_Namespace .add ("Navigation", "x_ite/Components/Navigation", Navigation_default_);
 /* harmony default export */ const Navigation = (Navigation_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/PointingDeviceSensor/PointingDeviceSensorContainer.js
 /*******************************************************************************
@@ -82279,7 +82421,7 @@ Object .assign (PointingDeviceSensorContainer .prototype,
 const PointingDeviceSensorContainer_default_ = PointingDeviceSensorContainer;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/PointingDeviceSensor/PointingDeviceSensorContainer", PointingDeviceSensorContainer_default_);
+x_ite_Namespace .add ("PointingDeviceSensorContainer", "x_ite/Browser/PointingDeviceSensor/PointingDeviceSensorContainer", PointingDeviceSensorContainer_default_);
 /* harmony default export */ const PointingDeviceSensor_PointingDeviceSensorContainer = (PointingDeviceSensorContainer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/PointingDeviceSensor/X3DPointingDeviceSensorNode.js
 /*******************************************************************************
@@ -82416,7 +82558,7 @@ Object .defineProperties (X3DPointingDeviceSensorNode,
 const X3DPointingDeviceSensorNode_default_ = X3DPointingDeviceSensorNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/PointingDeviceSensor/X3DPointingDeviceSensorNode", X3DPointingDeviceSensorNode_default_);
+x_ite_Namespace .add ("X3DPointingDeviceSensorNode", "x_ite/Components/PointingDeviceSensor/X3DPointingDeviceSensorNode", X3DPointingDeviceSensorNode_default_);
 /* harmony default export */ const PointingDeviceSensor_X3DPointingDeviceSensorNode = (X3DPointingDeviceSensorNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/PointingDeviceSensor/X3DTouchSensorNode.js
 /*******************************************************************************
@@ -82527,7 +82669,7 @@ Object .defineProperties (X3DTouchSensorNode,
 const X3DTouchSensorNode_default_ = X3DTouchSensorNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/PointingDeviceSensor/X3DTouchSensorNode", X3DTouchSensorNode_default_);
+x_ite_Namespace .add ("X3DTouchSensorNode", "x_ite/Components/PointingDeviceSensor/X3DTouchSensorNode", X3DTouchSensorNode_default_);
 /* harmony default export */ const PointingDeviceSensor_X3DTouchSensorNode = (X3DTouchSensorNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/PointingDeviceSensor/TouchSensor.js
 /*******************************************************************************
@@ -82636,7 +82778,7 @@ Object .defineProperties (TouchSensor,
 const TouchSensor_default_ = TouchSensor;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/PointingDeviceSensor/TouchSensor", TouchSensor_default_);
+x_ite_Namespace .add ("TouchSensor", "x_ite/Components/PointingDeviceSensor/TouchSensor", TouchSensor_default_);
 /* harmony default export */ const PointingDeviceSensor_TouchSensor = (TouchSensor_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Networking/Anchor.js
 /*******************************************************************************
@@ -82861,7 +83003,7 @@ Object .defineProperties (Anchor,
 const Anchor_default_ = Anchor;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Networking/Anchor", Anchor_default_);
+x_ite_Namespace .add ("Anchor", "x_ite/Components/Networking/Anchor", Anchor_default_);
 /* harmony default export */ const Networking_Anchor = (Anchor_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Networking/Inline.js
 /*******************************************************************************
@@ -83180,7 +83322,7 @@ Object .defineProperties (Inline,
 const Inline_default_ = Inline;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Networking/Inline", Inline_default_);
+x_ite_Namespace .add ("Inline", "x_ite/Components/Networking/Inline", Inline_default_);
 /* harmony default export */ const Networking_Inline = (Inline_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Networking/X3DNetworkSensorNode.js
 /*******************************************************************************
@@ -83259,7 +83401,7 @@ Object .defineProperties (X3DNetworkSensorNode,
 const X3DNetworkSensorNode_default_ = X3DNetworkSensorNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Networking/X3DNetworkSensorNode", X3DNetworkSensorNode_default_);
+x_ite_Namespace .add ("X3DNetworkSensorNode", "x_ite/Components/Networking/X3DNetworkSensorNode", X3DNetworkSensorNode_default_);
 /* harmony default export */ const Networking_X3DNetworkSensorNode = (X3DNetworkSensorNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Networking/LoadSensor.js
 /*******************************************************************************
@@ -83529,7 +83671,7 @@ Object .defineProperties (LoadSensor,
 const LoadSensor_default_ = LoadSensor;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Networking/LoadSensor", LoadSensor_default_);
+x_ite_Namespace .add ("LoadSensor", "x_ite/Components/Networking/LoadSensor", LoadSensor_default_);
 /* harmony default export */ const Networking_LoadSensor = (LoadSensor_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Networking.js
 /*******************************************************************************
@@ -83601,7 +83743,7 @@ const Networking_default_ = {
 };
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Networking", Networking_default_);
+x_ite_Namespace .add ("Networking", "x_ite/Components/Networking", Networking_default_);
 /* harmony default export */ const Networking = (Networking_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/PointingDeviceSensor/X3DDragSensorNode.js
 /*******************************************************************************
@@ -83682,7 +83824,7 @@ Object .defineProperties (X3DDragSensorNode,
 const X3DDragSensorNode_default_ = X3DDragSensorNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/PointingDeviceSensor/X3DDragSensorNode", X3DDragSensorNode_default_);
+x_ite_Namespace .add ("X3DDragSensorNode", "x_ite/Components/PointingDeviceSensor/X3DDragSensorNode", X3DDragSensorNode_default_);
 /* harmony default export */ const PointingDeviceSensor_X3DDragSensorNode = (X3DDragSensorNode_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Cylinder3.js
 /*******************************************************************************
@@ -83846,7 +83988,7 @@ Object .assign (Cylinder3 .prototype,
 const Cylinder3_default_ = Cylinder3;
 ;
 
-x_ite_Namespace .set ("standard/Math/Geometry/Cylinder3", Cylinder3_default_);
+x_ite_Namespace .add ("Cylinder3", "standard/Math/Geometry/Cylinder3", Cylinder3_default_);
 /* harmony default export */ const Geometry_Cylinder3 = (Cylinder3_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/PointingDeviceSensor/CylinderSensor.js
 /*******************************************************************************
@@ -84154,7 +84296,7 @@ Object .defineProperties (CylinderSensor,
 const CylinderSensor_default_ = CylinderSensor;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/PointingDeviceSensor/CylinderSensor", CylinderSensor_default_);
+x_ite_Namespace .add ("CylinderSensor", "x_ite/Components/PointingDeviceSensor/CylinderSensor", CylinderSensor_default_);
 /* harmony default export */ const PointingDeviceSensor_CylinderSensor = (CylinderSensor_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Line2.js
 /*******************************************************************************
@@ -84314,7 +84456,7 @@ Object .assign (Line2,
 const Line2_default_ = Line2;
 ;
 
-x_ite_Namespace .set ("standard/Math/Geometry/Line2", Line2_default_);
+x_ite_Namespace .add ("Line2", "standard/Math/Geometry/Line2", Line2_default_);
 /* harmony default export */ const Geometry_Line2 = (Line2_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/PointingDeviceSensor/PlaneSensor.js
 /*******************************************************************************
@@ -84619,7 +84761,7 @@ Object .defineProperties (PlaneSensor,
 const PlaneSensor_default_ = PlaneSensor;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/PointingDeviceSensor/PlaneSensor", PlaneSensor_default_);
+x_ite_Namespace .add ("PlaneSensor", "x_ite/Components/PointingDeviceSensor/PlaneSensor", PlaneSensor_default_);
 /* harmony default export */ const PointingDeviceSensor_PlaneSensor = (PlaneSensor_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Sphere3.js
 /*******************************************************************************
@@ -84815,7 +84957,7 @@ Object .assign (Sphere3 .prototype,
 const Sphere3_default_ = Sphere3;
 ;
 
-x_ite_Namespace .set ("standard/Math/Geometry/Sphere3", Sphere3_default_);
+x_ite_Namespace .add ("Sphere3", "standard/Math/Geometry/Sphere3", Sphere3_default_);
 /* harmony default export */ const Geometry_Sphere3 = (Sphere3_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/PointingDeviceSensor/SphereSensor.js
 /*******************************************************************************
@@ -85040,7 +85182,7 @@ Object .defineProperties (SphereSensor,
 const SphereSensor_default_ = SphereSensor;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/PointingDeviceSensor/SphereSensor", SphereSensor_default_);
+x_ite_Namespace .add ("SphereSensor", "x_ite/Components/PointingDeviceSensor/SphereSensor", SphereSensor_default_);
 /* harmony default export */ const PointingDeviceSensor_SphereSensor = (SphereSensor_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/PointingDeviceSensor.js
 /*******************************************************************************
@@ -85116,7 +85258,7 @@ const PointingDeviceSensor_default_ = {
 };
 ;
 
-x_ite_Namespace .set ("x_ite/Components/PointingDeviceSensor", PointingDeviceSensor_default_);
+x_ite_Namespace .add ("PointingDeviceSensor", "x_ite/Components/PointingDeviceSensor", PointingDeviceSensor_default_);
 /* harmony default export */ const PointingDeviceSensor = (PointingDeviceSensor_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/ClipPlane.js
 /*******************************************************************************
@@ -85301,7 +85443,7 @@ Object .defineProperties (ClipPlane,
 const ClipPlane_default_ = ClipPlane;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/ClipPlane", ClipPlane_default_);
+x_ite_Namespace .add ("ClipPlane", "x_ite/Components/Rendering/ClipPlane", ClipPlane_default_);
 /* harmony default export */ const Rendering_ClipPlane = (ClipPlane_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/X3DColorNode.js
 /*******************************************************************************
@@ -85394,7 +85536,7 @@ Object .defineProperties (X3DColorNode,
 const X3DColorNode_default_ = X3DColorNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/X3DColorNode", X3DColorNode_default_);
+x_ite_Namespace .add ("X3DColorNode", "x_ite/Components/Rendering/X3DColorNode", X3DColorNode_default_);
 /* harmony default export */ const Rendering_X3DColorNode = (X3DColorNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/Color.js
 /*******************************************************************************
@@ -85474,48 +85616,32 @@ Object .assign (Object .setPrototypeOf (Color .prototype, Rendering_X3DColorNode
    },
    addColor (index, array)
    {
-      if (index >= 0 && index < this .length)
+      if (index >= 0 && this .length)
       {
-         const color = this .color;
+         const
+            color = this .color,
+            i     = (index % this .length) * 3;
 
-         index *= 3;
-
-         array .push (color [index], color [index + 1], color [index + 2], 1);
-      }
-      else if (index >= 0 && this .length)
-      {
-         const color = this .color;
-
-         index %= this .length;
-         index *= 3;
-
-         return result .push (color [index], color [index + 1], color [index + 2], 1);
+         return array .push (color [i], color [i + 1], color [i + 2], 1);
       }
       else
       {
          array .push (1, 1, 1, 1);
       }
    },
-   addColors (array, min)
+   addColors (array, min = this .length)
    {
-      if (this .length)
+      const length = this .length;
+
+      if (length)
       {
          const color = this .color;
 
-         for (var index = 0, length = Math .min (min, this .length) * 3; index < length; index += 3)
-            array .push (color [index], color [index + 1], color [index + 2], 1);
-
-         if (this .length < min)
+         for (let index = 0; index < min; ++ index)
          {
-            var index = (this .length - 1) * 3;
+            const i = (index % length) * 3;
 
-            const
-               r = color [index],
-               g = color [index + 1],
-               b = color [index + 2];
-
-            for (var index = length, length = min * 3; index < length; index += 3)
-               array .push (r, g, b, 1);
+            array .push (color [i], color [i + 1], color [i + 2], 1);
          }
       }
       else
@@ -85563,7 +85689,7 @@ Object .defineProperties (Color,
 const Color_default_ = Color;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/Color", Color_default_);
+x_ite_Namespace .add ("Color", "x_ite/Components/Rendering/Color", Color_default_);
 /* harmony default export */ const Rendering_Color = (Color_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/ColorRGBA.js
 /*******************************************************************************
@@ -85645,49 +85771,32 @@ Object .assign (Object .setPrototypeOf (ColorRGBA .prototype, Rendering_X3DColor
    },
    addColor (index, array)
    {
-      if (index >= 0 && index < this .length)
+      if (index >= 0 && this .length)
       {
-         const color = this .color;
+         const
+            color = this .color,
+            i     = (index % this .length) * 4;
 
-         index *= 4;
-
-         array .push (color [index], color [index + 1], color [index + 2], color [index + 3]);
-      }
-      else if (index >= 0 && this .length)
-      {
-         const color = this .color;
-
-         index %= this .length;
-         index *= 4;
-
-         return result .push (color [index], color [index + 1], color [index + 2], color [index + 3]);
+         return array .push (color [i], color [i + 1], color [i + 2], color [i + 3]);
       }
       else
       {
          array .push (1, 1, 1, 1);
       }
    },
-   addColors (array, min)
+   addColors (array, min = this .length)
    {
-      if (this .length)
+      const length = this .length;
+
+      if (length)
       {
          const color = this .color;
 
-         for (var index = 0, length = Math .min (min, this .length) * 4; index < length; index += 4)
-            array .push (color [index], color [index + 1], color [index + 2], color [index + 3]);
-
-         if (this .length < min)
+         for (let index = 0; index < min; ++ index)
          {
-            var index = (this .length - 1) * 4;
+            const i = (index % length) * 4;
 
-            const
-               r = color [index],
-               g = color [index + 1],
-               b = color [index + 2],
-               a = color [index + 2];
-
-            for (var index = length, length = min * 4; index < length; index += 4)
-               array .push (r, g, b, a);
+            array .push (color [i], color [i + 1], color [i + 2], color [i + 3]);
          }
       }
       else
@@ -85735,7 +85844,7 @@ Object .defineProperties (ColorRGBA,
 const ColorRGBA_default_ = ColorRGBA;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/ColorRGBA", ColorRGBA_default_);
+x_ite_Namespace .add ("ColorRGBA", "x_ite/Components/Rendering/ColorRGBA", ColorRGBA_default_);
 /* harmony default export */ const Rendering_ColorRGBA = (ColorRGBA_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/X3DCoordinateNode.js
 /*******************************************************************************
@@ -85854,15 +85963,16 @@ Object .assign (Object .setPrototypeOf (X3DCoordinateNode .prototype, Rendering_
          array .push (0, 0, 0, 1);
       }
    },
-   addPoints (array, min)
+   addPoints (array)
    {
-      const point = this .point;
+      const
+         point  = this .point,
+         length = this .length * 3;
 
-      for (var index = 0, length = this .length * 3; index < length; index += 3)
+      for (let index = 0; index < length; index += 3)
          array .push (point [index], point [index + 1], point [index + 2], 1);
 
-      for (var index = length, length = min * 3; index < length; index += 3)
-         array .push (0, 0, 0, 1);
+      return array;
    },
    getNormal: (() =>
    {
@@ -85933,7 +86043,7 @@ Object .defineProperties (X3DCoordinateNode,
 const X3DCoordinateNode_default_ = X3DCoordinateNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/X3DCoordinateNode", X3DCoordinateNode_default_);
+x_ite_Namespace .add ("X3DCoordinateNode", "x_ite/Components/Rendering/X3DCoordinateNode", X3DCoordinateNode_default_);
 /* harmony default export */ const Rendering_X3DCoordinateNode = (X3DCoordinateNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/Coordinate.js
 /*******************************************************************************
@@ -86035,7 +86145,7 @@ Object .defineProperties (Coordinate,
 const Coordinate_default_ = Coordinate;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/Coordinate", Coordinate_default_);
+x_ite_Namespace .add ("Coordinate", "x_ite/Components/Rendering/Coordinate", Coordinate_default_);
 /* harmony default export */ const Rendering_Coordinate = (Coordinate_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/X3DLineGeometryNode.js
 /*******************************************************************************
@@ -86529,7 +86639,7 @@ Object .defineProperties (X3DLineGeometryNode,
 const X3DLineGeometryNode_default_ = X3DLineGeometryNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/X3DLineGeometryNode", X3DLineGeometryNode_default_);
+x_ite_Namespace .add ("X3DLineGeometryNode", "x_ite/Components/Rendering/X3DLineGeometryNode", X3DLineGeometryNode_default_);
 /* harmony default export */ const Rendering_X3DLineGeometryNode = (X3DLineGeometryNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/IndexedLineSet.js
 /*******************************************************************************
@@ -86841,7 +86951,7 @@ Object .defineProperties (IndexedLineSet,
 const IndexedLineSet_default_ = IndexedLineSet;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/IndexedLineSet", IndexedLineSet_default_);
+x_ite_Namespace .add ("IndexedLineSet", "x_ite/Components/Rendering/IndexedLineSet", IndexedLineSet_default_);
 /* harmony default export */ const Rendering_IndexedLineSet = (IndexedLineSet_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/IndexedTriangleFanSet.js
 /*******************************************************************************
@@ -87011,7 +87121,7 @@ Object .defineProperties (IndexedTriangleFanSet,
 const IndexedTriangleFanSet_default_ = IndexedTriangleFanSet;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/IndexedTriangleFanSet", IndexedTriangleFanSet_default_);
+x_ite_Namespace .add ("IndexedTriangleFanSet", "x_ite/Components/Rendering/IndexedTriangleFanSet", IndexedTriangleFanSet_default_);
 /* harmony default export */ const Rendering_IndexedTriangleFanSet = (IndexedTriangleFanSet_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/IndexedTriangleSet.js
 /*******************************************************************************
@@ -87138,7 +87248,7 @@ Object .defineProperties (IndexedTriangleSet,
 const IndexedTriangleSet_default_ = IndexedTriangleSet;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/IndexedTriangleSet", IndexedTriangleSet_default_);
+x_ite_Namespace .add ("IndexedTriangleSet", "x_ite/Components/Rendering/IndexedTriangleSet", IndexedTriangleSet_default_);
 /* harmony default export */ const Rendering_IndexedTriangleSet = (IndexedTriangleSet_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/IndexedTriangleStripSet.js
 /*******************************************************************************
@@ -87316,7 +87426,7 @@ Object .defineProperties (IndexedTriangleStripSet,
 const IndexedTriangleStripSet_default_ = IndexedTriangleStripSet;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/IndexedTriangleStripSet", IndexedTriangleStripSet_default_);
+x_ite_Namespace .add ("IndexedTriangleStripSet", "x_ite/Components/Rendering/IndexedTriangleStripSet", IndexedTriangleStripSet_default_);
 /* harmony default export */ const Rendering_IndexedTriangleStripSet = (IndexedTriangleStripSet_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/LineSet.js
 /*******************************************************************************
@@ -87561,7 +87671,7 @@ Object .defineProperties (LineSet,
 const LineSet_default_ = LineSet;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/LineSet", LineSet_default_);
+x_ite_Namespace .add ("LineSet", "x_ite/Components/Rendering/LineSet", LineSet_default_);
 /* harmony default export */ const Rendering_LineSet = (LineSet_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/X3DNormalNode.js
 /*******************************************************************************
@@ -87640,7 +87750,7 @@ Object .defineProperties (X3DNormalNode,
 const X3DNormalNode_default_ = X3DNormalNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/X3DNormalNode", X3DNormalNode_default_);
+x_ite_Namespace .add ("X3DNormalNode", "x_ite/Components/Rendering/X3DNormalNode", X3DNormalNode_default_);
 /* harmony default export */ const Rendering_X3DNormalNode = (X3DNormalNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/Normal.js
 /*******************************************************************************
@@ -87721,48 +87831,32 @@ Object .assign (Object .setPrototypeOf (Normal .prototype, Rendering_X3DNormalNo
    },
    addVector (index, array)
    {
-      if (index >= 0 && index < this .length)
+      if (index >= 0 && this .length)
       {
-         const vector = this .vector;
+         const
+            vector = this .vector,
+            i      = (index % this .length) * 3;
 
-         index *= 3;
-
-         array .push (vector [index], vector [index + 1], vector [index + 2]);
-      }
-      else if (index >= 0 && this .length)
-      {
-         const vector = this .vector;
-
-         index %= this .length;
-         index *= 3;
-
-         array .push (vector [index], vector [index + 1], vector [index + 2]);
+         array .push (vector [i], vector [i + 1], vector [i + 2]);
       }
       else
       {
          return array .push (0, 0, 0);
       }
    },
-   addNormals (array, min)
+   addNormals (array, min = this .length)
    {
-      if (this .length)
+      const length = this .length;
+
+      if (length)
       {
          const vector = this .vector;
 
-         for (var index = 0, length = Math .min (min, this .length) * 3; index < length; index += 3)
-            array .push (vector [index], vector [index + 1], vector [index + 2]);
-
-         if (this .length < min)
+         for (let index = 0; index < min; ++ index)
          {
-            var index = (this .length - 1) * 3;
+            const i = (index % length) * 3;
 
-            const
-               x = vector [index],
-               y = vector [index + 1],
-               z = vector [index + 2];
-
-            for (var index = length, length = min * 3; index < length; index += 3)
-               array .push (x, y, z);
+            array .push (vector [i], vector [i + 1], vector [i + 2]);
          }
       }
       else
@@ -87810,7 +87904,7 @@ Object .defineProperties (Normal,
 const Normal_default_ = Normal;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/Normal", Normal_default_);
+x_ite_Namespace .add ("Normal", "x_ite/Components/Rendering/Normal", Normal_default_);
 /* harmony default export */ const Rendering_Normal = (Normal_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/X3DPointGeometryNode.js
 /*******************************************************************************
@@ -87997,7 +88091,7 @@ Object .defineProperties (X3DPointGeometryNode,
 const X3DPointGeometryNode_default_ = X3DPointGeometryNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/X3DPointGeometryNode", X3DPointGeometryNode_default_);
+x_ite_Namespace .add ("X3DPointGeometryNode", "x_ite/Components/Rendering/X3DPointGeometryNode", X3DPointGeometryNode_default_);
 /* harmony default export */ const Rendering_X3DPointGeometryNode = (X3DPointGeometryNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/PointSet.js
 /*******************************************************************************
@@ -88181,7 +88275,7 @@ Object .assign (Object .setPrototypeOf (PointSet .prototype, Rendering_X3DPointG
       colorNode    ?.addColors  (colorArray,    numPoints);
       normalNode   ?.addNormals (normalArray,   numPoints);
 
-      coordNode .addPoints (vertexArray, numPoints);
+      coordNode .addPoints (vertexArray);
    },
 });
 
@@ -88224,7 +88318,7 @@ Object .defineProperties (PointSet,
 const PointSet_default_ = PointSet;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/PointSet", PointSet_default_);
+x_ite_Namespace .add ("PointSet", "x_ite/Components/Rendering/PointSet", PointSet_default_);
 /* harmony default export */ const Rendering_PointSet = (PointSet_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/TriangleFanSet.js
 /*******************************************************************************
@@ -88376,7 +88470,7 @@ Object .defineProperties (TriangleFanSet,
 const TriangleFanSet_default_ = TriangleFanSet;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/TriangleFanSet", TriangleFanSet_default_);
+x_ite_Namespace .add ("TriangleFanSet", "x_ite/Components/Rendering/TriangleFanSet", TriangleFanSet_default_);
 /* harmony default export */ const Rendering_TriangleFanSet = (TriangleFanSet_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/TriangleSet.js
 /*******************************************************************************
@@ -88498,7 +88592,7 @@ Object .defineProperties (TriangleSet,
 const TriangleSet_default_ = TriangleSet;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/TriangleSet", TriangleSet_default_);
+x_ite_Namespace .add ("TriangleSet", "x_ite/Components/Rendering/TriangleSet", TriangleSet_default_);
 /* harmony default export */ const Rendering_TriangleSet = (TriangleSet_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/TriangleStripSet.js
 /*******************************************************************************
@@ -88654,7 +88748,7 @@ Object .defineProperties (TriangleStripSet,
 const TriangleStripSet_default_ = TriangleStripSet;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering/TriangleStripSet", TriangleStripSet_default_);
+x_ite_Namespace .add ("TriangleStripSet", "x_ite/Components/Rendering/TriangleStripSet", TriangleStripSet_default_);
 /* harmony default export */ const Rendering_TriangleStripSet = (TriangleStripSet_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering.js
 /*******************************************************************************
@@ -88758,7 +88852,7 @@ const Rendering_default_ = {
 };
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Rendering", Rendering_default_);
+x_ite_Namespace .add ("Rendering", "x_ite/Components/Rendering", Rendering_default_);
 /* harmony default export */ const Rendering = (Rendering_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/X3DShaderNode.js
 /*******************************************************************************
@@ -88868,10 +88962,10 @@ Object .defineProperties (X3DShaderNode,
 const X3DShaderNode_default_ = X3DShaderNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shaders/X3DShaderNode", X3DShaderNode_default_);
+x_ite_Namespace .add ("X3DShaderNode", "x_ite/Components/Shaders/X3DShaderNode", X3DShaderNode_default_);
 /* harmony default export */ const Shaders_X3DShaderNode = (X3DShaderNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/X3DProgrammableShaderObject.js
-/* provided dependency */ var X3DProgrammableShaderObject_$ = __webpack_require__(508);
+/* provided dependency */ var X3DProgrammableShaderObject_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -90231,7 +90325,7 @@ Object .defineProperties (X3DProgrammableShaderObject,
 const X3DProgrammableShaderObject_default_ = X3DProgrammableShaderObject;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shaders/X3DProgrammableShaderObject", X3DProgrammableShaderObject_default_);
+x_ite_Namespace .add ("X3DProgrammableShaderObject", "x_ite/Components/Shaders/X3DProgrammableShaderObject", X3DProgrammableShaderObject_default_);
 /* harmony default export */ const Shaders_X3DProgrammableShaderObject = (X3DProgrammableShaderObject_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/ComposedShader.js
 /*******************************************************************************
@@ -90464,7 +90558,7 @@ Object .defineProperties (ComposedShader,
 const ComposedShader_default_ = ComposedShader;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shaders/ComposedShader", ComposedShader_default_);
+x_ite_Namespace .add ("ComposedShader", "x_ite/Components/Shaders/ComposedShader", ComposedShader_default_);
 /* harmony default export */ const Shaders_ComposedShader = (ComposedShader_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/X3DVertexAttributeNode.js
 /*******************************************************************************
@@ -90558,7 +90652,7 @@ Object .defineProperties (X3DVertexAttributeNode,
 const X3DVertexAttributeNode_default_ = X3DVertexAttributeNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shaders/X3DVertexAttributeNode", X3DVertexAttributeNode_default_);
+x_ite_Namespace .add ("X3DVertexAttributeNode", "x_ite/Components/Shaders/X3DVertexAttributeNode", X3DVertexAttributeNode_default_);
 /* harmony default export */ const Shaders_X3DVertexAttributeNode = (X3DVertexAttributeNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/FloatVertexAttribute.js
 /*******************************************************************************
@@ -90714,7 +90808,7 @@ Object .defineProperties (FloatVertexAttribute,
 const FloatVertexAttribute_default_ = FloatVertexAttribute;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shaders/FloatVertexAttribute", FloatVertexAttribute_default_);
+x_ite_Namespace .add ("FloatVertexAttribute", "x_ite/Components/Shaders/FloatVertexAttribute", FloatVertexAttribute_default_);
 /* harmony default export */ const Shaders_FloatVertexAttribute = (FloatVertexAttribute_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/Matrix3VertexAttribute.js
 /*******************************************************************************
@@ -90861,7 +90955,7 @@ Object .defineProperties (Matrix3VertexAttribute,
 const Matrix3VertexAttribute_default_ = Matrix3VertexAttribute;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shaders/Matrix3VertexAttribute", Matrix3VertexAttribute_default_);
+x_ite_Namespace .add ("Matrix3VertexAttribute", "x_ite/Components/Shaders/Matrix3VertexAttribute", Matrix3VertexAttribute_default_);
 /* harmony default export */ const Shaders_Matrix3VertexAttribute = (Matrix3VertexAttribute_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/Matrix4VertexAttribute.js
 /*******************************************************************************
@@ -91007,7 +91101,7 @@ Object .defineProperties (Matrix4VertexAttribute,
 const Matrix4VertexAttribute_default_ = Matrix4VertexAttribute;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shaders/Matrix4VertexAttribute", Matrix4VertexAttribute_default_);
+x_ite_Namespace .add ("Matrix4VertexAttribute", "x_ite/Components/Shaders/Matrix4VertexAttribute", Matrix4VertexAttribute_default_);
 /* harmony default export */ const Shaders_Matrix4VertexAttribute = (Matrix4VertexAttribute_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/PackagedShader.js
 /*******************************************************************************
@@ -91141,7 +91235,7 @@ Object .defineProperties (PackagedShader,
 const PackagedShader_default_ = PackagedShader;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shaders/PackagedShader", PackagedShader_default_);
+x_ite_Namespace .add ("PackagedShader", "x_ite/Components/Shaders/PackagedShader", PackagedShader_default_);
 /* harmony default export */ const Shaders_PackagedShader = (PackagedShader_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/ProgramShader.js
 /*******************************************************************************
@@ -91245,7 +91339,7 @@ Object .defineProperties (ProgramShader,
 const ProgramShader_default_ = ProgramShader;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shaders/ProgramShader", ProgramShader_default_);
+x_ite_Namespace .add ("ProgramShader", "x_ite/Components/Shaders/ProgramShader", ProgramShader_default_);
 /* harmony default export */ const Shaders_ProgramShader = (ProgramShader_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/Types.glsl.js
 const Types_glsl_default_ = /* glsl */ `#if defined(X3D_FOG)
@@ -91410,7 +91504,7 @@ struct x3d_TextureCoordinateGeneratorParameters{mediump int mode;mediump float p
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/Types.glsl", Types_glsl_default_);
+x_ite_Namespace .add ("Types.glsl", "assets/shaders/Types.glsl", Types_glsl_default_);
 /* harmony default export */ const Types_glsl = (Types_glsl_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Texturing/ModeType.js
 /*******************************************************************************
@@ -91489,7 +91583,7 @@ const ModeType =
 const ModeType_default_ = ModeType;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Texturing/ModeType", ModeType_default_);
+x_ite_Namespace .add ("ModeType", "x_ite/Browser/Texturing/ModeType", ModeType_default_);
 /* harmony default export */ const Texturing_ModeType = (ModeType_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Texturing/SourceType.js
 /*******************************************************************************
@@ -91552,7 +91646,7 @@ const SourceType =
 const SourceType_default_ = SourceType;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Texturing/SourceType", SourceType_default_);
+x_ite_Namespace .add ("SourceType", "x_ite/Browser/Texturing/SourceType", SourceType_default_);
 /* harmony default export */ const Texturing_SourceType = (SourceType_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Texturing/FunctionType.js
 /*******************************************************************************
@@ -91614,7 +91708,7 @@ const FunctionType =
 const FunctionType_default_ = FunctionType;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Texturing/FunctionType", FunctionType_default_);
+x_ite_Namespace .add ("FunctionType", "x_ite/Browser/Texturing/FunctionType", FunctionType_default_);
 /* harmony default export */ const Texturing_FunctionType = (FunctionType_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Texturing/TextureCoordinateGeneratorModeType.js
 /*******************************************************************************
@@ -91685,7 +91779,7 @@ const TextureCoordinateGeneratorModeType_ModeType =
 const TextureCoordinateGeneratorModeType_default_ = TextureCoordinateGeneratorModeType_ModeType;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Texturing/TextureCoordinateGeneratorModeType", TextureCoordinateGeneratorModeType_default_);
+x_ite_Namespace .add ("TextureCoordinateGeneratorModeType", "x_ite/Browser/Texturing/TextureCoordinateGeneratorModeType", TextureCoordinateGeneratorModeType_default_);
 /* harmony default export */ const TextureCoordinateGeneratorModeType = (TextureCoordinateGeneratorModeType_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Shaders/ShaderSource.js
 /*******************************************************************************
@@ -91894,19 +91988,19 @@ function depreciatedWarning (source, depreciated, current)
 const ShaderSource_default_ = ShaderSource;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Shaders/ShaderSource", ShaderSource_default_);
+x_ite_Namespace .add ("ShaderSource", "x_ite/Browser/Shaders/ShaderSource", ShaderSource_default_);
 /* harmony default export */ const Shaders_ShaderSource = (ShaderSource_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/ClipPlanes.glsl.js
-const ClipPlanes_glsl_default_ = /* glsl */ `#if defined(X3D_CLIP_PLANES)
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/ClipPlanes1.glsl.js
+const ClipPlanes1_glsl_default_ = /* glsl */ `#if defined(X3D_CLIP_PLANES)
 uniform vec4 x3d_ClipPlane[X3D_NUM_CLIP_PLANES];void clip(){for(int i=0;i<X3D_NUM_CLIP_PLANES;++i){if(dot(vertex,x3d_ClipPlane[i].xyz)-x3d_ClipPlane[i].w<0.0)discard;}}
 #endif
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/include/ClipPlanes.glsl", ClipPlanes_glsl_default_);
-/* harmony default export */ const ClipPlanes_glsl = (ClipPlanes_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Colors.glsl.js
-const Colors_glsl_default_ = /* glsl */ `vec4 SRGBtoLINEAR(const in vec4 srgbIn){
+x_ite_Namespace .add ("ClipPlanes1.glsl", "assets/shaders/webgl1/include/ClipPlanes1.glsl", ClipPlanes1_glsl_default_);
+/* harmony default export */ const ClipPlanes1_glsl = (ClipPlanes1_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Colors1.glsl.js
+const Colors1_glsl_default_ = /* glsl */ `vec4 SRGBtoLINEAR(const in vec4 srgbIn){
 #if defined(MANUAL_SRGB)
 #if defined(SRGB_FAST_APPROXIMATION)
 vec3 linOut=pow(srgbIn.xyz,vec3(2.2));
@@ -91926,10 +92020,10 @@ vec4 Gamma(const in vec4 color){return vec4(pow(color.rgb,vec3(1.0/2.2)),color.a
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/include/Colors.glsl", Colors_glsl_default_);
-/* harmony default export */ const Colors_glsl = (Colors_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Fog.glsl.js
-const Fog_glsl_default_ = /* glsl */ `#if defined(X3D_FOG)
+x_ite_Namespace .add ("Colors1.glsl", "assets/shaders/webgl1/include/Colors1.glsl", Colors1_glsl_default_);
+/* harmony default export */ const Colors1_glsl = (Colors1_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Fog1.glsl.js
+const Fog1_glsl_default_ = /* glsl */ `#if defined(X3D_FOG)
 uniform x3d_FogParameters x3d_Fog;float getFogInterpolant(){
 #if defined(X3D_FOG_COORDS)
 return clamp(1.0-fogDepth,0.0,1.0);
@@ -91946,10 +92040,10 @@ return exp(-dV/max(0.001,visibilityRange-dV));
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/include/Fog.glsl", Fog_glsl_default_);
-/* harmony default export */ const Fog_glsl = (Fog_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Fragment.glsl.js
-const Fragment_glsl_default_ = /* glsl */ `#if defined(X3D_NORMAL_TEXTURE)
+x_ite_Namespace .add ("Fog1.glsl", "assets/shaders/webgl1/include/Fog1.glsl", Fog1_glsl_default_);
+/* harmony default export */ const Fog1_glsl = (Fog1_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Fragment1.glsl.js
+const Fragment1_glsl_default_ = /* glsl */ `#if defined(X3D_NORMAL_TEXTURE)
 #extension GL_OES_standard_derivatives:enable
 #endif
 #if defined(X3D_LOGARITHMIC_DEPTH_BUFFER)
@@ -92049,10 +92143,10 @@ gl_FragDepthEXT=log2(depth)*x3d_LogarithmicFarFactor1_2;
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/include/Fragment.glsl", Fragment_glsl_default_);
-/* harmony default export */ const Fragment_glsl = (Fragment_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Hatch.glsl.js
-const Hatch_glsl_default_ = /* glsl */ `#if(defined(X3D_GEOMETRY_2D)||defined(X3D_GEOMETRY_3D))&&defined(X3D_STYLE_PROPERTIES)
+x_ite_Namespace .add ("Fragment1.glsl", "assets/shaders/webgl1/include/Fragment1.glsl", Fragment1_glsl_default_);
+/* harmony default export */ const Fragment1_glsl = (Fragment1_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Hatch1.glsl.js
+const Hatch1_glsl_default_ = /* glsl */ `#if(defined(X3D_GEOMETRY_2D)||defined(X3D_GEOMETRY_3D))&&defined(X3D_STYLE_PROPERTIES)
 uniform x3d_FillPropertiesParameters x3d_FillProperties;vec4 getHatchColor(vec4 color){vec4 finalColor=x3d_FillProperties.filled?color:vec4(0.0);
 #if defined(X3D_STYLE_PROPERTIES_TEXTURE)
 vec4 hatch=texture2D(x3d_FillProperties.texture,gl_FragCoord.xy/(32.0*x3d_FillProperties.scale));hatch.rgb*=x3d_FillProperties.hatchColor;finalColor=mix(finalColor,hatch,hatch.a);
@@ -92062,10 +92156,10 @@ return finalColor;}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/include/Hatch.glsl", Hatch_glsl_default_);
-/* harmony default export */ const Hatch_glsl = (Hatch_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Material.glsl.js
-const Material_glsl_default_ = /* glsl */ `uniform x3d_MaterialParameters x3d_Material;
+x_ite_Namespace .add ("Hatch1.glsl", "assets/shaders/webgl1/include/Hatch1.glsl", Hatch1_glsl_default_);
+/* harmony default export */ const Hatch1_glsl = (Hatch1_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Material1.glsl.js
+const Material1_glsl_default_ = /* glsl */ `uniform x3d_MaterialParameters x3d_Material;
 #if defined(X3D_LIGHTING)
 #pragma X3D include "SpotFactor.glsl"
 #pragma X3D include "Shadow.glsl"
@@ -92078,10 +92172,10 @@ finalColor+=attenuationSpotFactor*light.color*(ambientTerm+diffuseSpecularTerm);
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/include/Material.glsl", Material_glsl_default_);
-/* harmony default export */ const Material_glsl = (Material_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Normal.glsl.js
-const Normal_glsl_default_ = /* glsl */ `#if defined(X3D_NORMAL_TEXTURE)
+x_ite_Namespace .add ("Material1.glsl", "assets/shaders/webgl1/include/Material1.glsl", Material1_glsl_default_);
+/* harmony default export */ const Material1_glsl = (Material1_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Normal1.glsl.js
+const Normal1_glsl_default_ = /* glsl */ `#if defined(X3D_NORMAL_TEXTURE)
 mat3 getTBNMatrix(const in vec2 texCoord){vec3 pos_dx=dFdx(vertex);vec3 pos_dy=dFdy(vertex);vec3 tex_dx=dFdx(vec3(texCoord,0.0));vec3 tex_dy=dFdy(vec3(texCoord,0.0));vec3 t=(tex_dy.t*pos_dx-tex_dx.t*pos_dy)/(tex_dx.s*tex_dy.t-tex_dy.s*tex_dx.t);vec3 N=normalize(normal);vec3 T=normalize(t-N*dot(N,t));vec3 B=normalize(cross(N,T));mat3 tbn=mat3(T,B,N);return tbn;}
 #endif
 #if defined(X3D_NORMAL_TEXTURE)
@@ -92103,17 +92197,17 @@ return normalize(normal)*facing;
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/include/Normal.glsl", Normal_glsl_default_);
-/* harmony default export */ const Normal_glsl = (Normal_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Perlin.glsl.js
-const Perlin_glsl_default_ = /* glsl */ `float rand(vec2 co){return fract(sin(dot(co.xy,vec2(12.9898,78.233)))*43758.5453);}float rand(vec2 co,float l){return rand(vec2(rand(co),l));}float rand(vec2 co,float l,float t){return rand(vec2(rand(co,l),t));}float perlin(vec2 p,float dim,float time){const float M_PI=3.14159265358979323846;vec2 pos=floor(p*dim);vec2 posx=pos+vec2(1.0,0.0);vec2 posy=pos+vec2(0.0,1.0);vec2 posxy=pos+vec2(1.0);float c=rand(pos,dim,time);float cx=rand(posx,dim,time);float cy=rand(posy,dim,time);float cxy=rand(posxy,dim,time);vec2 d=fract(p*dim);d=-0.5*cos(d*M_PI)+0.5;float ccx=mix(c,cx,d.x);float cycxy=mix(cy,cxy,d.x);float center=mix(ccx,cycxy,d.y);return center*2.0-1.0;}vec3 perlin(vec3 p){return vec3(perlin(p.xy,1.0,0.0),perlin(p.yz,1.0,0.0),perlin(p.zx,1.0,0.0));}
+x_ite_Namespace .add ("Normal1.glsl", "assets/shaders/webgl1/include/Normal1.glsl", Normal1_glsl_default_);
+/* harmony default export */ const Normal1_glsl = (Normal1_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Perlin1.glsl.js
+const Perlin1_glsl_default_ = /* glsl */ `float rand(vec2 co){return fract(sin(dot(co.xy,vec2(12.9898,78.233)))*43758.5453);}float rand(vec2 co,float l){return rand(vec2(rand(co),l));}float rand(vec2 co,float l,float t){return rand(vec2(rand(co,l),t));}float perlin(vec2 p,float dim,float time){const float M_PI=3.14159265358979323846;vec2 pos=floor(p*dim);vec2 posx=pos+vec2(1.0,0.0);vec2 posy=pos+vec2(0.0,1.0);vec2 posxy=pos+vec2(1.0);float c=rand(pos,dim,time);float cx=rand(posx,dim,time);float cy=rand(posy,dim,time);float cxy=rand(posxy,dim,time);vec2 d=fract(p*dim);d=-0.5*cos(d*M_PI)+0.5;float ccx=mix(c,cx,d.x);float cycxy=mix(cy,cxy,d.x);float center=mix(ccx,cycxy,d.y);return center*2.0-1.0;}vec3 perlin(vec3 p){return vec3(perlin(p.xy,1.0,0.0),perlin(p.yz,1.0,0.0),perlin(p.zx,1.0,0.0));}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/include/Perlin.glsl", Perlin_glsl_default_);
-/* harmony default export */ const Perlin_glsl = (Perlin_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Point.glsl.js
-const Point_glsl_default_ = /* glsl */ `#if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
+x_ite_Namespace .add ("Perlin1.glsl", "assets/shaders/webgl1/include/Perlin1.glsl", Perlin1_glsl_default_);
+/* harmony default export */ const Perlin1_glsl = (Perlin1_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Point1.glsl.js
+const Point1_glsl_default_ = /* glsl */ `#if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
 void setPointTexCoords(){vec4 texCoord=vec4(gl_PointCoord.x,1.0-gl_PointCoord.y,0.0,1.0);
 #if X3D_NUM_TEXTURE_COORDINATES>0
@@ -92138,10 +92232,10 @@ varying float pointSize;vec4 getPointColor(in vec4 color){if(pointSize>1.0)color
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/include/Point.glsl", Point_glsl_default_);
-/* harmony default export */ const Point_glsl = (Point_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/PointSize.glsl.js
-const PointSize_glsl_default_ = /* glsl */ `#if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
+x_ite_Namespace .add ("Point1.glsl", "assets/shaders/webgl1/include/Point1.glsl", Point1_glsl_default_);
+/* harmony default export */ const Point1_glsl = (Point1_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/PointSize1.glsl.js
+const PointSize1_glsl_default_ = /* glsl */ `#if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
 uniform x3d_PointPropertiesParameters x3d_PointProperties;varying float pointSize;float getPointSize(const in vec3 vertex){float pointSizeMinValue=x3d_PointProperties.pointSizeMinValue;float pointSizeMaxValue=x3d_PointProperties.pointSizeMaxValue;vec3 attenuation=x3d_PointProperties.attenuation;float dL=length(vertex);float pointSize=0.0;pointSize=x3d_PointProperties.pointSizeScaleFactor;pointSize/=dot(attenuation,vec3(1.0,dL,dL*dL));pointSize=clamp(pointSize,pointSizeMinValue,pointSizeMaxValue);
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURE)
 return pointSize;
@@ -92153,10 +92247,10 @@ return pointSize+1.0-step(pointSize,1.0);
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/include/PointSize.glsl", PointSize_glsl_default_);
-/* harmony default export */ const PointSize_glsl = (PointSize_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Shadow.glsl.js
-const Shadow_glsl_default_ = /* glsl */ `#if defined(X3D_FRAGMENT_SHADER)&&defined(X3D_SHADOWS)
+x_ite_Namespace .add ("PointSize1.glsl", "assets/shaders/webgl1/include/PointSize1.glsl", PointSize1_glsl_default_);
+/* harmony default export */ const PointSize1_glsl = (PointSize1_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Shadow1.glsl.js
+const Shadow1_glsl_default_ = /* glsl */ `#if defined(X3D_FRAGMENT_SHADER)&&defined(X3D_SHADOWS)
 uniform sampler2D x3d_ShadowMap[X3D_NUM_LIGHTS];float getShadowDepth(const in int index,const in vec2 shadowCoord){
 #if X3D_NUM_LIGHTS>0
 if(index==0)return texture2D(x3d_ShadowMap[0],shadowCoord).r;
@@ -92201,17 +92295,17 @@ vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);shadowCoord.z-=light.shadow
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/include/Shadow.glsl", Shadow_glsl_default_);
-/* harmony default export */ const Shadow_glsl = (Shadow_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/SpotFactor.glsl.js
-const SpotFactor_glsl_default_ = /* glsl */ `float getSpotFactor(const in float cutOffAngle,const in float beamWidth,const in vec3 L,const in vec3 d){float spotAngle=acos(clamp(dot(-L,d),-1.0,1.0));if(spotAngle>=cutOffAngle)return 0.0;else if(spotAngle<=beamWidth)return 1.0;return(spotAngle-cutOffAngle)/(beamWidth-cutOffAngle);}
+x_ite_Namespace .add ("Shadow1.glsl", "assets/shaders/webgl1/include/Shadow1.glsl", Shadow1_glsl_default_);
+/* harmony default export */ const Shadow1_glsl = (Shadow1_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/SpotFactor1.glsl.js
+const SpotFactor1_glsl_default_ = /* glsl */ `float getSpotFactor(const in float cutOffAngle,const in float beamWidth,const in vec3 L,const in vec3 d){float spotAngle=acos(clamp(dot(-L,d),-1.0,1.0));if(spotAngle>=cutOffAngle)return 0.0;else if(spotAngle<=beamWidth)return 1.0;return(spotAngle-cutOffAngle)/(beamWidth-cutOffAngle);}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/include/SpotFactor.glsl", SpotFactor_glsl_default_);
-/* harmony default export */ const SpotFactor_glsl = (SpotFactor_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Texture.glsl.js
-const Texture_glsl_default_ = /* glsl */ `#if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
+x_ite_Namespace .add ("SpotFactor1.glsl", "assets/shaders/webgl1/include/SpotFactor1.glsl", SpotFactor1_glsl_default_);
+/* harmony default export */ const SpotFactor1_glsl = (SpotFactor1_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Texture1.glsl.js
+const Texture1_glsl_default_ = /* glsl */ `#if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
 #pragma X3D include "Perlin.glsl"
 uniform mat4 x3d_TextureMatrix[X3D_NUM_TEXTURE_TRANSFORMS];mat4 getTextureMatrix(const in int i){
 #if X3D_NUM_TEXTURE_TRANSFORMS>1
@@ -92326,10 +92420,10 @@ return color;}vec4 getProjectiveTextureColor(in vec4 currentColor){vec3 N=gl_Fro
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/include/Texture.glsl", Texture_glsl_default_);
-/* harmony default export */ const Texture_glsl = (Texture_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Vertex.glsl.js
-const Vertex_glsl_default_ = /* glsl */ `uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;
+x_ite_Namespace .add ("Texture1.glsl", "assets/shaders/webgl1/include/Texture1.glsl", Texture1_glsl_default_);
+/* harmony default export */ const Texture1_glsl = (Texture1_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/include/Vertex1.glsl.js
+const Vertex1_glsl_default_ = /* glsl */ `uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;
 #if defined(X3D_FOG)&&defined(X3D_FOG_COORDS)
 attribute float x3d_FogDepth;
 #endif
@@ -92436,19 +92530,19 @@ depth=1.0+gl_Position.w;
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/include/Vertex.glsl", Vertex_glsl_default_);
-/* harmony default export */ const Vertex_glsl = (Vertex_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/ClipPlanes.glsl.js
-const include_ClipPlanes_glsl_default_ = /* glsl */ `#if defined(X3D_CLIP_PLANES)
+x_ite_Namespace .add ("Vertex1.glsl", "assets/shaders/webgl1/include/Vertex1.glsl", Vertex1_glsl_default_);
+/* harmony default export */ const Vertex1_glsl = (Vertex1_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/ClipPlanes2.glsl.js
+const ClipPlanes2_glsl_default_ = /* glsl */ `#if defined(X3D_CLIP_PLANES)
 uniform vec4 x3d_ClipPlane[X3D_NUM_CLIP_PLANES];void clip(){for(int i=0;i<X3D_NUM_CLIP_PLANES;++i){if(dot(vertex,x3d_ClipPlane[i].xyz)-x3d_ClipPlane[i].w<0.0)discard;}}
 #endif
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/include/ClipPlanes.glsl", include_ClipPlanes_glsl_default_);
-/* harmony default export */ const include_ClipPlanes_glsl = (include_ClipPlanes_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Colors.glsl.js
-const include_Colors_glsl_default_ = /* glsl */ `vec4 SRGBtoLINEAR(const in vec4 srgbIn){
+x_ite_Namespace .add ("ClipPlanes2.glsl", "assets/shaders/webgl2/include/ClipPlanes2.glsl", ClipPlanes2_glsl_default_);
+/* harmony default export */ const ClipPlanes2_glsl = (ClipPlanes2_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Colors2.glsl.js
+const Colors2_glsl_default_ = /* glsl */ `vec4 SRGBtoLINEAR(const in vec4 srgbIn){
 #if defined(MANUAL_SRGB)
 #if defined(SRGB_FAST_APPROXIMATION)
 vec3 linOut=pow(srgbIn.xyz,vec3(2.2));
@@ -92468,10 +92562,10 @@ vec4 Gamma(const in vec4 color){return vec4(pow(color.rgb,vec3(1.0/2.2)),color.a
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/include/Colors.glsl", include_Colors_glsl_default_);
-/* harmony default export */ const include_Colors_glsl = (include_Colors_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Fog.glsl.js
-const include_Fog_glsl_default_ = /* glsl */ `#if defined(X3D_FOG)
+x_ite_Namespace .add ("Colors2.glsl", "assets/shaders/webgl2/include/Colors2.glsl", Colors2_glsl_default_);
+/* harmony default export */ const Colors2_glsl = (Colors2_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Fog2.glsl.js
+const Fog2_glsl_default_ = /* glsl */ `#if defined(X3D_FOG)
 uniform x3d_FogParameters x3d_Fog;float getFogInterpolant(){
 #if defined(X3D_FOG_COORDS)
 return clamp(1.0-fogDepth,0.0,1.0);
@@ -92488,10 +92582,10 @@ return exp(-dV/max(0.001,visibilityRange-dV));
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/include/Fog.glsl", include_Fog_glsl_default_);
-/* harmony default export */ const include_Fog_glsl = (include_Fog_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Fragment.glsl.js
-const include_Fragment_glsl_default_ = /* glsl */ `#if defined(X3D_ALPHA_MODE_MASK)
+x_ite_Namespace .add ("Fog2.glsl", "assets/shaders/webgl2/include/Fog2.glsl", Fog2_glsl_default_);
+/* harmony default export */ const Fog2_glsl = (Fog2_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Fragment2.glsl.js
+const Fragment2_glsl_default_ = /* glsl */ `#if defined(X3D_ALPHA_MODE_MASK)
 uniform float x3d_AlphaCutoff;
 #endif
 #if defined(X3D_FOG)&&defined(X3D_FOG_COORDS)
@@ -92604,10 +92698,10 @@ gl_FragDepth=log2(depth)*x3d_LogarithmicFarFactor1_2;
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/include/Fragment.glsl", include_Fragment_glsl_default_);
-/* harmony default export */ const include_Fragment_glsl = (include_Fragment_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Hatch.glsl.js
-const include_Hatch_glsl_default_ = /* glsl */ `#if(defined(X3D_GEOMETRY_2D)||defined(X3D_GEOMETRY_3D))&&defined(X3D_STYLE_PROPERTIES)
+x_ite_Namespace .add ("Fragment2.glsl", "assets/shaders/webgl2/include/Fragment2.glsl", Fragment2_glsl_default_);
+/* harmony default export */ const Fragment2_glsl = (Fragment2_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Hatch2.glsl.js
+const Hatch2_glsl_default_ = /* glsl */ `#if(defined(X3D_GEOMETRY_2D)||defined(X3D_GEOMETRY_3D))&&defined(X3D_STYLE_PROPERTIES)
 uniform x3d_FillPropertiesParameters x3d_FillProperties;vec4 getHatchColor(vec4 color){vec4 finalColor=x3d_FillProperties.filled?color:vec4(0.0);
 #if defined(X3D_STYLE_PROPERTIES_TEXTURE)
 vec4 hatch=texture(x3d_FillProperties.texture,gl_FragCoord.xy/(32.0*x3d_FillProperties.scale));hatch.rgb*=x3d_FillProperties.hatchColor;finalColor=mix(finalColor,hatch,hatch.a);
@@ -92617,17 +92711,17 @@ return finalColor;}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/include/Hatch.glsl", include_Hatch_glsl_default_);
-/* harmony default export */ const include_Hatch_glsl = (include_Hatch_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Line2.glsl.js
-const Line2_glsl_default_ = /* glsl */ `struct Line2{vec2 point;vec2 direction;};Line2 line2(const in vec2 point1,const in vec2 point2){return Line2(point1,normalize(point2-point1));}vec2 closest_point(const in Line2 line,const in vec2 point){vec2 r=point-line.point;float d=dot(r,line.direction);return line.direction*d+line.point;}
+x_ite_Namespace .add ("Hatch2.glsl", "assets/shaders/webgl2/include/Hatch2.glsl", Hatch2_glsl_default_);
+/* harmony default export */ const Hatch2_glsl = (Hatch2_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Line22.glsl.js
+const Line22_glsl_default_ = /* glsl */ `struct Line2{vec2 point;vec2 direction;};Line2 line2(const in vec2 point1,const in vec2 point2){return Line2(point1,normalize(point2-point1));}vec2 closest_point(const in Line2 line,const in vec2 point){vec2 r=point-line.point;float d=dot(r,line.direction);return line.direction*d+line.point;}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/include/Line2.glsl", Line2_glsl_default_);
-/* harmony default export */ const Line2_glsl = (Line2_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Material.glsl.js
-const include_Material_glsl_default_ = /* glsl */ `uniform x3d_MaterialParameters x3d_Material;
+x_ite_Namespace .add ("Line22.glsl", "assets/shaders/webgl2/include/Line22.glsl", Line22_glsl_default_);
+/* harmony default export */ const Line22_glsl = (Line22_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Material2.glsl.js
+const Material2_glsl_default_ = /* glsl */ `uniform x3d_MaterialParameters x3d_Material;
 #if defined(X3D_LIGHTING)
 #pragma X3D include "SpotFactor.glsl"
 #pragma X3D include "Shadow.glsl"
@@ -92640,10 +92734,10 @@ finalColor+=attenuationSpotFactor*light.color*(ambientTerm+diffuseSpecularTerm);
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/include/Material.glsl", include_Material_glsl_default_);
-/* harmony default export */ const include_Material_glsl = (include_Material_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Normal.glsl.js
-const include_Normal_glsl_default_ = /* glsl */ `#if defined(X3D_NORMAL_TEXTURE)
+x_ite_Namespace .add ("Material2.glsl", "assets/shaders/webgl2/include/Material2.glsl", Material2_glsl_default_);
+/* harmony default export */ const Material2_glsl = (Material2_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Normal2.glsl.js
+const Normal2_glsl_default_ = /* glsl */ `#if defined(X3D_NORMAL_TEXTURE)
 mat3 getTBNMatrix(const in vec2 texCoord){vec3 pos_dx=dFdx(vertex);vec3 pos_dy=dFdy(vertex);vec3 tex_dx=dFdx(vec3(texCoord,0.0));vec3 tex_dy=dFdy(vec3(texCoord,0.0));vec3 t=(tex_dy.t*pos_dx-tex_dx.t*pos_dy)/(tex_dx.s*tex_dy.t-tex_dy.s*tex_dx.t);vec3 N=normalize(normal);vec3 T=normalize(t-N*dot(N,t));vec3 B=normalize(cross(N,T));mat3 tbn=mat3(T,B,N);return tbn;}
 #endif
 #if defined(X3D_NORMAL_TEXTURE)
@@ -92667,10 +92761,10 @@ return normalize(normal)*facing;
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/include/Normal.glsl", include_Normal_glsl_default_);
-/* harmony default export */ const include_Normal_glsl = (include_Normal_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Particle.glsl.js
-const Particle_glsl_default_ = /* glsl */ `#if defined(X3D_PARTICLE_SYSTEM)
+x_ite_Namespace .add ("Normal2.glsl", "assets/shaders/webgl2/include/Normal2.glsl", Normal2_glsl_default_);
+/* harmony default export */ const Normal2_glsl = (Normal2_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Particle2.glsl.js
+const Particle2_glsl_default_ = /* glsl */ `#if defined(X3D_PARTICLE_SYSTEM)
 #if defined(X3D_TEX_COORD_RAMP)
 uniform sampler2D x3d_TexCoordRamp;in vec4 x3d_Particle;vec4 getParticleTexCoord(const in vec4 texCoord){const int map[6]=int[6](0,1,2,0,2,3);int index0=int(x3d_Particle[3]);return texelFetch(x3d_TexCoordRamp,index0+map[gl_VertexID % 6],0);}
 #else
@@ -92684,17 +92778,17 @@ in mat4 x3d_ParticleMatrix;vec4 getParticleVertex(const in vec4 vertex){return x
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/include/Particle.glsl", Particle_glsl_default_);
-/* harmony default export */ const Particle_glsl = (Particle_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Perlin.glsl.js
-const include_Perlin_glsl_default_ = /* glsl */ `float rand(vec2 co){return fract(sin(dot(co.xy,vec2(12.9898,78.233)))*43758.5453);}float rand(vec2 co,float l){return rand(vec2(rand(co),l));}float rand(vec2 co,float l,float t){return rand(vec2(rand(co,l),t));}float perlin(vec2 p,float dim,float time){const float M_PI=3.14159265358979323846;vec2 pos=floor(p*dim);vec2 posx=pos+vec2(1.0,0.0);vec2 posy=pos+vec2(0.0,1.0);vec2 posxy=pos+vec2(1.0);float c=rand(pos,dim,time);float cx=rand(posx,dim,time);float cy=rand(posy,dim,time);float cxy=rand(posxy,dim,time);vec2 d=fract(p*dim);d=-0.5*cos(d*M_PI)+0.5;float ccx=mix(c,cx,d.x);float cycxy=mix(cy,cxy,d.x);float center=mix(ccx,cycxy,d.y);return center*2.0-1.0;}vec3 perlin(vec3 p){return vec3(perlin(p.xy,1.0,0.0),perlin(p.yz,1.0,0.0),perlin(p.zx,1.0,0.0));}
+x_ite_Namespace .add ("Particle2.glsl", "assets/shaders/webgl2/include/Particle2.glsl", Particle2_glsl_default_);
+/* harmony default export */ const Particle2_glsl = (Particle2_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Perlin2.glsl.js
+const Perlin2_glsl_default_ = /* glsl */ `float rand(vec2 co){return fract(sin(dot(co.xy,vec2(12.9898,78.233)))*43758.5453);}float rand(vec2 co,float l){return rand(vec2(rand(co),l));}float rand(vec2 co,float l,float t){return rand(vec2(rand(co,l),t));}float perlin(vec2 p,float dim,float time){const float M_PI=3.14159265358979323846;vec2 pos=floor(p*dim);vec2 posx=pos+vec2(1.0,0.0);vec2 posy=pos+vec2(0.0,1.0);vec2 posxy=pos+vec2(1.0);float c=rand(pos,dim,time);float cx=rand(posx,dim,time);float cy=rand(posy,dim,time);float cxy=rand(posxy,dim,time);vec2 d=fract(p*dim);d=-0.5*cos(d*M_PI)+0.5;float ccx=mix(c,cx,d.x);float cycxy=mix(cy,cxy,d.x);float center=mix(ccx,cycxy,d.y);return center*2.0-1.0;}vec3 perlin(vec3 p){return vec3(perlin(p.xy,1.0,0.0),perlin(p.yz,1.0,0.0),perlin(p.zx,1.0,0.0));}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/include/Perlin.glsl", include_Perlin_glsl_default_);
-/* harmony default export */ const include_Perlin_glsl = (include_Perlin_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Point.glsl.js
-const include_Point_glsl_default_ = /* glsl */ `#if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
+x_ite_Namespace .add ("Perlin2.glsl", "assets/shaders/webgl2/include/Perlin2.glsl", Perlin2_glsl_default_);
+/* harmony default export */ const Perlin2_glsl = (Perlin2_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Point2.glsl.js
+const Point2_glsl_default_ = /* glsl */ `#if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
 void setPointTexCoords(){vec4 texCoord=vec4(gl_PointCoord.x,1.0-gl_PointCoord.y,0.0,1.0);
 #if X3D_NUM_TEXTURE_COORDINATES>0
@@ -92719,10 +92813,10 @@ in float pointSize;vec4 getPointColor(in vec4 color){if(pointSize>1.0)color.a*=c
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/include/Point.glsl", include_Point_glsl_default_);
-/* harmony default export */ const include_Point_glsl = (include_Point_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/PointSize.glsl.js
-const include_PointSize_glsl_default_ = /* glsl */ `#if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
+x_ite_Namespace .add ("Point2.glsl", "assets/shaders/webgl2/include/Point2.glsl", Point2_glsl_default_);
+/* harmony default export */ const Point2_glsl = (Point2_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/PointSize2.glsl.js
+const PointSize2_glsl_default_ = /* glsl */ `#if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
 uniform x3d_PointPropertiesParameters x3d_PointProperties;out float pointSize;float getPointSize(const in vec3 vertex){float pointSizeMinValue=x3d_PointProperties.pointSizeMinValue;float pointSizeMaxValue=x3d_PointProperties.pointSizeMaxValue;vec3 attenuation=x3d_PointProperties.attenuation;float dL=length(vertex);float pointSize=0.0;pointSize=x3d_PointProperties.pointSizeScaleFactor;pointSize/=dot(attenuation,vec3(1.0,dL,dL*dL));pointSize=clamp(pointSize,pointSizeMinValue,pointSizeMaxValue);
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURE)
 return pointSize;
@@ -92734,10 +92828,10 @@ return pointSize+1.0-step(pointSize,1.0);
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/include/PointSize.glsl", include_PointSize_glsl_default_);
-/* harmony default export */ const include_PointSize_glsl = (include_PointSize_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Shadow.glsl.js
-const include_Shadow_glsl_default_ = /* glsl */ `#if defined(X3D_FRAGMENT_SHADER)&&defined(X3D_SHADOWS)
+x_ite_Namespace .add ("PointSize2.glsl", "assets/shaders/webgl2/include/PointSize2.glsl", PointSize2_glsl_default_);
+/* harmony default export */ const PointSize2_glsl = (PointSize2_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Shadow2.glsl.js
+const Shadow2_glsl_default_ = /* glsl */ `#if defined(X3D_FRAGMENT_SHADER)&&defined(X3D_SHADOWS)
 uniform sampler2D x3d_ShadowMap[X3D_NUM_LIGHTS];float getShadowDepth(const in int index,const in vec2 shadowCoord){switch(index){
 #if X3D_NUM_LIGHTS>0
 case 0:{return texture(x3d_ShadowMap[0],shadowCoord).r;}
@@ -92782,10 +92876,10 @@ vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);shadowCoord.z-=light.shadow
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/include/Shadow.glsl", include_Shadow_glsl_default_);
-/* harmony default export */ const include_Shadow_glsl = (include_Shadow_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Skin.glsl.js
-const Skin_glsl_default_ = /* glsl */ `#if defined(X3D_SKINNING)
+x_ite_Namespace .add ("Shadow2.glsl", "assets/shaders/webgl2/include/Shadow2.glsl", Shadow2_glsl_default_);
+/* harmony default export */ const Shadow2_glsl = (Shadow2_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Skin2.glsl.js
+const Skin2_glsl_default_ = /* glsl */ `#if defined(X3D_SKINNING)
 in float x3d_CoordIndex;uniform sampler2D x3d_JointsTexture;uniform sampler2D x3d_DisplacementsTexture;uniform sampler2D x3d_JointMatricesTexture;mat4 getJointMatrix(const in int joint){vec4 a=texelFetch(x3d_JointMatricesTexture,joint*8,0);vec4 b=texelFetch(x3d_JointMatricesTexture,joint*8+1,0);vec4 c=texelFetch(x3d_JointMatricesTexture,joint*8+2,0);vec4 d=texelFetch(x3d_JointMatricesTexture,joint*8+3,0);return mat4(a,b,c,d);}mat3 getDisplacementJointMatrix(const in int joint){mat4 m=getJointMatrix(joint);return mat3(m[0].xyz,m[1].xyz,m[2].xyz);}
 #if defined(X3D_NORMALS)
 vec3 skinNormal=vec3(0.0);mat3 getJointNormalMatrix(const in int joint){vec4 a=texelFetch(x3d_JointMatricesTexture,joint*8+4,0);vec4 b=texelFetch(x3d_JointMatricesTexture,joint*8+5,0);vec4 c=texelFetch(x3d_JointMatricesTexture,joint*8+6,0);return mat3(a.xyz,vec3(a.w,b.xy),vec3(b.zw,c.x));}
@@ -92805,17 +92899,17 @@ vec3 getSkinNormal(const in vec3 normal){return skinNormal;}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/include/Skin.glsl", Skin_glsl_default_);
-/* harmony default export */ const Skin_glsl = (Skin_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/SpotFactor.glsl.js
-const include_SpotFactor_glsl_default_ = /* glsl */ `float getSpotFactor(const in float cutOffAngle,const in float beamWidth,const in vec3 L,const in vec3 d){float spotAngle=acos(clamp(dot(-L,d),-1.0,1.0));if(spotAngle>=cutOffAngle)return 0.0;else if(spotAngle<=beamWidth)return 1.0;return(spotAngle-cutOffAngle)/(beamWidth-cutOffAngle);}
+x_ite_Namespace .add ("Skin2.glsl", "assets/shaders/webgl2/include/Skin2.glsl", Skin2_glsl_default_);
+/* harmony default export */ const Skin2_glsl = (Skin2_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/SpotFactor2.glsl.js
+const SpotFactor2_glsl_default_ = /* glsl */ `float getSpotFactor(const in float cutOffAngle,const in float beamWidth,const in vec3 L,const in vec3 d){float spotAngle=acos(clamp(dot(-L,d),-1.0,1.0));if(spotAngle>=cutOffAngle)return 0.0;else if(spotAngle<=beamWidth)return 1.0;return(spotAngle-cutOffAngle)/(beamWidth-cutOffAngle);}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/include/SpotFactor.glsl", include_SpotFactor_glsl_default_);
-/* harmony default export */ const include_SpotFactor_glsl = (include_SpotFactor_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Stipple.glsl.js
-const Stipple_glsl_default_ = /* glsl */ `#if defined(X3D_GEOMETRY_1D)&&defined(X3D_STYLE_PROPERTIES)
+x_ite_Namespace .add ("SpotFactor2.glsl", "assets/shaders/webgl2/include/SpotFactor2.glsl", SpotFactor2_glsl_default_);
+/* harmony default export */ const SpotFactor2_glsl = (SpotFactor2_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Stipple2.glsl.js
+const Stipple2_glsl_default_ = /* glsl */ `#if defined(X3D_GEOMETRY_1D)&&defined(X3D_STYLE_PROPERTIES)
 #pragma X3D include "Line2.glsl"
 uniform x3d_LinePropertiesParameters x3d_LineProperties;flat in float lengthSoFar;flat in vec2 startPoint;in vec2 midPoint;void stipple(){vec2 point=closest_point(line2(startPoint,midPoint),gl_FragCoord.xy);float s=(lengthSoFar+length(point-startPoint))*x3d_LineProperties.lineStippleScale;
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
@@ -92834,10 +92928,10 @@ if(x3d_LineProperties.linetype==16)return;int linetype=x3d_LineProperties.linety
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/include/Stipple.glsl", Stipple_glsl_default_);
-/* harmony default export */ const Stipple_glsl = (Stipple_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Texture.glsl.js
-const include_Texture_glsl_default_ = /* glsl */ `#if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
+x_ite_Namespace .add ("Stipple2.glsl", "assets/shaders/webgl2/include/Stipple2.glsl", Stipple2_glsl_default_);
+/* harmony default export */ const Stipple2_glsl = (Stipple2_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Texture2.glsl.js
+const Texture2_glsl_default_ = /* glsl */ `#if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
 #pragma X3D include "Perlin.glsl"
 vec4 texCoords[X3D_NUM_TEXTURE_COORDINATES];void setTexCoords(){
 #if X3D_NUM_TEXTURE_COORDINATES>0
@@ -92916,19 +93010,19 @@ case 1:return texture(x3d_ProjectiveTexture[1],texCoord);
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/include/Texture.glsl", include_Texture_glsl_default_);
-/* harmony default export */ const include_Texture_glsl = (include_Texture_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Utils.glsl.js
-const Utils_glsl_default_ = /* glsl */ `#if defined(X3D_SKINNING)||defined(X3D_PARTICLE_SYSTEM)
+x_ite_Namespace .add ("Texture2.glsl", "assets/shaders/webgl2/include/Texture2.glsl", Texture2_glsl_default_);
+/* harmony default export */ const Texture2_glsl = (Texture2_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Utils2.glsl.js
+const Utils2_glsl_default_ = /* glsl */ `#if defined(X3D_SKINNING)||defined(X3D_PARTICLE_SYSTEM)
 vec4 texelFetch(const in sampler2D _sampler,const in int index,const in int lod){int x=textureSize(_sampler,lod).x;ivec2 p=ivec2(index % x,index/x);vec4 t=texelFetch(_sampler,p,lod);return t;}
 #endif
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/include/Utils.glsl", Utils_glsl_default_);
-/* harmony default export */ const Utils_glsl = (Utils_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Vertex.glsl.js
-const include_Vertex_glsl_default_ = /* glsl */ `uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;
+x_ite_Namespace .add ("Utils2.glsl", "assets/shaders/webgl2/include/Utils2.glsl", Utils2_glsl_default_);
+/* harmony default export */ const Utils2_glsl = (Utils2_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/include/Vertex2.glsl.js
+const Vertex2_glsl_default_ = /* glsl */ `uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;
 #if defined(X3D_GEOMETRY_1D)&&defined(X3D_STYLE_PROPERTIES)
 in vec3 x3d_LineStipple;
 #endif
@@ -93053,19 +93147,19 @@ depth=1.0+gl_Position.w;
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/include/Vertex.glsl", include_Vertex_glsl_default_);
-/* harmony default export */ const include_Vertex_glsl = (include_Vertex_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Default.vs.js
-const Default_vs_default_ = /* glsl */ `precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
+x_ite_Namespace .add ("Vertex2.glsl", "assets/shaders/webgl2/include/Vertex2.glsl", Vertex2_glsl_default_);
+/* harmony default export */ const Vertex2_glsl = (Vertex2_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Default1.vs.js
+const Default1_vs_default_ = /* glsl */ `precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
 #pragma X3D include "include/Vertex.glsl"
 void main(){vertex_main();}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/Default.vs", Default_vs_default_);
-/* harmony default export */ const Default_vs = (Default_vs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Depth.fs.js
-const Depth_fs_default_ = /* glsl */ `precision highp float;precision highp int;precision highp sampler2D;varying vec3 vertex;
+x_ite_Namespace .add ("Default1.vs", "assets/shaders/webgl1/Default1.vs", Default1_vs_default_);
+/* harmony default export */ const Default1_vs = (Default1_vs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Depth1.fs.js
+const Depth1_fs_default_ = /* glsl */ `precision highp float;precision highp int;precision highp sampler2D;varying vec3 vertex;
 #pragma X3D include "include/ClipPlanes.glsl"
 #pragma X3D include "include/Point.glsl"
 void main(){
@@ -93079,10 +93173,10 @@ gl_FragColor=vec4(gl_FragCoord.z);}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/Depth.fs", Depth_fs_default_);
-/* harmony default export */ const Depth_fs = (Depth_fs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Depth.vs.js
-const Depth_vs_default_ = /* glsl */ `precision highp float;precision highp int;uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;attribute vec4 x3d_Vertex;varying vec3 vertex;
+x_ite_Namespace .add ("Depth1.fs", "assets/shaders/webgl1/Depth1.fs", Depth1_fs_default_);
+/* harmony default export */ const Depth1_fs = (Depth1_fs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Depth1.vs.js
+const Depth1_vs_default_ = /* glsl */ `precision highp float;precision highp int;uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;attribute vec4 x3d_Vertex;varying vec3 vertex;
 #pragma X3D include "include/PointSize.glsl"
 void main(){vec4 position=x3d_ModelViewMatrix*x3d_Vertex;vertex=position.xyz;
 #if defined(X3D_GEOMETRY_0D)
@@ -93096,10 +93190,10 @@ gl_Position=x3d_ProjectionMatrix*position;}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/Depth.vs", Depth_vs_default_);
-/* harmony default export */ const Depth_vs = (Depth_vs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Gouraud.fs.js
-const Gouraud_fs_default_ = /* glsl */ `precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
+x_ite_Namespace .add ("Depth1.vs", "assets/shaders/webgl1/Depth1.vs", Depth1_vs_default_);
+/* harmony default export */ const Depth1_vs = (Depth1_vs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Gouraud1.fs.js
+const Gouraud1_fs_default_ = /* glsl */ `precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
 #pragma X3D include "include/Fragment.glsl"
 varying vec4 frontColor;
 #if!defined(X3D_GEOMETRY_0D)&&!defined(X3D_GEOMETRY_1D)
@@ -93121,10 +93215,10 @@ return finalColor;}void main(){fragment_main();}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/Gouraud.fs", Gouraud_fs_default_);
-/* harmony default export */ const Gouraud_fs = (Gouraud_fs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Gouraud.vs.js
-const Gouraud_vs_default_ = /* glsl */ `precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
+x_ite_Namespace .add ("Gouraud1.fs", "assets/shaders/webgl1/Gouraud1.fs", Gouraud1_fs_default_);
+/* harmony default export */ const Gouraud1_fs = (Gouraud1_fs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Gouraud1.vs.js
+const Gouraud1_vs_default_ = /* glsl */ `precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
 #pragma X3D include "include/Vertex.glsl"
 #pragma X3D include "include/Material.glsl"
 varying vec4 frontColor;
@@ -93151,10 +93245,10 @@ backColor=getMaterialColor(-normal,vertex,x3d_Material);
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/Gouraud.vs", Gouraud_vs_default_);
-/* harmony default export */ const Gouraud_vs = (Gouraud_vs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/PBR.fs.js
-const PBR_fs_default_ = /* glsl */ `#extension GL_EXT_shader_texture_lod:enable
+x_ite_Namespace .add ("Gouraud1.vs", "assets/shaders/webgl1/Gouraud1.vs", Gouraud1_vs_default_);
+/* harmony default export */ const Gouraud1_vs = (Gouraud1_vs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/PBR1.fs.js
+const PBR1_fs_default_ = /* glsl */ `#extension GL_EXT_shader_texture_lod:enable
 precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
 #pragma X3D include "include/Fragment.glsl"
 #pragma X3D include "include/Colors.glsl"
@@ -93263,10 +93357,10 @@ finalColor+=getEmissiveColor();return Gamma(vec4(finalColor,alpha));}void main()
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/PBR.fs", PBR_fs_default_);
-/* harmony default export */ const PBR_fs = (PBR_fs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Phong.fs.js
-const Phong_fs_default_ = /* glsl */ `precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
+x_ite_Namespace .add ("PBR1.fs", "assets/shaders/webgl1/PBR1.fs", PBR1_fs_default_);
+/* harmony default export */ const PBR1_fs = (PBR1_fs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Phong1.fs.js
+const Phong1_fs_default_ = /* glsl */ `precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
 #pragma X3D include "include/Fragment.glsl"
 #pragma X3D include "include/Material.glsl"
 #pragma X3D include "include/Normal.glsl"
@@ -93382,10 +93476,10 @@ finalColor+=getEmissiveColor();return vec4(finalColor,alpha);}void main(){fragme
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/Phong.fs", Phong_fs_default_);
-/* harmony default export */ const Phong_fs = (Phong_fs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Pointing.fs.js
-const Pointing_fs_default_ = /* glsl */ `#extension GL_EXT_draw_buffers:enable
+x_ite_Namespace .add ("Phong1.fs", "assets/shaders/webgl1/Phong1.fs", Phong1_fs_default_);
+/* harmony default export */ const Phong1_fs = (Phong1_fs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Pointing1.fs.js
+const Pointing1_fs_default_ = /* glsl */ `#extension GL_EXT_draw_buffers:enable
 precision highp float;precision highp int;precision highp sampler2D;varying vec3 vertex;varying vec3 normal;
 #if!defined(X3D_GEOMETRY_0D)&&!defined(X3D_GEOMETRY_1D)
 varying vec4 texCoord0;
@@ -93405,10 +93499,10 @@ gl_FragData[0]=vec4(vertex,x3d_Id);gl_FragData[1]=vec4(normal,0.0);gl_FragData[2
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/Pointing.fs", Pointing_fs_default_);
-/* harmony default export */ const Pointing_fs = (Pointing_fs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Pointing.vs.js
-const Pointing_vs_default_ = /* glsl */ `precision highp float;precision highp int;uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;attribute vec4 x3d_Vertex;attribute vec3 x3d_Normal;
+x_ite_Namespace .add ("Pointing1.fs", "assets/shaders/webgl1/Pointing1.fs", Pointing1_fs_default_);
+/* harmony default export */ const Pointing1_fs = (Pointing1_fs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Pointing1.vs.js
+const Pointing1_vs_default_ = /* glsl */ `precision highp float;precision highp int;uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;attribute vec4 x3d_Vertex;attribute vec3 x3d_Normal;
 #if!defined(X3D_GEOMETRY_0D)&&!defined(X3D_GEOMETRY_1D)
 attribute vec4 x3d_TexCoord0;
 #endif
@@ -93433,10 +93527,10 @@ gl_Position=x3d_ProjectionMatrix*position;}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/Pointing.vs", Pointing_vs_default_);
-/* harmony default export */ const Pointing_vs = (Pointing_vs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Unlit.fs.js
-const Unlit_fs_default_ = /* glsl */ `precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
+x_ite_Namespace .add ("Pointing1.vs", "assets/shaders/webgl1/Pointing1.vs", Pointing1_vs_default_);
+/* harmony default export */ const Pointing1_vs = (Pointing1_vs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Unlit1.fs.js
+const Unlit1_fs_default_ = /* glsl */ `precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
 #pragma X3D include "include/Fragment.glsl"
 uniform x3d_UnlitMaterialParameters x3d_Material;
 #if defined(X3D_EMISSIVE_TEXTURE)
@@ -93464,36 +93558,36 @@ return emissiveParameter;
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl1/Unlit.fs", Unlit_fs_default_);
-/* harmony default export */ const Unlit_fs = (Unlit_fs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Compose.fs.js
-const Compose_fs_default_ = /* glsl */ `#version 300 es
+x_ite_Namespace .add ("Unlit1.fs", "assets/shaders/webgl1/Unlit1.fs", Unlit1_fs_default_);
+/* harmony default export */ const Unlit1_fs = (Unlit1_fs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Compose2.fs.js
+const Compose2_fs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;uniform sampler2D x3d_AccumRevealageTexture;uniform sampler2D x3d_AlphaTexture;out vec4 x3d_FragColor;void main(){ivec2 fragCoord=ivec2(gl_FragCoord.xy);vec4 accum=texelFetch(x3d_AccumRevealageTexture,fragCoord,0);if(accum.a>=1.0)discard;float alpha=texelFetch(x3d_AlphaTexture,fragCoord,0).r;float revealage=1.0-accum.a;x3d_FragColor=vec4(revealage*accum.rgb/clamp(alpha,0.001,50000.0),revealage);}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/Compose.fs", Compose_fs_default_);
-/* harmony default export */ const Compose_fs = (Compose_fs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Compose.vs.js
-const Compose_vs_default_ = /* glsl */ `#version 300 es
+x_ite_Namespace .add ("Compose2.fs", "assets/shaders/webgl2/Compose2.fs", Compose2_fs_default_);
+/* harmony default export */ const Compose2_fs = (Compose2_fs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Compose2.vs.js
+const Compose2_vs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;layout(location=0)in vec4 x3d_Vertex;void main(){gl_Position=x3d_Vertex;}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/Compose.vs", Compose_vs_default_);
-/* harmony default export */ const Compose_vs = (Compose_vs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Default.vs.js
-const webgl2_Default_vs_default_ = /* glsl */ `#version 300 es
+x_ite_Namespace .add ("Compose2.vs", "assets/shaders/webgl2/Compose2.vs", Compose2_vs_default_);
+/* harmony default export */ const Compose2_vs = (Compose2_vs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Default2.vs.js
+const Default2_vs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;precision highp sampler3D;precision highp samplerCube;
 #pragma X3D include "include/Vertex.glsl"
 void main(){vertex_main();}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/Default.vs", webgl2_Default_vs_default_);
-/* harmony default export */ const webgl2_Default_vs = (webgl2_Default_vs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Depth.fs.js
-const webgl2_Depth_fs_default_ = /* glsl */ `#version 300 es
+x_ite_Namespace .add ("Default2.vs", "assets/shaders/webgl2/Default2.vs", Default2_vs_default_);
+/* harmony default export */ const Default2_vs = (Default2_vs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Depth2.fs.js
+const Depth2_fs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;in vec3 vertex;out vec4 x3d_FragColor;
 #pragma X3D include "include/ClipPlanes.glsl"
 #pragma X3D include "include/Point.glsl"
@@ -93508,10 +93602,10 @@ x3d_FragColor=vec4(gl_FragCoord.z);}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/Depth.fs", webgl2_Depth_fs_default_);
-/* harmony default export */ const webgl2_Depth_fs = (webgl2_Depth_fs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Depth.vs.js
-const webgl2_Depth_vs_default_ = /* glsl */ `#version 300 es
+x_ite_Namespace .add ("Depth2.fs", "assets/shaders/webgl2/Depth2.fs", Depth2_fs_default_);
+/* harmony default export */ const Depth2_fs = (Depth2_fs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Depth2.vs.js
+const Depth2_vs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;in vec4 x3d_Vertex;out vec3 vertex;
 #pragma X3D include "include/Utils.glsl"
 #pragma X3D include "include/Skin.glsl"
@@ -93529,10 +93623,10 @@ gl_Position=x3d_ProjectionMatrix*position;}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/Depth.vs", webgl2_Depth_vs_default_);
-/* harmony default export */ const webgl2_Depth_vs = (webgl2_Depth_vs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Gouraud.fs.js
-const webgl2_Gouraud_fs_default_ = /* glsl */ `#version 300 es
+x_ite_Namespace .add ("Depth2.vs", "assets/shaders/webgl2/Depth2.vs", Depth2_vs_default_);
+/* harmony default export */ const Depth2_vs = (Depth2_vs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Gouraud2.fs.js
+const Gouraud2_fs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;precision highp sampler3D;precision highp samplerCube;
 #pragma X3D include "include/Fragment.glsl"
 in vec4 frontColor;
@@ -93555,10 +93649,10 @@ return finalColor;}void main(){fragment_main();}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/Gouraud.fs", webgl2_Gouraud_fs_default_);
-/* harmony default export */ const webgl2_Gouraud_fs = (webgl2_Gouraud_fs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Gouraud.vs.js
-const webgl2_Gouraud_vs_default_ = /* glsl */ `#version 300 es
+x_ite_Namespace .add ("Gouraud2.fs", "assets/shaders/webgl2/Gouraud2.fs", Gouraud2_fs_default_);
+/* harmony default export */ const Gouraud2_fs = (Gouraud2_fs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Gouraud2.vs.js
+const Gouraud2_vs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;precision highp sampler3D;precision highp samplerCube;
 #pragma X3D include "include/Vertex.glsl"
 #pragma X3D include "include/Material.glsl"
@@ -93586,26 +93680,26 @@ backColor=getMaterialColor(-normal,vertex,x3d_Material);
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/Gouraud.vs", webgl2_Gouraud_vs_default_);
-/* harmony default export */ const webgl2_Gouraud_vs = (webgl2_Gouraud_vs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/LineTransform.fs.js
-const LineTransform_fs_default_ = /* glsl */ `#version 300 es
+x_ite_Namespace .add ("Gouraud2.vs", "assets/shaders/webgl2/Gouraud2.vs", Gouraud2_vs_default_);
+/* harmony default export */ const Gouraud2_vs = (Gouraud2_vs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/LineTransform2.fs.js
+const LineTransform2_fs_default_ = /* glsl */ `#version 300 es
 precision highp float;void main(){}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/LineTransform.fs", LineTransform_fs_default_);
-/* harmony default export */ const LineTransform_fs = (LineTransform_fs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/LineTransform.vs.js
-const LineTransform_vs_default_ = /* glsl */ `#version 300 es
+x_ite_Namespace .add ("LineTransform2.fs", "assets/shaders/webgl2/LineTransform2.fs", LineTransform2_fs_default_);
+/* harmony default export */ const LineTransform2_fs = (LineTransform2_fs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/LineTransform2.vs.js
+const LineTransform2_vs_default_ = /* glsl */ `#version 300 es
 precision highp float;uniform vec4 viewport;uniform mat4 modelViewProjectionMatrix;uniform mat4 invModelViewProjectionMatrix;uniform float scale;in float x3d_CoordIndex0;in vec3 x3d_LineStipple0;in float x3d_FogDepth0;in vec4 x3d_Color0;in vec3 x3d_Normal0;in vec4 x3d_Vertex0;in float x3d_CoordIndex1;in vec3 x3d_LineStipple1;in float x3d_FogDepth1;in vec4 x3d_Color1;in vec3 x3d_Normal1;in vec4 x3d_Vertex1;out float coordIndex0;out vec3 lineStipple0;out float fogDepth0;out vec4 color0;out vec3 normal0;out vec4 vertex0;out float coordIndex1;out vec3 lineStipple1;out float fogDepth1;out vec4 color1;out vec3 normal1;out vec4 vertex1;out float coordIndex2;out vec3 lineStipple2;out float fogDepth2;out vec4 color2;out vec3 normal2;out vec4 vertex2;vec3 projectPoint(const in vec4 point,const in mat4 modelViewProjectionMatrix,const in vec4 viewport){vec4 vin=modelViewProjectionMatrix*point;vin.xyz=vin.xyz/(2.0*vin.w)+0.5;return vec3(vin.xy*viewport.zw+viewport.xy,vin.z);}vec4 unProjectPoint(const in vec3 win,const in mat4 invModelViewProjection,const in vec4 viewport){vec4 vin=vec4((win.xy-viewport.xy)/viewport.zw*2.0-1.0,2.0*win.z-1.0,1.0);vin=invModelViewProjection*vin;return vec4(vin.xyz/vin.w,1.0);}void main(){vec3 projected0=projectPoint(x3d_Vertex0,modelViewProjectionMatrix,viewport);vec3 projected1=projectPoint(x3d_Vertex1,modelViewProjectionMatrix,viewport);vec2 direction=normalize(projected1.xy-projected0.xy);vec2 offset=vec2(-direction.y,direction.x)*scale;if(gl_InstanceID==0){vec2 pq0=projected0.xy+offset;vec2 pq1=projected0.xy-offset;vec2 pq2=projected1.xy-offset;vec4 p0=unProjectPoint(vec3(pq0.xy,projected0.z),invModelViewProjectionMatrix,viewport);vec4 p1=unProjectPoint(vec3(pq1.xy,projected0.z),invModelViewProjectionMatrix,viewport);vec4 p2=unProjectPoint(vec3(pq2.xy,projected1.z),invModelViewProjectionMatrix,viewport);coordIndex0=x3d_CoordIndex0;lineStipple0=x3d_LineStipple0;fogDepth0=x3d_FogDepth0;color0=x3d_Color0;normal0=x3d_Normal0;vertex0=p0;coordIndex1=x3d_CoordIndex0;lineStipple1=x3d_LineStipple0;fogDepth1=x3d_FogDepth0;color1=x3d_Color0;normal1=x3d_Normal0;vertex1=p1;coordIndex2=x3d_CoordIndex1;lineStipple2=x3d_LineStipple1;fogDepth2=x3d_FogDepth1;color2=x3d_Color1;normal2=x3d_Normal1;vertex2=p2;}else{vec2 pq0=projected0.xy+offset;vec2 pq2=projected1.xy-offset;vec2 pq3=projected1.xy+offset;vec4 p0=unProjectPoint(vec3(pq0.xy,projected0.z),invModelViewProjectionMatrix,viewport);vec4 p2=unProjectPoint(vec3(pq2.xy,projected1.z),invModelViewProjectionMatrix,viewport);vec4 p3=unProjectPoint(vec3(pq3.xy,projected1.z),invModelViewProjectionMatrix,viewport);coordIndex0=x3d_CoordIndex0;lineStipple0=x3d_LineStipple0;fogDepth0=x3d_FogDepth0;color0=x3d_Color0;normal0=x3d_Normal0;vertex0=p0;coordIndex1=x3d_CoordIndex1;lineStipple1=x3d_LineStipple1;fogDepth1=x3d_FogDepth1;color1=x3d_Color1;normal1=x3d_Normal1;vertex1=p2;coordIndex2=x3d_CoordIndex1;lineStipple2=x3d_LineStipple1;fogDepth2=x3d_FogDepth1;color2=x3d_Color1;normal2=x3d_Normal1;vertex2=p3;}}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/LineTransform.vs", LineTransform_vs_default_);
-/* harmony default export */ const LineTransform_vs = (LineTransform_vs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/PBR.fs.js
-const webgl2_PBR_fs_default_ = /* glsl */ `#version 300 es
+x_ite_Namespace .add ("LineTransform2.vs", "assets/shaders/webgl2/LineTransform2.vs", LineTransform2_vs_default_);
+/* harmony default export */ const LineTransform2_vs = (LineTransform2_vs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/PBR2.fs.js
+const PBR2_fs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;precision highp sampler3D;precision highp samplerCube;
 #pragma X3D include "include/Fragment.glsl"
 #pragma X3D include "include/Colors.glsl"
@@ -93722,10 +93816,10 @@ finalColor+=getEmissiveColor();return Gamma(vec4(finalColor,alpha));}void main()
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/PBR.fs", webgl2_PBR_fs_default_);
-/* harmony default export */ const webgl2_PBR_fs = (webgl2_PBR_fs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Phong.fs.js
-const webgl2_Phong_fs_default_ = /* glsl */ `#version 300 es
+x_ite_Namespace .add ("PBR2.fs", "assets/shaders/webgl2/PBR2.fs", PBR2_fs_default_);
+/* harmony default export */ const PBR2_fs = (PBR2_fs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Phong2.fs.js
+const Phong2_fs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;precision highp sampler3D;precision highp samplerCube;
 #pragma X3D include "include/Fragment.glsl"
 #pragma X3D include "include/Material.glsl"
@@ -93854,10 +93948,10 @@ finalColor+=getEmissiveColor();return vec4(finalColor,alpha);}void main(){fragme
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/Phong.fs", webgl2_Phong_fs_default_);
-/* harmony default export */ const webgl2_Phong_fs = (webgl2_Phong_fs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Pointing.fs.js
-const webgl2_Pointing_fs_default_ = /* glsl */ `#version 300 es
+x_ite_Namespace .add ("Phong2.fs", "assets/shaders/webgl2/Phong2.fs", Phong2_fs_default_);
+/* harmony default export */ const Phong2_fs = (Phong2_fs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Pointing2.fs.js
+const Pointing2_fs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;in vec3 vertex;in vec3 normal;in vec4 texCoord;
 #if!defined(X3D_GEOMETRY_0D)&&!defined(X3D_GEOMETRY_1D)
 in vec4 texCoord0;
@@ -93882,10 +93976,10 @@ x3d_FragData0=vec4(vertex,x3d_Id);x3d_FragData1=vec4(normal,0.0);x3d_FragData2=t
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/Pointing.fs", webgl2_Pointing_fs_default_);
-/* harmony default export */ const webgl2_Pointing_fs = (webgl2_Pointing_fs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Pointing.vs.js
-const webgl2_Pointing_vs_default_ = /* glsl */ `#version 300 es
+x_ite_Namespace .add ("Pointing2.fs", "assets/shaders/webgl2/Pointing2.fs", Pointing2_fs_default_);
+/* harmony default export */ const Pointing2_fs = (Pointing2_fs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Pointing2.vs.js
+const Pointing2_vs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;in vec4 x3d_Vertex;in vec3 x3d_Normal;
 #if!defined(X3D_GEOMETRY_0D)&&!defined(X3D_GEOMETRY_1D)
 in vec4 x3d_TexCoord0;
@@ -93923,10 +94017,10 @@ gl_Position=x3d_ProjectionMatrix*position;}
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/Pointing.vs", webgl2_Pointing_vs_default_);
-/* harmony default export */ const webgl2_Pointing_vs = (webgl2_Pointing_vs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Unlit.fs.js
-const webgl2_Unlit_fs_default_ = /* glsl */ `#version 300 es
+x_ite_Namespace .add ("Pointing2.vs", "assets/shaders/webgl2/Pointing2.vs", Pointing2_vs_default_);
+/* harmony default export */ const Pointing2_vs = (Pointing2_vs_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Unlit2.fs.js
+const Unlit2_fs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;precision highp sampler3D;precision highp samplerCube;
 #pragma X3D include "include/Fragment.glsl"
 uniform x3d_UnlitMaterialParameters x3d_Material;
@@ -93957,9 +94051,9 @@ return emissiveParameter;
 `
 ;
 
-x_ite_Namespace .set ("assets/shaders/webgl2/Unlit.fs", webgl2_Unlit_fs_default_);
-/* harmony default export */ const webgl2_Unlit_fs = (webgl2_Unlit_fs_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Browser/Shaders/Shaders.js
+x_ite_Namespace .add ("Unlit2.fs", "assets/shaders/webgl2/Unlit2.fs", Unlit2_fs_default_);
+/* harmony default export */ const Unlit2_fs = (Unlit2_fs_default_);
+;// CONCATENATED MODULE: ./src/x_ite/Browser/Shaders/ShaderRegistry.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -94072,89 +94166,89 @@ x_ite_Namespace .set ("assets/shaders/webgl2/Unlit.fs", webgl2_Unlit_fs_default_
 
 
 
-const Shaders = {
+const ShaderRegistry = {
    includes: {
       1: {
-         ClipPlanes: ClipPlanes_glsl,
-         Colors: Colors_glsl,
-         Fog: Fog_glsl,
-         Fragment: Fragment_glsl,
-         Hatch: Hatch_glsl,
-         Material: Material_glsl,
-         Normal: Normal_glsl,
-         Perlin: Perlin_glsl,
-         Point: Point_glsl,
-         PointSize: PointSize_glsl,
-         Shadow: Shadow_glsl,
-         SpotFactor: SpotFactor_glsl,
-         Texture: Texture_glsl,
-         Vertex: Vertex_glsl,
+         ClipPlanes: ClipPlanes1_glsl,
+         Colors: Colors1_glsl,
+         Fog: Fog1_glsl,
+         Fragment: Fragment1_glsl,
+         Hatch: Hatch1_glsl,
+         Material: Material1_glsl,
+         Normal: Normal1_glsl,
+         Perlin: Perlin1_glsl,
+         Point: Point1_glsl,
+         PointSize: PointSize1_glsl,
+         Shadow: Shadow1_glsl,
+         SpotFactor: SpotFactor1_glsl,
+         Texture: Texture1_glsl,
+         Vertex: Vertex1_glsl,
       },
       2: {
-         ClipPlanes: include_ClipPlanes_glsl,
-         Colors: include_Colors_glsl,
-         Fog: include_Fog_glsl,
-         Fragment: include_Fragment_glsl,
-         Hatch: include_Hatch_glsl,
-         Line2: Line2_glsl,
-         Material: include_Material_glsl,
-         Normal: include_Normal_glsl,
-         Particle: Particle_glsl,
-         Perlin: include_Perlin_glsl,
-         Point: include_Point_glsl,
-         PointSize: include_PointSize_glsl,
-         Shadow: include_Shadow_glsl,
-         Skin: Skin_glsl,
-         SpotFactor: include_SpotFactor_glsl,
-         Stipple: Stipple_glsl,
-         Texture: include_Texture_glsl,
-         Utils: Utils_glsl,
-         Vertex: include_Vertex_glsl,
+         ClipPlanes: ClipPlanes2_glsl,
+         Colors: Colors2_glsl,
+         Fog: Fog2_glsl,
+         Fragment: Fragment2_glsl,
+         Hatch: Hatch2_glsl,
+         Line2: Line22_glsl,
+         Material: Material2_glsl,
+         Normal: Normal2_glsl,
+         Particle: Particle2_glsl,
+         Perlin: Perlin2_glsl,
+         Point: Point2_glsl,
+         PointSize: PointSize2_glsl,
+         Shadow: Shadow2_glsl,
+         Skin: Skin2_glsl,
+         SpotFactor: SpotFactor2_glsl,
+         Stipple: Stipple2_glsl,
+         Texture: Texture2_glsl,
+         Utils: Utils2_glsl,
+         Vertex: Vertex2_glsl,
       },
    },
    vertex: {
       1: {
-         Default: Default_vs,
-         Depth: Depth_vs,
-         Gouraud: Gouraud_vs,
-         Pointing: Pointing_vs,
+         Default: Default1_vs,
+         Depth: Depth1_vs,
+         Gouraud: Gouraud1_vs,
+         Pointing: Pointing1_vs,
       },
       2: {
-         Compose: Compose_vs,
-         Default: webgl2_Default_vs,
-         Depth: webgl2_Depth_vs,
-         Gouraud: webgl2_Gouraud_vs,
-         LineTransform: LineTransform_vs,
-         Pointing: webgl2_Pointing_vs,
+         Compose: Compose2_vs,
+         Default: Default2_vs,
+         Depth: Depth2_vs,
+         Gouraud: Gouraud2_vs,
+         LineTransform: LineTransform2_vs,
+         Pointing: Pointing2_vs,
       },
    },
    fragment: {
       1: {
-         Depth: Depth_fs,
-         Gouraud: Gouraud_fs,
-         PBR: PBR_fs,
-         Phong: Phong_fs,
-         Pointing: Pointing_fs,
-         Unlit: Unlit_fs,
+         Depth: Depth1_fs,
+         Gouraud: Gouraud1_fs,
+         PBR: PBR1_fs,
+         Phong: Phong1_fs,
+         Pointing: Pointing1_fs,
+         Unlit: Unlit1_fs,
       },
       2: {
-         Compose: Compose_fs,
-         Depth: webgl2_Depth_fs,
-         Gouraud: webgl2_Gouraud_fs,
-         LineTransform: LineTransform_fs,
-         PBR: webgl2_PBR_fs,
-         Phong: webgl2_Phong_fs,
-         Pointing: webgl2_Pointing_fs,
-         Unlit: webgl2_Unlit_fs,
+         Compose: Compose2_fs,
+         Depth: Depth2_fs,
+         Gouraud: Gouraud2_fs,
+         LineTransform: LineTransform2_fs,
+         PBR: PBR2_fs,
+         Phong: Phong2_fs,
+         Pointing: Pointing2_fs,
+         Unlit: Unlit2_fs,
       },
    },
 };
 
-const Shaders_default_ = Shaders;
+const ShaderRegistry_default_ = ShaderRegistry;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Shaders/Shaders", Shaders_default_);
-/* harmony default export */ const Shaders_Shaders = (Shaders_default_);
+x_ite_Namespace .add ("ShaderRegistry", "x_ite/Browser/Shaders/ShaderRegistry", ShaderRegistry_default_);
+/* harmony default export */ const Shaders_ShaderRegistry = (ShaderRegistry_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Shaders/ShaderCompiler.js
 /*******************************************************************************
  *
@@ -94209,7 +94303,7 @@ const include = /^\s*#pragma\s+X3D\s+include\s+".*?([^\/]+)\.glsl"\s*$/;
 
 function ShaderCompiler (gl)
 {
-   this .includes          = Shaders_Shaders .includes [gl .getVersion ()];
+   this .includes          = Shaders_ShaderRegistry .includes [gl .getVersion ()];
    this .sourceFileNumbers = { };
 
    for (const [i, name] of Object .getOwnPropertyNames (this .includes) .entries ())
@@ -94255,10 +94349,10 @@ Object .assign (ShaderCompiler .prototype,
 const ShaderCompiler_default_ = ShaderCompiler;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Shaders/ShaderCompiler", ShaderCompiler_default_);
+x_ite_Namespace .add ("ShaderCompiler", "x_ite/Browser/Shaders/ShaderCompiler", ShaderCompiler_default_);
 /* harmony default export */ const Shaders_ShaderCompiler = (ShaderCompiler_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/ShaderPart.js
-/* provided dependency */ var ShaderPart_$ = __webpack_require__(508);
+/* provided dependency */ var ShaderPart_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -94499,7 +94593,7 @@ Object .defineProperties (ShaderPart,
 const ShaderPart_default_ = ShaderPart;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shaders/ShaderPart", ShaderPart_default_);
+x_ite_Namespace .add ("ShaderPart", "x_ite/Components/Shaders/ShaderPart", ShaderPart_default_);
 /* harmony default export */ const Shaders_ShaderPart = (ShaderPart_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/ShaderProgram.js
 /*******************************************************************************
@@ -94630,7 +94724,7 @@ Object .defineProperties (ShaderProgram,
 const ShaderProgram_default_ = ShaderProgram;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shaders/ShaderProgram", ShaderProgram_default_);
+x_ite_Namespace .add ("ShaderProgram", "x_ite/Components/Shaders/ShaderProgram", ShaderProgram_default_);
 /* harmony default export */ const Shaders_ShaderProgram = (ShaderProgram_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders.js
 /*******************************************************************************
@@ -94692,7 +94786,7 @@ x_ite_Namespace .set ("x_ite/Components/Shaders/ShaderProgram", ShaderProgram_de
 
 
 
-const Components_Shaders_default_ = {
+const Shaders_default_ = {
    name: "Shaders",
    concreteNodes:
    [
@@ -94714,8 +94808,8 @@ const Components_Shaders_default_ = {
 };
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shaders", Components_Shaders_default_);
-/* harmony default export */ const Components_Shaders = (Components_Shaders_default_);
+x_ite_Namespace .add ("Shaders", "x_ite/Components/Shaders", Shaders_default_);
+/* harmony default export */ const Shaders = (Shaders_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/AcousticProperties.js
 /*******************************************************************************
  *
@@ -94819,7 +94913,7 @@ Object .defineProperties (AcousticProperties,
 const AcousticProperties_default_ = AcousticProperties;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shape/AcousticProperties", AcousticProperties_default_);
+x_ite_Namespace .add ("AcousticProperties", "x_ite/Components/Shape/AcousticProperties", AcousticProperties_default_);
 /* harmony default export */ const Shape_AcousticProperties = (AcousticProperties_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/X3DAppearanceNode.js
 /*******************************************************************************
@@ -94912,10 +95006,10 @@ Object .defineProperties (X3DAppearanceNode,
 const X3DAppearanceNode_default_ = X3DAppearanceNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shape/X3DAppearanceNode", X3DAppearanceNode_default_);
+x_ite_Namespace .add ("X3DAppearanceNode", "x_ite/Components/Shape/X3DAppearanceNode", X3DAppearanceNode_default_);
 /* harmony default export */ const Shape_X3DAppearanceNode = (X3DAppearanceNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/Appearance.js
-/* provided dependency */ var Appearance_$ = __webpack_require__(508);
+/* provided dependency */ var Appearance_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -95376,7 +95470,7 @@ Object .defineProperties (Appearance,
 const Appearance_default_ = Appearance;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shape/Appearance", Appearance_default_);
+x_ite_Namespace .add ("Appearance", "x_ite/Components/Shape/Appearance", Appearance_default_);
 /* harmony default export */ const Shape_Appearance = (Appearance_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/FillProperties.js
 /*******************************************************************************
@@ -95562,7 +95656,7 @@ Object .defineProperties (FillProperties,
 const FillProperties_default_ = FillProperties;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shape/FillProperties", FillProperties_default_);
+x_ite_Namespace .add ("FillProperties", "x_ite/Components/Shape/FillProperties", FillProperties_default_);
 /* harmony default export */ const Shape_FillProperties = (FillProperties_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/LineProperties.js
 /*******************************************************************************
@@ -95751,7 +95845,7 @@ Object .defineProperties (LineProperties,
 const LineProperties_default_ = LineProperties;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shape/LineProperties", LineProperties_default_);
+x_ite_Namespace .add ("LineProperties", "x_ite/Components/Shape/LineProperties", LineProperties_default_);
 /* harmony default export */ const Shape_LineProperties = (LineProperties_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/X3DMaterialNode.js
 /*******************************************************************************
@@ -96106,7 +96200,7 @@ Object .defineProperties (X3DMaterialNode,
 const X3DMaterialNode_default_ = X3DMaterialNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shape/X3DMaterialNode", X3DMaterialNode_default_);
+x_ite_Namespace .add ("X3DMaterialNode", "x_ite/Components/Shape/X3DMaterialNode", X3DMaterialNode_default_);
 /* harmony default export */ const Shape_X3DMaterialNode = (X3DMaterialNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/X3DOneSidedMaterialNode.js
 /*******************************************************************************
@@ -96323,7 +96417,7 @@ Object .defineProperties (X3DOneSidedMaterialNode,
 const X3DOneSidedMaterialNode_default_ = X3DOneSidedMaterialNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shape/X3DOneSidedMaterialNode", X3DOneSidedMaterialNode_default_);
+x_ite_Namespace .add ("X3DOneSidedMaterialNode", "x_ite/Components/Shape/X3DOneSidedMaterialNode", X3DOneSidedMaterialNode_default_);
 /* harmony default export */ const Shape_X3DOneSidedMaterialNode = (X3DOneSidedMaterialNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/Material.js
 /*******************************************************************************
@@ -96740,7 +96834,7 @@ Object .defineProperties (Material,
 const Material_default_ = Material;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shape/Material", Material_default_);
+x_ite_Namespace .add ("Material", "x_ite/Components/Shape/Material", Material_default_);
 /* harmony default export */ const Shape_Material = (Material_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/PhysicalMaterial.js
 /*******************************************************************************
@@ -97053,7 +97147,7 @@ Object .defineProperties (PhysicalMaterial,
 const PhysicalMaterial_default_ = PhysicalMaterial;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shape/PhysicalMaterial", PhysicalMaterial_default_);
+x_ite_Namespace .add ("PhysicalMaterial", "x_ite/Components/Shape/PhysicalMaterial", PhysicalMaterial_default_);
 /* harmony default export */ const Shape_PhysicalMaterial = (PhysicalMaterial_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/PointProperties.js
 /*******************************************************************************
@@ -97227,7 +97321,7 @@ Object .defineProperties (PointProperties,
 const PointProperties_default_ = PointProperties;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shape/PointProperties", PointProperties_default_);
+x_ite_Namespace .add ("PointProperties", "x_ite/Components/Shape/PointProperties", PointProperties_default_);
 /* harmony default export */ const Shape_PointProperties = (PointProperties_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/X3DShapeNode.js
 /*******************************************************************************
@@ -97339,14 +97433,6 @@ Object .assign (Object .setPrototypeOf (X3DShapeNode .prototype, Core_X3DChildNo
    {
       return this .bboxCenter;
    },
-   getAppearance ()
-   {
-      return this .appearanceNode;
-   },
-   getGeometry ()
-   {
-      return this .geometryNode;
-   },
    setTransparent (value)
    {
       this .transparent = value;
@@ -97354,6 +97440,14 @@ Object .assign (Object .setPrototypeOf (X3DShapeNode .prototype, Core_X3DChildNo
    isTransparent ()
    {
       return this .transparent;
+   },
+   getAppearance ()
+   {
+      return this .appearanceNode;
+   },
+   getGeometry ()
+   {
+      return this .geometryNode;
    },
    set_bbox__ ()
    {
@@ -97443,7 +97537,7 @@ Object .defineProperties (X3DShapeNode,
 const X3DShapeNode_default_ = X3DShapeNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shape/X3DShapeNode", X3DShapeNode_default_);
+x_ite_Namespace .add ("X3DShapeNode", "x_ite/Components/Shape/X3DShapeNode", X3DShapeNode_default_);
 /* harmony default export */ const Shape_X3DShapeNode = (X3DShapeNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/Shape.js
 /*******************************************************************************
@@ -97653,7 +97747,7 @@ Object .defineProperties (Shape,
 const Shape_default_ = Shape;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shape/Shape", Shape_default_);
+x_ite_Namespace .add ("Shape", "x_ite/Components/Shape/Shape", Shape_default_);
 /* harmony default export */ const Shape_Shape = (Shape_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/TwoSidedMaterial.js
 /*******************************************************************************
@@ -97950,7 +98044,7 @@ Object .defineProperties (TwoSidedMaterial,
 const TwoSidedMaterial_default_ = TwoSidedMaterial;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shape/TwoSidedMaterial", TwoSidedMaterial_default_);
+x_ite_Namespace .add ("TwoSidedMaterial", "x_ite/Components/Shape/TwoSidedMaterial", TwoSidedMaterial_default_);
 /* harmony default export */ const Shape_TwoSidedMaterial = (TwoSidedMaterial_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/UnlitMaterial.js
 /*******************************************************************************
@@ -98097,7 +98191,7 @@ Object .defineProperties (UnlitMaterial,
 const UnlitMaterial_default_ = UnlitMaterial;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shape/UnlitMaterial", UnlitMaterial_default_);
+x_ite_Namespace .add ("UnlitMaterial", "x_ite/Components/Shape/UnlitMaterial", UnlitMaterial_default_);
 /* harmony default export */ const Shape_UnlitMaterial = (UnlitMaterial_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape.js
 /*******************************************************************************
@@ -98189,7 +98283,7 @@ const Components_Shape_default_ = {
 };
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Shape", Components_Shape_default_);
+x_ite_Namespace .add ("Shape", "x_ite/Components/Shape", Components_Shape_default_);
 /* harmony default export */ const Components_Shape = (Components_Shape_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/X3DSoundProcessingNode.js
 /*******************************************************************************
@@ -98286,7 +98380,7 @@ Object .defineProperties (X3DSoundProcessingNode,
 const X3DSoundProcessingNode_default_ = X3DSoundProcessingNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/X3DSoundProcessingNode", X3DSoundProcessingNode_default_);
+x_ite_Namespace .add ("X3DSoundProcessingNode", "x_ite/Components/Sound/X3DSoundProcessingNode", X3DSoundProcessingNode_default_);
 /* harmony default export */ const Sound_X3DSoundProcessingNode = (X3DSoundProcessingNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/Analyser.js
 /*******************************************************************************
@@ -98409,7 +98503,7 @@ Object .defineProperties (Analyser,
 const Analyser_default_ = Analyser;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/Analyser", Analyser_default_);
+x_ite_Namespace .add ("Analyser", "x_ite/Components/Sound/Analyser", Analyser_default_);
 /* harmony default export */ const Sound_Analyser = (Analyser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/X3DSoundSourceNode.js
 /*******************************************************************************
@@ -98641,10 +98735,10 @@ Object .defineProperties (X3DSoundSourceNode,
 const X3DSoundSourceNode_default_ = X3DSoundSourceNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/X3DSoundSourceNode", X3DSoundSourceNode_default_);
+x_ite_Namespace .add ("X3DSoundSourceNode", "x_ite/Components/Sound/X3DSoundSourceNode", X3DSoundSourceNode_default_);
 /* harmony default export */ const Sound_X3DSoundSourceNode = (X3DSoundSourceNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/AudioClip.js
-/* provided dependency */ var AudioClip_$ = __webpack_require__(508);
+/* provided dependency */ var AudioClip_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -98859,7 +98953,7 @@ Object .defineProperties (AudioClip,
 const AudioClip_default_ = AudioClip;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/AudioClip", AudioClip_default_);
+x_ite_Namespace .add ("AudioClip", "x_ite/Components/Sound/AudioClip", AudioClip_default_);
 /* harmony default export */ const Sound_AudioClip = (AudioClip_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/X3DSoundNode.js
 /*******************************************************************************
@@ -98938,7 +99032,7 @@ Object .defineProperties (X3DSoundNode,
 const X3DSoundNode_default_ = X3DSoundNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/X3DSoundNode", X3DSoundNode_default_);
+x_ite_Namespace .add ("X3DSoundNode", "x_ite/Components/Sound/X3DSoundNode", X3DSoundNode_default_);
 /* harmony default export */ const Sound_X3DSoundNode = (X3DSoundNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/X3DSoundDestinationNode.js
 /*******************************************************************************
@@ -99017,7 +99111,7 @@ Object .defineProperties (X3DSoundDestinationNode,
 const X3DSoundDestinationNode_default_ = X3DSoundDestinationNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/X3DSoundDestinationNode", X3DSoundDestinationNode_default_);
+x_ite_Namespace .add ("X3DSoundDestinationNode", "x_ite/Components/Sound/X3DSoundDestinationNode", X3DSoundDestinationNode_default_);
 /* harmony default export */ const Sound_X3DSoundDestinationNode = (X3DSoundDestinationNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/AudioDestination.js
 /*******************************************************************************
@@ -99129,7 +99223,7 @@ Object .defineProperties (AudioDestination,
 const AudioDestination_default_ = AudioDestination;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/AudioDestination", AudioDestination_default_);
+x_ite_Namespace .add ("AudioDestination", "x_ite/Components/Sound/AudioDestination", AudioDestination_default_);
 /* harmony default export */ const Sound_AudioDestination = (AudioDestination_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/BiquadFilter.js
 /*******************************************************************************
@@ -99251,7 +99345,7 @@ Object .defineProperties (BiquadFilter,
 const BiquadFilter_default_ = BiquadFilter;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/BiquadFilter", BiquadFilter_default_);
+x_ite_Namespace .add ("BiquadFilter", "x_ite/Components/Sound/BiquadFilter", BiquadFilter_default_);
 /* harmony default export */ const Sound_BiquadFilter = (BiquadFilter_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/BufferAudioSource.js
 /*******************************************************************************
@@ -99398,7 +99492,7 @@ Object .defineProperties (BufferAudioSource,
 const BufferAudioSource_default_ = BufferAudioSource;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/BufferAudioSource", BufferAudioSource_default_);
+x_ite_Namespace .add ("BufferAudioSource", "x_ite/Components/Sound/BufferAudioSource", BufferAudioSource_default_);
 /* harmony default export */ const Sound_BufferAudioSource = (BufferAudioSource_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/X3DSoundChannelNode.js
 /*******************************************************************************
@@ -99477,7 +99571,7 @@ Object .defineProperties (X3DSoundChannelNode,
 const X3DSoundChannelNode_default_ = X3DSoundChannelNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/X3DSoundChannelNode", X3DSoundChannelNode_default_);
+x_ite_Namespace .add ("X3DSoundChannelNode", "x_ite/Components/Sound/X3DSoundChannelNode", X3DSoundChannelNode_default_);
 /* harmony default export */ const Sound_X3DSoundChannelNode = (X3DSoundChannelNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/ChannelMerger.js
 /*******************************************************************************
@@ -99586,7 +99680,7 @@ Object .defineProperties (ChannelMerger,
 const ChannelMerger_default_ = ChannelMerger;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/ChannelMerger", ChannelMerger_default_);
+x_ite_Namespace .add ("ChannelMerger", "x_ite/Components/Sound/ChannelMerger", ChannelMerger_default_);
 /* harmony default export */ const Sound_ChannelMerger = (ChannelMerger_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/ChannelSelector.js
 /*******************************************************************************
@@ -99696,7 +99790,7 @@ Object .defineProperties (ChannelSelector,
 const ChannelSelector_default_ = ChannelSelector;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/ChannelSelector", ChannelSelector_default_);
+x_ite_Namespace .add ("ChannelSelector", "x_ite/Components/Sound/ChannelSelector", ChannelSelector_default_);
 /* harmony default export */ const Sound_ChannelSelector = (ChannelSelector_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/ChannelSplitter.js
 /*******************************************************************************
@@ -99806,7 +99900,7 @@ Object .defineProperties (ChannelSplitter,
 const ChannelSplitter_default_ = ChannelSplitter;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/ChannelSplitter", ChannelSplitter_default_);
+x_ite_Namespace .add ("ChannelSplitter", "x_ite/Components/Sound/ChannelSplitter", ChannelSplitter_default_);
 /* harmony default export */ const Sound_ChannelSplitter = (ChannelSplitter_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/Convolver.js
 /*******************************************************************************
@@ -99926,7 +100020,7 @@ Object .defineProperties (Convolver,
 const Convolver_default_ = Convolver;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/Convolver", Convolver_default_);
+x_ite_Namespace .add ("Convolver", "x_ite/Components/Sound/Convolver", Convolver_default_);
 /* harmony default export */ const Sound_Convolver = (Convolver_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/Delay.js
 /*******************************************************************************
@@ -100046,7 +100140,7 @@ Object .defineProperties (Delay,
 const Delay_default_ = Delay;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/Delay", Delay_default_);
+x_ite_Namespace .add ("Delay", "x_ite/Components/Sound/Delay", Delay_default_);
 /* harmony default export */ const Sound_Delay = (Delay_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/DynamicsCompressor.js
 /*******************************************************************************
@@ -100170,7 +100264,7 @@ Object .defineProperties (DynamicsCompressor,
 const DynamicsCompressor_default_ = DynamicsCompressor;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/DynamicsCompressor", DynamicsCompressor_default_);
+x_ite_Namespace .add ("DynamicsCompressor", "x_ite/Components/Sound/DynamicsCompressor", DynamicsCompressor_default_);
 /* harmony default export */ const Sound_DynamicsCompressor = (DynamicsCompressor_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/Gain.js
 /*******************************************************************************
@@ -100288,7 +100382,7 @@ Object .defineProperties (Gain,
 const Gain_default_ = Gain;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/Gain", Gain_default_);
+x_ite_Namespace .add ("Gain", "x_ite/Components/Sound/Gain", Gain_default_);
 /* harmony default export */ const Sound_Gain = (Gain_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/ListenerPointSource.js
 /*******************************************************************************
@@ -100409,7 +100503,7 @@ Object .defineProperties (ListenerPointSource,
 const ListenerPointSource_default_ = ListenerPointSource;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/ListenerPointSource", ListenerPointSource_default_);
+x_ite_Namespace .add ("ListenerPointSource", "x_ite/Components/Sound/ListenerPointSource", ListenerPointSource_default_);
 /* harmony default export */ const Sound_ListenerPointSource = (ListenerPointSource_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/MicrophoneSource.js
 /*******************************************************************************
@@ -100524,7 +100618,7 @@ Object .defineProperties (MicrophoneSource,
 const MicrophoneSource_default_ = MicrophoneSource;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/MicrophoneSource", MicrophoneSource_default_);
+x_ite_Namespace .add ("MicrophoneSource", "x_ite/Components/Sound/MicrophoneSource", MicrophoneSource_default_);
 /* harmony default export */ const Sound_MicrophoneSource = (MicrophoneSource_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/OscillatorSource.js
 /*******************************************************************************
@@ -100641,7 +100735,7 @@ Object .defineProperties (OscillatorSource,
 const OscillatorSource_default_ = OscillatorSource;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/OscillatorSource", OscillatorSource_default_);
+x_ite_Namespace .add ("OscillatorSource", "x_ite/Components/Sound/OscillatorSource", OscillatorSource_default_);
 /* harmony default export */ const Sound_OscillatorSource = (OscillatorSource_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/PeriodicWave.js
 /*******************************************************************************
@@ -100745,7 +100839,7 @@ Object .defineProperties (PeriodicWave,
 const PeriodicWave_default_ = PeriodicWave;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/PeriodicWave", PeriodicWave_default_);
+x_ite_Namespace .add ("PeriodicWave", "x_ite/Components/Sound/PeriodicWave", PeriodicWave_default_);
 /* harmony default export */ const Sound_PeriodicWave = (PeriodicWave_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/Sound.js
 /*******************************************************************************
@@ -101052,7 +101146,7 @@ Object .defineProperties (Sound,
 const Sound_default_ = Sound;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/Sound", Sound_default_);
+x_ite_Namespace .add ("Sound", "x_ite/Components/Sound/Sound", Sound_default_);
 /* harmony default export */ const Sound_Sound = (Sound_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/SpatialSound.js
 /*******************************************************************************
@@ -101173,7 +101267,7 @@ Object .defineProperties (SpatialSound,
 const SpatialSound_default_ = SpatialSound;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/SpatialSound", SpatialSound_default_);
+x_ite_Namespace .add ("SpatialSound", "x_ite/Components/Sound/SpatialSound", SpatialSound_default_);
 /* harmony default export */ const Sound_SpatialSound = (SpatialSound_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/StreamAudioDestination.js
 /*******************************************************************************
@@ -101285,7 +101379,7 @@ Object .defineProperties (StreamAudioDestination,
 const StreamAudioDestination_default_ = StreamAudioDestination;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/StreamAudioDestination", StreamAudioDestination_default_);
+x_ite_Namespace .add ("StreamAudioDestination", "x_ite/Components/Sound/StreamAudioDestination", StreamAudioDestination_default_);
 /* harmony default export */ const Sound_StreamAudioDestination = (StreamAudioDestination_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/StreamAudioSource.js
 /*******************************************************************************
@@ -101400,7 +101494,7 @@ Object .defineProperties (StreamAudioSource,
 const StreamAudioSource_default_ = StreamAudioSource;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/StreamAudioSource", StreamAudioSource_default_);
+x_ite_Namespace .add ("StreamAudioSource", "x_ite/Components/Sound/StreamAudioSource", StreamAudioSource_default_);
 /* harmony default export */ const Sound_StreamAudioSource = (StreamAudioSource_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/WaveShaper.js
 /*******************************************************************************
@@ -101520,7 +101614,7 @@ Object .defineProperties (WaveShaper,
 const WaveShaper_default_ = WaveShaper;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound/WaveShaper", WaveShaper_default_);
+x_ite_Namespace .add ("WaveShaper", "x_ite/Components/Sound/WaveShaper", WaveShaper_default_);
 /* harmony default export */ const Sound_WaveShaper = (WaveShaper_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound.js
 /*******************************************************************************
@@ -101634,7 +101728,7 @@ const Components_Sound_default_ = {
 };
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Sound", Components_Sound_default_);
+x_ite_Namespace .add ("Sound", "x_ite/Components/Sound", Components_Sound_default_);
 /* harmony default export */ const Components_Sound = (Components_Sound_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Texturing/GIFMedia.js
 /*******************************************************************************
@@ -101752,11 +101846,11 @@ function GifMedia (gif, movieTexture)
 const GIFMedia_default_ = GifMedia;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Texturing/GIFMedia", GIFMedia_default_);
+x_ite_Namespace .add ("GIFMedia", "x_ite/Browser/Texturing/GIFMedia", GIFMedia_default_);
 /* harmony default export */ const GIFMedia = (GIFMedia_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/MovieTexture.js
-/* provided dependency */ var MovieTexture_$ = __webpack_require__(508);
-/* provided dependency */ var SuperGif = __webpack_require__(648);
+/* provided dependency */ var MovieTexture_$ = __webpack_require__(757);
+/* provided dependency */ var SuperGif = __webpack_require__(33);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -102046,7 +102140,7 @@ Object .defineProperties (MovieTexture,
 const MovieTexture_default_ = MovieTexture;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Texturing/MovieTexture", MovieTexture_default_);
+x_ite_Namespace .add ("MovieTexture", "x_ite/Components/Texturing/MovieTexture", MovieTexture_default_);
 /* harmony default export */ const Texturing_MovieTexture = (MovieTexture_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/MultiTexture.js
 /*******************************************************************************
@@ -102396,7 +102490,7 @@ Object .defineProperties (MultiTexture,
 const MultiTexture_default_ = MultiTexture;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Texturing/MultiTexture", MultiTexture_default_);
+x_ite_Namespace .add ("MultiTexture", "x_ite/Components/Texturing/MultiTexture", MultiTexture_default_);
 /* harmony default export */ const Texturing_MultiTexture = (MultiTexture_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/X3DTextureCoordinateNode.js
 /*******************************************************************************
@@ -102475,7 +102569,7 @@ Object .defineProperties (X3DTextureCoordinateNode,
 const X3DTextureCoordinateNode_default_ = X3DTextureCoordinateNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Texturing/X3DTextureCoordinateNode", X3DTextureCoordinateNode_default_);
+x_ite_Namespace .add ("X3DTextureCoordinateNode", "x_ite/Components/Texturing/X3DTextureCoordinateNode", X3DTextureCoordinateNode_default_);
 /* harmony default export */ const Texturing_X3DTextureCoordinateNode = (X3DTextureCoordinateNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/MultiTextureCoordinate.js
 /*******************************************************************************
@@ -102586,13 +102680,6 @@ Object .assign (Object .setPrototypeOf (MultiTextureCoordinate .prototype, Textu
    {
       return 0;
    },
-   getPoints (array)
-   {
-      for (const textureCoordinateNode of this .textureCoordinateNodes)
-         return textureCoordinateNode .getPoints (array);
-
-      return array;
-   },
    init (multiArray)
    {
       const
@@ -102610,6 +102697,13 @@ Object .assign (Object .setPrototypeOf (MultiTextureCoordinate .prototype, Textu
 
       for (let i = 0; i < length; ++ i)
          textureCoordinateNodes [i] .addPointToChannel (index, multiArray [i]);
+   },
+   addPoints (array)
+   {
+      for (const textureCoordinateNode of this .textureCoordinateNodes)
+         return textureCoordinateNode .addPoints (array);
+
+      return array;
    },
    getTextureCoordinateMapping (textureCoordinateMapping)
    {
@@ -102673,7 +102767,7 @@ Object .defineProperties (MultiTextureCoordinate,
 const MultiTextureCoordinate_default_ = MultiTextureCoordinate;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Texturing/MultiTextureCoordinate", MultiTextureCoordinate_default_);
+x_ite_Namespace .add ("MultiTextureCoordinate", "x_ite/Components/Texturing/MultiTextureCoordinate", MultiTextureCoordinate_default_);
 /* harmony default export */ const Texturing_MultiTextureCoordinate = (MultiTextureCoordinate_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/X3DTextureTransformNode.js
 /*******************************************************************************
@@ -102752,7 +102846,7 @@ Object .defineProperties (X3DTextureTransformNode,
 const X3DTextureTransformNode_default_ = X3DTextureTransformNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Texturing/X3DTextureTransformNode", X3DTextureTransformNode_default_);
+x_ite_Namespace .add ("X3DTextureTransformNode", "x_ite/Components/Texturing/X3DTextureTransformNode", X3DTextureTransformNode_default_);
 /* harmony default export */ const Texturing_X3DTextureTransformNode = (X3DTextureTransformNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/MultiTextureTransform.js
 /*******************************************************************************
@@ -102911,10 +103005,10 @@ Object .defineProperties (MultiTextureTransform,
 const MultiTextureTransform_default_ = MultiTextureTransform;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Texturing/MultiTextureTransform", MultiTextureTransform_default_);
+x_ite_Namespace .add ("MultiTextureTransform", "x_ite/Components/Texturing/MultiTextureTransform", MultiTextureTransform_default_);
 /* harmony default export */ const Texturing_MultiTextureTransform = (MultiTextureTransform_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/PixelTexture.js
-/* provided dependency */ var PixelTexture_$ = __webpack_require__(508);
+/* provided dependency */ var PixelTexture_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -103201,7 +103295,7 @@ Object .defineProperties (PixelTexture,
 const PixelTexture_default_ = PixelTexture;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Texturing/PixelTexture", PixelTexture_default_);
+x_ite_Namespace .add ("PixelTexture", "x_ite/Components/Texturing/PixelTexture", PixelTexture_default_);
 /* harmony default export */ const Texturing_PixelTexture = (PixelTexture_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/X3DSingleTextureCoordinateNode.js
 /*******************************************************************************
@@ -103307,7 +103401,7 @@ Object .defineProperties (X3DSingleTextureCoordinateNode,
 const X3DSingleTextureCoordinateNode_default_ = X3DSingleTextureCoordinateNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Texturing/X3DSingleTextureCoordinateNode", X3DSingleTextureCoordinateNode_default_);
+x_ite_Namespace .add ("X3DSingleTextureCoordinateNode", "x_ite/Components/Texturing/X3DSingleTextureCoordinateNode", X3DSingleTextureCoordinateNode_default_);
 /* harmony default export */ const Texturing_X3DSingleTextureCoordinateNode = (X3DSingleTextureCoordinateNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/TextureCoordinate.js
 /*******************************************************************************
@@ -103394,7 +103488,22 @@ Object .assign (Object .setPrototypeOf (TextureCoordinate .prototype, Texturing_
    {
       return this .length;
    },
-   getPoints (array)
+   addPointToChannel (index, array)
+   {
+      if (index >= 0 && this .length)
+      {
+         const
+            point = this .point,
+            i      = (index % this .length) * 2;
+
+         array .push (point [i], point [i + 1], 0, 1);
+      }
+      else
+      {
+         array .push (0, 0, 0, 1);
+      }
+   },
+   addPoints (array)
    {
       const
          point  = this .point,
@@ -103404,30 +103513,6 @@ Object .assign (Object .setPrototypeOf (TextureCoordinate .prototype, Texturing_
          array .push (point [p], point [p + 1], 0, 1);
 
       return array;
-   },
-   addPointToChannel (index, array)
-   {
-      if (index >= 0 && index < this .length)
-      {
-         const point = this .point;
-
-         index *= 2;
-
-         array .push (point [index], point [index + 1], 0, 1);
-      }
-      else if (index >= 0 && this .length)
-      {
-         const point = this .point;
-
-         index %= this .length;
-         index *= 2;
-
-         array .push (point [index], point [index + 1], 0, 1);
-      }
-      else
-      {
-         array .push (0, 0, 0, 1);
-      }
    },
 });
 
@@ -103467,7 +103552,7 @@ Object .defineProperties (TextureCoordinate,
 const TextureCoordinate_default_ = TextureCoordinate;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Texturing/TextureCoordinate", TextureCoordinate_default_);
+x_ite_Namespace .add ("TextureCoordinate", "x_ite/Components/Texturing/TextureCoordinate", TextureCoordinate_default_);
 /* harmony default export */ const Texturing_TextureCoordinate = (TextureCoordinate_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/TextureCoordinateGenerator.js
 /*******************************************************************************
@@ -103579,13 +103664,13 @@ Object .assign (Object .setPrototypeOf (TextureCoordinateGenerator .prototype, T
 
       this .parameter .fill (0, length);
    },
-   getPoints (array)
-   {
-      return array;
-   },
    addPointToChannel (index, array)
    {
       array .push (0, 0, 0, 1);
+   },
+   addPoints (array)
+   {
+      return array;
    },
    setShaderUniforms (gl, shaderObject, channel = 0)
    {
@@ -103631,7 +103716,7 @@ Object .defineProperties (TextureCoordinateGenerator,
 const TextureCoordinateGenerator_default_ = TextureCoordinateGenerator;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Texturing/TextureCoordinateGenerator", TextureCoordinateGenerator_default_);
+x_ite_Namespace .add ("TextureCoordinateGenerator", "x_ite/Components/Texturing/TextureCoordinateGenerator", TextureCoordinateGenerator_default_);
 /* harmony default export */ const Texturing_TextureCoordinateGenerator = (TextureCoordinateGenerator_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/TextureProperties.js
 /*******************************************************************************
@@ -103862,7 +103947,7 @@ Object .defineProperties (TextureProperties,
 const TextureProperties_default_ = TextureProperties;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Texturing/TextureProperties", TextureProperties_default_);
+x_ite_Namespace .add ("TextureProperties", "x_ite/Components/Texturing/TextureProperties", TextureProperties_default_);
 /* harmony default export */ const Texturing_TextureProperties = (TextureProperties_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/X3DSingleTextureTransformNode.js
 /*******************************************************************************
@@ -103966,7 +104051,7 @@ Object .defineProperties (X3DSingleTextureTransformNode,
 const X3DSingleTextureTransformNode_default_ = X3DSingleTextureTransformNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Texturing/X3DSingleTextureTransformNode", X3DSingleTextureTransformNode_default_);
+x_ite_Namespace .add ("X3DSingleTextureTransformNode", "x_ite/Components/Texturing/X3DSingleTextureTransformNode", X3DSingleTextureTransformNode_default_);
 /* harmony default export */ const Texturing_X3DSingleTextureTransformNode = (X3DSingleTextureTransformNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/TextureTransform.js
 /*******************************************************************************
@@ -104133,7 +104218,7 @@ Object .defineProperties (TextureTransform,
 const TextureTransform_default_ = TextureTransform;
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Texturing/TextureTransform", TextureTransform_default_);
+x_ite_Namespace .add ("TextureTransform", "x_ite/Components/Texturing/TextureTransform", TextureTransform_default_);
 /* harmony default export */ const Texturing_TextureTransform = (TextureTransform_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing.js
 /*******************************************************************************
@@ -104229,7 +104314,7 @@ const Texturing_default_ = {
 };
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Texturing", Texturing_default_);
+x_ite_Namespace .add ("Texturing", "x_ite/Components/Texturing", Texturing_default_);
 /* harmony default export */ const Texturing = (Texturing_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Time.js
 /*******************************************************************************
@@ -104295,7 +104380,7 @@ const Time_default_ = {
 };
 ;
 
-x_ite_Namespace .set ("x_ite/Components/Time", Time_default_);
+x_ite_Namespace .add ("Time", "x_ite/Components/Time", Time_default_);
 /* harmony default export */ const Time = (Time_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/Context.js
 /*******************************************************************************
@@ -104578,7 +104663,7 @@ const Context =
 const Context_default_ = Context;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Core/Context", Context_default_);
+x_ite_Namespace .add ("Context", "x_ite/Browser/Core/Context", Context_default_);
 /* harmony default export */ const Core_Context = (Context_default_);
 ;// CONCATENATED MODULE: ./src/locale/de.po.js
 const de_po_default_ = `msgid ""
@@ -104765,7 +104850,7 @@ msgstr "Ansichtspunkt wurde in die Zwischenablage kopiert."
 `;
 ;
 
-x_ite_Namespace .set ("locale/de.po", de_po_default_);
+x_ite_Namespace .add ("de.po", "locale/de.po", de_po_default_);
 /* harmony default export */ const de_po = (de_po_default_);
 ;// CONCATENATED MODULE: ./src/locale/fr.po.js
 const fr_po_default_ = `msgid ""
@@ -104949,7 +105034,7 @@ msgstr "Le point de Vue est copié dans le Presse-Papiers."
 `;
 ;
 
-x_ite_Namespace .set ("locale/fr.po", fr_po_default_);
+x_ite_Namespace .add ("fr.po", "locale/fr.po", fr_po_default_);
 /* harmony default export */ const fr_po = (fr_po_default_);
 ;// CONCATENATED MODULE: ./src/locale/gettext.js
 /*******************************************************************************
@@ -105074,10 +105159,10 @@ function gettext (string)
 const gettext_default_ = gettext;
 ;
 
-x_ite_Namespace .set ("locale/gettext", gettext_default_);
+x_ite_Namespace .add ("gettext", "locale/gettext", gettext_default_);
 /* harmony default export */ const locale_gettext = (gettext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/BrowserTimings.js
-/* provided dependency */ var BrowserTimings_$ = __webpack_require__(508);
+/* provided dependency */ var BrowserTimings_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -105145,7 +105230,7 @@ Object .assign (Object .setPrototypeOf (BrowserTimings .prototype, Base_X3DBaseN
 
       this .getBrowser () .getBrowserOptions () ._Timings .addInterest ("set_enabled__", this);
 
-      this .localStorage .addDefaultValues ({ type: "LESS" });
+      this .localStorage .setDefaultValues ({ type: "LESS" });
 
       this .element = BrowserTimings_$("<div></div>")
          .hide ()
@@ -105380,7 +105465,7 @@ const f2 = (() =>
 const BrowserTimings_default_ = BrowserTimings;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Core/BrowserTimings", BrowserTimings_default_);
+x_ite_Namespace .add ("BrowserTimings", "x_ite/Browser/Core/BrowserTimings", BrowserTimings_default_);
 /* harmony default export */ const Core_BrowserTimings = (BrowserTimings_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/PrimitiveQuality.js
 /*******************************************************************************
@@ -105442,7 +105527,7 @@ const PrimitiveQuality =
 const PrimitiveQuality_default_ = PrimitiveQuality;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Core/PrimitiveQuality", PrimitiveQuality_default_);
+x_ite_Namespace .add ("PrimitiveQuality", "x_ite/Browser/Core/PrimitiveQuality", PrimitiveQuality_default_);
 /* harmony default export */ const Core_PrimitiveQuality = (PrimitiveQuality_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/TextureQuality.js
 /*******************************************************************************
@@ -105504,10 +105589,10 @@ const TextureQuality =
 const TextureQuality_default_ = TextureQuality;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Core/TextureQuality", TextureQuality_default_);
+x_ite_Namespace .add ("TextureQuality", "x_ite/Browser/Core/TextureQuality", TextureQuality_default_);
 /* harmony default export */ const Core_TextureQuality = (TextureQuality_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/BrowserOptions.js
-/* provided dependency */ var BrowserOptions_$ = __webpack_require__(508);
+/* provided dependency */ var BrowserOptions_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -105585,7 +105670,7 @@ Object .assign (Object .setPrototypeOf (BrowserOptions .prototype, Base_X3DBaseN
    {
       Base_X3DBaseNode .prototype .initialize .call (this);
 
-      this .localStorage .addDefaultValues ({
+      this .localStorage .setDefaultValues ({
          Rubberband:        this ._Rubberband        .getValue (),
          PrimitiveQuality:  this ._PrimitiveQuality  .getValue (),
          TextureQuality:    this ._TextureQuality    .getValue (),
@@ -105898,7 +105983,7 @@ Object .defineProperties (BrowserOptions,
 const BrowserOptions_default_ = BrowserOptions;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Core/BrowserOptions", BrowserOptions_default_);
+x_ite_Namespace .add ("BrowserOptions", "x_ite/Browser/Core/BrowserOptions", BrowserOptions_default_);
 /* harmony default export */ const Core_BrowserOptions = (BrowserOptions_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/BrowserProperties.js
 /*******************************************************************************
@@ -105987,7 +106072,7 @@ Object .defineProperties (BrowserProperties,
 const BrowserProperties_default_ = BrowserProperties;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Core/BrowserProperties", BrowserProperties_default_);
+x_ite_Namespace .add ("BrowserProperties", "x_ite/Browser/Core/BrowserProperties", BrowserProperties_default_);
 /* harmony default export */ const Core_BrowserProperties = (BrowserProperties_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/RenderingProperties.js
 /*******************************************************************************
@@ -106096,10 +106181,10 @@ Object .defineProperties (RenderingProperties,
 const RenderingProperties_default_ = RenderingProperties;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Core/RenderingProperties", RenderingProperties_default_);
+x_ite_Namespace .add ("RenderingProperties", "x_ite/Browser/Core/RenderingProperties", RenderingProperties_default_);
 /* harmony default export */ const Core_RenderingProperties = (RenderingProperties_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/Notification.js
-/* provided dependency */ var Notification_$ = __webpack_require__(508);
+/* provided dependency */ var Notification_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -106219,11 +106304,11 @@ Object .defineProperties (Notification,
 const Notification_default_ = Notification;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Core/Notification", Notification_default_);
+x_ite_Namespace .add ("Notification", "x_ite/Browser/Core/Notification", Notification_default_);
 /* harmony default export */ const Core_Notification = (Notification_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/ContextMenu.js
-/* provided dependency */ var jquery_fullscreen = __webpack_require__(174);
-/* provided dependency */ var ContextMenu_$ = __webpack_require__(508);
+/* provided dependency */ var jquery_fullscreen = __webpack_require__(32);
+/* provided dependency */ var ContextMenu_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -106665,7 +106750,7 @@ Object .assign (Object .setPrototypeOf (ContextMenu .prototype, Base_X3DBaseNode
 
       for (const viewpoint of viewpoints)
       {
-         const description = viewpoint ._description .getValue ();
+         const description = viewpoint .getDescriptions () .join (" » ");
 
          if (description === "")
             continue;
@@ -106944,7 +107029,7 @@ Object .defineProperties (ContextMenu,
 const ContextMenu_default_ = ContextMenu;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Core/ContextMenu", ContextMenu_default_);
+x_ite_Namespace .add ("ContextMenu", "x_ite/Browser/Core/ContextMenu", ContextMenu_default_);
 /* harmony default export */ const Core_ContextMenu = (ContextMenu_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/ComponentInfo.js
 /*******************************************************************************
@@ -107094,7 +107179,7 @@ Object .defineProperties (ComponentInfo .prototype,
 const ComponentInfo_default_ = ComponentInfo;
 ;
 
-x_ite_Namespace .set ("x_ite/Configuration/ComponentInfo", ComponentInfo_default_);
+x_ite_Namespace .add ("ComponentInfo", "x_ite/Configuration/ComponentInfo", ComponentInfo_default_);
 /* harmony default export */ const Configuration_ComponentInfo = (ComponentInfo_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/ComponentInfoArray.js
 /*******************************************************************************
@@ -107175,7 +107260,7 @@ Object .defineProperties (ComponentInfoArray,
 const ComponentInfoArray_default_ = ComponentInfoArray;
 ;
 
-x_ite_Namespace .set ("x_ite/Configuration/ComponentInfoArray", ComponentInfoArray_default_);
+x_ite_Namespace .add ("ComponentInfoArray", "x_ite/Configuration/ComponentInfoArray", ComponentInfoArray_default_);
 /* harmony default export */ const Configuration_ComponentInfoArray = (ComponentInfoArray_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/UnitInfo.js
 /*******************************************************************************
@@ -107338,7 +107423,7 @@ Object .defineProperties (UnitInfo,
 const UnitInfo_default_ = UnitInfo;
 ;
 
-x_ite_Namespace .set ("x_ite/Configuration/UnitInfo", UnitInfo_default_);
+x_ite_Namespace .add ("UnitInfo", "x_ite/Configuration/UnitInfo", UnitInfo_default_);
 /* harmony default export */ const Configuration_UnitInfo = (UnitInfo_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/UnitInfoArray.js
 /*******************************************************************************
@@ -107413,7 +107498,7 @@ Object .defineProperties (UnitInfoArray,
 const UnitInfoArray_default_ = UnitInfoArray;
 ;
 
-x_ite_Namespace .set ("x_ite/Configuration/UnitInfoArray", UnitInfoArray_default_);
+x_ite_Namespace .add ("UnitInfoArray", "x_ite/Configuration/UnitInfoArray", UnitInfoArray_default_);
 /* harmony default export */ const Configuration_UnitInfoArray = (UnitInfoArray_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/X3DExportedNode.js
 /*******************************************************************************
@@ -107619,7 +107704,7 @@ Object .defineProperties (X3DExportedNode,
 const X3DExportedNode_default_ = X3DExportedNode;
 ;
 
-x_ite_Namespace .set ("x_ite/Execution/X3DExportedNode", X3DExportedNode_default_);
+x_ite_Namespace .add ("X3DExportedNode", "x_ite/Execution/X3DExportedNode", X3DExportedNode_default_);
 /* harmony default export */ const Execution_X3DExportedNode = (X3DExportedNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/ExportedNodesArray.js
 /*******************************************************************************
@@ -107694,7 +107779,7 @@ Object .defineProperties (ExportedNodesArray,
 const ExportedNodesArray_default_ = ExportedNodesArray;
 ;
 
-x_ite_Namespace .set ("x_ite/Execution/ExportedNodesArray", ExportedNodesArray_default_);
+x_ite_Namespace .add ("ExportedNodesArray", "x_ite/Execution/ExportedNodesArray", ExportedNodesArray_default_);
 /* harmony default export */ const Execution_ExportedNodesArray = (ExportedNodesArray_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/X3DScene.js
 /*******************************************************************************
@@ -108835,7 +108920,7 @@ Base_X3DConstants .addNode (X3DScene);
 const X3DScene_default_ = X3DScene;
 ;
 
-x_ite_Namespace .set ("x_ite/Execution/X3DScene", X3DScene_default_);
+x_ite_Namespace .add ("X3DScene", "x_ite/Execution/X3DScene", X3DScene_default_);
 /* harmony default export */ const Execution_X3DScene = (X3DScene_default_);
 ;// CONCATENATED MODULE: ./src/standard/Utility/DataStorage.js
 /*******************************************************************************
@@ -108945,7 +109030,7 @@ Object .assign (DataStorage .prototype,
    {
       return new DataStorage (this .getStorage (), this .getNameSpace () + namespace);
    },
-   addDefaultValues (object)
+   setDefaultValues (object)
    {
       Object .assign (defaults .get (this .target), object);
    },
@@ -108972,10 +109057,10 @@ Object .assign (DataStorage .prototype,
 const DataStorage_default_ = DataStorage;
 ;
 
-x_ite_Namespace .set ("standard/Utility/DataStorage", DataStorage_default_);
+x_ite_Namespace .add ("DataStorage", "standard/Utility/DataStorage", DataStorage_default_);
 /* harmony default export */ const Utility_DataStorage = (DataStorage_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/X3DCoreContext.js
-/* provided dependency */ var X3DCoreContext_$ = __webpack_require__(508);
+/* provided dependency */ var X3DCoreContext_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -109736,7 +109821,7 @@ Object .assign (X3DCoreContext .prototype,
 const X3DCoreContext_default_ = X3DCoreContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Core/X3DCoreContext", X3DCoreContext_default_);
+x_ite_Namespace .add ("X3DCoreContext", "x_ite/Browser/Core/X3DCoreContext", X3DCoreContext_default_);
 /* harmony default export */ const Core_X3DCoreContext = (X3DCoreContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/EnvironmentalEffects/X3DEnvironmentalEffectsContext.js
 /*******************************************************************************
@@ -109817,7 +109902,7 @@ Object .assign (X3DEnvironmentalEffectsContext .prototype,
 const X3DEnvironmentalEffectsContext_default_ = X3DEnvironmentalEffectsContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/EnvironmentalEffects/X3DEnvironmentalEffectsContext", X3DEnvironmentalEffectsContext_default_);
+x_ite_Namespace .add ("X3DEnvironmentalEffectsContext", "x_ite/Browser/EnvironmentalEffects/X3DEnvironmentalEffectsContext", X3DEnvironmentalEffectsContext_default_);
 /* harmony default export */ const EnvironmentalEffects_X3DEnvironmentalEffectsContext = (X3DEnvironmentalEffectsContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Geometry3D/BoxOptions.js
 /*******************************************************************************
@@ -109945,7 +110030,7 @@ Object .defineProperties (BoxOptions,
 const BoxOptions_default_ = BoxOptions;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Geometry3D/BoxOptions", BoxOptions_default_);
+x_ite_Namespace .add ("BoxOptions", "x_ite/Browser/Geometry3D/BoxOptions", BoxOptions_default_);
 /* harmony default export */ const Geometry3D_BoxOptions = (BoxOptions_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Geometry3D/ConeOptions.js
 /*******************************************************************************
@@ -110021,7 +110106,7 @@ Object .defineProperties (ConeOptions,
 const ConeOptions_default_ = ConeOptions;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Geometry3D/ConeOptions", ConeOptions_default_);
+x_ite_Namespace .add ("ConeOptions", "x_ite/Browser/Geometry3D/ConeOptions", ConeOptions_default_);
 /* harmony default export */ const Geometry3D_ConeOptions = (ConeOptions_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Geometry3D/CylinderOptions.js
 /*******************************************************************************
@@ -110097,7 +110182,7 @@ Object .defineProperties (CylinderOptions,
 const CylinderOptions_default_ = CylinderOptions;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Geometry3D/CylinderOptions", CylinderOptions_default_);
+x_ite_Namespace .add ("CylinderOptions", "x_ite/Browser/Geometry3D/CylinderOptions", CylinderOptions_default_);
 /* harmony default export */ const Geometry3D_CylinderOptions = (CylinderOptions_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Geometry3D/QuadSphereOptions.js
 /*******************************************************************************
@@ -110389,7 +110474,7 @@ Object .defineProperties (QuadSphereOptions,
 const QuadSphereOptions_default_ = QuadSphereOptions;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Geometry3D/QuadSphereOptions", QuadSphereOptions_default_);
+x_ite_Namespace .add ("QuadSphereOptions", "x_ite/Browser/Geometry3D/QuadSphereOptions", QuadSphereOptions_default_);
 /* harmony default export */ const Geometry3D_QuadSphereOptions = (QuadSphereOptions_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Geometry3D/X3DGeometry3DContext.js
 /*******************************************************************************
@@ -110522,7 +110607,7 @@ function getOptionNode (key, OptionNode)
 const X3DGeometry3DContext_default_ = X3DGeometry3DContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Geometry3D/X3DGeometry3DContext", X3DGeometry3DContext_default_);
+x_ite_Namespace .add ("X3DGeometry3DContext", "x_ite/Browser/Geometry3D/X3DGeometry3DContext", X3DGeometry3DContext_default_);
 /* harmony default export */ const Geometry3D_X3DGeometry3DContext = (X3DGeometry3DContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Grouping/X3DGroupingContext.js
 /*******************************************************************************
@@ -110611,7 +110696,7 @@ Object .assign (X3DGroupingContext .prototype,
 const X3DGroupingContext_default_ = X3DGroupingContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Grouping/X3DGroupingContext", X3DGroupingContext_default_);
+x_ite_Namespace .add ("X3DGroupingContext", "x_ite/Browser/Grouping/X3DGroupingContext", X3DGroupingContext_default_);
 /* harmony default export */ const Grouping_X3DGroupingContext = (X3DGroupingContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Layering/X3DLayeringContext.js
 /*******************************************************************************
@@ -110686,7 +110771,7 @@ Object .assign (X3DLayeringContext .prototype,
 const X3DLayeringContext_default_ = X3DLayeringContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Layering/X3DLayeringContext", X3DLayeringContext_default_);
+x_ite_Namespace .add ("X3DLayeringContext", "x_ite/Browser/Layering/X3DLayeringContext", X3DLayeringContext_default_);
 /* harmony default export */ const Layering_X3DLayeringContext = (X3DLayeringContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Lighting/X3DLightingContext.js
 /*******************************************************************************
@@ -110796,7 +110881,7 @@ Object .assign (X3DLightingContext .prototype,
 const X3DLightingContext_default_ = X3DLightingContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Lighting/X3DLightingContext", X3DLightingContext_default_);
+x_ite_Namespace .add ("X3DLightingContext", "x_ite/Browser/Lighting/X3DLightingContext", X3DLightingContext_default_);
 /* harmony default export */ const Lighting_X3DLightingContext = (X3DLightingContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/X3DViewer.js
 /*******************************************************************************
@@ -111005,11 +111090,11 @@ function tbProjectToSphere (r, x, y)
 const X3DViewer_default_ = X3DViewer;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Navigation/X3DViewer", X3DViewer_default_);
+x_ite_Namespace .add ("X3DViewer", "x_ite/Browser/Navigation/X3DViewer", X3DViewer_default_);
 /* harmony default export */ const Navigation_X3DViewer = (X3DViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/ExamineViewer.js
-/* provided dependency */ var jquery_mousewheel = __webpack_require__(993);
-/* provided dependency */ var ExamineViewer_$ = __webpack_require__(508);
+/* provided dependency */ var jquery_mousewheel = __webpack_require__(716);
+/* provided dependency */ var ExamineViewer_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -111878,11 +111963,11 @@ Object .defineProperties (ExamineViewer,
 const ExamineViewer_default_ = ExamineViewer;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Navigation/ExamineViewer", ExamineViewer_default_);
+x_ite_Namespace .add ("ExamineViewer", "x_ite/Browser/Navigation/ExamineViewer", ExamineViewer_default_);
 /* harmony default export */ const Navigation_ExamineViewer = (ExamineViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/X3DFlyViewer.js
-/* provided dependency */ var X3DFlyViewer_jquery_mousewheel = __webpack_require__(993);
-/* provided dependency */ var X3DFlyViewer_$ = __webpack_require__(508);
+/* provided dependency */ var X3DFlyViewer_jquery_mousewheel = __webpack_require__(716);
+/* provided dependency */ var X3DFlyViewer_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -112644,7 +112729,7 @@ Object .assign (Object .setPrototypeOf (X3DFlyViewer .prototype, Navigation_X3DV
 const X3DFlyViewer_default_ = X3DFlyViewer;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Navigation/X3DFlyViewer", X3DFlyViewer_default_);
+x_ite_Namespace .add ("X3DFlyViewer", "x_ite/Browser/Navigation/X3DFlyViewer", X3DFlyViewer_default_);
 /* harmony default export */ const Navigation_X3DFlyViewer = (X3DFlyViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/WalkViewer.js
 /*******************************************************************************
@@ -112779,7 +112864,7 @@ Object .defineProperties (WalkViewer,
 const WalkViewer_default_ = WalkViewer;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Navigation/WalkViewer", WalkViewer_default_);
+x_ite_Namespace .add ("WalkViewer", "x_ite/Browser/Navigation/WalkViewer", WalkViewer_default_);
 /* harmony default export */ const Navigation_WalkViewer = (WalkViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/FlyViewer.js
 /*******************************************************************************
@@ -112883,11 +112968,11 @@ Object .defineProperties (FlyViewer,
 const FlyViewer_default_ = FlyViewer;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Navigation/FlyViewer", FlyViewer_default_);
+x_ite_Namespace .add ("FlyViewer", "x_ite/Browser/Navigation/FlyViewer", FlyViewer_default_);
 /* harmony default export */ const Navigation_FlyViewer = (FlyViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/PlaneViewer.js
-/* provided dependency */ var PlaneViewer_jquery_mousewheel = __webpack_require__(993);
-/* provided dependency */ var PlaneViewer_$ = __webpack_require__(508);
+/* provided dependency */ var PlaneViewer_jquery_mousewheel = __webpack_require__(716);
+/* provided dependency */ var PlaneViewer_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -113133,7 +113218,7 @@ Object .defineProperties (PlaneViewer,
 const PlaneViewer_default_ = PlaneViewer;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Navigation/PlaneViewer", PlaneViewer_default_);
+x_ite_Namespace .add ("PlaneViewer", "x_ite/Browser/Navigation/PlaneViewer", PlaneViewer_default_);
 /* harmony default export */ const Navigation_PlaneViewer = (PlaneViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/NoneViewer.js
 /*******************************************************************************
@@ -113215,11 +113300,11 @@ Object .defineProperties (NoneViewer,
 const NoneViewer_default_ = NoneViewer;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Navigation/NoneViewer", NoneViewer_default_);
+x_ite_Namespace .add ("NoneViewer", "x_ite/Browser/Navigation/NoneViewer", NoneViewer_default_);
 /* harmony default export */ const Navigation_NoneViewer = (NoneViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/LookAtViewer.js
-/* provided dependency */ var LookAtViewer_jquery_mousewheel = __webpack_require__(993);
-/* provided dependency */ var LookAtViewer_$ = __webpack_require__(508);
+/* provided dependency */ var LookAtViewer_jquery_mousewheel = __webpack_require__(716);
+/* provided dependency */ var LookAtViewer_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -113741,7 +113826,7 @@ Object .defineProperties (LookAtViewer,
 const LookAtViewer_default_ = LookAtViewer;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Navigation/LookAtViewer", LookAtViewer_default_);
+x_ite_Namespace .add ("LookAtViewer", "x_ite/Browser/Navigation/LookAtViewer", LookAtViewer_default_);
 /* harmony default export */ const Navigation_LookAtViewer = (LookAtViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/X3DNavigationContext.js
 /*******************************************************************************
@@ -113986,7 +114071,7 @@ Object .assign (X3DNavigationContext .prototype,
 const X3DNavigationContext_default_ = X3DNavigationContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Navigation/X3DNavigationContext", X3DNavigationContext_default_);
+x_ite_Namespace .add ("X3DNavigationContext", "x_ite/Browser/Navigation/X3DNavigationContext", X3DNavigationContext_default_);
 /* harmony default export */ const Navigation_X3DNavigationContext = (X3DNavigationContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Networking/X3DNetworkingContext.js
 /*******************************************************************************
@@ -114218,7 +114303,7 @@ Object .assign (X3DNetworkingContext .prototype,
 const X3DNetworkingContext_default_ = X3DNetworkingContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Networking/X3DNetworkingContext", X3DNetworkingContext_default_);
+x_ite_Namespace .add ("X3DNetworkingContext", "x_ite/Browser/Networking/X3DNetworkingContext", X3DNetworkingContext_default_);
 /* harmony default export */ const Networking_X3DNetworkingContext = (X3DNetworkingContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Picking/X3DPickingContext.js
 /*******************************************************************************
@@ -114355,11 +114440,11 @@ Object .assign (X3DPickingContext .prototype,
 const X3DPickingContext_default_ = X3DPickingContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Picking/X3DPickingContext", X3DPickingContext_default_);
+x_ite_Namespace .add ("X3DPickingContext", "x_ite/Browser/Picking/X3DPickingContext", X3DPickingContext_default_);
 /* harmony default export */ const Picking_X3DPickingContext = (X3DPickingContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/PointingDeviceSensor/PointingDevice.js
-/* provided dependency */ var PointingDevice_jquery_mousewheel = __webpack_require__(993);
-/* provided dependency */ var PointingDevice_$ = __webpack_require__(508);
+/* provided dependency */ var PointingDevice_jquery_mousewheel = __webpack_require__(716);
+/* provided dependency */ var PointingDevice_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -114641,7 +114726,7 @@ Object .defineProperties (PointingDevice,
 const PointingDevice_default_ = PointingDevice;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/PointingDeviceSensor/PointingDevice", PointingDevice_default_);
+x_ite_Namespace .add ("PointingDevice", "x_ite/Browser/PointingDeviceSensor/PointingDevice", PointingDevice_default_);
 /* harmony default export */ const PointingDeviceSensor_PointingDevice = (PointingDevice_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Rendering/PointingBuffer.js
 /*******************************************************************************
@@ -114835,7 +114920,7 @@ Object .assign (PointingBuffer .prototype,
 const PointingBuffer_default_ = PointingBuffer;
 ;
 
-x_ite_Namespace .set ("x_ite/Rendering/PointingBuffer", PointingBuffer_default_);
+x_ite_Namespace .add ("PointingBuffer", "x_ite/Rendering/PointingBuffer", PointingBuffer_default_);
 /* harmony default export */ const Rendering_PointingBuffer = (PointingBuffer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/PointingDeviceSensor/X3DPointingDeviceSensorContext.js
 /*******************************************************************************
@@ -115235,7 +115320,7 @@ Object .assign (X3DPointingDeviceSensorContext .prototype,
 const X3DPointingDeviceSensorContext_default_ = X3DPointingDeviceSensorContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/PointingDeviceSensor/X3DPointingDeviceSensorContext", X3DPointingDeviceSensorContext_default_);
+x_ite_Namespace .add ("X3DPointingDeviceSensorContext", "x_ite/Browser/PointingDeviceSensor/X3DPointingDeviceSensorContext", X3DPointingDeviceSensorContext_default_);
 /* harmony default export */ const PointingDeviceSensor_X3DPointingDeviceSensorContext = (X3DPointingDeviceSensorContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Rendering/MultiSampleFrameBuffer.js
 /*******************************************************************************
@@ -115634,11 +115719,11 @@ const Fallback = {
 const MultiSampleFrameBuffer_default_ = MultiSampleFrameBuffer;
 ;
 
-x_ite_Namespace .set ("x_ite/Rendering/MultiSampleFrameBuffer", MultiSampleFrameBuffer_default_);
+x_ite_Namespace .add ("MultiSampleFrameBuffer", "x_ite/Rendering/MultiSampleFrameBuffer", MultiSampleFrameBuffer_default_);
 /* harmony default export */ const Rendering_MultiSampleFrameBuffer = (MultiSampleFrameBuffer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Rendering/X3DRenderingContext.js
-/* provided dependency */ var X3DRenderingContext_$ = __webpack_require__(508);
-/* provided dependency */ var ResizeSensor = __webpack_require__(489);
+/* provided dependency */ var X3DRenderingContext_$ = __webpack_require__(757);
+/* provided dependency */ var ResizeSensor = __webpack_require__(833);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -115911,7 +115996,7 @@ Object .assign (X3DRenderingContext .prototype,
 const X3DRenderingContext_default_ = X3DRenderingContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Rendering/X3DRenderingContext", X3DRenderingContext_default_);
+x_ite_Namespace .add ("X3DRenderingContext", "x_ite/Browser/Rendering/X3DRenderingContext", X3DRenderingContext_default_);
 /* harmony default export */ const Rendering_X3DRenderingContext = (X3DRenderingContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Scripting/X3DScriptingContext.js
 /*******************************************************************************
@@ -115983,7 +116068,7 @@ Object .assign (X3DScriptingContext .prototype,
 const X3DScriptingContext_default_ = X3DScriptingContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Scripting/X3DScriptingContext", X3DScriptingContext_default_);
+x_ite_Namespace .add ("X3DScriptingContext", "x_ite/Browser/Scripting/X3DScriptingContext", X3DScriptingContext_default_);
 /* harmony default export */ const Scripting_X3DScriptingContext = (X3DScriptingContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Shaders/X3DShadersContext.js
 /*******************************************************************************
@@ -116147,7 +116232,7 @@ Object .assign (X3DShadersContext .prototype,
          version = gl .getVersion ();
 
       const vertexShader = new Shaders_ShaderPart (this .getPrivateScene ());
-      vertexShader ._url .push (encodeURI (vs .startsWith ("data:") ? vs : "data:x-shader/x-vertex," + Shaders_Shaders .vertex [version] [vs]));
+      vertexShader ._url .push (encodeURI (vs .startsWith ("data:") ? vs : "data:x-shader/x-vertex," + Shaders_ShaderRegistry .vertex [version] [vs]));
       vertexShader .setPrivate (true);
       vertexShader .setName (name + "Vertex");
       vertexShader .setOptions (options);
@@ -116155,7 +116240,7 @@ Object .assign (X3DShadersContext .prototype,
 
       const fragmentShader = new Shaders_ShaderPart (this .getPrivateScene ());
       fragmentShader ._type  = "FRAGMENT";
-      fragmentShader ._url .push (encodeURI (fs .startsWith ("data:") ? fs : "data:x-shader/x-fragment," + Shaders_Shaders .fragment [version] [fs]));
+      fragmentShader ._url .push (encodeURI (fs .startsWith ("data:") ? fs : "data:x-shader/x-fragment," + Shaders_ShaderRegistry .fragment [version] [fs]));
       fragmentShader .setPrivate (true);
       fragmentShader .setName (name + "Fragment");
       fragmentShader .setOptions (options);
@@ -116178,7 +116263,7 @@ Object .assign (X3DShadersContext .prototype,
 const X3DShadersContext_default_ = X3DShadersContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Shaders/X3DShadersContext", X3DShadersContext_default_);
+x_ite_Namespace .add ("X3DShadersContext", "x_ite/Browser/Shaders/X3DShadersContext", X3DShadersContext_default_);
 /* harmony default export */ const Shaders_X3DShadersContext = (X3DShadersContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Shape/X3DShapeContext.js
 /*******************************************************************************
@@ -116392,7 +116477,7 @@ Object .assign (X3DShapeContext .prototype,
 const X3DShapeContext_default_ = X3DShapeContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Shape/X3DShapeContext", X3DShapeContext_default_);
+x_ite_Namespace .add ("X3DShapeContext", "x_ite/Browser/Shape/X3DShapeContext", X3DShapeContext_default_);
 /* harmony default export */ const Shape_X3DShapeContext = (X3DShapeContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Sound/X3DSoundContext.js
 /*******************************************************************************
@@ -116454,7 +116539,7 @@ function X3DSoundContext ()
 const X3DSoundContext_default_ = X3DSoundContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Sound/X3DSoundContext", X3DSoundContext_default_);
+x_ite_Namespace .add ("X3DSoundContext", "x_ite/Browser/Sound/X3DSoundContext", X3DSoundContext_default_);
 /* harmony default export */ const Sound_X3DSoundContext = (X3DSoundContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Texturing/X3DTexturingContext.js
 /*******************************************************************************
@@ -116799,7 +116884,7 @@ Object .assign (X3DTexturingContext .prototype,
 const X3DTexturingContext_default_ = X3DTexturingContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Texturing/X3DTexturingContext", X3DTexturingContext_default_);
+x_ite_Namespace .add ("X3DTexturingContext", "x_ite/Browser/Texturing/X3DTexturingContext", X3DTexturingContext_default_);
 /* harmony default export */ const Texturing_X3DTexturingContext = (X3DTexturingContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Time/X3DTimeContext.js
 /*******************************************************************************
@@ -116912,7 +116997,7 @@ Object .assign (X3DTimeContext .prototype,
 const X3DTimeContext_default_ = X3DTimeContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/Time/X3DTimeContext", X3DTimeContext_default_);
+x_ite_Namespace .add ("X3DTimeContext", "x_ite/Browser/Time/X3DTimeContext", X3DTimeContext_default_);
 /* harmony default export */ const Time_X3DTimeContext = (X3DTimeContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Routing/X3DRoutingContext.js
 /*******************************************************************************
@@ -117033,7 +117118,7 @@ Object .assign (X3DRoutingContext .prototype,
 const X3DRoutingContext_default_ = X3DRoutingContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Routing/X3DRoutingContext", X3DRoutingContext_default_);
+x_ite_Namespace .add ("X3DRoutingContext", "x_ite/Routing/X3DRoutingContext", X3DRoutingContext_default_);
 /* harmony default export */ const Routing_X3DRoutingContext = (X3DRoutingContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/AbstractNodesArray.js
 /*******************************************************************************
@@ -117116,7 +117201,7 @@ Object .defineProperties (AbstractNodesArray,
 const AbstractNodesArray_default_ = AbstractNodesArray;
 ;
 
-x_ite_Namespace .set ("x_ite/Configuration/AbstractNodesArray", AbstractNodesArray_default_);
+x_ite_Namespace .add ("AbstractNodesArray", "x_ite/Configuration/AbstractNodesArray", AbstractNodesArray_default_);
 /* harmony default export */ const Configuration_AbstractNodesArray = (AbstractNodesArray_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/AbstractNodes.js
 /*******************************************************************************
@@ -117171,7 +117256,7 @@ x_ite_Namespace .set ("x_ite/Configuration/AbstractNodesArray", AbstractNodesArr
 const AbstractNodes_default_ = new Configuration_AbstractNodesArray ();
 ;
 
-x_ite_Namespace .set ("x_ite/Configuration/AbstractNodes", AbstractNodes_default_);
+x_ite_Namespace .add ("AbstractNodes", "x_ite/Configuration/AbstractNodes", AbstractNodes_default_);
 /* harmony default export */ const AbstractNodes = (AbstractNodes_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/ConcreteNodesArray.js
 /*******************************************************************************
@@ -117263,7 +117348,7 @@ Object .defineProperties (ConcreteNodesArray,
 const ConcreteNodesArray_default_ = ConcreteNodesArray;
 ;
 
-x_ite_Namespace .set ("x_ite/Configuration/ConcreteNodesArray", ConcreteNodesArray_default_);
+x_ite_Namespace .add ("ConcreteNodesArray", "x_ite/Configuration/ConcreteNodesArray", ConcreteNodesArray_default_);
 /* harmony default export */ const Configuration_ConcreteNodesArray = (ConcreteNodesArray_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/ConcreteNodes.js
 /*******************************************************************************
@@ -117318,7 +117403,7 @@ x_ite_Namespace .set ("x_ite/Configuration/ConcreteNodesArray", ConcreteNodesArr
 const ConcreteNodes_default_ = new Configuration_ConcreteNodesArray ();
 ;
 
-x_ite_Namespace .set ("x_ite/Configuration/ConcreteNodes", ConcreteNodes_default_);
+x_ite_Namespace .add ("ConcreteNodes", "x_ite/Configuration/ConcreteNodes", ConcreteNodes_default_);
 /* harmony default export */ const ConcreteNodes = (ConcreteNodes_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/X3DBrowserContext.js
 /*******************************************************************************
@@ -117759,7 +117844,7 @@ Object .assign (X3DBrowserContext,
 const X3DBrowserContext_default_ = X3DBrowserContext;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/X3DBrowserContext", X3DBrowserContext_default_);
+x_ite_Namespace .add ("X3DBrowserContext", "x_ite/Browser/X3DBrowserContext", X3DBrowserContext_default_);
 /* harmony default export */ const Browser_X3DBrowserContext = (X3DBrowserContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components.js
 /*******************************************************************************
@@ -117852,7 +117937,7 @@ Components .add (Navigation);
 Components .add (Networking);
 Components .add (PointingDeviceSensor);
 Components .add (Rendering);
-Components .add (Components_Shaders);
+Components .add (Shaders);
 Components .add (Components_Shape);
 Components .add (Components_Sound);
 Components .add (Texturing);
@@ -117863,10 +117948,10 @@ external = true;
 const Components_default_ = Components;
 ;
 
-x_ite_Namespace .set ("x_ite/Components", Components_default_);
+x_ite_Namespace .add ("Components", "x_ite/Components", Components_default_);
 /* harmony default export */ const x_ite_Components = ((/* unused pure expression or super */ null && (Components_default_)));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/DOMIntegration.js
-/* provided dependency */ var DOMIntegration_$ = __webpack_require__(508);
+/* provided dependency */ var DOMIntegration_$ = __webpack_require__(757);
 /*******************************************************************************
  * MIT License
  *
@@ -118252,98 +118337,8 @@ class DOMIntegration
 const DOMIntegration_default_ = DOMIntegration;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/DOMIntegration", DOMIntegration_default_);
+x_ite_Namespace .add ("DOMIntegration", "x_ite/Browser/DOMIntegration", DOMIntegration_default_);
 /* harmony default export */ const Browser_DOMIntegration = (DOMIntegration_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Browser/Legacy.js
-/* provided dependency */ var Legacy_$ = __webpack_require__(508);
-/*******************************************************************************
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
- *
- * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
- *
- * The copyright notice above does not evidence any actual of intended
- * publication of such source code, and is an unpublished work by create3000.
- * This material contains CONFIDENTIAL INFORMATION that is the property of
- * create3000.
- *
- * No permission is granted to copy, distribute, or create derivative works from
- * the contents of this software, in whole or in part, without the prior written
- * permission of create3000.
- *
- * NON-MILITARY USE ONLY
- *
- * All create3000 software are effectively free software with a non-military use
- * restriction. It is free. Well commented source is provided. You may reuse the
- * source in any way you please with the exception anything that uses it must be
- * marked to indicate is contains 'non-military use only' components.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
- *
- * This file is part of the X_ITE Project.
- *
- * X_ITE is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License version 3 only, as published by the
- * Free Software Foundation.
- *
- * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
- * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
- * details (a copy is included in the LICENSE file that accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version 3
- * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
- * copy of the GPLv3 License.
- *
- * For Silvio, Joy and Adi.
- *
- ******************************************************************************/
-
-const Legacy =
-{
-   elements (elements, X3DBrowser)
-   {
-      if (elements .length)
-      {
-         console .warn ("Use of <X3DCanvas> element is depreciated, please use <x3d-canvas> element instead. See https://create3000.github.io/x_ite/#embedding-x_ite-within-a-web-page.");
-
-         Legacy_$.map (elements, element => new X3DBrowser (element));
-      }
-   },
-   browser (browser)
-   {
-      const element = browser .getElement ();
-
-      if (element .prop ("nodeName") .toUpperCase () !== "X3DCANVAS")
-         return;
-
-      if (element .attr ("src"))
-         browser .attributeChangedCallback ("src", undefined, element .attr ("src"));
-      else if (element .attr ("url"))
-         browser .attributeChangedCallback ("url", undefined, element .attr ("url"));
-
-      // Make element focusable.
-      element .attr ("tabindex", element .attr ("tabindex") ?? 0);
-   },
-   error (elements, error)
-   {
-      console .error (error);
-
-      // <X3DCanvas>
-      elements .children (".x_ite-private-browser") .hide ();
-      elements .children (":not(.x_ite-private-browser)") .show ();
-   },
-};
-
-const Legacy_default_ = Legacy;
-;
-
-x_ite_Namespace .set ("x_ite/Browser/Legacy", Legacy_default_);
-/* harmony default export */ const Browser_Legacy = (Legacy_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/ProfileInfo.js
 /*******************************************************************************
  *
@@ -118447,7 +118442,7 @@ Object .defineProperties (ProfileInfo .prototype,
 const ProfileInfo_default_ = ProfileInfo;
 ;
 
-x_ite_Namespace .set ("x_ite/Configuration/ProfileInfo", ProfileInfo_default_);
+x_ite_Namespace .add ("ProfileInfo", "x_ite/Configuration/ProfileInfo", ProfileInfo_default_);
 /* harmony default export */ const Configuration_ProfileInfo = (ProfileInfo_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/ProfileInfoArray.js
 /*******************************************************************************
@@ -118529,7 +118524,7 @@ Object .defineProperties (ProfileInfoArray,
 const ProfileInfoArray_default_ = ProfileInfoArray;
 ;
 
-x_ite_Namespace .set ("x_ite/Configuration/ProfileInfoArray", ProfileInfoArray_default_);
+x_ite_Namespace .add ("ProfileInfoArray", "x_ite/Configuration/ProfileInfoArray", ProfileInfoArray_default_);
 /* harmony default export */ const Configuration_ProfileInfoArray = (ProfileInfoArray_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/SupportedComponents.js
 /*******************************************************************************
@@ -118841,7 +118836,7 @@ SupportedComponents .add ("X_ITE",
 const SupportedComponents_default_ = SupportedComponents;
 ;
 
-x_ite_Namespace .set ("x_ite/Configuration/SupportedComponents", SupportedComponents_default_);
+x_ite_Namespace .add ("SupportedComponents", "x_ite/Configuration/SupportedComponents", SupportedComponents_default_);
 /* harmony default export */ const Configuration_SupportedComponents = (SupportedComponents_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/SupportedProfiles.js
 /*******************************************************************************
@@ -119091,10 +119086,10 @@ SupportedProfiles .add ("MPEG-4",
 const SupportedProfiles_default_ = SupportedProfiles;
 ;
 
-x_ite_Namespace .set ("x_ite/Configuration/SupportedProfiles", SupportedProfiles_default_);
+x_ite_Namespace .add ("SupportedProfiles", "x_ite/Configuration/SupportedProfiles", SupportedProfiles_default_);
 /* harmony default export */ const Configuration_SupportedProfiles = (SupportedProfiles_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/X3DBrowser.js
-/* provided dependency */ var X3DBrowser_$ = __webpack_require__(508);
+/* provided dependency */ var X3DBrowser_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -119166,6 +119161,7 @@ x_ite_Namespace .set ("x_ite/Configuration/SupportedProfiles", SupportedProfiles
 
 
 
+
 const
    _DOMIntegration      = Symbol (),
    _supportedProfiles   = Symbol (),
@@ -119212,7 +119208,8 @@ Object .assign (Object .setPrototypeOf (X3DBrowser .prototype, Browser_X3DBrowse
    {
       Browser_X3DBrowserContext .prototype .initialize .call (this);
 
-      this .replaceWorld (this .createScene ()) .catch (Function .prototype);
+      this .replaceWorld (this .createScene ())
+         .catch (DEVELOPMENT ? error => console .error (error) : Function .prototype);
 
       this [_DOMIntegration] = new Browser_DOMIntegration (this);
 
@@ -120036,7 +120033,7 @@ Object .assign (Object .setPrototypeOf (X3DBrowser .prototype, Browser_X3DBrowse
    },
    print (... args)
    {
-      const string = args .join ("");
+      const string = args .join (" ");
 
       console .log (string);
 
@@ -120045,7 +120042,7 @@ Object .assign (Object .setPrototypeOf (X3DBrowser .prototype, Browser_X3DBrowse
    },
    println (... args)
    {
-      const string = args .join ("");
+      const string = args .join (" ");
 
       console .log (string);
 
@@ -120169,339 +120166,10 @@ Base_X3DConstants .addNode (X3DBrowser);
 const X3DBrowser_default_ = X3DBrowser;
 ;
 
-x_ite_Namespace .set ("x_ite/Browser/X3DBrowser", X3DBrowser_default_);
+x_ite_Namespace .add ("X3DBrowser", "x_ite/Browser/X3DBrowser", X3DBrowser_default_);
 /* harmony default export */ const Browser_X3DBrowser = (X3DBrowser_default_);
-;// CONCATENATED MODULE: ./src/lib/jquery.js
-/* provided dependency */ var jquery_$ = __webpack_require__(508);
-/* provided dependency */ var pako = __webpack_require__(258);
-Object .assign (jquery_$,
-{
-   decodeText (input)
-   {
-      if (typeof input === "string")
-         return input;
-
-      return new TextDecoder () .decode (input);
-   },
-   ungzip (arrayBuffer)
-   {
-      try
-      {
-         return pako .ungzip (arrayBuffer, { to: "raw" }) .buffer;
-      }
-      catch (exception)
-      {
-         return arrayBuffer;
-      }
-   },
-   toLowerCaseFirst (string)
-   {
-      return string [0] .toLowerCase () + string .slice (1);
-   },
-   try (callback)
-   {
-      try { return callback () } catch { }
-   },
-   enum (object, property, defaultValue)
-   {
-      return object .hasOwnProperty (property) ? object [property] : defaultValue;
-   },
-});
-
-// // decorator: @iffe fn (... args) { return function () { }; }
-// function iife (target, key, descriptor)
-// {
-//    descriptor .value = descriptor .value ();
-
-//    return descriptor;
-// }
-
-Object .assign (jquery_$.fn,
-{
-   isInViewport ()
-   {
-      const
-         $this          = jquery_$(this),
-         $window        = jquery_$(window),
-         elementTop     = $this .offset () .top,
-         elementBottom  = elementTop + $this .outerHeight (),
-         viewportTop    = $window .scrollTop (),
-         viewportBottom = viewportTop + $window .height ();
-
-      return elementBottom > viewportTop && elementTop < viewportBottom;
-   },
-});
-
-const jquery_default_ = jquery_$;
-;
-
-x_ite_Namespace .set ("lib/jquery", jquery_default_);
-/* harmony default export */ const jquery = ((/* unused pure expression or super */ null && (jquery_default_)));
-;// CONCATENATED MODULE: ./src/lib/libtess.js
-/* provided dependency */ var libtess_libtess = __webpack_require__(366);
-const libtess_default_ = libtess_libtess;
-;
-
-x_ite_Namespace .set ("lib/libtess", libtess_default_);
-/* harmony default export */ const lib_libtess = ((/* unused pure expression or super */ null && (libtess_default_)));
-;// CONCATENATED MODULE: ./src/x_ite/X3D.js
-/* provided dependency */ var X3D_$ = __webpack_require__(508);
-/*******************************************************************************
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
- *
- * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
- *
- * The copyright notice above does not evidence any actual of intended
- * publication of such source code, and is an unpublished work by create3000.
- * This material contains CONFIDENTIAL INFORMATION that is the property of
- * create3000.
- *
- * No permission is granted to copy, distribute, or create derivative works from
- * the contents of this software, in whole or in part, without the prior written
- * permission of create3000.
- *
- * NON-MILITARY USE ONLY
- *
- * All create3000 software are effectively free software with a non-military use
- * restriction. It is free. Well commented source is provided. You may reuse the
- * source in any way you please with the exception anything that uses it must be
- * marked to indicate is contains 'non-military use only' components.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
- *
- * This file is part of the X_ITE Project.
- *
- * X_ITE is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License version 3 only, as published by the
- * Free Software Foundation.
- *
- * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
- * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
- * details (a copy is included in the LICENSE file that accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version 3
- * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
- * copy of the GPLv3 License.
- *
- * For Silvio, Joy and Adi.
- *
- ******************************************************************************/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const
-   callbacks = X3D_$.Deferred (),
-   fallbacks = X3D_$.Deferred ();
-
-let initialized = false;
-
-/**
- *
- * @param {function?} callback
- * @param {function?} fallback
- * @returns {Promise<void>} Promise
- */
-function X3D (callback, fallback)
-{
-   return new Promise ((resolve, reject) =>
-   {
-      if (typeof callback === "function")
-         callbacks .done (callback);
-
-      if (typeof fallback === "function")
-         fallbacks .done (fallback);
-
-      callbacks .done (resolve);
-      fallbacks .done (reject);
-
-      if (initialized)
-         return;
-
-      initialized = true;
-
-      X3D_$(() =>
-      {
-         try
-         {
-            Browser_Legacy .elements (X3D_$("X3DCanvas"), Browser_X3DBrowser);
-
-            if ([... X3D_$("x3d-canvas")] .every (canvas => canvas .browser))
-               callbacks .resolve ();
-            else
-               fallbacks .resolve (new Error ("Couldn't create browser."));
-         }
-         catch (error)
-         {
-            Browser_Legacy .error (X3D_$("X3DCanvas"), error);
-            fallbacks .resolve (error);
-         }
-      });
-   });
-}
-
-Object .assign (X3D,
-{
-   require (id)
-   {
-      if (!x_ite_Namespace .has (id))
-         throw new Error (`Unknown module '${id}'.`);
-
-      return x_ite_Namespace .get (id);
-   },
-   noConflict: (() =>
-   {
-      const
-         _had = window .hasOwnProperty ("X3D"),
-         _X3D = window .X3D;
-
-      return function ()
-      {
-         if (window .X3D === X3D)
-         {
-            if (_had)
-               window .X3D = _X3D;
-            else
-               delete window .X3D;
-         }
-
-         return X3D;
-      };
-   })(),
-   getBrowser (element)
-   {
-      return X3D_$(element || "x3d-canvas, X3DCanvas") .prop ("browser");
-   },
-   createBrowser (url, parameter)
-   {
-      const element = document .createElement ("x3d-canvas");
-
-      if (arguments .length)
-         element .browser .loadURL (url, parameter);
-
-      return element;
-   },
-});
-
-Object .assign (X3D,
-{
-   X3DConstants:                Base_X3DConstants,
-   X3DBrowser:                  Browser_X3DBrowser,
-   X3DExecutionContext:         Execution_X3DExecutionContext,
-   X3DScene:                    Execution_X3DScene,
-   ComponentInfo:               Configuration_ComponentInfo,
-   ComponentInfoArray:          Configuration_ComponentInfoArray,
-   ProfileInfo:                 Configuration_ProfileInfo,
-   ProfileInfoArray:            Configuration_ProfileInfoArray,
-   ConcreteNodesArray:          Configuration_ConcreteNodesArray,          // non-standard
-   AbstractNodesArray:          Configuration_AbstractNodesArray,          // non-standard
-   UnitInfo:                    Configuration_UnitInfo,
-   UnitInfoArray:               Configuration_UnitInfoArray,
-   NamedNodesArray:             Execution_NamedNodesArray,             // non-standard
-   ImportedNodesArray:          Execution_ImportedNodesArray,          // non-standard
-   X3DImportedNode:             Execution_X3DImportedNode,             // non-standard
-   ExportedNodesArray:          Execution_ExportedNodesArray,          // non-standard
-   X3DExportedNode:             Execution_X3DExportedNode,             // non-standard
-   ExternProtoDeclarationArray: Prototype_ExternProtoDeclarationArray,
-   ProtoDeclarationArray:       Prototype_ProtoDeclarationArray,
-   X3DExternProtoDeclaration:   Prototype_X3DExternProtoDeclaration,
-   X3DProtoDeclaration:         Prototype_X3DProtoDeclaration,
-   X3DProtoDeclarationNode:     Prototype_X3DProtoDeclarationNode,     // non-standard
-   RouteArray:                  Routing_RouteArray,
-   X3DRoute:                    Routing_X3DRoute,
-
-   X3DBaseNode:                 Base_X3DBaseNode,                 // non-standard
-
-   X3DFieldDefinition:          Base_X3DFieldDefinition,
-   FieldDefinitionArray:        Base_FieldDefinitionArray,
-
-   X3DField:                    Base_X3DField,
-   X3DArrayField:               Base_X3DArrayField,
-
-   SFColor:                     x_ite_Fields .SFColor,
-   SFColorRGBA:                 x_ite_Fields .SFColorRGBA,
-   SFImage:                     x_ite_Fields .SFImage,
-   SFMatrix3d:                  x_ite_Fields .SFMatrix3d,
-   SFMatrix3f:                  x_ite_Fields .SFMatrix3f,
-   SFMatrix4d:                  x_ite_Fields .SFMatrix4d,
-   SFMatrix4f:                  x_ite_Fields .SFMatrix4f,
-   SFNode:                      x_ite_Fields .SFNode,
-   SFRotation:                  x_ite_Fields .SFRotation,
-   SFVec2d:                     x_ite_Fields .SFVec2d,
-   SFVec2f:                     x_ite_Fields .SFVec2f,
-   SFVec3d:                     x_ite_Fields .SFVec3d,
-   SFVec3f:                     x_ite_Fields .SFVec3f,
-   SFVec4d:                     x_ite_Fields .SFVec4d,
-   SFVec4f:                     x_ite_Fields .SFVec4f,
-   VrmlMatrix:                  x_ite_Fields .VrmlMatrix,
-
-   MFBool:                      x_ite_Fields .MFBool,
-   MFColor:                     x_ite_Fields .MFColor,
-   MFColorRGBA:                 x_ite_Fields .MFColorRGBA,
-   MFDouble:                    x_ite_Fields .MFDouble,
-   MFFloat:                     x_ite_Fields .MFFloat,
-   MFImage:                     x_ite_Fields .MFImage,
-   MFInt32:                     x_ite_Fields .MFInt32,
-   MFMatrix3d:                  x_ite_Fields .MFMatrix3d,
-   MFMatrix3f:                  x_ite_Fields .MFMatrix3f,
-   MFMatrix4d:                  x_ite_Fields .MFMatrix4d,
-   MFMatrix4f:                  x_ite_Fields .MFMatrix4f,
-   MFNode:                      x_ite_Fields .MFNode,
-   MFRotation:                  x_ite_Fields .MFRotation,
-   MFString:                    x_ite_Fields .MFString,
-   MFTime:                      x_ite_Fields .MFTime,
-   MFVec2d:                     x_ite_Fields .MFVec2d,
-   MFVec2f:                     x_ite_Fields .MFVec2f,
-   MFVec3d:                     x_ite_Fields .MFVec3d,
-   MFVec3f:                     x_ite_Fields .MFVec3f,
-   MFVec4d:                     x_ite_Fields .MFVec4d,
-   MFVec4f:                     x_ite_Fields .MFVec4f,
-});
-
-const X3D_default_ = X3D;
-;
-
-x_ite_Namespace .set ("x_ite/X3D", X3D_default_);
-/* harmony default export */ const x_ite_X3D = (X3D_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/X3DCanvasElement.js
-/* provided dependency */ var X3DCanvasElement_$ = __webpack_require__(508);
+/* provided dependency */ var X3DCanvasElement_$ = __webpack_require__(757);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -120630,8 +120298,336 @@ document .createElement ("X3DCanvas");
 const X3DCanvasElement_default_ = X3DCanvasElement;
 ;
 
-x_ite_Namespace .set ("x_ite/X3DCanvasElement", X3DCanvasElement_default_);
+x_ite_Namespace .add ("X3DCanvasElement", "x_ite/X3DCanvasElement", X3DCanvasElement_default_);
 /* harmony default export */ const x_ite_X3DCanvasElement = (X3DCanvasElement_default_);
+;// CONCATENATED MODULE: ./src/lib/jquery.js
+/* provided dependency */ var jquery_$ = __webpack_require__(757);
+/* provided dependency */ var pako = __webpack_require__(308);
+Object .assign (jquery_$,
+{
+   decodeText (input)
+   {
+      if (typeof input === "string")
+         return input;
+
+      return new TextDecoder () .decode (input);
+   },
+   ungzip (arrayBuffer)
+   {
+      try
+      {
+         return pako .ungzip (arrayBuffer, { to: "raw" }) .buffer;
+      }
+      catch (exception)
+      {
+         return arrayBuffer;
+      }
+   },
+   toLowerCaseFirst (string)
+   {
+      return string [0] .toLowerCase () + string .slice (1);
+   },
+   try (callback)
+   {
+      try { return callback () } catch { }
+   },
+   enum (object, property, defaultValue)
+   {
+      return object .hasOwnProperty (property) ? object [property] : defaultValue;
+   },
+});
+
+// // decorator: @iffe fn (... args) { return function () { }; }
+// function iife (target, key, descriptor)
+// {
+//    descriptor .value = descriptor .value ();
+
+//    return descriptor;
+// }
+
+Object .assign (jquery_$.fn,
+{
+   isInViewport ()
+   {
+      const
+         $this          = jquery_$(this),
+         $window        = jquery_$(window),
+         elementTop     = $this .offset () .top,
+         elementBottom  = elementTop + $this .outerHeight (),
+         viewportTop    = $window .scrollTop (),
+         viewportBottom = viewportTop + $window .height ();
+
+      return elementBottom > viewportTop && elementTop < viewportBottom;
+   },
+});
+
+const jquery_default_ = jquery_$;
+;
+
+x_ite_Namespace .add ("jquery", "lib/jquery", jquery_default_);
+/* harmony default export */ const jquery = ((/* unused pure expression or super */ null && (jquery_default_)));
+;// CONCATENATED MODULE: ./src/lib/libtess.js
+/* provided dependency */ var libtess_libtess = __webpack_require__(986);
+const libtess_default_ = libtess_libtess;
+;
+
+x_ite_Namespace .add ("libtess", "lib/libtess", libtess_default_);
+/* harmony default export */ const lib_libtess = ((/* unused pure expression or super */ null && (libtess_default_)));
+;// CONCATENATED MODULE: ./src/x_ite/X3D.js
+/* provided dependency */ var X3D_$ = __webpack_require__(757);
+/*******************************************************************************
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
+ *
+ * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * The copyright notice above does not evidence any actual of intended
+ * publication of such source code, and is an unpublished work by create3000.
+ * This material contains CONFIDENTIAL INFORMATION that is the property of
+ * create3000.
+ *
+ * No permission is granted to copy, distribute, or create derivative works from
+ * the contents of this software, in whole or in part, without the prior written
+ * permission of create3000.
+ *
+ * NON-MILITARY USE ONLY
+ *
+ * All create3000 software are effectively free software with a non-military use
+ * restriction. It is free. Well commented source is provided. You may reuse the
+ * source in any way you please with the exception anything that uses it must be
+ * marked to indicate is contains 'non-military use only' components.
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * This file is part of the X_ITE Project.
+ *
+ * X_ITE is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License version 3 only, as published by the
+ * Free Software Foundation.
+ *
+ * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
+ * details (a copy is included in the LICENSE file that accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version 3
+ * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
+ * copy of the GPLv3 License.
+ *
+ * For Silvio, Joy and Adi.
+ *
+ ******************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const
+   callbacks = X3D_$.Deferred (),
+   fallbacks = X3D_$.Deferred ();
+
+let initialized = false;
+
+/**
+ *
+ * @param {function?} callback
+ * @param {function?} fallback
+ * @returns {Promise<void>} Promise
+ */
+function X3D (callback, fallback)
+{
+   return new Promise ((resolve, reject) =>
+   {
+      if (typeof callback === "function")
+         callbacks .done (callback);
+
+      if (typeof fallback === "function")
+         fallbacks .done (fallback);
+
+      callbacks .done (resolve);
+      fallbacks .done (reject);
+
+      if (initialized)
+         return;
+
+      initialized = true;
+
+      X3D_$(() =>
+      {
+         try
+         {
+            Browser_Legacy .elements (X3D_$("X3DCanvas"), Browser_X3DBrowser);
+
+            if ([... X3D_$("x3d-canvas")] .every (canvas => canvas .browser))
+               callbacks .resolve ();
+            else
+               fallbacks .resolve (new Error ("Couldn't create browser."));
+         }
+         catch (error)
+         {
+            Browser_Legacy .error (X3D_$("X3DCanvas"), error);
+            fallbacks .resolve (error);
+         }
+      });
+   });
+}
+
+Object .assign (X3D, x_ite_Namespace, x_ite_Namespace .Fields,
+{
+   require (id)
+   {
+      if (!x_ite_Namespace .has (id))
+         throw new Error (`Unknown module '${id}'.`);
+
+      return x_ite_Namespace .get (id);
+   },
+   noConflict: (() =>
+   {
+      const
+         _had = window .hasOwnProperty ("X3D"),
+         _X3D = window .X3D;
+
+      return function ()
+      {
+         if (window .X3D === X3D)
+         {
+            if (_had)
+               window .X3D = _X3D;
+            else
+               delete window .X3D;
+         }
+
+         return X3D;
+      };
+   })(),
+   getBrowser (element)
+   {
+      return X3D_$(element || "x3d-canvas, X3DCanvas") .prop ("browser");
+   },
+   createBrowser (url, parameter)
+   {
+      const element = document .createElement ("x3d-canvas");
+
+      if (arguments .length)
+         element .browser .loadURL (url, parameter);
+
+      return element;
+   },
+});
+
+Object .assign (X3D,
+{
+   X3DConstants:                Base_X3DConstants,
+   X3DBrowser:                  Browser_X3DBrowser,
+   X3DExecutionContext:         Execution_X3DExecutionContext,
+   X3DScene:                    Execution_X3DScene,
+   ComponentInfo:               Configuration_ComponentInfo,
+   ComponentInfoArray:          Configuration_ComponentInfoArray,
+   ProfileInfo:                 Configuration_ProfileInfo,
+   ProfileInfoArray:            Configuration_ProfileInfoArray,
+   ConcreteNodesArray:          Configuration_ConcreteNodesArray,          // non-standard
+   AbstractNodesArray:          Configuration_AbstractNodesArray,          // non-standard
+   UnitInfo:                    Configuration_UnitInfo,
+   UnitInfoArray:               Configuration_UnitInfoArray,
+   NamedNodesArray:             Execution_NamedNodesArray,             // non-standard
+   ImportedNodesArray:          Execution_ImportedNodesArray,          // non-standard
+   X3DImportedNode:             Execution_X3DImportedNode,             // non-standard
+   ExportedNodesArray:          Execution_ExportedNodesArray,          // non-standard
+   X3DExportedNode:             Execution_X3DExportedNode,             // non-standard
+   ExternProtoDeclarationArray: Prototype_ExternProtoDeclarationArray,
+   ProtoDeclarationArray:       Prototype_ProtoDeclarationArray,
+   X3DExternProtoDeclaration:   Prototype_X3DExternProtoDeclaration,
+   X3DProtoDeclaration:         Prototype_X3DProtoDeclaration,
+   X3DProtoDeclarationNode:     Prototype_X3DProtoDeclarationNode,     // non-standard
+   RouteArray:                  Routing_RouteArray,
+   X3DRoute:                    Routing_X3DRoute,
+
+   X3DBaseNode:                 Base_X3DBaseNode,                 // non-standard
+
+   X3DFieldDefinition:          Base_X3DFieldDefinition,
+   FieldDefinitionArray:        Base_FieldDefinitionArray,
+
+   X3DField:                    Base_X3DField,
+   X3DArrayField:               Base_X3DArrayField,
+
+   SFColor:                     x_ite_Fields .SFColor,
+   SFColorRGBA:                 x_ite_Fields .SFColorRGBA,
+   SFImage:                     x_ite_Fields .SFImage,
+   SFMatrix3d:                  x_ite_Fields .SFMatrix3d,
+   SFMatrix3f:                  x_ite_Fields .SFMatrix3f,
+   SFMatrix4d:                  x_ite_Fields .SFMatrix4d,
+   SFMatrix4f:                  x_ite_Fields .SFMatrix4f,
+   SFNode:                      x_ite_Fields .SFNode,
+   SFRotation:                  x_ite_Fields .SFRotation,
+   SFVec2d:                     x_ite_Fields .SFVec2d,
+   SFVec2f:                     x_ite_Fields .SFVec2f,
+   SFVec3d:                     x_ite_Fields .SFVec3d,
+   SFVec3f:                     x_ite_Fields .SFVec3f,
+   SFVec4d:                     x_ite_Fields .SFVec4d,
+   SFVec4f:                     x_ite_Fields .SFVec4f,
+   VrmlMatrix:                  x_ite_Fields .VrmlMatrix,
+
+   MFBool:                      x_ite_Fields .MFBool,
+   MFColor:                     x_ite_Fields .MFColor,
+   MFColorRGBA:                 x_ite_Fields .MFColorRGBA,
+   MFDouble:                    x_ite_Fields .MFDouble,
+   MFFloat:                     x_ite_Fields .MFFloat,
+   MFImage:                     x_ite_Fields .MFImage,
+   MFInt32:                     x_ite_Fields .MFInt32,
+   MFMatrix3d:                  x_ite_Fields .MFMatrix3d,
+   MFMatrix3f:                  x_ite_Fields .MFMatrix3f,
+   MFMatrix4d:                  x_ite_Fields .MFMatrix4d,
+   MFMatrix4f:                  x_ite_Fields .MFMatrix4f,
+   MFNode:                      x_ite_Fields .MFNode,
+   MFRotation:                  x_ite_Fields .MFRotation,
+   MFString:                    x_ite_Fields .MFString,
+   MFTime:                      x_ite_Fields .MFTime,
+   MFVec2d:                     x_ite_Fields .MFVec2d,
+   MFVec2f:                     x_ite_Fields .MFVec2f,
+   MFVec3d:                     x_ite_Fields .MFVec3d,
+   MFVec3f:                     x_ite_Fields .MFVec3f,
+   MFVec4d:                     x_ite_Fields .MFVec4d,
+   MFVec4f:                     x_ite_Fields .MFVec4f,
+});
+
+/* harmony default export */ const x_ite_X3D = (X3D);
+
 ;// CONCATENATED MODULE: ./src/shim.js
 /*******************************************************************************
  *
@@ -120716,7 +120712,7 @@ x_ite_Namespace .set ("x_ite/X3DCanvasElement", X3DCanvasElement_default_);
 const shim_default_ = undefined;
 ;
 
-x_ite_Namespace .set ("shim", shim_default_);
+x_ite_Namespace .add ("shim", "shim", shim_default_);
 /* harmony default export */ const shim = ((/* unused pure expression or super */ null && (shim_default_)));
 ;// CONCATENATED MODULE: ./src/x_ite.js
 /*******************************************************************************
@@ -120772,7 +120768,7 @@ x_ite_Namespace .set ("shim", shim_default_);
 
 // Assign X3D to global namespace.
 
-window [Symbol .for ("X_ITE.X3D-8.11.16")] = x_ite_X3D;
+window [Symbol .for ("X_ITE.X3D-8.11.17")] = x_ite_X3D;
 
 customElements .define ("x3d-canvas", x_ite_X3DCanvasElement);
 
@@ -120781,7 +120777,7 @@ x_ite_X3D ();
 const x_ite_default_ = x_ite_X3D;
 ;
 
-x_ite_Namespace .set ("x_ite", x_ite_default_);
+x_ite_Namespace .add ("x_ite", "x_ite", x_ite_default_);
 /* harmony default export */ const x_ite = (x_ite_default_);
 })();
 
