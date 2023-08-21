@@ -33,7 +33,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;
     } else {}
 }(typeof window !== 'undefined' ? window : this, function () {
 
-    // Make sure it does not throw in a SSR (Server Side Rendering) situation
+    // Make sure it does not throw in a SSR (Server Side Rendering)  situation
     if (typeof window === "undefined") {
         return null;
     }
@@ -20551,7 +20551,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -20565,14 +20565,14 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
@@ -20585,7 +20585,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -20597,12 +20597,12 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /******/ 			}
 /******/ 		})();
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
@@ -92004,13 +92004,13 @@ const Colors1_glsl_default_ = /* glsl */ `vec4 SRGBtoLINEAR(const in vec4 srgbIn
 #if defined(MANUAL_SRGB)
 #if defined(SRGB_FAST_APPROXIMATION)
 vec3 linOut=pow(srgbIn.xyz,vec3(2.2));
-#else 
+#else
 vec3 bLess=step(vec3(0.04045),srgbIn.xyz);vec3 linOut=mix(srgbIn.xyz/vec3(12.92),pow((srgbIn.xyz+vec3(0.055))/vec3(1.055),vec3(2.4)),bLess);
-#endif 
+#endif
 return vec4(linOut,srgbIn.w);
-#else 
+#else
 return srgbIn;
-#endif 
+#endif
 }
 #if defined(MANUAL_SRGB)
 vec4 Gamma(const in vec4 color){return vec4(pow(color.rgb,vec3(1.0/2.2)),color.a);}
@@ -92279,7 +92279,7 @@ if(index==7)return texture2D(x3d_ShadowMap[7],shadowCoord).r;
 return 0.0;}float texture2DCompare(const in int index,const in vec2 texCoord,const in float compare){float shadowDepth=getShadowDepth(index,texCoord);return(1.0-step(1.0,shadowDepth))*step(shadowDepth,compare);}float texture2DShadowLerp(const in int index,const in vec2 texelSize,const in float shadowMapSize,const in vec2 texCoord,const in float compare){const vec2 offset=vec2(0.0,1.0);vec2 centroidTexCoord=floor(texCoord*shadowMapSize+0.5)/shadowMapSize;float lb=texture2DCompare(index,centroidTexCoord+texelSize*offset.xx,compare);float lt=texture2DCompare(index,centroidTexCoord+texelSize*offset.xy,compare);float rb=texture2DCompare(index,centroidTexCoord+texelSize*offset.yx,compare);float rt=texture2DCompare(index,centroidTexCoord+texelSize*offset.yy,compare);vec2 f=fract(texCoord*shadowMapSize+0.5);float a=mix(lb,lt,f.y);float b=mix(rb,rt,f.y);float c=mix(a,b,f.x);return c;}vec2 cubeToUVCompact(in vec3 v,const float texelSizeY){vec3 absV=abs(v);float scaleToCube=1.0/max(absV.x,max(absV.y,absV.z));absV*=scaleToCube;v*=scaleToCube*(1.0-2.0*texelSizeY);vec2 planar=v.xy;float almostATexel=1.5*texelSizeY;float almostOne=1.0-almostATexel;if(absV.z>=almostOne){if(v.z>0.0)planar.x=4.0-v.x;}else if(absV.x>=almostOne){float signX=sign(v.x);planar.x=v.z*signX+2.0*signX;}else if(absV.y>=almostOne){float signY=sign(v.y);planar.x=(v.x+0.5+signY)*2.0;planar.y=v.z*signY-2.0;}return vec2(0.125,0.25)*planar+vec2(0.375,0.75);}mat4 getPointLightRotations(const in vec3 vector){mat4 rotations[6];rotations[0]=mat4(0,0,1,0,0,1,0,0,-1,0,0,0,0,0,0,1);rotations[1]=mat4(0,0,-1,0,0,1,0,0,1,0,0,0,0,0,0,1);rotations[2]=mat4(-1,0,0,0,0,1,0,0,0,0,-1,0,0,0,0,1);rotations[3]=mat4(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);rotations[4]=mat4(1,0,0,0,0,0,1,0,0,-1,0,0,0,0,0,1);rotations[5]=mat4(1,0,0,0,0,0,-1,0,0,1,0,0,0,0,0,1);vec3 a=abs(vector.xyz);if(a.x>a.y){if(a.x>a.z)return vector.x>0.0?rotations[1]:rotations[0];else return vector.z>0.0?rotations[2]:rotations[3];}else{if(a.y>a.z)return vector.y>0.0?rotations[5]:rotations[4];else return vector.z>0.0?rotations[2]:rotations[3];}return rotations[3];}float getShadowIntensity(const in int index,const in x3d_LightSourceParameters light){if(light.type==x3d_PointLight){const mat4 biasMatrix=mat4(0.5,0.0,0.0,0.0,0.0,0.5,0.0,0.0,0.0,0.0,0.5,0.0,0.5,0.5,0.5,1.0);const mat4 projectionMatrix=mat4(1.0,0.0,0.0,0.0,0.0,0.5,0.0,0.0,0.0,0.0,-1.000025000312504,-1.0,0,0.0,-0.25000312503906297,0.0);vec2 texelSize=vec2(1.0)/(float(light.shadowMapSize)*vec2(4.0,2.0));vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);vec3 lightToPosition=shadowCoord.xyz;shadowCoord=biasMatrix*(projectionMatrix*(getPointLightRotations(lightToPosition)*shadowCoord));shadowCoord.z-=light.shadowBias;shadowCoord.xyz/=shadowCoord.w;
 #if defined(X3D_PCF_FILTERING)||defined(X3D_PCF_SOFT_FILTERING)
 vec2 offset=vec2(-1,1)*(texelSize.y*42.0);float value=(texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.xyy,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.yyy,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.xyx,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.yyx,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.xxy,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.yxy,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.xxx,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.yxx,texelSize.y),shadowCoord.z))*(1.0/9.0);return light.shadowIntensity*value;
-#else 
+#else
 float value=texture2DCompare(index,cubeToUVCompact(lightToPosition,texelSize.y),shadowCoord.z);return light.shadowIntensity*value;
 #endif
 }else{
@@ -92287,7 +92287,7 @@ float value=texture2DCompare(index,cubeToUVCompact(lightToPosition,texelSize.y),
 vec2 texelSize=vec2(1.0)/vec2(light.shadowMapSize);vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);shadowCoord.z-=light.shadowBias;shadowCoord.xyz/=shadowCoord.w;if(any(greaterThan(abs(shadowCoord.xy-0.5),vec2(0.5))))return 0.0;vec2 d0=-texelSize;vec2 d1=texelSize;float value=(texture2DCompare(index,shadowCoord.xy+d0,shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(0.0,d0.y),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(d1.x,d0.y),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(d0.x,0.0),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy,shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(d1.x,0.0),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(d0.x,d1.y),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(0.0,d1.y),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+d1,shadowCoord.z))*(1.0/9.0);return light.shadowIntensity*value;
 #elif defined(X3D_PCF_SOFT_FILTERING)
 vec2 texelSize=vec2(1.0)/vec2(light.shadowMapSize);vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);shadowCoord.z-=light.shadowBias;shadowCoord.xyz/=shadowCoord.w;if(any(greaterThan(abs(shadowCoord.xy-0.5),vec2(0.5))))return 0.0;vec2 d0=-texelSize;vec2 d1=texelSize;float value=(texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+d0,shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(0.0,d0.y),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(d1.x,d0.y),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(d0.x,0.0),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy,shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(d1.x,0.0),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(d0.x,d1.y),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(0.0,d1.y),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+d1,shadowCoord.z))*(1.0/9.0);return light.shadowIntensity*value;
-#else 
+#else
 vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);shadowCoord.z-=light.shadowBias;shadowCoord.xyz/=shadowCoord.w;if(any(greaterThan(abs(shadowCoord.xy-0.5),vec2(0.5))))return 0.0;float value=texture2DCompare(index,shadowCoord.xy,shadowCoord.z);return light.shadowIntensity*value;
 #endif
 }return 0.0;}
@@ -92363,7 +92363,7 @@ texCoord.stp/=texCoord.q;
 if(gl_FrontFacing==false)texCoord.s=1.0-texCoord.s;
 #endif
 return texCoord.stp;}
-#endif 
+#endif
 #if defined(X3D_TEXTURE)
 uniform sampler2D x3d_Texture2D[X3D_NUM_TEXTURES];uniform samplerCube x3d_TextureCube[X3D_NUM_TEXTURES];
 #if defined(X3D_MULTI_TEXTURING)
@@ -92416,7 +92416,7 @@ if(i==0)color=texture2D(x3d_ProjectiveTexture[0],texCoord);
 else if(i==1)color=texture2D(x3d_ProjectiveTexture[1],texCoord);
 #endif
 return color;}vec4 getProjectiveTextureColor(in vec4 currentColor){vec3 N=gl_FrontFacing?normal:-normal;for(int i=0;i<X3D_NUM_TEXTURE_PROJECTORS;++i){vec4 texCoord=x3d_ProjectiveTextureMatrix[i]*vec4(vertex,1.0);texCoord.stp/=texCoord.q;if(texCoord.s<0.0||texCoord.s>1.0)continue;if(texCoord.t<0.0||texCoord.t>1.0)continue;if(texCoord.p<0.0||texCoord.p>1.0)continue;vec3 p=x3d_ProjectiveTextureLocation[i]-vertex;if(dot(N,p)<0.0)continue;currentColor*=getProjectiveTexture(i,texCoord.st);}return currentColor;}
-#endif 
+#endif
 `
 ;
 
@@ -92546,13 +92546,13 @@ const Colors2_glsl_default_ = /* glsl */ `vec4 SRGBtoLINEAR(const in vec4 srgbIn
 #if defined(MANUAL_SRGB)
 #if defined(SRGB_FAST_APPROXIMATION)
 vec3 linOut=pow(srgbIn.xyz,vec3(2.2));
-#else 
+#else
 vec3 bLess=step(vec3(0.04045),srgbIn.xyz);vec3 linOut=mix(srgbIn.xyz/vec3(12.92),pow((srgbIn.xyz+vec3(0.055))/vec3(1.055),vec3(2.4)),bLess);
-#endif 
+#endif
 return vec4(linOut,srgbIn.w);
-#else 
+#else
 return srgbIn;
-#endif 
+#endif
 }
 #if defined(MANUAL_SRGB)
 vec4 Gamma(const in vec4 color){return vec4(pow(color.rgb,vec3(1.0/2.2)),color.a);}
@@ -92860,7 +92860,7 @@ case 7:{return texture(x3d_ShadowMap[7],shadowCoord).r;}
 default:{return 0.0;}}}float texture2DCompare(const in int index,const in vec2 texCoord,const in float compare){float shadowDepth=getShadowDepth(index,texCoord);return(1.0-step(1.0,shadowDepth))*step(shadowDepth,compare);}float texture2DShadowLerp(const in int index,const in vec2 texelSize,const in float shadowMapSize,const in vec2 texCoord,const in float compare){const vec2 offset=vec2(0.0,1.0);vec2 centroidTexCoord=floor(texCoord*shadowMapSize+0.5)/shadowMapSize;float lb=texture2DCompare(index,centroidTexCoord+texelSize*offset.xx,compare);float lt=texture2DCompare(index,centroidTexCoord+texelSize*offset.xy,compare);float rb=texture2DCompare(index,centroidTexCoord+texelSize*offset.yx,compare);float rt=texture2DCompare(index,centroidTexCoord+texelSize*offset.yy,compare);vec2 f=fract(texCoord*shadowMapSize+0.5);float a=mix(lb,lt,f.y);float b=mix(rb,rt,f.y);float c=mix(a,b,f.x);return c;}vec2 cubeToUVCompact(in vec3 v,const float texelSizeY){vec3 absV=abs(v);float scaleToCube=1.0/max(absV.x,max(absV.y,absV.z));absV*=scaleToCube;v*=scaleToCube*(1.0-2.0*texelSizeY);vec2 planar=v.xy;float almostATexel=1.5*texelSizeY;float almostOne=1.0-almostATexel;if(absV.z>=almostOne){if(v.z>0.0)planar.x=4.0-v.x;}else if(absV.x>=almostOne){float signX=sign(v.x);planar.x=v.z*signX+2.0*signX;}else if(absV.y>=almostOne){float signY=sign(v.y);planar.x=(v.x+0.5+signY)*2.0;planar.y=v.z*signY-2.0;}return vec2(0.125,0.25)*planar+vec2(0.375,0.75);}mat4 getPointLightRotations(const in vec3 vector){mat4 rotations[6];rotations[0]=mat4(0,0,1,0,0,1,0,0,-1,0,0,0,0,0,0,1);rotations[1]=mat4(0,0,-1,0,0,1,0,0,1,0,0,0,0,0,0,1);rotations[2]=mat4(-1,0,0,0,0,1,0,0,0,0,-1,0,0,0,0,1);rotations[3]=mat4(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);rotations[4]=mat4(1,0,0,0,0,0,1,0,0,-1,0,0,0,0,0,1);rotations[5]=mat4(1,0,0,0,0,0,-1,0,0,1,0,0,0,0,0,1);vec3 a=abs(vector.xyz);if(a.x>a.y){if(a.x>a.z)return vector.x>0.0?rotations[1]:rotations[0];else return vector.z>0.0?rotations[2]:rotations[3];}else{if(a.y>a.z)return vector.y>0.0?rotations[5]:rotations[4];else return vector.z>0.0?rotations[2]:rotations[3];}return rotations[3];}float getShadowIntensity(const in int index,const in x3d_LightSourceParameters light){if(light.type==x3d_PointLight){const mat4 biasMatrix=mat4(0.5,0.0,0.0,0.0,0.0,0.5,0.0,0.0,0.0,0.0,0.5,0.0,0.5,0.5,0.5,1.0);const mat4 projectionMatrix=mat4(1.0,0.0,0.0,0.0,0.0,0.5,0.0,0.0,0.0,0.0,-1.000025000312504,-1.0,0,0.0,-0.25000312503906297,0.0);vec2 texelSize=vec2(1.0)/(float(light.shadowMapSize)*vec2(4.0,2.0));vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);vec3 lightToPosition=shadowCoord.xyz;shadowCoord=biasMatrix*(projectionMatrix*(getPointLightRotations(lightToPosition)*shadowCoord));shadowCoord.z-=light.shadowBias;shadowCoord.xyz/=shadowCoord.w;
 #if defined(X3D_PCF_FILTERING)||defined(X3D_PCF_SOFT_FILTERING)
 vec2 offset=vec2(-1,1)*(texelSize.y*42.0);float value=(texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.xyy,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.yyy,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.xyx,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.yyx,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.xxy,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.yxy,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.xxx,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.yxx,texelSize.y),shadowCoord.z))*(1.0/9.0);return light.shadowIntensity*value;
-#else 
+#else
 float value=texture2DCompare(index,cubeToUVCompact(lightToPosition,texelSize.y),shadowCoord.z);return light.shadowIntensity*value;
 #endif
 }else{
@@ -92868,7 +92868,7 @@ float value=texture2DCompare(index,cubeToUVCompact(lightToPosition,texelSize.y),
 vec2 texelSize=vec2(1.0)/vec2(light.shadowMapSize);vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);shadowCoord.z-=light.shadowBias;shadowCoord.xyz/=shadowCoord.w;if(any(greaterThan(abs(shadowCoord.xy-0.5),vec2(0.5))))return 0.0;vec2 d0=-texelSize;vec2 d1=texelSize;float value=(texture2DCompare(index,shadowCoord.xy+d0,shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(0.0,d0.y),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(d1.x,d0.y),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(d0.x,0.0),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy,shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(d1.x,0.0),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(d0.x,d1.y),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(0.0,d1.y),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+d1,shadowCoord.z))*(1.0/9.0);return light.shadowIntensity*value;
 #elif defined(X3D_PCF_SOFT_FILTERING)
 vec2 texelSize=vec2(1.0)/vec2(light.shadowMapSize);vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);shadowCoord.z-=light.shadowBias;shadowCoord.xyz/=shadowCoord.w;if(any(greaterThan(abs(shadowCoord.xy-0.5),vec2(0.5))))return 0.0;vec2 d0=-texelSize;vec2 d1=texelSize;float value=(texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+d0,shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(0.0,d0.y),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(d1.x,d0.y),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(d0.x,0.0),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy,shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(d1.x,0.0),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(d0.x,d1.y),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(0.0,d1.y),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+d1,shadowCoord.z))*(1.0/9.0);return light.shadowIntensity*value;
-#else 
+#else
 vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);shadowCoord.z-=light.shadowBias;shadowCoord.xyz/=shadowCoord.w;if(any(greaterThan(abs(shadowCoord.xy-0.5),vec2(0.5))))return 0.0;float value=texture2DCompare(index,shadowCoord.xy,shadowCoord.z);return light.shadowIntensity*value;
 #endif
 }return 0.0;}
@@ -92951,7 +92951,7 @@ texCoords[3]=texCoord3;
 if(gl_FrontFacing==false)texCoord.s=1.0-texCoord.s;
 #endif
 return texCoord.stp;}
-#endif 
+#endif
 #if defined(X3D_TEXTURE)
 uniform int x3d_TextureType[X3D_NUM_TEXTURES];uniform sampler2D x3d_Texture2D[X3D_NUM_TEXTURES];uniform sampler3D x3d_Texture3D[X3D_NUM_TEXTURES];uniform samplerCube x3d_TextureCube[X3D_NUM_TEXTURES];
 #if defined(X3D_MULTI_TEXTURING)
@@ -92996,7 +92996,7 @@ vec4 textureColor=texture(x3d_TextureCube[0],texCoord.stp);
 return diffuseColor*textureColor;
 #endif
 }
-#endif 
+#endif
 #if defined(X3D_PROJECTIVE_TEXTURE_MAPPING)
 uniform sampler2D x3d_ProjectiveTexture[X3D_NUM_TEXTURE_PROJECTORS];uniform mat4 x3d_ProjectiveTextureMatrix[X3D_NUM_TEXTURE_PROJECTORS];uniform vec3 x3d_ProjectiveTextureLocation[X3D_NUM_TEXTURE_PROJECTORS];vec4 getProjectiveTexture(const in int i,const in vec2 texCoord){switch(i){
 #if X3D_NUM_TEXTURE_PROJECTORS>0
@@ -93006,7 +93006,7 @@ case 0:return texture(x3d_ProjectiveTexture[0],texCoord);
 case 1:return texture(x3d_ProjectiveTexture[1],texCoord);
 #endif
 }return vec4(0.0);}vec4 getProjectiveTextureColor(in vec4 currentColor){vec3 N=gl_FrontFacing?normal:-normal;for(int i=0;i<X3D_NUM_TEXTURE_PROJECTORS;++i){vec4 texCoord=x3d_ProjectiveTextureMatrix[i]*vec4(vertex,1.0);texCoord.stp/=texCoord.q;if(texCoord.s<0.0||texCoord.s>1.0)continue;if(texCoord.t<0.0||texCoord.t>1.0)continue;if(texCoord.p<0.0||texCoord.p>1.0)continue;vec3 p=x3d_ProjectiveTextureLocation[i]-vertex;if(dot(N,p)<0.0)continue;currentColor*=getProjectiveTexture(i,texCoord.st);}return currentColor;}
-#endif 
+#endif
 `
 ;
 
