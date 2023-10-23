@@ -1,4 +1,4 @@
-/* X_ITE v8.12.5 */(() => { // webpackBootstrap
+/* X_ITE v9.0.0 */(() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
 /******/ 	var __webpack_require__ = {};
@@ -39,39 +39,39 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
-;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DChildNode\")"
-const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Components/Core/X3DChildNode");
-var X3DChildNode_default = /*#__PURE__*/__webpack_require__.n(X3DChildNode_namespaceObject);
+;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Lighting/X3DLightNode\")"
+const X3DLightNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Components/Lighting/X3DLightNode");
+var X3DLightNode_default = /*#__PURE__*/__webpack_require__.n(X3DLightNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
-const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Base/X3DCast");
+const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
-const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("standard/Math/Numbers/Vector3");
+const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Rotation4\")"
-const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("standard/Math/Numbers/Rotation4");
+const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("standard/Math/Numbers/Rotation4");
 var Rotation4_default = /*#__PURE__*/__webpack_require__.n(Rotation4_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix4\")"
-const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("standard/Math/Numbers/Matrix4");
+const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("standard/Math/Numbers/Matrix4");
 var Matrix4_default = /*#__PURE__*/__webpack_require__.n(Matrix4_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
-;// CONCATENATED MODULE: ./src/x_ite/Components/TextureProjector/X3DTextureProjectorNode.js
+;// CONCATENATED MODULE: ./src/x_ite/Components/TextureProjection/X3DTextureProjectorNode.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -128,7 +128,7 @@ var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceOb
 
 function X3DTextureProjectorNode (executionContext)
 {
-   X3DChildNode_default().call (this, executionContext);
+   X3DLightNode_default().call (this, executionContext);
 
    this .addType ((X3DConstants_default()).X3DTextureProjectorNode);
 
@@ -137,16 +137,23 @@ function X3DTextureProjectorNode (executionContext)
    this ._location    .setUnit ("length");
 }
 
-Object .assign (Object .setPrototypeOf (X3DTextureProjectorNode .prototype, (X3DChildNode_default()).prototype),
+Object .assign (Object .setPrototypeOf (X3DTextureProjectorNode .prototype, (X3DLightNode_default()).prototype),
 {
    initialize ()
    {
-      X3DChildNode_default().prototype .initialize .call (this);
+      X3DLightNode_default().prototype .initialize .call (this);
 
-      this ._on      .addInterest ("set_on__",      this);
-      this ._texture .addInterest ("set_texture__", this);
+      this ._nearDistance .addInterest ("set_nearDistance__", this);
+      this ._farDistance  .addInterest ("set_farDistance__",  this);
+      this ._texture      .addInterest ("set_texture__",      this);
 
+      this .set_nearDistance__ ();
+      this .set_farDistance__ ();
       this .set_texture__ ();
+   },
+   getLightKey ()
+   {
+      return 3;
    },
    getGlobal ()
    {
@@ -162,15 +169,19 @@ Object .assign (Object .setPrototypeOf (X3DTextureProjectorNode .prototype, (X3D
    },
    getNearDistance ()
    {
-      const nearDistance = this ._nearDistance .getValue ();
-
-      return nearDistance === -1 ? 0.125 : nearDistance;
+      return this .nearDistance;
+   },
+   getNearParameter ()
+   {
+      return this .nearParameter;
    },
    getFarDistance ()
    {
-      const farDistance = this ._farDistance .getValue ();
-
-      return farDistance === -1 ? 100_000 : farDistance;
+      return this .farDistance;
+   },
+   getFarParameter ()
+   {
+      return this .farParameter;
    },
    getTexture ()
    {
@@ -217,28 +228,29 @@ Object .assign (Object .setPrototypeOf (X3DTextureProjectorNode .prototype, (X3D
          return orientation .multRight (rotation);
       };
    })(),
-   set_on__ ()
+   set_nearDistance__ ()
    {
-      if (this ._on .getValue () && this .textureNode)
-      {
-         delete this .push;
-         delete this .pop;
-      }
-      else
-      {
-         this .push = Function .prototype;
-         this .pop  = Function .prototype;
-      }
+      const nearDistance = this ._nearDistance .getValue ();
+
+      this .nearDistance  = nearDistance < 0 ? 0.125 : nearDistance;
+      this .nearParameter = nearDistance < 0 ? 0 : -1;
+   },
+   set_farDistance__ ()
+   {
+      const farDistance = this ._farDistance .getValue ();
+
+      this .farDistance  = farDistance < 0 ? 100_000 : farDistance;
+      this .farParameter = farDistance < 0 ? 1 : 2;
    },
    set_texture__ ()
    {
-      if (this .textureNode)
-         this .textureNode .removeInterest ("set_aspectRatio__", this);
+      this .textureNode ?.removeInterest ("set_aspectRatio__", this);
 
       this .textureNode = X3DCast_default() ((X3DConstants_default()).X3DTexture2DNode, this ._texture);
 
-      if (this .textureNode)
-         this .textureNode .addInterest ("set_aspectRatio__", this);
+      this .textureNode ?.addInterest ("set_aspectRatio__", this);
+
+      this .setEnabled (!!this .textureNode);
 
       this .set_aspectRatio__ ();
       this .set_on__ ();
@@ -248,36 +260,7 @@ Object .assign (Object .setPrototypeOf (X3DTextureProjectorNode .prototype, (X3D
       if (this .textureNode)
          this ._aspectRatio = this .textureNode .getWidth () / this .textureNode .getHeight ();
       else
-         this ._aspectRatio = 0;
-   },
-   push (renderObject)
-   {
-      const textureProjectorContainer = this .getTextureProjectors () .pop ();
-
-      textureProjectorContainer .set (this,
-                                      renderObject .getModelViewMatrix () .get ());
-
-      if (this ._global .getValue ())
-      {
-         renderObject .getGlobalObjects ()     .push (textureProjectorContainer);
-         renderObject .getTextureProjectors () .push (textureProjectorContainer);
-      }
-      else
-      {
-         renderObject .getLocalObjects ()      .push (textureProjectorContainer);
-         renderObject .getTextureProjectors () .push (textureProjectorContainer);
-
-         ++ renderObject .getLocalObjectsCount () [2];
-      }
-   },
-   pop (renderObject)
-   {
-      if (this ._global .getValue ())
-         return;
-
-      renderObject .getLocalObjects () .pop ();
-
-      -- renderObject .getLocalObjectsCount () [2];
+         this ._aspectRatio = 1;
    },
 });
 
@@ -290,7 +273,7 @@ Object .defineProperties (X3DTextureProjectorNode,
    },
    componentName:
    {
-      value: "TextureProjector",
+      value: "TextureProjection",
       enumerable: true,
    },
 });
@@ -298,15 +281,18 @@ Object .defineProperties (X3DTextureProjectorNode,
 const __default__ = X3DTextureProjectorNode;
 ;
 
-Namespace_default().add ("X3DTextureProjectorNode", "x_ite/Components/TextureProjector/X3DTextureProjectorNode", __default__);
-/* harmony default export */ const TextureProjector_X3DTextureProjectorNode = (__default__);
+Namespace_default().add ("X3DTextureProjectorNode", "x_ite/Components/TextureProjection/X3DTextureProjectorNode", __default__);
+/* harmony default export */ const TextureProjection_X3DTextureProjectorNode = (__default__);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Camera\")"
-const Camera_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("standard/Math/Geometry/Camera");
+const Camera_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("standard/Math/Geometry/Camera");
 var Camera_default = /*#__PURE__*/__webpack_require__.n(Camera_namespaceObject);
+;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Utility/MatrixStack\")"
+const MatrixStack_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("standard/Math/Utility/MatrixStack");
+var MatrixStack_default = /*#__PURE__*/__webpack_require__.n(MatrixStack_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Utility/ObjectCache\")"
-const ObjectCache_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("standard/Utility/ObjectCache");
+const ObjectCache_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("standard/Utility/ObjectCache");
 var ObjectCache_default = /*#__PURE__*/__webpack_require__.n(ObjectCache_namespaceObject);
-;// CONCATENATED MODULE: ./src/x_ite/Components/TextureProjector/TextureProjector.js
+;// CONCATENATED MODULE: ./src/x_ite/Components/TextureProjection/TextureProjector.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -353,6 +339,7 @@ var ObjectCache_default = /*#__PURE__*/__webpack_require__.n(ObjectCache_namespa
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -370,7 +357,7 @@ const TextureProjectorCache = ObjectCache_default() (TextureProjectorContainer);
 function TextureProjectorContainer ()
 {
    this .projectionMatrix                = new (Matrix4_default()) ();
-   this .modelViewMatrix                 = new (Matrix4_default()) ();
+   this .modelViewMatrix                 = new (MatrixStack_default()) ((Matrix4_default()));
    this .modelMatrix                     = new (Matrix4_default()) ();
    this .invTextureSpaceMatrix           = new (Matrix4_default()) ();
    this .invTextureSpaceProjectionMatrix = new (Matrix4_default()) ();
@@ -378,92 +365,113 @@ function TextureProjectorContainer ()
    this .locationArray                   = new Float32Array (3);
    this .direction                       = new (Vector3_default()) (0, 0, 0);
    this .rotation                        = new (Rotation4_default()) ();
-   this .projectiveTextureMatrix         = new (Matrix4_default()) ();
-   this .projectiveTextureMatrixArray    = new Float32Array (16);
+   this .matrix                          = new (Matrix4_default()) ();
+   this .matrixArray                     = new Float32Array (16);
+   this .textureMatrix                   = new (Matrix4_default()) ();
 }
 
 Object .assign (TextureProjectorContainer .prototype,
 {
-   set (textureProjectorNode, modelViewMatrix)
+   set (lightNode, groupNode, modelViewMatrix)
    {
-      this .browser              = textureProjectorNode .getBrowser ();
-      this .textureProjectorNode = textureProjectorNode;
+      this .browser   = lightNode .getBrowser ();
+      this .lightNode = lightNode;
+      this .global    = lightNode .getGlobal ();
 
-      this .modelViewMatrix .assign (modelViewMatrix);
+      this .modelViewMatrix .pushMatrix (modelViewMatrix);
+      this .textureMatrix .set (... lightNode .getTexture () .getMatrix ());
    },
+   renderShadowMap (renderObject)
+   { },
    setGlobalVariables (renderObject)
    {
       const
-         textureProjectorNode  = this .textureProjectorNode,
+         lightNode             = this .lightNode,
          cameraSpaceMatrix     = renderObject .getCameraSpaceMatrix () .get (),
-         modelMatrix           = this .modelMatrix .assign (this .modelViewMatrix) .multRight (cameraSpaceMatrix),
-         invTextureSpaceMatrix = this .invTextureSpaceMatrix .assign (textureProjectorNode .getGlobal () ? modelMatrix : (Matrix4_default()).Identity);
+         modelMatrix           = this .modelMatrix .assign (this .modelViewMatrix .get ()) .multRight (cameraSpaceMatrix),
+         invTextureSpaceMatrix = this .invTextureSpaceMatrix .assign (this .global ? modelMatrix : (Matrix4_default()).Identity);
 
-      this .rotation .setFromToVec ((Vector3_default()).zAxis, this .direction .assign (textureProjectorNode .getDirection ()) .negate ());
-      textureProjectorNode .straightenHorizon (this .rotation);
+      this .rotation .setFromToVec ((Vector3_default()).zAxis, this .direction .assign (lightNode .getDirection ()) .negate ());
+      lightNode .straightenHorizon (this .rotation);
 
-      invTextureSpaceMatrix .translate (textureProjectorNode .getLocation ());
+      invTextureSpaceMatrix .translate (lightNode .getLocation ());
       invTextureSpaceMatrix .rotate (this .rotation);
       invTextureSpaceMatrix .inverse ();
 
       const
-         width        = textureProjectorNode .getTexture () .getWidth (),
-         height       = textureProjectorNode .getTexture () .getHeight (),
-         nearDistance = textureProjectorNode .getNearDistance (),
-         farDistance  = textureProjectorNode .getFarDistance (),
-         fieldOfView  = textureProjectorNode .getFieldOfView ();
+         width        = lightNode .getTexture () .getWidth (),
+         height       = lightNode .getTexture () .getHeight (),
+         nearDistance = lightNode .getNearDistance (),
+         farDistance  = lightNode .getFarDistance (),
+         fieldOfView  = lightNode .getFieldOfView ();
 
       Camera_default().perspective (fieldOfView, nearDistance, farDistance, width, height, this .projectionMatrix);
 
-      if (! textureProjectorNode .getGlobal ())
+      if (!this .global)
          invTextureSpaceMatrix .multLeft (modelMatrix .inverse ());
 
-      this .invTextureSpaceProjectionMatrix .assign (invTextureSpaceMatrix) .multRight (this .projectionMatrix) .multRight (textureProjectorNode .getBiasMatrix ());
+      this .invTextureSpaceProjectionMatrix .assign (invTextureSpaceMatrix) .multRight (this .projectionMatrix) .multRight (lightNode .getBiasMatrix ());
 
-      this .projectiveTextureMatrix .assign (cameraSpaceMatrix) .multRight (this .invTextureSpaceProjectionMatrix);
-      this .projectiveTextureMatrixArray .set (this .projectiveTextureMatrix);
+      this .matrix .assign (cameraSpaceMatrix) .multRight (this .invTextureSpaceProjectionMatrix) .multRight (this .textureMatrix);
+      this .matrixArray .set (this .matrix);
 
-      this .modelViewMatrix .multVecMatrix (this .location .assign (textureProjectorNode ._location .getValue ()));
+      this .modelViewMatrix .get () .multVecMatrix (this .location .assign (lightNode ._location .getValue ()));
       this .locationArray .set (this .location);
    },
    setShaderUniforms (gl, shaderObject, renderObject)
    {
-      const i = shaderObject .numProjectiveTextures ++;
+      const i = shaderObject .numTextureProjectors ++;
+
+      const
+         lightNode   = this .lightNode,
+         texture     = lightNode .getTexture (),
+         textureUnit = this .global
+            ? (this .textureUnit = this .textureUnit ?? this .browser .popTexture2DUnit ())
+            : this .browser .getTexture2DUnit ();
+
+      gl .activeTexture (gl .TEXTURE0 + textureUnit);
+      gl .bindTexture (gl .TEXTURE_2D, texture .getTexture ());
+      gl .uniform1i (shaderObject .x3d_TextureProjectorTexture [i], textureUnit);
 
       if (shaderObject .hasTextureProjector (i, this))
          return;
 
       const
-         texture     = this .textureProjectorNode .getTexture (),
-         textureUnit = this .browser .getTexture2DUnit ();
+         nearParameter = lightNode .getNearParameter (),
+         farParameter  = lightNode .getFarParameter ();
 
-      gl .activeTexture (gl .TEXTURE0 + textureUnit);
-      gl .bindTexture (gl .TEXTURE_2D, texture .getTexture ());
-      gl .uniform1i (shaderObject .x3d_ProjectiveTexture [i], textureUnit);
-
-      gl .uniformMatrix4fv (shaderObject .x3d_ProjectiveTextureMatrix [i], false, this .projectiveTextureMatrixArray);
-      gl .uniform3fv (shaderObject .x3d_ProjectiveTextureLocation [i], this .locationArray);
+      gl .uniform3f        (shaderObject .x3d_TextureProjectorColor [i],         ... lightNode .getColor ());
+      gl .uniform1f        (shaderObject .x3d_TextureProjectorIntensity [i],     lightNode .getIntensity ());
+      gl .uniform3fv       (shaderObject .x3d_TextureProjectorLocation [i],      this .locationArray);
+      gl .uniform3f        (shaderObject .x3d_TextureProjectorParams [i],        nearParameter, farParameter, texture .isLinear ());
+      gl .uniformMatrix4fv (shaderObject .x3d_TextureProjectorMatrix [i], false, this .matrixArray);
    },
    dispose ()
    {
+      this .browser .pushTexture2DUnit (this .textureUnit);
+
+      this .modelViewMatrix .clear ();
+
+      this .textureUnit = undefined;
+
       TextureProjectorCache .push (this);
    },
 });
 
 function TextureProjector (executionContext)
 {
-   TextureProjector_X3DTextureProjectorNode .call (this, executionContext);
+   TextureProjection_X3DTextureProjectorNode .call (this, executionContext);
 
    this .addType ((X3DConstants_default()).TextureProjector);
 
    this ._fieldOfView .setUnit ("angle");
 }
 
-Object .assign (Object .setPrototypeOf (TextureProjector .prototype, TextureProjector_X3DTextureProjectorNode .prototype),
+Object .assign (Object .setPrototypeOf (TextureProjector .prototype, TextureProjection_X3DTextureProjectorNode .prototype),
 {
    initialize ()
    {
-      TextureProjector_X3DTextureProjectorNode .prototype .initialize .call (this);
+      TextureProjection_X3DTextureProjectorNode .prototype .initialize .call (this);
    },
    getFieldOfView ()
    {
@@ -471,7 +479,7 @@ Object .assign (Object .setPrototypeOf (TextureProjector .prototype, TextureProj
 
       return fov > 0 && fov < Math .PI ? fov : Math .PI / 4;
    },
-   getTextureProjectors ()
+   getLights ()
    {
       return TextureProjectorCache;
    },
@@ -486,7 +494,7 @@ Object .defineProperties (TextureProjector,
    },
    componentName:
    {
-      value: "TextureProjector",
+      value: "TextureProjection",
       enumerable: true,
    },
    containerField:
@@ -502,18 +510,28 @@ Object .defineProperties (TextureProjector,
    fieldDefinitions:
    {
       value: new (FieldDefinitionArray_default()) ([
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "metadata",     new (Fields_default()).SFNode ()),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "description",  new (Fields_default()).SFString ()),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "on",           new (Fields_default()).SFBool (true)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "global",       new (Fields_default()).SFBool (true)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "location",     new (Fields_default()).SFVec3f (0, 0, 0)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "direction",    new (Fields_default()).SFVec3f (0, 0, 1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "upVector",     new (Fields_default()).SFVec3f (0, 0, 1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "fieldOfView",  new (Fields_default()).SFFloat (0.785398)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "nearDistance", new (Fields_default()).SFFloat (-1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "farDistance",  new (Fields_default()).SFFloat (-1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).outputOnly,  "aspectRatio",  new (Fields_default()).SFFloat ()),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "texture",      new (Fields_default()).SFNode ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "metadata",         new (Fields_default()).SFNode ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "description",      new (Fields_default()).SFString ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "global",           new (Fields_default()).SFBool (true)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "on",               new (Fields_default()).SFBool (true)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "color",            new (Fields_default()).SFColor (1, 1, 1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "intensity",        new (Fields_default()).SFFloat (1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "ambientIntensity", new (Fields_default()).SFFloat ()),
+
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "location",         new (Fields_default()).SFVec3f (0, 0, 0)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "direction",        new (Fields_default()).SFVec3f (0, 0, 1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "upVector",         new (Fields_default()).SFVec3f (0, 0, 1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "fieldOfView",      new (Fields_default()).SFFloat (0.785398)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "nearDistance",     new (Fields_default()).SFFloat (-1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "farDistance",      new (Fields_default()).SFFloat (-1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).outputOnly,     "aspectRatio",      new (Fields_default()).SFFloat ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "texture",          new (Fields_default()).SFNode ()),
+
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadows",          new (Fields_default()).SFBool ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadowColor",      new (Fields_default()).SFColor ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadowIntensity",  new (Fields_default()).SFFloat (1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadowBias",       new (Fields_default()).SFFloat (0.005)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "shadowMapSize",    new (Fields_default()).SFInt32 (1024)),
       ]),
       enumerable: true,
    },
@@ -522,9 +540,9 @@ Object .defineProperties (TextureProjector,
 const TextureProjector_default_ = TextureProjector;
 ;
 
-Namespace_default().add ("TextureProjector", "x_ite/Components/TextureProjector/TextureProjector", TextureProjector_default_);
-/* harmony default export */ const TextureProjector_TextureProjector = (TextureProjector_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/TextureProjector/TextureProjectorParallel.js
+Namespace_default().add ("TextureProjector", "x_ite/Components/TextureProjection/TextureProjector", TextureProjector_default_);
+/* harmony default export */ const TextureProjection_TextureProjector = (TextureProjector_default_);
+;// CONCATENATED MODULE: ./src/x_ite/Components/TextureProjection/TextureProjectorParallel.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -583,12 +601,13 @@ Namespace_default().add ("TextureProjector", "x_ite/Components/TextureProjector/
 
 
 
+
 const TextureProjectorParallelCache = ObjectCache_default() (TextureProjectorParallelContainer);
 
 function TextureProjectorParallelContainer ()
 {
    this .projectionMatrix                = new (Matrix4_default()) ();
-   this .modelViewMatrix                 = new (Matrix4_default()) ();
+   this .modelViewMatrix                 = new (MatrixStack_default()) ((Matrix4_default()));
    this .modelMatrix                     = new (Matrix4_default()) ();
    this .invTextureSpaceMatrix           = new (Matrix4_default()) ();
    this .location                        = new (Vector3_default()) (0, 0, 0);
@@ -596,46 +615,51 @@ function TextureProjectorParallelContainer ()
    this .invTextureSpaceProjectionMatrix = new (Matrix4_default()) ();
    this .direction                       = new (Vector3_default()) (0, 0, 0);
    this .rotation                        = new (Rotation4_default()) ();
-   this .projectiveTextureMatrix         = new (Matrix4_default()) ();
-   this .projectiveTextureMatrixArray    = new Float32Array (16);
+   this .matrix                          = new (Matrix4_default()) ();
+   this .matrixArray                     = new Float32Array (16);
+   this .textureMatrix                   = new (Matrix4_default()) ();
 }
 
 Object .assign (TextureProjectorParallelContainer .prototype,
 {
-   set (textureProjectorNode, modelViewMatrix)
+   set (lightNode, groupNode, modelViewMatrix)
    {
-      this .browser              = textureProjectorNode .getBrowser ();
-      this .textureProjectorNode = textureProjectorNode;
+      this .browser   = lightNode .getBrowser ();
+      this .lightNode = lightNode;
+      this .global    = lightNode .getGlobal ();
 
-      this .modelViewMatrix .assign (modelViewMatrix);
+      this .modelViewMatrix .pushMatrix (modelViewMatrix);
+      this .textureMatrix .set (... lightNode .getTexture () .getMatrix ());
    },
+   renderShadowMap (renderObject)
+   { },
    setGlobalVariables (renderObject)
    {
       const
-         textureProjectorNode  = this .textureProjectorNode,
+         lightNode             = this .lightNode,
          cameraSpaceMatrix     = renderObject .getCameraSpaceMatrix () .get (),
-         modelMatrix           = this .modelMatrix .assign (this .modelViewMatrix) .multRight (cameraSpaceMatrix),
-         invTextureSpaceMatrix = this .invTextureSpaceMatrix .assign (textureProjectorNode .getGlobal () ? modelMatrix : (Matrix4_default()).Identity);
+         modelMatrix           = this .modelMatrix .assign (this .modelViewMatrix .get ()) .multRight (cameraSpaceMatrix),
+         invTextureSpaceMatrix = this .invTextureSpaceMatrix .assign (this .global ? modelMatrix : (Matrix4_default()).Identity);
 
-      this .rotation .setFromToVec ((Vector3_default()).zAxis, this .direction .assign (textureProjectorNode .getDirection ()) .negate ());
-      textureProjectorNode .straightenHorizon (this .rotation);
+      this .rotation .setFromToVec ((Vector3_default()).zAxis, this .direction .assign (lightNode .getDirection ()) .negate ());
+      lightNode .straightenHorizon (this .rotation);
 
-      invTextureSpaceMatrix .translate (textureProjectorNode .getLocation ());
+      invTextureSpaceMatrix .translate (lightNode .getLocation ());
       invTextureSpaceMatrix .rotate (this .rotation);
       invTextureSpaceMatrix .inverse ();
 
       const
-         width        = textureProjectorNode .getTexture () .getWidth (),
-         height       = textureProjectorNode .getTexture () .getHeight (),
+         width        = lightNode .getTexture () .getWidth (),
+         height       = lightNode .getTexture () .getHeight (),
          aspect       = width / height,
-         minimumX     = textureProjectorNode .getMinimumX (),
-         maximumX     = textureProjectorNode .getMaximumX (),
-         minimumY     = textureProjectorNode .getMinimumY (),
-         maximumY     = textureProjectorNode .getMaximumY (),
-         sizeX        = textureProjectorNode .getSizeX (),
-         sizeY        = textureProjectorNode .getSizeY (),
-         nearDistance = textureProjectorNode .getNearDistance (),
-         farDistance  = textureProjectorNode .getFarDistance ();
+         minimumX     = lightNode .getMinimumX (),
+         maximumX     = lightNode .getMaximumX (),
+         minimumY     = lightNode .getMinimumY (),
+         maximumY     = lightNode .getMaximumY (),
+         sizeX        = lightNode .getSizeX (),
+         sizeY        = lightNode .getSizeY (),
+         nearDistance = lightNode .getNearDistance (),
+         farDistance  = lightNode .getFarDistance ();
 
       if (aspect > sizeX / sizeY)
       {
@@ -654,55 +678,71 @@ Object .assign (TextureProjectorParallelContainer .prototype,
          Camera_default().ortho (minimumX, maximumX, center - size1_2, center + size1_2, nearDistance, farDistance, this .projectionMatrix);
       }
 
-      if (! textureProjectorNode .getGlobal ())
+      if (!this .global)
          invTextureSpaceMatrix .multLeft (modelMatrix .inverse ());
 
-      this .invTextureSpaceProjectionMatrix .assign (invTextureSpaceMatrix) .multRight (this .projectionMatrix) .multRight (textureProjectorNode .getBiasMatrix ());
+      this .invTextureSpaceProjectionMatrix .assign (invTextureSpaceMatrix) .multRight (this .projectionMatrix) .multRight (lightNode .getBiasMatrix ());
 
-      this .projectiveTextureMatrix .assign (cameraSpaceMatrix) .multRight (this .invTextureSpaceProjectionMatrix);
-      this .projectiveTextureMatrixArray .set (this .projectiveTextureMatrix);
+      this .matrix .assign (cameraSpaceMatrix) .multRight (this .invTextureSpaceProjectionMatrix) .multRight (this .textureMatrix);
+      this .matrixArray .set (this .matrix);
 
-      this .modelViewMatrix .multVecMatrix (this .location .assign (textureProjectorNode ._location .getValue ()));
+      this .modelViewMatrix .get () .multVecMatrix (this .location .assign (lightNode ._location .getValue ()));
       this .locationArray .set (this .location);
    },
    setShaderUniforms (gl, shaderObject, renderObject)
    {
-      const i = shaderObject .numProjectiveTextures ++;
+      const i = shaderObject .numTextureProjectors ++;
+
+      const
+         lightNode   = this .lightNode,
+         texture     = lightNode .getTexture (),
+         textureUnit = this .global
+            ? (this .textureUnit = this .textureUnit ?? this .browser .popTexture2DUnit ())
+            : this .browser .getTexture2DUnit ();
+
+      gl .activeTexture (gl .TEXTURE0 + textureUnit);
+      gl .bindTexture (gl .TEXTURE_2D, texture .getTexture ());
+      gl .uniform1i (shaderObject .x3d_TextureProjectorTexture [i], textureUnit);
 
       if (shaderObject .hasTextureProjector (i, this))
          return;
 
       const
-         texture     = this .textureProjectorNode .getTexture (),
-         textureUnit = this .browser .getTexture2DUnit ();
+         nearParameter = lightNode .getNearParameter (),
+         farParameter  = lightNode .getFarParameter ();
 
-      gl .activeTexture (gl .TEXTURE0 + textureUnit);
-      gl .bindTexture (gl .TEXTURE_2D, texture .getTexture ());
-      gl .uniform1i (shaderObject .x3d_ProjectiveTexture [i], textureUnit);
-
-      gl .uniformMatrix4fv (shaderObject .x3d_ProjectiveTextureMatrix [i], false, this .projectiveTextureMatrixArray);
-      gl .uniform3fv (shaderObject .x3d_ProjectiveTextureLocation [i], this .locationArray);
+      gl .uniform3f        (shaderObject .x3d_TextureProjectorColor [i],         ... lightNode .getColor ());
+      gl .uniform1f        (shaderObject .x3d_TextureProjectorIntensity [i],     lightNode .getIntensity ());
+      gl .uniform3fv       (shaderObject .x3d_TextureProjectorLocation [i],      this .locationArray);
+      gl .uniform3f        (shaderObject .x3d_TextureProjectorParams [i],        nearParameter, farParameter, texture .isLinear ());
+      gl .uniformMatrix4fv (shaderObject .x3d_TextureProjectorMatrix [i], false, this .matrixArray);
    },
    dispose ()
    {
+      this .browser .pushTexture2DUnit (this .textureUnit);
+
+      this .modelViewMatrix .clear ();
+
+      this .textureUnit = undefined;
+
       TextureProjectorParallelCache .push (this);
    },
 });
 
 function TextureProjectorParallel (executionContext)
 {
-   TextureProjector_X3DTextureProjectorNode .call (this, executionContext);
+   TextureProjection_X3DTextureProjectorNode .call (this, executionContext);
 
    this .addType ((X3DConstants_default()).TextureProjectorParallel);
 
    this ._fieldOfView .setUnit ("length");
 }
 
-Object .assign (Object .setPrototypeOf (TextureProjectorParallel .prototype, TextureProjector_X3DTextureProjectorNode .prototype),
+Object .assign (Object .setPrototypeOf (TextureProjectorParallel .prototype, TextureProjection_X3DTextureProjectorNode .prototype),
 {
    initialize ()
    {
-      TextureProjector_X3DTextureProjectorNode .prototype .initialize .call (this);
+      TextureProjection_X3DTextureProjectorNode .prototype .initialize .call (this);
 
       this ._fieldOfView .addInterest ("set_fieldOfView___", this);
 
@@ -744,7 +784,7 @@ Object .assign (Object .setPrototypeOf (TextureProjectorParallel .prototype, Tex
    {
       return this .sizeY;
    },
-   getTextureProjectors ()
+   getLights ()
    {
       return TextureProjectorParallelCache;
    },
@@ -759,7 +799,7 @@ Object .defineProperties (TextureProjectorParallel,
    },
    componentName:
    {
-      value: "TextureProjector",
+      value: "TextureProjection",
       enumerable: true,
    },
    containerField:
@@ -775,18 +815,28 @@ Object .defineProperties (TextureProjectorParallel,
    fieldDefinitions:
    {
       value: new (FieldDefinitionArray_default()) ([
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "metadata",     new (Fields_default()).SFNode ()),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "description",  new (Fields_default()).SFString ()),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "on",           new (Fields_default()).SFBool (true)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "global",       new (Fields_default()).SFBool (true)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "location",     new (Fields_default()).SFVec3f (0, 0, 0)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "direction",    new (Fields_default()).SFVec3f (0, 0, 1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "upVector",     new (Fields_default()).SFVec3f (0, 0, 1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "fieldOfView",  new (Fields_default()).MFFloat (-1, -1, 1, 1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "nearDistance", new (Fields_default()).SFFloat (-1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "farDistance",  new (Fields_default()).SFFloat (-1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).outputOnly,  "aspectRatio",  new (Fields_default()).SFFloat ()),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "texture",      new (Fields_default()).SFNode ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "metadata",        new (Fields_default()).SFNode ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "description",     new (Fields_default()).SFString ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "global",          new (Fields_default()).SFBool (true)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "on",              new (Fields_default()).SFBool (true)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "color",           new (Fields_default()).SFColor (1, 1, 1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "intensity",       new (Fields_default()).SFFloat (1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "ambientIntensity",new (Fields_default()).SFFloat ()),
+
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "location",        new (Fields_default()).SFVec3f (0, 0, 0)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "direction",       new (Fields_default()).SFVec3f (0, 0, 1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "upVector",        new (Fields_default()).SFVec3f (0, 0, 1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "fieldOfView",     new (Fields_default()).MFFloat (-1, -1, 1, 1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "nearDistance",    new (Fields_default()).SFFloat (-1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "farDistance",     new (Fields_default()).SFFloat (-1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).outputOnly,     "aspectRatio",     new (Fields_default()).SFFloat ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "texture",         new (Fields_default()).SFNode ()),
+
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadows",         new (Fields_default()).SFBool ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadowColor",     new (Fields_default()).SFColor ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadowIntensity", new (Fields_default()).SFFloat (1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadowBias",      new (Fields_default()).SFFloat (0.005)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "shadowMapSize",   new (Fields_default()).SFInt32 (1024)),
       ]),
       enumerable: true,
    },
@@ -795,9 +845,9 @@ Object .defineProperties (TextureProjectorParallel,
 const TextureProjectorParallel_default_ = TextureProjectorParallel;
 ;
 
-Namespace_default().add ("TextureProjectorParallel", "x_ite/Components/TextureProjector/TextureProjectorParallel", TextureProjectorParallel_default_);
-/* harmony default export */ const TextureProjector_TextureProjectorParallel = (TextureProjectorParallel_default_);
-;// CONCATENATED MODULE: ./src/assets/components/TextureProjector.js
+Namespace_default().add ("TextureProjectorParallel", "x_ite/Components/TextureProjection/TextureProjectorParallel", TextureProjectorParallel_default_);
+/* harmony default export */ const TextureProjection_TextureProjectorParallel = (TextureProjectorParallel_default_);
+;// CONCATENATED MODULE: ./src/assets/components/TextureProjection.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -851,22 +901,22 @@ Namespace_default().add ("TextureProjectorParallel", "x_ite/Components/TexturePr
 
 
 Components_default().add ({
-   name: "TextureProjector",
+   name: "TextureProjection",
    concreteNodes:
    [
-      TextureProjector_TextureProjector,
-      TextureProjector_TextureProjectorParallel,
+      TextureProjection_TextureProjector,
+      TextureProjection_TextureProjectorParallel,
    ],
    abstractNodes:
    [
-      TextureProjector_X3DTextureProjectorNode,
+      TextureProjection_X3DTextureProjectorNode,
    ],
 });
 
-const components_TextureProjector_default_ = undefined;
+const TextureProjection_default_ = undefined;
 ;
 
-Namespace_default().add ("TextureProjector", "assets/components/TextureProjector", components_TextureProjector_default_);
-/* harmony default export */ const components_TextureProjector = ((/* unused pure expression or super */ null && (components_TextureProjector_default_)));
+Namespace_default().add ("TextureProjection", "assets/components/TextureProjection", TextureProjection_default_);
+/* harmony default export */ const TextureProjection = ((/* unused pure expression or super */ null && (TextureProjection_default_)));
 /******/ })()
 ;

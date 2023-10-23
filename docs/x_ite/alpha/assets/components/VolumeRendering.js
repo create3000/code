@@ -1,4 +1,4 @@
-/* X_ITE v8.12.5 */(() => { // webpackBootstrap
+/* X_ITE v9.0.0 */(() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
 /******/ 	var __webpack_require__ = {};
@@ -39,31 +39,31 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Texturing/PixelTexture\")"
-const PixelTexture_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Components/Texturing/PixelTexture");
+const PixelTexture_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Components/Texturing/PixelTexture");
 var PixelTexture_default = /*#__PURE__*/__webpack_require__.n(PixelTexture_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Texturing/TextureProperties\")"
-const TextureProperties_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Components/Texturing/TextureProperties");
+const TextureProperties_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Components/Texturing/TextureProperties");
 var TextureProperties_default = /*#__PURE__*/__webpack_require__.n(TextureProperties_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DNode\")"
-const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Components/Core/X3DNode");
+const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Components/Core/X3DNode");
 var X3DNode_default = /*#__PURE__*/__webpack_require__.n(X3DNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/VolumeRendering/X3DVolumeRenderStyleNode.js
 /*******************************************************************************
@@ -288,7 +288,7 @@ const X3DComposableVolumeRenderStyleNode_default_ = X3DComposableVolumeRenderSty
 Namespace_default().add ("X3DComposableVolumeRenderStyleNode", "x_ite/Components/VolumeRendering/X3DComposableVolumeRenderStyleNode", X3DComposableVolumeRenderStyleNode_default_);
 /* harmony default export */ const VolumeRendering_X3DComposableVolumeRenderStyleNode = (X3DComposableVolumeRenderStyleNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
-const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Base/X3DCast");
+const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/VolumeRendering/OpacityMapVolumeStyle.js
 /*******************************************************************************
@@ -1840,21 +1840,20 @@ const EdgeEnhancementVolumeStyle_default_ = EdgeEnhancementVolumeStyle;
 Namespace_default().add ("EdgeEnhancementVolumeStyle", "x_ite/Components/VolumeRendering/EdgeEnhancementVolumeStyle", EdgeEnhancementVolumeStyle_default_);
 /* harmony default export */ const VolumeRendering_EdgeEnhancementVolumeStyle = (EdgeEnhancementVolumeStyle_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DChildNode\")"
-const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Components/Core/X3DChildNode");
+const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Components/Core/X3DChildNode");
 var X3DChildNode_default = /*#__PURE__*/__webpack_require__.n(X3DChildNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Grouping/X3DBoundedObject\")"
-const X3DBoundedObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Components/Grouping/X3DBoundedObject");
+const X3DBoundedObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Components/Grouping/X3DBoundedObject");
 var X3DBoundedObject_default = /*#__PURE__*/__webpack_require__.n(X3DBoundedObject_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Browser/Core/TextureQuality\")"
-const TextureQuality_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Browser/Core/TextureQuality");
+const TextureQuality_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Browser/Core/TextureQuality");
 var TextureQuality_default = /*#__PURE__*/__webpack_require__.n(TextureQuality_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Shape/UnlitMaterial\")"
-const UnlitMaterial_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Components/Shape/UnlitMaterial");
+const UnlitMaterial_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Components/Shape/UnlitMaterial");
 var UnlitMaterial_default = /*#__PURE__*/__webpack_require__.n(UnlitMaterial_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/VolumeRendering/VolumeStyle.vs.js
 const VolumeStyle_vs_default_ = /* glsl */ `#version 300 es
-precision highp float;precision highp int;uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;uniform mat4 x3d_TextureMatrix[1];in vec4 x3d_TexCoord0;in vec4 x3d_Vertex;out vec3 vertex;out vec4 texCoord;void main(){vec4 position=x3d_ModelViewMatrix*x3d_Vertex;vertex=position.xyz;texCoord=x3d_TextureMatrix[0]*x3d_TexCoord0;gl_Position=x3d_ProjectionMatrix*position;}
-`
+precision highp float;precision highp int;uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;uniform mat4 x3d_TextureMatrix[1];in vec4 x3d_TexCoord0;in vec4 x3d_Vertex;out vec3 vertex;out vec4 texCoord;void main(){vec4 position=x3d_ModelViewMatrix*x3d_Vertex;vertex=position.xyz;texCoord=x3d_TextureMatrix[0]*x3d_TexCoord0;gl_Position=x3d_ProjectionMatrix*position;}`
 ;
 
 Namespace_default().add ("VolumeStyle.vs", "x_ite/Browser/VolumeRendering/VolumeStyle.vs", VolumeStyle_vs_default_);
@@ -1864,7 +1863,7 @@ const VolumeStyle_fs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler3D;in vec3 vertex;in vec4 texCoord;uniform sampler3D x3d_Texture3D[1];uniform mat3 x3d_TextureNormalMatrix;uniform x3d_LightSourceParameters x3d_LightSource[x3d_MaxLights];const float M_PI=3.14159265359;
 #pragma X3D include "includes/ClipPlanes.glsl"
 #pragma X3D include "includes/Fog.glsl"
-__VOLUME_STYLES_UNIFORMS__ out vec4 x3d_FragColor;vec4 getTextureColor(in vec3 texCoord){if(texCoord.s<0.0||texCoord.s>1.0)discard;if(texCoord.t<0.0||texCoord.t>1.0)discard;if(texCoord.p<0.0||texCoord.p>1.0)discard;vec4 textureColor=texture(x3d_Texture3D[0],texCoord);__VOLUME_STYLES_FUNCTIONS__ return textureColor;}void main(){
+__VOLUME_STYLES_UNIFORMS__ out vec4 x3d_FragColor;vec4 getTextureColor(in vec3 texCoord){if(any(greaterThan(abs(texCoord-0.5),vec3(0.5))))discard;vec4 textureColor=texture(x3d_Texture3D[0],texCoord);__VOLUME_STYLES_FUNCTIONS__ return textureColor;}void main(){
 #if defined(X3D_CLIP_PLANES)
 clip();
 #endif
@@ -1872,8 +1871,7 @@ vec4 finalColor=getTextureColor(texCoord.stp/texCoord.q);
 #if defined(X3D_FOG)
 finalColor.rgb=getFogColor(finalColor.rgb);
 #endif
-x3d_FragColor=finalColor;}
-`
+x3d_FragColor=finalColor;}`
 ;
 
 Namespace_default().add ("VolumeStyle.fs", "x_ite/Browser/VolumeRendering/VolumeStyle.fs", VolumeStyle_fs_default_);
@@ -1946,15 +1944,13 @@ Object .assign (Object .setPrototypeOf (VolumeMaterial .prototype, (UnlitMateria
    },
    getShader (geometryContext, renderContext)
    {
-      const { fogNode, objectsCount } = renderContext;
+      const { fogNode, objectsKeys } = renderContext;
 
       let key = "";
 
       key += fogNode ?.getFogType () ?? 0;
       key += ".";
-      key += objectsCount [0]; // Clip planes
-      key += ".";
-      key += objectsCount [1]; // Lights
+      key += objectsKeys .sort () .join (""); // ClipPlane, X3DLightNode
 
       return this .volumeShaderNodes .get (key) ?? this .createShader (key, geometryContext, renderContext);
    },
@@ -1964,7 +1960,7 @@ Object .assign (Object .setPrototypeOf (VolumeMaterial .prototype, (UnlitMateria
          browser = this .getBrowser (),
          options = [ ];
 
-      const { fogNode, objectsCount } = renderContext;
+      const { fogNode, objectsKeys } = renderContext;
 
       switch (fogNode ?.getFogType ())
       {
@@ -1976,16 +1972,22 @@ Object .assign (Object .setPrototypeOf (VolumeMaterial .prototype, (UnlitMateria
             break;
       }
 
-      if (objectsCount [0])
+      const
+         numClipPlanes        = objectsKeys .reduce ((a, c) => a + (c === 0), 0),
+         numLights            = objectsKeys .reduce ((a, c) => a + (c === 1), 0),
+         numEnvironmentLights = objectsKeys .reduce ((a, c) => a + (c === 2), 0),
+         numTextureProjectors = objectsKeys .reduce ((a, c) => a + (c === 3), 0);
+
+      if (numClipPlanes)
       {
          options .push ("X3D_CLIP_PLANES")
-         options .push (`X3D_NUM_CLIP_PLANES ${Math .min (objectsCount [0], browser .getMaxClipPlanes ())}`);
+         options .push (`X3D_NUM_CLIP_PLANES ${Math .min (numClipPlanes, browser .getMaxClipPlanes ())}`);
       }
 
-      if (objectsCount [1])
+      if (numLights)
       {
          options .push ("X3D_LIGHTING")
-         options .push (`X3D_NUM_LIGHTS ${Math .min (objectsCount [1], browser .getMaxLights ())}`);
+         options .push (`X3D_NUM_LIGHTS ${Math .min (numLights, browser .getMaxLights ())}`);
       }
 
       const shaderNode = this .volumeDataNode .createShader (options, VolumeStyle_vs, VolumeStyle_fs);
@@ -2029,8 +2031,11 @@ const VolumeMaterial_default_ = VolumeMaterial;
 Namespace_default().add ("VolumeMaterial", "x_ite/Browser/VolumeRendering/VolumeMaterial", VolumeMaterial_default_);
 /* harmony default export */ const VolumeRendering_VolumeMaterial = (VolumeMaterial_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
-const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("standard/Math/Numbers/Vector3");
+const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
+;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix4\")"
+const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("standard/Math/Numbers/Matrix4");
+var Matrix4_default = /*#__PURE__*/__webpack_require__.n(Matrix4_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/VolumeRendering/X3DVolumeDataNode.js
 /*******************************************************************************
  *
@@ -2078,6 +2083,7 @@ var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -2239,7 +2245,7 @@ Object .assign (Object .setPrototypeOf (X3DVolumeDataNode .prototype, (X3DChildN
    },
    set_textureTransform__ ()
    {
-      this .textureNormalMatrixArray .set (this .textureTransformNode .getMatrix () .submatrix .inverse ());
+      this .textureNormalMatrixArray .set (new (Matrix4_default()) (... this .textureTransformNode .getMatrix ()) .submatrix .inverse ());
    },
    traverse (type, renderObject)
    {
@@ -2277,10 +2283,10 @@ const X3DVolumeDataNode_default_ = X3DVolumeDataNode;
 Namespace_default().add ("X3DVolumeDataNode", "x_ite/Components/VolumeRendering/X3DVolumeDataNode", X3DVolumeDataNode_default_);
 /* harmony default export */ const VolumeRendering_X3DVolumeDataNode = (X3DVolumeDataNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Shaders/ComposedShader\")"
-const ComposedShader_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Components/Shaders/ComposedShader");
+const ComposedShader_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Components/Shaders/ComposedShader");
 var ComposedShader_default = /*#__PURE__*/__webpack_require__.n(ComposedShader_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Shaders/ShaderPart\")"
-const ShaderPart_namespaceObject = window [Symbol .for ("X_ITE.X3D-8.12.5")] .require ("x_ite/Components/Shaders/ShaderPart");
+const ShaderPart_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.0")] .require ("x_ite/Components/Shaders/ShaderPart");
 var ShaderPart_default = /*#__PURE__*/__webpack_require__.n(ShaderPart_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/VolumeRendering/IsoSurfaceVolumeData.js
 /*******************************************************************************
@@ -2359,15 +2365,13 @@ Object .assign (Object .setPrototypeOf (IsoSurfaceVolumeData .prototype, VolumeR
       if (gl .getVersion () < 2)
          return;
 
-      this ._gradients          .addInterest ("set_gradients__",   this);
-      this ._renderStyle        .addInterest ("set_renderStyle__", this);
+      this ._gradients        .addInterest ("set_gradients__",   this);
+      this ._renderStyle      .addInterest ("set_renderStyle__", this);
 
-      this ._contourStepSize    .addInterest ("updateShader", this);
-      this ._surfaceValues      .addInterest ("updateShader", this);
-      this ._surfaceTolerance   .addInterest ("updateShader", this);
-      this ._renderStyle        .addInterest ("updateShader", this);
-
-      this .getAppearance () ._texture = this ._voxels;
+      this ._contourStepSize  .addInterest ("updateShader", this);
+      this ._surfaceValues    .addInterest ("updateShader", this);
+      this ._surfaceTolerance .addInterest ("updateShader", this);
+      this ._renderStyle      .addInterest ("updateShader", this);
 
       this .set_gradients__ ();
       this .set_renderStyle__ ();
@@ -2973,8 +2977,6 @@ Object .assign (Object .setPrototypeOf (SegmentedVolumeData .prototype, VolumeRe
       this ._segmentEnabled     .addInterest ("updateShader", this);
       this ._segmentIdentifiers .addInterest ("updateShader", this);
       this ._renderStyle        .addInterest ("updateShader", this);
-
-      this .getAppearance () ._texture = this ._voxels;
 
       this .set_segmentIdentifiers__ ();
       this .set_renderStyle__ ();
@@ -3913,10 +3915,7 @@ Object .assign (Object .setPrototypeOf (VolumeData .prototype, VolumeRendering_X
 
       this ._renderStyle .addInterest ("set_renderStyle__", this);
       this ._voxels      .addInterest ("set_voxels__",      this);
-
-      this ._renderStyle .addInterest ("updateShader", this);
-
-      this .getAppearance () ._texture   = this ._voxels;
+      this ._renderStyle .addInterest ("updateShader",      this);
 
       this .set_renderStyle__ ();
       this .set_voxels__ ();
