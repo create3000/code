@@ -1,4 +1,4 @@
-/* X_ITE v9.0.2 */(() => { // webpackBootstrap
+/* X_ITE v9.0.3 */(() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
 /******/ 	var __webpack_require__ = {};
@@ -39,25 +39,25 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Rendering/X3DCoordinateNode\")"
-const X3DCoordinateNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Rendering/X3DCoordinateNode");
+const X3DCoordinateNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Rendering/X3DCoordinateNode");
 var X3DCoordinateNode_default = /*#__PURE__*/__webpack_require__.n(X3DCoordinateNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Spheroid3.js
 /*******************************************************************************
@@ -248,10 +248,10 @@ const ReferenceEllipsoids_default_ = ReferenceEllipsoids;
 Namespace_default().add ("ReferenceEllipsoids", "standard/Geospatial/ReferenceEllipsoids", ReferenceEllipsoids_default_);
 /* harmony default export */ const Geospatial_ReferenceEllipsoids = (ReferenceEllipsoids_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
-const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Numbers/Vector3");
+const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Algorithm\")"
-const Algorithm_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Algorithm");
+const Algorithm_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Algorithm");
 var Algorithm_default = /*#__PURE__*/__webpack_require__.n(Algorithm_namespaceObject);
 ;// CONCATENATED MODULE: ./src/standard/Geospatial/Geodetic.js
 /*******************************************************************************
@@ -1016,10 +1016,10 @@ const GeospatialObject_default_ = GeospatialObject;
 Namespace_default().add ("GeospatialObject", "x_ite/Browser/Geospatial/GeospatialObject", GeospatialObject_default_);
 /* harmony default export */ const Geospatial_GeospatialObject = (GeospatialObject_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
-const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/X3DCast");
+const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix4\")"
-const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Numbers/Matrix4");
+const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Numbers/Matrix4");
 var Matrix4_default = /*#__PURE__*/__webpack_require__.n(Matrix4_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geospatial/X3DGeospatialObject.js
 /*******************************************************************************
@@ -1286,9 +1286,9 @@ Object .defineProperties (X3DGeospatialObject,
       value: "X3DGeospatialObject",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Geospatial",
+      value: Object .freeze ({ name: "Geospatial", level: 1 }),
       enumerable: true,
    },
 });
@@ -1299,7 +1299,7 @@ const X3DGeospatialObject_default_ = X3DGeospatialObject;
 Namespace_default().add ("X3DGeospatialObject", "x_ite/Components/Geospatial/X3DGeospatialObject", X3DGeospatialObject_default_);
 /* harmony default export */ const Geospatial_X3DGeospatialObject = (X3DGeospatialObject_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Triangle3\")"
-const Triangle3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Geometry/Triangle3");
+const Triangle3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Geometry/Triangle3");
 var Triangle3_default = /*#__PURE__*/__webpack_require__.n(Triangle3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geospatial/GeoCoordinate.js
 /*******************************************************************************
@@ -1513,9 +1513,9 @@ Object .defineProperties (GeoCoordinate,
       value: "GeoCoordinate",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Geospatial",
+      value: Object .freeze ({ name: "Geospatial", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -1525,7 +1525,7 @@ Object .defineProperties (GeoCoordinate,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -1546,10 +1546,10 @@ const GeoCoordinate_default_ = GeoCoordinate;
 Namespace_default().add ("GeoCoordinate", "x_ite/Components/Geospatial/GeoCoordinate", GeoCoordinate_default_);
 /* harmony default export */ const Geospatial_GeoCoordinate = (GeoCoordinate_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Rendering/X3DGeometryNode\")"
-const X3DGeometryNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Rendering/X3DGeometryNode");
+const X3DGeometryNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Rendering/X3DGeometryNode");
 var X3DGeometryNode_default = /*#__PURE__*/__webpack_require__.n(X3DGeometryNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector2\")"
-const Vector2_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Numbers/Vector2");
+const Vector2_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Numbers/Vector2");
 var Vector2_default = /*#__PURE__*/__webpack_require__.n(Vector2_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geospatial/GeoElevationGrid.js
 /*******************************************************************************
@@ -1617,6 +1617,7 @@ function GeoElevationGrid (executionContext)
 
    this .addType ((X3DConstants_default()).GeoElevationGrid);
 
+   this ._set_height  .setUnit ("length");
    this ._creaseAngle .setUnit ("angle");
    this ._height      .setUnit ("length");
 
@@ -1633,9 +1634,10 @@ Object .assign (Object .setPrototypeOf (GeoElevationGrid .prototype, (X3DGeometr
       X3DGeometryNode_default().prototype .initialize .call (this);
       Geospatial_X3DGeospatialObject .prototype .initialize .call (this);
 
-      this ._color    .addInterest ("set_color__", this);
-      this ._texCoord .addInterest ("set_texCoord__", this);
-      this ._normal   .addInterest ("set_normal__", this);
+      this ._set_height .addFieldInterest (this ._height);
+      this ._color      .addInterest ("set_color__", this);
+      this ._texCoord   .addInterest ("set_texCoord__", this);
+      this ._normal     .addInterest ("set_normal__", this);
 
       this .set_color__ ();
       this .set_texCoord__ ();
@@ -1943,9 +1945,9 @@ Object .defineProperties (GeoElevationGrid,
       value: "GeoElevationGrid",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Geospatial",
+      value: Object .freeze ({ name: "Geospatial", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -1955,7 +1957,7 @@ Object .defineProperties (GeoElevationGrid,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -1964,6 +1966,7 @@ Object .defineProperties (GeoElevationGrid,
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "metadata",        new (Fields_default()).SFNode ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "geoOrigin",       new (Fields_default()).SFNode ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "geoSystem",       new (Fields_default()).MFString ("GD", "WE")),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOnly,      "set_height",      new (Fields_default()).MFDouble ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "geoGridOrigin",   new (Fields_default()).SFVec3d ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "xDimension",      new (Fields_default()).SFInt32 ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "zDimension",      new (Fields_default()).SFInt32 ()),
@@ -1978,7 +1981,7 @@ Object .defineProperties (GeoElevationGrid,
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "color",           new (Fields_default()).SFNode ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "texCoord",        new (Fields_default()).SFNode ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "normal",          new (Fields_default()).SFNode ()),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "height",          new (Fields_default()).MFDouble (0, 0)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "height",          new (Fields_default()).MFDouble (0, 0)),
       ]),
       enumerable: true,
    },
@@ -1990,22 +1993,22 @@ const GeoElevationGrid_default_ = GeoElevationGrid;
 Namespace_default().add ("GeoElevationGrid", "x_ite/Components/Geospatial/GeoElevationGrid", GeoElevationGrid_default_);
 /* harmony default export */ const Geospatial_GeoElevationGrid = (GeoElevationGrid_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DChildNode\")"
-const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Core/X3DChildNode");
+const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Core/X3DChildNode");
 var X3DChildNode_default = /*#__PURE__*/__webpack_require__.n(X3DChildNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Grouping/X3DBoundedObject\")"
-const X3DBoundedObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Grouping/X3DBoundedObject");
+const X3DBoundedObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Grouping/X3DBoundedObject");
 var X3DBoundedObject_default = /*#__PURE__*/__webpack_require__.n(X3DBoundedObject_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Rendering/TraverseType\")"
-const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Rendering/TraverseType");
+const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Rendering/TraverseType");
 var TraverseType_default = /*#__PURE__*/__webpack_require__.n(TraverseType_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Grouping/Group\")"
-const Group_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Grouping/Group");
+const Group_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Grouping/Group");
 var Group_default = /*#__PURE__*/__webpack_require__.n(Group_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Networking/Inline\")"
-const Inline_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Networking/Inline");
+const Inline_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Networking/Inline");
 var Inline_default = /*#__PURE__*/__webpack_require__.n(Inline_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Box3\")"
-const Box3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Geometry/Box3");
+const Box3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Geometry/Box3");
 var Box3_default = /*#__PURE__*/__webpack_require__.n(Box3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geospatial/GeoLOD.js
 /*******************************************************************************
@@ -2433,9 +2436,9 @@ Object .defineProperties (GeoLOD,
       value: "GeoLOD",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Geospatial",
+      value: Object .freeze ({ name: "Geospatial", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -2445,7 +2448,7 @@ Object .defineProperties (GeoLOD,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -2479,7 +2482,7 @@ const GeoLOD_default_ = GeoLOD;
 Namespace_default().add ("GeoLOD", "x_ite/Components/Geospatial/GeoLOD", GeoLOD_default_);
 /* harmony default export */ const Geospatial_GeoLOD = (GeoLOD_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Grouping/X3DTransformMatrix3DNode\")"
-const X3DTransformMatrix3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Grouping/X3DTransformMatrix3DNode");
+const X3DTransformMatrix3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Grouping/X3DTransformMatrix3DNode");
 var X3DTransformMatrix3DNode_default = /*#__PURE__*/__webpack_require__.n(X3DTransformMatrix3DNode_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geospatial/GeoLocation.js
 /*******************************************************************************
@@ -2577,9 +2580,9 @@ Object .defineProperties (GeoLocation,
       value: "GeoLocation",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Geospatial",
+      value: Object .freeze ({ name: "Geospatial", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -2589,7 +2592,7 @@ Object .defineProperties (GeoLocation,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -2617,10 +2620,10 @@ const GeoLocation_default_ = GeoLocation;
 Namespace_default().add ("GeoLocation", "x_ite/Components/Geospatial/GeoLocation", GeoLocation_default_);
 /* harmony default export */ const Geospatial_GeoLocation = (GeoLocation_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DInfoNode\")"
-const X3DInfoNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Core/X3DInfoNode");
+const X3DInfoNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Core/X3DInfoNode");
 var X3DInfoNode_default = /*#__PURE__*/__webpack_require__.n(X3DInfoNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Networking/X3DUrlObject\")"
-const X3DUrlObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Networking/X3DUrlObject");
+const X3DUrlObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Networking/X3DUrlObject");
 var X3DUrlObject_default = /*#__PURE__*/__webpack_require__.n(X3DUrlObject_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geospatial/GeoMetadata.js
 /*******************************************************************************
@@ -2709,9 +2712,9 @@ Object .defineProperties (GeoMetadata,
       value: "GeoMetadata",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Geospatial",
+      value: Object .freeze ({ name: "Geospatial", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -2721,13 +2724,14 @@ Object .defineProperties (GeoMetadata,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
    {
       value: new (FieldDefinitionArray_default()) ([
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "metadata",             new (Fields_default()).SFNode ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "description",          new (Fields_default()).SFString ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "load",                 new (Fields_default()).SFBool (true)),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "url",                  new (Fields_default()).MFString ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "autoRefresh",          new (Fields_default()).SFTime ()),
@@ -2745,7 +2749,7 @@ const GeoMetadata_default_ = GeoMetadata;
 Namespace_default().add ("GeoMetadata", "x_ite/Components/Geospatial/GeoMetadata", GeoMetadata_default_);
 /* harmony default export */ const Geospatial_GeoMetadata = (GeoMetadata_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DNode\")"
-const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Core/X3DNode");
+const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Core/X3DNode");
 var X3DNode_default = /*#__PURE__*/__webpack_require__.n(X3DNode_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geospatial/GeoOrigin.js
 /*******************************************************************************
@@ -2838,9 +2842,9 @@ Object .defineProperties (GeoOrigin,
       value: "GeoOrigin",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Geospatial",
+      value: Object .freeze ({ name: "Geospatial", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -2850,7 +2854,7 @@ Object .defineProperties (GeoOrigin,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -2871,7 +2875,7 @@ const GeoOrigin_default_ = GeoOrigin;
 Namespace_default().add ("GeoOrigin", "x_ite/Components/Geospatial/GeoOrigin", GeoOrigin_default_);
 /* harmony default export */ const Geospatial_GeoOrigin = (GeoOrigin_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Interpolation/X3DInterpolatorNode\")"
-const X3DInterpolatorNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Interpolation/X3DInterpolatorNode");
+const X3DInterpolatorNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Interpolation/X3DInterpolatorNode");
 var X3DInterpolatorNode_default = /*#__PURE__*/__webpack_require__.n(X3DInterpolatorNode_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geospatial/GeoPositionInterpolator.js
 /*******************************************************************************
@@ -2998,9 +3002,9 @@ Object .defineProperties (GeoPositionInterpolator,
       value: "GeoPositionInterpolator",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Geospatial",
+      value: Object .freeze ({ name: "Geospatial", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -3010,7 +3014,7 @@ Object .defineProperties (GeoPositionInterpolator,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -3022,7 +3026,7 @@ Object .defineProperties (GeoPositionInterpolator,
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOnly,      "set_fraction",     new (Fields_default()).SFFloat ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "key",              new (Fields_default()).MFFloat ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "keyValue",         new (Fields_default()).MFVec3d ()),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).outputOnly,     "value_changed",    new (Fields_default()).SFVec3d ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).outputOnly,     "value_changed",    new (Fields_default()).SFVec3f ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).outputOnly,     "geovalue_changed", new (Fields_default()).SFVec3d ()),
       ]),
       enumerable: true,
@@ -3035,10 +3039,10 @@ const GeoPositionInterpolator_default_ = GeoPositionInterpolator;
 Namespace_default().add ("GeoPositionInterpolator", "x_ite/Components/Geospatial/GeoPositionInterpolator", GeoPositionInterpolator_default_);
 /* harmony default export */ const Geospatial_GeoPositionInterpolator = (GeoPositionInterpolator_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/EnvironmentalSensor/X3DEnvironmentalSensorNode\")"
-const X3DEnvironmentalSensorNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/EnvironmentalSensor/X3DEnvironmentalSensorNode");
+const X3DEnvironmentalSensorNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/EnvironmentalSensor/X3DEnvironmentalSensorNode");
 var X3DEnvironmentalSensorNode_default = /*#__PURE__*/__webpack_require__.n(X3DEnvironmentalSensorNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/EnvironmentalSensor/ProximitySensor\")"
-const ProximitySensor_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/EnvironmentalSensor/ProximitySensor");
+const ProximitySensor_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/EnvironmentalSensor/ProximitySensor");
 var ProximitySensor_default = /*#__PURE__*/__webpack_require__.n(ProximitySensor_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geospatial/GeoProximitySensor.js
 /*******************************************************************************
@@ -3127,6 +3131,8 @@ Object .assign (Object .setPrototypeOf (GeoProximitySensor .prototype, (X3DEnvir
       this ._size    .addFieldInterest (this .proximitySensor ._size);
       this ._center  .addFieldInterest (this .proximitySensor ._center);
 
+      this ._geoCenter .addFieldInterest (this ._center);
+
       this .proximitySensor ._isCameraObject   .addFieldInterest (this ._isCameraObject);
       this .proximitySensor ._isPickableObject .addFieldInterest (this ._isPickableObject);
 
@@ -3167,9 +3173,9 @@ Object .defineProperties (GeoProximitySensor,
       value: "GeoProximitySensor",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Geospatial",
+      value: Object .freeze ({ name: "Geospatial", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -3179,18 +3185,20 @@ Object .defineProperties (GeoProximitySensor,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
    {
       value: new (FieldDefinitionArray_default()) ([
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "metadata",                 new (Fields_default()).SFNode ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "description",              new (Fields_default()).SFString ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "geoOrigin",                new (Fields_default()).SFNode ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "geoSystem",                new (Fields_default()).MFString ("GD", "WE")),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "enabled",                  new (Fields_default()).SFBool (true)),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "size",                     new (Fields_default()).SFVec3f ()),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "center",                   new (Fields_default()).SFVec3f ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "center",                   new (Fields_default()).SFVec3d ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "geoCenter",                new (Fields_default()).SFVec3d ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).outputOnly,     "isActive",                 new (Fields_default()).SFBool ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).outputOnly,     "enterTime",                new (Fields_default()).SFTime ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).outputOnly,     "exitTime",                 new (Fields_default()).SFTime ()),
@@ -3209,7 +3217,7 @@ const GeoProximitySensor_default_ = GeoProximitySensor;
 Namespace_default().add ("GeoProximitySensor", "x_ite/Components/Geospatial/GeoProximitySensor", GeoProximitySensor_default_);
 /* harmony default export */ const Geospatial_GeoProximitySensor = (GeoProximitySensor_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/PointingDeviceSensor/X3DTouchSensorNode\")"
-const X3DTouchSensorNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/PointingDeviceSensor/X3DTouchSensorNode");
+const X3DTouchSensorNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/PointingDeviceSensor/X3DTouchSensorNode");
 var X3DTouchSensorNode_default = /*#__PURE__*/__webpack_require__.n(X3DTouchSensorNode_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geospatial/GeoTouchSensor.js
 /*******************************************************************************
@@ -3311,9 +3319,9 @@ Object .defineProperties (GeoTouchSensor,
       value: "GeoTouchSensor",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Geospatial",
+      value: Object .freeze ({ name: "Geospatial", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -3323,7 +3331,7 @@ Object .defineProperties (GeoTouchSensor,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -3458,9 +3466,9 @@ Object .defineProperties (GeoTransform,
       value: "GeoTransform",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Geospatial",
+      value: Object .freeze ({ name: "Geospatial", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -3470,7 +3478,7 @@ Object .defineProperties (GeoTransform,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -3502,16 +3510,16 @@ const GeoTransform_default_ = GeoTransform;
 Namespace_default().add ("GeoTransform", "x_ite/Components/Geospatial/GeoTransform", GeoTransform_default_);
 /* harmony default export */ const Geospatial_GeoTransform = (GeoTransform_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Navigation/X3DViewpointNode\")"
-const X3DViewpointNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Navigation/X3DViewpointNode");
+const X3DViewpointNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Navigation/X3DViewpointNode");
 var X3DViewpointNode_default = /*#__PURE__*/__webpack_require__.n(X3DViewpointNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Navigation/Viewpoint\")"
-const Viewpoint_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Navigation/Viewpoint");
+const Viewpoint_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Navigation/Viewpoint");
 var Viewpoint_default = /*#__PURE__*/__webpack_require__.n(Viewpoint_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Navigation/NavigationInfo\")"
-const NavigationInfo_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Navigation/NavigationInfo");
+const NavigationInfo_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Navigation/NavigationInfo");
 var NavigationInfo_default = /*#__PURE__*/__webpack_require__.n(NavigationInfo_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Rotation4\")"
-const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Numbers/Rotation4");
+const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Numbers/Rotation4");
 var Rotation4_default = /*#__PURE__*/__webpack_require__.n(Rotation4_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geospatial/GeoViewpoint.js
 /*******************************************************************************
@@ -3583,6 +3591,13 @@ function GeoViewpoint (executionContext)
    this .addChildObjects ((X3DConstants_default()).inputOutput, "navType",   new (Fields_default()).MFString ("EXAMINE", "ANY"),
                           (X3DConstants_default()).inputOutput, "headlight", new (Fields_default()).SFBool (true));
 
+   // Units
+
+   this ._centerOfRotation .setUnit ("length");
+   this ._fieldOfView      .setUnit ("angle");
+
+   // Legacy
+
    if (executionContext .getSpecificationVersion () <= 3.2)
    {
       this .addAlias ("navType",   this ._navType);
@@ -3591,8 +3606,7 @@ function GeoViewpoint (executionContext)
       this .traverse = traverse;
    }
 
-   this ._centerOfRotation .setUnit ("length");
-   this ._fieldOfView      .setUnit ("angle");
+   // Private properties
 
    this .geoNavigationInfoNode = new (NavigationInfo_default()) (executionContext);
    this .projectionMatrix      = new (Matrix4_default()) ();
@@ -3762,9 +3776,9 @@ Object .defineProperties (GeoViewpoint,
       value: "GeoViewpoint",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Geospatial",
+      value: Object .freeze ({ name: "Geospatial", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -3774,7 +3788,7 @@ Object .defineProperties (GeoViewpoint,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:

@@ -1,4 +1,4 @@
-/* X_ITE v9.0.2 */(() => { // webpackBootstrap
+/* X_ITE v9.0.3 */(() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
 /******/ 	var __webpack_require__ = {};
@@ -39,31 +39,31 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Texturing/PixelTexture\")"
-const PixelTexture_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Texturing/PixelTexture");
+const PixelTexture_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Texturing/PixelTexture");
 var PixelTexture_default = /*#__PURE__*/__webpack_require__.n(PixelTexture_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Texturing/TextureProperties\")"
-const TextureProperties_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Texturing/TextureProperties");
+const TextureProperties_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Texturing/TextureProperties");
 var TextureProperties_default = /*#__PURE__*/__webpack_require__.n(TextureProperties_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DNode\")"
-const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Core/X3DNode");
+const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Core/X3DNode");
 var X3DNode_default = /*#__PURE__*/__webpack_require__.n(X3DNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/VolumeRendering/X3DVolumeRenderStyleNode.js
 /*******************************************************************************
@@ -196,9 +196,9 @@ Object .defineProperties (X3DVolumeRenderStyleNode,
       value: "X3DVolumeRenderStyleNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "VolumeRendering",
+      value: Object .freeze ({ name: "VolumeRendering", level: 1 }),
       enumerable: true,
    },
 });
@@ -275,9 +275,9 @@ Object .defineProperties (X3DComposableVolumeRenderStyleNode,
       value: "X3DComposableVolumeRenderStyleNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "VolumeRendering",
+      value: Object .freeze ({ name: "VolumeRendering", level: 1 }),
       enumerable: true,
    },
 });
@@ -288,7 +288,7 @@ const X3DComposableVolumeRenderStyleNode_default_ = X3DComposableVolumeRenderSty
 Namespace_default().add ("X3DComposableVolumeRenderStyleNode", "x_ite/Components/VolumeRendering/X3DComposableVolumeRenderStyleNode", X3DComposableVolumeRenderStyleNode_default_);
 /* harmony default export */ const VolumeRendering_X3DComposableVolumeRenderStyleNode = (X3DComposableVolumeRenderStyleNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
-const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/X3DCast");
+const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/VolumeRendering/OpacityMapVolumeStyle.js
 /*******************************************************************************
@@ -443,9 +443,9 @@ Object .defineProperties (OpacityMapVolumeStyle,
       value: "OpacityMapVolumeStyle",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "VolumeRendering",
+      value: Object .freeze ({ name: "VolumeRendering", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -455,7 +455,7 @@ Object .defineProperties (OpacityMapVolumeStyle,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.3", "Infinity"]),
+      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -932,9 +932,9 @@ Object .defineProperties (BlendedVolumeStyle,
       value: "BlendedVolumeStyle",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "VolumeRendering",
+      value: Object .freeze ({ name: "VolumeRendering", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -944,7 +944,7 @@ Object .defineProperties (BlendedVolumeStyle,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.3", "Infinity"]),
+      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -1096,9 +1096,9 @@ Object .defineProperties (BoundaryEnhancementVolumeStyle,
       value: "BoundaryEnhancementVolumeStyle",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "VolumeRendering",
+      value: Object .freeze ({ name: "VolumeRendering", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -1108,7 +1108,7 @@ Object .defineProperties (BoundaryEnhancementVolumeStyle,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.3", "Infinity"]),
+      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -1411,9 +1411,9 @@ Object .defineProperties (CartoonVolumeStyle,
       value: "CartoonVolumeStyle",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "VolumeRendering",
+      value: Object .freeze ({ name: "VolumeRendering", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -1423,7 +1423,7 @@ Object .defineProperties (CartoonVolumeStyle,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.3", "Infinity"]),
+      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -1623,9 +1623,9 @@ Object .defineProperties (ComposedVolumeStyle,
       value: "ComposedVolumeStyle",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "VolumeRendering",
+      value: Object .freeze ({ name: "VolumeRendering", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -1635,7 +1635,7 @@ Object .defineProperties (ComposedVolumeStyle,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.3", "Infinity"]),
+      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -1806,9 +1806,9 @@ Object .defineProperties (EdgeEnhancementVolumeStyle,
       value: "EdgeEnhancementVolumeStyle",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "VolumeRendering",
+      value: Object .freeze ({ name: "VolumeRendering", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -1818,7 +1818,7 @@ Object .defineProperties (EdgeEnhancementVolumeStyle,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.3", "Infinity"]),
+      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -1840,16 +1840,16 @@ const EdgeEnhancementVolumeStyle_default_ = EdgeEnhancementVolumeStyle;
 Namespace_default().add ("EdgeEnhancementVolumeStyle", "x_ite/Components/VolumeRendering/EdgeEnhancementVolumeStyle", EdgeEnhancementVolumeStyle_default_);
 /* harmony default export */ const VolumeRendering_EdgeEnhancementVolumeStyle = (EdgeEnhancementVolumeStyle_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DChildNode\")"
-const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Core/X3DChildNode");
+const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Core/X3DChildNode");
 var X3DChildNode_default = /*#__PURE__*/__webpack_require__.n(X3DChildNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Grouping/X3DBoundedObject\")"
-const X3DBoundedObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Grouping/X3DBoundedObject");
+const X3DBoundedObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Grouping/X3DBoundedObject");
 var X3DBoundedObject_default = /*#__PURE__*/__webpack_require__.n(X3DBoundedObject_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Browser/Core/TextureQuality\")"
-const TextureQuality_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Browser/Core/TextureQuality");
+const TextureQuality_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Browser/Core/TextureQuality");
 var TextureQuality_default = /*#__PURE__*/__webpack_require__.n(TextureQuality_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Shape/UnlitMaterial\")"
-const UnlitMaterial_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Shape/UnlitMaterial");
+const UnlitMaterial_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Shape/UnlitMaterial");
 var UnlitMaterial_default = /*#__PURE__*/__webpack_require__.n(UnlitMaterial_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/VolumeRendering/VolumeStyle.vs.js
 const VolumeStyle_vs_default_ = /* glsl */ `#version 300 es
@@ -2009,9 +2009,9 @@ Object .defineProperties (VolumeMaterial,
       value: "VolumeMaterial",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shape",
+      value: Object .freeze ({ name: "Shape", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -2031,10 +2031,10 @@ const VolumeMaterial_default_ = VolumeMaterial;
 Namespace_default().add ("VolumeMaterial", "x_ite/Browser/VolumeRendering/VolumeMaterial", VolumeMaterial_default_);
 /* harmony default export */ const VolumeRendering_VolumeMaterial = (VolumeMaterial_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
-const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Numbers/Vector3");
+const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix4\")"
-const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Numbers/Matrix4");
+const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Numbers/Matrix4");
 var Matrix4_default = /*#__PURE__*/__webpack_require__.n(Matrix4_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/VolumeRendering/X3DVolumeDataNode.js
 /*******************************************************************************
@@ -2270,9 +2270,9 @@ Object .defineProperties (X3DVolumeDataNode,
       value: "X3DVolumeDataNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "VolumeRendering",
+      value: Object .freeze ({ name: "VolumeRendering", level: 1 }),
       enumerable: true,
    },
 });
@@ -2283,10 +2283,10 @@ const X3DVolumeDataNode_default_ = X3DVolumeDataNode;
 Namespace_default().add ("X3DVolumeDataNode", "x_ite/Components/VolumeRendering/X3DVolumeDataNode", X3DVolumeDataNode_default_);
 /* harmony default export */ const VolumeRendering_X3DVolumeDataNode = (X3DVolumeDataNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Shaders/ComposedShader\")"
-const ComposedShader_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Shaders/ComposedShader");
+const ComposedShader_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Shaders/ComposedShader");
 var ComposedShader_default = /*#__PURE__*/__webpack_require__.n(ComposedShader_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Shaders/ShaderPart\")"
-const ShaderPart_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Shaders/ShaderPart");
+const ShaderPart_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Shaders/ShaderPart");
 var ShaderPart_default = /*#__PURE__*/__webpack_require__.n(ShaderPart_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/VolumeRendering/IsoSurfaceVolumeData.js
 /*******************************************************************************
@@ -2618,9 +2618,9 @@ Object .defineProperties (IsoSurfaceVolumeData,
       value: "IsoSurfaceVolumeData",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "VolumeRendering",
+      value: Object .freeze ({ name: "VolumeRendering", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -2630,7 +2630,7 @@ Object .defineProperties (IsoSurfaceVolumeData,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.3", "Infinity"]),
+      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -2861,9 +2861,9 @@ Object .defineProperties (ProjectionVolumeStyle,
       value: "ProjectionVolumeStyle",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "VolumeRendering",
+      value: Object .freeze ({ name: "VolumeRendering", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -2873,7 +2873,7 @@ Object .defineProperties (ProjectionVolumeStyle,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.3", "Infinity"]),
+      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -3138,9 +3138,9 @@ Object .defineProperties (SegmentedVolumeData,
       value: "SegmentedVolumeData",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "VolumeRendering",
+      value: Object .freeze ({ name: "VolumeRendering", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -3150,7 +3150,7 @@ Object .defineProperties (SegmentedVolumeData,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.3", "Infinity"]),
+      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -3426,9 +3426,9 @@ Object .defineProperties (ShadedVolumeStyle,
       value: "ShadedVolumeStyle",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "VolumeRendering",
+      value: Object .freeze ({ name: "VolumeRendering", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -3438,7 +3438,7 @@ Object .defineProperties (ShadedVolumeStyle,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.3", "Infinity"]),
+      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -3611,9 +3611,9 @@ Object .defineProperties (SilhouetteEnhancementVolumeStyle,
       value: "SilhouetteEnhancementVolumeStyle",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "VolumeRendering",
+      value: Object .freeze ({ name: "VolumeRendering", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -3623,7 +3623,7 @@ Object .defineProperties (SilhouetteEnhancementVolumeStyle,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.3", "Infinity"]),
+      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -3803,9 +3803,9 @@ Object .defineProperties (ToneMappedVolumeStyle,
       value: "ToneMappedVolumeStyle",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "VolumeRendering",
+      value: Object .freeze ({ name: "VolumeRendering", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -3815,7 +3815,7 @@ Object .defineProperties (ToneMappedVolumeStyle,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.3", "Infinity"]),
+      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -4016,9 +4016,9 @@ Object .defineProperties (VolumeData,
       value: "VolumeData",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "VolumeRendering",
+      value: Object .freeze ({ name: "VolumeRendering", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -4028,7 +4028,7 @@ Object .defineProperties (VolumeData,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.3", "Infinity"]),
+      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:

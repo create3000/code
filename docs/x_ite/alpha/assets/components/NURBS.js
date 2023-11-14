@@ -1,4 +1,4 @@
-/* X_ITE v9.0.2 */(() => { // webpackBootstrap
+/* X_ITE v9.0.3 */(() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
 /******/ 	var __webpack_require__ = {};
@@ -39,28 +39,28 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DNode\")"
-const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Core/X3DNode");
+const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Core/X3DNode");
 var X3DNode_default = /*#__PURE__*/__webpack_require__.n(X3DNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
-const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/X3DCast");
+const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/NURBS/Contour2D.js
 /*******************************************************************************
@@ -205,9 +205,9 @@ Object .defineProperties (Contour2D,
       value: "Contour2D",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "NURBS",
+      value: Object .freeze ({ name: "NURBS", level: 4 }),
       enumerable: true,
    },
    containerField:
@@ -217,7 +217,7 @@ Object .defineProperties (Contour2D,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -304,9 +304,9 @@ Object .defineProperties (X3DNurbsControlCurveNode,
       value: "X3DNurbsControlCurveNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "NURBS",
+      value: Object .freeze ({ name: "NURBS", level: 1 }),
       enumerable: true,
    },
 });
@@ -317,7 +317,7 @@ const X3DNurbsControlCurveNode_default_ = X3DNurbsControlCurveNode;
 Namespace_default().add ("X3DNurbsControlCurveNode", "x_ite/Components/NURBS/X3DNurbsControlCurveNode", X3DNurbsControlCurveNode_default_);
 /* harmony default export */ const NURBS_X3DNurbsControlCurveNode = (X3DNurbsControlCurveNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
-const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Numbers/Vector3");
+const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/NURBS/ContourPolyline2D.js
 /*******************************************************************************
@@ -459,9 +459,9 @@ Object .defineProperties (ContourPolyline2D,
       value: "ContourPolyline2D",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "NURBS",
+      value: Object .freeze ({ name: "NURBS", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -471,7 +471,7 @@ Object .defineProperties (ContourPolyline2D,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -489,117 +489,14 @@ const ContourPolyline2D_default_ = ContourPolyline2D;
 
 Namespace_default().add ("ContourPolyline2D", "x_ite/Components/NURBS/ContourPolyline2D", ContourPolyline2D_default_);
 /* harmony default export */ const NURBS_ContourPolyline2D = (ContourPolyline2D_default_);
-;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Rendering/X3DCoordinateNode\")"
-const X3DCoordinateNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Rendering/X3DCoordinateNode");
-var X3DCoordinateNode_default = /*#__PURE__*/__webpack_require__.n(X3DCoordinateNode_namespaceObject);
-;// CONCATENATED MODULE: ./src/x_ite/Components/NURBS/CoordinateDouble.js
-/*******************************************************************************
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
- *
- * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
- *
- * The copyright notice above does not evidence any actual of intended
- * publication of such source code, and is an unpublished work by create3000.
- * This material contains CONFIDENTIAL INFORMATION that is the property of
- * create3000.
- *
- * No permission is granted to copy, distribute, or create derivative works from
- * the contents of this software, in whole or in part, without the prior written
- * permission of create3000.
- *
- * NON-MILITARY USE ONLY
- *
- * All create3000 software are effectively free software with a non-military use
- * restriction. It is free. Well commented source is provided. You may reuse the
- * source in any way you please with the exception anything that uses it must be
- * marked to indicate is contains 'non-military use only' components.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
- *
- * This file is part of the X_ITE Project.
- *
- * X_ITE is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License version 3 only, as published by the
- * Free Software Foundation.
- *
- * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
- * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
- * details (a copy is included in the LICENSE file that accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version 3
- * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
- * copy of the GPLv3 License.
- *
- * For Silvio, Joy and Adi.
- *
- ******************************************************************************/
-
-
-
-
-
-
-
-function CoordinateDouble (executionContext)
-{
-   X3DCoordinateNode_default().call (this, executionContext);
-
-   this .addType ((X3DConstants_default()).CoordinateDouble);
-}
-
-Object .setPrototypeOf (CoordinateDouble .prototype, (X3DCoordinateNode_default()).prototype);
-
-Object .defineProperties (CoordinateDouble,
-{
-   typeName:
-   {
-      value: "CoordinateDouble",
-      enumerable: true,
-   },
-   componentName:
-   {
-      value: "NURBS",
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "coord",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze (["3.0", "Infinity"]),
-      enumerable: true,
-   },
-   fieldDefinitions:
-   {
-      value: new (FieldDefinitionArray_default()) ([
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "metadata", new (Fields_default()).SFNode ()),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "point",    new (Fields_default()).MFVec3d ()),
-      ]),
-      enumerable: true,
-   },
-});
-
-const CoordinateDouble_default_ = CoordinateDouble;
-;
-
-Namespace_default().add ("CoordinateDouble", "x_ite/Components/NURBS/CoordinateDouble", CoordinateDouble_default_);
-/* harmony default export */ const NURBS_CoordinateDouble = (CoordinateDouble_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Rendering/X3DGeometryNode\")"
-const X3DGeometryNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Rendering/X3DGeometryNode");
+const X3DGeometryNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Rendering/X3DGeometryNode");
 var X3DGeometryNode_default = /*#__PURE__*/__webpack_require__.n(X3DGeometryNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector2\")"
-const Vector2_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Numbers/Vector2");
+const Vector2_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Numbers/Vector2");
 var Vector2_default = /*#__PURE__*/__webpack_require__.n(Vector2_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector4\")"
-const Vector4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Numbers/Vector4");
+const Vector4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Numbers/Vector4");
 var Vector4_default = /*#__PURE__*/__webpack_require__.n(Vector4_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/NURBS/NURBS.js
 /*******************************************************************************
@@ -1151,9 +1048,9 @@ Object .defineProperties (X3DParametricGeometryNode,
       value: "X3DParametricGeometryNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "NURBS",
+      value: Object .freeze ({ name: "NURBS", level: 1 }),
       enumerable: true,
    },
 });
@@ -1164,7 +1061,7 @@ const X3DParametricGeometryNode_default_ = X3DParametricGeometryNode;
 Namespace_default().add ("X3DParametricGeometryNode", "x_ite/Components/NURBS/X3DParametricGeometryNode", X3DParametricGeometryNode_default_);
 /* harmony default export */ const NURBS_X3DParametricGeometryNode = (X3DParametricGeometryNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Rendering/X3DLineGeometryNode\")"
-const X3DLineGeometryNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Rendering/X3DLineGeometryNode");
+const X3DLineGeometryNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Rendering/X3DLineGeometryNode");
 var X3DLineGeometryNode_default = /*#__PURE__*/__webpack_require__.n(X3DLineGeometryNode_namespaceObject);
 ;// CONCATENATED MODULE: ./src/lib/nurbs/src/utils/is-ndarray.js
 
@@ -2216,7 +2113,7 @@ const support_default_ = function (cacheKey, nurbs, accessors, debug, checkBound
 Namespace_default().add ("support", "lib/nurbs/src/support", support_default_);
 /* harmony default export */ const support = (support_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Triangle3\")"
-const Triangle3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Geometry/Triangle3");
+const Triangle3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Geometry/Triangle3");
 var Triangle3_default = /*#__PURE__*/__webpack_require__.n(Triangle3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/lib/nurbs/extras/sample.js
 
@@ -2990,9 +2887,9 @@ Object .defineProperties (NurbsCurve,
       value: "NurbsCurve",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "NURBS",
+      value: Object .freeze ({ name: "NURBS", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -3002,7 +2899,7 @@ Object .defineProperties (NurbsCurve,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -3207,9 +3104,9 @@ Object .defineProperties (NurbsCurve2D,
       value: "NurbsCurve2D",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "NURBS",
+      value: Object .freeze ({ name: "NURBS", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -3219,7 +3116,7 @@ Object .defineProperties (NurbsCurve2D,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -3243,13 +3140,13 @@ const NurbsCurve2D_default_ = NurbsCurve2D;
 Namespace_default().add ("NurbsCurve2D", "x_ite/Components/NURBS/NurbsCurve2D", NurbsCurve2D_default_);
 /* harmony default export */ const NURBS_NurbsCurve2D = (NurbsCurve2D_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DChildNode\")"
-const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Core/X3DChildNode");
+const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Core/X3DChildNode");
 var X3DChildNode_default = /*#__PURE__*/__webpack_require__.n(X3DChildNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Interpolation/OrientationInterpolator\")"
-const OrientationInterpolator_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Interpolation/OrientationInterpolator");
+const OrientationInterpolator_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Interpolation/OrientationInterpolator");
 var OrientationInterpolator_default = /*#__PURE__*/__webpack_require__.n(OrientationInterpolator_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Rotation4\")"
-const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Numbers/Rotation4");
+const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Numbers/Rotation4");
 var Rotation4_default = /*#__PURE__*/__webpack_require__.n(Rotation4_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/NURBS/NurbsOrientationInterpolator.js
 /*******************************************************************************
@@ -3450,9 +3347,9 @@ Object .defineProperties (NurbsOrientationInterpolator,
       value: "NurbsOrientationInterpolator",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "NURBS",
+      value: Object .freeze ({ name: "NURBS", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -3462,7 +3359,7 @@ Object .defineProperties (NurbsOrientationInterpolator,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -3486,7 +3383,7 @@ const NurbsOrientationInterpolator_default_ = NurbsOrientationInterpolator;
 Namespace_default().add ("NurbsOrientationInterpolator", "x_ite/Components/NURBS/NurbsOrientationInterpolator", NurbsOrientationInterpolator_default_);
 /* harmony default export */ const NURBS_NurbsOrientationInterpolator = (NurbsOrientationInterpolator_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Algorithm\")"
-const Algorithm_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Algorithm");
+const Algorithm_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Algorithm");
 var Algorithm_default = /*#__PURE__*/__webpack_require__.n(Algorithm_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/NURBS/X3DNurbsSurfaceGeometryNode.js
 /*******************************************************************************
@@ -3874,9 +3771,9 @@ Object .defineProperties (X3DNurbsSurfaceGeometryNode,
       value: "X3DNurbsSurfaceGeometryNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "NURBS",
+      value: Object .freeze ({ name: "NURBS", level: 1 }),
       enumerable: true,
    },
 });
@@ -3956,9 +3853,9 @@ Object .defineProperties (NurbsPatchSurface,
       value: "NurbsPatchSurface",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "NURBS",
+      value: Object .freeze ({ name: "NURBS", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -3968,7 +3865,7 @@ Object .defineProperties (NurbsPatchSurface,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -4000,7 +3897,7 @@ const NurbsPatchSurface_default_ = NurbsPatchSurface;
 Namespace_default().add ("NurbsPatchSurface", "x_ite/Components/NURBS/NurbsPatchSurface", NurbsPatchSurface_default_);
 /* harmony default export */ const NURBS_NurbsPatchSurface = (NurbsPatchSurface_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Interpolation/PositionInterpolator\")"
-const PositionInterpolator_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Interpolation/PositionInterpolator");
+const PositionInterpolator_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Interpolation/PositionInterpolator");
 var PositionInterpolator_default = /*#__PURE__*/__webpack_require__.n(PositionInterpolator_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/NURBS/NurbsPositionInterpolator.js
 /*******************************************************************************
@@ -4189,9 +4086,9 @@ Object .defineProperties (NurbsPositionInterpolator,
       value: "NurbsPositionInterpolator",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "NURBS",
+      value: Object .freeze ({ name: "NURBS", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -4201,7 +4098,7 @@ Object .defineProperties (NurbsPositionInterpolator,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -4225,7 +4122,7 @@ const NurbsPositionInterpolator_default_ = NurbsPositionInterpolator;
 Namespace_default().add ("NurbsPositionInterpolator", "x_ite/Components/NURBS/NurbsPositionInterpolator", NurbsPositionInterpolator_default_);
 /* harmony default export */ const NURBS_NurbsPositionInterpolator = (NurbsPositionInterpolator_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Grouping/X3DBoundedObject\")"
-const X3DBoundedObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Grouping/X3DBoundedObject");
+const X3DBoundedObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Grouping/X3DBoundedObject");
 var X3DBoundedObject_default = /*#__PURE__*/__webpack_require__.n(X3DBoundedObject_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/NURBS/NurbsSet.js
 /*******************************************************************************
@@ -4381,9 +4278,9 @@ Object .defineProperties (NurbsSet,
       value: "NurbsSet",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "NURBS",
+      value: Object .freeze ({ name: "NURBS", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -4393,7 +4290,7 @@ Object .defineProperties (NurbsSet,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -4419,7 +4316,7 @@ const NurbsSet_default_ = NurbsSet;
 Namespace_default().add ("NurbsSet", "x_ite/Components/NURBS/NurbsSet", NurbsSet_default_);
 /* harmony default export */ const NURBS_NurbsSet = (NurbsSet_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Line3\")"
-const Line3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Geometry/Line3");
+const Line3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Geometry/Line3");
 var Line3_default = /*#__PURE__*/__webpack_require__.n(Line3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Triangle2.js
 /*******************************************************************************
@@ -4658,9 +4555,9 @@ Object .defineProperties (NurbsSurfaceInterpolator,
       value: "NurbsSurfaceInterpolator",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "NURBS",
+      value: Object .freeze ({ name: "NURBS", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -4670,7 +4567,7 @@ Object .defineProperties (NurbsSurfaceInterpolator,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -4699,7 +4596,7 @@ const NurbsSurfaceInterpolator_default_ = NurbsSurfaceInterpolator;
 Namespace_default().add ("NurbsSurfaceInterpolator", "x_ite/Components/NURBS/NurbsSurfaceInterpolator", NurbsSurfaceInterpolator_default_);
 /* harmony default export */ const NURBS_NurbsSurfaceInterpolator = (NurbsSurfaceInterpolator_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Geometry3D/Extrusion\")"
-const Extrusion_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Geometry3D/Extrusion");
+const Extrusion_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Geometry3D/Extrusion");
 var Extrusion_default = /*#__PURE__*/__webpack_require__.n(Extrusion_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/NURBS/NurbsSweptSurface.js
 /*******************************************************************************
@@ -4854,9 +4751,9 @@ Object .defineProperties (NurbsSweptSurface,
       value: "NurbsSweptSurface",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "NURBS",
+      value: Object .freeze ({ name: "NURBS", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -4866,7 +4763,7 @@ Object .defineProperties (NurbsSweptSurface,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -5040,9 +4937,9 @@ Object .defineProperties (NurbsSwungSurface,
       value: "NurbsSwungSurface",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "NURBS",
+      value: Object .freeze ({ name: "NURBS", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -5052,7 +4949,7 @@ Object .defineProperties (NurbsSwungSurface,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -5197,9 +5094,9 @@ Object .defineProperties (NurbsTextureCoordinate,
       value: "NurbsTextureCoordinate",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "NURBS",
+      value: Object .freeze ({ name: "NURBS", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -5209,7 +5106,7 @@ Object .defineProperties (NurbsTextureCoordinate,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -5370,9 +5267,9 @@ Object .defineProperties (NurbsTrimmedSurface,
       value: "NurbsTrimmedSurface",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "NURBS",
+      value: Object .freeze ({ name: "NURBS", level: 4 }),
       enumerable: true,
    },
    containerField:
@@ -5382,7 +5279,7 @@ Object .defineProperties (NurbsTrimmedSurface,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -5482,14 +5379,12 @@ Namespace_default().add ("NurbsTrimmedSurface", "x_ite/Components/NURBS/NurbsTri
 
 
 
-
 Components_default().add ({
    name: "NURBS",
    concreteNodes:
    [
       NURBS_Contour2D,
       NURBS_ContourPolyline2D,
-      NURBS_CoordinateDouble,
       NURBS_NurbsCurve,
       NURBS_NurbsCurve2D,
       NURBS_NurbsOrientationInterpolator,

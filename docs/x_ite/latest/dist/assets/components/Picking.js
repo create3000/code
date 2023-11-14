@@ -1,4 +1,4 @@
-/* X_ITE v9.0.2 */(() => { // webpackBootstrap
+/* X_ITE v9.0.3 */(() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
 /******/ 	var __webpack_require__ = {};
@@ -39,28 +39,28 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DSensorNode\")"
-const X3DSensorNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Core/X3DSensorNode");
+const X3DSensorNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Core/X3DSensorNode");
 var X3DSensorNode_default = /*#__PURE__*/__webpack_require__.n(X3DSensorNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Rendering/TraverseType\")"
-const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Rendering/TraverseType");
+const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Rendering/TraverseType");
 var TraverseType_default = /*#__PURE__*/__webpack_require__.n(TraverseType_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Picking/MatchCriterion.js
 /*******************************************************************************
@@ -249,7 +249,7 @@ const SortOrder_default_ = SortOrder;
 Namespace_default().add ("SortOrder", "x_ite/Browser/Picking/SortOrder", SortOrder_default_);
 /* harmony default export */ const Picking_SortOrder = (SortOrder_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix4\")"
-const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Numbers/Matrix4");
+const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Numbers/Matrix4");
 var Matrix4_default = /*#__PURE__*/__webpack_require__.n(Matrix4_namespaceObject);
 ;// CONCATENATED MODULE: ./src/standard/Math/Algorithms/QuickSort.js
 /*******************************************************************************
@@ -363,7 +363,7 @@ const QuickSort_default_ = QuickSort;
 Namespace_default().add ("QuickSort", "standard/Math/Algorithms/QuickSort", QuickSort_default_);
 /* harmony default export */ const Algorithms_QuickSort = (QuickSort_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Utility/ObjectCache\")"
-const ObjectCache_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Utility/ObjectCache");
+const ObjectCache_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Utility/ObjectCache");
 var ObjectCache_default = /*#__PURE__*/__webpack_require__.n(ObjectCache_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Picking/X3DPickSensorNode.js
 /*******************************************************************************
@@ -799,9 +799,9 @@ Object .defineProperties (X3DPickSensorNode,
       value: "X3DPickSensorNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Picking",
+      value: Object .freeze ({ name: "Picking", level: 1 }),
       enumerable: true,
    },
 });
@@ -812,13 +812,13 @@ const X3DPickSensorNode_default_ = X3DPickSensorNode;
 Namespace_default().add ("X3DPickSensorNode", "x_ite/Components/Picking/X3DPickSensorNode", X3DPickSensorNode_default_);
 /* harmony default export */ const Picking_X3DPickSensorNode = (X3DPickSensorNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
-const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Numbers/Vector3");
+const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Box3\")"
-const Box3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Geometry/Box3");
+const Box3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Geometry/Box3");
 var Box3_default = /*#__PURE__*/__webpack_require__.n(Box3_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Line3\")"
-const Line3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Geometry/Line3");
+const Line3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Geometry/Line3");
 var Line3_default = /*#__PURE__*/__webpack_require__.n(Line3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Picking/LinePickSensor.js
 /*******************************************************************************
@@ -1123,9 +1123,9 @@ Object .defineProperties (LinePickSensor,
       value: "LinePickSensor",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Picking",
+      value: Object .freeze ({ name: "Picking", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -1135,13 +1135,14 @@ Object .defineProperties (LinePickSensor,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
    {
       value: new (FieldDefinitionArray_default()) ([
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "metadata",                new (Fields_default()).SFNode ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "description",             new (Fields_default()).SFString ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "enabled",                 new (Fields_default()).SFBool (true)),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "objectType",              new (Fields_default()).MFString ("ALL")),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "matchCriterion",          new (Fields_default()).SFString ("MATCH_ANY")),
@@ -1165,7 +1166,7 @@ const LinePickSensor_default_ = LinePickSensor;
 Namespace_default().add ("LinePickSensor", "x_ite/Components/Picking/LinePickSensor", LinePickSensor_default_);
 /* harmony default export */ const Picking_LinePickSensor = (LinePickSensor_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Grouping/X3DGroupingNode\")"
-const X3DGroupingNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Grouping/X3DGroupingNode");
+const X3DGroupingNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Grouping/X3DGroupingNode");
 var X3DGroupingNode_default = /*#__PURE__*/__webpack_require__.n(X3DGroupingNode_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Picking/X3DPickableObject.js
 /*******************************************************************************
@@ -1255,9 +1256,9 @@ Object .defineProperties (X3DPickableObject,
       value: "X3DPickableObject",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Picking",
+      value: Object .freeze ({ name: "Picking", level: 1 }),
       enumerable: true,
    },
 });
@@ -1330,6 +1331,8 @@ function PickableGroup (executionContext)
    Picking_X3DPickableObject .call (this, executionContext);
 
    this .addType ((X3DConstants_default()).PickableGroup);
+
+   this .pickSensorNodes = new Set ();
 }
 
 Object .assign (Object .setPrototypeOf (PickableGroup .prototype, (X3DGroupingNode_default()).prototype),
@@ -1352,97 +1355,94 @@ Object .assign (Object .setPrototypeOf (PickableGroup .prototype, (X3DGroupingNo
    {
       this .setPickableObject (!!(this ._pickable .getValue () || this .getTransformSensors () .size));
    },
-   traverse: (() =>
+   traverse (type, renderObject)
    {
-      const pickSensorNodes = new Set ();
-
-      return function (type, renderObject)
+      if (type === (TraverseType_default()).PICKING)
       {
-         if (type === (TraverseType_default()).PICKING)
+         if (this ._pickable .getValue ())
          {
-            if (this ._pickable .getValue ())
+            if (this .getObjectType () .has ("NONE"))
+               return;
+
+            const
+               browser       = this .getBrowser (),
+               pickableStack = browser .getPickable ();
+
+            if (this .getObjectType () .has ("ALL"))
             {
-               if (this .getObjectType () .has ("NONE"))
-                  return;
+               pickableStack .push (true);
+               X3DGroupingNode_default().prototype .traverse .call (this, type, renderObject);
+               pickableStack .pop ();
+            }
+            else
+            {
+               // Filter pick sensors.
 
                const
-                  browser       = this .getBrowser (),
-                  pickableStack = browser .getPickable ();
+                  pickSensorNodes = this .pickSensorNodes,
+                  pickSensorStack = browser .getPickSensors ();
 
-               if (this .getObjectType () .has ("ALL"))
+               for (const pickSensorNode of pickSensorStack .at (-1))
                {
-                  pickableStack .push (true);
-                  X3DGroupingNode_default().prototype .traverse .call (this, type, renderObject);
-                  pickableStack .pop ();
-               }
-               else
-               {
-                  // Filter pick sensors.
-
-                  const pickSensorStack = browser .getPickSensors ();
-
-                  for (const pickSensorNode of pickSensorStack .at (-1))
+                  if (!pickSensorNode .getObjectType () .has ("ALL"))
                   {
-                     if (! pickSensorNode .getObjectType () .has ("ALL"))
+                     let intersection = 0;
+
+                     for (const objectType of this .getObjectType ())
                      {
-                        let intersection = 0;
-
-                        for (const objectType of this .getObjectType ())
+                        if (pickSensorNode .getObjectType () .has (objectType))
                         {
-                           if (pickSensorNode .getObjectType () .has (objectType))
-                           {
-                              ++ intersection;
-                              break;
-                           }
-                        }
-
-                        switch (pickSensorNode .getMatchCriterion ())
-                        {
-                           case Picking_MatchCriterion .MATCH_ANY:
-                           {
-                              if (intersection === 0)
-                                 continue;
-
-                              break;
-                           }
-                           case Picking_MatchCriterion .MATCH_EVERY:
-                           {
-                              if (intersection !== pickSensor .getObjectType () .size)
-                                 continue;
-
-                              break;
-                           }
-                           case Picking_MatchCriterion .MATCH_ONLY_ONE:
-                           {
-                              if (intersection !== 1)
-                                 continue;
-
-                              break;
-                           }
+                           ++ intersection;
+                           break;
                         }
                      }
 
-                     pickSensorNodes .add (pickSensorNode);
+                     switch (pickSensorNode .getMatchCriterion ())
+                     {
+                        case Picking_MatchCriterion .MATCH_ANY:
+                        {
+                           if (intersection === 0)
+                              continue;
+
+                           break;
+                        }
+                        case Picking_MatchCriterion .MATCH_EVERY:
+                        {
+                           if (intersection !== pickSensor .getObjectType () .size)
+                              continue;
+
+                           break;
+                        }
+                        case Picking_MatchCriterion .MATCH_ONLY_ONE:
+                        {
+                           if (intersection !== 1)
+                              continue;
+
+                           break;
+                        }
+                     }
                   }
 
-                  pickableStack   .push (true);
-                  pickSensorStack .push (pickSensorNodes);
-
-                  X3DGroupingNode_default().prototype .traverse .call (this, type, renderObject);
-
-                  pickSensorStack .pop ();
-                  pickableStack   .pop ();
-
-                  pickSensorNodes .clear ();
+                  pickSensorNodes .add (pickSensorNode);
                }
+
+               pickableStack   .push (true);
+               pickSensorStack .push (pickSensorNodes);
+
+               X3DGroupingNode_default().prototype .traverse .call (this, type, renderObject);
+
+               pickSensorStack .pop ();
+               pickableStack   .pop ();
+
+               pickSensorNodes .clear ();
             }
          }
-         else
-         {
-            X3DGroupingNode_default().prototype .traverse .call (this, type, renderObject);
-         }
-      };
-   })(),
+      }
+      else
+      {
+         X3DGroupingNode_default().prototype .traverse .call (this, type, renderObject);
+      }
+   },
    dispose ()
    {
       Picking_X3DPickableObject .prototype .dispose .call (this);
@@ -1457,9 +1457,9 @@ Object .defineProperties (PickableGroup,
       value: "PickableGroup",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Picking",
+      value: Object .freeze ({ name: "Picking", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -1469,13 +1469,14 @@ Object .defineProperties (PickableGroup,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
    {
       value: new (FieldDefinitionArray_default()) ([
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "metadata",       new (Fields_default()).SFNode ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "description",    new (Fields_default()).SFString ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "pickable",       new (Fields_default()).SFBool (true)),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "objectType",     new (Fields_default()).MFString ("ALL")),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "visible",        new (Fields_default()).SFBool (true)),
@@ -1496,13 +1497,13 @@ const PickableGroup_default_ = PickableGroup;
 Namespace_default().add ("PickableGroup", "x_ite/Components/Picking/PickableGroup", PickableGroup_default_);
 /* harmony default export */ const Picking_PickableGroup = (PickableGroup_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
-const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/X3DCast");
+const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Rotation4\")"
-const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Numbers/Rotation4");
+const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Numbers/Rotation4");
 var Rotation4_default = /*#__PURE__*/__webpack_require__.n(Rotation4_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"lib/ammojs/AmmoClass\")"
-const AmmoClass_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("lib/ammojs/AmmoClass");
+const AmmoClass_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("lib/ammojs/AmmoClass");
 var AmmoClass_default = /*#__PURE__*/__webpack_require__.n(AmmoClass_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Picking/VolumePicker.js
 /*******************************************************************************
@@ -2002,9 +2003,9 @@ Object .defineProperties (PointPickSensor,
       value: "PointPickSensor",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Picking",
+      value: Object .freeze ({ name: "Picking", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -2014,13 +2015,14 @@ Object .defineProperties (PointPickSensor,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
    {
       value: new (FieldDefinitionArray_default()) ([
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "metadata",         new (Fields_default()).SFNode ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "description",      new (Fields_default()).SFString ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "enabled",          new (Fields_default()).SFBool (true)),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "objectType",       new (Fields_default()).MFString ("ALL")),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "matchCriterion",   new (Fields_default()).SFString ("MATCH_ANY")),
@@ -2278,9 +2280,9 @@ Object .defineProperties (PrimitivePickSensor,
       value: "PrimitivePickSensor",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Picking",
+      value: Object .freeze ({ name: "Picking", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -2290,13 +2292,14 @@ Object .defineProperties (PrimitivePickSensor,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
    {
       value: new (FieldDefinitionArray_default()) ([
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "metadata",         new (Fields_default()).SFNode ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "description",      new (Fields_default()).SFString ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "enabled",          new (Fields_default()).SFBool (true)),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "objectType",       new (Fields_default()).MFString ("ALL")),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "matchCriterion",   new (Fields_default()).SFString ("MATCH_ANY")),
@@ -2528,9 +2531,9 @@ Object .defineProperties (VolumePickSensor,
       value: "VolumePickSensor",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Picking",
+      value: Object .freeze ({ name: "Picking", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -2540,13 +2543,14 @@ Object .defineProperties (VolumePickSensor,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
    {
       value: new (FieldDefinitionArray_default()) ([
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "metadata",         new (Fields_default()).SFNode ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "description",      new (Fields_default()).SFString ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "enabled",          new (Fields_default()).SFBool (true)),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "objectType",       new (Fields_default()).MFString ("ALL")),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "matchCriterion",   new (Fields_default()).SFString ("MATCH_ANY")),

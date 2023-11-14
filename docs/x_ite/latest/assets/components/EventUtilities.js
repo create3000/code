@@ -1,4 +1,4 @@
-/* X_ITE v9.0.2 */(() => { // webpackBootstrap
+/* X_ITE v9.0.3 */(() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
 /******/ 	var __webpack_require__ = {};
@@ -39,25 +39,25 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DChildNode\")"
-const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Core/X3DChildNode");
+const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Core/X3DChildNode");
 var X3DChildNode_default = /*#__PURE__*/__webpack_require__.n(X3DChildNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EventUtilities/BooleanFilter.js
 /*******************************************************************************
@@ -149,9 +149,9 @@ Object .defineProperties (BooleanFilter,
       value: "BooleanFilter",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EventUtilities",
+      value: Object .freeze ({ name: "EventUtilities", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -161,7 +161,7 @@ Object .defineProperties (BooleanFilter,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -183,7 +183,7 @@ const __default__ = BooleanFilter;
 Namespace_default().add ("BooleanFilter", "x_ite/Components/EventUtilities/BooleanFilter", __default__);
 /* harmony default export */ const EventUtilities_BooleanFilter = (__default__);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Algorithm\")"
-const Algorithm_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Algorithm");
+const Algorithm_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Algorithm");
 var Algorithm_default = /*#__PURE__*/__webpack_require__.n(Algorithm_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EventUtilities/X3DSequencerNode.js
 /*******************************************************************************
@@ -331,9 +331,9 @@ Object .defineProperties (X3DSequencerNode,
       value: "X3DSequencerNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EventUtilities",
+      value: Object .freeze ({ name: "EventUtilities", level: 1 }),
       enumerable: true,
    },
 });
@@ -429,9 +429,9 @@ Object .defineProperties (BooleanSequencer,
       value: "BooleanSequencer",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EventUtilities",
+      value: Object .freeze ({ name: "EventUtilities", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -441,7 +441,7 @@ Object .defineProperties (BooleanSequencer,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -547,9 +547,9 @@ Object .defineProperties (BooleanToggle,
       value: "BooleanToggle",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EventUtilities",
+      value: Object .freeze ({ name: "EventUtilities", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -559,7 +559,7 @@ Object .defineProperties (BooleanToggle,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -645,9 +645,9 @@ Object .defineProperties (X3DTriggerNode,
       value: "X3DTriggerNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EventUtilities",
+      value: Object .freeze ({ name: "EventUtilities", level: 1 }),
       enumerable: true,
    },
 });
@@ -739,9 +739,9 @@ Object .defineProperties (BooleanTrigger,
       value: "BooleanTrigger",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EventUtilities",
+      value: Object .freeze ({ name: "EventUtilities", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -751,7 +751,7 @@ Object .defineProperties (BooleanTrigger,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -856,9 +856,9 @@ Object .defineProperties (IntegerSequencer,
       value: "IntegerSequencer",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EventUtilities",
+      value: Object .freeze ({ name: "EventUtilities", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -868,7 +868,7 @@ Object .defineProperties (IntegerSequencer,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -973,9 +973,9 @@ Object .defineProperties (IntegerTrigger,
       value: "IntegerTrigger",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EventUtilities",
+      value: Object .freeze ({ name: "EventUtilities", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -985,7 +985,7 @@ Object .defineProperties (IntegerTrigger,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -1087,9 +1087,9 @@ Object .defineProperties (TimeTrigger,
       value: "TimeTrigger",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EventUtilities",
+      value: Object .freeze ({ name: "EventUtilities", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -1099,7 +1099,7 @@ Object .defineProperties (TimeTrigger,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:

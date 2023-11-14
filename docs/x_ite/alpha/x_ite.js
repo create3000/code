@@ -1,4 +1,4 @@
-/* X_ITE v9.0.2 */(function webpackUniversalModuleDefinition(root, factory) {
+/* X_ITE v9.0.3 */(function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
@@ -11,10 +11,10 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 699:
+/***/ 746:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-/* provided dependency */ var jQuery = __webpack_require__(718);
+/* provided dependency */ var jQuery = __webpack_require__(616);
 /**
  * @preserve jquery.fullscreen 1.1.5
  * https://github.com/code-lts/jquery-fullscreen-plugin
@@ -210,7 +210,7 @@ installFullScreenHandlers();
 
 /***/ }),
 
-/***/ 801:
+/***/ 678:
 /***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -224,7 +224,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 (function (factory) {
     if ( true ) {
         // AMD. Register as an anonymous module.
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(718)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(616)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 		(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -435,7 +435,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
-/***/ 718:
+/***/ 616:
 /***/ (function(module, exports) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11159,7 +11159,7 @@ return jQuery;
 
 /***/ }),
 
-/***/ 89:
+/***/ 237:
 /***/ ((module) => {
 
 /**
@@ -15938,7 +15938,7 @@ if (true) {
 
 /***/ }),
 
-/***/ 994:
+/***/ 182:
 /***/ (function(__unused_webpack_module, exports) {
 
 
@@ -19183,7 +19183,7 @@ if (true) {
 
 /***/ }),
 
-/***/ 630:
+/***/ 115:
 /***/ (function(module, exports) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -20311,7 +20311,7 @@ Object .defineProperty (Namespace, "add",
       }
       else
       {
-         const X3D = window [Symbol .for ("X_ITE.X3D-9.0.2")];
+         const X3D = window [Symbol .for ("X_ITE.X3D-9.0.3")];
 
          if (X3D)
             X3D [name] = module;
@@ -21777,7 +21777,7 @@ Object .assign (X3DObject,
          cache    = [ ],
          registry = new FinalizationRegistry (id => cache .push (id));
 
-      let counter = BigInt (0);
+      let counter = 0;
 
       return function (object)
       {
@@ -21881,6 +21881,7 @@ const
    _modificationTime = Symbol (),
    _tainted          = Symbol (),
    _parents          = Symbol (),
+   _private          = Symbol (),
    _registry         = Symbol ();
 
 function X3DChildObject ()
@@ -21895,6 +21896,7 @@ if (DEVELOPMENT)
       [_modificationTime]: 0,
       [_tainted]: false,
       [_parents]: new Map (),
+      [_private]: false,
       [_registry]: new FinalizationRegistry (Function .prototype),
       isInitializable ()
       {
@@ -21943,12 +21945,30 @@ if (DEVELOPMENT)
          this .setTainted (false);
          this .processInterests ();
       },
+      isPrivate ()
+      {
+         return this [_private];
+      },
+      setPrivate (value)
+      {
+         this [_private] = value;
+      },
       collectCloneCount ()
       {
          let cloneCount = 0;
 
          for (const weakRef of this [_parents] .values ())
-            cloneCount += weakRef .deref () ?.collectCloneCount ();
+         {
+            const parent = weakRef .deref ();
+
+            if (!parent)
+               continue;
+
+            if (parent [_private])
+               continue;
+
+            cloneCount += parent .collectCloneCount ();
+         }
 
          return cloneCount;
       },
@@ -22003,6 +22023,7 @@ else
       [_modificationTime]: 0,
       [_tainted]: false,
       [_parents]: new Set (),
+      [_private]: false,
       isInitializable ()
       {
          return true;
@@ -22050,12 +22071,25 @@ else
          this .setTainted (false);
          this .processInterests ();
       },
+      isPrivate ()
+      {
+         return this [_private];
+      },
+      setPrivate (value)
+      {
+         this [_private] = value;
+      },
       collectCloneCount ()
       {
          let cloneCount = 0;
 
          for (const parent of this [_parents])
+         {
+            if (parent [_private])
+               continue;
+
             cloneCount += parent .collectCloneCount ();
+         }
 
          return cloneCount;
       },
@@ -31694,8 +31728,7 @@ Object .assign (Object .setPrototypeOf (X3DTypedArrayField .prototype, Base_X3DA
          array       = target .getValue (),
          otherLength = l !== undefined ? l * components : otherArray .length;
 
-      const
-         rest = otherLength % components;
+      const rest = otherLength % components;
 
       if (rest)
       {
@@ -33786,6 +33819,7 @@ Object .assign (Object .setPrototypeOf (X3DBaseNode .prototype, Base_X3DChildObj
    {
       this [_childObjects] .push (field);
 
+      field .setPrivate (true);
       field .setTainted (true);
       field .addParent (this);
       field .setName (name);
@@ -34004,7 +34038,7 @@ Object .assign (Object .setPrototypeOf (X3DBaseNode .prototype, Base_X3DChildObj
       if (field .isTainted ())
          return;
 
-      // if (this .getTypeName () === "IndexedQuadSet")
+      // if (this .getTypeName () === "HAnimMotion")
       // {
       //    console .log (field .getName ());
       //    console .trace ();
@@ -34037,6 +34071,11 @@ Object .assign (Object .setPrototypeOf (X3DBaseNode .prototype, Base_X3DChildObj
    {
       if (this .isTainted ())
          return;
+
+      // if (this .getTypeName () === "HAnimMotion")
+      // {
+      //    console .trace ();
+      // }
 
       const browser = this [_browser];
 
@@ -34133,7 +34172,7 @@ const X3DBaseNode_default_ = X3DBaseNode;
 x_ite_Namespace .add ("X3DBaseNode", "x_ite/Base/X3DBaseNode", X3DBaseNode_default_);
 /* harmony default export */ const Base_X3DBaseNode = (X3DBaseNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Legacy.js
-/* provided dependency */ var $ = __webpack_require__(718);
+/* provided dependency */ var $ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -34222,7 +34261,7 @@ const Legacy_default_ = Legacy;
 
 x_ite_Namespace .add ("Legacy", "x_ite/Browser/Legacy", Legacy_default_);
 /* harmony default export */ const Browser_Legacy = (Legacy_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Browser/VERSION.js
+;// CONCATENATED MODULE: ./src/x_ite/BROWSER_VERSION.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -34270,11 +34309,11 @@ x_ite_Namespace .add ("Legacy", "x_ite/Browser/Legacy", Legacy_default_);
  *
  ******************************************************************************/
 
-const VERSION_default_ = "9.0.2";
+const BROWSER_VERSION_default_ = "9.0.3";
 ;
 
-x_ite_Namespace .add ("VERSION", "x_ite/Browser/VERSION", VERSION_default_);
-/* harmony default export */ const VERSION = (VERSION_default_);
+x_ite_Namespace .add ("BROWSER_VERSION", "x_ite/BROWSER_VERSION", BROWSER_VERSION_default_);
+/* harmony default export */ const BROWSER_VERSION = (BROWSER_VERSION_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/X3DNode.js
 /*******************************************************************************
  *
@@ -34327,22 +34366,18 @@ x_ite_Namespace .add ("VERSION", "x_ite/Browser/VERSION", VERSION_default_);
 
 
 
-const _private = Symbol ()
-
 function X3DNode (executionContext)
 {
    Base_X3DBaseNode .call (this, executionContext);
 
    this .addType (Base_X3DConstants .X3DNode);
-
-   this [_private] = false;
 }
 
 Object .assign (Object .setPrototypeOf (X3DNode .prototype, Base_X3DBaseNode .prototype),
 {
-   getComponentName ()
+   getComponentInfo ()
    {
-      return this .constructor .componentName;
+      return this .constructor .componentInfo;
    },
    getContainerField ()
    {
@@ -34500,21 +34535,13 @@ Object .assign (Object .setPrototypeOf (X3DNode .prototype, Base_X3DBaseNode .pr
 
       return false;
    },
-   isPrivate ()
-   {
-      return this [_private];
-   },
-   setPrivate (value)
-   {
-      this [_private] = value;
-   },
    getCloneCount ()
    {
       return Base_X3DBaseNode .prototype .collectCloneCount .call (this);
    },
    collectCloneCount ()
    {
-      return this .isPrivate () ? 0 : 1;
+      return 1;
    },
    getSourceText ()
    {
@@ -35661,9 +35688,9 @@ Object .defineProperties (X3DNode,
       value: "X3DNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Core",
+      value: Object .freeze ({ name: "Core", level: 1 }),
       enumerable: true,
    },
 });
@@ -35741,9 +35768,9 @@ Object .defineProperties (X3DMetadataObject,
       value: "X3DMetadataObject",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Core",
+      value: Object .freeze ({ name: "Core", level: 1 }),
       enumerable: true,
    },
 });
@@ -35753,6 +35780,61 @@ const X3DMetadataObject_default_ = X3DMetadataObject;
 
 x_ite_Namespace .add ("X3DMetadataObject", "x_ite/Components/Core/X3DMetadataObject", X3DMetadataObject_default_);
 /* harmony default export */ const Core_X3DMetadataObject = (X3DMetadataObject_default_);
+;// CONCATENATED MODULE: ./src/x_ite/LATEST_VERSION.js
+/*******************************************************************************
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
+ *
+ * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * The copyright notice above does not evidence any actual of intended
+ * publication of such source code, and is an unpublished work by create3000.
+ * This material contains CONFIDENTIAL INFORMATION that is the property of
+ * create3000.
+ *
+ * No permission is granted to copy, distribute, or create derivative works from
+ * the contents of this software, in whole or in part, without the prior written
+ * permission of create3000.
+ *
+ * NON-MILITARY USE ONLY
+ *
+ * All create3000 software are effectively free software with a non-military use
+ * restriction. It is free. Well commented source is provided. You may reuse the
+ * source in any way you please with the exception anything that uses it must be
+ * marked to indicate is contains 'non-military use only' components.
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * This file is part of the X_ITE Project.
+ *
+ * X_ITE is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License version 3 only, as published by the
+ * Free Software Foundation.
+ *
+ * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
+ * details (a copy is included in the LICENSE file that accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version 3
+ * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
+ * copy of the GPLv3 License.
+ *
+ * For Silvio, Joy and Adi.
+ *
+ ******************************************************************************/
+
+// Latest implemented specification version:
+
+const LATEST_VERSION_default_ = "4.0";
+;
+
+x_ite_Namespace .add ("LATEST_VERSION", "x_ite/LATEST_VERSION", LATEST_VERSION_default_);
+/* harmony default export */ const LATEST_VERSION = (LATEST_VERSION_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/MetadataBoolean.js
 /*******************************************************************************
  *
@@ -35808,6 +35890,7 @@ x_ite_Namespace .add ("X3DMetadataObject", "x_ite/Components/Core/X3DMetadataObj
 
 
 
+
 function MetadataBoolean (executionContext)
 {
    Core_X3DNode           .call (this, executionContext);
@@ -35824,9 +35907,9 @@ Object .assign (Object .setPrototypeOf (MetadataBoolean .prototype, Core_X3DNode
       Core_X3DNode           .prototype .initialize .call (this);
       Core_X3DMetadataObject .prototype .initialize .call (this);
    },
-   getContainerField (parser = false)
+   getContainerField (specificationVersion = LATEST_VERSION)
    {
-      if (parser && this .getExecutionContext () .getSpecificationVersion () <= 3.3)
+      if (specificationVersion <= 3.3)
          return "metadata";
 
       return Core_X3DNode .prototype .getContainerField .call (this);
@@ -35845,9 +35928,9 @@ Object .defineProperties (MetadataBoolean,
       value: "MetadataBoolean",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Core",
+      value: Object .freeze ({ name: "Core", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -35857,7 +35940,7 @@ Object .defineProperties (MetadataBoolean,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.3", "Infinity"]),
+      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -35932,6 +36015,7 @@ x_ite_Namespace .add ("MetadataBoolean", "x_ite/Components/Core/MetadataBoolean"
 
 
 
+
 function MetadataDouble (executionContext)
 {
    Core_X3DNode           .call (this, executionContext);
@@ -35948,9 +36032,9 @@ Object .assign (Object .setPrototypeOf (MetadataDouble .prototype, Core_X3DNode 
       Core_X3DNode           .prototype .initialize .call (this);
       Core_X3DMetadataObject .prototype .initialize .call (this);
    },
-   getContainerField (parser = false)
+   getContainerField (specificationVersion = LATEST_VERSION)
    {
-      if (parser && this .getExecutionContext () .getSpecificationVersion () <= 3.3)
+      if (specificationVersion <= 3.3)
          return "metadata";
 
       return Core_X3DNode .prototype .getContainerField .call (this);
@@ -35969,9 +36053,9 @@ Object .defineProperties (MetadataDouble,
       value: "MetadataDouble",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Core",
+      value: Object .freeze ({ name: "Core", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -35981,7 +36065,7 @@ Object .defineProperties (MetadataDouble,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -36056,6 +36140,7 @@ x_ite_Namespace .add ("MetadataDouble", "x_ite/Components/Core/MetadataDouble", 
 
 
 
+
 function MetadataFloat (executionContext)
 {
    Core_X3DNode           .call (this, executionContext);
@@ -36072,9 +36157,9 @@ Object .assign (Object .setPrototypeOf (MetadataFloat .prototype, Core_X3DNode .
       Core_X3DNode           .prototype .initialize .call (this);
       Core_X3DMetadataObject .prototype .initialize .call (this);
    },
-   getContainerField (parser = false)
+   getContainerField (specificationVersion = LATEST_VERSION)
    {
-      if (parser && this .getExecutionContext () .getSpecificationVersion () <= 3.3)
+      if (specificationVersion <= 3.3)
          return "metadata";
 
       return Core_X3DNode .prototype .getContainerField .call (this);
@@ -36093,9 +36178,9 @@ Object .defineProperties (MetadataFloat,
       value: "MetadataFloat",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Core",
+      value: Object .freeze ({ name: "Core", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -36105,7 +36190,7 @@ Object .defineProperties (MetadataFloat,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -36180,6 +36265,7 @@ x_ite_Namespace .add ("MetadataFloat", "x_ite/Components/Core/MetadataFloat", Me
 
 
 
+
 function MetadataInteger (executionContext)
 {
    Core_X3DNode           .call (this, executionContext);
@@ -36196,9 +36282,9 @@ Object .assign (Object .setPrototypeOf (MetadataInteger .prototype, Core_X3DNode
       Core_X3DNode           .prototype .initialize .call (this);
       Core_X3DMetadataObject .prototype .initialize .call (this);
    },
-   getContainerField (parser = false)
+   getContainerField (specificationVersion = LATEST_VERSION)
    {
-      if (parser && this .getExecutionContext () .getSpecificationVersion () <= 3.3)
+      if (specificationVersion <= 3.3)
          return "metadata";
 
       return Core_X3DNode .prototype .getContainerField .call (this);
@@ -36217,9 +36303,9 @@ Object .defineProperties (MetadataInteger,
       value: "MetadataInteger",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Core",
+      value: Object .freeze ({ name: "Core", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -36229,7 +36315,7 @@ Object .defineProperties (MetadataInteger,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -36304,6 +36390,7 @@ x_ite_Namespace .add ("MetadataInteger", "x_ite/Components/Core/MetadataInteger"
 
 
 
+
 function MetadataSet (executionContext)
 {
    Core_X3DNode           .call (this, executionContext);
@@ -36320,9 +36407,9 @@ Object .assign (Object .setPrototypeOf (MetadataSet .prototype, Core_X3DNode .pr
       Core_X3DNode           .prototype .initialize .call (this);
       Core_X3DMetadataObject .prototype .initialize .call (this);
    },
-   getContainerField (parser = false)
+   getContainerField (specificationVersion = LATEST_VERSION)
    {
-      if (parser && this .getExecutionContext () .getSpecificationVersion () <= 3.3)
+      if (specificationVersion <= 3.3)
          return "metadata";
 
       return Core_X3DNode .prototype .getContainerField .call (this);
@@ -36341,9 +36428,9 @@ Object .defineProperties (MetadataSet,
       value: "MetadataSet",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Core",
+      value: Object .freeze ({ name: "Core", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -36353,7 +36440,7 @@ Object .defineProperties (MetadataSet,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -36428,6 +36515,7 @@ x_ite_Namespace .add ("MetadataSet", "x_ite/Components/Core/MetadataSet", Metada
 
 
 
+
 function MetadataString (executionContext)
 {
    Core_X3DNode           .call (this, executionContext);
@@ -36444,9 +36532,9 @@ Object .assign (Object .setPrototypeOf (MetadataString .prototype, Core_X3DNode 
       Core_X3DNode           .prototype .initialize .call (this);
       Core_X3DMetadataObject .prototype .initialize .call (this);
    },
-   getContainerField (parser = false)
+   getContainerField (specificationVersion = LATEST_VERSION)
    {
-      if (parser && this .getExecutionContext () .getSpecificationVersion () <= 3.3)
+      if (specificationVersion <= 3.3)
          return "metadata";
 
       return Core_X3DNode .prototype .getContainerField .call (this);
@@ -36465,9 +36553,9 @@ Object .defineProperties (MetadataString,
       value: "MetadataString",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Core",
+      value: Object .freeze ({ name: "Core", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -36477,7 +36565,7 @@ Object .defineProperties (MetadataString,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -36595,9 +36683,9 @@ Object .defineProperties (X3DChildNode,
       value: "X3DChildNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Core",
+      value: Object .freeze ({ name: "Core", level: 1 }),
       enumerable: true,
    },
 });
@@ -36674,9 +36762,9 @@ Object .defineProperties (X3DInfoNode,
       value: "X3DInfoNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Core",
+      value: Object .freeze ({ name: "Core", level: 1 }),
       enumerable: true,
    },
 });
@@ -36770,9 +36858,9 @@ Object .defineProperties (WorldInfo,
       value: "WorldInfo",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Core",
+      value: Object .freeze ({ name: "Core", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -36782,15 +36870,15 @@ Object .defineProperties (WorldInfo,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "metadata", new x_ite_Fields .SFNode ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .initializeOnly, "title",    new x_ite_Fields .SFString ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .initializeOnly, "info",     new x_ite_Fields .MFString ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "metadata", new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "title",    new x_ite_Fields .SFString ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "info",     new x_ite_Fields .MFString ()),
       ]),
       enumerable: true,
    },
@@ -36894,9 +36982,9 @@ Object .defineProperties (X3DBindableNode,
       value: "X3DBindableNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Core",
+      value: Object .freeze ({ name: "Core", level: 1 }),
       enumerable: true,
    },
    getModificationCount:
@@ -37942,9 +38030,9 @@ Object .defineProperties (X3DUrlObject,
       value: "X3DUrlObject",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Networking",
+      value: Object .freeze ({ name: "Networking", level: 1 }),
       enumerable: true,
    },
 });
@@ -38072,7 +38160,7 @@ const X3DProtoDeclarationNode_default_ = X3DProtoDeclarationNode;
 x_ite_Namespace .add ("X3DProtoDeclarationNode", "x_ite/Prototype/X3DProtoDeclarationNode", X3DProtoDeclarationNode_default_);
 /* harmony default export */ const Prototype_X3DProtoDeclarationNode = (X3DProtoDeclarationNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/X3DParser.js
-/* provided dependency */ var X3DParser_$ = __webpack_require__(718);
+/* provided dependency */ var X3DParser_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -38897,7 +38985,7 @@ const X3DProtoDeclaration_default_ = X3DProtoDeclaration;
 x_ite_Namespace .add ("X3DProtoDeclaration", "x_ite/Prototype/X3DProtoDeclaration", X3DProtoDeclaration_default_);
 /* harmony default export */ const Prototype_X3DProtoDeclaration = (X3DProtoDeclaration_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/VRMLParser.js
-/* provided dependency */ var VRMLParser_$ = __webpack_require__(718);
+/* provided dependency */ var VRMLParser_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -38944,6 +39032,7 @@ x_ite_Namespace .add ("X3DProtoDeclaration", "x_ite/Prototype/X3DProtoDeclaratio
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -39116,7 +39205,6 @@ Object .assign (Object .setPrototypeOf (VRMLParser .prototype, Parser_X3DParser 
       }
       catch (error)
       {
-         //console .error (error);
          throw new Error (this .getError (error));
       }
    },
@@ -39129,7 +39217,8 @@ Object .assign (Object .setPrototypeOf (VRMLParser .prototype, Parser_X3DParser 
    },
    getError (error)
    {
-      //console .error (error);
+      if (DEVELOPMENT)
+         console .error (error);
 
       const
          string     = error .message,
@@ -41442,7 +41531,7 @@ const VRMLParser_default_ = VRMLParser;
 x_ite_Namespace .add ("VRMLParser", "x_ite/Parser/VRMLParser", VRMLParser_default_);
 /* harmony default export */ const Parser_VRMLParser = (VRMLParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/XMLParser.js
-/* provided dependency */ var XMLParser_$ = __webpack_require__(718);
+/* provided dependency */ var XMLParser_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -42467,7 +42556,8 @@ Object .assign (Object .setPrototypeOf (XMLParser .prototype, Parser_X3DParser .
 
       try
       {
-         const containerField = xmlElement .getAttribute ("containerField") || node ?.getContainerField (true);
+         const containerField = xmlElement .getAttribute ("containerField")
+            || node ?.getContainerField (this .getExecutionContext () .getSpecificationVersion ());
 
          if (!containerField)
          {
@@ -42572,7 +42662,7 @@ const HTMLParser =
 {
    addProtoName (name)
    {
-      //DOMIntegration: add uppercase versions of proto name.
+      // DOMIntegration: add uppercase versions of proto name.
 
       this .protoNames .set (name,                 name);
       this .protoNames .set (name .toUpperCase (), name);
@@ -43534,7 +43624,7 @@ const URLs_default_ = URLs;
 x_ite_Namespace .add ("URLs", "x_ite/Browser/Networking/URLs", URLs_default_);
 /* harmony default export */ const Networking_URLs = (URLs_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GLTF2Parser.js
-/* provided dependency */ var GLTF2Parser_$ = __webpack_require__(718);
+/* provided dependency */ var GLTF2Parser_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -46835,7 +46925,7 @@ const GLTF2Parser_default_ = GLTF2Parser;
 x_ite_Namespace .add ("GLTF2Parser", "x_ite/Parser/GLTF2Parser", GLTF2Parser_default_);
 /* harmony default export */ const Parser_GLTF2Parser = (GLTF2Parser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GLB2Parser.js
-/* provided dependency */ var GLB2Parser_$ = __webpack_require__(718);
+/* provided dependency */ var GLB2Parser_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -46987,7 +47077,7 @@ const GLB2Parser_default_ = GLB2Parser;
 x_ite_Namespace .add ("GLB2Parser", "x_ite/Parser/GLB2Parser", GLB2Parser_default_);
 /* harmony default export */ const Parser_GLB2Parser = (GLB2Parser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/OBJParser.js
-/* provided dependency */ var OBJParser_$ = __webpack_require__(718);
+/* provided dependency */ var OBJParser_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -50342,8 +50432,8 @@ const MatrixStack_default_ = MatrixStack;
 x_ite_Namespace .add ("MatrixStack", "standard/Math/Utility/MatrixStack", MatrixStack_default_);
 /* harmony default export */ const Utility_MatrixStack = (MatrixStack_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/SVGParser.js
-/* provided dependency */ var SVGParser_$ = __webpack_require__(718);
-/* provided dependency */ var libtess = __webpack_require__(89);
+/* provided dependency */ var SVGParser_$ = __webpack_require__(616);
+/* provided dependency */ var libtess = __webpack_require__(237);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -53111,7 +53201,7 @@ const SVGParser_default_ = SVGParser;
 x_ite_Namespace .add ("SVGParser", "x_ite/Parser/SVGParser", SVGParser_default_);
 /* harmony default export */ const Parser_SVGParser = (SVGParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GoldenGate.js
-/* provided dependency */ var GoldenGate_$ = __webpack_require__(718);
+/* provided dependency */ var GoldenGate_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -53448,7 +53538,7 @@ const Plane3_default_ = Plane3;
 x_ite_Namespace .add ("Plane3", "standard/Math/Geometry/Plane3", Plane3_default_);
 /* harmony default export */ const Geometry_Plane3 = (Plane3_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Triangle3.js
-/* provided dependency */ var Triangle3_libtess = __webpack_require__(89);
+/* provided dependency */ var Triangle3_libtess = __webpack_require__(237);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -55624,9 +55714,11 @@ x_ite_Namespace .add ("Line3", "standard/Math/Geometry/Line3", Line3_default_);
 
 
 
+const BitSet_value = Symbol ();
+
 function BitSet (value = 0)
 {
-   this .value = value;
+   this [BitSet_value] = value >>> 0;
 }
 
 Object .assign (BitSet .prototype,
@@ -55634,7 +55726,7 @@ Object .assign (BitSet .prototype,
    *[Symbol .iterator] ()
    {
       let
-         value = this .value,
+         value = this [BitSet_value],
          index = 0;
 
       while (value)
@@ -55643,27 +55735,35 @@ Object .assign (BitSet .prototype,
             yield index;
 
          value >>>= 1;
-         index   += 1;
+         ++ index;
       }
    },
    get (index)
    {
       const mask = 1 << index;
 
-      return !! (this .value & mask);
+      return !! (this [BitSet_value] & mask);
    },
    set (index, value)
    {
-      const mask = 1 << index;
-
       if (value)
-         this .value |= mask;
+         this .add (index);
       else
-         this .value &= ~mask;
+         this .remove (index);
+   },
+   add (index, mask = 1)
+   {
+      this [BitSet_value] |= mask << index;
+      this [BitSet_value] >>>= 0;
+   },
+   remove (index, mask = 1)
+   {
+      this [BitSet_value] &= ~(mask << index);
+      this [BitSet_value] >>>= 0;
    },
    clear ()
    {
-      this .value = 0;
+      this [BitSet_value] = 0;
    },
    *entries ()
    {
@@ -55672,11 +55772,11 @@ Object .assign (BitSet .prototype,
    },
    valueOf ()
    {
-      return this .value;
+      return this [BitSet_value];
    },
    toString (radix)
    {
-      return this .value .toString (radix);
+      return this [BitSet_value] .toString (radix);
    },
 });
 
@@ -55687,7 +55787,7 @@ Object .defineProperty (BitSet .prototype, "size",
 {
    get ()
    {
-      return Math_Algorithm .bitCount (this .value);
+      return Math_Algorithm .bitCount (this [BitSet_value]);
    },
 });
 
@@ -57620,9 +57720,9 @@ Object .defineProperties (NavigationInfo,
       value: "NavigationInfo",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Navigation",
+      value: Object .freeze ({ name: "Navigation", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -57632,7 +57732,7 @@ Object .defineProperties (NavigationInfo,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -57908,9 +58008,9 @@ Object .defineProperties (X3DFogObject,
       value: "X3DFogObject",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EnvironmentalEffects",
+      value: Object .freeze ({ name: "EnvironmentalEffects", level: 1 }),
       enumerable: true,
    },
 });
@@ -58022,9 +58122,9 @@ Object .defineProperties (Fog,
       value: "Fog",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EnvironmentalEffects",
+      value: Object .freeze ({ name: "EnvironmentalEffects", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -58034,7 +58134,7 @@ Object .defineProperties (Fog,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -59446,9 +59546,9 @@ Object .defineProperties (X3DGeometryNode,
       value: "X3DGeometryNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 1 }),
       enumerable: true,
    },
 });
@@ -60228,9 +60328,9 @@ Object .defineProperties (X3DBackgroundNode,
       value: "X3DBackgroundNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EnvironmentalEffects",
+      value: Object .freeze ({ name: "EnvironmentalEffects", level: 1 }),
       enumerable: true,
    },
 });
@@ -60315,9 +60415,9 @@ Object .defineProperties (X3DAppearanceChildNode,
       value: "X3DAppearanceChildNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shape",
+      value: Object .freeze ({ name: "Shape", level: 1 }),
       enumerable: true,
    },
 });
@@ -60408,9 +60508,9 @@ Object .defineProperties (X3DTextureNode,
       value: "X3DTextureNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Texturing",
+      value: Object .freeze ({ name: "Texturing", level: 1 }),
       enumerable: true,
    },
 });
@@ -60562,9 +60662,7 @@ function X3DSingleTextureNode (executionContext)
 
    this .addChildObjects (Base_X3DConstants .outputOnly, "linear", new x_ite_Fields .SFBool ())
 
-   this .levels          = 1;
-   this .generateMipMaps = true;
-   this .matrix          = new Float32Array (Numbers_Matrix4 .Identity);
+   this .matrix = new Float32Array (Numbers_Matrix4 .Identity);
 }
 
 Object .assign (Object .setPrototypeOf (X3DSingleTextureNode .prototype, Texturing_X3DTextureNode .prototype),
@@ -60589,10 +60687,10 @@ Object .assign (Object .setPrototypeOf (X3DSingleTextureNode .prototype, Texturi
    {
       switch (this .getTextureType ())
       {
-         case 1:
-         case 2: return "2D";
-         case 3: return "3D";
-         case 4: return "CUBE";
+         case 1:                // ImageTexture, MovieTexture (flipY)
+         case 2: return "2D";   // PixelTexture
+         case 3: return "3D";   // X3DTexture3DNode
+         case 4: return "CUBE"; // X3DEnvironmentTextureNode
       }
    },
    getTexture ()
@@ -60609,22 +60707,6 @@ Object .assign (Object .setPrototypeOf (X3DSingleTextureNode .prototype, Texturi
 
       this .addNodeEvent ();
    },
-   getLevels ()
-   {
-      return this .levels;
-   },
-   setLevels (value)
-   {
-      this .levels = value;
-   },
-   getGenerateMipMaps ()
-   {
-      return this .generateMipMaps;
-   },
-   setGenerateMipMaps (value)
-   {
-      this .generateMipMaps = value;
-   },
    isLinear ()
    {
       return this ._linear .getValue ();
@@ -60636,6 +60718,7 @@ Object .assign (Object .setPrototypeOf (X3DSingleTextureNode .prototype, Texturi
    },
    getMatrix ()
    {
+      // Normally the identity matrix or a flipY matrix.
       return this .matrix;
    },
    isImageTransparent (data)
@@ -60679,29 +60762,29 @@ Object .assign (Object .setPrototypeOf (X3DSingleTextureNode .prototype, Texturi
 
          gl .bindTexture (target, this .getTexture ());
 
-         if (Math .max (width, height) < this .getBrowser () .getMinTextureSize () && !haveTextureProperties)
+         if (!haveTextureProperties && Math .max (width, height) < this .getBrowser () .getMinTextureSize ())
          {
-            this .levels = 1;
-
             // Don't generate MipMaps.
             gl .texParameteri (target, gl .TEXTURE_MIN_FILTER, gl .NEAREST);
             gl .texParameteri (target, gl .TEXTURE_MAG_FILTER, gl .NEAREST);
          }
-         else
+         else if (!this .isLinear () || haveTextureProperties)
          {
-            if (this .generateMipMaps)
-            {
-               // https://stackoverflow.com/a/25640078/1818915
-               this .levels = textureProperties ._generateMipMaps .getValue ()
-                  ? 1 + Math .floor (Math .log2 (Math .max (width, height)))
-                  : 1;
+            // All linear textures (KTX2, HDR) do NOT support mip-maps.
 
+            if (!this .isLinear ())
+            {
                if (textureProperties ._generateMipMaps .getValue ())
                   gl .generateMipmap (target);
             }
 
             gl .texParameteri (target, gl .TEXTURE_MIN_FILTER, gl [textureProperties .getMinificationFilter ()]);
             gl .texParameteri (target, gl .TEXTURE_MAG_FILTER, gl [textureProperties .getMagnificationFilter ()]);
+         }
+         else
+         {
+            gl .texParameteri (target, gl .TEXTURE_MIN_FILTER, gl .LINEAR);
+            gl .texParameteri (target, gl .TEXTURE_MAG_FILTER, gl .LINEAR);
          }
 
          if (haveTextureProperties)
@@ -60736,16 +60819,13 @@ Object .assign (Object .setPrototypeOf (X3DSingleTextureNode .prototype, Texturi
          }
       };
    })(),
+   getTextureBits ()
+   {
+      return (this .isLinear () << 3) | this .getTextureType ();
+   },
    updateTextureBits (textureBits, channel = 0)
    {
-      const
-         textureType = this .getTextureType (),
-         linear      = this .isLinear ();
-
-      textureBits .set (channel * 4 + 0, textureType & 0b001);
-      textureBits .set (channel * 4 + 1, textureType & 0b010);
-      textureBits .set (channel * 4 + 2, textureType & 0b100);
-      textureBits .set (channel * 4 + 3, linear);
+      textureBits .add (channel * 4, this .getTextureBits ());
    },
    getShaderOptions (options, channel = 0)
    {
@@ -60766,9 +60846,9 @@ Object .defineProperties (X3DSingleTextureNode,
       value: "X3DSingleTextureNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Texturing",
+      value: Object .freeze ({ name: "Texturing", level: 1 }),
       enumerable: true,
    },
 });
@@ -60944,9 +61024,9 @@ Object .defineProperties (X3DTexture2DNode,
       value: "X3DTexture2DNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Texturing",
+      value: Object .freeze ({ name: "Texturing", level: 1 }),
       enumerable: true,
    },
 });
@@ -60957,7 +61037,7 @@ const X3DTexture2DNode_default_ = X3DTexture2DNode;
 x_ite_Namespace .add ("X3DTexture2DNode", "x_ite/Components/Texturing/X3DTexture2DNode", X3DTexture2DNode_default_);
 /* harmony default export */ const Texturing_X3DTexture2DNode = (X3DTexture2DNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/ImageTexture.js
-/* provided dependency */ var ImageTexture_$ = __webpack_require__(718);
+/* provided dependency */ var ImageTexture_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -61069,24 +61149,24 @@ Object .assign (Object .setPrototypeOf (ImageTexture .prototype, Texturing_X3DTe
 
       this .URL = new URL (this .urlStack .shift (), this .getExecutionContext () .getBaseURL ());
 
-      if (this .URL .protocol !== "data:")
-      {
-         if (!this .getCache ())
-            this .URL .searchParams .set ("_", Date .now ());
-      }
-
-      if (this .URL .pathname .match (/\.ktx2?(?:\.gz)?$/))
+      if (this .URL .pathname .match (/\.ktx2?(?:\.gz)?$/) || this .URL .href .match (/^data:image\/ktx2[;,]/))
       {
          this .setLinear (true);
 
          this .getBrowser () .getKTXDecoder ()
-            .then (decoder => decoder .loadKTXFromURL (this .URL))
+            .then (decoder => decoder .loadKTXFromURL (this .URL, this .getCache ()))
             .then (texture => this .setKTXTexture (texture))
             .catch (error => this .setError ({ type: error .message }));
       }
       else
       {
          this .setLinear (false);
+
+         if (this .URL .protocol !== "data:")
+         {
+            if (!this .getCache ())
+               this .URL .searchParams .set ("_", Date .now ());
+         }
 
          this .image .attr ("src", this .URL .href);
       }
@@ -61113,10 +61193,8 @@ Object .assign (Object .setPrototypeOf (ImageTexture .prototype, Texturing_X3DTe
       {
          this .setTexture (texture);
          this .setTransparent (false);
-         this .setLevels (texture .levels);
          this .setWidth (texture .baseWidth);
          this .setHeight (texture .baseHeight);
-         this .setGenerateMipMaps (false);
          this .updateTextureParameters ();
 
          this .setLoadState (Base_X3DConstants .COMPLETE_STATE);
@@ -61175,7 +61253,6 @@ Object .assign (Object .setPrototypeOf (ImageTexture .prototype, Texturing_X3DTe
 
             // Upload image to GPU.
 
-            this .setGenerateMipMaps (true);
             this .setTextureFromData (width, height, false, transparent, data);
             this .setLoadState (Base_X3DConstants .COMPLETE_STATE);
          }
@@ -61185,7 +61262,6 @@ Object .assign (Object .setPrototypeOf (ImageTexture .prototype, Texturing_X3DTe
 
             // Upload image to GPU.
 
-            this .setGenerateMipMaps (true);
             this .setTextureFromData (width, height, this ._colorSpaceConversion .getValue (), this .isTransparent (), image);
             this .setTransparent (this .isImageTransparent (await this .getTextureData (this .getTexture (), width, height)));
             this .setLoadState (Base_X3DConstants .COMPLETE_STATE);
@@ -61226,9 +61302,9 @@ Object .defineProperties (ImageTexture,
       value: "ImageTexture",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Texturing",
+      value: Object .freeze ({ name: "Texturing", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -61238,7 +61314,7 @@ Object .defineProperties (ImageTexture,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -61319,6 +61395,7 @@ x_ite_Namespace .add ("ImageTexture", "x_ite/Components/Texturing/ImageTexture",
 
 
 
+
 function Background (executionContext)
 {
    EnvironmentalEffects_X3DBackgroundNode .call (this, executionContext);
@@ -61385,9 +61462,9 @@ Object .defineProperties (Background,
       value: "Background",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EnvironmentalEffects",
+      value: Object .freeze ({ name: "EnvironmentalEffects", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -61397,7 +61474,7 @@ Object .defineProperties (Background,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -61412,7 +61489,7 @@ Object .defineProperties (Background,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "topUrl",       new x_ite_Fields .MFString ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "bottomUrl",    new x_ite_Fields .MFString ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "skyAngle",     new x_ite_Fields .MFFloat ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "skyColor",     new x_ite_Fields .MFColor (new x_ite_Fields .SFColor ())),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "skyColor",     new x_ite_Fields .MFColor (new Numbers_Color3 (0, 0, 0))),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "groundAngle",  new x_ite_Fields .MFFloat ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "groundColor",  new x_ite_Fields .MFColor ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "transparency", new x_ite_Fields .SFFloat ()),
@@ -61501,8 +61578,12 @@ function X3DLayerNode (executionContext, defaultViewpoint, groupNode)
    this .addChildObjects (Base_X3DConstants .inputOutput, "hidden",  new x_ite_Fields .SFBool (),
                           Base_X3DConstants .outputOnly,  "display", new x_ite_Fields .SFBool (true));
 
+   // Legacy
+
    if (executionContext .getSpecificationVersion () <= 3.3)
       this .addAlias ("isPickable", this ._pickable);
+
+   // Private properties
 
    this .groupNode    = groupNode;
    this .viewportNode = null;
@@ -61623,15 +61704,8 @@ Object .assign (Object .setPrototypeOf (X3DLayerNode .prototype, Core_X3DNode .p
    },
    getUserViewpoints ()
    {
-      const userViewpoints = [ ];
-
-      for (const viewpointNode of this .viewpoints .get ())
-      {
-         if (viewpointNode ._description .length)
-            userViewpoints .push (viewpointNode);
-      }
-
-      return userViewpoints;
+      return this .viewpoints .get ()
+         .filter (viewpointNode => viewpointNode ._description .length);
    },
    getBackgroundStack ()
    {
@@ -61851,9 +61925,9 @@ Object .defineProperties (X3DLayerNode,
       value: "X3DLayerNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Layering",
+      value: Object .freeze ({ name: "Layering", level: 1 }),
       enumerable: true,
    },
 });
@@ -61930,9 +62004,9 @@ Object .defineProperties (X3DSensorNode,
       value: "X3DSensorNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Core",
+      value: Object .freeze ({ name: "Core", level: 1 }),
       enumerable: true,
    },
 });
@@ -62300,9 +62374,9 @@ Object .defineProperties (X3DTimeDependentNode,
       value: "X3DTimeDependentNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Time",
+      value: Object .freeze ({ name: "Time", level: 1 }),
       enumerable: true,
    },
 });
@@ -62497,9 +62571,9 @@ Object .defineProperties (TimeSensor,
       value: "TimeSensor",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Time",
+      value: Object .freeze ({ name: "Time", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -62509,7 +62583,7 @@ Object .defineProperties (TimeSensor,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -62670,9 +62744,9 @@ Object .defineProperties (X3DInterpolatorNode,
       value: "X3DInterpolatorNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Interpolation",
+      value: Object .freeze ({ name: "Interpolation", level: 1 }),
       enumerable: true,
    },
 });
@@ -62803,9 +62877,9 @@ Object .defineProperties (EaseInEaseOut,
       value: "EaseInEaseOut",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Interpolation",
+      value: Object .freeze ({ name: "Interpolation", level: 4 }),
       enumerable: true,
    },
    containerField:
@@ -62815,7 +62889,7 @@ Object .defineProperties (EaseInEaseOut,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -62933,9 +63007,9 @@ Object .defineProperties (PositionInterpolator,
       value: "PositionInterpolator",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Interpolation",
+      value: Object .freeze ({ name: "Interpolation", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -62945,7 +63019,7 @@ Object .defineProperties (PositionInterpolator,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -63072,9 +63146,9 @@ Object .defineProperties (OrientationInterpolator,
       value: "OrientationInterpolator",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Interpolation",
+      value: Object .freeze ({ name: "Interpolation", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -63084,7 +63158,7 @@ Object .defineProperties (OrientationInterpolator,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -63197,9 +63271,9 @@ Object .defineProperties (ScalarInterpolator,
       value: "ScalarInterpolator",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Interpolation",
+      value: Object .freeze ({ name: "Interpolation", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -63209,7 +63283,7 @@ Object .defineProperties (ScalarInterpolator,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -63836,9 +63910,9 @@ Object .defineProperties (X3DViewpointNode,
       value: "X3DViewpointNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Navigation",
+      value: Object .freeze ({ name: "Navigation", level: 1 }),
       enumerable: true,
    },
 });
@@ -64010,9 +64084,9 @@ Object .defineProperties (Viewpoint,
       value: "Viewpoint",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Navigation",
+      value: Object .freeze ({ name: "Navigation", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -64022,7 +64096,7 @@ Object .defineProperties (Viewpoint,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -64224,9 +64298,9 @@ Object .defineProperties (X3DBoundedObject,
       value: "X3DBoundedObject",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Grouping",
+      value: Object .freeze ({ name: "Grouping", level: 1 }),
       enumerable: true,
    },
 });
@@ -64501,10 +64575,12 @@ Object .assign (Object .setPrototypeOf (X3DGroupingNode .prototype, Core_X3DChil
                }
                case Base_X3DConstants .BooleanFilter:
                case Base_X3DConstants .BooleanToggle:
+               case Base_X3DConstants .CollisionCollection:
                case Base_X3DConstants .HAnimMotion:
                case Base_X3DConstants .NurbsOrientationInterpolator:
                case Base_X3DConstants .NurbsPositionInterpolator:
                case Base_X3DConstants .NurbsSurfaceInterpolator:
+               case Base_X3DConstants .RigidBodyCollection:
                case Base_X3DConstants .TimeSensor:
                case Base_X3DConstants .X3DFollowerNode:
                case Base_X3DConstants .X3DInfoNode:
@@ -64643,10 +64719,12 @@ Object .assign (Object .setPrototypeOf (X3DGroupingNode .prototype, Core_X3DChil
                }
                case Base_X3DConstants .BooleanFilter:
                case Base_X3DConstants .BooleanToggle:
+               case Base_X3DConstants .CollisionCollection:
                case Base_X3DConstants .HAnimMotion:
                case Base_X3DConstants .NurbsOrientationInterpolator:
                case Base_X3DConstants .NurbsPositionInterpolator:
                case Base_X3DConstants .NurbsSurfaceInterpolator:
+               case Base_X3DConstants .RigidBodyCollection:
                case Base_X3DConstants .TimeSensor:
                case Base_X3DConstants .X3DFollowerNode:
                case Base_X3DConstants .X3DInfoNode:
@@ -64924,9 +65002,9 @@ Object .defineProperties (X3DGroupingNode,
       value: "X3DGroupingNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Grouping",
+      value: Object .freeze ({ name: "Grouping", level: 1 }),
       enumerable: true,
    },
 });
@@ -65006,9 +65084,9 @@ Object .defineProperties (Group,
       value: "Group",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Grouping",
+      value: Object .freeze ({ name: "Grouping", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -65018,7 +65096,7 @@ Object .defineProperties (Group,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -65131,9 +65209,9 @@ Object .defineProperties (Layer,
       value: "Layer",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Layering",
+      value: Object .freeze ({ name: "Layering", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -65143,7 +65221,7 @@ Object .defineProperties (Layer,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -65348,9 +65426,9 @@ Object .defineProperties (LayerSet,
       value: "LayerSet",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Layering",
+      value: Object .freeze ({ name: "Layering", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -65360,7 +65438,7 @@ Object .defineProperties (LayerSet,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -65546,7 +65624,7 @@ const X3DWorld_default_ = X3DWorld;
 x_ite_Namespace .add ("X3DWorld", "x_ite/Execution/X3DWorld", X3DWorld_default_);
 /* harmony default export */ const Execution_X3DWorld = (X3DWorld_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/InputOutput/FileLoader.js
-/* provided dependency */ var FileLoader_$ = __webpack_require__(718);
+/* provided dependency */ var FileLoader_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -66954,6 +67032,7 @@ function X3DExecutionContext (executionContext, outerNode = null, browser = exec
                           Base_X3DConstants .outputOnly,     "worldInfos",         new x_ite_Fields .MFNode (),
                           Base_X3DConstants .outputOnly,     "sceneGraph_changed", new x_ite_Fields .SFTime ())
 
+   this ._rootNodes .setPrivate (false);
    this ._rootNodes .collectCloneCount = () => 1;
 
    this [_outerNode]     = outerNode;
@@ -67045,13 +67124,13 @@ Object .assign (Object .setPrototypeOf (X3DExecutionContext .prototype, Base_X3D
 
          const specificationRange = ConcreteNode .specificationRange;
 
-         if (this .getSpecificationVersion () < specificationRange [0])
+         if (this .getSpecificationVersion () < specificationRange .from)
             return null;
 
-         if (this .getSpecificationVersion () > specificationRange [1])
+         if (this .getSpecificationVersion () > specificationRange .to)
             return null;
 
-         if (!this .hasComponent (ConcreteNode .componentName))
+         if (!this .hasComponent (ConcreteNode .componentInfo .name))
             console .warn (`Node type '${typeName}' does not match component/profile statements in '${this .getWorldURL ()}'.`);
 
          return new ConcreteNode (this);
@@ -67065,13 +67144,13 @@ Object .assign (Object .setPrototypeOf (X3DExecutionContext .prototype, Base_X3D
 
          const specificationRange = ConcreteNode .specificationRange;
 
-         if (this .getSpecificationVersion () < specificationRange [0])
+         if (this .getSpecificationVersion () < specificationRange .from)
             throw new Error (`Node type '${typeName}' does not match specification version in '${this .getWorldURL ()}.`);
 
-         if (this .getSpecificationVersion () > specificationRange [1])
+         if (this .getSpecificationVersion () > specificationRange .to)
             throw new Error (`Node type '${typeName}' does not match specification version in '${this .getWorldURL ()}.`);
 
-         if (!this .hasComponent (ConcreteNode .componentName))
+         if (!this .hasComponent (ConcreteNode .componentInfo .name))
             console .warn (`Node type '${typeName}' does not match component/profile statements in '${this .getWorldURL ()}'.`);
 
          const baseNode = new ConcreteNode (this);
@@ -68906,9 +68985,9 @@ Object .defineProperties (X3DPrototypeInstance,
       value: "X3DPrototypeInstance",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Core",
+      value: Object .freeze ({ name: "Core", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -68918,7 +68997,7 @@ Object .defineProperties (X3DPrototypeInstance,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
 });
@@ -69085,9 +69164,9 @@ Object .defineProperties (X3DGeometricPropertyNode,
       value: "X3DGeometricPropertyNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 1 }),
       enumerable: true,
    },
 });
@@ -69222,9 +69301,9 @@ Object .defineProperties (FogCoordinate,
       value: "FogCoordinate",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EnvironmentalEffects",
+      value: Object .freeze ({ name: "EnvironmentalEffects", level: 4 }),
       enumerable: true,
    },
    containerField:
@@ -69234,7 +69313,7 @@ Object .defineProperties (FogCoordinate,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -69353,9 +69432,9 @@ Object .defineProperties (LocalFog,
       value: "LocalFog",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EnvironmentalEffects",
+      value: Object .freeze ({ name: "EnvironmentalEffects", level: 4 }),
       enumerable: true,
    },
    containerField:
@@ -69365,7 +69444,7 @@ Object .defineProperties (LocalFog,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -69441,6 +69520,7 @@ x_ite_Namespace .add ("LocalFog", "x_ite/Components/EnvironmentalEffects/LocalFo
 
 
 
+
 function TextureBackground (executionContext)
 {
    EnvironmentalEffects_X3DBackgroundNode .call (this, executionContext);
@@ -69481,9 +69561,9 @@ Object .defineProperties (TextureBackground,
       value: "TextureBackground",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EnvironmentalEffects",
+      value: Object .freeze ({ name: "EnvironmentalEffects", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -69493,7 +69573,7 @@ Object .defineProperties (TextureBackground,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -69502,7 +69582,7 @@ Object .defineProperties (TextureBackground,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "metadata",      new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOnly,   "set_bind",      new x_ite_Fields .SFBool ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "skyAngle",      new x_ite_Fields .MFFloat ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "skyColor",      new x_ite_Fields .MFColor (new x_ite_Fields .SFColor ())),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "skyColor",      new x_ite_Fields .MFColor (new Numbers_Color3 (0, 0, 0))),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "groundAngle",   new x_ite_Fields .MFFloat ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "groundColor",   new x_ite_Fields .MFColor ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "transparency",  new x_ite_Fields .SFFloat ()),
@@ -69736,9 +69816,9 @@ Object .defineProperties (X3DEnvironmentalSensorNode,
       value: "X3DEnvironmentalSensorNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EnvironmentalSensor",
+      value: Object .freeze ({ name: "EnvironmentalSensor", level: 1 }),
       enumerable: true,
    },
 });
@@ -69990,9 +70070,9 @@ Object .defineProperties (ProximitySensor,
       value: "ProximitySensor",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EnvironmentalSensor",
+      value: Object .freeze ({ name: "EnvironmentalSensor", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -70002,13 +70082,14 @@ Object .defineProperties (ProximitySensor,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "metadata",                 new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "description",              new x_ite_Fields .SFString ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "enabled",                  new x_ite_Fields .SFBool (true)),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "size",                     new x_ite_Fields .SFVec3f ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "center",                   new x_ite_Fields .SFVec3f ()),
@@ -70314,9 +70395,9 @@ Object .defineProperties (TransformSensor,
       value: "TransformSensor",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EnvironmentalSensor",
+      value: Object .freeze ({ name: "EnvironmentalSensor", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -70326,13 +70407,14 @@ Object .defineProperties (TransformSensor,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "metadata",            new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "description",         new x_ite_Fields .SFString ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "enabled",             new x_ite_Fields .SFBool (true)),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "size",                new x_ite_Fields .SFVec3f ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "center",              new x_ite_Fields .SFVec3f ()),
@@ -70499,9 +70581,9 @@ Object .defineProperties (VisibilitySensor,
       value: "VisibilitySensor",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "EnvironmentalSensor",
+      value: Object .freeze ({ name: "EnvironmentalSensor", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -70511,19 +70593,20 @@ Object .defineProperties (VisibilitySensor,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "metadata",  new x_ite_Fields .SFNode ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "enabled",   new x_ite_Fields .SFBool (true)),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "size",      new x_ite_Fields .SFVec3f ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "center",    new x_ite_Fields .SFVec3f ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,  "enterTime", new x_ite_Fields .SFTime ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,  "exitTime",  new x_ite_Fields .SFTime ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,  "isActive",  new x_ite_Fields .SFBool ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "metadata",    new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "description", new x_ite_Fields .SFString ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "enabled",     new x_ite_Fields .SFBool (true)),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "size",        new x_ite_Fields .SFVec3f ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "center",      new x_ite_Fields .SFVec3f ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,  "enterTime",   new x_ite_Fields .SFTime ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,  "exitTime",    new x_ite_Fields .SFTime ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,  "isActive",    new x_ite_Fields .SFBool ()),
       ]),
       enumerable: true,
    },
@@ -70748,9 +70831,9 @@ Object .defineProperties (X3DFollowerNode,
       value: "X3DFollowerNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Followers",
+      value: Object .freeze ({ name: "Followers", level: 1 }),
       enumerable: true,
    },
 });
@@ -70994,9 +71077,9 @@ Object .defineProperties (X3DChaserNode,
       value: "X3DChaserNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Followers",
+      value: Object .freeze ({ name: "Followers", level: 1 }),
       enumerable: true,
    },
 });
@@ -71122,9 +71205,9 @@ Object .defineProperties (ColorChaser,
       value: "ColorChaser",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Followers",
+      value: Object .freeze ({ name: "Followers", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -71134,7 +71217,7 @@ Object .defineProperties (ColorChaser,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.3", "Infinity"]),
+      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -71327,9 +71410,9 @@ Object .defineProperties (X3DDamperNode,
       value: "X3DDamperNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Followers",
+      value: Object .freeze ({ name: "Followers", level: 1 }),
       enumerable: true,
    },
 });
@@ -71451,9 +71534,9 @@ Object .defineProperties (ColorDamper,
       value: "ColorDamper",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Followers",
+      value: Object .freeze ({ name: "Followers", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -71463,7 +71546,7 @@ Object .defineProperties (ColorDamper,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -71835,9 +71918,9 @@ Object .defineProperties (CoordinateChaser,
       value: "CoordinateChaser",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Followers",
+      value: Object .freeze ({ name: "Followers", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -71847,7 +71930,7 @@ Object .defineProperties (CoordinateChaser,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.3", "Infinity"]),
+      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -71953,9 +72036,9 @@ Object .defineProperties (CoordinateDamper,
       value: "CoordinateDamper",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Followers",
+      value: Object .freeze ({ name: "Followers", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -71965,7 +72048,7 @@ Object .defineProperties (CoordinateDamper,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -72094,9 +72177,9 @@ Object .defineProperties (OrientationChaser,
       value: "OrientationChaser",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Followers",
+      value: Object .freeze ({ name: "Followers", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -72106,7 +72189,7 @@ Object .defineProperties (OrientationChaser,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -72115,8 +72198,8 @@ Object .defineProperties (OrientationChaser,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "metadata",           new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOnly,      "set_value",          new x_ite_Fields .SFRotation ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOnly,      "set_destination",    new x_ite_Fields .SFRotation ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .initializeOnly, "initialValue",       new x_ite_Fields .SFRotation ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .initializeOnly, "initialDestination", new x_ite_Fields .SFRotation ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .initializeOnly, "initialValue",       new x_ite_Fields .SFRotation (0, 1, 0, 0)),
+         new Base_X3DFieldDefinition (Base_X3DConstants .initializeOnly, "initialDestination", new x_ite_Fields .SFRotation (0, 1, 0, 0)),
          new Base_X3DFieldDefinition (Base_X3DConstants .initializeOnly, "duration",           new x_ite_Fields .SFTime (1)),
          new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,     "isActive",           new x_ite_Fields .SFBool ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,     "value_changed",      new x_ite_Fields .SFRotation ()),
@@ -72227,9 +72310,9 @@ Object .defineProperties (OrientationDamper,
       value: "OrientationDamper",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Followers",
+      value: Object .freeze ({ name: "Followers", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -72239,7 +72322,7 @@ Object .defineProperties (OrientationDamper,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -72248,8 +72331,8 @@ Object .defineProperties (OrientationDamper,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "metadata",           new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOnly,      "set_value",          new x_ite_Fields .SFRotation ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOnly,      "set_destination",    new x_ite_Fields .SFRotation ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .initializeOnly, "initialValue",       new x_ite_Fields .SFRotation ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .initializeOnly, "initialDestination", new x_ite_Fields .SFRotation ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .initializeOnly, "initialValue",       new x_ite_Fields .SFRotation (0, 1, 0, 0)),
+         new Base_X3DFieldDefinition (Base_X3DConstants .initializeOnly, "initialDestination", new x_ite_Fields .SFRotation (0, 1, 0, 0)),
          new Base_X3DFieldDefinition (Base_X3DConstants .initializeOnly, "order",              new x_ite_Fields .SFInt32 (3)),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "tau",                new x_ite_Fields .SFTime (0.3)),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "tolerance",          new x_ite_Fields .SFFloat (-1)),
@@ -72342,9 +72425,9 @@ Object .defineProperties (PositionChaser,
       value: "PositionChaser",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Followers",
+      value: Object .freeze ({ name: "Followers", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -72354,7 +72437,7 @@ Object .defineProperties (PositionChaser,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -72455,9 +72538,9 @@ Object .defineProperties (PositionChaser2D,
       value: "PositionChaser2D",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Followers",
+      value: Object .freeze ({ name: "Followers", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -72467,7 +72550,7 @@ Object .defineProperties (PositionChaser2D,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -72568,9 +72651,9 @@ Object .defineProperties (PositionDamper,
       value: "PositionDamper",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Followers",
+      value: Object .freeze ({ name: "Followers", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -72580,7 +72663,7 @@ Object .defineProperties (PositionDamper,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -72683,9 +72766,9 @@ Object .defineProperties (PositionDamper2D,
       value: "PositionDamper2D",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Followers",
+      value: Object .freeze ({ name: "Followers", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -72695,7 +72778,7 @@ Object .defineProperties (PositionDamper2D,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -72826,9 +72909,9 @@ Object .defineProperties (ScalarChaser,
       value: "ScalarChaser",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Followers",
+      value: Object .freeze ({ name: "Followers", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -72838,7 +72921,7 @@ Object .defineProperties (ScalarChaser,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -72955,9 +73038,9 @@ Object .defineProperties (ScalarDamper,
       value: "ScalarDamper",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Followers",
+      value: Object .freeze ({ name: "Followers", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -72967,7 +73050,7 @@ Object .defineProperties (ScalarDamper,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.3", "Infinity"]),
+      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -73075,9 +73158,9 @@ Object .defineProperties (TexCoordChaser2D,
       value: "TexCoordChaser2D",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Followers",
+      value: Object .freeze ({ name: "Followers", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -73087,7 +73170,7 @@ Object .defineProperties (TexCoordChaser2D,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.3", "Infinity"]),
+      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -73193,9 +73276,9 @@ Object .defineProperties (TexCoordDamper2D,
       value: "TexCoordDamper2D",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Followers",
+      value: Object .freeze ({ name: "Followers", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -73205,7 +73288,7 @@ Object .defineProperties (TexCoordDamper2D,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -73447,9 +73530,9 @@ Object .defineProperties (Box,
       value: "Box",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Geometry3D",
+      value: Object .freeze ({ name: "Geometry3D", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -73459,7 +73542,7 @@ Object .defineProperties (Box,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -73697,9 +73780,9 @@ Object .defineProperties (Cone,
       value: "Cone",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Geometry3D",
+      value: Object .freeze ({ name: "Geometry3D", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -73709,7 +73792,7 @@ Object .defineProperties (Cone,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -74010,9 +74093,9 @@ Object .defineProperties (Cylinder,
       value: "Cylinder",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Geometry3D",
+      value: Object .freeze ({ name: "Geometry3D", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -74022,7 +74105,7 @@ Object .defineProperties (Cylinder,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -74109,6 +74192,7 @@ function ElevationGrid (executionContext)
 
    this .addType (Base_X3DConstants .ElevationGrid);
 
+   this ._set_height  .setUnit ("length");
    this ._xSpacing    .setUnit ("length");
    this ._zSpacing    .setUnit ("length");
    this ._creaseAngle .setUnit ("angle");
@@ -74444,9 +74528,9 @@ Object .defineProperties (ElevationGrid,
       value: "ElevationGrid",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Geometry3D",
+      value: Object .freeze ({ name: "Geometry3D", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -74456,7 +74540,7 @@ Object .defineProperties (ElevationGrid,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -75180,9 +75264,9 @@ Object .defineProperties (Extrusion,
       value: "Extrusion",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Geometry3D",
+      value: Object .freeze ({ name: "Geometry3D", level: 4 }),
       enumerable: true,
    },
    containerField:
@@ -75192,7 +75276,7 @@ Object .defineProperties (Extrusion,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -75579,9 +75663,9 @@ Object .defineProperties (X3DComposedGeometryNode,
       value: "X3DComposedGeometryNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 1 }),
       enumerable: true,
    },
 });
@@ -75736,10 +75820,8 @@ Object .assign (Object .setPrototypeOf (IndexedFaceSet .prototype, Rendering_X3D
 
       texCoordNode ?.init (multiTexCoordArray);
 
-      for (const polygon of polygons)
+      for (const { triangles, face } of polygons)
       {
-         const { triangles, face } = polygon;
-
          for (const i of triangles)
          {
             const index = coordIndex [i];
@@ -75765,7 +75847,6 @@ Object .assign (Object .setPrototypeOf (IndexedFaceSet .prototype, Rendering_X3D
             {
                if (normalPerVertex)
                   normalNode .addVector (this .getNormalPerVertexIndex (i), normalArray);
-
                else
                   normalNode .addVector (this .getNormalIndex (face), normalArray);
             }
@@ -75774,7 +75855,7 @@ Object .assign (Object .setPrototypeOf (IndexedFaceSet .prototype, Rendering_X3D
          }
       }
 
-      // Autogenerate normal if not specified.
+      // Autogenerate normals if not specified.
 
       if (!this .getNormal ())
          this .buildNormals (polygons);
@@ -75903,9 +75984,9 @@ Object .assign (Object .setPrototypeOf (IndexedFaceSet .prototype, Rendering_X3D
          normals     = this .createNormals (polygons),
          normalArray = this .getNormals ();
 
-      for (const polygon of polygons)
+      for (const { triangles } of polygons)
       {
-         for (const i of polygon .triangles)
+         for (const i of triangles)
             normalArray .push (... normals [i]);
       }
    },
@@ -75918,11 +75999,9 @@ Object .assign (Object .setPrototypeOf (IndexedFaceSet .prototype, Rendering_X3D
          normalIndex = new Map (),
          normals     = [ ];
 
-      for (const polygon of polygons)
+      for (const { vertices } of polygons)
       {
-         const
-            vertices = polygon .vertices,
-            length   = vertices .length;
+         const length = vertices .length;
 
          switch (length)
          {
@@ -76015,9 +76094,9 @@ Object .defineProperties (IndexedFaceSet,
       value: "IndexedFaceSet",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Geometry3D",
+      value: Object .freeze ({ name: "Geometry3D", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -76027,7 +76106,7 @@ Object .defineProperties (IndexedFaceSet,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -76184,9 +76263,9 @@ Object .defineProperties (Sphere,
       value: "Sphere",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Geometry3D",
+      value: Object .freeze ({ name: "Geometry3D", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -76196,7 +76275,7 @@ Object .defineProperties (Sphere,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -76506,9 +76585,9 @@ Object .defineProperties (StaticGroup,
       value: "StaticGroup",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Grouping",
+      value: Object .freeze ({ name: "Grouping", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -76518,7 +76597,7 @@ Object .defineProperties (StaticGroup,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -76602,8 +76681,12 @@ function Switch (executionContext)
 
    this .addType (Base_X3DConstants .Switch);
 
+   // Legacy
+
    if (executionContext .getSpecificationVersion () == 2.0)
       this .addAlias ("choice", this ._children);
+
+   // Private properties
 
    this .childNode     = null;
    this .visibleNode   = null;
@@ -76765,9 +76848,9 @@ Object .defineProperties (Switch,
       value: "Switch",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Grouping",
+      value: Object .freeze ({ name: "Grouping", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -76777,7 +76860,7 @@ Object .defineProperties (Switch,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -76930,9 +77013,9 @@ Object .defineProperties (X3DTransformMatrix3DNode,
       value: "X3DTransformMatrix3DNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Grouping",
+      value: Object .freeze ({ name: "Grouping", level: 1 }),
       enumerable: true,
    },
 });
@@ -77030,9 +77113,9 @@ Object .defineProperties (X3DTransformNode,
       value: "X3DTransformNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Grouping",
+      value: Object .freeze ({ name: "Grouping", level: 1 }),
       enumerable: true,
    },
 });
@@ -77112,9 +77195,9 @@ Object .defineProperties (Transform,
       value: "Transform",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Grouping",
+      value: Object .freeze ({ name: "Grouping", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -77124,7 +77207,7 @@ Object .defineProperties (Transform,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -77335,9 +77418,9 @@ Object .defineProperties (ColorInterpolator,
       value: "ColorInterpolator",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Interpolation",
+      value: Object .freeze ({ name: "Interpolation", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -77347,7 +77430,7 @@ Object .defineProperties (ColorInterpolator,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -77472,9 +77555,9 @@ Object .defineProperties (CoordinateInterpolator,
       value: "CoordinateInterpolator",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Interpolation",
+      value: Object .freeze ({ name: "Interpolation", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -77484,7 +77567,7 @@ Object .defineProperties (CoordinateInterpolator,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -77606,9 +77689,9 @@ Object .defineProperties (CoordinateInterpolator2D,
       value: "CoordinateInterpolator2D",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Interpolation",
+      value: Object .freeze ({ name: "Interpolation", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -77618,7 +77701,7 @@ Object .defineProperties (CoordinateInterpolator2D,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -77769,9 +77852,9 @@ Object .defineProperties (NormalInterpolator,
       value: "NormalInterpolator",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Interpolation",
+      value: Object .freeze ({ name: "Interpolation", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -77781,7 +77864,7 @@ Object .defineProperties (NormalInterpolator,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -77899,9 +77982,9 @@ Object .defineProperties (PositionInterpolator2D,
       value: "PositionInterpolator2D",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Interpolation",
+      value: Object .freeze ({ name: "Interpolation", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -77911,7 +77994,7 @@ Object .defineProperties (PositionInterpolator2D,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -78409,9 +78492,9 @@ Object .defineProperties (SplinePositionInterpolator,
       value: "SplinePositionInterpolator",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Interpolation",
+      value: Object .freeze ({ name: "Interpolation", level: 4 }),
       enumerable: true,
    },
    containerField:
@@ -78421,7 +78504,7 @@ Object .defineProperties (SplinePositionInterpolator,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -78619,9 +78702,9 @@ Object .defineProperties (SplinePositionInterpolator2D,
       value: "SplinePositionInterpolator2D",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Interpolation",
+      value: Object .freeze ({ name: "Interpolation", level: 4 }),
       enumerable: true,
    },
    containerField:
@@ -78631,7 +78714,7 @@ Object .defineProperties (SplinePositionInterpolator2D,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -78863,9 +78946,9 @@ Object .defineProperties (SplineScalarInterpolator,
       value: "SplineScalarInterpolator",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Interpolation",
+      value: Object .freeze ({ name: "Interpolation", level: 4 }),
       enumerable: true,
    },
    containerField:
@@ -78875,7 +78958,7 @@ Object .defineProperties (SplineScalarInterpolator,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -79124,9 +79207,9 @@ Object .defineProperties (SquadOrientationInterpolator,
       value: "SquadOrientationInterpolator",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Interpolation",
+      value: Object .freeze ({ name: "Interpolation", level: 5 }),
       enumerable: true,
    },
    containerField:
@@ -79136,7 +79219,7 @@ Object .defineProperties (SquadOrientationInterpolator,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -79315,9 +79398,9 @@ Object .defineProperties (X3DViewportNode,
       value: "X3DViewportNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Layering",
+      value: Object .freeze ({ name: "Layering", level: 1 }),
       enumerable: true,
    },
 });
@@ -79475,9 +79558,9 @@ Object .defineProperties (Viewport,
       value: "Viewport",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Layering",
+      value: Object .freeze ({ name: "Layering", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -79487,7 +79570,7 @@ Object .defineProperties (Viewport,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -79810,9 +79893,9 @@ Object .defineProperties (X3DLightNode,
       value: "X3DLightNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Lighting",
+      value: Object .freeze ({ name: "Lighting", level: 1 }),
       enumerable: true,
    },
 });
@@ -80056,6 +80139,8 @@ function DirectionalLight (executionContext)
 
    this .addType (Base_X3DConstants .DirectionalLight);
 
+   // Legacy
+
    if (executionContext .getSpecificationVersion () == 2.0)
       this ._global = true;
 }
@@ -80075,9 +80160,9 @@ Object .defineProperties (DirectionalLight,
       value: "DirectionalLight",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Lighting",
+      value: Object .freeze ({ name: "Lighting", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -80087,7 +80172,7 @@ Object .defineProperties (DirectionalLight,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -80101,11 +80186,11 @@ Object .defineProperties (DirectionalLight,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "ambientIntensity", new x_ite_Fields .SFFloat ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "direction",        new x_ite_Fields .SFVec3f (0, 0, -1)),
 
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadows",         new  x_ite_Fields .SFBool ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadowColor",     new  x_ite_Fields .SFColor ()),        // Color of shadows.
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadowIntensity", new  x_ite_Fields .SFFloat (1)),       // Intensity of shadow color in the range (0, 1).
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadowBias",      new  x_ite_Fields .SFFloat (0.005)),   // Bias of the shadow.
-         new Base_X3DFieldDefinition (Base_X3DConstants .initializeOnly, "shadowMapSize",   new  x_ite_Fields .SFInt32 (1024)),    // Size of the shadow map in pixels in the range (0, inf).
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadows",         new x_ite_Fields .SFBool ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadowColor",     new x_ite_Fields .SFColor ()),        // skip test, Color of shadows
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadowIntensity", new x_ite_Fields .SFFloat (1)),       // Intensity of shadow color in the range (0, 1)
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadowBias",      new x_ite_Fields .SFFloat (0.005)),   // skip test, Bias of the shadow
+         new Base_X3DFieldDefinition (Base_X3DConstants .initializeOnly, "shadowMapSize",   new x_ite_Fields .SFInt32 (1024)),    // skip test, Size of the shadow map in pixels in the range (0, inf).
       ]),
       enumerable: true,
    },
@@ -80214,12 +80299,17 @@ Object .assign (EnvironmentLightContainer .prototype,
          ? this .GGXLUTTextureUnit = this .GGXLUTTextureUnit ?? browser .popTexture2DUnit ()
          : browser .getTexture2DUnit ();
 
+      // https://stackoverflow.com/a/25640078/1818915
+      // The system will automatically clamp the specified parameter appropriately.
+      // In GLSL 4 there is a textureQueryLevels function.
+      const specularTextureLevels = 1 + Math .floor (Math .log2 (specularTexture ?.getSize () ?? 1));
+
       gl .uniform3f        (shaderObject .x3d_EnvironmentLightColor,                 color .r, color .g, color .b);
       gl .uniform1f        (shaderObject .x3d_EnvironmentLightIntensity,             lightNode .getIntensity ());
       gl .uniformMatrix3fv (shaderObject .x3d_EnvironmentLightRotation, false,       lightNode .getRotation ());
       gl .uniform1i        (shaderObject .x3d_EnvironmentLightDiffuseTextureLinear,  diffuseTexture ?.isLinear ());
       gl .uniform1i        (shaderObject .x3d_EnvironmentLightSpecularTextureLinear, specularTexture ?.isLinear ());
-      gl .uniform1i        (shaderObject .x3d_EnvironmentLightSpecularTextureLevels, specularTexture ?.getLevels () ?? 1);
+      gl .uniform1i        (shaderObject .x3d_EnvironmentLightSpecularTextureLevels, specularTextureLevels);
 
       gl .activeTexture (gl .TEXTURE0 + diffuseTextureUnit);
       gl .bindTexture (gl .TEXTURE_CUBE_MAP, diffuseTexture ?.getTexture () ?? browser .getDefaultTextureCube ());
@@ -80317,9 +80407,9 @@ Object .defineProperties (EnvironmentLight,
       value: "EnvironmentLight",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Lighting",
+      value: Object .freeze ({ name: "Lighting", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -80329,7 +80419,7 @@ Object .defineProperties (EnvironmentLight,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -80663,9 +80753,9 @@ Object .defineProperties (PointLight,
       value: "PointLight",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Lighting",
+      value: Object .freeze ({ name: "Lighting", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -80675,7 +80765,7 @@ Object .defineProperties (PointLight,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -80692,10 +80782,10 @@ Object .defineProperties (PointLight,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "radius",           new x_ite_Fields .SFFloat (100)),
 
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadows",         new x_ite_Fields .SFBool ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadowColor",     new x_ite_Fields .SFColor ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadowColor",     new x_ite_Fields .SFColor ()),      // skip test
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadowIntensity", new x_ite_Fields .SFFloat (1)),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadowBias",      new x_ite_Fields .SFFloat (0.005)),
-         new Base_X3DFieldDefinition (Base_X3DConstants .initializeOnly, "shadowMapSize",   new x_ite_Fields .SFInt32 (1024)),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadowBias",      new x_ite_Fields .SFFloat (0.005)), // skip test
+         new Base_X3DFieldDefinition (Base_X3DConstants .initializeOnly, "shadowMapSize",   new x_ite_Fields .SFInt32 (1024)),  // skip test
       ]),
       enumerable: true,
    },
@@ -80965,16 +81055,25 @@ function SpotLight (executionContext)
 
    this .addType (Base_X3DConstants .SpotLight);
 
-   if (executionContext .getSpecificationVersion () <= 3.2)
-   {
-      this ._beamWidth   = 1.5708;
-      this ._cutOffAngle = 0.785398;
-   }
+   // Units
 
    this ._location    .setUnit ("length");
    this ._radius      .setUnit ("length");
    this ._beamWidth   .setUnit ("angle");
    this ._cutOffAngle .setUnit ("angle");
+
+   // Legacy
+
+   if (executionContext .getSpecificationVersion () == 3.3)
+   {
+      this ._beamWidth   = 0.785398;
+      this ._cutOffAngle = 1.5708;
+   }
+   else if (executionContext .getSpecificationVersion () <= 3.2)
+   {
+      this ._beamWidth   = 1.5708;
+      this ._cutOffAngle = 0.785398;
+   }
 }
 
 Object .assign (Object .setPrototypeOf (SpotLight .prototype, Lighting_X3DLightNode .prototype),
@@ -81022,9 +81121,9 @@ Object .defineProperties (SpotLight,
       value: "SpotLight",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Lighting",
+      value: Object .freeze ({ name: "Lighting", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -81034,7 +81133,7 @@ Object .defineProperties (SpotLight,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -81050,14 +81149,14 @@ Object .defineProperties (SpotLight,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "location",         new x_ite_Fields .SFVec3f ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "direction",        new x_ite_Fields .SFVec3f (0, 0, -1)),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "radius",           new x_ite_Fields .SFFloat (100)),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "beamWidth",        new x_ite_Fields .SFFloat (0.785398)),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "cutOffAngle",      new x_ite_Fields .SFFloat (1.5708)),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "beamWidth",        new x_ite_Fields .SFFloat (0.589049)),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "cutOffAngle",      new x_ite_Fields .SFFloat (1.570796)),
 
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadows",         new x_ite_Fields .SFBool ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadowColor",     new x_ite_Fields .SFColor ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadowColor",     new x_ite_Fields .SFColor ()),      // skip test
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadowIntensity", new x_ite_Fields .SFFloat (1)),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadowBias",      new x_ite_Fields .SFFloat (0.005)),
-         new Base_X3DFieldDefinition (Base_X3DConstants .initializeOnly, "shadowMapSize",   new x_ite_Fields .SFInt32 (1024)),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "shadowBias",      new x_ite_Fields .SFFloat (0.005)), // skip test
+         new Base_X3DFieldDefinition (Base_X3DConstants .initializeOnly, "shadowMapSize",   new x_ite_Fields .SFInt32 (1024)),  // skip test
       ]),
       enumerable: true,
    },
@@ -81296,9 +81395,9 @@ Object .defineProperties (Billboard,
       value: "Billboard",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Navigation",
+      value: Object .freeze ({ name: "Navigation", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -81308,7 +81407,7 @@ Object .defineProperties (Billboard,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -81397,6 +81496,8 @@ function Collision (executionContext)
 
    this .addType (Base_X3DConstants .Collision);
 
+   // Legacy
+
    if (executionContext .getSpecificationVersion () == 2.0)
       this .addAlias ("collide", this ._enabled); // VRML2
 }
@@ -81482,9 +81583,9 @@ Object .defineProperties (Collision,
       value: "Collision",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Navigation",
+      value: Object .freeze ({ name: "Navigation", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -81494,13 +81595,14 @@ Object .defineProperties (Collision,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "metadata",       new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "description",    new x_ite_Fields .SFString ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "enabled",        new x_ite_Fields .SFBool (true)),
          new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,     "isActive",       new x_ite_Fields .SFBool ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,     "collideTime",    new x_ite_Fields .SFTime ()),
@@ -81586,11 +81688,17 @@ function LOD (executionContext)
 
    this .addType (Base_X3DConstants .LOD);
 
-   if (executionContext .getSpecificationVersion () == 2.0)
-      this .addAlias ("level", this ._children); // VRML2
+   // Units
 
    this ._center .setUnit ("length");
    this ._range  .setUnit ("length");
+
+   // Legacy
+
+   if (executionContext .getSpecificationVersion () == 2.0)
+      this .addAlias ("level", this ._children); // VRML2
+
+   // Private properties
 
    this .frameRate        = 60;
    this .keepCurrentLevel = false;
@@ -81822,9 +81930,9 @@ Object .defineProperties (LOD,
       value: "LOD",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Navigation",
+      value: Object .freeze ({ name: "Navigation", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -81834,7 +81942,7 @@ Object .defineProperties (LOD,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -82180,9 +82288,9 @@ Object .defineProperties (OrthoViewpoint,
       value: "OrthoViewpoint",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Navigation",
+      value: Object .freeze ({ name: "Navigation", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -82192,7 +82300,7 @@ Object .defineProperties (OrthoViewpoint,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -82399,9 +82507,9 @@ Object .defineProperties (ViewpointGroup,
       value: "ViewpointGroup",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Navigation",
+      value: Object .freeze ({ name: "Navigation", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -82411,7 +82519,7 @@ Object .defineProperties (ViewpointGroup,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -82727,9 +82835,9 @@ Object .defineProperties (X3DPointingDeviceSensorNode,
       value: "X3DPointingDeviceSensorNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "PointingDeviceSensor",
+      value: Object .freeze ({ name: "PointingDeviceSensor", level: 1 }),
       enumerable: true,
    },
 });
@@ -82838,9 +82946,9 @@ Object .defineProperties (X3DTouchSensorNode,
       value: "X3DTouchSensorNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "PointingDeviceSensor",
+      value: Object .freeze ({ name: "PointingDeviceSensor", level: 1 }),
       enumerable: true,
    },
 });
@@ -82922,9 +83030,9 @@ Object .defineProperties (TouchSensor,
       value: "TouchSensor",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "PointingDeviceSensor",
+      value: Object .freeze ({ name: "PointingDeviceSensor", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -82934,7 +83042,7 @@ Object .defineProperties (TouchSensor,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -83142,9 +83250,9 @@ Object .defineProperties (Anchor,
       value: "Anchor",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Networking",
+      value: Object .freeze ({ name: "Networking", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -83154,7 +83262,7 @@ Object .defineProperties (Anchor,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -83251,8 +83359,12 @@ function Inline (executionContext)
 
    this .addType (Base_X3DConstants .Inline);
 
-   if (executionContext .getSpecificationVersion () < 4.0)
+   // Legacy
+
+   if (executionContext .getSpecificationVersion () <= 3.3)
       this ._global = true;
+
+   // Private properties
 
    this .scene        = this .getBrowser () .getDefaultScene ();
    this .groupNode    = new Grouping_Group (executionContext);
@@ -83461,9 +83573,9 @@ Object .defineProperties (Inline,
       value: "Inline",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Networking",
+      value: Object .freeze ({ name: "Networking", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -83473,7 +83585,7 @@ Object .defineProperties (Inline,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -83567,9 +83679,9 @@ Object .defineProperties (X3DNetworkSensorNode,
       value: "X3DNetworkSensorNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Networking",
+      value: Object .freeze ({ name: "Networking", level: 1 }),
       enumerable: true,
    },
 });
@@ -83640,8 +83752,12 @@ function LoadSensor (executionContext)
 
    this .addType (Base_X3DConstants .LoadSensor);
 
+   // Legacy
+
    if (executionContext .getSpecificationVersion () <= 3.3)
       this .addAlias ("watchList", this ._children);
+
+   // Private properties
 
    this .urlObjects = [ ];
    this .aborted    = false;
@@ -83813,9 +83929,9 @@ Object .defineProperties (LoadSensor,
       value: "LoadSensor",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Networking",
+      value: Object .freeze ({ name: "Networking", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -83825,20 +83941,21 @@ Object .defineProperties (LoadSensor,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "metadata", new x_ite_Fields .SFNode ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "enabled",  new x_ite_Fields .SFBool (true)),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "timeOut",  new x_ite_Fields .SFTime ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,  "isActive", new x_ite_Fields .SFBool ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,  "isLoaded", new x_ite_Fields .SFBool ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,  "progress", new x_ite_Fields .SFFloat ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,  "loadTime", new x_ite_Fields .SFTime ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "children", new x_ite_Fields .MFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "metadata",    new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "description", new x_ite_Fields .SFString ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "enabled",     new x_ite_Fields .SFBool (true)),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "timeOut",     new x_ite_Fields .SFTime ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,  "isActive",    new x_ite_Fields .SFBool ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,  "isLoaded",    new x_ite_Fields .SFBool ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,  "progress",    new x_ite_Fields .SFFloat ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,  "loadTime",    new x_ite_Fields .SFTime ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "children",    new x_ite_Fields .MFNode ()),
       ]),
       enumerable: true,
    },
@@ -83990,9 +84107,9 @@ Object .defineProperties (X3DDragSensorNode,
       value: "X3DDragSensorNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "PointingDeviceSensor",
+      value: Object .freeze ({ name: "PointingDeviceSensor", level: 1 }),
       enumerable: true,
    },
 });
@@ -84433,9 +84550,9 @@ Object .defineProperties (CylinderSensor,
       value: "CylinderSensor",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "PointingDeviceSensor",
+      value: Object .freeze ({ name: "PointingDeviceSensor", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -84445,7 +84562,7 @@ Object .defineProperties (CylinderSensor,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -84454,8 +84571,8 @@ Object .defineProperties (CylinderSensor,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "metadata",           new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "description",        new x_ite_Fields .SFString ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "enabled",            new x_ite_Fields .SFBool (true)),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "axisRotation",       new x_ite_Fields .SFRotation ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "diskAngle",          new x_ite_Fields .SFFloat (0.261792)),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "axisRotation",       new x_ite_Fields .SFRotation (0, 0, 1, 0)),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "diskAngle",          new x_ite_Fields .SFFloat (0.26179167)),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "minAngle",           new x_ite_Fields .SFFloat ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "maxAngle",           new x_ite_Fields .SFFloat (-1)),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "offset",             new x_ite_Fields .SFFloat ()),
@@ -84899,9 +85016,9 @@ Object .defineProperties (PlaneSensor,
       value: "PlaneSensor",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "PointingDeviceSensor",
+      value: Object .freeze ({ name: "PointingDeviceSensor", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -84911,7 +85028,7 @@ Object .defineProperties (PlaneSensor,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -85323,9 +85440,9 @@ Object .defineProperties (SphereSensor,
       value: "SphereSensor",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "PointingDeviceSensor",
+      value: Object .freeze ({ name: "PointingDeviceSensor", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -85335,7 +85452,7 @@ Object .defineProperties (SphereSensor,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -85345,7 +85462,7 @@ Object .defineProperties (SphereSensor,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "description",        new x_ite_Fields .SFString ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "enabled",            new x_ite_Fields .SFBool (true)),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "autoOffset",         new x_ite_Fields .SFBool (true)),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "offset",             new x_ite_Fields .SFRotation ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "offset",             new x_ite_Fields .SFRotation (0, 1, 0, 0)),
          new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,  "trackPoint_changed", new x_ite_Fields .SFVec3f ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,  "rotation_changed",   new x_ite_Fields .SFRotation ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly,  "isOver",             new x_ite_Fields .SFBool ()),
@@ -85592,9 +85709,9 @@ Object .defineProperties (ClipPlane,
       value: "ClipPlane",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 5 }),
       enumerable: true,
    },
    containerField:
@@ -85604,7 +85721,7 @@ Object .defineProperties (ClipPlane,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "Infinity"]),
+      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -85704,9 +85821,9 @@ Object .defineProperties (X3DColorNode,
       value: "X3DColorNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 1 }),
       enumerable: true,
    },
 });
@@ -85839,9 +85956,9 @@ Object .defineProperties (Color,
       value: "Color",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -85851,7 +85968,7 @@ Object .defineProperties (Color,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -85994,9 +86111,9 @@ Object .defineProperties (ColorRGBA,
       value: "ColorRGBA",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -86006,7 +86123,7 @@ Object .defineProperties (ColorRGBA,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -86211,9 +86328,9 @@ Object .defineProperties (X3DCoordinateNode,
       value: "X3DCoordinateNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 1 }),
       enumerable: true,
    },
 });
@@ -86295,9 +86412,9 @@ Object .defineProperties (Coordinate,
       value: "Coordinate",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -86307,7 +86424,7 @@ Object .defineProperties (Coordinate,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -86325,6 +86442,106 @@ const Coordinate_default_ = Coordinate;
 
 x_ite_Namespace .add ("Coordinate", "x_ite/Components/Rendering/Coordinate", Coordinate_default_);
 /* harmony default export */ const Rendering_Coordinate = (Coordinate_default_);
+;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/CoordinateDouble.js
+/*******************************************************************************
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
+ *
+ * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * The copyright notice above does not evidence any actual of intended
+ * publication of such source code, and is an unpublished work by create3000.
+ * This material contains CONFIDENTIAL INFORMATION that is the property of
+ * create3000.
+ *
+ * No permission is granted to copy, distribute, or create derivative works from
+ * the contents of this software, in whole or in part, without the prior written
+ * permission of create3000.
+ *
+ * NON-MILITARY USE ONLY
+ *
+ * All create3000 software are effectively free software with a non-military use
+ * restriction. It is free. Well commented source is provided. You may reuse the
+ * source in any way you please with the exception anything that uses it must be
+ * marked to indicate is contains 'non-military use only' components.
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * This file is part of the X_ITE Project.
+ *
+ * X_ITE is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License version 3 only, as published by the
+ * Free Software Foundation.
+ *
+ * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
+ * details (a copy is included in the LICENSE file that accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version 3
+ * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
+ * copy of the GPLv3 License.
+ *
+ * For Silvio, Joy and Adi.
+ *
+ ******************************************************************************/
+
+
+
+
+
+
+
+function CoordinateDouble (executionContext)
+{
+   Rendering_X3DCoordinateNode .call (this, executionContext);
+
+   this .addType (Base_X3DConstants .CoordinateDouble);
+}
+
+Object .setPrototypeOf (CoordinateDouble .prototype, Rendering_X3DCoordinateNode .prototype);
+
+Object .defineProperties (CoordinateDouble,
+{
+   typeName:
+   {
+      value: "CoordinateDouble",
+      enumerable: true,
+   },
+   componentInfo:
+   {
+      value: Object .freeze ({ name: "Rendering", level: 1 }),
+      enumerable: true,
+   },
+   containerField:
+   {
+      value: "coord",
+      enumerable: true,
+   },
+   specificationRange:
+   {
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
+      enumerable: true,
+   },
+   fieldDefinitions:
+   {
+      value: new Base_FieldDefinitionArray ([
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "metadata", new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "point",    new x_ite_Fields .MFVec3d ()),
+      ]),
+      enumerable: true,
+   },
+});
+
+const CoordinateDouble_default_ = CoordinateDouble;
+;
+
+x_ite_Namespace .add ("CoordinateDouble", "x_ite/Components/Rendering/CoordinateDouble", CoordinateDouble_default_);
+/* harmony default export */ const Rendering_CoordinateDouble = (CoordinateDouble_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/X3DLineGeometryNode.js
 /*******************************************************************************
  *
@@ -86807,9 +87024,9 @@ Object .defineProperties (X3DLineGeometryNode,
       value: "X3DLineGeometryNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 1 }),
       enumerable: true,
    },
 });
@@ -87092,9 +87309,9 @@ Object .defineProperties (IndexedLineSet,
       value: "IndexedLineSet",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -87104,7 +87321,7 @@ Object .defineProperties (IndexedLineSet,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -87260,9 +87477,9 @@ Object .defineProperties (IndexedTriangleFanSet,
       value: "IndexedTriangleFanSet",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -87272,7 +87489,7 @@ Object .defineProperties (IndexedTriangleFanSet,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -87387,9 +87604,9 @@ Object .defineProperties (IndexedTriangleSet,
       value: "IndexedTriangleSet",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -87399,7 +87616,7 @@ Object .defineProperties (IndexedTriangleSet,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -87565,9 +87782,9 @@ Object .defineProperties (IndexedTriangleStripSet,
       value: "IndexedTriangleStripSet",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -87577,7 +87794,7 @@ Object .defineProperties (IndexedTriangleStripSet,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -87816,9 +88033,9 @@ Object .defineProperties (LineSet,
       value: "LineSet",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -87828,7 +88045,7 @@ Object .defineProperties (LineSet,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -87918,9 +88135,9 @@ Object .defineProperties (X3DNormalNode,
       value: "X3DNormalNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 2 }),
       enumerable: true,
    },
 });
@@ -88054,9 +88271,9 @@ Object .defineProperties (Normal,
       value: "Normal",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -88066,7 +88283,7 @@ Object .defineProperties (Normal,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -88259,9 +88476,9 @@ Object .defineProperties (X3DPointGeometryNode,
       value: "X3DPointGeometryNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 1 }),
       enumerable: true,
    },
 });
@@ -88464,9 +88681,9 @@ Object .defineProperties (PointSet,
       value: "PointSet",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -88476,7 +88693,7 @@ Object .defineProperties (PointSet,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -88610,9 +88827,9 @@ Object .defineProperties (TriangleFanSet,
       value: "TriangleFanSet",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -88622,7 +88839,7 @@ Object .defineProperties (TriangleFanSet,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -88733,9 +88950,9 @@ Object .defineProperties (TriangleSet,
       value: "TriangleSet",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -88745,7 +88962,7 @@ Object .defineProperties (TriangleSet,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -88888,9 +89105,9 @@ Object .defineProperties (TriangleStripSet,
       value: "TriangleStripSet",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Rendering",
+      value: Object .freeze ({ name: "Rendering", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -88900,7 +89117,7 @@ Object .defineProperties (TriangleStripSet,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -88998,6 +89215,7 @@ x_ite_Namespace .add ("TriangleStripSet", "x_ite/Components/Rendering/TriangleSt
 
 
 
+
 const Rendering_default_ = {
    name: "Rendering",
    concreteNodes:
@@ -89006,6 +89224,7 @@ const Rendering_default_ = {
       Rendering_Color,
       Rendering_ColorRGBA,
       Rendering_Coordinate,
+      Rendering_CoordinateDouble,
       Rendering_IndexedLineSet,
       Rendering_IndexedTriangleFanSet,
       Rendering_IndexedTriangleSet,
@@ -89130,9 +89349,9 @@ Object .defineProperties (X3DShaderNode,
       value: "X3DShaderNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shaders",
+      value: Object .freeze ({ name: "Shaders", level: 1 }),
       enumerable: true,
    },
 });
@@ -89143,7 +89362,7 @@ const X3DShaderNode_default_ = X3DShaderNode;
 x_ite_Namespace .add ("X3DShaderNode", "x_ite/Components/Shaders/X3DShaderNode", X3DShaderNode_default_);
 /* harmony default export */ const Shaders_X3DShaderNode = (X3DShaderNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/X3DProgrammableShaderObject.js
-/* provided dependency */ var X3DProgrammableShaderObject_$ = __webpack_require__(718);
+/* provided dependency */ var X3DProgrammableShaderObject_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -90502,9 +90721,9 @@ Object .defineProperties (X3DProgrammableShaderObject,
       value: "X3DProgrammableShaderObject",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shaders",
+      value: Object .freeze ({ name: "Shaders", level: 1 }),
       enumerable: true,
    },
 });
@@ -90714,9 +90933,9 @@ Object .defineProperties (ComposedShader,
       value: "ComposedShader",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shaders",
+      value: Object .freeze ({ name: "Shaders", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -90726,7 +90945,7 @@ Object .defineProperties (ComposedShader,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -90830,9 +91049,9 @@ Object .defineProperties (X3DVertexAttributeNode,
       value: "X3DVertexAttributeNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shaders",
+      value: Object .freeze ({ name: "Shaders", level: 1 }),
       enumerable: true,
    },
 });
@@ -90966,9 +91185,9 @@ Object .defineProperties (FloatVertexAttribute,
       value: "FloatVertexAttribute",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shaders",
+      value: Object .freeze ({ name: "Shaders", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -90978,7 +91197,7 @@ Object .defineProperties (FloatVertexAttribute,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -91114,9 +91333,9 @@ Object .defineProperties (Matrix3VertexAttribute,
       value: "Matrix3VertexAttribute",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shaders",
+      value: Object .freeze ({ name: "Shaders", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -91126,7 +91345,7 @@ Object .defineProperties (Matrix3VertexAttribute,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -91260,9 +91479,9 @@ Object .defineProperties (Matrix4VertexAttribute,
       value: "Matrix4VertexAttribute",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shaders",
+      value: Object .freeze ({ name: "Shaders", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -91272,7 +91491,7 @@ Object .defineProperties (Matrix4VertexAttribute,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -91387,9 +91606,9 @@ Object .defineProperties (PackagedShader,
       value: "PackagedShader",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shaders",
+      value: Object .freeze ({ name: "Shaders", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -91399,7 +91618,7 @@ Object .defineProperties (PackagedShader,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -91495,9 +91714,9 @@ Object .defineProperties (ProgramShader,
       value: "ProgramShader",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shaders",
+      value: Object .freeze ({ name: "Shaders", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -91507,7 +91726,7 @@ Object .defineProperties (ProgramShader,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -94784,7 +95003,7 @@ const ShaderCompiler_default_ = ShaderCompiler;
 x_ite_Namespace .add ("ShaderCompiler", "x_ite/Browser/Shaders/ShaderCompiler", ShaderCompiler_default_);
 /* harmony default export */ const Shaders_ShaderCompiler = (ShaderCompiler_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/ShaderPart.js
-/* provided dependency */ var ShaderPart_$ = __webpack_require__(718);
+/* provided dependency */ var ShaderPart_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -94992,9 +95211,9 @@ Object .defineProperties (ShaderPart,
       value: "ShaderPart",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shaders",
+      value: Object .freeze ({ name: "Shaders", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -95004,7 +95223,7 @@ Object .defineProperties (ShaderPart,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -95123,9 +95342,9 @@ Object .defineProperties (ShaderProgram,
       value: "ShaderProgram",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shaders",
+      value: Object .freeze ({ name: "Shaders", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -95135,7 +95354,7 @@ Object .defineProperties (ShaderProgram,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -95312,9 +95531,9 @@ Object .defineProperties (AcousticProperties,
       value: "AcousticProperties",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shape",
+      value: Object .freeze ({ name: "Shape", level: 5 }),
       enumerable: true,
    },
    containerField:
@@ -95324,19 +95543,19 @@ Object .defineProperties (AcousticProperties,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "metadata",   new x_ite_Fields .SFNode ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "description",new x_ite_Fields .SFString ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "enabled",    new x_ite_Fields .SFBool (true)),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "diffuse",    new x_ite_Fields .SFFloat ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "specular",   new x_ite_Fields .SFFloat ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "refraction", new x_ite_Fields .SFFloat ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "absorption", new x_ite_Fields .SFFloat ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "metadata",    new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "description", new x_ite_Fields .SFString ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "enabled",     new x_ite_Fields .SFBool (true)),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "diffuse",     new x_ite_Fields .SFFloat ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "specular",    new x_ite_Fields .SFFloat ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "refraction",  new x_ite_Fields .SFFloat ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "absorption",  new x_ite_Fields .SFFloat ()),
       ]),
       enumerable: true,
    },
@@ -95428,9 +95647,9 @@ Object .defineProperties (X3DAppearanceNode,
       value: "X3DAppearanceNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shape",
+      value: Object .freeze ({ name: "Shape", level: 1 }),
       enumerable: true,
    },
 });
@@ -95441,7 +95660,7 @@ const X3DAppearanceNode_default_ = X3DAppearanceNode;
 x_ite_Namespace .add ("X3DAppearanceNode", "x_ite/Components/Shape/X3DAppearanceNode", X3DAppearanceNode_default_);
 /* harmony default export */ const Shape_X3DAppearanceNode = (X3DAppearanceNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/Appearance.js
-/* provided dependency */ var Appearance_$ = __webpack_require__(718);
+/* provided dependency */ var Appearance_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -95843,9 +96062,9 @@ Object .defineProperties (Appearance,
       value: "Appearance",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shape",
+      value: Object .freeze ({ name: "Shape", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -95855,7 +96074,7 @@ Object .defineProperties (Appearance,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -96037,9 +96256,9 @@ Object .defineProperties (FillProperties,
       value: "FillProperties",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shape",
+      value: Object .freeze ({ name: "Shape", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -96049,7 +96268,7 @@ Object .defineProperties (FillProperties,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -96227,9 +96446,9 @@ Object .defineProperties (LineProperties,
       value: "LineProperties",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shape",
+      value: Object .freeze ({ name: "Shape", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -96239,7 +96458,7 @@ Object .defineProperties (LineProperties,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -96338,14 +96557,10 @@ Object .assign (Object .setPrototypeOf (X3DMaterialNode .prototype, Shape_X3DApp
    },
    setTexture (index, textureNode)
    {
-      const
-         textureType = textureNode ?.getTextureType () ?? 0,
-         linear      = textureNode ?.isLinear () ?? 0;
+      index *= 4;
 
-      this .textureBits .set (index * 4 + 0, textureType & 0b001);
-      this .textureBits .set (index * 4 + 1, textureType & 0b010);
-      this .textureBits .set (index * 4 + 2, textureType & 0b100);
-      this .textureBits .set (index * 4 + 3, linear);
+      this .textureBits .remove (index, 0xf);
+      this .textureBits .add (index, textureNode ?.getTextureBits () ?? 0);
    },
    getTextureBits ()
    {
@@ -96390,7 +96605,7 @@ Object .assign (Object .setPrototypeOf (X3DMaterialNode .prototype, Shape_X3DApp
          key += "0000011.0.";
          key += objectsKeys .sort () .join (""); // ClipPlane, X3DLightNode
          key += ".";
-         key += textureNode ? ((textureNode .isLinear () << 3) | textureNode .getTextureType ()) .toString (16) : 0;
+         key += textureNode ?.getTextureBits () .toString (16) ?? 0;
       }
 
       return this .shaderNodes .get (key) ?? this .createShader (key, geometryContext, renderContext);
@@ -96624,9 +96839,9 @@ Object .defineProperties (X3DMaterialNode,
       value: "X3DMaterialNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shape",
+      value: Object .freeze ({ name: "Shape", level: 1 }),
       enumerable: true,
    },
 });
@@ -96842,9 +97057,9 @@ Object .defineProperties (X3DOneSidedMaterialNode,
       value: "X3DOneSidedMaterialNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shape",
+      value: Object .freeze ({ name: "Shape", level: 4 }),
       enumerable: true,
    },
 });
@@ -96917,8 +97132,12 @@ function Material (executionContext)
 
    this .addType (Base_X3DConstants .Material);
 
+   // Legacy
+
    if (executionContext .getSpecificationVersion () <= 3.3)
       this .getMaterialKey = getMaterialKey;
+
+   // Private properties
 
    this .diffuseColor  = new Float32Array (3);
    this .specularColor = new Float32Array (3);
@@ -97267,9 +97486,9 @@ Object .defineProperties (Material,
       value: "Material",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shape",
+      value: Object .freeze ({ name: "Shape", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -97279,7 +97498,7 @@ Object .defineProperties (Material,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -97616,9 +97835,9 @@ Object .defineProperties (PhysicalMaterial,
       value: "PhysicalMaterial",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shape",
+      value: Object .freeze ({ name: "Shape", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -97628,7 +97847,7 @@ Object .defineProperties (PhysicalMaterial,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -97789,11 +98008,9 @@ Object .assign (Object .setPrototypeOf (PointProperties .prototype, Shape_X3DApp
    },
    set_attenuation__ ()
    {
-      const length = this ._attenuation .length;
-
-      this .attenuation [0] = length > 0 ? Math .max (0, this ._attenuation [0]) : 1;
-      this .attenuation [1] = length > 1 ? Math .max (0, this ._attenuation [1]) : 0;
-      this .attenuation [2] = length > 2 ? Math .max (0, this ._attenuation [2]) : 0;
+      this .attenuation [0] = Math .max (0, this ._attenuation [0]);
+      this .attenuation [1] = Math .max (0, this ._attenuation [1]);
+      this .attenuation [2] = Math .max (0, this ._attenuation [2]);
    },
    setShaderUniforms (gl, shaderObject)
    {
@@ -97811,9 +98028,9 @@ Object .defineProperties (PointProperties,
       value: "PointProperties",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shape",
+      value: Object .freeze ({ name: "Shape", level: 5 }),
       enumerable: true,
    },
    containerField:
@@ -97823,7 +98040,7 @@ Object .defineProperties (PointProperties,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -97833,7 +98050,7 @@ Object .defineProperties (PointProperties,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "pointSizeScaleFactor", new x_ite_Fields .SFFloat (1)),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "pointSizeMinValue",    new x_ite_Fields .SFFloat (1)),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "pointSizeMaxValue",    new x_ite_Fields .SFFloat (1)),
-         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "attenuation",          new x_ite_Fields .MFFloat (1, 0, 0)),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "attenuation",          new x_ite_Fields .SFVec3f (1, 0, 0)),
       ]),
       enumerable: true,
    },
@@ -98021,7 +98238,7 @@ Object .assign (Object .setPrototypeOf (X3DShapeNode .prototype, Core_X3DChildNo
    set_transparent__ ()
    {
       // This function is overloaded in ParticleSystem!
-      
+
       const alphaMode = this .appearanceNode .getAlphaMode ();
 
       if (alphaMode === Shape_AlphaMode .AUTO)
@@ -98067,9 +98284,9 @@ Object .defineProperties (X3DShapeNode,
       value: "X3DShapeNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shape",
+      value: Object .freeze ({ name: "Shape", level: 1 }),
       enumerable: true,
    },
 });
@@ -98253,9 +98470,9 @@ Object .defineProperties (Shape,
       value: "Shape",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shape",
+      value: Object .freeze ({ name: "Shape", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -98265,7 +98482,7 @@ Object .defineProperties (Shape,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -98544,9 +98761,9 @@ Object .defineProperties (TwoSidedMaterial,
       value: "TwoSidedMaterial",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shape",
+      value: Object .freeze ({ name: "Shape", level: 4 }),
       enumerable: true,
    },
    containerField:
@@ -98556,7 +98773,7 @@ Object .defineProperties (TwoSidedMaterial,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.2", "4.0"]),
+      value: Object .freeze ({ from: "3.2", to: "4.0" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -98711,9 +98928,9 @@ Object .defineProperties (UnlitMaterial,
       value: "UnlitMaterial",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Shape",
+      value: Object .freeze ({ name: "Shape", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -98723,7 +98940,7 @@ Object .defineProperties (UnlitMaterial,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -98848,7 +99065,7 @@ const Components_Shape_default_ = {
 x_ite_Namespace .add ("Shape", "x_ite/Components/Shape", Components_Shape_default_);
 /* harmony default export */ const Components_Shape = (Components_Shape_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/X3DSoundProcessingNode.js
-/* provided dependency */ var X3DSoundProcessingNode_$ = __webpack_require__(718);
+/* provided dependency */ var X3DSoundProcessingNode_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -99073,9 +99290,9 @@ Object .defineProperties (X3DSoundProcessingNode,
       value: "X3DSoundProcessingNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
 });
@@ -99235,9 +99452,9 @@ Object .defineProperties (Analyser,
       value: "Analyser",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -99247,7 +99464,7 @@ Object .defineProperties (Analyser,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -99475,9 +99692,9 @@ Object .defineProperties (X3DSoundSourceNode,
       value: "X3DSoundSourceNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 1 }),
       enumerable: true,
    },
 });
@@ -99488,7 +99705,7 @@ const X3DSoundSourceNode_default_ = X3DSoundSourceNode;
 x_ite_Namespace .add ("X3DSoundSourceNode", "x_ite/Components/Sound/X3DSoundSourceNode", X3DSoundSourceNode_default_);
 /* harmony default export */ const Sound_X3DSoundSourceNode = (X3DSoundSourceNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/AudioClip.js
-/* provided dependency */ var AudioClip_$ = __webpack_require__(718);
+/* provided dependency */ var AudioClip_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -99664,9 +99881,9 @@ Object .defineProperties (AudioClip,
       value: "AudioClip",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -99676,7 +99893,7 @@ Object .defineProperties (AudioClip,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -99777,9 +99994,9 @@ Object .defineProperties (X3DSoundNode,
       value: "X3DSoundNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 1 }),
       enumerable: true,
    },
 });
@@ -99790,7 +100007,7 @@ const X3DSoundNode_default_ = X3DSoundNode;
 x_ite_Namespace .add ("X3DSoundNode", "x_ite/Components/Sound/X3DSoundNode", X3DSoundNode_default_);
 /* harmony default export */ const Sound_X3DSoundNode = (X3DSoundNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/X3DSoundDestinationNode.js
-/* provided dependency */ var X3DSoundDestinationNode_$ = __webpack_require__(718);
+/* provided dependency */ var X3DSoundDestinationNode_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -99974,9 +100191,9 @@ Object .defineProperties (X3DSoundDestinationNode,
       value: "X3DSoundDestinationNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
 });
@@ -100120,9 +100337,9 @@ Object .defineProperties (AudioDestination,
       value: "AudioDestination",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -100132,7 +100349,7 @@ Object .defineProperties (AudioDestination,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -100232,9 +100449,9 @@ Object .defineProperties (BiquadFilter,
       value: "BiquadFilter",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -100244,7 +100461,7 @@ Object .defineProperties (BiquadFilter,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -100369,9 +100586,9 @@ Object .defineProperties (BufferAudioSource,
       value: "BufferAudioSource",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -100381,7 +100598,7 @@ Object .defineProperties (BufferAudioSource,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -100496,9 +100713,9 @@ Object .defineProperties (X3DSoundChannelNode,
       value: "X3DSoundChannelNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
 });
@@ -100578,9 +100795,9 @@ Object .defineProperties (ChannelMerger,
       value: "ChannelMerger",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -100590,7 +100807,7 @@ Object .defineProperties (ChannelMerger,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -100687,9 +100904,9 @@ Object .defineProperties (ChannelSelector,
       value: "ChannelSelector",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -100699,7 +100916,7 @@ Object .defineProperties (ChannelSelector,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -100797,9 +101014,9 @@ Object .defineProperties (ChannelSplitter,
       value: "ChannelSplitter",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -100809,7 +101026,7 @@ Object .defineProperties (ChannelSplitter,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -100907,9 +101124,9 @@ Object .defineProperties (Convolver,
       value: "Convolver",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -100919,7 +101136,7 @@ Object .defineProperties (Convolver,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -101027,9 +101244,9 @@ Object .defineProperties (Delay,
       value: "Delay",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -101039,7 +101256,7 @@ Object .defineProperties (Delay,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -101147,9 +101364,9 @@ Object .defineProperties (DynamicsCompressor,
       value: "DynamicsCompressor",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -101159,7 +101376,7 @@ Object .defineProperties (DynamicsCompressor,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -101271,9 +101488,9 @@ Object .defineProperties (Gain,
       value: "Gain",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -101283,7 +101500,7 @@ Object .defineProperties (Gain,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -101393,9 +101610,9 @@ Object .defineProperties (ListenerPointSource,
       value: "ListenerPointSource",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -101405,7 +101622,7 @@ Object .defineProperties (ListenerPointSource,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -101440,7 +101657,7 @@ const ListenerPointSource_default_ = ListenerPointSource;
 x_ite_Namespace .add ("ListenerPointSource", "x_ite/Components/Sound/ListenerPointSource", ListenerPointSource_default_);
 /* harmony default export */ const Sound_ListenerPointSource = (ListenerPointSource_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/MicrophoneSource.js
-/* provided dependency */ var MicrophoneSource_$ = __webpack_require__(718);
+/* provided dependency */ var MicrophoneSource_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -101615,9 +101832,9 @@ Object .defineProperties (MicrophoneSource,
       value: "MicrophoneSource",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -101627,7 +101844,7 @@ Object .defineProperties (MicrophoneSource,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -101828,9 +102045,9 @@ Object .defineProperties (OscillatorSource,
       value: "OscillatorSource",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -101840,7 +102057,7 @@ Object .defineProperties (OscillatorSource,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -101966,9 +102183,9 @@ Object .defineProperties (PeriodicWave,
       value: "PeriodicWave",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -101978,7 +102195,7 @@ Object .defineProperties (PeriodicWave,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -102339,9 +102556,9 @@ Object .defineProperties (Sound,
       value: "Sound",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -102351,7 +102568,7 @@ Object .defineProperties (Sound,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -102453,9 +102670,9 @@ Object .defineProperties (SpatialSound,
       value: "SpatialSound",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -102465,7 +102682,7 @@ Object .defineProperties (SpatialSound,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -102588,9 +102805,9 @@ Object .defineProperties (StreamAudioDestination,
       value: "StreamAudioDestination",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -102600,7 +102817,7 @@ Object .defineProperties (StreamAudioDestination,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -102702,9 +102919,9 @@ Object .defineProperties (StreamAudioSource,
       value: "StreamAudioSource",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -102714,7 +102931,7 @@ Object .defineProperties (StreamAudioSource,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -102814,9 +103031,9 @@ Object .defineProperties (WaveShaper,
       value: "WaveShaper",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Sound",
+      value: Object .freeze ({ name: "Sound", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -102826,7 +103043,7 @@ Object .defineProperties (WaveShaper,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -103109,8 +103326,8 @@ const GifMedia_default_ = GifMedia;
 x_ite_Namespace .add ("GifMedia", "x_ite/Browser/Texturing/GifMedia", GifMedia_default_);
 /* harmony default export */ const Texturing_GifMedia = (GifMedia_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/MovieTexture.js
-/* provided dependency */ var MovieTexture_$ = __webpack_require__(718);
-/* provided dependency */ var SuperGif = __webpack_require__(630);
+/* provided dependency */ var MovieTexture_$ = __webpack_require__(616);
+/* provided dependency */ var SuperGif = __webpack_require__(115);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -103370,9 +103587,9 @@ Object .defineProperties (MovieTexture,
       value: "MovieTexture",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Texturing",
+      value: Object .freeze ({ name: "Texturing", level: 3 }),
       enumerable: true,
    },
    containerField:
@@ -103382,7 +103599,7 @@ Object .defineProperties (MovieTexture,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -103736,9 +103953,9 @@ Object .defineProperties (MultiTexture,
       value: "MultiTexture",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Texturing",
+      value: Object .freeze ({ name: "Texturing", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -103748,7 +103965,7 @@ Object .defineProperties (MultiTexture,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -103839,9 +104056,9 @@ Object .defineProperties (X3DTextureCoordinateNode,
       value: "X3DTextureCoordinateNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Texturing",
+      value: Object .freeze ({ name: "Texturing", level: 1 }),
       enumerable: true,
    },
 });
@@ -104019,9 +104236,9 @@ Object .defineProperties (MultiTextureCoordinate,
       value: "MultiTextureCoordinate",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Texturing",
+      value: Object .freeze ({ name: "Texturing", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -104031,7 +104248,7 @@ Object .defineProperties (MultiTextureCoordinate,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -104116,9 +104333,9 @@ Object .defineProperties (X3DTextureTransformNode,
       value: "X3DTextureTransformNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Texturing",
+      value: Object .freeze ({ name: "Texturing", level: 1 }),
       enumerable: true,
    },
 });
@@ -104257,9 +104474,9 @@ Object .defineProperties (MultiTextureTransform,
       value: "MultiTextureTransform",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Texturing",
+      value: Object .freeze ({ name: "Texturing", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -104269,7 +104486,7 @@ Object .defineProperties (MultiTextureTransform,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -104288,7 +104505,6 @@ const MultiTextureTransform_default_ = MultiTextureTransform;
 x_ite_Namespace .add ("MultiTextureTransform", "x_ite/Components/Texturing/MultiTextureTransform", MultiTextureTransform_default_);
 /* harmony default export */ const Texturing_MultiTextureTransform = (MultiTextureTransform_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/PixelTexture.js
-/* provided dependency */ var PixelTexture_$ = __webpack_require__(718);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -104359,9 +104575,6 @@ Object .assign (Object .setPrototypeOf (PixelTexture .prototype, Texturing_X3DTe
       Texturing_X3DTexture2DNode .prototype .initialize .call (this);
 
       this ._image .addInterest ("set_image__", this);
-
-      this .canvas1 = PixelTexture_$("<canvas></canvas>");
-      this .canvas2 = PixelTexture_$("<canvas></canvas>");
 
       this .set_image__ ();
    },
@@ -104437,7 +104650,7 @@ Object .assign (Object .setPrototypeOf (PixelTexture .prototype, Texturing_X3DTe
    },
    resize (input, inputWidth, inputHeight, outputWidth, outputHeight)
    {
-      // Nearest neighbor scaling algorithm for very small images.
+      // Nearest neighbor scaling algorithm for very small images for WebGL 1.
 
       const
          output = new Uint8Array (outputWidth * outputHeight * 4),
@@ -104453,7 +104666,7 @@ Object .assign (Object .setPrototypeOf (PixelTexture .prototype, Texturing_X3DTe
          for (let x = 0; x < outputWidth; ++ x)
          {
             const
-               index       = (inputW + Math.floor (x / scaleX)) * 4,
+               index       = (inputW + Math .floor (x / scaleX)) * 4,
                indexScaled = (outputW + x) * 4;
 
             output [indexScaled]     = input [index];
@@ -104486,7 +104699,7 @@ Object .assign (Object .setPrototypeOf (PixelTexture .prototype, Texturing_X3DTe
 
             this .convert (data, comp, array .getValue (), array .length);
          }
-         else if (Math .max (width, height) < this .getBrowser () .getMinTextureSize () && ! this ._textureProperties .getValue ())
+         else if (Math .max (width, height) < this .getBrowser () .getMinTextureSize () && !this ._textureProperties .getValue ())
          {
             data = new Uint8Array (width * height * 4);
 
@@ -104502,9 +104715,12 @@ Object .assign (Object .setPrototypeOf (PixelTexture .prototype, Texturing_X3DTe
          }
          else
          {
+            if (!this .canvas)
+               this .canvas = [document .createElement ("canvas"), document .createElement ("canvas")];
+
             const
-               canvas1   = this .canvas1 [0],
-               canvas2   = this .canvas2 [0],
+               canvas1   = this .canvas [0],
+               canvas2   = this .canvas [1],
                cx1       = canvas1 .getContext ("2d", { willReadFrequently: true }),
                cx2       = canvas2 .getContext ("2d", { willReadFrequently: true }),
                imageData = cx1 .createImageData (width, height);
@@ -104512,7 +104728,7 @@ Object .assign (Object .setPrototypeOf (PixelTexture .prototype, Texturing_X3DTe
             canvas1 .width  = width;
             canvas1 .height = height;
 
-            this .convert (imageData .data, comp, array, array .length);
+            this .convert (imageData .data, comp, array .getValue (), array .length);
             cx1 .putImageData (imageData, 0, 0);
 
             width  = Math_Algorithm .nextPowerOfTwo (width);
@@ -104545,9 +104761,9 @@ Object .defineProperties (PixelTexture,
       value: "PixelTexture",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Texturing",
+      value: Object .freeze ({ name: "Texturing", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -104557,7 +104773,7 @@ Object .defineProperties (PixelTexture,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -104673,9 +104889,9 @@ Object .defineProperties (X3DSingleTextureCoordinateNode,
       value: "X3DSingleTextureCoordinateNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Texturing",
+      value: Object .freeze ({ name: "Texturing", level: 1 }),
       enumerable: true,
    },
 });
@@ -104805,9 +105021,9 @@ Object .defineProperties (TextureCoordinate,
       value: "TextureCoordinate",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Texturing",
+      value: Object .freeze ({ name: "Texturing", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -104817,7 +105033,7 @@ Object .defineProperties (TextureCoordinate,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -104968,9 +105184,9 @@ Object .defineProperties (TextureCoordinateGenerator,
       value: "TextureCoordinateGenerator",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Texturing",
+      value: Object .freeze ({ name: "Texturing", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -104980,7 +105196,7 @@ Object .defineProperties (TextureCoordinateGenerator,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -105060,6 +105276,8 @@ function TextureProperties (executionContext)
    Core_X3DNode .call (this, executionContext);
 
    this .addType (Base_X3DConstants .TextureProperties);
+
+   // Legacy
 
    if (executionContext .getSpecificationVersion () <= 3.3)
    {
@@ -105191,9 +105409,9 @@ Object .defineProperties (TextureProperties,
       value: "TextureProperties",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Texturing",
+      value: Object .freeze ({ name: "Texturing", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -105203,7 +105421,7 @@ Object .defineProperties (TextureProperties,
    },
    specificationRange:
    {
-      value: Object .freeze (["3.0", "Infinity"]),
+      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -105327,9 +105545,9 @@ Object .defineProperties (X3DSingleTextureTransformNode,
       value: "X3DSingleTextureTransformNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Texturing",
+      value: Object .freeze ({ name: "Texturing", level: 1 }),
       enumerable: true,
    },
 });
@@ -105468,9 +105686,9 @@ Object .defineProperties (TextureTransform,
       value: "TextureTransform",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "Texturing",
+      value: Object .freeze ({ name: "Texturing", level: 1 }),
       enumerable: true,
    },
    containerField:
@@ -105480,7 +105698,7 @@ Object .defineProperties (TextureTransform,
    },
    specificationRange:
    {
-      value: Object .freeze (["2.0", "Infinity"]),
+      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -105785,11 +106003,9 @@ const Context =
       {
          const
             color_buffer_float = gl .getExtension ("WEBGL_color_buffer_float"),
-            draw_buffers       = gl .getExtension ("WEBGL_draw_buffers"),
-            sRGB               = gl .getExtension ("EXT_sRGB");
+            draw_buffers       = gl .getExtension ("WEBGL_draw_buffers");
 
          gl .RGBA32F               = color_buffer_float .RGBA32F_EXT;
-         gl .SRGB8_ALPHA8          = sRGB .SRGB_ALPHA_EXT;
          gl .MAX_COLOR_ATTACHMENTS = draw_buffers .MAX_COLOR_ATTACHMENTS_WEBGL;
          gl .drawBuffers           = draw_buffers .drawBuffersWEBGL .bind (draw_buffers);
 
@@ -106389,7 +106605,7 @@ const gettext_default_ = gettext;
 x_ite_Namespace .add ("gettext", "locale/gettext", gettext_default_);
 /* harmony default export */ const locale_gettext = (gettext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/BrowserTimings.js
-/* provided dependency */ var BrowserTimings_$ = __webpack_require__(718);
+/* provided dependency */ var BrowserTimings_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -106819,7 +107035,7 @@ const TextureQuality_default_ = TextureQuality;
 x_ite_Namespace .add ("TextureQuality", "x_ite/Browser/Core/TextureQuality", TextureQuality_default_);
 /* harmony default export */ const Core_TextureQuality = (TextureQuality_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/BrowserOptions.js
-/* provided dependency */ var BrowserOptions_$ = __webpack_require__(718);
+/* provided dependency */ var BrowserOptions_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -107409,7 +107625,7 @@ const RenderingProperties_default_ = RenderingProperties;
 x_ite_Namespace .add ("RenderingProperties", "x_ite/Browser/Core/RenderingProperties", RenderingProperties_default_);
 /* harmony default export */ const Core_RenderingProperties = (RenderingProperties_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/Notification.js
-/* provided dependency */ var Notification_$ = __webpack_require__(718);
+/* provided dependency */ var Notification_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -107532,8 +107748,8 @@ const Notification_default_ = Notification;
 x_ite_Namespace .add ("Notification", "x_ite/Browser/Core/Notification", Notification_default_);
 /* harmony default export */ const Core_Notification = (Notification_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/ContextMenu.js
-/* provided dependency */ var jquery_fullscreen = __webpack_require__(699);
-/* provided dependency */ var ContextMenu_$ = __webpack_require__(718);
+/* provided dependency */ var jquery_fullscreen = __webpack_require__(746);
+/* provided dependency */ var ContextMenu_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -109067,6 +109283,7 @@ x_ite_Namespace .add ("ExportedNodesArray", "x_ite/Execution/ExportedNodesArray"
 
 
 
+
 const
    _specificationVersion = Symbol (),
    _encoding             = Symbol (),
@@ -109077,8 +109294,6 @@ const
    _metadata             = Symbol (),
    _exportedNodes        = Symbol (),
    _loadingObjects       = Symbol ();
-
-const X3D_LATEST_VERSION = "4.0";
 
 function X3DScene (browser)
 {
@@ -109091,7 +109306,7 @@ function X3DScene (browser)
                           Base_X3DConstants .outputOnly, "initLoadCount",    new x_ite_Fields .SFInt32 (),
                           Base_X3DConstants .outputOnly, "loadCount",        new x_ite_Fields .SFInt32 ())
 
-   this [_specificationVersion] = X3D_LATEST_VERSION;
+   this [_specificationVersion] = LATEST_VERSION;
    this [_encoding]             = "SCRIPTED";
    this [_profile]              = null;
    this [_components]           = new Configuration_ComponentInfoArray ([ ]);
@@ -109432,7 +109647,7 @@ Object .assign (Object .setPrototypeOf (X3DScene .prototype, Execution_X3DExecut
    {
       generator .string += generator .Indent ();
       generator .string += "#X3D V";
-      generator .string += X3D_LATEST_VERSION;
+      generator .string += LATEST_VERSION;
       generator .string += generator .Space ();
       generator .string += "utf8";
       generator .string += generator .Space ();
@@ -109524,9 +109739,9 @@ Object .assign (Object .setPrototypeOf (X3DScene .prototype, Execution_X3DExecut
          generator .string += generator .TidyBreak ();
          generator .string += generator .Indent ();
          generator .string += "<!DOCTYPE X3D PUBLIC \"ISO//Web3D//DTD X3D ";
-         generator .string += X3D_LATEST_VERSION;
+         generator .string += LATEST_VERSION;
          generator .string += "//EN\" \"http://www.web3d.org/specifications/x3d-";
-         generator .string += X3D_LATEST_VERSION;
+         generator .string += LATEST_VERSION;
          generator .string += ".dtd\">";
          generator .string += generator .TidyBreak ();
       }
@@ -109539,13 +109754,13 @@ Object .assign (Object .setPrototypeOf (X3DScene .prototype, Execution_X3DExecut
       generator .string += "'";
       generator .string += generator .Space ();
       generator .string += "version='";
-      generator .string += X3D_LATEST_VERSION;
+      generator .string += LATEST_VERSION;
       generator .string += "'";
       generator .string += generator .Space ();
       generator .string += "xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance'";
       generator .string += generator .Space ();
       generator .string += "xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-";
-      generator .string += X3D_LATEST_VERSION;
+      generator .string += LATEST_VERSION;
       generator .string += ".xsd'>";
       generator .string += generator .TidyBreak ();
 
@@ -109706,7 +109921,7 @@ Object .assign (Object .setPrototypeOf (X3DScene .prototype, Execution_X3DExecut
       generator .string += ':';
       generator .string += generator .TidySpace ();
       generator .string += '"';
-      generator .string += X3D_LATEST_VERSION;
+      generator .string += LATEST_VERSION;
       generator .string += '"';
       generator .string += ',';
       generator .string += generator .TidyBreak ();
@@ -109722,7 +109937,7 @@ Object .assign (Object .setPrototypeOf (X3DScene .prototype, Execution_X3DExecut
       generator .string += generator .TidySpace ();
       generator .string += '"';
       generator .string += "http://www.web3d.org/specifications/x3d-";
-      generator .string += X3D_LATEST_VERSION;
+      generator .string += LATEST_VERSION;
       generator .string += ".xsd";
       generator .string += '"';
       generator .string += ',';
@@ -109739,7 +109954,7 @@ Object .assign (Object .setPrototypeOf (X3DScene .prototype, Execution_X3DExecut
       generator .string += generator .TidySpace ();
       generator .string += '"';
       generator .string += "http://www.web3d.org/specifications/x3d-";
-      generator .string += X3D_LATEST_VERSION;
+      generator .string += LATEST_VERSION;
       generator .string += "-JSONSchema.json";
       generator .string += '"';
       generator .string += ',';
@@ -110285,7 +110500,7 @@ const DataStorage_default_ = DataStorage;
 x_ite_Namespace .add ("DataStorage", "standard/Utility/DataStorage", DataStorage_default_);
 /* harmony default export */ const Utility_DataStorage = (DataStorage_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/X3DCoreContext.js
-/* provided dependency */ var X3DCoreContext_$ = __webpack_require__(718);
+/* provided dependency */ var X3DCoreContext_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -112350,8 +112565,8 @@ const X3DViewer_default_ = X3DViewer;
 x_ite_Namespace .add ("X3DViewer", "x_ite/Browser/Navigation/X3DViewer", X3DViewer_default_);
 /* harmony default export */ const Navigation_X3DViewer = (X3DViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/ExamineViewer.js
-/* provided dependency */ var jquery_mousewheel = __webpack_require__(801);
-/* provided dependency */ var ExamineViewer_$ = __webpack_require__(718);
+/* provided dependency */ var jquery_mousewheel = __webpack_require__(678);
+/* provided dependency */ var ExamineViewer_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -113223,8 +113438,8 @@ const ExamineViewer_default_ = ExamineViewer;
 x_ite_Namespace .add ("ExamineViewer", "x_ite/Browser/Navigation/ExamineViewer", ExamineViewer_default_);
 /* harmony default export */ const Navigation_ExamineViewer = (ExamineViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/X3DFlyViewer.js
-/* provided dependency */ var X3DFlyViewer_jquery_mousewheel = __webpack_require__(801);
-/* provided dependency */ var X3DFlyViewer_$ = __webpack_require__(718);
+/* provided dependency */ var X3DFlyViewer_jquery_mousewheel = __webpack_require__(678);
+/* provided dependency */ var X3DFlyViewer_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -114233,8 +114448,8 @@ const FlyViewer_default_ = FlyViewer;
 x_ite_Namespace .add ("FlyViewer", "x_ite/Browser/Navigation/FlyViewer", FlyViewer_default_);
 /* harmony default export */ const Navigation_FlyViewer = (FlyViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/PlaneViewer.js
-/* provided dependency */ var PlaneViewer_jquery_mousewheel = __webpack_require__(801);
-/* provided dependency */ var PlaneViewer_$ = __webpack_require__(718);
+/* provided dependency */ var PlaneViewer_jquery_mousewheel = __webpack_require__(678);
+/* provided dependency */ var PlaneViewer_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -114565,8 +114780,8 @@ const NoneViewer_default_ = NoneViewer;
 x_ite_Namespace .add ("NoneViewer", "x_ite/Browser/Navigation/NoneViewer", NoneViewer_default_);
 /* harmony default export */ const Navigation_NoneViewer = (NoneViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/LookAtViewer.js
-/* provided dependency */ var LookAtViewer_jquery_mousewheel = __webpack_require__(801);
-/* provided dependency */ var LookAtViewer_$ = __webpack_require__(718);
+/* provided dependency */ var LookAtViewer_jquery_mousewheel = __webpack_require__(678);
+/* provided dependency */ var LookAtViewer_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -115705,8 +115920,8 @@ const X3DPickingContext_default_ = X3DPickingContext;
 x_ite_Namespace .add ("X3DPickingContext", "x_ite/Browser/Picking/X3DPickingContext", X3DPickingContext_default_);
 /* harmony default export */ const Picking_X3DPickingContext = (X3DPickingContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/PointingDeviceSensor/PointingDevice.js
-/* provided dependency */ var PointingDevice_jquery_mousewheel = __webpack_require__(801);
-/* provided dependency */ var PointingDevice_$ = __webpack_require__(718);
+/* provided dependency */ var PointingDevice_jquery_mousewheel = __webpack_require__(678);
+/* provided dependency */ var PointingDevice_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -116969,7 +117184,7 @@ const MultiSampleFrameBuffer_default_ = MultiSampleFrameBuffer;
 x_ite_Namespace .add ("MultiSampleFrameBuffer", "x_ite/Rendering/MultiSampleFrameBuffer", MultiSampleFrameBuffer_default_);
 /* harmony default export */ const Rendering_MultiSampleFrameBuffer = (MultiSampleFrameBuffer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Rendering/X3DRenderingContext.js
-/* provided dependency */ var X3DRenderingContext_$ = __webpack_require__(718);
+/* provided dependency */ var X3DRenderingContext_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -117872,7 +118087,7 @@ const X3DSoundContext_default_ = X3DSoundContext;
 x_ite_Namespace .add ("X3DSoundContext", "x_ite/Browser/Sound/X3DSoundContext", X3DSoundContext_default_);
 /* harmony default export */ const Sound_X3DSoundContext = (X3DSoundContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Texturing/KTXDecoder.js
-/* provided dependency */ var KTXDecoder_$ = __webpack_require__(718);
+/* provided dependency */ var KTXDecoder_$ = __webpack_require__(616);
 const KTXDecoder_default_ = class KTXDecoder
 {
    constructor (gl, externalKtxlib, scriptDir)
@@ -117920,9 +118135,12 @@ const KTXDecoder_default_ = class KTXDecoder
          console .warn ("Texture transcode failed. See console for details.");
    }
 
-   async loadKTXFromURL (uri)
+   async loadKTXFromURL (url, cache = true)
    {
-      const response = await fetch (uri);
+      const response = await fetch (url, { cache: cache ? "default" : "reload" });
+
+      if (!response .ok)
+         throw new Error ("Couldn't fetch KTX image.");
 
       return this .loadKTXFromBuffer (await response .arrayBuffer ());
    }
@@ -117944,11 +118162,9 @@ const KTXDecoder_default_ = class KTXDecoder
       if (!texture)
          throw new Error ("Could not load KTX data");
 
-      // https://stackoverflow.com/a/25640078/1818915
-      texture .levels        = 1 + Math .floor (Math .log2 (Math .max (ktxTexture .baseWidth, ktxTexture .baseHeight)));
       texture .baseWidth     = ktxTexture .baseWidth;
       texture .baseHeight    = ktxTexture .baseHeight;
-      texture .baseDepth     = ktxTexture .baseDepth ?? 1;
+      texture .baseDepth     = ktxTexture .baseDepth ?? 1; // TODO: No support.
       texture .numComponents = ktxTexture .numComponents;
       texture .target        = uploadResult .target;
 
@@ -119424,7 +119640,7 @@ const Components_default_ = Components;
 x_ite_Namespace .add ("Components", "x_ite/Components", Components_default_);
 /* harmony default export */ const x_ite_Components = ((/* unused pure expression or super */ null && (Components_default_)));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/DOMIntegration.js
-/* provided dependency */ var DOMIntegration_$ = __webpack_require__(718);
+/* provided dependency */ var DOMIntegration_$ = __webpack_require__(616);
 /*******************************************************************************
  * MIT License
  *
@@ -120563,7 +120779,7 @@ const SupportedProfiles_default_ = SupportedProfiles;
 x_ite_Namespace .add ("SupportedProfiles", "x_ite/Configuration/SupportedProfiles", SupportedProfiles_default_);
 /* harmony default export */ const Configuration_SupportedProfiles = (SupportedProfiles_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/X3DBrowser.js
-/* provided dependency */ var X3DBrowser_$ = __webpack_require__(718);
+/* provided dependency */ var X3DBrowser_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -120732,7 +120948,7 @@ Object .assign (Object .setPrototypeOf (X3DBrowser .prototype, Browser_X3DBrowse
    },
    getVersion ()
    {
-      return VERSION;
+      return BROWSER_VERSION;
    },
    getDescription ()
    {
@@ -121550,7 +121766,7 @@ Object .defineProperties (X3DBrowser .prototype,
    },
    version:
    {
-      value: VERSION,
+      value: BROWSER_VERSION,
       enumerable: true,
    },
    providerURL:
@@ -121644,7 +121860,7 @@ const X3DBrowser_default_ = X3DBrowser;
 x_ite_Namespace .add ("X3DBrowser", "x_ite/Browser/X3DBrowser", X3DBrowser_default_);
 /* harmony default export */ const Browser_X3DBrowser = (X3DBrowser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/X3DCanvasElement.js
-/* provided dependency */ var X3DCanvasElement_$ = __webpack_require__(718);
+/* provided dependency */ var X3DCanvasElement_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -121776,8 +121992,8 @@ const X3DCanvasElement_default_ = X3DCanvasElement;
 x_ite_Namespace .add ("X3DCanvasElement", "x_ite/X3DCanvasElement", X3DCanvasElement_default_);
 /* harmony default export */ const x_ite_X3DCanvasElement = (X3DCanvasElement_default_);
 ;// CONCATENATED MODULE: ./src/lib/jquery.js
-/* provided dependency */ var jquery_$ = __webpack_require__(718);
-/* provided dependency */ var pako = __webpack_require__(994);
+/* provided dependency */ var jquery_$ = __webpack_require__(616);
+/* provided dependency */ var pako = __webpack_require__(182);
 Object .assign (jquery_$,
 {
    decodeText (input)
@@ -121854,14 +122070,14 @@ const jquery_default_ = jquery_$;
 x_ite_Namespace .add ("jquery", "lib/jquery", jquery_default_);
 /* harmony default export */ const jquery = ((/* unused pure expression or super */ null && (jquery_default_)));
 ;// CONCATENATED MODULE: ./src/lib/libtess.js
-/* provided dependency */ var libtess_libtess = __webpack_require__(89);
+/* provided dependency */ var libtess_libtess = __webpack_require__(237);
 const libtess_default_ = libtess_libtess;
 ;
 
 x_ite_Namespace .add ("libtess", "lib/libtess", libtess_default_);
 /* harmony default export */ const lib_libtess = ((/* unused pure expression or super */ null && (libtess_default_)));
 ;// CONCATENATED MODULE: ./src/x_ite/X3D.js
-/* provided dependency */ var X3D_$ = __webpack_require__(718);
+/* provided dependency */ var X3D_$ = __webpack_require__(616);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -122255,7 +122471,7 @@ x_ite_Namespace .add ("shim", "shim", shim_default_);
 
 // Assign X3D to global namespace.
 
-window [Symbol .for ("X_ITE.X3D-9.0.2")] = x_ite_X3D;
+window [Symbol .for ("X_ITE.X3D-9.0.3")] = x_ite_X3D;
 
 customElements .define ("x3d-canvas", x_ite_X3DCanvasElement);
 

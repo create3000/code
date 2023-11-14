@@ -1,4 +1,4 @@
-/* X_ITE v9.0.2 */(() => { // webpackBootstrap
+/* X_ITE v9.0.3 */(() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
 /******/ 	var __webpack_require__ = {};
@@ -39,37 +39,37 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Lighting/X3DLightNode\")"
-const X3DLightNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Components/Lighting/X3DLightNode");
+const X3DLightNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Components/Lighting/X3DLightNode");
 var X3DLightNode_default = /*#__PURE__*/__webpack_require__.n(X3DLightNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
-const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Base/X3DCast");
+const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
-const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Numbers/Vector3");
+const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Rotation4\")"
-const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Numbers/Rotation4");
+const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Numbers/Rotation4");
 var Rotation4_default = /*#__PURE__*/__webpack_require__.n(Rotation4_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix4\")"
-const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Numbers/Matrix4");
+const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Numbers/Matrix4");
 var Matrix4_default = /*#__PURE__*/__webpack_require__.n(Matrix4_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/TextureProjection/X3DTextureProjectorNode.js
 /*******************************************************************************
@@ -271,9 +271,9 @@ Object .defineProperties (X3DTextureProjectorNode,
       value: "X3DTextureProjectorNode",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "TextureProjection",
+      value: Object .freeze ({ name: "TextureProjection", level: 4 }),
       enumerable: true,
    },
 });
@@ -284,13 +284,13 @@ const __default__ = X3DTextureProjectorNode;
 Namespace_default().add ("X3DTextureProjectorNode", "x_ite/Components/TextureProjection/X3DTextureProjectorNode", __default__);
 /* harmony default export */ const TextureProjection_X3DTextureProjectorNode = (__default__);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Camera\")"
-const Camera_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Geometry/Camera");
+const Camera_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Geometry/Camera");
 var Camera_default = /*#__PURE__*/__webpack_require__.n(Camera_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Utility/MatrixStack\")"
-const MatrixStack_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Math/Utility/MatrixStack");
+const MatrixStack_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Math/Utility/MatrixStack");
 var MatrixStack_default = /*#__PURE__*/__webpack_require__.n(MatrixStack_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Utility/ObjectCache\")"
-const ObjectCache_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.2")] .require ("standard/Utility/ObjectCache");
+const ObjectCache_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.0.3")] .require ("standard/Utility/ObjectCache");
 var ObjectCache_default = /*#__PURE__*/__webpack_require__.n(ObjectCache_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/TextureProjection/TextureProjector.js
 /*******************************************************************************
@@ -492,9 +492,9 @@ Object .defineProperties (TextureProjector,
       value: "TextureProjector",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "TextureProjection",
+      value: Object .freeze ({ name: "TextureProjection", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -504,7 +504,7 @@ Object .defineProperties (TextureProjector,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
@@ -528,10 +528,10 @@ Object .defineProperties (TextureProjector,
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "texture",          new (Fields_default()).SFNode ()),
 
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadows",          new (Fields_default()).SFBool ()),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadowColor",      new (Fields_default()).SFColor ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadowColor",      new (Fields_default()).SFColor ()),      // skip test
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadowIntensity",  new (Fields_default()).SFFloat (1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadowBias",       new (Fields_default()).SFFloat (0.005)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "shadowMapSize",    new (Fields_default()).SFInt32 (1024)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadowBias",       new (Fields_default()).SFFloat (0.005)), // skip test
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "shadowMapSize",    new (Fields_default()).SFInt32 (1024)),  // skip test
       ]),
       enumerable: true,
    },
@@ -797,9 +797,9 @@ Object .defineProperties (TextureProjectorParallel,
       value: "TextureProjectorParallel",
       enumerable: true,
    },
-   componentName:
+   componentInfo:
    {
-      value: "TextureProjection",
+      value: Object .freeze ({ name: "TextureProjection", level: 2 }),
       enumerable: true,
    },
    containerField:
@@ -809,34 +809,34 @@ Object .defineProperties (TextureProjectorParallel,
    },
    specificationRange:
    {
-      value: Object .freeze (["4.0", "Infinity"]),
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
       enumerable: true,
    },
    fieldDefinitions:
    {
       value: new (FieldDefinitionArray_default()) ([
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "metadata",        new (Fields_default()).SFNode ()),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "description",     new (Fields_default()).SFString ()),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "global",          new (Fields_default()).SFBool (true)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "on",              new (Fields_default()).SFBool (true)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "color",           new (Fields_default()).SFColor (1, 1, 1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "intensity",       new (Fields_default()).SFFloat (1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "ambientIntensity",new (Fields_default()).SFFloat ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "metadata",         new (Fields_default()).SFNode ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "description",      new (Fields_default()).SFString ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "global",           new (Fields_default()).SFBool (true)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "on",               new (Fields_default()).SFBool (true)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "color",            new (Fields_default()).SFColor (1, 1, 1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "intensity",        new (Fields_default()).SFFloat (1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "ambientIntensity", new (Fields_default()).SFFloat ()),
 
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "location",        new (Fields_default()).SFVec3f (0, 0, 0)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "direction",       new (Fields_default()).SFVec3f (0, 0, 1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "upVector",        new (Fields_default()).SFVec3f (0, 0, 1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "fieldOfView",     new (Fields_default()).MFFloat (-1, -1, 1, 1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "nearDistance",    new (Fields_default()).SFFloat (-1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "farDistance",     new (Fields_default()).SFFloat (-1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).outputOnly,     "aspectRatio",     new (Fields_default()).SFFloat ()),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "texture",         new (Fields_default()).SFNode ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "location",         new (Fields_default()).SFVec3f (0, 0, 0)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "direction",        new (Fields_default()).SFVec3f (0, 0, 1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "upVector",         new (Fields_default()).SFVec3f (0, 0, 1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "fieldOfView",      new (Fields_default()).MFFloat (-1, -1, 1, 1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "nearDistance",     new (Fields_default()).SFFloat (-1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "farDistance",      new (Fields_default()).SFFloat (-1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).outputOnly,     "aspectRatio",      new (Fields_default()).SFFloat ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "texture",          new (Fields_default()).SFNode ()),
 
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadows",         new (Fields_default()).SFBool ()),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadowColor",     new (Fields_default()).SFColor ()),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadowIntensity", new (Fields_default()).SFFloat (1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadowBias",      new (Fields_default()).SFFloat (0.005)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "shadowMapSize",   new (Fields_default()).SFInt32 (1024)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadows",          new (Fields_default()).SFBool ()),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadowColor",      new (Fields_default()).SFColor ()),      // skip test
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadowIntensity",  new (Fields_default()).SFFloat (1)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "shadowBias",       new (Fields_default()).SFFloat (0.005)), // skip test
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "shadowMapSize",    new (Fields_default()).SFInt32 (1024)),  // skip test
       ]),
       enumerable: true,
    },
