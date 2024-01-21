@@ -45,6 +45,10 @@ interface X3D
    readonly ProtoDeclarationArray: typeof ProtoDeclarationArray;
    readonly X3DExternProtoDeclaration: typeof X3DExternProtoDeclaration;
    readonly X3DProtoDeclaration: typeof X3DProtoDeclaration;
+   readonly ImportedNodesArray: typeof ImportedNodesArray;
+   readonly X3DImportedNode: typeof X3DImportedNode;
+   readonly ExportedNodesArray: typeof ExportedNodesArray;
+   readonly X3DExportedNode: typeof X3DExportedNode;
    readonly RouteArray: typeof RouteArray;
    readonly X3DRoute: typeof X3DRoute;
 
