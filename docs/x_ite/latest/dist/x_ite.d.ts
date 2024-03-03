@@ -45,6 +45,7 @@ interface X3D
    readonly ProtoDeclarationArray: typeof ProtoDeclarationArray;
    readonly X3DExternProtoDeclaration: typeof X3DExternProtoDeclaration;
    readonly X3DProtoDeclaration: typeof X3DProtoDeclaration;
+   readonly NamedNodesArray: typeof NamedNodesArray;
    readonly ImportedNodesArray: typeof ImportedNodesArray;
    readonly X3DImportedNode: typeof X3DImportedNode;
    readonly ExportedNodesArray: typeof ExportedNodesArray;
@@ -2043,11 +2044,15 @@ declare class SFRotation extends X3DField
    /**
     * Set the value of this rotation to the rotation matrix passed in *matrix*.
     */
-   setMatrix (matrix: SFMatrix3): void;
+   setMatrix (matrix: SFMatrix3d | SFMatrix3f): void;
    /**
     * Returns a SFRotation whose value is the spherical linear interpolation between this object's rotation and *destRotation* at value 0 <= *t* <= 1. For *t* = 0, the value is this object's rotation. For *t* = 1, the value is *destRotation*.
     */
    slerp (destination: SFRotation, t: number): SFRotation;
+   /**
+    * Straightens the rotation so that the x-axis of the resulting rotation is parallel to the plane spawned by upVector. The default  value for *upVector* is the y-axis.
+    */
+   straighten (upVector?: SFVec3d | SFVec3f): SFRotation;
 }
 
 /**
