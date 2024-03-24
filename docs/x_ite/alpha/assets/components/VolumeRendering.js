@@ -1,4 +1,4 @@
-/* X_ITE v9.3.2 */(() => { // webpackBootstrap
+/* X_ITE v9.4.0 */(() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
 /******/ 	var __webpack_require__ = {};
@@ -39,31 +39,31 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.3.2")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.0")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Texturing/PixelTexture\")"
-const PixelTexture_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.3.2")] .require ("x_ite/Components/Texturing/PixelTexture");
+const PixelTexture_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.0")] .require ("x_ite/Components/Texturing/PixelTexture");
 var PixelTexture_default = /*#__PURE__*/__webpack_require__.n(PixelTexture_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Texturing/TextureProperties\")"
-const TextureProperties_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.3.2")] .require ("x_ite/Components/Texturing/TextureProperties");
+const TextureProperties_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.0")] .require ("x_ite/Components/Texturing/TextureProperties");
 var TextureProperties_default = /*#__PURE__*/__webpack_require__.n(TextureProperties_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.3.2")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.0")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.3.2")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.0")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.3.2")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.0")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DNode\")"
-const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.3.2")] .require ("x_ite/Components/Core/X3DNode");
+const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.0")] .require ("x_ite/Components/Core/X3DNode");
 var X3DNode_default = /*#__PURE__*/__webpack_require__.n(X3DNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.3.2")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.0")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.3.2")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.0")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/VolumeRendering/X3DVolumeRenderStyleNode.js
 /*******************************************************************************
@@ -288,7 +288,7 @@ const X3DComposableVolumeRenderStyleNode_default_ = X3DComposableVolumeRenderSty
 Namespace_default().add ("X3DComposableVolumeRenderStyleNode", "x_ite/Components/VolumeRendering/X3DComposableVolumeRenderStyleNode", X3DComposableVolumeRenderStyleNode_default_);
 /* harmony default export */ const VolumeRendering_X3DComposableVolumeRenderStyleNode = (X3DComposableVolumeRenderStyleNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
-const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.3.2")] .require ("x_ite/Base/X3DCast");
+const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.0")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/VolumeRendering/OpacityMapVolumeStyle.js
 /*******************************************************************************
@@ -1840,16 +1840,16 @@ const EdgeEnhancementVolumeStyle_default_ = EdgeEnhancementVolumeStyle;
 Namespace_default().add ("EdgeEnhancementVolumeStyle", "x_ite/Components/VolumeRendering/EdgeEnhancementVolumeStyle", EdgeEnhancementVolumeStyle_default_);
 /* harmony default export */ const VolumeRendering_EdgeEnhancementVolumeStyle = (EdgeEnhancementVolumeStyle_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DChildNode\")"
-const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.3.2")] .require ("x_ite/Components/Core/X3DChildNode");
+const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.0")] .require ("x_ite/Components/Core/X3DChildNode");
 var X3DChildNode_default = /*#__PURE__*/__webpack_require__.n(X3DChildNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Grouping/X3DBoundedObject\")"
-const X3DBoundedObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.3.2")] .require ("x_ite/Components/Grouping/X3DBoundedObject");
+const X3DBoundedObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.0")] .require ("x_ite/Components/Grouping/X3DBoundedObject");
 var X3DBoundedObject_default = /*#__PURE__*/__webpack_require__.n(X3DBoundedObject_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Browser/Core/TextureQuality\")"
-const TextureQuality_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.3.2")] .require ("x_ite/Browser/Core/TextureQuality");
+const TextureQuality_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.0")] .require ("x_ite/Browser/Core/TextureQuality");
 var TextureQuality_default = /*#__PURE__*/__webpack_require__.n(TextureQuality_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Shape/UnlitMaterial\")"
-const UnlitMaterial_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.3.2")] .require ("x_ite/Components/Shape/UnlitMaterial");
+const UnlitMaterial_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.0")] .require ("x_ite/Components/Shape/UnlitMaterial");
 var UnlitMaterial_default = /*#__PURE__*/__webpack_require__.n(UnlitMaterial_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/VolumeRendering/VolumeStyle.vs.js
 const VolumeStyle_vs_default_ = /* glsl */ `#version 300 es
@@ -2031,10 +2031,10 @@ const VolumeMaterial_default_ = VolumeMaterial;
 Namespace_default().add ("VolumeMaterial", "x_ite/Browser/VolumeRendering/VolumeMaterial", VolumeMaterial_default_);
 /* harmony default export */ const VolumeRendering_VolumeMaterial = (VolumeMaterial_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
-const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.3.2")] .require ("standard/Math/Numbers/Vector3");
+const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.0")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix4\")"
-const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.3.2")] .require ("standard/Math/Numbers/Matrix4");
+const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.0")] .require ("standard/Math/Numbers/Matrix4");
 var Matrix4_default = /*#__PURE__*/__webpack_require__.n(Matrix4_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/VolumeRendering/X3DVolumeDataNode.js
 /*******************************************************************************
@@ -2291,10 +2291,10 @@ const X3DVolumeDataNode_default_ = X3DVolumeDataNode;
 Namespace_default().add ("X3DVolumeDataNode", "x_ite/Components/VolumeRendering/X3DVolumeDataNode", X3DVolumeDataNode_default_);
 /* harmony default export */ const VolumeRendering_X3DVolumeDataNode = (X3DVolumeDataNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Shaders/ComposedShader\")"
-const ComposedShader_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.3.2")] .require ("x_ite/Components/Shaders/ComposedShader");
+const ComposedShader_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.0")] .require ("x_ite/Components/Shaders/ComposedShader");
 var ComposedShader_default = /*#__PURE__*/__webpack_require__.n(ComposedShader_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Shaders/ShaderPart\")"
-const ShaderPart_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.3.2")] .require ("x_ite/Components/Shaders/ShaderPart");
+const ShaderPart_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.0")] .require ("x_ite/Components/Shaders/ShaderPart");
 var ShaderPart_default = /*#__PURE__*/__webpack_require__.n(ShaderPart_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/VolumeRendering/IsoSurfaceVolumeData.js
 /*******************************************************************************
@@ -2646,13 +2646,13 @@ Object .defineProperties (IsoSurfaceVolumeData,
       value: new (FieldDefinitionArray_default()) ([
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "metadata",         new (Fields_default()).SFNode ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "dimensions",       new (Fields_default()).SFVec3f (1, 1, 1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "contourStepSize",  new (Fields_default()).SFFloat (0)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "contourStepSize",  new (Fields_default()).SFFloat ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "surfaceValues",    new (Fields_default()).MFFloat ()),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "surfaceTolerance", new (Fields_default()).SFFloat (0)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "surfaceTolerance", new (Fields_default()).SFFloat ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "visible",          new (Fields_default()).SFBool (true)),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "bboxDisplay",      new (Fields_default()).SFBool ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "bboxSize",         new (Fields_default()).SFVec3f (-1, -1, -1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "bboxCenter",       new (Fields_default()).SFVec3f (0, 0, 0)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "bboxCenter",       new (Fields_default()).SFVec3f ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "renderStyle",      new (Fields_default()).MFNode ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "gradients",        new (Fields_default()).SFNode ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "voxels",           new (Fields_default()).SFNode ()),
@@ -2890,7 +2890,7 @@ Object .defineProperties (ProjectionVolumeStyle,
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "metadata",           new (Fields_default()).SFNode ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "enabled",            new (Fields_default()).SFBool (true)),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "type",               new (Fields_default()).SFString ("MAX")),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "intensityThreshold", new (Fields_default()).SFFloat (0)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "intensityThreshold", new (Fields_default()).SFFloat ()),
       ]),
       enumerable: true,
    },
@@ -3170,7 +3170,7 @@ Object .defineProperties (SegmentedVolumeData,
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "visible",            new (Fields_default()).SFBool (true)),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "bboxDisplay",        new (Fields_default()).SFBool ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "bboxSize",           new (Fields_default()).SFVec3f (-1, -1, -1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "bboxCenter",         new (Fields_default()).SFVec3f (0, 0, 0)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "bboxCenter",         new (Fields_default()).SFVec3f ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "segmentIdentifiers", new (Fields_default()).SFNode ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "renderStyle",        new (Fields_default()).MFNode ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "voxels",             new (Fields_default()).SFNode ()),
@@ -3640,7 +3640,7 @@ Object .defineProperties (SilhouetteEnhancementVolumeStyle,
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "metadata",                  new (Fields_default()).SFNode ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "enabled",                   new (Fields_default()).SFBool (true)),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "silhouetteRetainedOpacity", new (Fields_default()).SFFloat (1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "silhouetteBoundaryOpacity", new (Fields_default()).SFFloat (0)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "silhouetteBoundaryOpacity", new (Fields_default()).SFFloat ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "silhouetteSharpness",       new (Fields_default()).SFFloat (0.5)),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "surfaceNormals",            new (Fields_default()).SFNode ()),
       ]),
@@ -4047,7 +4047,7 @@ Object .defineProperties (VolumeData,
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "visible",     new (Fields_default()).SFBool (true)),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "bboxDisplay", new (Fields_default()).SFBool ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "bboxSize",    new (Fields_default()).SFVec3f (-1, -1, -1)),
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "bboxCenter",  new (Fields_default()).SFVec3f (0, 0, 0)),
+         new (X3DFieldDefinition_default()) ((X3DConstants_default()).initializeOnly, "bboxCenter",  new (Fields_default()).SFVec3f ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "renderStyle", new (Fields_default()).SFNode ()),
          new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput,    "voxels",      new (Fields_default()).SFNode ()),
       ]),
