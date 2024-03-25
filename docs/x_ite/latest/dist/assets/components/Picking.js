@@ -1,4 +1,4 @@
-/* X_ITE v9.4.1 */(() => { // webpackBootstrap
+/* X_ITE v9.4.2 */(() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
 /******/ 	var __webpack_require__ = {};
@@ -39,28 +39,28 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DSensorNode\")"
-const X3DSensorNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components/Core/X3DSensorNode");
+const X3DSensorNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components/Core/X3DSensorNode");
 var X3DSensorNode_default = /*#__PURE__*/__webpack_require__.n(X3DSensorNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Rendering/TraverseType\")"
-const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Rendering/TraverseType");
+const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Rendering/TraverseType");
 var TraverseType_default = /*#__PURE__*/__webpack_require__.n(TraverseType_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Picking/MatchCriterion.js
 /*******************************************************************************
@@ -249,7 +249,7 @@ const SortOrder_default_ = SortOrder;
 Namespace_default().add ("SortOrder", "x_ite/Browser/Picking/SortOrder", SortOrder_default_);
 /* harmony default export */ const Picking_SortOrder = (SortOrder_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix4\")"
-const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Numbers/Matrix4");
+const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Numbers/Matrix4");
 var Matrix4_default = /*#__PURE__*/__webpack_require__.n(Matrix4_namespaceObject);
 ;// CONCATENATED MODULE: ./src/standard/Math/Algorithms/QuickSort.js
 /*******************************************************************************
@@ -363,7 +363,7 @@ const QuickSort_default_ = QuickSort;
 Namespace_default().add ("QuickSort", "standard/Math/Algorithms/QuickSort", QuickSort_default_);
 /* harmony default export */ const Algorithms_QuickSort = (QuickSort_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Utility/ObjectCache\")"
-const ObjectCache_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Utility/ObjectCache");
+const ObjectCache_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Utility/ObjectCache");
 var ObjectCache_default = /*#__PURE__*/__webpack_require__.n(ObjectCache_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Picking/X3DPickSensorNode.js
 /*******************************************************************************
@@ -812,13 +812,13 @@ const X3DPickSensorNode_default_ = X3DPickSensorNode;
 Namespace_default().add ("X3DPickSensorNode", "x_ite/Components/Picking/X3DPickSensorNode", X3DPickSensorNode_default_);
 /* harmony default export */ const Picking_X3DPickSensorNode = (X3DPickSensorNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
-const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Numbers/Vector3");
+const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Box3\")"
-const Box3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Geometry/Box3");
+const Box3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Geometry/Box3");
 var Box3_default = /*#__PURE__*/__webpack_require__.n(Box3_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Line3\")"
-const Line3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Geometry/Line3");
+const Line3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Geometry/Line3");
 var Line3_default = /*#__PURE__*/__webpack_require__.n(Line3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Picking/LinePickSensor.js
 /*******************************************************************************
@@ -904,11 +904,11 @@ Object .assign (Object .setPrototypeOf (LinePickSensor .prototype, Picking_X3DPi
 
       try
       {
-         var
+         const
             node = this ._pickingGeometry .getValue () .getInnerNode (),
             type = node .getType ();
 
-         for (var t = type .length - 1; t >= 0; -- t)
+         for (let t = type .length - 1; t >= 0; -- t)
          {
             switch (type [t])
             {
@@ -928,20 +928,20 @@ Object .assign (Object .setPrototypeOf (LinePickSensor .prototype, Picking_X3DPi
    },
    process: (() =>
    {
-      var
+      const
          pickingBBox             = new (Box3_default()) (),
          targetBBox              = new (Box3_default()) (),
-         pickingCenter           = new (Vector3_default()) (0, 0, 0),
-         targetCenter            = new (Vector3_default()) (0, 0, 0),
+         pickingCenter           = new (Vector3_default()) (),
+         targetCenter            = new (Vector3_default()) (),
          matrix                  = new (Matrix4_default()) (),
-         point1                  = new (Vector3_default()) (0, 0, 0),
-         point2                  = new (Vector3_default()) (0, 0, 0),
+         point1                  = new (Vector3_default()) (),
+         point2                  = new (Vector3_default()) (),
          line                    = new (Line3_default()) ((Vector3_default()).Zero, (Vector3_default()).zAxis),
-         a                       = new (Vector3_default()) (0, 0, 0),
-         b                       = new (Vector3_default()) (0, 0, 0),
+         a                       = new (Vector3_default()) (),
+         b                       = new (Vector3_default()) (),
          clipPlanes              = [ ],
          intersections           = [ ],
-         texCoord                = new (Vector3_default()) (0, 0, 0),
+         texCoord                = new (Vector3_default()) (),
          pickedTextureCoordinate = new (Fields_default()).MFVec3f (),
          pickedNormal            = new (Fields_default()).MFVec3f (),
          pickedPoint             = new (Fields_default()).MFVec3f ();
@@ -950,7 +950,7 @@ Object .assign (Object .setPrototypeOf (LinePickSensor .prototype, Picking_X3DPi
       {
          if (this .pickingGeometryNode)
          {
-            var
+            const
                modelMatrices = this .getModelMatrices (),
                targets       = this .getTargets ();
 
@@ -960,15 +960,15 @@ Object .assign (Object .setPrototypeOf (LinePickSensor .prototype, Picking_X3DPi
                {
                   // Intersect bboxes.
 
-                  for (var m = 0, mLength = modelMatrices .length; m < mLength; ++ m)
+                  for (let m = 0, mLength = modelMatrices .length; m < mLength; ++ m)
                   {
-                     var modelMatrix = modelMatrices [m];
+                     const modelMatrix = modelMatrices [m];
 
                      pickingBBox .assign (this .pickingGeometryNode .getBBox ()) .multRight (modelMatrix);
 
-                     for (var t = 0, tLength = targets .size; t < tLength; ++ t)
+                     for (let t = 0, tLength = targets .size; t < tLength; ++ t)
                      {
-                        var target = targets [t];
+                        const target = targets [t];
 
                         targetBBox .assign (target .geometryNode .getBBox ()) .multRight (target .modelMatrix);
 
@@ -985,7 +985,7 @@ Object .assign (Object .setPrototypeOf (LinePickSensor .prototype, Picking_X3DPi
 
                   // Send events.
 
-                  var
+                  const
                      pickedGeometries = this .getPickedGeometries (),
                      active           = !! pickedGeometries .length;
 
@@ -1003,15 +1003,15 @@ Object .assign (Object .setPrototypeOf (LinePickSensor .prototype, Picking_X3DPi
                {
                   // Intersect geometry.
 
-                  for (var m = 0, mLength = modelMatrices .length; m < mLength; ++ m)
+                  for (let m = 0, mLength = modelMatrices .length; m < mLength; ++ m)
                   {
-                     var modelMatrix = modelMatrices [m];
+                     const modelMatrix = modelMatrices [m];
 
                      pickingBBox .assign (this .pickingGeometryNode .getBBox ()) .multRight (modelMatrix);
 
-                     for (var t = 0, tLength = targets .size; t < tLength; ++ t)
+                     for (let t = 0, tLength = targets .size; t < tLength; ++ t)
                      {
-                        var
+                        const
                            target       = targets [t],
                            geometryNode = target .geometryNode,
                            vertices     = this .pickingGeometryNode .getVertices ();
@@ -1019,7 +1019,7 @@ Object .assign (Object .setPrototypeOf (LinePickSensor .prototype, Picking_X3DPi
                         targetBBox .assign (geometryNode .getBBox ()) .multRight (target .modelMatrix);
                         matrix .assign (target .modelMatrix) .inverse () .multLeft (modelMatrix);
 
-                        for (var v = 0, vLength = vertices .length; v < vLength; v += 8)
+                        for (let v = 0, vLength = vertices .length; v < vLength; v += 8)
                         {
                            matrix .multVecMatrix (point1 .set (vertices [v + 0], vertices [v + 1], vertices [v + 2]));
                            matrix .multVecMatrix (point2 .set (vertices [v + 4], vertices [v + 5], vertices [v + 6]));
@@ -1029,16 +1029,16 @@ Object .assign (Object .setPrototypeOf (LinePickSensor .prototype, Picking_X3DPi
 
                            if (geometryNode .intersectsLine (line, target .modelMatrix, clipPlanes, intersections))
                            {
-                              for (var i = 0, iLength = intersections .length; i < iLength; ++ i)
+                              for (let i = 0, iLength = intersections .length; i < iLength; ++ i)
                               {
                                  // Test if intersection.point is between point1 and point2.
 
-                                 var intersection = intersections [i];
+                                 const intersection = intersections [i];
 
                                  a .assign (intersection .point) .subtract (point1);
                                  b .assign (intersection .point) .subtract (point2);
 
-                                 var
+                                 const
                                     c = a .add (b) .magnitude (),
                                     s = point1 .distance (point2);
 
@@ -1061,7 +1061,7 @@ Object .assign (Object .setPrototypeOf (LinePickSensor .prototype, Picking_X3DPi
 
                   // Send events.
 
-                  var
+                  const
                      pickedGeometries = this .getPickedGeometries (),
                      active           = !! pickedGeometries .length;
 
@@ -1073,19 +1073,19 @@ Object .assign (Object .setPrototypeOf (LinePickSensor .prototype, Picking_X3DPi
                   if (! this ._pickedGeometry .equals (pickedGeometries))
                      this ._pickedGeometry = pickedGeometries;
 
-                  var pickedTargets = this .getPickedTargets ();
+                  const pickedTargets = this .getPickedTargets ();
 
                   pickedTextureCoordinate .length = 0;
                   pickedNormal            .length = 0;
                   pickedPoint             .length = 0;
 
-                  for (var t = 0, tLength = pickedTargets .length; t < tLength; ++ t)
+                  for (let t = 0, tLength = pickedTargets .length; t < tLength; ++ t)
                   {
-                     var pickedIntersections = pickedTargets [t] .intersections;
+                     const pickedIntersections = pickedTargets [t] .intersections;
 
-                     for (var i = 0, iLength = pickedIntersections .length; i < iLength; ++ i)
+                     for (let i = 0, iLength = pickedIntersections .length; i < iLength; ++ i)
                      {
-                        var
+                        const
                            intersection = pickedIntersections [i],
                            t            = intersection .texCoord;
 
@@ -1166,7 +1166,7 @@ const LinePickSensor_default_ = LinePickSensor;
 Namespace_default().add ("LinePickSensor", "x_ite/Components/Picking/LinePickSensor", LinePickSensor_default_);
 /* harmony default export */ const Picking_LinePickSensor = (LinePickSensor_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Grouping/X3DGroupingNode\")"
-const X3DGroupingNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components/Grouping/X3DGroupingNode");
+const X3DGroupingNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components/Grouping/X3DGroupingNode");
 var X3DGroupingNode_default = /*#__PURE__*/__webpack_require__.n(X3DGroupingNode_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Picking/X3DPickableObject.js
 /*******************************************************************************
@@ -1497,13 +1497,13 @@ const PickableGroup_default_ = PickableGroup;
 Namespace_default().add ("PickableGroup", "x_ite/Components/Picking/PickableGroup", PickableGroup_default_);
 /* harmony default export */ const Picking_PickableGroup = (PickableGroup_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
-const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Base/X3DCast");
+const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Rotation4\")"
-const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Numbers/Rotation4");
+const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Numbers/Rotation4");
 var Rotation4_default = /*#__PURE__*/__webpack_require__.n(Rotation4_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"lib/ammojs/AmmoClass\")"
-const AmmoClass_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("lib/ammojs/AmmoClass");
+const AmmoClass_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("lib/ammojs/AmmoClass");
 var AmmoClass_default = /*#__PURE__*/__webpack_require__.n(AmmoClass_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Picking/VolumePicker.js
 /*******************************************************************************
@@ -1601,7 +1601,7 @@ Object .assign (VolumePicker .prototype,
    setChildShape: (() =>
    {
       const
-         translation = new (Vector3_default()) (0, 0, 0),
+         translation = new (Vector3_default()) (),
          rotation    = new (Rotation4_default()) (),
          scale       = new (Vector3_default()) (1, 1, 1),
          s           = new (AmmoClass_default()).btVector3 (0, 0, 0);
@@ -1783,26 +1783,26 @@ Object .assign (Object .setPrototypeOf (PointPickSensor .prototype, Picking_X3DP
    },
    set_geometry__: (() =>
    {
-      var
+      const
          defaultScale = new (AmmoClass_default()).btVector3 (1, 1, 1),
          o            = new (AmmoClass_default()).btVector3 (),
          t            = new (AmmoClass_default()).btTransform ();
 
       return function ()
       {
-         var compoundShapes = this .compoundShapes;
+         const compoundShapes = this .compoundShapes;
 
          if (this .pickingGeometryNode)
          {
-            var coord = this .pickingGeometryNode .getCoord ();
+            const coord = this .pickingGeometryNode .getCoord ();
 
             if (coord)
             {
-               for (var i = 0, length = coord .getSize (); i < length; ++ i)
+               for (let i = 0, length = coord .getSize (); i < length; ++ i)
                {
                   if (i < compoundShapes .length)
                   {
-                     var
+                     const
                         compoundShape = compoundShapes [i],
                         point         = coord .get1Point (i, compoundShape .point);
 
@@ -1814,10 +1814,10 @@ Object .assign (Object .setPrototypeOf (PointPickSensor .prototype, Picking_X3DP
                   }
                   else
                   {
-                     var
+                     const
                         compoundShape = new (AmmoClass_default()).btCompoundShape (),
                         sphereShape   = new (AmmoClass_default()).btSphereShape (0),
-                        point         = coord .get1Point (i, new (Vector3_default()) (0, 0, 0));
+                        point         = coord .get1Point (i, new (Vector3_default()) ());
 
                      compoundShape .point = point;
 
@@ -1844,14 +1844,14 @@ Object .assign (Object .setPrototypeOf (PointPickSensor .prototype, Picking_X3DP
    })(),
    process: (() =>
    {
-      var
+      const
          pickingBBox   = new (Box3_default()) (),
          targetBBox    = new (Box3_default()) (),
-         pickingCenter = new (Vector3_default()) (0, 0, 0),
-         targetCenter  = new (Vector3_default()) (0, 0, 0),
+         pickingCenter = new (Vector3_default()) (),
+         targetCenter  = new (Vector3_default()) (),
          transform     = new (AmmoClass_default()).btTransform (),
          localScaling  = new (AmmoClass_default()).btVector3 (),
-         translation   = new (Vector3_default()) (0, 0, 0),
+         translation   = new (Vector3_default()) (),
          rotation      = new (Rotation4_default()) (),
          scale         = new (Vector3_default()) (1, 1, 1),
          pickedPoint   = new (Fields_default()).MFVec3f ();
@@ -1860,7 +1860,7 @@ Object .assign (Object .setPrototypeOf (PointPickSensor .prototype, Picking_X3DP
       {
          if (this .pickingGeometryNode)
          {
-            var
+            const
                modelMatrices = this .getModelMatrices (),
                targets       = this .getTargets ();
 
@@ -1870,15 +1870,15 @@ Object .assign (Object .setPrototypeOf (PointPickSensor .prototype, Picking_X3DP
                {
                   // Intersect bboxes.
 
-                  for (var m = 0, mLength = modelMatrices .length; m < mLength; ++ m)
+                  for (let m = 0, mLength = modelMatrices .length; m < mLength; ++ m)
                   {
-                     var modelMatrix = modelMatrices [m];
+                     const modelMatrix = modelMatrices [m];
 
                      pickingBBox .assign (this .pickingGeometryNode .getBBox ()) .multRight (modelMatrix);
 
-                     for (var t = 0, tLength = targets .size; t < tLength; ++ t)
+                     for (let t = 0, tLength = targets .size; t < tLength; ++ t)
                      {
-                        var target = targets [t];
+                        const target = targets [t];
 
                         targetBBox .assign (target .geometryNode .getBBox ()) .multRight (target .modelMatrix);
 
@@ -1895,7 +1895,7 @@ Object .assign (Object .setPrototypeOf (PointPickSensor .prototype, Picking_X3DP
 
                   // Send events.
 
-                  var
+                  const
                      pickedGeometries = this .getPickedGeometries (),
                      active           = !! pickedGeometries .length;
 
@@ -1913,13 +1913,13 @@ Object .assign (Object .setPrototypeOf (PointPickSensor .prototype, Picking_X3DP
                {
                   // Intersect geometry.
 
-                  var
+                  const
                      picker         = this .picker,
                      compoundShapes = this .compoundShapes;
 
-                  for (var m = 0, mLength = modelMatrices .length; m < mLength; ++ m)
+                  for (let m = 0, mLength = modelMatrices .length; m < mLength; ++ m)
                   {
-                     var modelMatrix = modelMatrices [m];
+                     const modelMatrix = modelMatrices [m];
 
                      pickingBBox .assign (this .pickingGeometryNode .getBBox ()) .multRight (modelMatrix);
 
@@ -1928,15 +1928,15 @@ Object .assign (Object .setPrototypeOf (PointPickSensor .prototype, Picking_X3DP
                      picker .getTransform (translation, rotation, transform);
                      localScaling .setValue (scale .x, scale .y, scale .z);
 
-                     for (var c = 0, cLength = compoundShapes .length; c < cLength; ++ c)
+                     for (let c = 0, cLength = compoundShapes .length; c < cLength; ++ c)
                      {
-                        var compoundShape = compoundShapes [c];
+                        const compoundShape = compoundShapes [c];
 
                         picker .setChildShape1Components (transform, localScaling, compoundShape);
 
-                        for (var t = 0, tLength = targets .size; t < tLength; ++ t)
+                        for (let t = 0, tLength = targets .size; t < tLength; ++ t)
                         {
-                           var
+                           const
                               target      = targets [t],
                               targetShape = this .getPickShape (target .geometryNode);
 
@@ -1959,7 +1959,7 @@ Object .assign (Object .setPrototypeOf (PointPickSensor .prototype, Picking_X3DP
 
                   // Send events.
 
-                  var
+                  const
                      pickedGeometries = this .getPickedGeometries (),
                      active           = !! pickedGeometries .length;
 
@@ -1971,15 +1971,15 @@ Object .assign (Object .setPrototypeOf (PointPickSensor .prototype, Picking_X3DP
                   if (! this ._pickedGeometry .equals (pickedGeometries))
                      this ._pickedGeometry = pickedGeometries;
 
-                  var pickedTargets = this .getPickedTargets ();
+                  const pickedTargets = this .getPickedTargets ();
 
                   pickedPoint .length = 0;
 
-                  for (var t = 0, tLength = pickedTargets .length; t < tLength; ++ t)
+                  for (let t = 0, tLength = pickedTargets .length; t < tLength; ++ t)
                   {
-                     var pp = pickedTargets [t] .pickedPoint;
+                     const pp = pickedTargets [t] .pickedPoint;
 
-                     for (var p = 0, pLength = pp .length; p < pLength; ++ p)
+                     for (let p = 0, pLength = pp .length; p < pLength; ++ p)
                         pickedPoint .push (pp [p]);
                   }
 
@@ -2127,11 +2127,11 @@ Object .assign (Object .setPrototypeOf (PrimitivePickSensor .prototype, Picking_
 
       try
       {
-         var
+         const
             node = this ._pickingGeometry .getValue () .getInnerNode (),
             type = node .getType ();
 
-         for (var t = type .length - 1; t >= 0; -- t)
+         for (let t = type .length - 1; t >= 0; -- t)
          {
             switch (type [t])
             {
@@ -2153,17 +2153,17 @@ Object .assign (Object .setPrototypeOf (PrimitivePickSensor .prototype, Picking_
    },
    process: (() =>
    {
-      var
+      const
          pickingBBox   = new (Box3_default()) (),
          targetBBox    = new (Box3_default()) (),
-         pickingCenter = new (Vector3_default()) (0, 0, 0),
-         targetCenter  = new (Vector3_default()) (0, 0, 0);
+         pickingCenter = new (Vector3_default()) (),
+         targetCenter  = new (Vector3_default()) ();
 
       return function ()
       {
          if (this .pickingGeometryNode)
          {
-            var
+            const
                modelMatrices = this .getModelMatrices (),
                targets       = this .getTargets ();
 
@@ -2173,15 +2173,15 @@ Object .assign (Object .setPrototypeOf (PrimitivePickSensor .prototype, Picking_
                {
                   // Intersect bboxes.
 
-                  for (var m = 0, mLength = modelMatrices .length; m < mLength; ++ m)
+                  for (let m = 0, mLength = modelMatrices .length; m < mLength; ++ m)
                   {
-                     var modelMatrix = modelMatrices [m];
+                     const modelMatrix = modelMatrices [m];
 
                      pickingBBox .assign (this .pickingGeometryNode .getBBox ()) .multRight (modelMatrix);
 
-                     for (var t = 0, tLength = targets .size; t < tLength; ++ t)
+                     for (let t = 0, tLength = targets .size; t < tLength; ++ t)
                      {
-                        var target = targets [t];
+                        const target = targets [t];
 
                         targetBBox .assign (target .geometryNode .getBBox ()) .multRight (target .modelMatrix);
 
@@ -2198,7 +2198,7 @@ Object .assign (Object .setPrototypeOf (PrimitivePickSensor .prototype, Picking_
 
                   // Send events.
 
-                  var
+                  const
                      pickedGeometries = this .getPickedGeometries (),
                      active           = !! pickedGeometries .length;
 
@@ -2216,11 +2216,11 @@ Object .assign (Object .setPrototypeOf (PrimitivePickSensor .prototype, Picking_
                {
                   // Intersect geometry.
 
-                  var picker = this .picker;
+                  const picker = this .picker;
 
-                  for (var m = 0, mLength = modelMatrices .length; m < mLength; ++ m)
+                  for (let m = 0, mLength = modelMatrices .length; m < mLength; ++ m)
                   {
-                     var
+                     const
                         modelMatrix  = modelMatrices [m],
                         pickingShape = this .getPickShape (this .pickingGeometryNode);
 
@@ -2228,9 +2228,9 @@ Object .assign (Object .setPrototypeOf (PrimitivePickSensor .prototype, Picking_
 
                      picker .setChildShape1 (modelMatrix, pickingShape .getCompoundShape ());
 
-                     for (var t = 0, tLength = targets .size; t < tLength; ++ t)
+                     for (let t = 0, tLength = targets .size; t < tLength; ++ t)
                      {
-                        var
+                        const
                            target      = targets [t],
                            targetShape = this .getPickShape (target .geometryNode);
 
@@ -2251,7 +2251,7 @@ Object .assign (Object .setPrototypeOf (PrimitivePickSensor .prototype, Picking_
 
                   // Send events.
 
-                  var
+                  const
                      pickedGeometries = this .getPickedGeometries (),
                      active           = !! pickedGeometries .length;
 
@@ -2404,17 +2404,17 @@ Object .assign (Object .setPrototypeOf (VolumePickSensor .prototype, Picking_X3D
    },
    process: (() =>
    {
-      var
+      const
          pickingBBox   = new (Box3_default()) (),
          targetBBox    = new (Box3_default()) (),
-         pickingCenter = new (Vector3_default()) (0, 0, 0),
-         targetCenter  = new (Vector3_default()) (0, 0, 0);
+         pickingCenter = new (Vector3_default()) (),
+         targetCenter  = new (Vector3_default()) ();
 
       return function ()
       {
          if (this .pickingGeometryNode)
          {
-            var
+            const
                modelMatrices = this .getModelMatrices (),
                targets       = this .getTargets ();
 
@@ -2424,15 +2424,15 @@ Object .assign (Object .setPrototypeOf (VolumePickSensor .prototype, Picking_X3D
                {
                   // Intersect bboxes.
 
-                  for (var m = 0, mLength = modelMatrices .length; m < mLength; ++ m)
+                  for (let m = 0, mLength = modelMatrices .length; m < mLength; ++ m)
                   {
-                     var modelMatrix = modelMatrices [m];
+                     const modelMatrix = modelMatrices [m];
 
                      pickingBBox .assign (this .pickingGeometryNode .getBBox ()) .multRight (modelMatrix);
 
-                     for (var t = 0, tLength = targets .size; t < tLength; ++ t)
+                     for (let t = 0, tLength = targets .size; t < tLength; ++ t)
                      {
-                        var target = targets [t];
+                        const target = targets [t];
 
                         targetBBox .assign (target .geometryNode .getBBox ()) .multRight (target .modelMatrix);
 
@@ -2449,7 +2449,7 @@ Object .assign (Object .setPrototypeOf (VolumePickSensor .prototype, Picking_X3D
 
                   // Send events.
 
-                  var
+                  const
                      pickedGeometries = this .getPickedGeometries (),
                      active           = !! pickedGeometries .length;
 
@@ -2467,11 +2467,11 @@ Object .assign (Object .setPrototypeOf (VolumePickSensor .prototype, Picking_X3D
                {
                   // Intersect geometry.
 
-                  var picker = this .picker;
+                  const picker = this .picker;
 
-                  for (var m = 0, mLength = modelMatrices .length; m < mLength; ++ m)
+                  for (let m = 0, mLength = modelMatrices .length; m < mLength; ++ m)
                   {
-                     var
+                     const
                         modelMatrix  = modelMatrices [m],
                         pickingShape = this .getPickShape (this .pickingGeometryNode);
 
@@ -2479,9 +2479,9 @@ Object .assign (Object .setPrototypeOf (VolumePickSensor .prototype, Picking_X3D
 
                      picker .setChildShape1 (modelMatrix, pickingShape .getCompoundShape ());
 
-                     for (var t = 0, tLength = targets .size; t < tLength; ++ t)
+                     for (let t = 0, tLength = targets .size; t < tLength; ++ t)
                      {
-                        var
+                        const
                            target      = targets [t],
                            targetShape = this .getPickShape (target .geometryNode);
 
@@ -2502,7 +2502,7 @@ Object .assign (Object .setPrototypeOf (VolumePickSensor .prototype, Picking_X3D
 
                   // Send events.
 
-                  var
+                  const
                      pickedGeometries = this .getPickedGeometries (),
                      active           = !! pickedGeometries .length;
 

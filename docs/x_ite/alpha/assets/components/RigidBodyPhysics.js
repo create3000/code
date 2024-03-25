@@ -1,4 +1,4 @@
-/* X_ITE v9.4.1 */(() => { // webpackBootstrap
+/* X_ITE v9.4.2 */(() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 447:
@@ -80,31 +80,31 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DNode\")"
-const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components/Core/X3DNode");
+const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components/Core/X3DNode");
 var X3DNode_default = /*#__PURE__*/__webpack_require__.n(X3DNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
-const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Base/X3DCast");
+const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix4\")"
-const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Numbers/Matrix4");
+const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Numbers/Matrix4");
 var Matrix4_default = /*#__PURE__*/__webpack_require__.n(Matrix4_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/X3DRigidJointNode.js
 /*******************************************************************************
@@ -333,7 +333,7 @@ const __default__ = X3DRigidJointNode;
 Namespace_default().add ("X3DRigidJointNode", "x_ite/Components/RigidBodyPhysics/X3DRigidJointNode", __default__);
 /* harmony default export */ const RigidBodyPhysics_X3DRigidJointNode = (__default__);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
-const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Numbers/Vector3");
+const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/lib/ammojs/ammo.js
 var ammo_dirname = "/";
@@ -497,8 +497,8 @@ function BallJoint (executionContext)
 
    this .joint             = null;
    this .outputs           = new Set ();
-   this .localAnchorPoint1 = new (Vector3_default()) (0, 0, 0);
-   this .localAnchorPoint2 = new (Vector3_default()) (0, 0, 0);
+   this .localAnchorPoint1 = new (Vector3_default()) ();
+   this .localAnchorPoint2 = new (Vector3_default()) ();
 }
 
 Object .assign (Object .setPrototypeOf (BallJoint .prototype, RigidBodyPhysics_X3DRigidJointNode .prototype),
@@ -583,7 +583,7 @@ Object .assign (Object .setPrototypeOf (BallJoint .prototype, RigidBodyPhysics_X
    },
    update1: (() =>
    {
-      var localAnchorPoint1 = new (Vector3_default()) (0, 0, 0);
+      var localAnchorPoint1 = new (Vector3_default()) ();
 
       return function ()
       {
@@ -593,7 +593,7 @@ Object .assign (Object .setPrototypeOf (BallJoint .prototype, RigidBodyPhysics_X
    })(),
    update2: (() =>
    {
-      var localAnchorPoint2 = new (Vector3_default()) (0, 0, 0);
+      var localAnchorPoint2 = new (Vector3_default()) ();
 
       return function ()
       {
@@ -646,10 +646,10 @@ const BallJoint_default_ = BallJoint;
 Namespace_default().add ("BallJoint", "x_ite/Components/RigidBodyPhysics/BallJoint", BallJoint_default_);
 /* harmony default export */ const RigidBodyPhysics_BallJoint = (BallJoint_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DChildNode\")"
-const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components/Core/X3DChildNode");
+const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components/Core/X3DChildNode");
 var X3DChildNode_default = /*#__PURE__*/__webpack_require__.n(X3DChildNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Grouping/X3DBoundedObject\")"
-const X3DBoundedObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components/Grouping/X3DBoundedObject");
+const X3DBoundedObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components/Grouping/X3DBoundedObject");
 var X3DBoundedObject_default = /*#__PURE__*/__webpack_require__.n(X3DBoundedObject_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/X3DNBodyCollidableNode.js
 /*******************************************************************************
@@ -724,7 +724,7 @@ function X3DNBodyCollidableNode (executionContext)
    // Members
 
    this .compoundShape  = new AmmoClass .btCompoundShape ()
-   this .offset         = new (Vector3_default()) (0, 0, 0);
+   this .offset         = new (Vector3_default()) ();
    this .matrix         = new (Matrix4_default()) ();
 }
 
@@ -824,7 +824,7 @@ const X3DNBodyCollidableNode_default_ = X3DNBodyCollidableNode;
 Namespace_default().add ("X3DNBodyCollidableNode", "x_ite/Components/RigidBodyPhysics/X3DNBodyCollidableNode", X3DNBodyCollidableNode_default_);
 /* harmony default export */ const RigidBodyPhysics_X3DNBodyCollidableNode = (X3DNBodyCollidableNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Rendering/TraverseType\")"
-const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Rendering/TraverseType");
+const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Rendering/TraverseType");
 var TraverseType_default = /*#__PURE__*/__webpack_require__.n(TraverseType_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/CollidableOffset.js
 /*******************************************************************************
@@ -1900,7 +1900,7 @@ const CollisionCollection_default_ = CollisionCollection;
 Namespace_default().add ("CollisionCollection", "x_ite/Components/RigidBodyPhysics/CollisionCollection", CollisionCollection_default_);
 /* harmony default export */ const RigidBodyPhysics_CollisionCollection = (CollisionCollection_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DSensorNode\")"
-const X3DSensorNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components/Core/X3DSensorNode");
+const X3DSensorNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components/Core/X3DSensorNode");
 var X3DSensorNode_default = /*#__PURE__*/__webpack_require__.n(X3DSensorNode_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/CollisionSensor.js
 /*******************************************************************************
@@ -2004,8 +2004,8 @@ Object .assign (Object .setPrototypeOf (CollisionSensor .prototype, (X3DSensorNo
          collisionWorlds      = new Set (),
          intersectionNodes    = new Set (),
          contactNodes         = [ ],
-         position             = new (Vector3_default()) (0, 0, 0),
-         contactNormal        = new (Vector3_default()) (0, 0, 0);
+         position             = new (Vector3_default()) (),
+         contactNormal        = new (Vector3_default()) ();
 
       return function ()
       {
@@ -2592,7 +2592,7 @@ const Contact_default_ = Contact;
 Namespace_default().add ("Contact", "x_ite/Components/RigidBodyPhysics/Contact", Contact_default_);
 /* harmony default export */ const RigidBodyPhysics_Contact = (Contact_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Rotation4\")"
-const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Numbers/Rotation4");
+const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Numbers/Rotation4");
 var Rotation4_default = /*#__PURE__*/__webpack_require__.n(Rotation4_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/DoubleAxisHingeJoint.js
 /*******************************************************************************
@@ -2676,18 +2676,18 @@ function DoubleAxisHingeJoint (executionContext)
       this .addAlias ("stopConstantForceMix1", this ._stop1ConstantForceMix);
       this .addAlias ("stopErrorCorrection1",  this ._stop1ErrorCorrection);
 
-      this ._axis1 = new (Vector3_default()) (0, 0, 0);
-      this ._axis2 = new (Vector3_default()) (0, 0, 0);
+      this ._axis1 = new (Vector3_default()) ();
+      this ._axis2 = new (Vector3_default()) ();
    }
 
    // Private properties
 
    this .joint             = null;
    this .outputs           = new Set ();
-   this .localAnchorPoint1 = new (Vector3_default()) (0, 0, 0);
-   this .localAnchorPoint2 = new (Vector3_default()) (0, 0, 0);
-   this .localAxis1        = new (Vector3_default()) (0, 0, 0);
-   this .localAxis2        = new (Vector3_default()) (0, 0, 0);
+   this .localAnchorPoint1 = new (Vector3_default()) ();
+   this .localAnchorPoint2 = new (Vector3_default()) ();
+   this .localAxis1        = new (Vector3_default()) ();
+   this .localAxis2        = new (Vector3_default()) ();
 }
 
 Object .assign (Object .setPrototypeOf (DoubleAxisHingeJoint .prototype, RigidBodyPhysics_X3DRigidJointNode .prototype),
@@ -2703,10 +2703,10 @@ Object .assign (Object .setPrototypeOf (DoubleAxisHingeJoint .prototype, RigidBo
    addJoint: (() =>
    {
       var
-         localAnchorPoint1 = new (Vector3_default()) (0, 0, 0),
-         localAnchorPoint2 = new (Vector3_default()) (0, 0, 0),
-         localAxis1        = new (Vector3_default()) (0, 0, 0),
-         localAxis2        = new (Vector3_default()) (0, 0, 0);
+         localAnchorPoint1 = new (Vector3_default()) (),
+         localAnchorPoint2 = new (Vector3_default()) (),
+         localAxis1        = new (Vector3_default()) (),
+         localAxis2        = new (Vector3_default()) ();
 
       return function ()
       {
@@ -2786,8 +2786,8 @@ Object .assign (Object .setPrototypeOf (DoubleAxisHingeJoint .prototype, RigidBo
    update1: (() =>
    {
       var
-         localAnchorPoint1 = new (Vector3_default()) (0, 0, 0),
-         localAxis1        = new (Vector3_default()) (0, 0, 0),
+         localAnchorPoint1 = new (Vector3_default()) (),
+         localAxis1        = new (Vector3_default()) (),
          difference        = new (Matrix4_default()) (),
          rotation          = new (Rotation4_default()) ();
 
@@ -2816,8 +2816,8 @@ Object .assign (Object .setPrototypeOf (DoubleAxisHingeJoint .prototype, RigidBo
    update2: (() =>
    {
       var
-         localAnchorPoint2 = new (Vector3_default()) (0, 0, 0),
-         localAxis2        = new (Vector3_default()) (0, 0, 0),
+         localAnchorPoint2 = new (Vector3_default()) (),
+         localAxis2        = new (Vector3_default()) (),
          difference        = new (Matrix4_default()) (),
          rotation          = new (Rotation4_default()) ();
 
@@ -2983,9 +2983,9 @@ function MotorJoint (executionContext)
 
    if (executionContext .getSpecificationVersion () <= 3.3)
    {
-      this ._motor1Axis = new (Vector3_default()) (0, 0, 0);
-      this ._motor2Axis = new (Vector3_default()) (0, 0, 0);
-      this ._motor3Axis = new (Vector3_default()) (0, 0, 0);
+      this ._motor1Axis = new (Vector3_default()) ();
+      this ._motor2Axis = new (Vector3_default()) ();
+      this ._motor3Axis = new (Vector3_default()) ();
    }
 }
 
@@ -3054,7 +3054,7 @@ const MotorJoint_default_ = MotorJoint;
 Namespace_default().add ("MotorJoint", "x_ite/Components/RigidBodyPhysics/MotorJoint", MotorJoint_default_);
 /* harmony default export */ const RigidBodyPhysics_MotorJoint = (MotorJoint_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Quaternion\")"
-const Quaternion_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Numbers/Quaternion");
+const Quaternion_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Numbers/Quaternion");
 var Quaternion_default = /*#__PURE__*/__webpack_require__.n(Quaternion_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/RigidBodyPhysics/RigidBody.js
 /*******************************************************************************
@@ -3144,8 +3144,8 @@ function RigidBody (executionContext)
    this .geometryNodes      = [ ];
    this .otherGeometryNodes = [ ];
    this .matrix             = new (Matrix4_default()) ();
-   this .force              = new (Vector3_default()) (0, 0, 0);
-   this .torque             = new (Vector3_default()) (0, 0, 0);
+   this .force              = new (Vector3_default()) ();
+   this .torque             = new (Vector3_default()) ();
 }
 
 Object .assign (Object .setPrototypeOf (RigidBody .prototype, (X3DNode_default()).prototype),
@@ -3493,11 +3493,11 @@ Object .assign (Object .setPrototypeOf (RigidBody .prototype, (X3DNode_default()
    {
       var
          transform       = new AmmoClass .btTransform (),
-         position        = new (Vector3_default()) (0, 0, 0),
-         quaternion      = new (Quaternion_default()) (0, 0, 0, 1),
+         position        = new (Vector3_default()) (),
+         quaternion      = new (Quaternion_default()) (),
          orientation     = new (Rotation4_default()) (),
-         linearVelocity  = new (Vector3_default()) (0, 0, 0),
-         angularVelocity = new (Vector3_default()) (0, 0, 0);
+         linearVelocity  = new (Vector3_default()) (),
+         angularVelocity = new (Vector3_default()) ();
 
       return function ()
       {
@@ -4080,14 +4080,14 @@ function SingleAxisHingeJoint (executionContext)
    // Legacy
 
    if (executionContext .getSpecificationVersion () <= 3.3)
-      this ._axis = new (Vector3_default()) (0, 0, 0);
+      this ._axis = new (Vector3_default()) ();
 
    // Private properties
 
    this .joint             = null;
    this .outputs           = new Set ();
-   this .localAnchorPoint1 = new (Vector3_default()) (0, 0, 0);
-   this .localAnchorPoint2 = new (Vector3_default()) (0, 0, 0);
+   this .localAnchorPoint1 = new (Vector3_default()) ();
+   this .localAnchorPoint2 = new (Vector3_default()) ();
 }
 
 Object .assign (Object .setPrototypeOf (SingleAxisHingeJoint .prototype, RigidBodyPhysics_X3DRigidJointNode .prototype),
@@ -4102,8 +4102,8 @@ Object .assign (Object .setPrototypeOf (SingleAxisHingeJoint .prototype, RigidBo
    addJoint: (() =>
    {
       var
-         localAxis1 = new (Vector3_default()) (0, 0, 0),
-         localAxis2 = new (Vector3_default()) (0, 0, 0);
+         localAxis1 = new (Vector3_default()) (),
+         localAxis2 = new (Vector3_default()) ();
 
       return function ()
       {
@@ -4182,7 +4182,7 @@ Object .assign (Object .setPrototypeOf (SingleAxisHingeJoint .prototype, RigidBo
    },
    update1: (() =>
    {
-      var localAnchorPoint1 = new (Vector3_default()) (0, 0, 0);
+      var localAnchorPoint1 = new (Vector3_default()) ();
 
       return function ()
       {
@@ -4193,7 +4193,7 @@ Object .assign (Object .setPrototypeOf (SingleAxisHingeJoint .prototype, RigidBo
    update2: (() =>
    {
       var
-         localAnchorPoint2 = new (Vector3_default()) (0, 0, 0),
+         localAnchorPoint2 = new (Vector3_default()) (),
          difference        = new (Matrix4_default()) (),
          rotation          = new (Rotation4_default()) ();
 
@@ -4572,8 +4572,8 @@ function UniversalJoint (executionContext)
 
    if (executionContext .getSpecificationVersion () <= 3.3)
    {
-      this ._axis1 = new (Vector3_default()) (0, 0, 0);
-      this ._axis2 = new (Vector3_default()) (0, 0, 0);
+      this ._axis1 = new (Vector3_default()) ();
+      this ._axis2 = new (Vector3_default()) ();
    }
 }
 

@@ -1,4 +1,4 @@
-/* X_ITE v9.4.1 */(() => { // webpackBootstrap
+/* X_ITE v9.4.2 */(() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
 /******/ 	var __webpack_require__ = {};
@@ -39,28 +39,28 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DNode\")"
-const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components/Core/X3DNode");
+const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components/Core/X3DNode");
 var X3DNode_default = /*#__PURE__*/__webpack_require__.n(X3DNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
-const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Base/X3DCast");
+const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/NURBS/Contour2D.js
 /*******************************************************************************
@@ -317,7 +317,7 @@ const X3DNurbsControlCurveNode_default_ = X3DNurbsControlCurveNode;
 Namespace_default().add ("X3DNurbsControlCurveNode", "x_ite/Components/NURBS/X3DNurbsControlCurveNode", X3DNurbsControlCurveNode_default_);
 /* harmony default export */ const NURBS_X3DNurbsControlCurveNode = (X3DNurbsControlCurveNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
-const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Numbers/Vector3");
+const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/NURBS/ContourPolyline2D.js
 /*******************************************************************************
@@ -490,13 +490,13 @@ const ContourPolyline2D_default_ = ContourPolyline2D;
 Namespace_default().add ("ContourPolyline2D", "x_ite/Components/NURBS/ContourPolyline2D", ContourPolyline2D_default_);
 /* harmony default export */ const NURBS_ContourPolyline2D = (ContourPolyline2D_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Rendering/X3DGeometryNode\")"
-const X3DGeometryNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components/Rendering/X3DGeometryNode");
+const X3DGeometryNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components/Rendering/X3DGeometryNode");
 var X3DGeometryNode_default = /*#__PURE__*/__webpack_require__.n(X3DGeometryNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector2\")"
-const Vector2_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Numbers/Vector2");
+const Vector2_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Numbers/Vector2");
 var Vector2_default = /*#__PURE__*/__webpack_require__.n(Vector2_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector4\")"
-const Vector4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Numbers/Vector4");
+const Vector4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Numbers/Vector4");
 var Vector4_default = /*#__PURE__*/__webpack_require__.n(Vector4_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/NURBS/NURBS.js
 /*******************************************************************************
@@ -590,8 +590,8 @@ const NURBS = {
    getClosed: (() =>
    {
       const
-         firstPoint = new (Vector3_default()) (0, 0, 0),
-         lastPoint  = new (Vector3_default()) (0, 0, 0);
+         firstPoint = new (Vector3_default()) (),
+         lastPoint  = new (Vector3_default()) ();
 
       return function (order, knot, weight, controlPointNode)
       {
@@ -623,8 +623,8 @@ const NURBS = {
    getUClosed: (() =>
    {
       const
-         firstPoint = new (Vector3_default()) (0, 0, 0),
-         lastPoint  = new (Vector3_default()) (0, 0, 0);
+         firstPoint = new (Vector3_default()) (),
+         lastPoint  = new (Vector3_default()) ();
 
       return function (uOrder, uDimension, vDimension, uKnot, weight, controlPointNode)
       {
@@ -661,8 +661,8 @@ const NURBS = {
    getVClosed: (() =>
    {
       const
-         firstPoint = new (Vector3_default()) (0, 0, 0),
-         lastPoint  = new (Vector3_default()) (0, 0, 0);
+         firstPoint = new (Vector3_default()) (),
+         lastPoint  = new (Vector3_default()) ();
 
       return function (vOrder, uDimension, vDimension, vKnot, weight, controlPointNode)
       {
@@ -945,7 +945,7 @@ const NURBS = {
          {
             const index = v * uDimension + u;
 
-            cp [v] = controlPointNode .get1Point (index, cp [v] || new (Vector4_default()) (0, 0, 0, 0));
+            cp [v] = controlPointNode .get1Point (index, cp [v] || new (Vector4_default()) ());
          }
 
          cp .length = vDimension;
@@ -1061,7 +1061,7 @@ const X3DParametricGeometryNode_default_ = X3DParametricGeometryNode;
 Namespace_default().add ("X3DParametricGeometryNode", "x_ite/Components/NURBS/X3DParametricGeometryNode", X3DParametricGeometryNode_default_);
 /* harmony default export */ const NURBS_X3DParametricGeometryNode = (X3DParametricGeometryNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Rendering/X3DLineGeometryNode\")"
-const X3DLineGeometryNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components/Rendering/X3DLineGeometryNode");
+const X3DLineGeometryNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components/Rendering/X3DLineGeometryNode");
 var X3DLineGeometryNode_default = /*#__PURE__*/__webpack_require__.n(X3DLineGeometryNode_namespaceObject);
 ;// CONCATENATED MODULE: ./src/lib/nurbs/src/utils/is-ndarray.js
 
@@ -2112,14 +2112,7 @@ const support_default_ = function (cacheKey, nurbs, accessors, debug, checkBound
 
 Namespace_default().add ("support", "lib/nurbs/src/support", support_default_);
 /* harmony default export */ const support = (support_default_);
-;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Triangle3\")"
-const Triangle3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Geometry/Triangle3");
-var Triangle3_default = /*#__PURE__*/__webpack_require__.n(Triangle3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/lib/nurbs/extras/sample.js
-
-
-
-
 var tmp1 = [ ];
 
 const sample_default_ = function (mesh, surface, opts)
@@ -3140,13 +3133,13 @@ const NurbsCurve2D_default_ = NurbsCurve2D;
 Namespace_default().add ("NurbsCurve2D", "x_ite/Components/NURBS/NurbsCurve2D", NurbsCurve2D_default_);
 /* harmony default export */ const NURBS_NurbsCurve2D = (NurbsCurve2D_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DChildNode\")"
-const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components/Core/X3DChildNode");
+const X3DChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components/Core/X3DChildNode");
 var X3DChildNode_default = /*#__PURE__*/__webpack_require__.n(X3DChildNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Interpolation/OrientationInterpolator\")"
-const OrientationInterpolator_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components/Interpolation/OrientationInterpolator");
+const OrientationInterpolator_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components/Interpolation/OrientationInterpolator");
 var OrientationInterpolator_default = /*#__PURE__*/__webpack_require__.n(OrientationInterpolator_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Rotation4\")"
-const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Numbers/Rotation4");
+const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Numbers/Rotation4");
 var Rotation4_default = /*#__PURE__*/__webpack_require__.n(Rotation4_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/NURBS/NurbsOrientationInterpolator.js
 /*******************************************************************************
@@ -3383,8 +3376,11 @@ const NurbsOrientationInterpolator_default_ = NurbsOrientationInterpolator;
 Namespace_default().add ("NurbsOrientationInterpolator", "x_ite/Components/NURBS/NurbsOrientationInterpolator", NurbsOrientationInterpolator_default_);
 /* harmony default export */ const NURBS_NurbsOrientationInterpolator = (NurbsOrientationInterpolator_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Algorithm\")"
-const Algorithm_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Algorithm");
+const Algorithm_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Algorithm");
 var Algorithm_default = /*#__PURE__*/__webpack_require__.n(Algorithm_namespaceObject);
+;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Triangle3\")"
+const Triangle3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Geometry/Triangle3");
+var Triangle3_default = /*#__PURE__*/__webpack_require__.n(Triangle3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/NURBS/X3DNurbsSurfaceGeometryNode.js
 /*******************************************************************************
  *
@@ -3729,9 +3725,9 @@ Object .assign (Object .setPrototypeOf (X3DNurbsSurfaceGeometryNode .prototype, 
    createFaceNormals: (() =>
    {
       const
-         v1 = new (Vector3_default()) (0, 0, 0),
-         v2 = new (Vector3_default()) (0, 0, 0),
-         v3 = new (Vector3_default()) (0, 0, 0);
+         v1 = new (Vector3_default()) (),
+         v2 = new (Vector3_default()) (),
+         v3 = new (Vector3_default()) ();
 
       return function (faces, points)
       {
@@ -3750,7 +3746,7 @@ Object .assign (Object .setPrototypeOf (X3DNurbsSurfaceGeometryNode .prototype, 
             v2 .set (points [index2], points [index2 + 1], points [index2 + 2]);
             v3 .set (points [index3], points [index3 + 1], points [index3 + 2]);
 
-            const normal = Triangle3_default().normal (v1, v2 ,v3, normals [i] || new (Vector3_default()) (0, 0, 0));
+            const normal = Triangle3_default().normal (v1, v2 ,v3, normals [i] || new (Vector3_default()) ());
 
             normals [i]     = normal;
             normals [i + 1] = normal;
@@ -3897,7 +3893,7 @@ const NurbsPatchSurface_default_ = NurbsPatchSurface;
 Namespace_default().add ("NurbsPatchSurface", "x_ite/Components/NURBS/NurbsPatchSurface", NurbsPatchSurface_default_);
 /* harmony default export */ const NURBS_NurbsPatchSurface = (NurbsPatchSurface_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Interpolation/PositionInterpolator\")"
-const PositionInterpolator_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components/Interpolation/PositionInterpolator");
+const PositionInterpolator_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components/Interpolation/PositionInterpolator");
 var PositionInterpolator_default = /*#__PURE__*/__webpack_require__.n(PositionInterpolator_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/NURBS/NurbsPositionInterpolator.js
 /*******************************************************************************
@@ -4122,7 +4118,7 @@ const NurbsPositionInterpolator_default_ = NurbsPositionInterpolator;
 Namespace_default().add ("NurbsPositionInterpolator", "x_ite/Components/NURBS/NurbsPositionInterpolator", NurbsPositionInterpolator_default_);
 /* harmony default export */ const NURBS_NurbsPositionInterpolator = (NurbsPositionInterpolator_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Grouping/X3DBoundedObject\")"
-const X3DBoundedObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components/Grouping/X3DBoundedObject");
+const X3DBoundedObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components/Grouping/X3DBoundedObject");
 var X3DBoundedObject_default = /*#__PURE__*/__webpack_require__.n(X3DBoundedObject_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/NURBS/NurbsSet.js
 /*******************************************************************************
@@ -4316,7 +4312,7 @@ const NurbsSet_default_ = NurbsSet;
 Namespace_default().add ("NurbsSet", "x_ite/Components/NURBS/NurbsSet", NurbsSet_default_);
 /* harmony default export */ const NURBS_NurbsSet = (NurbsSet_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Line3\")"
-const Line3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Geometry/Line3");
+const Line3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Geometry/Line3");
 var Line3_default = /*#__PURE__*/__webpack_require__.n(Line3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Triangle2.js
 /*******************************************************************************
@@ -4499,10 +4495,10 @@ Object .assign (Object .setPrototypeOf (NurbsSurfaceInterpolator .prototype, (X3
    set_fraction__: (() =>
    {
       const
-         a     = new (Vector3_default()) (0, 0, 0),
-         b     = new (Vector3_default()) (0, 0, 0),
-         c     = new (Vector3_default()) (0, 0, 0),
-         point = new (Vector3_default()) (0, 0, 0),
+         a     = new (Vector3_default()) (),
+         b     = new (Vector3_default()) (),
+         c     = new (Vector3_default()) (),
+         point = new (Vector3_default()) (),
          line  = new (Line3_default()) ((Vector3_default()).Zero, (Vector3_default()).zAxis),
          uvt   = { };
 
@@ -4596,7 +4592,7 @@ const NurbsSurfaceInterpolator_default_ = NurbsSurfaceInterpolator;
 Namespace_default().add ("NurbsSurfaceInterpolator", "x_ite/Components/NURBS/NurbsSurfaceInterpolator", NurbsSurfaceInterpolator_default_);
 /* harmony default export */ const NURBS_NurbsSurfaceInterpolator = (NurbsSurfaceInterpolator_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Geometry3D/Extrusion\")"
-const Extrusion_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components/Geometry3D/Extrusion");
+const Extrusion_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components/Geometry3D/Extrusion");
 var Extrusion_default = /*#__PURE__*/__webpack_require__.n(Extrusion_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/NURBS/NurbsSweptSurface.js
 /*******************************************************************************

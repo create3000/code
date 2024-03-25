@@ -1,11 +1,11 @@
-/* X_ITE v9.4.1 */(() => { // webpackBootstrap
+/* X_ITE v9.4.2 */(() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 823:
 /***/ ((module) => {
 
-module.exports = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("lib/jquery");
+module.exports = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("lib/jquery");
 
 /***/ })
 
@@ -73,22 +73,22 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DNode\")"
-const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components/Core/X3DNode");
+const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components/Core/X3DNode");
 var X3DNode_default = /*#__PURE__*/__webpack_require__.n(X3DNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/ParticleSystems/GeometryTypes.js
 /*******************************************************************************
@@ -155,7 +155,7 @@ const __default__ = GeometryTypes;
 Namespace_default().add ("GeometryTypes", "x_ite/Browser/ParticleSystems/GeometryTypes", __default__);
 /* harmony default export */ const ParticleSystems_GeometryTypes = (__default__);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/ParticleSystems/Line3.glsl.js
 const Line3_glsl_default_ = /* glsl */ `struct Line3{vec3 point;vec3 direction;};bool intersects(const in Line3 line,const in vec3 a,const in vec3 b,const in vec3 c,out vec3 r){vec3 edge1=b-a;vec3 edge2=c-a;vec3 pvec=cross(line.direction,edge2);float det=dot(edge1,pvec);if(det==0.0)return false;float inv_det=1.0/det;vec3 tvec=line.point-a;float u=dot(tvec,pvec)*inv_det;if(u<0.0||u>1.0)return false;vec3 qvec=cross(tvec,edge1);float v=dot(line.direction,qvec)*inv_det;if(v<0.0||u+v>1.0)return false;r=vec3(u,v,1.0-u-v);return true;}`
@@ -618,7 +618,7 @@ const X3DParticleEmitterNode_default_ = X3DParticleEmitterNode;
 Namespace_default().add ("X3DParticleEmitterNode", "x_ite/Components/ParticleSystems/X3DParticleEmitterNode", X3DParticleEmitterNode_default_);
 /* harmony default export */ const ParticleSystems_X3DParticleEmitterNode = (X3DParticleEmitterNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
-const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Numbers/Vector3");
+const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/ParticleSystems/PointEmitter.js
 /*******************************************************************************
@@ -724,7 +724,7 @@ Object .assign (Object .setPrototypeOf (PointEmitter .prototype, ParticleSystems
    },
    set_direction__: (() =>
    {
-      const direction = new (Vector3_default()) (0, 0, 0);
+      const direction = new (Vector3_default()) ();
 
       return function ()
       {
@@ -828,9 +828,7 @@ Namespace_default().add ("PointEmitter", "x_ite/Components/ParticleSystems/Point
 
 
 
-const
-   _defaultEmitter = Symbol (),
-   _depthShader    = Symbol ();
+const _defaultEmitter = Symbol ();
 
 function X3DParticleSystemsContext () { }
 
@@ -939,7 +937,7 @@ const X3DParticlePhysicsModelNode_default_ = X3DParticlePhysicsModelNode;
 Namespace_default().add ("X3DParticlePhysicsModelNode", "x_ite/Components/ParticleSystems/X3DParticlePhysicsModelNode", X3DParticlePhysicsModelNode_default_);
 /* harmony default export */ const ParticleSystems_X3DParticlePhysicsModelNode = (X3DParticlePhysicsModelNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
-const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Base/X3DCast");
+const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/ParticleSystems/BoundedPhysicsModel.js
 /*******************************************************************************
@@ -1455,7 +1453,7 @@ Object .assign (Object .setPrototypeOf (ForcePhysicsModel .prototype, ParticleSy
 {
    addForce: (() =>
    {
-      const force = new (Vector3_default()) (0, 0, 0);
+      const force = new (Vector3_default()) ();
 
       return function (i, emitterNode, timeByMass, forces)
       {
@@ -1513,28 +1511,28 @@ const ForcePhysicsModel_default_ = ForcePhysicsModel;
 Namespace_default().add ("ForcePhysicsModel", "x_ite/Components/ParticleSystems/ForcePhysicsModel", ForcePhysicsModel_default_);
 /* harmony default export */ const ParticleSystems_ForcePhysicsModel = (ForcePhysicsModel_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Shape/X3DShapeNode\")"
-const X3DShapeNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components/Shape/X3DShapeNode");
+const X3DShapeNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components/Shape/X3DShapeNode");
 var X3DShapeNode_default = /*#__PURE__*/__webpack_require__.n(X3DShapeNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Browser/Rendering/GeometryContext\")"
-const GeometryContext_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Browser/Rendering/GeometryContext");
+const GeometryContext_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Browser/Rendering/GeometryContext");
 var GeometryContext_default = /*#__PURE__*/__webpack_require__.n(GeometryContext_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Rendering/VertexArray\")"
-const VertexArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Rendering/VertexArray");
+const VertexArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Rendering/VertexArray");
 var VertexArray_default = /*#__PURE__*/__webpack_require__.n(VertexArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Rendering/TraverseType\")"
-const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Rendering/TraverseType");
+const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Rendering/TraverseType");
 var TraverseType_default = /*#__PURE__*/__webpack_require__.n(TraverseType_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Browser/Shape/AlphaMode\")"
-const AlphaMode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Browser/Shape/AlphaMode");
+const AlphaMode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Browser/Shape/AlphaMode");
 var AlphaMode_default = /*#__PURE__*/__webpack_require__.n(AlphaMode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix4\")"
-const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Numbers/Matrix4");
+const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Numbers/Matrix4");
 var Matrix4_default = /*#__PURE__*/__webpack_require__.n(Matrix4_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix3\")"
-const Matrix3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Numbers/Matrix3");
+const Matrix3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Numbers/Matrix3");
 var Matrix3_default = /*#__PURE__*/__webpack_require__.n(Matrix3_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Plane3\")"
-const Plane3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Geometry/Plane3");
+const Plane3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Geometry/Plane3");
 var Plane3_default = /*#__PURE__*/__webpack_require__.n(Plane3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/standard/Math/Algorithms/QuickSort.js
 /*******************************************************************************
@@ -1700,9 +1698,9 @@ Namespace_default().add ("QuickSort", "standard/Math/Algorithms/QuickSort", Quic
 
 
 const
-   v0  = new (Vector3_default()) (0, 0, 0),
-   v1  = new (Vector3_default()) (0, 0, 0),
-   v2  = new (Vector3_default()) (0, 0, 0),
+   v0  = new (Vector3_default()) (),
+   v1  = new (Vector3_default()) (),
+   v2  = new (Vector3_default()) (),
    uvt = { u: 0, v: 0, t: 0 };
 
 // Box normals for bbox / line intersection.
@@ -1765,7 +1763,7 @@ Object .assign (Triangle .prototype,
          const i = intersections .size ++;
 
          if (i >= intersections .length)
-            intersections .push (new (Vector3_default()) (0, 0, 0));
+            intersections .push (new (Vector3_default()) ());
 
          intersections [i] .set (t * vertices [i4]     + u * vertices [i4 + 4] + v * vertices [i4 +  8],
                                  t * vertices [i4 + 1] + u * vertices [i4 + 5] + v * vertices [i4 +  9],
@@ -1774,7 +1772,7 @@ Object .assign (Triangle .prototype,
          if (intersectionNormals)
          {
             if (i >= intersectionNormals .length)
-               intersectionNormals .push (new (Vector3_default()) (0, 0, 0));
+               intersectionNormals .push (new (Vector3_default()) ());
 
             intersectionNormals [i] .set (t * normals [i3]     + u * normals [i3 + 3] + v * normals [i3 + 6],
                                           t * normals [i3 + 1] + u * normals [i3 + 4] + v * normals [i3 + 7],
@@ -1794,10 +1792,10 @@ Object .assign (Triangle .prototype,
 
 function Node (tree, triangles, first, size)
 {
-   this .min          = new (Vector3_default()) (0, 0, 0);
-   this .max          = new (Vector3_default()) (0, 0, 0);
+   this .min          = new (Vector3_default()) ();
+   this .max          = new (Vector3_default()) ();
    this .planes       = [ ];
-   this .intersection = new (Vector3_default()) (0, 0, 0);
+   this .intersection = new (Vector3_default()) ();
 
    const
       vertices = tree .vertices,
@@ -2833,8 +2831,8 @@ Object .assign (Object .setPrototypeOf (ParticleSystem .prototype, (X3DShapeNode
       ];
 
       const
-         vertex = new (Vector3_default()) (0, 0, 0),
-         size   = new (Vector3_default()) (0, 0, 0);
+         vertex = new (Vector3_default()) (),
+         size   = new (Vector3_default()) ();
 
       return function (gl, rotation)
       {
@@ -3036,9 +3034,9 @@ Object .assign (Object .setPrototypeOf (ParticleSystem .prototype, (X3DShapeNode
    {
       const
          invModelViewMatrix = new (Matrix4_default()) (),
-         billboardToScreen  = new (Vector3_default()) (0, 0, 0),
-         viewerYAxis        = new (Vector3_default()) (0, 0, 0),
-         y                  = new (Vector3_default()) (0, 0, 0),
+         billboardToScreen  = new (Vector3_default()) (),
+         viewerYAxis        = new (Vector3_default()) (),
+         y                  = new (Vector3_default()) (),
          rotation           = new (Matrix3_default()) (9);
 
       return function (modelViewMatrix)
@@ -3125,7 +3123,7 @@ const ParticleSystem_default_ = ParticleSystem;
 Namespace_default().add ("ParticleSystem", "x_ite/Components/ParticleSystems/ParticleSystem", ParticleSystem_default_);
 /* harmony default export */ const ParticleSystems_ParticleSystem = (ParticleSystem_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Rendering/IndexedLineSet\")"
-const IndexedLineSet_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components/Rendering/IndexedLineSet");
+const IndexedLineSet_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components/Rendering/IndexedLineSet");
 var IndexedLineSet_default = /*#__PURE__*/__webpack_require__.n(IndexedLineSet_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/ParticleSystems/PolylineEmitter.js
 /*******************************************************************************
@@ -3274,7 +3272,7 @@ Object .assign (Object .setPrototypeOf (PolylineEmitter .prototype, ParticleSyst
    },
    set_direction__: (() =>
    {
-      const direction = new (Vector3_default()) (0, 0, 0);
+      const direction = new (Vector3_default()) ();
 
       return function ()
       {
@@ -3286,8 +3284,8 @@ Object .assign (Object .setPrototypeOf (PolylineEmitter .prototype, ParticleSyst
    set_polyline: (() =>
    {
       const
-         vertex1 = new (Vector3_default()) (0, 0, 0),
-         vertex2 = new (Vector3_default()) (0, 0, 0);
+         vertex1 = new (Vector3_default()) (),
+         vertex2 = new (Vector3_default()) ();
 
       return function ()
       {
@@ -3379,7 +3377,7 @@ const PolylineEmitter_default_ = PolylineEmitter;
 Namespace_default().add ("PolylineEmitter", "x_ite/Components/ParticleSystems/PolylineEmitter", PolylineEmitter_default_);
 /* harmony default export */ const ParticleSystems_PolylineEmitter = (PolylineEmitter_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Triangle3\")"
-const Triangle3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Geometry/Triangle3");
+const Triangle3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Geometry/Triangle3");
 var Triangle3_default = /*#__PURE__*/__webpack_require__.n(Triangle3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/ParticleSystems/SurfaceEmitter.js
 /*******************************************************************************
@@ -3527,9 +3525,9 @@ Object .assign (Object .setPrototypeOf (SurfaceEmitter .prototype, ParticleSyste
    set_geometry__: (() =>
    {
       const
-         vertex1  = new (Vector3_default()) (0, 0, 0),
-         vertex2  = new (Vector3_default()) (0, 0, 0),
-         vertex3  = new (Vector3_default()) (0, 0, 0);
+         vertex1  = new (Vector3_default()) (),
+         vertex2  = new (Vector3_default()) (),
+         vertex3  = new (Vector3_default()) ();
 
       return function ()
       {
@@ -3639,7 +3637,7 @@ const SurfaceEmitter_default_ = SurfaceEmitter;
 Namespace_default().add ("SurfaceEmitter", "x_ite/Components/ParticleSystems/SurfaceEmitter", SurfaceEmitter_default_);
 /* harmony default export */ const ParticleSystems_SurfaceEmitter = (SurfaceEmitter_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Geometry3D/IndexedFaceSet\")"
-const IndexedFaceSet_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("x_ite/Components/Geometry3D/IndexedFaceSet");
+const IndexedFaceSet_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("x_ite/Components/Geometry3D/IndexedFaceSet");
 var IndexedFaceSet_default = /*#__PURE__*/__webpack_require__.n(IndexedFaceSet_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/ParticleSystems/VolumeEmitter.js
 /*******************************************************************************
@@ -3809,7 +3807,7 @@ Object .assign (Object .setPrototypeOf (VolumeEmitter .prototype, ParticleSystem
    },
    set_direction__: (() =>
    {
-      const direction = new (Vector3_default()) (0, 0, 0);
+      const direction = new (Vector3_default()) ();
 
       return function ()
       {
@@ -3821,9 +3819,9 @@ Object .assign (Object .setPrototypeOf (VolumeEmitter .prototype, ParticleSystem
    set_geometry__: (() =>
    {
       const
-         vertex1 = new (Vector3_default()) (0, 0, 0),
-         vertex2 = new (Vector3_default()) (0, 0, 0),
-         vertex3 = new (Vector3_default()) (0, 0, 0);
+         vertex1 = new (Vector3_default()) (),
+         vertex2 = new (Vector3_default()) (),
+         vertex3 = new (Vector3_default()) ();
 
       return function ()
       {
@@ -3936,7 +3934,7 @@ const VolumeEmitter_default_ = VolumeEmitter;
 Namespace_default().add ("VolumeEmitter", "x_ite/Components/ParticleSystems/VolumeEmitter", VolumeEmitter_default_);
 /* harmony default export */ const ParticleSystems_VolumeEmitter = (VolumeEmitter_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Algorithm\")"
-const Algorithm_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.1")] .require ("standard/Math/Algorithm");
+const Algorithm_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.4.2")] .require ("standard/Math/Algorithm");
 var Algorithm_default = /*#__PURE__*/__webpack_require__.n(Algorithm_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/ParticleSystems/WindPhysicsModel.js
 /*******************************************************************************
@@ -4007,7 +4005,7 @@ function WindPhysicsModel (executionContext)
    // Legacy
 
    if (executionContext .getSpecificationVersion () <= 3.3)
-      this ._direction = new (Vector3_default()) (0, 0, 0);
+      this ._direction = new (Vector3_default()) ();
 }
 
 Object .assign (Object .setPrototypeOf (WindPhysicsModel .prototype, ParticleSystems_X3DParticlePhysicsModelNode .prototype),
@@ -4022,7 +4020,7 @@ Object .assign (Object .setPrototypeOf (WindPhysicsModel .prototype, ParticleSys
    },
    addForce: (() =>
    {
-      const force = new (Vector3_default()) (0, 0, 0);
+      const force = new (Vector3_default()) ();
 
       return function (i, emitterNode, timeByMass, forces)
       {
