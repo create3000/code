@@ -1,11 +1,11 @@
-/* X_ITE v9.5.2 */(() => { // webpackBootstrap
+/* X_ITE v9.6.0 */(() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 823:
 /***/ ((module) => {
 
-module.exports = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("lib/jquery");
+module.exports = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("lib/jquery");
 
 /***/ })
 
@@ -73,52 +73,70 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DNode\")"
-const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("x_ite/Components/Core/X3DNode");
+const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("x_ite/Components/Core/X3DNode");
 var X3DNode_default = /*#__PURE__*/__webpack_require__.n(X3DNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Browser/ParticleSystems/GeometryTypes\")"
-const GeometryTypes_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("x_ite/Browser/ParticleSystems/GeometryTypes");
+const GeometryTypes_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("x_ite/Browser/ParticleSystems/GeometryTypes");
 var GeometryTypes_default = /*#__PURE__*/__webpack_require__.n(GeometryTypes_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/ParticleSystems/Line3.glsl.js
-const __default__ = /* glsl */ `struct Line3{vec3 point;vec3 direction;};bool intersects(const in Line3 line,const in vec3 a,const in vec3 b,const in vec3 c,out vec3 r){vec3 edge1=b-a;vec3 edge2=c-a;vec3 pvec=cross(line.direction,edge2);float det=dot(edge1,pvec);if(det==0.0)return false;float inv_det=1.0/det;vec3 tvec=line.point-a;float u=dot(tvec,pvec)*inv_det;if(u<0.0||u>1.0)return false;vec3 qvec=cross(tvec,edge1);float v=dot(line.direction,qvec)*inv_det;if(v<0.0||u+v>1.0)return false;r=vec3(u,v,1.0-u-v);return true;}`
+const __default__ = /* glsl */ `#if defined(X3D_BOUNDED_VOLUME)||defined(X3D_VOLUME_EMITTER)
+struct Line3{vec3 point;vec3 direction;};bool intersects(const in Line3 line,const in vec3 a,const in vec3 b,const in vec3 c,out vec3 r){vec3 edge1=b-a;vec3 edge2=c-a;vec3 pvec=cross(line.direction,edge2);float det=dot(edge1,pvec);if(det==0.0)return false;float inv_det=1.0/det;vec3 tvec=line.point-a;float u=dot(tvec,pvec)*inv_det;if(u<0.0||u>1.0)return false;vec3 qvec=cross(tvec,edge1);float v=dot(line.direction,qvec)*inv_det;if(v<0.0||u+v>1.0)return false;r=vec3(u,v,1.0-u-v);return true;}
+#endif
+`
 ;
 
 Namespace_default().add ("Line3.glsl", "x_ite/Browser/ParticleSystems/Line3.glsl", __default__);
 /* harmony default export */ const Line3_glsl = (__default__);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/ParticleSystems/Plane3.glsl.js
-const Plane3_glsl_default_ = /* glsl */ `struct Plane3{vec3 normal;float distanceFromOrigin;};Plane3 plane3(const in vec3 point,const in vec3 normal){return Plane3(normal,dot(normal,point));}float plane_distance(const in Plane3 plane,const in vec3 point){return dot(point,plane.normal)-plane.distanceFromOrigin;}bool intersects(const in Plane3 plane,const in Line3 line,out vec3 point){float theta=dot(line.direction,plane.normal);if(theta==0.0)return false;float t=(plane.distanceFromOrigin-dot(plane.normal,line.point))/theta;point=line.point+line.direction*t;return true;}void sort(inout vec4 points[ARRAY_SIZE],const in int count,const in Plane3 plane){const float shrink=1.0/1.3;int gap=count;bool exchanged=true;while(exchanged){gap=int(float(gap)*shrink);if(gap<=1){exchanged=false;gap=1;}for(int i=0,l=count-gap;i<l;++i){int j=gap+i;if(plane_distance(plane,points[i].xyz)>plane_distance(plane,points[j].xyz)){vec4 tmp1=points[i];points[i]=points[j];points[j]=tmp1;exchanged=true;}}}}int min_index(const in vec4 points[ARRAY_SIZE],const in int count,const in float value,const in Plane3 plane){int index=-1;float dist=1000000.0;for(int i=0;i<count;++i){float d=plane_distance(plane,points[i].xyz);if(d>=value&&d<dist){dist=d;index=i;}}return index;}`
+const Plane3_glsl_default_ = /* glsl */ `#if defined(X3D_BOUNDED_VOLUME)||defined(X3D_VOLUME_EMITTER)
+struct Plane3{vec3 normal;float distanceFromOrigin;};Plane3 plane3(const in vec3 point,const in vec3 normal){return Plane3(normal,dot(normal,point));}float plane_distance(const in Plane3 plane,const in vec3 point){return dot(point,plane.normal)-plane.distanceFromOrigin;}bool intersects(const in Plane3 plane,const in Line3 line,out vec3 point){float theta=dot(line.direction,plane.normal);if(theta==0.0)return false;float t=(plane.distanceFromOrigin-dot(plane.normal,line.point))/theta;point=line.point+line.direction*t;return true;}void sort(inout vec4 points[ARRAY_SIZE],const in int count,const in Plane3 plane){const float shrink=1.0/1.3;int gap=count;bool exchanged=true;while(exchanged){gap=int(float(gap)*shrink);if(gap<=1){exchanged=false;gap=1;}for(int i=0,l=count-gap;i<l;++i){int j=gap+i;if(plane_distance(plane,points[i].xyz)>plane_distance(plane,points[j].xyz)){vec4 tmp1=points[i];points[i]=points[j];points[j]=tmp1;exchanged=true;}}}}int min_index(const in vec4 points[ARRAY_SIZE],const in int count,const in float value,const in Plane3 plane){int index=-1;float dist=1000000.0;for(int i=0;i<count;++i){float d=plane_distance(plane,points[i].xyz);if(d>=value&&d<dist){dist=d;index=i;}}return index;}
+#endif
+`
 ;
 
 Namespace_default().add ("Plane3.glsl", "x_ite/Browser/ParticleSystems/Plane3.glsl", Plane3_glsl_default_);
 /* harmony default export */ const Plane3_glsl = (Plane3_glsl_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/ParticleSystems/Box3.glsl.js
-const Box3_glsl_default_ = /* glsl */ `bool intersects(const in vec3 min,const in vec3 max,const in Line3 line){vec3 intersection;if(intersects(plane3(max,vec3(0.0,0.0,1.0)),line,intersection)){if(all(greaterThanEqual(vec4(intersection.xy,max.xy),vec4(min.xy,intersection.xy))))return true;}if(intersects(plane3(min,vec3(0.0,0.0,-1.0)),line,intersection)){if(all(greaterThanEqual(vec4(intersection.xy,max.xy),vec4(min.xy,intersection.xy))))return true;}if(intersects(plane3(max,vec3(0.0,1.0,0.0)),line,intersection)){if(all(greaterThanEqual(vec4(intersection.xz,max.xz),vec4(min.xz,intersection.xz))))return true;}if(intersects(plane3(min,vec3(0.0,-1.0,0.0)),line,intersection)){if(all(greaterThanEqual(vec4(intersection.xz,max.xz),vec4(min.xz,intersection.xz))))return true;}if(intersects(plane3(max,vec3(1.0,0.0,0.0)),line,intersection)){if(all(greaterThanEqual(vec4(intersection.yz,max.yz),vec4(min.yz,intersection.yz))))return true;}return false;}`
+const Box3_glsl_default_ = /* glsl */ `#if defined(X3D_VOLUME_EMITTER)||defined(X3D_BOUNDED_VOLUME)
+bool intersects(const in vec3 min,const in vec3 max,const in Line3 line){vec3 intersection;if(intersects(plane3(max,vec3(0.0,0.0,1.0)),line,intersection)){if(all(greaterThanEqual(vec4(intersection.xy,max.xy),vec4(min.xy,intersection.xy))))return true;}if(intersects(plane3(min,vec3(0.0,0.0,-1.0)),line,intersection)){if(all(greaterThanEqual(vec4(intersection.xy,max.xy),vec4(min.xy,intersection.xy))))return true;}if(intersects(plane3(max,vec3(0.0,1.0,0.0)),line,intersection)){if(all(greaterThanEqual(vec4(intersection.xz,max.xz),vec4(min.xz,intersection.xz))))return true;}if(intersects(plane3(min,vec3(0.0,-1.0,0.0)),line,intersection)){if(all(greaterThanEqual(vec4(intersection.xz,max.xz),vec4(min.xz,intersection.xz))))return true;}if(intersects(plane3(max,vec3(1.0,0.0,0.0)),line,intersection)){if(all(greaterThanEqual(vec4(intersection.yz,max.yz),vec4(min.yz,intersection.yz))))return true;}return false;}
+#endif
+`
 ;
 
 Namespace_default().add ("Box3.glsl", "x_ite/Browser/ParticleSystems/Box3.glsl", Box3_glsl_default_);
 /* harmony default export */ const Box3_glsl = (Box3_glsl_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/ParticleSystems/BVH.glsl.js
-const BVH_glsl_default_ = /* glsl */ `#define BVH_NODE 0
+const BVH_glsl_default_ = /* glsl */ `#if defined(X3D_VOLUME_EMITTER)||defined(X3D_BOUNDED_VOLUME)
+#define BVH_NODE 0
 #define BVH_TRIANGLE 1
 #define BVH_STACK_SIZE 32
-int bvhNodeIndex=0;void setBVHIndex(const in int index){bvhNodeIndex=index;}int getBVHRoot(const in sampler2D volume,const in int hierarchyIndex,const in int rootIndex){return int(texelFetch(volume,rootIndex,0).x)+hierarchyIndex;}int getBVHType(const in sampler2D volume){return int(texelFetch(volume,bvhNodeIndex,0).x);}vec3 getBVHMin(const in sampler2D volume){return texelFetch(volume,bvhNodeIndex+1,0).xyz;}vec3 getBVHMax(const in sampler2D volume){return texelFetch(volume,bvhNodeIndex+2,0).xyz;}int getBVHLeft(const in sampler2D volume,const in int hierarchyIndex){return int(texelFetch(volume,bvhNodeIndex,0).y)+hierarchyIndex;}int getBVHRight(const in sampler2D volume,const in int hierarchyIndex){return int(texelFetch(volume,bvhNodeIndex,0).z)+hierarchyIndex;}int getBVHTriangle(const in sampler2D volume){return int(texelFetch(volume,bvhNodeIndex,0).y);}int getIntersections(const in sampler2D volume,const in int verticesIndex,const in int hierarchyIndex,const in int rootIndex,const in Line3 line,out vec4 points[ARRAY_SIZE]){int current=getBVHRoot(volume,hierarchyIndex,rootIndex);int count=0;int stackIndex=-1;int stack[BVH_STACK_SIZE];while(stackIndex>=0||current>=0){if(current>=0){setBVHIndex(current);if(getBVHType(volume)==BVH_NODE){if(intersects(getBVHMin(volume),getBVHMax(volume),line)){stack[++stackIndex]=current;current=getBVHLeft(volume,hierarchyIndex);}else{current=-1;}}else{int t=getBVHTriangle(volume);int v=verticesIndex+t;vec3 r=vec3(0.0);vec3 a=texelFetch(volume,v,0).xyz;vec3 b=texelFetch(volume,v+1,0).xyz;vec3 c=texelFetch(volume,v+2,0).xyz;if(intersects(line,a,b,c,r))points[count++]=vec4(r.z*a+r.x*b+r.y*c,1.0);current=-1;}}else{setBVHIndex(stack[stackIndex--]);current=getBVHRight(volume,hierarchyIndex);}}return count;}int getIntersections(const in sampler2D volume,const in int verticesIndex,const in int normalsIndex,const in int hierarchyIndex,const in int rootIndex,const in Line3 line,out vec4 points[ARRAY_SIZE],out vec3 normals[ARRAY_SIZE]){int current=getBVHRoot(volume,hierarchyIndex,rootIndex);int count=0;int stackIndex=-1;int stack[BVH_STACK_SIZE];while(stackIndex>=0||current>=0){if(current>=0){setBVHIndex(current);if(getBVHType(volume)==BVH_NODE){if(intersects(getBVHMin(volume),getBVHMax(volume),line)){stack[++stackIndex]=current;current=getBVHLeft(volume,hierarchyIndex);}else{current=-1;}}else{int t=getBVHTriangle(volume);int v=verticesIndex+t;vec3 r=vec3(0.0);vec3 a=texelFetch(volume,v,0).xyz;vec3 b=texelFetch(volume,v+1,0).xyz;vec3 c=texelFetch(volume,v+2,0).xyz;if(intersects(line,a,b,c,r)){points[count]=vec4(r.z*a+r.x*b+r.y*c,1.0);int n=normalsIndex+t;vec3 n0=texelFetch(volume,n,0).xyz;vec3 n1=texelFetch(volume,n+1,0).xyz;vec3 n2=texelFetch(volume,n+2,0).xyz;normals[count]=r.z*n0+r.x*n1+r.y*n2;++count;}current=-1;}}else{setBVHIndex(stack[stackIndex--]);current=getBVHRight(volume,hierarchyIndex);}}return count;}`
+int bvhNodeIndex=0;void setBVHIndex(const in int index){bvhNodeIndex=index;}int getBVHRoot(const in sampler2D volume,const in int hierarchyIndex,const in int rootIndex){return int(texelFetch(volume,rootIndex,0).x)+hierarchyIndex;}int getBVHType(const in sampler2D volume){return int(texelFetch(volume,bvhNodeIndex,0).x);}vec3 getBVHMin(const in sampler2D volume){return texelFetch(volume,bvhNodeIndex+1,0).xyz;}vec3 getBVHMax(const in sampler2D volume){return texelFetch(volume,bvhNodeIndex+2,0).xyz;}int getBVHLeft(const in sampler2D volume,const in int hierarchyIndex){return int(texelFetch(volume,bvhNodeIndex,0).y)+hierarchyIndex;}int getBVHRight(const in sampler2D volume,const in int hierarchyIndex){return int(texelFetch(volume,bvhNodeIndex,0).z)+hierarchyIndex;}int getBVHTriangle(const in sampler2D volume){return int(texelFetch(volume,bvhNodeIndex,0).y);}
+#if defined(X3D_VOLUME_EMITTER)
+int getIntersections(const in sampler2D volume,const in int verticesIndex,const in int hierarchyIndex,const in int rootIndex,const in Line3 line,out vec4 points[ARRAY_SIZE]){int current=getBVHRoot(volume,hierarchyIndex,rootIndex);int count=0;int stackIndex=-1;int stack[BVH_STACK_SIZE];while(stackIndex>=0||current>=0){if(current>=0){setBVHIndex(current);if(getBVHType(volume)==BVH_NODE){if(intersects(getBVHMin(volume),getBVHMax(volume),line)){stack[++stackIndex]=current;current=getBVHLeft(volume,hierarchyIndex);}else{current=-1;}}else{int t=getBVHTriangle(volume);int v=verticesIndex+t;vec3 r=vec3(0.0);vec3 a=texelFetch(volume,v,0).xyz;vec3 b=texelFetch(volume,v+1,0).xyz;vec3 c=texelFetch(volume,v+2,0).xyz;if(intersects(line,a,b,c,r))points[count++]=vec4(r.z*a+r.x*b+r.y*c,1.0);current=-1;}}else{setBVHIndex(stack[stackIndex--]);current=getBVHRight(volume,hierarchyIndex);}}return count;}
+#endif
+#if defined(X3D_BOUNDED_VOLUME)
+int getIntersections(const in sampler2D volume,const in int verticesIndex,const in int normalsIndex,const in int hierarchyIndex,const in int rootIndex,const in Line3 line,out vec4 points[ARRAY_SIZE],out vec3 normals[ARRAY_SIZE]){int current=getBVHRoot(volume,hierarchyIndex,rootIndex);int count=0;int stackIndex=-1;int stack[BVH_STACK_SIZE];while(stackIndex>=0||current>=0){if(current>=0){setBVHIndex(current);if(getBVHType(volume)==BVH_NODE){if(intersects(getBVHMin(volume),getBVHMax(volume),line)){stack[++stackIndex]=current;current=getBVHLeft(volume,hierarchyIndex);}else{current=-1;}}else{int t=getBVHTriangle(volume);int v=verticesIndex+t;vec3 r=vec3(0.0);vec3 a=texelFetch(volume,v,0).xyz;vec3 b=texelFetch(volume,v+1,0).xyz;vec3 c=texelFetch(volume,v+2,0).xyz;if(intersects(line,a,b,c,r)){points[count]=vec4(r.z*a+r.x*b+r.y*c,1.0);int n=normalsIndex+t;vec3 n0=texelFetch(volume,n,0).xyz;vec3 n1=texelFetch(volume,n+1,0).xyz;vec3 n2=texelFetch(volume,n+2,0).xyz;normals[count]=r.z*n0+r.x*n1+r.y*n2;++count;}current=-1;}}else{setBVHIndex(stack[stackIndex--]);current=getBVHRight(volume,hierarchyIndex);}}return count;}
+#endif
+#endif
+`
 ;
 
 Namespace_default().add ("BVH.glsl", "x_ite/Browser/ParticleSystems/BVH.glsl", BVH_glsl_default_);
@@ -179,33 +197,25 @@ Namespace_default().add ("BVH.glsl", "x_ite/Browser/ParticleSystems/BVH.glsl", B
 
 
 
+
 function X3DParticleEmitterNode (executionContext)
 {
    X3DNode_default().call (this, executionContext);
 
    this .addType ((X3DConstants_default()).X3DParticleEmitterNode);
 
+   this .addChildObjects ((X3DConstants_default()).outputOnly, "bbox_changed", new (Fields_default()).SFTime ());
+
    this ._speed       .setUnit ("speed");
    this ._mass        .setUnit ("mass");
    this ._surfaceArea .setUnit ("area");
 
+   this .defines   = [ ];
    this .samplers  = [ ];
-   this .uniforms  = { };
+   this .uniforms  = new Map ();
+   this .callbacks = [ ];
    this .functions = [ ];
-   this .program   = null;
-
-   this .addSampler ("forces");
-   this .addSampler ("boundedVolume");
-   this .addSampler ("colorRamp");
-   this .addSampler ("texCoordRamp");
-
-   this .addUniform ("speed",     "uniform float speed;");
-   this .addUniform ("variation", "uniform float variation;");
-
-   this .addFunction (Line3_glsl);
-   this .addFunction (Plane3_glsl);
-   this .addFunction (Box3_glsl);
-   this .addFunction (BVH_glsl);
+   this .programs  = new Map ();
 }
 
 Object .assign (Object .setPrototypeOf (X3DParticleEmitterNode .prototype, (X3DNode_default()).prototype),
@@ -221,20 +231,35 @@ Object .assign (Object .setPrototypeOf (X3DParticleEmitterNode .prototype, (X3DN
 
       // Create program.
 
-      this .program           = this .createProgram ();
       this .transformFeedback = gl .createTransformFeedback ();
 
       // Initialize fields.
 
-      this ._on        .addInterest ("set_on__",        this);
-      this ._speed     .addInterest ("set_speed__",     this);
-      this ._variation .addInterest ("set_variation__", this);
-      this ._mass      .addInterest ("set_mass__",      this);
+      this ._on          .addInterest ("set_on__",          this);
+      this ._speed       .addInterest ("set_speed__",       this);
+      this ._variation   .addInterest ("set_variation__",   this);
+      this ._mass        .addInterest ("set_mass__",        this);
+      this ._surfaceArea .addInterest ("set_surfaceArea__", this);
+
+      this .addSampler ("forces");
+      this .addSampler ("boundedVolume");
+      this .addSampler ("colorRamp");
+      this .addSampler ("texCoordRamp");
+
+      this .addUniform ("speed",     "uniform float speed;");
+      this .addUniform ("variation", "uniform float variation;");
+
+      this .addCallback (this .set_speed__);
+      this .addCallback (this .set_variation__);
+
+      this .addFunction (Line3_glsl);
+      this .addFunction (Plane3_glsl);
+      this .addFunction (Box3_glsl);
+      this .addFunction (BVH_glsl);
 
       this .set_on__ ();
-      this .set_speed__ ();
-      this .set_variation__ ();
       this .set_mass__ ();
+      this .set_surfaceArea__ ();
    },
    isExplosive ()
    {
@@ -244,21 +269,29 @@ Object .assign (Object .setPrototypeOf (X3DParticleEmitterNode .prototype, (X3DN
    {
       return this .mass;
    },
+   getSurfaceArea ()
+   {
+      return this .surfaceArea;
+   },
    set_on__ ()
    {
       this .on = this ._on .getValue ();
    },
    set_speed__ ()
    {
-      this .setUniform ("uniform1f", "speed", this ._speed .getValue ());
+      this .setUniform ("uniform1f", "speed", Math .max (this ._speed .getValue (), 0));
    },
    set_variation__ ()
    {
-      this .setUniform ("uniform1f", "variation", this ._variation .getValue ());
+      this .setUniform ("uniform1f", "variation", Math .max (this ._variation .getValue (), 0));
    },
    set_mass__ ()
    {
-      this .mass = this ._mass .getValue ();
+      this .mass = Math .max (this ._mass .getValue (), 0);
+   },
+   set_surfaceArea__ ()
+   {
+      this .surfaceArea = Math .max (this ._surfaceArea .getValue (), 0);
    },
    getRandomValue (min, max)
    {
@@ -279,12 +312,10 @@ Object .assign (Object .setPrototypeOf (X3DParticleEmitterNode .prototype, (X3DN
    animate (particleSystem, deltaTime)
    {
       const
-         browser         = this .getBrowser (),
-         gl              = browser .getContext (),
-         inputParticles  = particleSystem .inputParticles,
-         particlesStride = particleSystem .particlesStride,
-         particleOffsets = particleSystem .particleOffsets,
-         program         = this .program;
+         browser        = this .getBrowser (),
+         gl             = browser .getContext (),
+         program        = this .getProgram (particleSystem),
+         inputParticles = particleSystem .inputParticles;
 
       // Start
 
@@ -293,16 +324,12 @@ Object .assign (Object .setPrototypeOf (X3DParticleEmitterNode .prototype, (X3DN
       // Uniforms
 
       gl .uniform1i (program .randomSeed,        Math .random () * 0xffffffff);
-      gl .uniform1i (program .geometryType,      particleSystem .geometryType);
-      gl .uniform1i (program .createParticles,   particleSystem .createParticles && this .on);
       gl .uniform1f (program .particleLifetime,  particleSystem .particleLifetime);
       gl .uniform1f (program .lifetimeVariation, particleSystem .lifetimeVariation);
       gl .uniform1f (program .deltaTime,         deltaTime);
       gl .uniform2f (program .particleSize,      particleSystem ._particleSize .x, particleSystem ._particleSize .y);
 
       // Forces
-
-      gl .uniform1i (program .numForces, particleSystem .numForces);
 
       if (particleSystem .numForces)
       {
@@ -312,11 +339,7 @@ Object .assign (Object .setPrototypeOf (X3DParticleEmitterNode .prototype, (X3DN
 
       // Bounded Physics
 
-      if (particleSystem .boundedHierarchyRoot < 0)
-      {
-         gl .uniform1i (program .boundedHierarchyRoot, -1);
-      }
-      else
+      if (particleSystem .boundedHierarchyRoot > -1)
       {
          gl .uniform1i (program .boundedVerticesIndex,  particleSystem .boundedVerticesIndex);
          gl .uniform1i (program .boundedNormalsIndex,   particleSystem .boundedNormalsIndex);
@@ -329,8 +352,6 @@ Object .assign (Object .setPrototypeOf (X3DParticleEmitterNode .prototype, (X3DN
 
       // Colors
 
-      gl .uniform1i (program .numColors, particleSystem .numColors);
-
       if (particleSystem .numColors)
       {
          gl .activeTexture (gl .TEXTURE0 + program .colorRampTextureUnit);
@@ -338,8 +359,6 @@ Object .assign (Object .setPrototypeOf (X3DParticleEmitterNode .prototype, (X3DN
       }
 
       // TexCoords
-
-      gl .uniform1i (program .numTexCoords, particleSystem .numTexCoords);
 
       if (particleSystem .numTexCoords)
       {
@@ -357,6 +376,8 @@ Object .assign (Object .setPrototypeOf (X3DParticleEmitterNode .prototype, (X3DN
 
       if (inputParticles .vertexArrayObject .enable (program))
       {
+         const { particlesStride, particleOffsets } = particleSystem;
+
          for (const [i, attribute] of program .inputs)
          {
             gl .bindBuffer (gl .ARRAY_BUFFER, inputParticles);
@@ -380,10 +401,14 @@ Object .assign (Object .setPrototypeOf (X3DParticleEmitterNode .prototype, (X3DN
 
       // DEBUG
 
-      // const data = new Float32Array (particleSystem .numParticles * (particlesStride / 4));
+      // const data = new Float32Array (particleSystem .numParticles * (particleSystem .particlesStride / 4));
       // gl .bindBuffer (gl .ARRAY_BUFFER, particleSystem .outputParticles);
       // gl .getBufferSubData (gl .ARRAY_BUFFER, 0, data);
-      // console .log (data .slice (0, particlesStride / 4));
+      // console .log (data .slice (0, particleSystem .particlesStride / 4));
+   },
+   addDefine (define)
+   {
+      this .defines .push (define);
    },
    addSampler (name)
    {
@@ -391,35 +416,129 @@ Object .assign (Object .setPrototypeOf (X3DParticleEmitterNode .prototype, (X3DN
    },
    addUniform (name, uniform)
    {
-      this .uniforms [name] = uniform;
+      this .uniforms .set (name, uniform);
    },
    setUniform (func, name, value1, value2, value3)
    {
-      const
-         gl      = this .getBrowser () .getContext (),
-         program = this .program;
+      const gl = this .getBrowser () .getContext ();
 
-      gl .useProgram (program);
-      gl [func] (program [name], value1, value2, value3);
+      for (const program of this .programs .values ())
+      {
+         gl .useProgram (program);
+         gl [func] (program [name], value1, value2, value3);
+      }
+   },
+   addCallback (callback)
+   {
+      this .callbacks .push (callback);
    },
    addFunction (func)
    {
       this .functions .push (func);
    },
-   createProgram ()
+   getProgram (particleSystem)
+   {
+      const { geometryType, createParticles, numColors, numTexCoords, numForces, boundedHierarchyRoot } = particleSystem;
+
+      let key = "";
+
+      key += geometryType;
+      key += createParticles && this .on ? 1 : 0;
+      key += ".";
+      key += numColors
+      key += ".";
+      key += numTexCoords;
+      key += ".";
+      key += numForces
+      key += ".";
+      key += boundedHierarchyRoot;
+
+      return this .programs .get (key) ??
+         this .createProgram (key, particleSystem);
+   },
+   createProgram (key, particleSystem)
    {
       const
          browser = this .getBrowser (),
-         gl      = browser .getContext ();
+         gl      = browser .getContext (),
+         defines = this .defines .slice ();
+
+      defines .push (`#define X3D_GEOMETRY_TYPE ${particleSystem .geometryType}`)
+      defines .push (`${particleSystem .createParticles && this .on ? "#define X3D_CREATE_PARTICLES" : ""}`);
+      defines .push (`#define X3D_NUM_COLORS ${particleSystem .numColors}`);
+      defines .push (`#define X3D_NUM_TEX_COORDS ${particleSystem .numTexCoords}`);
+      defines .push (`#define X3D_NUM_FORCES ${particleSystem .numForces}`);
+      defines .push (`${particleSystem .boundedHierarchyRoot > -1 ? "#define X3D_BOUNDED_VOLUME" : ""}`);
 
       const vertexShaderSource = /* glsl */ `#version 300 es
-precision highp float;precision highp int;precision highp sampler2D;uniform int randomSeed;uniform int geometryType;uniform bool createParticles;uniform float particleLifetime;uniform float lifetimeVariation;uniform float deltaTime;uniform vec2 particleSize;uniform int numForces;uniform sampler2D forces;uniform int boundedVerticesIndex;uniform int boundedNormalsIndex;uniform int boundedHierarchyIndex;uniform int boundedHierarchyRoot;uniform sampler2D boundedVolume;uniform int numColors;uniform sampler2D colorRamp;uniform int texCoordCount;uniform int numTexCoords;uniform sampler2D texCoordRamp;
-${Object .values (this .uniforms) .join ("\n")}
+precision highp float;precision highp int;precision highp sampler2D;
+${defines .join ("\n")}
+ uniform int randomSeed;uniform float particleLifetime;uniform float lifetimeVariation;uniform float deltaTime;uniform vec2 particleSize;
+#if X3D_NUM_FORCES>0
+uniform sampler2D forces;
+#endif
+#if defined(X3D_BOUNDED_VOLUME)
+uniform int boundedVerticesIndex;uniform int boundedNormalsIndex;uniform int boundedHierarchyIndex;uniform int boundedHierarchyRoot;uniform sampler2D boundedVolume;
+#endif
+#if X3D_NUM_COLORS>0
+uniform sampler2D colorRamp;
+#endif
+#if X3D_NUM_TEX_COORDS>0
+uniform int texCoordCount;uniform sampler2D texCoordRamp;
+#endif
+
+${Array .from (this .uniforms .values ()) .join ("\n")}
  in vec4 input0;in vec4 input2;in vec4 input6;out vec4 output0;out vec4 output1;out vec4 output2;out vec4 output3;out vec4 output4;out vec4 output5;out vec4 output6;
 ${Object .entries ((GeometryTypes_default())) .map (([k, v]) => `#define ${k} ${v}`) .join ("\n")}
- const int ARRAY_SIZE=32;const float M_PI=3.14159265359;uniform float NaN;vec4 texelFetch(const in sampler2D sampler,const in int index,const in int lod){int x=textureSize(sampler,lod).x;ivec2 p=ivec2(index % x,index/x);vec4 t=texelFetch(sampler,p,lod);return t;}vec3 save_normalize(const in vec3 vector){float l=length(vector);if(l==0.0)return vec3(0.0);return vector/l;}vec4 Quaternion(const in vec3 fromVector,const in vec3 toVector){vec3 from=save_normalize(fromVector);vec3 to=save_normalize(toVector);float cos_angle=dot(from,to);vec3 cross_vec=cross(from,to);float cross_len=length(cross_vec);if(cross_len==0.0){if(cos_angle>0.0){return vec4(0.0,0.0,0.0,1.0);}else{vec3 t=cross(from,vec3(1.0,0.0,0.0));if(dot(t,t)==0.0)t=cross(from,vec3(0.0,1.0,0.0));t=save_normalize(t);return vec4(t,0.0);}}else{float s=sqrt(abs(1.0-cos_angle)*0.5);cross_vec=save_normalize(cross_vec);return vec4(cross_vec*s,sqrt(abs(1.0+cos_angle)*0.5));}}vec3 multVecQuat(const in vec3 v,const in vec4 q){float a=q.w*q.w-q.x*q.x-q.y*q.y-q.z*q.z;float b=2.0*(v.x*q.x+v.y*q.y+v.z*q.z);float c=2.0*q.w;vec3 r=a*v.xyz+b*q.xyz+c*(q.yzx*v.zxy-q.zxy*v.yzx);return r;}mat3 Matrix3(const in vec4 quaternion){float x=quaternion.x;float y=quaternion.y;float z=quaternion.z;float w=quaternion.w;float A=y*y;float B=z*z;float C=x*y;float D=z*w;float E=z*x;float F=y*w;float G=x*x;float H=y*z;float I=x*w;return mat3(1.0-2.0*(A+B),2.0*(C+D),2.0*(E-F),2.0*(C-D),1.0-2.0*(B+G),2.0*(H+I),2.0*(E+F),2.0*(H-I),1.0-2.0*(A+G));}uint seed=1u;void srand(const in int value){seed=uint(value);}float random(){seed=seed*1103515245u+12345u;return float(seed)/4294967295.0;}float getRandomValue(const in float min,const in float max){return min+random()*(max-min);}float getRandomLifetime(){float v=particleLifetime*lifetimeVariation;float min_=max(0.0,particleLifetime-v);float max_=particleLifetime+v;return getRandomValue(min_,max_);}float getRandomSpeed(){float v=speed*variation;float min_=max(0.0,speed-v);float max_=speed+v;return getRandomValue(min_,max_);}vec3 getRandomNormal(){float theta=getRandomValue(-M_PI,M_PI);float cphi=getRandomValue(-1.0,1.0);float r=sqrt(1.0-cphi*cphi);return vec3(sin(theta)*r,cos(theta)*r,cphi);}vec3 getRandomNormalWithAngle(const in float angle){float theta=getRandomValue(-M_PI,M_PI);float cphi=getRandomValue(cos(angle),1.0);float r=sqrt(1.0-cphi*cphi);return vec3(sin(theta)*r,cos(theta)*r,cphi);}vec3 getRandomNormalWithDirectionAndAngle(const in vec3 direction,const in float angle){vec4 rotation=Quaternion(vec3(0.0,0.0,1.0),direction);vec3 normal=getRandomNormalWithAngle(angle);return multVecQuat(normal,rotation);}vec3 getRandomSurfaceNormal(const in vec3 direction){float theta=getRandomValue(-M_PI,M_PI);float cphi=pow(random(),1.0/3.0);float r=sqrt(1.0-cphi*cphi);vec3 normal=vec3(sin(theta)*r,cos(theta)*r,cphi);vec4 rotation=Quaternion(vec3(0.0,0.0,1.0),direction);return multVecQuat(normal,rotation);}vec3 getRandomSphericalVelocity(){vec3 normal=getRandomNormal();float speed=getRandomSpeed();return normal*speed;}int upperBound(const in sampler2D sampler,in int count,const in float value){int first=0;int step=0;while(count>0){int index=first;step=count>>1;index+=step;if(value<texelFetch(sampler,index,0).x){count=step;}else{first=++index;count-=step+1;}}return first;}void interpolate(const in sampler2D sampler,const in int count,const in float fraction,out int index0,out int index1,out float weight){if(count==1||fraction<=texelFetch(sampler,0,0).x){index0=0;index1=0;weight=0.0;}else if(fraction>=texelFetch(sampler,count-1,0).x){index0=count-2;index1=count-1;weight=1.0;}else{int index=upperBound(sampler,count,fraction);if(index<count){index1=index;index0=index-1;float key0=texelFetch(sampler,index0,0).x;float key1=texelFetch(sampler,index1,0).x;weight=clamp((fraction-key0)/(key1-key0),0.0,1.0);}else{index0=0;index1=0;weight=0.0;}}}void interpolate(const in sampler2D sampler,const in int count,const in float fraction,out int index0){if(count==1||fraction<=texelFetch(sampler,0,0).x){index0=0;}else if(fraction>=texelFetch(sampler,count-1,0).x){index0=count-2;}else{int index=upperBound(sampler,count,fraction);if(index<count)index0=index-1;else index0=0;}}vec3 getRandomBarycentricCoord(){float u=random();float v=random();if(u+v>1.0){u=1.0-u;v=1.0-v;}float t=1.0-u-v;return vec3(t,u,v);}void getRandomPointOnSurface(const in sampler2D surface,const in int verticesIndex,const in int normalsIndex,out vec4 position,out vec3 normal){float lastAreaSoFar=texelFetch(surface,verticesIndex-1,0).x;float fraction=random()*lastAreaSoFar;int index0;int index1;int index2;float weight;interpolate(surface,verticesIndex,fraction,index0,index1,weight);index0*=3;index1=index0+1;index2=index0+2;vec4 vertex0=texelFetch(surface,verticesIndex+index0,0);vec4 vertex1=texelFetch(surface,verticesIndex+index1,0);vec4 vertex2=texelFetch(surface,verticesIndex+index2,0);vec3 normal0=texelFetch(surface,normalsIndex+index0,0).xyz;vec3 normal1=texelFetch(surface,normalsIndex+index1,0).xyz;vec3 normal2=texelFetch(surface,normalsIndex+index2,0).xyz;vec3 r=getRandomBarycentricCoord();position=r.z*vertex0+r.x*vertex1+r.y*vertex2;normal=save_normalize(r.z*normal0+r.x*normal1+r.y*normal2);}
+ const int ARRAY_SIZE=32;const float M_PI=3.14159265359;uniform float NaN;vec4 texelFetch(const in sampler2D sampler,const in int index,const in int lod){int x=textureSize(sampler,lod).x;ivec2 p=ivec2(index % x,index/x);vec4 t=texelFetch(sampler,p,lod);return t;}vec3 save_normalize(const in vec3 vector){float l=length(vector);if(l==0.0)return vec3(0.0);return vector/l;}vec4 Quaternion(const in vec3 fromVector,const in vec3 toVector){vec3 from=save_normalize(fromVector);vec3 to=save_normalize(toVector);float cos_angle=dot(from,to);vec3 cross_vec=cross(from,to);float cross_len=length(cross_vec);if(cross_len==0.0){if(cos_angle>0.0){return vec4(0.0,0.0,0.0,1.0);}else{vec3 t=cross(from,vec3(1.0,0.0,0.0));if(dot(t,t)==0.0)t=cross(from,vec3(0.0,1.0,0.0));t=save_normalize(t);return vec4(t,0.0);}}else{float s=sqrt(abs(1.0-cos_angle)*0.5);cross_vec=save_normalize(cross_vec);return vec4(cross_vec*s,sqrt(abs(1.0+cos_angle)*0.5));}}vec3 multVecQuat(const in vec3 v,const in vec4 q){float a=q.w*q.w-q.x*q.x-q.y*q.y-q.z*q.z;float b=2.0*(v.x*q.x+v.y*q.y+v.z*q.z);float c=2.0*q.w;vec3 r=a*v.xyz+b*q.xyz+c*(q.yzx*v.zxy-q.zxy*v.yzx);return r;}mat3 Matrix3(const in vec4 quaternion){float x=quaternion.x;float y=quaternion.y;float z=quaternion.z;float w=quaternion.w;float A=y*y;float B=z*z;float C=x*y;float D=z*w;float E=z*x;float F=y*w;float G=x*x;float H=y*z;float I=x*w;return mat3(1.0-2.0*(A+B),2.0*(C+D),2.0*(E-F),2.0*(C-D),1.0-2.0*(B+G),2.0*(H+I),2.0*(E+F),2.0*(H-I),1.0-2.0*(A+G));}uint seed=1u;void srand(const in int value){seed=uint(value);}float random(){seed=seed*1103515245u+12345u;return float(seed)/4294967295.0;}float getRandomValue(const in float min,const in float max){return min+random()*(max-min);}float getRandomLifetime(){float v=particleLifetime*lifetimeVariation;float min_=max(0.0,particleLifetime-v);float max_=particleLifetime+v;return getRandomValue(min_,max_);}float getRandomSpeed(){float v=speed*variation;float min_=max(0.0,speed-v);float max_=speed+v;return getRandomValue(min_,max_);}vec3 getRandomNormal(){float theta=getRandomValue(-M_PI,M_PI);float cphi=getRandomValue(-1.0,1.0);float r=sqrt(1.0-cphi*cphi);return vec3(sin(theta)*r,cos(theta)*r,cphi);}vec3 getRandomNormalWithAngle(const in float angle){float theta=getRandomValue(-M_PI,M_PI);float cphi=getRandomValue(cos(angle),1.0);float r=sqrt(1.0-cphi*cphi);return vec3(sin(theta)*r,cos(theta)*r,cphi);}vec3 getRandomNormalWithDirectionAndAngle(const in vec3 direction,const in float angle){vec4 rotation=Quaternion(vec3(0.0,0.0,1.0),direction);vec3 normal=getRandomNormalWithAngle(angle);return multVecQuat(normal,rotation);}vec3 getRandomSurfaceNormal(const in vec3 direction){float theta=getRandomValue(-M_PI,M_PI);float cphi=pow(random(),1.0/3.0);float r=sqrt(1.0-cphi*cphi);vec3 normal=vec3(sin(theta)*r,cos(theta)*r,cphi);vec4 rotation=Quaternion(vec3(0.0,0.0,1.0),direction);return multVecQuat(normal,rotation);}vec3 getRandomSphericalVelocity(){vec3 normal=getRandomNormal();float speed=getRandomSpeed();return normal*speed;}int upperBound(const in sampler2D sampler,in int count,const in float value){int first=0;int step=0;while(count>0){int index=first;step=count>>1;index+=step;if(value<texelFetch(sampler,index,0).x){count=step;}else{first=++index;count-=step+1;}}return first;}
+#if X3D_NUM_COLORS>0||defined(X3D_POLYLINE_EMITTER)||defined(X3D_SURFACE_EMITTER)||defined(X3D_VOLUME_EMITTER)
+void interpolate(const in sampler2D sampler,const in int count,const in float fraction,out int index0,out int index1,out float weight){if(count==1||fraction<=texelFetch(sampler,0,0).x){index0=0;index1=0;weight=0.0;}else if(fraction>=texelFetch(sampler,count-1,0).x){index0=count-2;index1=count-1;weight=1.0;}else{int index=upperBound(sampler,count,fraction);if(index<count){index1=index;index0=index-1;float key0=texelFetch(sampler,index0,0).x;float key1=texelFetch(sampler,index1,0).x;weight=clamp((fraction-key0)/(key1-key0),0.0,1.0);}else{index0=0;index1=0;weight=0.0;}}}
+#endif
+#if X3D_NUM_TEX_COORDS>0
+void interpolate(const in sampler2D sampler,const in int count,const in float fraction,out int index0){if(count==1||fraction<=texelFetch(sampler,0,0).x){index0=0;}else if(fraction>=texelFetch(sampler,count-1,0).x){index0=count-2;}else{int index=upperBound(sampler,count,fraction);if(index<count)index0=index-1;else index0=0;}}
+#endif
+#if defined(X3D_SURFACE_EMITTER)||defined(X3D_VOLUME_EMITTER)
+vec3 getRandomBarycentricCoord(){float u=random();float v=random();if(u+v>1.0){u=1.0-u;v=1.0-v;}float t=1.0-u-v;return vec3(t,u,v);}void getRandomPointOnSurface(const in sampler2D surface,const in int verticesIndex,const in int normalsIndex,out vec4 position,out vec3 normal){float lastAreaSoFar=texelFetch(surface,verticesIndex-1,0).x;float fraction=random()*lastAreaSoFar;int index0;int index1;int index2;float weight;interpolate(surface,verticesIndex,fraction,index0,index1,weight);index0*=3;index1=index0+1;index2=index0+2;vec4 vertex0=texelFetch(surface,verticesIndex+index0,0);vec4 vertex1=texelFetch(surface,verticesIndex+index1,0);vec4 vertex2=texelFetch(surface,verticesIndex+index2,0);vec3 normal0=texelFetch(surface,normalsIndex+index0,0).xyz;vec3 normal1=texelFetch(surface,normalsIndex+index1,0).xyz;vec3 normal2=texelFetch(surface,normalsIndex+index2,0).xyz;vec3 r=getRandomBarycentricCoord();position=r.z*vertex0+r.x*vertex1+r.y*vertex2;normal=save_normalize(r.z*normal0+r.x*normal1+r.y*normal2);}
+#endif
+
 ${this .functions .join ("\n")}
- vec4 getColor(const in float lifetime,const in float elapsedTime){if(numColors>0){float fraction=elapsedTime/lifetime;int index0;int index1;float weight;interpolate(colorRamp,numColors,fraction,index0,index1,weight);vec4 color0=texelFetch(colorRamp,numColors+index0,0);vec4 color1=texelFetch(colorRamp,numColors+index1,0);return mix(color0,color1,weight);}else{return vec4(1.0);}}void bounce(const in float deltaTime,const in vec4 fromPosition,inout vec4 toPosition,inout vec3 velocity){if(boundedHierarchyRoot<0)return;Line3 line=Line3(fromPosition.xyz,save_normalize(velocity));vec4 points[ARRAY_SIZE];vec3 normals[ARRAY_SIZE];int numIntersections=getIntersections(boundedVolume,boundedVerticesIndex,boundedNormalsIndex,boundedHierarchyIndex,boundedHierarchyRoot,line,points,normals);if(numIntersections==0)return;Plane3 plane1=plane3(line.point,line.direction);int index=min_index(points,numIntersections,0.0,plane1);if(index==-1)return;vec3 point=points[index].xyz;vec3 normal=save_normalize(normals[index]);Plane3 plane2=plane3(point,normal);if(sign(plane_distance(plane2,fromPosition.xyz))==sign(plane_distance(plane2,toPosition.xyz)))return;float damping=length(normals[index]);velocity=reflect(velocity,normal);toPosition=vec4(point+save_normalize(velocity)*0.0001,1.0);velocity*=damping;}int getTexCoordIndex0(const in float lifetime,const in float elapsedTime){if(numTexCoords==0){return-1;}else{float fraction=elapsedTime/lifetime;int index0=0;interpolate(texCoordRamp,numTexCoords,fraction,index0);return numTexCoords+index0*texCoordCount;}}void main(){int life=int(input0[0]);float lifetime=input0[1];float elapsedTime=input0[2]+deltaTime;srand((gl_VertexID+randomSeed)*randomSeed);if(elapsedTime>lifetime){lifetime=getRandomLifetime();elapsedTime=0.0;output0=vec4(max(life+1,1),lifetime,elapsedTime,getTexCoordIndex0(lifetime,elapsedTime));if(createParticles){output1=getColor(lifetime,elapsedTime);output2=vec4(getRandomVelocity(),0.0);output6=getRandomPosition();}else{output1=vec4(0.0);output2=vec4(0.0);output6=vec4(NaN);}}else{vec3 velocity=input2.xyz;vec4 position=input6;for(int i=0;i<numForces;++i){vec4 force=texelFetch(forces,i,0);float turbulence=force.w;vec3 normal=getRandomNormalWithDirectionAndAngle(force.xyz,turbulence);float speed=length(force.xyz);velocity+=normal*speed;}position.xyz+=velocity*deltaTime;bounce(deltaTime,input6,position,velocity);output0=vec4(life,lifetime,elapsedTime,getTexCoordIndex0(lifetime,elapsedTime));output1=getColor(lifetime,elapsedTime);output2=vec4(velocity,0.0);output6=position;}switch(geometryType){case POINT:case SPRITE:case GEOMETRY:{output3=vec4(1.0,0.0,0.0,0.0);output4=vec4(0.0,1.0,0.0,0.0);output5=vec4(0.0,0.0,1.0,0.0);break;}case LINE:{mat3 m=Matrix3(Quaternion(vec3(0.0,0.0,1.0),output2.xyz));output3=vec4(m[0],0.0);output4=vec4(m[1],0.0);output5=vec4(m[2],0.0);break;}default:{output3=vec4(particleSize.x,0.0,0.0,0.0);output4=vec4(0.0,particleSize.y,0.0,0.0);output5=vec4(0.0,0.0,1.0,0.0);break;}}}`
+ 
+#if X3D_NUM_COLORS>0
+vec4 getColor(const in float lifetime,const in float elapsedTime){float fraction=elapsedTime/lifetime;int index0;int index1;float weight;interpolate(colorRamp,X3D_NUM_COLORS,fraction,index0,index1,weight);vec4 color0=texelFetch(colorRamp,X3D_NUM_COLORS+index0,0);vec4 color1=texelFetch(colorRamp,X3D_NUM_COLORS+index1,0);return mix(color0,color1,weight);}
+#else
+#define getColor(lifetime,elapsedTime)(vec4(1.0))
+#endif
+#if defined(X3D_BOUNDED_VOLUME)
+void bounce(const in float deltaTime,const in vec4 fromPosition,inout vec4 toPosition,inout vec3 velocity){Line3 line=Line3(fromPosition.xyz,save_normalize(velocity));vec4 points[ARRAY_SIZE];vec3 normals[ARRAY_SIZE];int numIntersections=getIntersections(boundedVolume,boundedVerticesIndex,boundedNormalsIndex,boundedHierarchyIndex,boundedHierarchyRoot,line,points,normals);if(numIntersections==0)return;Plane3 plane1=plane3(line.point,line.direction);int index=min_index(points,numIntersections,0.0,plane1);if(index==-1)return;vec3 point=points[index].xyz;vec3 normal=save_normalize(normals[index]);Plane3 plane2=plane3(point,normal);if(sign(plane_distance(plane2,fromPosition.xyz))==sign(plane_distance(plane2,toPosition.xyz)))return;float damping=length(normals[index]);velocity=reflect(velocity,normal);toPosition=vec4(point+save_normalize(velocity)*0.0001,1.0);velocity*=damping;}
+#endif
+#if X3D_NUM_TEX_COORDS>0
+int getTexCoordIndex0(const in float lifetime,const in float elapsedTime){float fraction=elapsedTime/lifetime;int index0=0;interpolate(texCoordRamp,X3D_NUM_TEX_COORDS,fraction,index0);return X3D_NUM_TEX_COORDS+index0*texCoordCount;}
+#else
+#define getTexCoordIndex0(lifetime,elapsedTime)(-1)
+#endif
+void main(){int life=int(input0[0]);float lifetime=input0[1];float elapsedTime=input0[2]+deltaTime;srand((gl_VertexID+randomSeed)*randomSeed);if(elapsedTime>lifetime){lifetime=getRandomLifetime();elapsedTime=0.0;output0=vec4(max(life+1,1),lifetime,elapsedTime,getTexCoordIndex0(lifetime,elapsedTime));
+#if defined(X3D_CREATE_PARTICLES)
+output1=getColor(lifetime,elapsedTime);output2=vec4(getRandomVelocity(),0.0);output6=getRandomPosition();
+#else
+output1=vec4(0.0);output2=vec4(0.0);output6=vec4(NaN);
+#endif
+}else{vec3 velocity=input2.xyz;vec4 position=input6;
+#if X3D_NUM_FORCES>0
+for(int i=0;i<X3D_NUM_FORCES;++i){vec4 force=texelFetch(forces,i,0);float turbulence=force.w;vec3 normal=getRandomNormalWithDirectionAndAngle(force.xyz,turbulence);float speed=length(force.xyz);velocity+=normal*speed;}
+#endif
+position.xyz+=velocity*deltaTime;
+#if defined(X3D_BOUNDED_VOLUME)
+bounce(deltaTime,input6,position,velocity);
+#endif
+output0=vec4(life,lifetime,elapsedTime,getTexCoordIndex0(lifetime,elapsedTime));output1=getColor(lifetime,elapsedTime);output2=vec4(velocity,0.0);output6=position;}
+#if X3D_GEOMETRY_TYPE==POINT||X3D_GEOMETRY_TYPE==SPRITE||X3D_GEOMETRY_TYPE==GEOMETRY
+output3=vec4(1.0,0.0,0.0,0.0);output4=vec4(0.0,1.0,0.0,0.0);output5=vec4(0.0,0.0,1.0,0.0);
+#elif X3D_GEOMETRY_TYPE==LINE
+mat3 m=Matrix3(Quaternion(vec3(0.0,0.0,1.0),output2.xyz));output3=vec4(m[0],0.0);output4=vec4(m[1],0.0);output5=vec4(m[2],0.0);
+#else
+output3=vec4(particleSize.x,0.0,0.0,0.0);output4=vec4(0.0,particleSize.y,0.0,0.0);output5=vec4(0.0,0.0,1.0,0.0);
+#endif
+}`
 
       const fragmentShaderSource = /* glsl */ `#version 300 es
 precision highp float;void main(){}`
@@ -454,7 +573,16 @@ precision highp float;void main(){}`
       gl .linkProgram (program);
 
       if (!gl .getProgramParameter (program, gl .LINK_STATUS))
+      {
          console .error ("Couldn't initialize particle shader: " + gl .getProgramInfoLog (program));
+         // console .error (vertexShaderSource);
+      }
+
+      this .programs .set (key, program);
+
+      gl .useProgram (program);
+
+      // Attributes
 
       program .inputs = [
          [0, gl .getAttribLocation (program, "input0")],
@@ -462,16 +590,15 @@ precision highp float;void main(){}`
          [6, gl .getAttribLocation (program, "input6")],
       ];
 
+      // Uniforms
+
       program .randomSeed        = gl .getUniformLocation (program, "randomSeed");
-      program .geometryType      = gl .getUniformLocation (program, "geometryType");
-      program .createParticles   = gl .getUniformLocation (program, "createParticles");
       program .particleLifetime  = gl .getUniformLocation (program, "particleLifetime");
       program .lifetimeVariation = gl .getUniformLocation (program, "lifetimeVariation");
       program .deltaTime         = gl .getUniformLocation (program, "deltaTime");
       program .particleSize      = gl .getUniformLocation (program, "particleSize");
 
-      program .numForces = gl .getUniformLocation (program, "numForces");
-      program .forces    = gl .getUniformLocation (program, "forces");
+      program .forces = gl .getUniformLocation (program, "forces");
 
       program .boundedVerticesIndex  = gl .getUniformLocation (program, "boundedVerticesIndex");
       program .boundedNormalsIndex   = gl .getUniformLocation (program, "boundedNormalsIndex");
@@ -479,19 +606,17 @@ precision highp float;void main(){}`
       program .boundedHierarchyRoot  = gl .getUniformLocation (program, "boundedHierarchyRoot");
       program .boundedVolume         = gl .getUniformLocation (program, "boundedVolume");
 
-      program .numColors = gl .getUniformLocation (program, "numColors");
       program .colorRamp = gl .getUniformLocation (program, "colorRamp");
 
       program .texCoordCount = gl .getUniformLocation (program, "texCoordCount");
-      program .numTexCoords  = gl .getUniformLocation (program, "numTexCoords");
       program .texCoordRamp  = gl .getUniformLocation (program, "texCoordRamp");
 
-      for (const name of Object .keys (this .uniforms))
+      for (const name of this .uniforms .keys ())
          program [name] = gl .getUniformLocation (program, name);
 
-      program .NaN = gl .getUniformLocation (program, "NaN");
+      gl .uniform1f (gl .getUniformLocation (program, "NaN"), NaN);
 
-      gl .useProgram (program);
+      // Samplers
 
       for (const name of this .samplers)
       {
@@ -500,9 +625,14 @@ precision highp float;void main(){}`
          gl .uniform1i (location, program [name + "TextureUnit"] = browser .getTexture2DUnit ());
       }
 
-      gl .uniform1f (program .NaN, NaN);
-
       browser .resetTextureUnits ();
+
+      // Field uniforms
+
+      for (const callback of this .callbacks)
+         callback .call (this);
+
+      // Return
 
       return program;
    },
@@ -556,7 +686,7 @@ const X3DParticleEmitterNode_default_ = X3DParticleEmitterNode;
 Namespace_default().add ("X3DParticleEmitterNode", "x_ite/Components/ParticleSystems/X3DParticleEmitterNode", X3DParticleEmitterNode_default_);
 /* harmony default export */ const ParticleSystems_X3DParticleEmitterNode = (X3DParticleEmitterNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
-const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("standard/Math/Numbers/Vector3");
+const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/ParticleSystems/PointEmitter.js
 /*******************************************************************************
@@ -620,23 +750,6 @@ function PointEmitter (executionContext)
    this .addType ((X3DConstants_default()).PointEmitter);
 
    this ._position .setUnit ("length");
-
-   this .addUniform ("position",  "uniform vec3 position;");
-   this .addUniform ("direction", "uniform vec3 direction;");
-
-   this .addFunction (/* glsl */ `vec3 getRandomVelocity ()
-   {
-      if (direction == vec3 (0.0))
-         return getRandomSphericalVelocity ();
-
-      else
-         return direction * getRandomSpeed ();
-   }`);
-
-   this .addFunction (/* glsl */ `vec4 getRandomPosition ()
-   {
-      return vec4 (position, 1.0);
-   }`);
 }
 
 Object .assign (Object .setPrototypeOf (PointEmitter .prototype, ParticleSystems_X3DParticleEmitterNode .prototype),
@@ -651,14 +764,49 @@ Object .assign (Object .setPrototypeOf (PointEmitter .prototype, ParticleSystems
       this ._position  .addInterest ("set_position__",  this);
       this ._direction .addInterest ("set_direction__", this);
 
-      this .set_position__ ();
-      this .set_direction__ ();
+      this .addDefine ("#define X3D_POINT_EMITTER");
+
+      this .addUniform ("position",  "uniform vec3 position;");
+      this .addUniform ("direction", "uniform vec3 direction;");
+
+      this .addCallback (this .set_position__);
+      this .addCallback (this .set_direction__);
+
+      this .addFunction (/* glsl */ `vec3 getRandomVelocity ()
+      {
+         if (direction == vec3 (0.0))
+            return getRandomSphericalVelocity ();
+
+         else
+            return direction * getRandomSpeed ();
+      }`);
+
+      this .addFunction (/* glsl */ `vec4 getRandomPosition ()
+      {
+         return vec4 (position, 1.0);
+      }`);
    },
+   getBBox: (function ()
+   {
+      const bboxSize = new (Vector3_default()) ();
+
+      return function (bbox, { particleLifetime, lifetimeVariation })
+      {
+         const
+            maxParticleLifetime = particleLifetime * (1 + lifetimeVariation),
+            maxSpeed            = this ._speed .getValue () * (1 + this ._variation .getValue ()),
+            s                   = maxParticleLifetime * maxSpeed * 2;
+
+         return bbox .set (bboxSize .set (s, s, s), this ._position .getValue ());
+      };
+   })(),
    set_position__ ()
    {
-      const position = this ._position .getValue ();
+      const { x, y, z } = this ._position .getValue ();
 
-      this .setUniform ("uniform3f", "position", position .x, position .y, position .z);
+      this .setUniform ("uniform3f", "position", x, y, z);
+
+      this ._bbox_changed .addEvent ();
    },
    set_direction__: (() =>
    {
@@ -666,9 +814,9 @@ Object .assign (Object .setPrototypeOf (PointEmitter .prototype, ParticleSystems
 
       return function ()
       {
-         direction .assign (this ._direction .getValue ()) .normalize ();
+         const { x, y, z } = direction .assign (this ._direction .getValue ()) .normalize ();
 
-         this .setUniform ("uniform3f", "direction", direction .x, direction .y, direction .z);
+         this .setUniform ("uniform3f", "direction", x, y, z);
       };
    })(),
 });
@@ -875,7 +1023,7 @@ const X3DParticlePhysicsModelNode_default_ = X3DParticlePhysicsModelNode;
 Namespace_default().add ("X3DParticlePhysicsModelNode", "x_ite/Components/ParticleSystems/X3DParticlePhysicsModelNode", X3DParticlePhysicsModelNode_default_);
 /* harmony default export */ const ParticleSystems_X3DParticlePhysicsModelNode = (X3DParticlePhysicsModelNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
-const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("x_ite/Base/X3DCast");
+const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/ParticleSystems/BoundedPhysicsModel.js
 /*******************************************************************************
@@ -949,6 +1097,10 @@ Object .assign (Object .setPrototypeOf (BoundedPhysicsModel .prototype, Particle
 
       this .set_geometry__ ();
    },
+   getBBox ()
+   {
+      return this .geometryNode ?.getBBox ();
+   },
    set_geometry__ ()
    {
       this .geometryNode ?._rebuild .removeInterest ("addNodeEvent", this);
@@ -959,20 +1111,22 @@ Object .assign (Object .setPrototypeOf (BoundedPhysicsModel .prototype, Particle
    },
    addGeometry (boundedNormals, boundedVertices)
    {
-      const damping = this ._damping .getValue ();
+      if (!this .geometryNode)
+         return;
 
-      if (this .geometryNode && this ._enabled .getValue ())
-      {
-         const
-            normals  = this .geometryNode .getNormals ()  .getValue (),
-            vertices = this .geometryNode .getVertices () .getValue ();
+      if (!this ._enabled .getValue ())
+         return;
 
-         for (const value of normals)
-            boundedNormals .push (value * damping);
+      const
+         damping  = this ._damping .getValue (),
+         normals  = this .geometryNode .getNormals ()  .getValue (),
+         vertices = this .geometryNode .getVertices () .getValue ();
 
-         for (const value of vertices)
-            boundedVertices .push (value);
-      }
+      for (const value of normals)
+         boundedNormals .push (value * damping);
+
+      for (const value of vertices)
+         boundedVertices .push (value);
    },
 });
 
@@ -1069,6 +1223,7 @@ Namespace_default().add ("BoundedPhysicsModel", "x_ite/Components/ParticleSystem
 
 
 
+
 function ConeEmitter (executionContext)
 {
    ParticleSystems_X3DParticleEmitterNode .call (this, executionContext);
@@ -1077,30 +1232,6 @@ function ConeEmitter (executionContext)
 
    this ._position .setUnit ("length");
    this ._angle    .setUnit ("angle");
-
-   this .addUniform ("position",  "uniform vec3  position;");
-   this .addUniform ("direction", "uniform vec3  direction;");
-   this .addUniform ("angle",     "uniform float angle;");
-
-   this .addFunction (/* glsl */ `vec3 getRandomVelocity ()
-   {
-      if (direction == vec3 (0.0))
-      {
-         return getRandomSphericalVelocity ();
-      }
-      else
-      {
-         vec3  normal = getRandomNormalWithDirectionAndAngle (direction, angle);
-         float speed  = getRandomSpeed ();
-
-         return normal * speed;
-      }
-   }`);
-
-   this .addFunction (/* glsl */ `vec4 getRandomPosition ()
-   {
-      return vec4 (position, 1.0);
-   }`);
 }
 
 Object .assign (Object .setPrototypeOf (ConeEmitter .prototype, ParticleSystems_X3DParticleEmitterNode .prototype),
@@ -1116,21 +1247,63 @@ Object .assign (Object .setPrototypeOf (ConeEmitter .prototype, ParticleSystems_
       this ._direction .addInterest ("set_direction__", this);
       this ._angle     .addInterest ("set_angle__", this);
 
-      this .set_position__ ();
-      this .set_direction__ ();
-      this .set_angle__ ();
+      this .addDefine ("#define X3D_CONE_EMITTER");
+
+      this .addUniform ("position",  "uniform vec3  position;");
+      this .addUniform ("direction", "uniform vec3  direction;");
+      this .addUniform ("angle",     "uniform float angle;");
+
+      this .addCallback (this .set_position__);
+      this .addCallback (this .set_direction__);
+      this .addCallback (this .set_angle__);
+
+      this .addFunction (/* glsl */ `vec3 getRandomVelocity ()
+      {
+         if (direction == vec3 (0.0))
+         {
+            return getRandomSphericalVelocity ();
+         }
+         else
+         {
+            vec3  normal = getRandomNormalWithDirectionAndAngle (direction, angle);
+            float speed  = getRandomSpeed ();
+
+            return normal * speed;
+         }
+      }`);
+
+      this .addFunction (/* glsl */ `vec4 getRandomPosition ()
+      {
+         return vec4 (position, 1.0);
+      }`);
    },
+   getBBox: (function ()
+   {
+      const bboxSize = new (Vector3_default()) ();
+
+      return function (bbox, { particleLifetime, lifetimeVariation })
+      {
+         const
+            maxParticleLifetime = particleLifetime * (1 + lifetimeVariation),
+            maxSpeed            = this ._speed .getValue () * (1 + this ._variation .getValue ()),
+            s                   = maxParticleLifetime * maxSpeed * 2;
+
+         return bbox .set (bboxSize .set (s, s, s), this ._position .getValue ());
+      };
+   })(),
    set_position__ ()
    {
-      const position = this ._position .getValue ();
+      const { x, y, z } = this ._position .getValue ();
 
-      this .setUniform ("uniform3f", "position", position .x, position .y, position .z);
+      this .setUniform ("uniform3f", "position", x, y, z );
+
+      this ._bbox_changed .addEvent ();
    },
    set_direction__ ()
    {
-      const direction = this ._direction .getValue ();
+      const { x, y, z } = this ._direction .getValue ();
 
-      this .setUniform ("uniform3f", "direction", direction .x, direction .y, direction .z);
+      this .setUniform ("uniform3f", "direction", x, y, z );
    },
    set_angle__ ()
    {
@@ -1236,6 +1409,7 @@ Namespace_default().add ("ConeEmitter", "x_ite/Components/ParticleSystems/ConeEm
 
 
 
+
 function ExplosionEmitter (executionContext)
 {
    ParticleSystems_X3DParticleEmitterNode .call (this, executionContext);
@@ -1243,18 +1417,6 @@ function ExplosionEmitter (executionContext)
    this .addType ((X3DConstants_default()).ExplosionEmitter);
 
    this ._position .setUnit ("length");
-
-   this .addUniform ("position", "uniform vec3 position;");
-
-   this .addFunction (/* glsl */ `vec3 getRandomVelocity ()
-   {
-      return getRandomSphericalVelocity ();
-   }`);
-
-   this .addFunction (/* glsl */ `vec4 getRandomPosition ()
-   {
-      return vec4 (position, 1.0);
-   }`);
 }
 
 Object .assign (Object .setPrototypeOf (ExplosionEmitter .prototype, ParticleSystems_X3DParticleEmitterNode .prototype),
@@ -1268,17 +1430,45 @@ Object .assign (Object .setPrototypeOf (ExplosionEmitter .prototype, ParticleSys
 
       this ._position .addInterest ("set_position__", this);
 
-      this .set_position__ ();
+      this .addDefine ("#define X3D_EXPLOSION_EMITTER");
+      this .addUniform ("position", "uniform vec3 position;");
+      this .addCallback (this .set_position__);
+
+      this .addFunction (/* glsl */ `vec3 getRandomVelocity ()
+      {
+         return getRandomSphericalVelocity ();
+      }`);
+
+      this .addFunction (/* glsl */ `vec4 getRandomPosition ()
+      {
+         return vec4 (position, 1.0);
+      }`);
    },
+   getBBox: (function ()
+   {
+      const bboxSize = new (Vector3_default()) ();
+
+      return function (bbox, { particleLifetime, lifetimeVariation })
+      {
+         const
+            maxParticleLifetime = particleLifetime * (1 + lifetimeVariation),
+            maxSpeed            = this ._speed .getValue () * (1 + this ._variation .getValue ()),
+            s                   = maxParticleLifetime * maxSpeed * 2;
+
+         return bbox .set (bboxSize .set (s, s, s), this ._position .getValue ());
+      };
+   })(),
    isExplosive ()
    {
       return true;
    },
    set_position__ ()
    {
-      const position = this ._position .getValue ();
+      const { x, y, z } = this ._position .getValue ();
 
-      this .setUniform ("uniform3f", "position", position .x, position .y, position .z);
+      this .setUniform ("uniform3f", "position", x, y, z);
+
+      this ._bbox_changed .addEvent ();
    },
 });
 
@@ -1450,34 +1640,34 @@ const ForcePhysicsModel_default_ = ForcePhysicsModel;
 Namespace_default().add ("ForcePhysicsModel", "x_ite/Components/ParticleSystems/ForcePhysicsModel", ForcePhysicsModel_default_);
 /* harmony default export */ const ParticleSystems_ForcePhysicsModel = (ForcePhysicsModel_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Shape/X3DShapeNode\")"
-const X3DShapeNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("x_ite/Components/Shape/X3DShapeNode");
+const X3DShapeNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("x_ite/Components/Shape/X3DShapeNode");
 var X3DShapeNode_default = /*#__PURE__*/__webpack_require__.n(X3DShapeNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Browser/Rendering/GeometryContext\")"
-const GeometryContext_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("x_ite/Browser/Rendering/GeometryContext");
+const GeometryContext_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("x_ite/Browser/Rendering/GeometryContext");
 var GeometryContext_default = /*#__PURE__*/__webpack_require__.n(GeometryContext_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Rendering/VertexArray\")"
-const VertexArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("x_ite/Rendering/VertexArray");
+const VertexArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("x_ite/Rendering/VertexArray");
 var VertexArray_default = /*#__PURE__*/__webpack_require__.n(VertexArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Rendering/TraverseType\")"
-const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("x_ite/Rendering/TraverseType");
+const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("x_ite/Rendering/TraverseType");
 var TraverseType_default = /*#__PURE__*/__webpack_require__.n(TraverseType_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Browser/Shape/AlphaMode\")"
-const AlphaMode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("x_ite/Browser/Shape/AlphaMode");
+const AlphaMode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("x_ite/Browser/Shape/AlphaMode");
 var AlphaMode_default = /*#__PURE__*/__webpack_require__.n(AlphaMode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Rendering/LineSet\")"
-const LineSet_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("x_ite/Components/Rendering/LineSet");
+const LineSet_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("x_ite/Components/Rendering/LineSet");
 var LineSet_default = /*#__PURE__*/__webpack_require__.n(LineSet_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Rendering/Coordinate\")"
-const Coordinate_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("x_ite/Components/Rendering/Coordinate");
+const Coordinate_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("x_ite/Components/Rendering/Coordinate");
 var Coordinate_default = /*#__PURE__*/__webpack_require__.n(Coordinate_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix4\")"
-const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("standard/Math/Numbers/Matrix4");
+const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("standard/Math/Numbers/Matrix4");
 var Matrix4_default = /*#__PURE__*/__webpack_require__.n(Matrix4_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix3\")"
-const Matrix3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("standard/Math/Numbers/Matrix3");
+const Matrix3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("standard/Math/Numbers/Matrix3");
 var Matrix3_default = /*#__PURE__*/__webpack_require__.n(Matrix3_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Plane3\")"
-const Plane3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("standard/Math/Geometry/Plane3");
+const Plane3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("standard/Math/Geometry/Plane3");
 var Plane3_default = /*#__PURE__*/__webpack_require__.n(Plane3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/standard/Math/Algorithms/QuickSort.js
 /*******************************************************************************
@@ -2133,14 +2323,16 @@ Object .assign (Object .setPrototypeOf (ParticleSystem .prototype, (X3DShapeNode
       this .getLive () .addInterest ("set_live__", this);
 
       this ._enabled           .addInterest ("set_enabled__",           this);
-      this ._createParticles   .addInterest ("set_createParticles__",   this);
       this ._geometryType      .addInterest ("set_geometryType__",      this);
       this ._geometryType      .addInterest ("set_texCoord__",          this);
       this ._maxParticles      .addInterest ("set_enabled__",           this);
       this ._particleLifetime  .addInterest ("set_particleLifetime__",  this);
+      this ._particleLifetime  .addInterest ("set_bbox__",              this);
       this ._lifetimeVariation .addInterest ("set_lifetimeVariation__", this);
+      this ._lifetimeVariation .addInterest ("set_bbox__",              this);
       this ._particleSize      .addInterest ("set_particleSize__",      this);
       this ._emitter           .addInterest ("set_emitter__",           this);
+      this ._emitter           .addInterest ("set_bbox__",              this);
       this ._physics           .addInterest ("set_physics__",           this);
       this ._colorKey          .addInterest ("set_color__",             this);
       this ._color             .addInterest ("set_colorRamp__",         this);
@@ -2196,13 +2388,13 @@ Object .assign (Object .setPrototypeOf (ParticleSystem .prototype, (X3DShapeNode
       this .set_emitter__ ();
       this .set_enabled__ ();
       this .set_geometryType__ ();
-      this .set_createParticles__ ();
       this .set_particleLifetime__ ();
       this .set_lifetimeVariation__ ();
       this .set_particleSize__ ();
       this .set_physics__ ();
       this .set_colorRamp__ ();
       this .set_texCoordRamp__ ();
+      this .set_bbox__ ();
    },
    getShapeKey ()
    {
@@ -2233,9 +2425,28 @@ Object .assign (Object .setPrototypeOf (ParticleSystem .prototype, (X3DShapeNode
    set_bbox__ ()
    {
       if (this ._bboxSize .getValue () .equals (this .getDefaultBBoxSize ()))
-         this .bbox .set ((Vector3_default()).One, (Vector3_default()).Zero);
+      {
+         if (this .boundedPhysicsModelNodes .length)
+         {
+            this .bbox .set ();
+
+            for (const boundedPhysicsModelNode of this .boundedPhysicsModelNodes)
+            {
+               const bbox = boundedPhysicsModelNode .getBBox ();
+
+               if (bbox)
+                  this .bbox .add (bbox);
+            }
+         }
+         else
+         {
+            this .emitterNode ?.getBBox (this .bbox, this);
+         }
+      }
       else
+      {
          this .bbox .set (this ._bboxSize .getValue (), this ._bboxCenter .getValue ());
+      }
 
       this .bboxSize   .assign (this .bbox .size);
       this .bboxCenter .assign (this .bbox .center);
@@ -2301,7 +2512,7 @@ Object .assign (Object .setPrototypeOf (ParticleSystem .prototype, (X3DShapeNode
    {
       if (this ._enabled .getValue () && this ._maxParticles .getValue ())
       {
-         if (! this ._isActive .getValue ())
+         if (!this ._isActive .getValue ())
          {
             if (this .getLive () .getValue ())
             {
@@ -2334,10 +2545,6 @@ Object .assign (Object .setPrototypeOf (ParticleSystem .prototype, (X3DShapeNode
       }
 
       this .set_maxParticles__ ();
-   },
-   set_createParticles__ ()
-   {
-      this .createParticles = this ._createParticles .getValue ();
    },
    set_geometryType__ ()
    {
@@ -2418,7 +2625,7 @@ Object .assign (Object .setPrototypeOf (ParticleSystem .prototype, (X3DShapeNode
       this .maxParticles = maxParticles;
       this .numParticles = Math .min (lastNumParticles, maxParticles);
 
-      if (! this .emitterNode .isExplosive ())
+      if (!this .emitterNode .isExplosive ())
          this .creationTime = Date .now () / 1000;
 
       this .resizeBuffers (lastNumParticles);
@@ -2426,11 +2633,11 @@ Object .assign (Object .setPrototypeOf (ParticleSystem .prototype, (X3DShapeNode
    },
    set_particleLifetime__ ()
    {
-      this .particleLifetime = this ._particleLifetime .getValue ();
+      this .particleLifetime = Math .max (this ._particleLifetime .getValue (), 0);
    },
    set_lifetimeVariation__ ()
    {
-      this .lifetimeVariation = this ._lifetimeVariation .getValue ();
+      this .lifetimeVariation = Math .max (this ._lifetimeVariation .getValue (), 0);
    },
    set_particleSize__ ()
    {
@@ -2439,12 +2646,12 @@ Object .assign (Object .setPrototypeOf (ParticleSystem .prototype, (X3DShapeNode
    },
    set_emitter__ ()
    {
-      this .emitterNode = X3DCast_default() ((X3DConstants_default()).X3DParticleEmitterNode, this ._emitter);
+      this .emitterNode ?._bbox_changed .removeInterest ("set_bbox__", this);
 
-      if (! this .emitterNode)
-         this .emitterNode = this .getBrowser () .getDefaultEmitter ();
+      this .emitterNode = X3DCast_default() ((X3DConstants_default()).X3DParticleEmitterNode, this ._emitter)
+         ?? this .getBrowser () .getDefaultEmitter ();
 
-      this .createParticles = this ._createParticles .getValue ();
+      this .emitterNode ._bbox_changed .addInterest ("set_bbox__", this);
    },
    set_physics__ ()
    {
@@ -2453,8 +2660,11 @@ Object .assign (Object .setPrototypeOf (ParticleSystem .prototype, (X3DShapeNode
          forcePhysicsModelNodes   = this .forcePhysicsModelNodes,
          boundedPhysicsModelNodes = this .boundedPhysicsModelNodes;
 
-      for (let i = 0, length = boundedPhysicsModelNodes .length; i < length; ++ i)
-         boundedPhysicsModelNodes [i] .removeInterest ("set_boundedPhysics__", this);
+      for (const boundedPhysicsModelNode of boundedPhysicsModelNodes)
+      {
+         boundedPhysicsModelNode .removeInterest ("set_boundedPhysics__", this);
+         boundedPhysicsModelNode .removeInterest ("set_bbox__",           this);
+      }
 
       forcePhysicsModelNodes   .length = 0;
       boundedPhysicsModelNodes .length = 0;
@@ -2479,7 +2689,6 @@ Object .assign (Object .setPrototypeOf (ParticleSystem .prototype, (X3DShapeNode
                   }
                   case (X3DConstants_default()).BoundedPhysicsModel:
                   {
-                     innerNode .addInterest ("set_boundedPhysics__", this);
                      boundedPhysicsModelNodes .push (innerNode);
                      break;
                   }
@@ -2492,6 +2701,12 @@ Object .assign (Object .setPrototypeOf (ParticleSystem .prototype, (X3DShapeNode
          }
          catch
          { }
+      }
+
+      for (const boundedPhysicsModelNode of boundedPhysicsModelNodes)
+      {
+         boundedPhysicsModelNode .addInterest ("set_boundedPhysics__", this);
+         boundedPhysicsModelNode .addInterest ("set_bbox__",           this);
       }
 
       this .set_boundedPhysics__ ();
@@ -2543,7 +2758,7 @@ Object .assign (Object .setPrototypeOf (ParticleSystem .prototype, (X3DShapeNode
          gl .bindTexture (gl .TEXTURE_2D, this .boundedTexture);
          gl .texImage2D (gl .TEXTURE_2D, 0, gl .RGBA32F, boundedArraySize, boundedArraySize, 0, gl .RGBA, gl .FLOAT, boundedArray);
       }
-    },
+   },
    set_colorRamp__ ()
    {
       if (this .colorRampNode)
@@ -2732,6 +2947,8 @@ Object .assign (Object .setPrototypeOf (ParticleSystem .prototype, (X3DShapeNode
       }
       else
       {
+         this .createParticles = this ._createParticles .getValue ();
+
          if (this .numParticles < this .maxParticles)
          {
             const
@@ -2765,7 +2982,7 @@ Object .assign (Object .setPrototypeOf (ParticleSystem .prototype, (X3DShapeNode
 
          for (let i = 0; i < numForces; ++ i)
          {
-            disabledForces += ! forcePhysicsModelNodes [i] .addForce (i - disabledForces, emitterNode, timeByMass, forces);
+            disabledForces += !forcePhysicsModelNodes [i] .addForce (i - disabledForces, emitterNode, timeByMass, forces);
          }
 
          this .numForces = numForces -= disabledForces;
@@ -3110,7 +3327,7 @@ const ParticleSystem_default_ = ParticleSystem;
 Namespace_default().add ("ParticleSystem", "x_ite/Components/ParticleSystems/ParticleSystem", ParticleSystem_default_);
 /* harmony default export */ const ParticleSystems_ParticleSystem = (ParticleSystem_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Rendering/IndexedLineSet\")"
-const IndexedLineSet_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("x_ite/Components/Rendering/IndexedLineSet");
+const IndexedLineSet_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("x_ite/Components/Rendering/IndexedLineSet");
 var IndexedLineSet_default = /*#__PURE__*/__webpack_require__.n(IndexedLineSet_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/ParticleSystems/PolylineEmitter.js
 /*******************************************************************************
@@ -3174,54 +3391,9 @@ function PolylineEmitter (executionContext)
 
    this .addType ((X3DConstants_default()).PolylineEmitter);
 
+   this .verticesIndex  = -1;
    this .polylinesNode  = new (IndexedLineSet_default()) (executionContext);
    this .polylinesArray = new Float32Array ();
-
-   this .addSampler ("polylines");
-
-   this .addUniform ("direction",     "uniform vec3 direction;");
-   this .addUniform ("verticesIndex", "uniform int verticesIndex;");
-   this .addUniform ("polylines",     "uniform sampler2D polylines;");
-
-   this .addFunction (/* glsl */ `vec3 getRandomVelocity ()
-   {
-      if (direction == vec3 (0.0))
-         return getRandomSphericalVelocity ();
-
-      else
-         return direction * getRandomSpeed ();
-   }`);
-
-   this .addFunction (/* glsl */ `vec4 getRandomPosition ()
-   {
-      if (verticesIndex < 0)
-      {
-         return vec4 (NaN);
-      }
-      else
-      {
-         // Determine index0, index1 and weight.
-
-         float lastLengthSoFar = texelFetch (polylines, verticesIndex - 1, 0) .x;
-         float fraction        = random () * lastLengthSoFar;
-
-         int   index0 = 0;
-         int   index1 = 0;
-         float weight = 0.0;
-
-         interpolate (polylines, verticesIndex, fraction, index0, index1, weight);
-
-         // Interpolate and return position.
-
-         index0 *= 2;
-         index1  = index0 + 1;
-
-         vec4 vertex0 = texelFetch (polylines, verticesIndex + index0, 0);
-         vec4 vertex1 = texelFetch (polylines, verticesIndex + index1, 0);
-
-         return mix (vertex0, vertex1, weight);
-      }
-   }`);
 }
 
 Object .assign (Object .setPrototypeOf (PolylineEmitter .prototype, ParticleSystems_X3DParticleEmitterNode .prototype),
@@ -3254,20 +3426,88 @@ Object .assign (Object .setPrototypeOf (PolylineEmitter .prototype, ParticleSyst
       this .polylinesNode .setup ();
       this .polylinesNode ._rebuild .addInterest ("set_polylines__", this);
 
-      this .set_direction__ ();
+      this .addDefine ("#define X3D_POLYLINE_EMITTER");
+      this .addSampler ("polylines");
+
+      this .addUniform ("direction",     "uniform vec3 direction;");
+      this .addUniform ("verticesIndex", "uniform int verticesIndex;");
+      this .addUniform ("polylines",     "uniform sampler2D polylines;");
+
+      this .addCallback (this .set_direction__);
+      this .addCallback (this .set_verticesIndex__);
+
+      this .addFunction (/* glsl */ `vec3 getRandomVelocity ()
+      {
+         if (direction == vec3 (0.0))
+            return getRandomSphericalVelocity ();
+
+         else
+            return direction * getRandomSpeed ();
+      }`);
+
+      this .addFunction (/* glsl */ `vec4 getRandomPosition ()
+      {
+         if (verticesIndex < 0)
+         {
+            return vec4 (NaN);
+         }
+         else
+         {
+            // Determine index0, index1 and weight.
+
+            float lastLengthSoFar = texelFetch (polylines, verticesIndex - 1, 0) .x;
+            float fraction        = random () * lastLengthSoFar;
+
+            int   index0 = 0;
+            int   index1 = 0;
+            float weight = 0.0;
+
+            interpolate (polylines, verticesIndex, fraction, index0, index1, weight);
+
+            // Interpolate and return position.
+
+            index0 *= 2;
+            index1  = index0 + 1;
+
+            vec4 vertex0 = texelFetch (polylines, verticesIndex + index0, 0);
+            vec4 vertex1 = texelFetch (polylines, verticesIndex + index1, 0);
+
+            return mix (vertex0, vertex1, weight);
+         }
+      }`);
+
       this .set_polylines__ ();
    },
+   getBBox: (function ()
+   {
+      const bboxSize = new (Vector3_default()) ();
+
+      return function (bbox, { particleLifetime, lifetimeVariation })
+      {
+         const
+            maxParticleLifetime = particleLifetime * (1 + lifetimeVariation),
+            maxSpeed            = this ._speed .getValue () * (1 + this ._variation .getValue ()),
+            s                   = maxParticleLifetime * maxSpeed * 2;
+
+         return bbox .set (bboxSize .set (s, s, s), this .polylinesNode .getBBox () .center)
+            .add (this .polylinesNode .getBBox ());
+      };
+   })(),
    set_direction__: (() =>
    {
       const direction = new (Vector3_default()) ();
 
       return function ()
       {
-         direction .assign (this ._direction .getValue ()) .normalize ();
+         const { x, y, z } = direction .assign (this ._direction .getValue ()) .normalize ();
 
-         this .setUniform ("uniform3f", "direction", direction .x, direction .y, direction .z);
+         this .setUniform ("uniform3f", "direction", x, y, z);
       };
    })(),
+   set_verticesIndex__ ()
+   {
+      this .setUniform ("uniform1i", "verticesIndex", this .verticesIndex);
+   },
    set_polylines__: (() =>
    {
       const
@@ -3302,13 +3542,17 @@ Object .assign (Object .setPrototypeOf (PolylineEmitter .prototype, ParticleSyst
 
          polylinesArray .set (vertices, verticesIndex * 4);
 
-         this .setUniform ("uniform1i", "verticesIndex", numVertices ? verticesIndex : -1);
+         this .verticesIndex = numVertices ? verticesIndex : -1;
 
          if (polylineArraySize)
          {
             gl .bindTexture (gl .TEXTURE_2D, this .polylinesTexture);
             gl .texImage2D (gl .TEXTURE_2D, 0, gl .RGBA32F, polylineArraySize, polylineArraySize, 0, gl .RGBA, gl .FLOAT, polylinesArray);
          }
+
+         this .set_verticesIndex__ ();
+
+         this ._bbox_changed .addEvent ();
       };
    })(),
    activateTextures (gl, program)
@@ -3364,7 +3608,7 @@ const PolylineEmitter_default_ = PolylineEmitter;
 Namespace_default().add ("PolylineEmitter", "x_ite/Components/ParticleSystems/PolylineEmitter", PolylineEmitter_default_);
 /* harmony default export */ const ParticleSystems_PolylineEmitter = (PolylineEmitter_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Triangle3\")"
-const Triangle3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("standard/Math/Geometry/Triangle3");
+const Triangle3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("standard/Math/Geometry/Triangle3");
 var Triangle3_default = /*#__PURE__*/__webpack_require__.n(Triangle3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/ParticleSystems/SurfaceEmitter.js
 /*******************************************************************************
@@ -3429,39 +3673,10 @@ function SurfaceEmitter (executionContext)
 
    this .addType ((X3DConstants_default()).SurfaceEmitter);
 
-   this .surfaceNode  = null;
-   this .surfaceArray = new Float32Array ();
-
-   this .addSampler ("surface");
-
-   this .addUniform ("solid",         "uniform bool solid;");
-   this .addUniform ("verticesIndex", "uniform int verticesIndex;");
-   this .addUniform ("normalsIndex",  "uniform int normalsIndex;");
-   this .addUniform ("surface",       "uniform sampler2D surface;");
-
-   this .addFunction (/* glsl */ `vec4 position; vec3 getRandomVelocity ()
-   {
-      if (verticesIndex < 0)
-      {
-         return vec3 (0.0);
-      }
-      else
-      {
-         vec3 normal;
-
-         getRandomPointOnSurface (surface, verticesIndex, normalsIndex, position, normal);
-
-         if (solid == false && random () > 0.5)
-            normal = -normal;
-
-         return normal * getRandomSpeed ();
-      }
-   }`);
-
-   this .addFunction (/* glsl */ `vec4 getRandomPosition ()
-   {
-      return verticesIndex < 0 ? vec4 (NaN) : position;
-   }`);
+   this .verticesIndex = -1;
+   this .normalsIndex  = -1;
+   this .surfaceNode   = null;
+   this .surfaceArray  = new Float32Array ();
 }
 
 Object .assign (Object .setPrototypeOf (SurfaceEmitter .prototype, ParticleSystems_X3DParticleEmitterNode .prototype),
@@ -3483,8 +3698,62 @@ Object .assign (Object .setPrototypeOf (SurfaceEmitter .prototype, ParticleSyste
 
       this ._surface .addInterest ("set_surface__", this);
 
+      this .addDefine ("#define X3D_SURFACE_EMITTER");
+      this .addSampler ("surface");
+
+      this .addUniform ("solid",         "uniform bool solid;");
+      this .addUniform ("verticesIndex", "uniform int verticesIndex;");
+      this .addUniform ("normalsIndex",  "uniform int normalsIndex;");
+      this .addUniform ("surface",       "uniform sampler2D surface;");
+
+      this .addCallback (this .set_solid__);
+      this .addCallback (this .set_verticesIndex__);
+      this .addCallback (this .set_normalsIndex__);
+
+      this .addFunction (/* glsl */ `vec4 position; vec3 getRandomVelocity ()
+      {
+         if (verticesIndex < 0)
+         {
+            return vec3 (0.0);
+         }
+         else
+         {
+            vec3 normal;
+
+            getRandomPointOnSurface (surface, verticesIndex, normalsIndex, position, normal);
+
+            if (solid == false && random () > 0.5)
+               normal = -normal;
+
+            return normal * getRandomSpeed ();
+         }
+      }`);
+
+      this .addFunction (/* glsl */ `vec4 getRandomPosition ()
+      {
+         return verticesIndex < 0 ? vec4 (NaN) : position;
+      }`);
+
       this .set_surface__ ();
    },
+   getBBox: (function ()
+   {
+      const bboxSize = new (Vector3_default()) ();
+
+      return function (bbox, { particleLifetime, lifetimeVariation })
+      {
+         if (!this .surfaceNode)
+            return bbox .set ();
+
+         const
+            maxParticleLifetime = particleLifetime * (1 + lifetimeVariation),
+            maxSpeed            = this ._speed .getValue () * (1 + this ._variation .getValue ()),
+            s                   = maxParticleLifetime * maxSpeed * 2;
+
+         return bbox .set (bboxSize .set (s, s, s), this .surfaceNode .getBBox () .center)
+            .add (this .surfaceNode .getBBox ());
+      };
+   })(),
    set_surface__ ()
    {
       if (this .surfaceNode)
@@ -3506,8 +3775,15 @@ Object .assign (Object .setPrototypeOf (SurfaceEmitter .prototype, ParticleSyste
    },
    set_solid__ ()
    {
-      if (this .surfaceNode)
-         this .setUniform ("uniform1i", "solid", this .surfaceNode ._solid .getValue ());
+      this .setUniform ("uniform1i", "solid", this .surfaceNode ?._solid .getValue () ?? true);
+   },
+   set_verticesIndex__ ()
+   {
+      this .setUniform ("uniform1i", "verticesIndex", this .verticesIndex);
+   },
+   set_normalsIndex__ ()
+   {
+      this .setUniform ("uniform1i", "normalsIndex", this .normalsIndex);
    },
    set_geometry__: (() =>
    {
@@ -3558,8 +3834,8 @@ Object .assign (Object .setPrototypeOf (SurfaceEmitter .prototype, ParticleSyste
                surfaceArray [s + 2] = normals [n + 2];
             }
 
-            this .setUniform ("uniform1i", "verticesIndex", numVertices ? verticesIndex : -1);
-            this .setUniform ("uniform1i", "normalsIndex",  numVertices ? normalsIndex  : -1);
+            this .verticesIndex = numVertices ? verticesIndex : -1;
+            this .normalsIndex  = numVertices ? normalsIndex  : -1;
 
             if (surfaceArraySize)
             {
@@ -3569,9 +3845,14 @@ Object .assign (Object .setPrototypeOf (SurfaceEmitter .prototype, ParticleSyste
          }
          else
          {
-            this .setUniform ("uniform1i", "verticesIndex", -1);
-            this .setUniform ("uniform1i", "normalsIndex",  -1);
+            this .verticesIndex = -1;
+            this .normalsIndex  = -1;
          }
+
+         this .set_verticesIndex__ ();
+         this .set_normalsIndex__ ();
+
+         this ._bbox_changed .addEvent ();
       };
    })(),
    activateTextures (gl, program)
@@ -3624,7 +3905,7 @@ const SurfaceEmitter_default_ = SurfaceEmitter;
 Namespace_default().add ("SurfaceEmitter", "x_ite/Components/ParticleSystems/SurfaceEmitter", SurfaceEmitter_default_);
 /* harmony default export */ const ParticleSystems_SurfaceEmitter = (SurfaceEmitter_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Geometry3D/IndexedFaceSet\")"
-const IndexedFaceSet_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("x_ite/Components/Geometry3D/IndexedFaceSet");
+const IndexedFaceSet_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("x_ite/Components/Geometry3D/IndexedFaceSet");
 var IndexedFaceSet_default = /*#__PURE__*/__webpack_require__.n(IndexedFaceSet_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/ParticleSystems/VolumeEmitter.js
 /*******************************************************************************
@@ -3690,71 +3971,12 @@ function VolumeEmitter (executionContext)
 
    this .addType ((X3DConstants_default()).VolumeEmitter);
 
-   this .volumeNode  = new (IndexedFaceSet_default()) (executionContext);
-   this .volumeArray = new Float32Array ();
-
-   this .addSampler ("volume");
-
-   this .addUniform ("direction",      "uniform vec3 direction;");
-   this .addUniform ("verticesIndex",  "uniform int verticesIndex;");
-   this .addUniform ("normalsIndex",   "uniform int normalsIndex;");
-   this .addUniform ("hierarchyIndex", "uniform int hierarchyIndex;");
-   this .addUniform ("hierarchyRoot",  "uniform int hierarchyRoot;");
-   this .addUniform ("volume",         "uniform sampler2D volume;");
-
-   this .addFunction (/* glsl */ `vec3 getRandomVelocity ()
-   {
-      if (hierarchyRoot < 0)
-      {
-         return vec3 (0.0);
-      }
-      else
-      {
-         if (direction == vec3 (0.0))
-            return getRandomSphericalVelocity ();
-
-         else
-            return direction * getRandomSpeed ();
-      }
-   }`);
-
-   this .addFunction (/* glsl */ `vec4 getRandomPosition ()
-   {
-      if (hierarchyRoot < 0)
-      {
-         return vec4 (NaN);
-      }
-      else
-      {
-         vec4 point;
-         vec3 normal;
-
-         getRandomPointOnSurface (volume, verticesIndex, normalsIndex, point, normal);
-
-         Line3 line = Line3 (point .xyz, getRandomSurfaceNormal (normal));
-
-         vec4 points [ARRAY_SIZE];
-
-         int numIntersections = getIntersections (volume, verticesIndex, hierarchyIndex, hierarchyRoot, line, points);
-
-         numIntersections -= numIntersections % 2; // We need an even count of intersections.
-
-         switch (numIntersections)
-         {
-            case 0:
-               return vec4 (0.0);
-            case 2:
-               break;
-            default:
-               sort (points, numIntersections, plane3 (line .point, line .direction));
-               break;
-         }
-
-         int index = int (fract (random ()) * float (numIntersections / 2)) * 2; // Select random intersection.
-
-         return mix (points [index], points [index + 1], random ());
-      }
-   }`);
+   this .verticesIndex  = -1;
+   this .normalsIndex   = -1;
+   this .hierarchyIndex = -1;
+   this .hierarchyRoot  = -1;
+   this .volumeNode     = new (IndexedFaceSet_default()) (executionContext);
+   this .volumeArray    = new Float32Array ();
 }
 
 Object .assign (Object .setPrototypeOf (VolumeEmitter .prototype, ParticleSystems_X3DParticleEmitterNode .prototype),
@@ -3789,20 +4011,120 @@ Object .assign (Object .setPrototypeOf (VolumeEmitter .prototype, ParticleSystem
       this .volumeNode .setup ();
       this .volumeNode ._rebuild .addInterest ("set_geometry__", this);
 
-      this .set_direction__ ();
+      this .addDefine ("#define X3D_VOLUME_EMITTER");
+      this .addSampler ("volume");
+
+      this .addUniform ("direction",      "uniform vec3 direction;");
+      this .addUniform ("verticesIndex",  "uniform int verticesIndex;");
+      this .addUniform ("normalsIndex",   "uniform int normalsIndex;");
+      this .addUniform ("hierarchyIndex", "uniform int hierarchyIndex;");
+      this .addUniform ("hierarchyRoot",  "uniform int hierarchyRoot;");
+      this .addUniform ("volume",         "uniform sampler2D volume;");
+
+      this .addCallback (this .set_direction__);
+      this .addCallback (this .set_verticesIndex__);
+      this .addCallback (this .set_normalsIndex__);
+      this .addCallback (this .set_hierarchyIndex__);
+      this .addCallback (this .set_hierarchyRoot__);
+
+      this .addFunction (/* glsl */ `vec3 getRandomVelocity ()
+      {
+         if (hierarchyRoot < 0)
+         {
+            return vec3 (0.0);
+         }
+         else
+         {
+            if (direction == vec3 (0.0))
+               return getRandomSphericalVelocity ();
+
+            else
+               return direction * getRandomSpeed ();
+         }
+      }`);
+
+      this .addFunction (/* glsl */ `vec4 getRandomPosition ()
+      {
+         if (hierarchyRoot < 0)
+         {
+            return vec4 (NaN);
+         }
+         else
+         {
+            vec4 point;
+            vec3 normal;
+
+            getRandomPointOnSurface (volume, verticesIndex, normalsIndex, point, normal);
+
+            Line3 line = Line3 (point .xyz, getRandomSurfaceNormal (normal));
+
+            vec4 points [ARRAY_SIZE];
+
+            int numIntersections = getIntersections (volume, verticesIndex, hierarchyIndex, hierarchyRoot, line, points);
+
+            numIntersections -= numIntersections % 2; // We need an even count of intersections.
+
+            switch (numIntersections)
+            {
+               case 0:
+                  return vec4 (0.0);
+               case 2:
+                  break;
+               default:
+                  sort (points, numIntersections, plane3 (line .point, line .direction));
+                  break;
+            }
+
+            int index = int (fract (random ()) * float (numIntersections / 2)) * 2; // Select random intersection.
+
+            return mix (points [index], points [index + 1], random ());
+         }
+      }`);
+
       this .set_geometry__ ();
    },
+   getBBox: (function ()
+   {
+      const bboxSize = new (Vector3_default()) ();
+
+      return function (bbox, { particleLifetime, lifetimeVariation })
+      {
+         const
+            maxParticleLifetime = particleLifetime * (1 + lifetimeVariation),
+            maxSpeed            = this ._speed .getValue () * (1 + this ._variation .getValue ()),
+            s                   = maxParticleLifetime * maxSpeed * 2;
+
+         return bbox .set (bboxSize .set (s, s, s), this .volumeNode .getBBox () .center)
+            .add (this .volumeNode .getBBox ());
+      };
+   })(),
    set_direction__: (() =>
    {
       const direction = new (Vector3_default()) ();
 
       return function ()
       {
-         direction .assign (this ._direction .getValue ()) .normalize ();
+         const { x, y, z } = direction .assign (this ._direction .getValue ()) .normalize ();
 
-         this .setUniform ("uniform3f", "direction", direction .x, direction .y, direction .z);
+         this .setUniform ("uniform3f", "direction", x, y, z);
       };
    })(),
+   set_verticesIndex__ ()
+   {
+      this .setUniform ("uniform1i", "verticesIndex", this .verticesIndex);
+   },
+   set_normalsIndex__ ()
+   {
+      this .setUniform ("uniform1i", "normalsIndex", this .normalsIndex);
+   },
+   set_hierarchyIndex__ ()
+   {
+      this .setUniform ("uniform1i", "hierarchyIndex", this .hierarchyIndex);
+   },
+   set_hierarchyRoot__ ()
+   {
+      this .setUniform ("uniform1i", "hierarchyRoot", this .hierarchyRoot);
+   },
    set_geometry__: (() =>
    {
       const
@@ -3855,16 +4177,23 @@ Object .assign (Object .setPrototypeOf (VolumeEmitter .prototype, ParticleSystem
 
          volumeArray .set (hierarchy, hierarchyIndex * 4);
 
-         this .setUniform ("uniform1i", "verticesIndex",  verticesIndex);
-         this .setUniform ("uniform1i", "normalsIndex",   normalsIndex);
-         this .setUniform ("uniform1i", "hierarchyIndex", hierarchyIndex);
-         this .setUniform ("uniform1i", "hierarchyRoot",  hierarchyIndex + hierarchyLength - 1);
+         this .verticesIndex  = verticesIndex;
+         this .normalsIndex   = normalsIndex;
+         this .hierarchyIndex = hierarchyIndex;
+         this .hierarchyRoot  = hierarchyIndex + hierarchyLength - 1;
 
          if (volumeArraySize)
          {
             gl .bindTexture (gl .TEXTURE_2D, this .volumeTexture);
             gl .texImage2D (gl .TEXTURE_2D, 0, gl .RGBA32F, volumeArraySize, volumeArraySize, 0, gl .RGBA, gl .FLOAT, volumeArray);
          }
+
+         this .set_verticesIndex__ ();
+         this .set_normalsIndex__ ();
+         this .set_hierarchyIndex__ ();
+         this .set_hierarchyRoot__ ();
+
+         this ._bbox_changed .addEvent ();
       };
    })(),
    activateTextures (gl, program)
@@ -3921,7 +4250,7 @@ const VolumeEmitter_default_ = VolumeEmitter;
 Namespace_default().add ("VolumeEmitter", "x_ite/Components/ParticleSystems/VolumeEmitter", VolumeEmitter_default_);
 /* harmony default export */ const ParticleSystems_VolumeEmitter = (VolumeEmitter_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Algorithm\")"
-const Algorithm_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.5.2")] .require ("standard/Math/Algorithm");
+const Algorithm_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.6.0")] .require ("standard/Math/Algorithm");
 var Algorithm_default = /*#__PURE__*/__webpack_require__.n(Algorithm_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/ParticleSystems/WindPhysicsModel.js
 /*******************************************************************************
@@ -4000,8 +4329,8 @@ Object .assign (Object .setPrototypeOf (WindPhysicsModel .prototype, ParticleSys
    getRandomSpeed (emitterNode)
    {
       const
-         speed     = Math .max (0, this ._speed .getValue ()),
-         variation = speed * Math .max (0, this ._gustiness .getValue ());
+         speed     = Math .max (this ._speed .getValue (), 0),
+         variation = speed * Math .max (this ._gustiness .getValue (), 0);
 
       return emitterNode .getRandomValue (Math .max (0, speed - variation), speed + variation);
    },
@@ -4014,7 +4343,7 @@ Object .assign (Object .setPrototypeOf (WindPhysicsModel .prototype, ParticleSys
          if (this ._enabled .getValue ())
          {
             const
-               surfaceArea = emitterNode ._surfaceArea .getValue (),
+               surfaceArea = emitterNode .getSurfaceArea (),
                speed       = this .getRandomSpeed (emitterNode),
                pressure    = 10 ** (2 * Math .log (speed)) * 0.64615;
 
