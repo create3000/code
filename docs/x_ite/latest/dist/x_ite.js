@@ -1,4 +1,4 @@
-/* X_ITE v9.6.0 */(function webpackUniversalModuleDefinition(root, factory) {
+/* X_ITE v9.6.1 */(function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
@@ -11,10 +11,10 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 600:
+/***/ 226:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-/* provided dependency */ var jQuery = __webpack_require__(268);
+/* provided dependency */ var jQuery = __webpack_require__(250);
 /**
  * @preserve jquery.fullscreen 1.1.5
  * https://github.com/code-lts/jquery-fullscreen-plugin
@@ -210,7 +210,7 @@ installFullScreenHandlers();
 
 /***/ }),
 
-/***/ 482:
+/***/ 496:
 /***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -224,7 +224,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 (function (factory) {
     if ( true ) {
         // AMD. Register as an anonymous module.
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(268)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(250)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 		(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -435,7 +435,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
-/***/ 268:
+/***/ 250:
 /***/ (function(module, exports) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11159,7 +11159,7 @@ return jQuery;
 
 /***/ }),
 
-/***/ 937:
+/***/ 979:
 /***/ ((module) => {
 
 /**
@@ -15938,7 +15938,7 @@ if (true) {
 
 /***/ }),
 
-/***/ 752:
+/***/ 82:
 /***/ (function(__unused_webpack_module, exports) {
 
 
@@ -19183,7 +19183,7 @@ if (true) {
 
 /***/ }),
 
-/***/ 719:
+/***/ 389:
 /***/ (function(module, exports) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -20311,7 +20311,7 @@ Object .defineProperty (Namespace, "add",
       }
       else
       {
-         const X3D = window [Symbol .for ("X_ITE.X3D-9.6.0")];
+         const X3D = window [Symbol .for ("X_ITE.X3D-9.6.1")];
 
          if (X3D)
             X3D [name] = module;
@@ -21447,6 +21447,151 @@ const DEVELOPMENT_default_ = false;
 
 x_ite_Namespace .add ("DEVELOPMENT", "x_ite/DEVELOPMENT", DEVELOPMENT_default_);
 /* harmony default export */ const DEVELOPMENT = (DEVELOPMENT_default_);
+;// CONCATENATED MODULE: ./src/x_ite/Features.js
+/*******************************************************************************
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
+ *
+ * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * The copyright notice above does not evidence any actual of intended
+ * publication of such source code, and is an unpublished work by create3000.
+ * This material contains CONFIDENTIAL INFORMATION that is the property of
+ * create3000.
+ *
+ * No permission is granted to copy, distribute, or create derivative works from
+ * the contents of this software, in whole or in part, without the prior written
+ * permission of create3000.
+ *
+ * NON-MILITARY USE ONLY
+ *
+ * All create3000 software are effectively free software with a non-military use
+ * restriction. It is free. Well commented source is provided. You may reuse the
+ * source in any way you please with the exception anything that uses it must be
+ * marked to indicate is contains 'non-military use only' components.
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * This file is part of the X_ITE Project.
+ *
+ * X_ITE is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License version 3 only, as published by the
+ * Free Software Foundation.
+ *
+ * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
+ * details (a copy is included in the LICENSE file that accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version 3
+ * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
+ * copy of the GPLv3 License.
+ *
+ * For Silvio, Joy and Adi.
+ *
+ ******************************************************************************/
+
+
+
+const MODULE = false;
+
+const Features =
+{
+   get ENVIRONMENT ()
+   {
+      if (DEVELOPMENT)
+         return "BROWSER";
+
+      if (MODULE)
+         return "MODULE";
+
+      if ((typeof process === "object") && (process .release .name .search (/node|io.js/) !== -1))
+         return "NODE";
+
+      return "BROWSER";
+   },
+   WEAK_REF: typeof WeakRef !== "undefined",
+   FINALIZATION_REGISTRY: typeof FinalizationRegistry !== "undefined",
+};
+
+(() =>
+{
+   // Added at February 2022
+   // https://github.com/tc39/proposal-relative-indexing-method#polyfill
+
+   function at (n)
+   {
+      // ToInteger() abstract op
+      n = Math.trunc(n) || 0;
+      // Allow negative indexing from the end
+      if (n < 0) n += this.length;
+      // OOB access is guaranteed to return undefined
+      if (n < 0 || n >= this.length) return undefined;
+      // Otherwise, this is just normal property access
+      return this[n];
+   }
+
+   const TypedArray = Reflect .getPrototypeOf (Int8Array);
+   for (const C of [Array, String, TypedArray])
+   {
+      if (C .prototype .at === undefined)
+      {
+         Object .defineProperty (C .prototype, "at",
+         {
+            value: at,
+            writable: true,
+            enumerable: false,
+            configurable: true,
+         });
+      }
+   }
+})();
+
+(() =>
+{
+   if (!Features .WEAK_REF)
+   {
+      if (DEVELOPMENT)
+         console .info ("Added shim for WeakRef.");
+
+      window .WeakRef = class WeakRef
+      {
+         #object;
+
+         constructor (object)
+         {
+            this .#object = object;
+         }
+
+         deref ()
+         {
+            return this .#object;
+         }
+      };
+   }
+
+   if (!Features .FINALIZATION_REGISTRY)
+   {
+      if (DEVELOPMENT)
+         console .info ("Added shim for FinalizationRegistry.");
+
+      window .FinalizationRegistry = class FinalizationRegistry
+      {
+         register () { }
+         unregister () { }
+      };
+   }
+})();
+
+const Features_default_ = Features;
+;
+
+x_ite_Namespace .add ("Features", "x_ite/Features", Features_default_);
+/* harmony default export */ const x_ite_Features = (Features_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DObject.js
 /*******************************************************************************
  *
@@ -21501,6 +21646,7 @@ x_ite_Namespace .add ("DEVELOPMENT", "x_ite/DEVELOPMENT", DEVELOPMENT_default_);
 const
    _name      = Symbol (),
    _interests = Symbol (),
+   _registry  = Symbol (),
    _userData  = Symbol ();
 
 function X3DObject () { }
@@ -21509,6 +21655,7 @@ Object .assign (X3DObject .prototype,
 {
    [_name]: "",
    [_interests]: new Map (),
+   [_registry]: new FinalizationRegistry (Function .prototype),
    [_userData]: new Map (),
    getId ()
    {
@@ -21540,15 +21687,24 @@ Object .assign (X3DObject .prototype,
          interestId = X3DObject .getInterestId (callbackName, object),
          callback   = object [callbackName];
 
+      if (this [_registry] === X3DObject .prototype [_registry])
+         this [_registry] = new FinalizationRegistry (interestId => this [_interests] .delete (interestId));
+
+      const weakRef = new WeakRef (object);
+
+      // Copy interests in case of this function is called during a `processInterests` call.
       this [_interests] = new Map (this [_interests]);
 
-      this [_interests] .set (interestId, callback .bind (object, ... args, this));
+      this [_interests] .set (interestId, { callback, weakRef, args });
+      this [_registry] .register (object, interestId, object);
    },
    removeInterest (callbackName, object)
    {
+      // Copy interests in case of this function is called during a `processInterests` call.
       this [_interests] = new Map (this [_interests]);
 
       this [_interests] .delete (X3DObject .getInterestId (callbackName, object));
+      this [_registry] .unregister (object);
    },
    getInterests ()
    {
@@ -21556,8 +21712,13 @@ Object .assign (X3DObject .prototype,
    },
    processInterests ()
    {
-      for (const interest of this [_interests] .values ())
-         interest ();
+      for (const { callback, weakRef, args } of this [_interests] .values ())
+      {
+         const object = weakRef .deref ();
+
+         if (object)
+            callback .call (object, ... args, this);
+      }
    },
    getUserData (key)
    {
@@ -21656,7 +21817,7 @@ Object .defineProperties (X3DObject .prototype,
 
 Object .assign (X3DObject,
 {
-   getId: DEVELOPMENT ? (() =>
+   getId: x_ite_Features .FINALIZATION_REGISTRY ? (() =>
    {
       const
          map      = new WeakMap (),
@@ -21712,6 +21873,153 @@ const X3DObject_default_ = X3DObject;
 
 x_ite_Namespace .add ("X3DObject", "x_ite/Base/X3DObject", X3DObject_default_);
 /* harmony default export */ const Base_X3DObject = (X3DObject_default_);
+;// CONCATENATED MODULE: ./src/x_ite/Base/IterableWeakSet.js
+/*******************************************************************************
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
+ *
+ * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * The copyright notice above does not evidence any actual of intended
+ * publication of such source code, and is an unpublished work by create3000.
+ * This material contains CONFIDENTIAL INFORMATION that is the property of
+ * create3000.
+ *
+ * No permission is granted to copy, distribute, or create derivative works from
+ * the contents of this software, in whole or in part, without the prior written
+ * permission of create3000.
+ *
+ * NON-MILITARY USE ONLY
+ *
+ * All create3000 software are effectively free software with a non-military use
+ * restriction. It is free. Well commented source is provided. You may reuse the
+ * source in any way you please with the exception anything that uses it must be
+ * marked to indicate is contains 'non-military use only' components.
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * This file is part of the X_ITE Project.
+ *
+ * X_ITE is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License version 3 only, as published by the
+ * Free Software Foundation.
+ *
+ * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
+ * details (a copy is included in the LICENSE file that accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version 3
+ * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
+ * copy of the GPLv3 License.
+ *
+ * For Silvio, Joy and Adi.
+ *
+ ******************************************************************************/
+
+
+
+const IterableWeakSet_default_ = x_ite_Features .WEAK_REF && x_ite_Features .FINALIZATION_REGISTRY ?
+/**
+ * IterableWeakSet is a writable set-like class.
+ */
+class IterableWeakSet
+{
+   #callback = undefined;
+   #map      = new Map ();
+   #registry = new FinalizationRegistry (id =>
+   {
+      this .#map .delete (id);
+      this .#callback ?.();
+   });
+
+   constructor (callback)
+   {
+      this .#callback = callback;
+   }
+
+   *[Symbol .iterator] ()
+   {
+      yield* this .values ();
+   }
+
+   get size ()
+   {
+      return this .#map .size;
+   }
+
+   add (object)
+   {
+      this .#map .set (object .getId (), new WeakRef (object));
+      this .#registry .register (object, object .getId (), object);
+      this .#callback ?.();
+   }
+
+   clear ()
+   {
+      for (const object of this .values ())
+         this .#registry .unregister (object);
+
+      this .#map .clear ();
+      this .#callback ?.();
+   }
+
+   delete (object)
+   {
+      this .#map .delete (object .getId ());
+      this .#registry .unregister (object);
+      this .#callback ?.();
+   }
+
+   forEach (callbackFn, thisArg)
+   {
+      for (const object of this .values ())
+         callbackFn .call (thisArg, object, object, this);
+   }
+
+   has (object)
+   {
+      return this .#map .has (object .getId ());
+   }
+
+   *entries ()
+   {
+      for (const object of this .values ())
+         yield [object, object];
+   }
+
+   *keys ()
+   {
+      yield *this .values ();
+   }
+
+   *values ()
+   {
+      for (const weakRef of this .#map .values ())
+      {
+         const object = weakRef .deref ();
+
+         if (object)
+            yield object;
+      }
+   }
+}
+:
+class IterableWeakSet extends Set
+{
+   constructor ()
+   {
+      super ();
+   }
+};
+;
+
+x_ite_Namespace .add ("IterableWeakSet", "x_ite/Base/IterableWeakSet", IterableWeakSet_default_);
+/* harmony default export */ const IterableWeakSet = (IterableWeakSet_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DChildObject.js
 /*******************************************************************************
  *
@@ -21767,238 +22075,107 @@ const
    _modificationTime = Symbol (),
    _tainted          = Symbol (),
    _parents          = Symbol (),
-   _private          = Symbol (),
-   _registry         = Symbol ();
+   _private          = Symbol ();
 
 function X3DChildObject ()
 {
    Base_X3DObject .call (this);
 }
 
-if (DEVELOPMENT)
+Object .assign (Object .setPrototypeOf (X3DChildObject .prototype, Base_X3DObject .prototype),
 {
-   Object .assign (Object .setPrototypeOf (X3DChildObject .prototype, Base_X3DObject .prototype),
+   [_modificationTime]: 0,
+   [_tainted]: false,
+   [_parents]: new IterableWeakSet (),
+   [_private]: false,
+   isInitializable ()
    {
-      [_modificationTime]: 0,
-      [_tainted]: false,
-      [_parents]: new Map (),
-      [_private]: false,
-      [_registry]: new FinalizationRegistry (Function .prototype),
-      isInitializable ()
-      {
-         return true;
-      },
-      isInput ()
-      {
-         return false;
-      },
-      isOutput ()
-      {
-         return false;
-      },
-      setModificationTime (value)
-      {
-         this [_modificationTime] = value;
-      },
-      getModificationTime ()
-      {
-         return this [_modificationTime];
-      },
-      setTainted (value)
-      {
-         this [_tainted] = value;
-      },
-      isTainted ()
-      {
-         return this [_tainted];
-      },
-      addEvent ()
-      {
-         for (const parent of this [_parents] .values ())
-            parent .deref () ?.addEvent (this);
-      },
-      addEventObject (field, event)
-      {
-         for (const parent of this [_parents] .values ())
-            parent .deref () ?.addEventObject (this, event);
-      },
-      processEvent ()
-      {
-         this .setTainted (false);
-         this .processInterests ();
-      },
-      isPrivate ()
-      {
-         return this [_private];
-      },
-      setPrivate (value)
-      {
-         this [_private] = value;
-      },
-      collectCloneCount ()
-      {
-         let cloneCount = 0;
-
-         for (const weakRef of this [_parents] .values ())
-         {
-            const parent = weakRef .deref ();
-
-            if (!parent)
-               continue;
-
-            if (parent [_private])
-               continue;
-
-            cloneCount += parent .collectCloneCount ();
-         }
-
-         return cloneCount;
-      },
-      addParent (parent)
-      {
-         if (this [_parents] === X3DChildObject .prototype [_parents])
-         {
-            this [_parents]  = new Map ();
-            this [_registry] = new FinalizationRegistry (id =>
-            {
-               this [_parents] .delete (id);
-               this .parentsChanged ();
-            });
-         }
-
-         this [_parents] .set (parent .getId (), new WeakRef (parent));
-         this [_registry] .register (parent, parent .getId (), parent);
-
-         this .parentsChanged ();
-      },
-      removeParent (parent)
-      {
-         this [_parents] .delete (parent .getId ());
-         this [_registry] .unregister (parent);
-
-         this .parentsChanged ();
-      },
-      getParents ()
-      {
-         const parents = new Set ();
-
-         for (const weakRef of this [_parents] .values ())
-            parents .add (weakRef .deref ())
-
-         parents .delete (undefined);
-
-         return parents;
-      },
-      parentsChanged () { },
-      dispose ()
-      {
-         this [_parents] .clear ();
-
-         Base_X3DObject .prototype .dispose .call (this);
-      },
-   });
-}
-else
-{
-   Object .assign (Object .setPrototypeOf (X3DChildObject .prototype, Base_X3DObject .prototype),
+      return true;
+   },
+   isInput ()
    {
-      [_modificationTime]: 0,
-      [_tainted]: false,
-      [_parents]: new Set (),
-      [_private]: false,
-      isInitializable ()
-      {
-         return true;
-      },
-      isInput ()
-      {
-         return false;
-      },
-      isOutput ()
-      {
-         return false;
-      },
-      setModificationTime (value)
-      {
-         this [_modificationTime] = value;
-      },
-      getModificationTime ()
-      {
-         return this [_modificationTime];
-      },
-      setTainted (value)
-      {
-         this [_tainted] = value;
-      },
-      isTainted ()
-      {
-         return this [_tainted];
-      },
-      addEvent ()
-      {
-         for (const parent of this [_parents])
-            parent .addEvent (this);
-      },
-      addEventObject (field, event)
-      {
-         for (const parent of this [_parents])
-            parent .addEventObject (this, event);
-      },
-      processEvent ()
-      {
-         this .setTainted (false);
-         this .processInterests ();
-      },
-      isPrivate ()
-      {
-         return this [_private];
-      },
-      setPrivate (value)
-      {
-         this [_private] = value;
-      },
-      collectCloneCount ()
-      {
-         let cloneCount = 0;
+      return false;
+   },
+   isOutput ()
+   {
+      return false;
+   },
+   setModificationTime (value)
+   {
+      this [_modificationTime] = value;
+   },
+   getModificationTime ()
+   {
+      return this [_modificationTime];
+   },
+   setTainted (value)
+   {
+      this [_tainted] = value;
+   },
+   isTainted ()
+   {
+      return this [_tainted];
+   },
+   addEvent ()
+   {
+      for (const parent of this [_parents])
+         parent .addEvent (this);
+   },
+   addEventObject (field, event)
+   {
+      for (const parent of this [_parents])
+         parent .addEventObject (this, event);
+   },
+   processEvent ()
+   {
+      this .setTainted (false);
+      this .processInterests ();
+   },
+   isPrivate ()
+   {
+      return this [_private];
+   },
+   setPrivate (value)
+   {
+      this [_private] = value;
+   },
+   collectCloneCount ()
+   {
+      let cloneCount = 0;
 
-         for (const parent of this [_parents])
-         {
-            if (parent [_private])
-               continue;
-
-            cloneCount += parent .collectCloneCount ();
-         }
-
-         return cloneCount;
-      },
-      addParent (parent)
+      for (const parent of this [_parents])
       {
-         if (this [_parents] === X3DChildObject .prototype [_parents])
-            this [_parents] = new Set ();
+         if (parent [_private])
+            continue;
 
-         this [_parents] .add (parent);
+         cloneCount += parent .collectCloneCount ();
+      }
 
-         this .parentsChanged ();
-      },
-      removeParent (parent)
-      {
-         this [_parents] .delete (parent);
+      return cloneCount;
+   },
+   addParent (parent)
+   {
+      if (this [_parents] === X3DChildObject .prototype [_parents])
+         this [_parents] = new IterableWeakSet (() => this .parentsChanged ());
 
-         this .parentsChanged ();
-      },
-      getParents ()
-      {
-         return this [_parents];
-      },
-      parentsChanged () { },
-      dispose ()
-      {
-         this [_parents] .clear ();
+      this [_parents] .add (parent);
+   },
+   removeParent (parent)
+   {
+      this [_parents] .delete (parent);
+   },
+   getParents ()
+   {
+      return this [_parents];
+   },
+   parentsChanged () { },
+   dispose ()
+   {
+      this [_parents] .clear ();
 
-         Base_X3DObject .prototype .dispose .call (this);
-      },
-   });
-}
+      Base_X3DObject .prototype .dispose .call (this);
+   },
+});
 
 for (const key of Object .keys (X3DChildObject .prototype))
    Object .defineProperty (X3DChildObject .prototype, key, { enumerable: false });
@@ -22694,6 +22871,7 @@ x_ite_Namespace .add ("FieldDefinitionArray", "x_ite/Base/FieldDefinitionArray",
 
 
 
+
 const
    _value               = Symbol (),
    _accessType          = Symbol (),
@@ -22719,12 +22897,12 @@ Object .assign (Object .setPrototypeOf (X3DField .prototype, Base_X3DChildObject
    [_value]: null,
    [_accessType]: Base_X3DConstants .initializeOnly,
    [_unit]: null,
-   [_references]: new Set (),
+   [_references]: new IterableWeakSet (),
    [_referencesCallbacks]: new Map (),
-   [_fieldInterests]: new Set (),
+   [_fieldInterests]: new IterableWeakSet (),
    [_fieldCallbacks]: new Map (),
-   [_inputRoutes]: new Set (),
-   [_outputRoutes]: new Set (),
+   [_inputRoutes]: new IterableWeakSet (),
+   [_outputRoutes]: new IterableWeakSet (),
    [_routeCallbacks]: new Map (),
    [_uniformLocation]: null,
    create ()
@@ -22796,22 +22974,19 @@ Object .assign (Object .setPrototypeOf (X3DField .prototype, Base_X3DChildObject
    {
       return this [_unit];
    },
-   hasReferences ()
-   {
-      return this [_references] .size !== 0;
-   },
    isReference (accessType)
    {
       return accessType === this [_accessType] || accessType === Base_X3DConstants .inputOutput;
    },
    addReference (reference)
    {
-      const references = this .getReferences ();
+      if (this [_references] === X3DField .prototype [_references])
+         this [_references] = new IterableWeakSet ();
 
-      if (references .has (reference))
+      if (this [_references] .has (reference))
          return;
 
-      references .add (reference);
+      this [_references] .add (reference);
 
       // Create IS relationship
 
@@ -22863,9 +23038,6 @@ Object .assign (Object .setPrototypeOf (X3DField .prototype, Base_X3DChildObject
    },
    getReferences ()
    {
-      if (this [_references] === X3DField .prototype [_references])
-         this [_references] = new Set ();
-
       return this [_references];
    },
    addReferencesCallback (key, object)
@@ -22892,7 +23064,7 @@ Object .assign (Object .setPrototypeOf (X3DField .prototype, Base_X3DChildObject
    addFieldInterest (field)
    {
       if (this [_fieldInterests] === X3DField .prototype [_fieldInterests])
-         this [_fieldInterests] = new Set ();
+         this [_fieldInterests] = new IterableWeakSet ();
 
       this [_fieldInterests] .add (field);
    },
@@ -22923,7 +23095,7 @@ Object .assign (Object .setPrototypeOf (X3DField .prototype, Base_X3DChildObject
    addInputRoute (route)
    {
       if (this [_inputRoutes] === X3DField .prototype [_inputRoutes])
-         this [_inputRoutes] = new Set ();
+         this [_inputRoutes] = new IterableWeakSet ();
 
       this [_inputRoutes] .add (route);
 
@@ -22942,7 +23114,7 @@ Object .assign (Object .setPrototypeOf (X3DField .prototype, Base_X3DChildObject
    addOutputRoute (route)
    {
       if (this [_outputRoutes] === X3DField .prototype [_outputRoutes])
-         this [_outputRoutes] = new Set ();
+         this [_outputRoutes] = new IterableWeakSet ();
 
       this [_outputRoutes] .add (route);
 
@@ -25861,14 +26033,14 @@ Object .assign (Matrix3 .prototype,
          {
             case 1:
             {
-               if (translation)
+               if (translation && !translation .equals (Numbers_Vector2 .Zero))
                   this .translate (translation);
 
                break;
             }
             case 2:
             {
-               if (translation)
+               if (translation && !translation .equals (Numbers_Vector2 .Zero))
                   this .translate (translation);
 
                if (rotation)
@@ -25878,7 +26050,7 @@ Object .assign (Matrix3 .prototype,
             }
             case 3:
             {
-               if (translation)
+               if (translation && !translation .equals (Numbers_Vector2 .Zero))
                   this .translate (translation);
 
                if (rotation)
@@ -25891,7 +26063,7 @@ Object .assign (Matrix3 .prototype,
             }
             case 4:
             {
-               if (translation)
+               if (translation && !translation .equals (Numbers_Vector2 .Zero))
                   this .translate (translation);
 
                if (rotation)
@@ -25916,7 +26088,7 @@ Object .assign (Matrix3 .prototype,
             case 5:
             {
                // P' = T * C * R * SR * S * -SR * -C * P
-               if (translation)
+               if (translation && !translation .equals (Numbers_Vector2 .Zero))
                   this .translate (translation);
 
                const hasCenter = center && !center .equals (Numbers_Vector2 .Zero);
@@ -28184,14 +28356,14 @@ Object .assign (Matrix4_Matrix4 .prototype,
          {
             case 1:
             {
-               if (translation)
+               if (translation && !translation .equals (Numbers_Vector3 .Zero))
                   this .translate (translation);
 
                break;
             }
             case 2:
             {
-               if (translation)
+               if (translation && !translation .equals (Numbers_Vector3 .Zero))
                   this .translate (translation);
 
                if (rotation && !rotation .equals (Numbers_Rotation4 .Identity))
@@ -28201,7 +28373,7 @@ Object .assign (Matrix4_Matrix4 .prototype,
             }
             case 3:
             {
-               if (translation)
+               if (translation && !translation .equals (Numbers_Vector3 .Zero))
                   this .translate (translation);
 
                if (rotation && !rotation .equals (Numbers_Rotation4 .Identity))
@@ -28214,7 +28386,7 @@ Object .assign (Matrix4_Matrix4 .prototype,
             }
             case 4:
             {
-               if (translation)
+               if (translation && !translation .equals (Numbers_Vector3 .Zero))
                   this .translate (translation);
 
                if (rotation && !rotation .equals (Numbers_Rotation4 .Identity))
@@ -28239,7 +28411,7 @@ Object .assign (Matrix4_Matrix4 .prototype,
             case 5:
             {
                // P' = T * C * R * SR * S * -SR * -C * P
-               if (translation)
+               if (translation && !translation .equals (Numbers_Vector3 .Zero))
                   this .translate (translation);
 
                const hasCenter = center && !center .equals (Numbers_Vector3 .Zero);
@@ -29008,39 +29180,12 @@ x_ite_Namespace .add ("SFMatrix4", "x_ite/Fields/SFMatrix4", SFMatrix4_default_)
 
 
 
-
 const cache = new WeakMap ();
 
-const SFNodeCache = DEVELOPMENT ?
-{
-   get (baseNode)
-   {
-      const node = cache .get (baseNode) ?.deref ();
+// const r = new FinalizationRegistry (t => console .error (`object deleted ${--i} ${t}`));
+// let i = 0;
 
-      if (node)
-      {
-         return node;
-      }
-      else
-      {
-         const node = new Fields_SFNode (baseNode);
-
-         node .dispose = dispose;
-
-         cache .set (baseNode, new WeakRef (node));
-
-         return node;
-      }
-   },
-   add (baseNode, node)
-   {
-      cache .set (baseNode, new WeakRef (node));
-   },
-   delete (baseNode)
-   {
-      cache .delete (baseNode);
-   },
-} :
+const SFNodeCache =
 {
    get (baseNode)
    {
@@ -29054,15 +29199,23 @@ const SFNodeCache = DEVELOPMENT ?
       {
          const node = new Fields_SFNode (baseNode);
 
-         node .dispose = dispose;
+         this .set (baseNode, node);
 
-         cache .set (baseNode, node);
+         // i += 2;
+         // console .warn (`baseNode ${i} ${baseNode .getTypeName ()}`);
+         // r .register (baseNode, `baseNode ${baseNode .getTypeName ()}`);
+         // r .register (node, `node ${baseNode .getTypeName ()}`);
 
          return node;
       }
    },
-   add (baseNode, node)
+   set (baseNode, node)
    {
+      node .dispose = dispose;
+
+      // WeakMap allows associating data to objects in a way that doesn't prevent
+      // the key objects from being collected, even if the values reference the keys.
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
       cache .set (baseNode, node);
    },
    delete (baseNode)
@@ -29079,7 +29232,7 @@ function dispose ()
 
    Fields_SFNode .prototype .dispose .call (this);
 
-   cache .delete (value);
+   SFNodeCache .delete (value);
 }
 
 const SFNodeCache_default_ = SFNodeCache;
@@ -30706,92 +30859,6 @@ const SFVec4_default_ = SFVec4;
 
 x_ite_Namespace .add ("SFVec4", "x_ite/Fields/SFVec4", SFVec4_default_);
 /* harmony default export */ const Fields_SFVec4 = (SFVec4_default_);
-;// CONCATENATED MODULE: ./src/shim.js
-/*******************************************************************************
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
- *
- * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
- *
- * The copyright notice above does not evidence any actual of intended
- * publication of such source code, and is an unpublished work by create3000.
- * This material contains CONFIDENTIAL INFORMATION that is the property of
- * create3000.
- *
- * No permission is granted to copy, distribute, or create derivative works from
- * the contents of this software, in whole or in part, without the prior written
- * permission of create3000.
- *
- * NON-MILITARY USE ONLY
- *
- * All create3000 software are effectively free software with a non-military use
- * restriction. It is free. Well commented source is provided. You may reuse the
- * source in any way you please with the exception anything that uses it must be
- * marked to indicate is contains 'non-military use only' components.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
- *
- * This file is part of the X_ITE Project.
- *
- * X_ITE is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License version 3 only, as published by the
- * Free Software Foundation.
- *
- * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
- * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
- * details (a copy is included in the LICENSE file that accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version 3
- * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
- * copy of the GPLv3 License.
- *
- * For Silvio, Joy and Adi.
- *
- ******************************************************************************/
-
-(() =>
-{
-   // Added at February 2022
-   // https://github.com/tc39/proposal-relative-indexing-method#polyfill
-
-   function at (n)
-   {
-      // ToInteger() abstract op
-      n = Math.trunc(n) || 0;
-      // Allow negative indexing from the end
-      if (n < 0) n += this.length;
-      // OOB access is guaranteed to return undefined
-      if (n < 0 || n >= this.length) return undefined;
-      // Otherwise, this is just normal property access
-      return this[n];
-   }
-
-   const TypedArray = Reflect .getPrototypeOf (Int8Array);
-   for (const C of [Array, String, TypedArray])
-   {
-      if (C .prototype .at === undefined)
-      {
-         Object .defineProperty (C .prototype, "at",
-         {
-            value: at,
-            writable: true,
-            enumerable: false,
-            configurable: true,
-         });
-      }
-   }
-})();
-
-const shim_default_ = undefined;
-;
-
-x_ite_Namespace .add ("shim", "shim", shim_default_);
-/* harmony default export */ const shim = ((/* unused pure expression or super */ null && (shim_default_)));
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DArrayField.js
 /*******************************************************************************
  *
@@ -31279,26 +31346,29 @@ Object .assign (Object .setPrototypeOf (X3DObjectArrayField .prototype, Base_X3D
 
       return result;
    },
-   resize (size, value, silently)
+   resize (newLength, value, silently)
    {
       const
          target = this [X3DObjectArrayField_target],
          array  = target .getValue (),
          length = array .length;
 
-      if (size < length)
+      if (newLength < 0)
+         throw new RangeError ("Invalid array length");
+
+      if (newLength < length)
       {
-         for (let i = size; i < length; ++ i)
+         for (let i = newLength; i < length; ++ i)
             target .removeChildObject (array [i]);
 
-         array .length = size;
+         array .length = newLength;
 
          if (!silently)
             target .addEvent ();
       }
-      else if (size > length)
+      else if (newLength > length)
       {
-         for (let i = length; i < size; ++ i)
+         for (let i = length; i < newLength; ++ i)
          {
             const field = new (target .getSingleType ()) ();
 
@@ -31319,7 +31389,6 @@ Object .assign (Object .setPrototypeOf (X3DObjectArrayField .prototype, Base_X3D
    },
    removeChildObject (value)
    {
-      value .removeParent (this [X3DObjectArrayField_proxy]);
       value .dispose ();
    },
    reverse ()
@@ -32039,6 +32108,9 @@ Object .assign (Object .setPrototypeOf (X3DTypedArrayField .prototype, Base_X3DA
          target     = this [X3DTypedArrayField_target],
          length     = target [_length],
          components = target .getComponents ();
+
+      if (newLength < 0)
+         throw new RangeError ("Invalid array length");
 
       let array = target .getValue ();
 
@@ -33646,18 +33718,12 @@ Object .assign (Object .setPrototypeOf (X3DBaseNode .prototype, Base_X3DChildObj
    {
       return this [_browser];
    },
-   getMainScene ()
-   {
-      let scene = this [_executionContext] .getScene ();
-
-      while (!scene .isMainScene ())
-         scene = scene .getScene ();
-
-      return scene;
-   },
    getScene ()
    {
       let executionContext = this [_executionContext];
+
+      if (!executionContext)
+         return null;
 
       while (!executionContext .isScene ())
          executionContext = executionContext .getExecutionContext ();
@@ -33670,10 +33736,13 @@ Object .assign (Object .setPrototypeOf (X3DBaseNode .prototype, Base_X3DChildObj
    },
    setExecutionContext (executionContext)
    {
+      if (!this [_type] .includes (Base_X3DConstants .X3DScene))
+         throw new Error (`${this .getTypeName ()}.setExecutionContext is not supported.`);
+
       // Disconnect interests.
 
-      this .getOuterNode ?.() ?.getLive () .removeInterest (_set_live__, this);
-      this [_executionContext] .getLive () .removeInterest (_set_live__, this);
+      this .getOuterNode ?.()  ?.getLive () .removeInterest (_set_live__, this);
+      this [_executionContext] ?.getLive () .removeInterest (_set_live__, this);
 
       // Currently only useful for Scene.
       this [_executionContext] = executionContext;
@@ -33683,8 +33752,8 @@ Object .assign (Object .setPrototypeOf (X3DBaseNode .prototype, Base_X3DChildObj
       if (this .getOuterNode ?.())
          this .getOuterNode () .getLive () .addInterest (_set_live__, this);
 
-      else if (this [_executionContext] !== this)
-         this [_executionContext] .getLive () .addInterest (_set_live__, this);
+      else
+         this [_executionContext] ?.getLive () .addInterest (_set_live__, this);
 
       this [_set_live__] ();
    },
@@ -33696,37 +33765,6 @@ Object .assign (Object .setPrototypeOf (X3DBaseNode .prototype, Base_X3DChildObj
    {
       return this [_type];
    },
-   create (executionContext = this [_executionContext])
-   {
-      return new (this .constructor) (executionContext);
-   },
-   copy (executionContext)
-   {
-      const copy = this .create (executionContext);
-
-      for (const field of this [_predefinedFields])
-         copy .getPredefinedFields () .get (field .getName ()) .assign (field);
-
-      if (this .canUserDefinedFields ())
-      {
-         for (const field of this [_userDefinedFields])
-            copy .addUserDefinedField (field .getAccessType (), field .getName (), field .copy ());
-      }
-
-      copy .setup ();
-
-      return copy;
-   },
-   // replaceWith (replacement, cache = false)
-   // {
-   //    cache = cache && SFNodeCache .get (this);
-
-   //    for (const parent of new Set (this .getParents ()))
-   //    {
-   //       if (parent instanceof Fields .SFNode && parent !== cache)
-   //          parent .setValue (replacement)
-   //    }
-   // },
    setup ()
    {
       Object .freeze (this [_type]);
@@ -33800,8 +33838,8 @@ Object .assign (Object .setPrototypeOf (X3DBaseNode .prototype, Base_X3DChildObj
          if (this .getOuterNode ?.())
             this .getOuterNode () .getLive () .addInterest (_set_live__, this);
 
-         else if (this [_executionContext] !== this)
-            this [_executionContext] .getLive () .addInterest (_set_live__, this);
+         else if (this !== this [_browser])
+            this [_executionContext] ?.getLive () .addInterest (_set_live__, this);
 
          // Return field.
 
@@ -33815,7 +33853,7 @@ Object .assign (Object .setPrototypeOf (X3DBaseNode .prototype, Base_X3DChildObj
       if (this .getOuterNode ?.())
          return this [_live] && this .getOuterNode () .getLive () .getValue ();
 
-      else if (this !== this [_executionContext])
+      else if (this [_executionContext] && this !== this [_browser])
          return this [_live] && this [_executionContext] .getLive () .getValue ();
 
       return this [_live];
@@ -34038,30 +34076,6 @@ Object .assign (Object .setPrototypeOf (X3DBaseNode .prototype, Base_X3DChildObj
 
       return !field .getModificationTime ();
    },
-   hasRoutes ()
-   {
-      ///  Returns true if there are any routes from or to fields of this node, otherwise false.
-
-      for (const field of this [_predefinedFields])
-      {
-         if (field .getInputRoutes () .size || field .getOutputRoutes () .size)
-            return true;
-      }
-
-      for (const field of this [_userDefinedFields])
-      {
-         if (field .getInputRoutes () .size || field .getOutputRoutes () .size)
-            return true;
-      }
-
-      for (const route of this [_executionContext] .getRoutes ())
-      {
-         if (route .getSourceNode () === this || route .getDestinationNode () === this)
-            return true;
-      }
-
-      return false;
-   },
    getExtendedEventHandling ()
    {
       // Whether initializeOnly field are treated like inputOnly and inputOutput fields.
@@ -34126,11 +34140,16 @@ Object .assign (Object .setPrototypeOf (X3DBaseNode .prototype, Base_X3DChildObj
    {
       const time = this [_browser] .getCurrentTime ();
 
-      this [_executionContext] ._sceneGraph_changed = time;
-      this ._parents_changed                        = time;
+      if (this [_executionContext])
+         this [_executionContext] ._sceneGraph_changed = time;
+
+      this ._parents_changed = time;
    },
    dispose ()
    {
+      this .getOuterNode ?.()  ?.getLive () .removeInterest (_set_live__, this);
+      this [_executionContext] ?.getLive () .removeInterest (_set_live__, this);
+
       this .setLive (false);
 
       for (const field of this [_childObjects])
@@ -34211,7 +34230,7 @@ const X3DBaseNode_default_ = X3DBaseNode;
 x_ite_Namespace .add ("X3DBaseNode", "x_ite/Base/X3DBaseNode", X3DBaseNode_default_);
 /* harmony default export */ const Base_X3DBaseNode = (X3DBaseNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Legacy.js
-/* provided dependency */ var $ = __webpack_require__(268);
+/* provided dependency */ var $ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -34348,7 +34367,7 @@ x_ite_Namespace .add ("Legacy", "x_ite/Browser/Legacy", Legacy_default_);
  *
  ******************************************************************************/
 
-const BROWSER_VERSION_default_ = "9.6.0";
+const BROWSER_VERSION_default_ = "9.6.1";
 ;
 
 x_ite_Namespace .add ("BROWSER_VERSION", "x_ite/BROWSER_VERSION", BROWSER_VERSION_default_);
@@ -34429,11 +34448,28 @@ Object .assign (Object .setPrototypeOf (X3DNode .prototype, Base_X3DBaseNode .pr
    {
       return this .constructor .specificationRange;
    },
+   create (executionContext = this .getExecutionContext ())
+   {
+      return new (this .constructor) (executionContext);
+   },
    copy (instance)
    {
-      if (!instance || instance .getType () .includes (Base_X3DConstants .X3DExecutionContext))
+      if (instance ?.getType () .includes (Base_X3DConstants .X3DExecutionContext) ?? true)
       {
-         return Base_X3DBaseNode .prototype .copy .call (this, instance);
+         const copy = this .create (instance);
+
+         for (const field of this .getPredefinedFields ())
+            copy .getPredefinedFields () .get (field .getName ()) .assign (field);
+
+         if (this .canUserDefinedFields ())
+         {
+            for (const field of this .getUserDefinedFields ())
+               copy .addUserDefinedField (field .getAccessType (), field .getName (), field .copy ());
+         }
+
+         copy .setup ();
+
+         return copy;
       }
       else
       {
@@ -34467,7 +34503,7 @@ Object .assign (Object .setPrototypeOf (X3DNode .prototype, Base_X3DBaseNode .pr
             {
                const destinationField = copy .getPredefinedField (sourceField .getName ());
 
-               if (sourceField .hasReferences ())
+               if (sourceField .getReferences () .size)
                {
                   // IS relationship
 
@@ -34518,7 +34554,7 @@ Object .assign (Object .setPrototypeOf (X3DNode .prototype, Base_X3DBaseNode .pr
                                        sourceField .getName (),
                                        destinationField);
 
-            if (sourceField .hasReferences ())
+            if (sourceField .getReferences () .size)
             {
                // IS relationship
 
@@ -34573,6 +34609,30 @@ Object .assign (Object .setPrototypeOf (X3DNode .prototype, Base_X3DBaseNode .pr
             if (exportedNode .getLocalNode () === this)
                return true;
          }
+      }
+
+      return false;
+   },
+   hasRoutes ()
+   {
+      ///  Returns true if there are any routes from or to fields of this node, otherwise false.
+
+      for (const field of this .getPredefinedFields ())
+      {
+         if (field .getInputRoutes () .size || field .getOutputRoutes () .size)
+            return true;
+      }
+
+      for (const field of this .getUserDefinedFields ())
+      {
+         if (field .getInputRoutes () .size || field .getOutputRoutes () .size)
+            return true;
+      }
+
+      for (const route of this .getExecutionContext () .getRoutes ())
+      {
+         if (route .getSourceNode () === this || route .getDestinationNode () === this)
+            return true;
       }
 
       return false;
@@ -34865,7 +34925,7 @@ Object .assign (Object .setPrototypeOf (X3DNode .prototype, Base_X3DBaseNode .pr
       else if (!Array .isArray (value) && value .valueOf () instanceof Object)
       {
          // Support for Numbers (Vector234, Color34, ...).
-         
+
          value = Array .from (value);
          value .type = "double";
       }
@@ -35308,7 +35368,7 @@ Object .assign (Object .setPrototypeOf (X3DNode .prototype, Base_X3DBaseNode .pr
          {
             if (field .getAccessType () === Base_X3DConstants .inputOutput && field .getReferences () .size !== 0)
             {
-               if (![... field .getReferences ()] .some (reference => reference .isInitializable ()))
+               if (!Array .from (field .getReferences ()) .some (reference => reference .isInitializable ()))
                   mustOutputValue = !this .isDefaultValue (field);
             }
          }
@@ -35406,7 +35466,7 @@ Object .assign (Object .setPrototypeOf (X3DNode .prototype, Base_X3DBaseNode .pr
                {
                   if (field .getAccessType () === Base_X3DConstants .inputOutput && field .getReferences () .size !== 0)
                   {
-                     if (![... field .getReferences ()] .some (reference => reference .isInitializable ()))
+                     if (!Array .from (field .getReferences ()) .some (reference => reference .isInitializable ()))
                         mustOutputValue = true;
                   }
                }
@@ -35665,7 +35725,7 @@ Object .assign (Object .setPrototypeOf (X3DNode .prototype, Base_X3DBaseNode .pr
             {
                if (field .getAccessType () === Base_X3DConstants .inputOutput && field .getReferences () .size !== 0)
                {
-                  if (![... field .getReferences ()] .some (reference => reference .isInitializable ()))
+                  if (!Array .from (field .getReferences ()) .some (reference => reference .isInitializable ()))
                      mustOutputValue = !this .isDefaultValue (field);
                }
             }
@@ -35794,7 +35854,7 @@ Object .assign (Object .setPrototypeOf (X3DNode .prototype, Base_X3DBaseNode .pr
             {
                if (field .getAccessType () === Base_X3DConstants .inputOutput && field .getReferences () .size !== 0)
                {
-                  if (![... field .getReferences ()] .some (reference => reference .isInitializable ()))
+                  if (!Array .from (field .getReferences ()) .some (reference => reference .isInitializable ()))
                      mustOutputValue = true;
                }
             }
@@ -35949,7 +36009,7 @@ Object .assign (Object .setPrototypeOf (X3DNode .prototype, Base_X3DBaseNode .pr
 
          for (const field of references)
          {
-            const protoFields = [... field .getReferences ()];
+            const protoFields = Array .from (field .getReferences ());
 
             for (const protoField of protoFields)
             {
@@ -36033,11 +36093,11 @@ Object .assign (Object .setPrototypeOf (X3DNode .prototype, Base_X3DBaseNode .pr
       {
          // Remove imported node if any.
 
-         if (!executionContext .isMainScene ())
-         {
-            const parentContext = executionContext .getExecutionContext ();
+         const parentContext = executionContext .getExecutionContext ();
 
-            for (const importedNode of [... parentContext .getImportedNodes ()])
+         if (parentContext)
+         {
+            for (const importedNode of Array .from (parentContext .getImportedNodes ()))
             {
                try
                {
@@ -36053,7 +36113,7 @@ Object .assign (Object .setPrototypeOf (X3DNode .prototype, Base_X3DBaseNode .pr
 
          // Remove exported node if any.
 
-         for (const exportedNode of [... executionContext .getExportedNodes ()])
+         for (const exportedNode of Array .from (executionContext .getExportedNodes ()))
          {
             if (exportedNode .getLocalNode () === this)
                executionContext .removeExportedNode (exportedNode .getExportedName ());
@@ -36072,7 +36132,7 @@ Object .assign (Object .setPrototypeOf (X3DNode .prototype, Base_X3DBaseNode .pr
             if (!(secondParent instanceof x_ite_Fields .MFNode))
                continue;
 
-            secondParent .setValue ([... secondParent] .filter (node => node ?.getValue () !== this))
+            secondParent .setValue (Array .from (secondParent) .filter (node => node ?.getValue () !== this))
          }
       }
 
@@ -38953,7 +39013,7 @@ const X3DProtoDeclaration_default_ = X3DProtoDeclaration;
 x_ite_Namespace .add ("X3DProtoDeclaration", "x_ite/Prototype/X3DProtoDeclaration", X3DProtoDeclaration_default_);
 /* harmony default export */ const Prototype_X3DProtoDeclaration = (X3DProtoDeclaration_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/X3DParser.js
-/* provided dependency */ var X3DParser_$ = __webpack_require__(268);
+/* provided dependency */ var X3DParser_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -39215,7 +39275,7 @@ const Expressions_default_ = Expressions;
 x_ite_Namespace .add ("Expressions", "x_ite/Parser/Expressions", Expressions_default_);
 /* harmony default export */ const Parser_Expressions = (Expressions_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/VRMLParser.js
-/* provided dependency */ var VRMLParser_$ = __webpack_require__(268);
+/* provided dependency */ var VRMLParser_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -39288,7 +39348,7 @@ x_ite_Namespace .add ("Expressions", "x_ite/Parser/Expressions", Expressions_def
 const Grammar = Parser_Expressions ({
    // General
    Whitespaces: /[\x20\n,\t\r]+/gy,
-   Comment:     /#.*?(?=[\n\r])/gy,
+   Comment:     /#.*?(?=[\n\r]|$)/gy,
    Break:       /\r?\n/g,
 
    // Header
@@ -40458,7 +40518,7 @@ Object .assign (Object .setPrototypeOf (VRMLParser .prototype, Parser_X3DParser 
             {
                ++ this .unknownLevel;
 
-               this .nodeBody (this .getExecutionContext () .createNode ("WorldInfo", false));
+               this .nodeBody (this .getExecutionContext () .createNode ("MetadataBoolean", false));
 
                -- this .unknownLevel;
 
@@ -41915,7 +41975,7 @@ const VRMLParser_default_ = VRMLParser;
 x_ite_Namespace .add ("VRMLParser", "x_ite/Parser/VRMLParser", VRMLParser_default_);
 /* harmony default export */ const Parser_VRMLParser = (VRMLParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/XMLParser.js
-/* provided dependency */ var XMLParser_$ = __webpack_require__(268);
+/* provided dependency */ var XMLParser_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -43833,80 +43893,6 @@ const X3DOptimizer_default_ = X3DOptimizer;
 
 x_ite_Namespace .add ("X3DOptimizer", "x_ite/Parser/X3DOptimizer", X3DOptimizer_default_);
 /* harmony default export */ const Parser_X3DOptimizer = (X3DOptimizer_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Features.js
-/*******************************************************************************
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
- *
- * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
- *
- * The copyright notice above does not evidence any actual of intended
- * publication of such source code, and is an unpublished work by create3000.
- * This material contains CONFIDENTIAL INFORMATION that is the property of
- * create3000.
- *
- * No permission is granted to copy, distribute, or create derivative works from
- * the contents of this software, in whole or in part, without the prior written
- * permission of create3000.
- *
- * NON-MILITARY USE ONLY
- *
- * All create3000 software are effectively free software with a non-military use
- * restriction. It is free. Well commented source is provided. You may reuse the
- * source in any way you please with the exception anything that uses it must be
- * marked to indicate is contains 'non-military use only' components.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
- *
- * This file is part of the X_ITE Project.
- *
- * X_ITE is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License version 3 only, as published by the
- * Free Software Foundation.
- *
- * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
- * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
- * details (a copy is included in the LICENSE file that accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version 3
- * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
- * copy of the GPLv3 License.
- *
- * For Silvio, Joy and Adi.
- *
- ******************************************************************************/
-
-
-
-const MODULE = false;
-
-const Features =
-{
-   get ENVIRONMENT ()
-   {
-      if (DEVELOPMENT)
-         return "BROWSER";
-
-      if (MODULE)
-         return "MODULE";
-
-      if ((typeof process === "object") && (process .release .name .search (/node|io.js/) !== -1))
-         return "NODE";
-
-      return "BROWSER";
-   },
-};
-
-const Features_default_ = Features;
-;
-
-x_ite_Namespace .add ("Features", "x_ite/Features", Features_default_);
-/* harmony default export */ const x_ite_Features = (Features_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Networking/URLs.js
 /*******************************************************************************
  *
@@ -44021,7 +44007,7 @@ const URLs_default_ = URLs;
 x_ite_Namespace .add ("URLs", "x_ite/Browser/Networking/URLs", URLs_default_);
 /* harmony default export */ const Networking_URLs = (URLs_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GLTF2Parser.js
-/* provided dependency */ var GLTF2Parser_$ = __webpack_require__(268);
+/* provided dependency */ var GLTF2Parser_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -47323,7 +47309,7 @@ const GLTF2Parser_default_ = GLTF2Parser;
 x_ite_Namespace .add ("GLTF2Parser", "x_ite/Parser/GLTF2Parser", GLTF2Parser_default_);
 /* harmony default export */ const Parser_GLTF2Parser = (GLTF2Parser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GLB2Parser.js
-/* provided dependency */ var GLB2Parser_$ = __webpack_require__(268);
+/* provided dependency */ var GLB2Parser_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -47475,7 +47461,7 @@ const GLB2Parser_default_ = GLB2Parser;
 x_ite_Namespace .add ("GLB2Parser", "x_ite/Parser/GLB2Parser", GLB2Parser_default_);
 /* harmony default export */ const Parser_GLB2Parser = (GLB2Parser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/OBJParser.js
-/* provided dependency */ var OBJParser_$ = __webpack_require__(268);
+/* provided dependency */ var OBJParser_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -47543,7 +47529,7 @@ const OBJParser_Grammar = Parser_Expressions ({
    // General
    whitespaces: /[\x20\n\t\r]+/gy,
    whitespacesNoLineTerminator: /[\x20\t]+/gy,
-   comment: /#.*?(?=[\n\r])/gy,
+   comment: /#.*?(?=[\n\r]|$)/gy,
    untilEndOfLine: /[^\r\n]+/gy,
 
    // Keywords
@@ -48635,7 +48621,7 @@ const STLAParser_Grammar = Parser_Expressions ({
    // General
    whitespaces: /[\x20\n\t\r]+/gy,
    whitespacesNoLineTerminator: /[\x20\t]+/gy,
-   comment: /;.*?(?=[\n\r])/gy,
+   comment: /;.*?(?=[\n\r]|$)/gy,
    untilEndOfLine: /[^\r\n]+/gy,
 
    // Keywords
@@ -50833,8 +50819,8 @@ const MatrixStack_default_ = MatrixStack;
 x_ite_Namespace .add ("MatrixStack", "standard/Math/Utility/MatrixStack", MatrixStack_default_);
 /* harmony default export */ const Utility_MatrixStack = (MatrixStack_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/SVGParser.js
-/* provided dependency */ var SVGParser_$ = __webpack_require__(268);
-/* provided dependency */ var libtess = __webpack_require__(937);
+/* provided dependency */ var SVGParser_$ = __webpack_require__(250);
+/* provided dependency */ var libtess = __webpack_require__(979);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -53602,7 +53588,7 @@ const SVGParser_default_ = SVGParser;
 x_ite_Namespace .add ("SVGParser", "x_ite/Parser/SVGParser", SVGParser_default_);
 /* harmony default export */ const Parser_SVGParser = (SVGParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GoldenGate.js
-/* provided dependency */ var GoldenGate_$ = __webpack_require__(268);
+/* provided dependency */ var GoldenGate_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -53952,7 +53938,7 @@ const Plane3_default_ = Plane3;
 x_ite_Namespace .add ("Plane3", "standard/Math/Geometry/Plane3", Plane3_default_);
 /* harmony default export */ const Geometry_Plane3 = (Plane3_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Triangle3.js
-/* provided dependency */ var Triangle3_libtess = __webpack_require__(937);
+/* provided dependency */ var Triangle3_libtess = __webpack_require__(979);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -57723,7 +57709,7 @@ Object .assign (Object .setPrototypeOf (BindableList .prototype, Base_X3DBaseNod
                node  = this .nodes [i],
                scene = node .getExecutionContext () .getOuterNode () ?.getScene () ?? node .getScene ();
 
-            if (!enableInlineBindables && !scene .isMainScene ())
+            if (!enableInlineBindables && scene .getExecutionContext ())
                continue;
 
             if (node .getName () == name)
@@ -57739,7 +57725,7 @@ Object .assign (Object .setPrototypeOf (BindableList .prototype, Base_X3DBaseNod
             node  = this .nodes [i],
             scene = node .getExecutionContext () .getOuterNode () ?.getScene () ?? node .getScene ();
 
-         if (!enableInlineBindables && !scene .isMainScene ())
+         if (!enableInlineBindables && scene .getExecutionContext ())
             continue;
 
          if (node ._isBound .getValue ())
@@ -57754,7 +57740,7 @@ Object .assign (Object .setPrototypeOf (BindableList .prototype, Base_X3DBaseNod
             node  = this .nodes [i],
             scene = node .getExecutionContext () .getOuterNode () ?.getScene () ?? node .getScene ();
 
-         if (!enableInlineBindables && !scene .isMainScene ())
+         if (!enableInlineBindables && scene .getExecutionContext ())
             continue;
 
          return node;
@@ -62481,7 +62467,7 @@ const X3DTexture2DNode_default_ = X3DTexture2DNode;
 x_ite_Namespace .add ("X3DTexture2DNode", "x_ite/Components/Texturing/X3DTexture2DNode", X3DTexture2DNode_default_);
 /* harmony default export */ const Texturing_X3DTexture2DNode = (X3DTexture2DNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/ImageTexture.js
-/* provided dependency */ var ImageTexture_$ = __webpack_require__(268);
+/* provided dependency */ var ImageTexture_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -66065,7 +66051,7 @@ const X3DWorld_default_ = X3DWorld;
 x_ite_Namespace .add ("X3DWorld", "x_ite/Execution/X3DWorld", X3DWorld_default_);
 /* harmony default export */ const Execution_X3DWorld = (X3DWorld_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/InputOutput/FileLoader.js
-/* provided dependency */ var FileLoader_$ = __webpack_require__(268);
+/* provided dependency */ var FileLoader_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -66484,11 +66470,8 @@ Object .assign (Object .setPrototypeOf (X3DExternProtoDeclaration .prototype, Pr
 
       if (proto)
       {
-         for (const field of [... this .getUserDefinedFields ()])
-            this .removeUserDefinedField (field .getName ())
-
-         for (const field of proto .getUserDefinedFields ())
-            this .addUserDefinedField (field .getAccessType (), field .getName (), field);
+         this .getFieldDefinitions ()  .assign (proto .getFieldDefinitions ());
+         this .getUserDefinedFields () .assign (proto .getUserDefinedFields ());
       }
 
       this .updateInstances ();
@@ -66517,8 +66500,8 @@ Object .assign (Object .setPrototypeOf (X3DExternProtoDeclaration .prototype, Pr
    },
    setInternalScene (value)
    {
-      this [_scene] ?.setExecutionContext (this [_scene]);
-      this [_scene] ?.setLive (false);
+      if (this [_scene] !== this .getBrowser () .getPrivateScene ())
+         this [_scene] ?.dispose ();
 
       this [_scene] = value;
 
@@ -67002,7 +66985,7 @@ const ProtoDeclarationArray_default_ = ProtoDeclarationArray;
 x_ite_Namespace .add ("ProtoDeclarationArray", "x_ite/Prototype/ProtoDeclarationArray", ProtoDeclarationArray_default_);
 /* harmony default export */ const Prototype_ProtoDeclarationArray = (ProtoDeclarationArray_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Routing/X3DRoute.js
-/* provided dependency */ var X3DRoute_$ = __webpack_require__(268);
+/* provided dependency */ var X3DRoute_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -67391,8 +67374,8 @@ Object .defineProperties (X3DRoute .prototype,
       {
          if (this [_sourceNode] instanceof Core_X3DNode)
             return Fields_SFNodeCache .get (this [_sourceNode]);
-         else
-            return this [_sourceNode];
+
+         return this [_sourceNode];
       },
       enumerable: true,
    },
@@ -67407,8 +67390,8 @@ Object .defineProperties (X3DRoute .prototype,
       {
          if (this [_destinationNode] instanceof Core_X3DNode)
             return Fields_SFNodeCache .get (this [_destinationNode]);
-         else
-            return this [_destinationNode];
+
+         return this [_destinationNode];
       },
       enumerable: true,
    },
@@ -67626,7 +67609,7 @@ function X3DExecutionContext (executionContext, outerNode = null, browser = exec
    this ._rootNodes .setPrivate (false);
    this ._rootNodes .collectCloneCount = () => 1;
 
-   if (executionContext !== this)
+   if (executionContext)
    {
       this ._countPrimitives .addReference (executionContext ._countPrimitives);
       this ._sceneGraph_changed .addFieldInterest (executionContext ._sceneGraph_changed);
@@ -67650,12 +67633,15 @@ Object .assign (Object .setPrototypeOf (X3DExecutionContext .prototype, Base_X3D
 {
    setExecutionContext (executionContext)
    {
-      this ._countPrimitives .removeReference (this .getExecutionContext () ._countPrimitives);
-      this ._sceneGraph_changed .removeFieldInterest (this .getExecutionContext () ._sceneGraph_changed);
+      if (this .getExecutionContext ())
+      {
+         this ._countPrimitives .removeReference (this .getExecutionContext () ._countPrimitives);
+         this ._sceneGraph_changed .removeFieldInterest (this .getExecutionContext () ._sceneGraph_changed);
+      }
 
       Base_X3DBaseNode .prototype .setExecutionContext .call (this, executionContext);
 
-      if (executionContext !== this)
+      if (executionContext)
       {
          this ._countPrimitives .addReference (executionContext ._countPrimitives);
          this ._sceneGraph_changed .addFieldInterest (executionContext ._sceneGraph_changed);
@@ -67676,7 +67662,7 @@ Object .assign (Object .setPrototypeOf (X3DExecutionContext .prototype, Base_X3D
    },
    setCountPrimitives (value)
    {
-      this ._countPrimitives = this .getExecutionContext () .getCountPrimitives () && value;
+      this ._countPrimitives = (this .getExecutionContext () ?.getCountPrimitives () ?? true) && value;
    },
    getSpecificationVersion ()
    {
@@ -68430,10 +68416,12 @@ Object .assign (Object .setPrototypeOf (X3DExecutionContext .prototype, Base_X3D
       for (const route of Array .from (this [X3DExecutionContext_routes]))
          this .deleteRoute (route);
 
-      this .externprotos  .clear ();
-      this .protos        .clear ();
-      this .importedNodes .clear ();
-      this .routes        .clear ();
+      this [_outerNode] = null;
+      this [_namedNodes]    .clear ();
+      this [_importedNodes] .clear ();
+      this [_protos]        .clear ();
+      this [_externprotos]  .clear ();
+      this [X3DExecutionContext_routes]        .clear ();
 
       Base_X3DBaseNode .prototype .dispose .call (this);
    },
@@ -68581,7 +68569,6 @@ x_ite_Namespace .add ("X3DExecutionContext", "x_ite/Execution/X3DExecutionContex
 
 
 
-
 const
    X3DPrototypeInstance_fieldDefinitions = Symbol .for ("X_ITE.X3DBaseNode.fieldDefinitions"),
    _protoNode        = Symbol (),
@@ -68591,12 +68578,14 @@ const
 function X3DPrototypeInstance (executionContext, protoNode)
 {
    this [_protoNode]        = protoNode;
-   this [X3DPrototypeInstance_fieldDefinitions] = new Base_FieldDefinitionArray (protoNode .getFieldDefinitions ());
+   this [X3DPrototypeInstance_fieldDefinitions] = protoNode .getFieldDefinitions ();
    this [X3DPrototypeInstance_body]             = null;
 
    Core_X3DNode .call (this, executionContext);
 
    this .addType (Base_X3DConstants .X3DPrototypeInstance);
+
+   this .setProtoNode (protoNode, true);
 }
 
 Object .assign (Object .setPrototypeOf (X3DPrototypeInstance .prototype, Core_X3DNode .prototype),
@@ -68613,7 +68602,7 @@ Object .assign (Object .setPrototypeOf (X3DPrototypeInstance .prototype, Core_X3
    {
       Core_X3DNode .prototype .initialize .call (this);
 
-      this .setProtoNode (this [_protoNode]);
+      this .realize ();
    },
    construct ()
    {
@@ -68624,8 +68613,6 @@ Object .assign (Object .setPrototypeOf (X3DPrototypeInstance .prototype, Core_X3
       // Dispose body and assign field definitions.
 
       this [X3DPrototypeInstance_body] ?.dispose ();
-
-      this [X3DPrototypeInstance_fieldDefinitions] .assign (protoNode .getFieldDefinitions ());
 
       // If there is a proto, the externproto is completely loaded.
 
@@ -68650,11 +68637,11 @@ Object .assign (Object .setPrototypeOf (X3DPrototypeInstance .prototype, Core_X3
             {
                const field = this .getField (protoField .getName ());
 
-               // Continue if something is wrong.
+               // Continue if different.
                if (field .getAccessType () !== protoField .getAccessType ())
                   continue;
 
-               // Continue if something is wrong.
+               // Continue if different.
                if (field .getType () !== protoField .getType ())
                   continue;
 
@@ -68667,7 +68654,7 @@ Object .assign (Object .setPrototypeOf (X3DPrototypeInstance .prototype, Core_X3
                   continue;
 
                // Has IS references.
-               if (field .hasReferences ())
+               if (field .getReferences () .size)
                   continue;
 
                // Default value of protoField is different from field.
@@ -68685,6 +68672,21 @@ Object .assign (Object .setPrototypeOf (X3DPrototypeInstance .prototype, Core_X3
          }
       }
 
+      if (this .isInitialized ())
+         this .realize ();
+
+      protoNode ._updateInstances .removeInterest ("construct", this);
+      protoNode ._updateInstances .addInterest ("update", this);
+   },
+   realize ()
+   {
+      const
+         protoNode = this [_protoNode],
+         proto     = protoNode .getProtoDeclaration ();
+
+      if (protoNode .isExternProto && protoNode .checkLoadState () !== Base_X3DConstants .COMPLETE_STATE)
+         return;
+
       // Create execution context.
 
       this [X3DPrototypeInstance_body] = new Execution_X3DExecutionContext (proto .getExecutionContext (), this);
@@ -68699,11 +68701,7 @@ Object .assign (Object .setPrototypeOf (X3DPrototypeInstance .prototype, Core_X3
 
       this [X3DPrototypeInstance_body] .setup ();
 
-      if (this .isInitialized ())
-         Base_X3DChildObject .prototype .addEvent .call (this);
-
-      protoNode ._updateInstances .removeInterest ("construct", this);
-      protoNode ._updateInstances .addInterest ("update", this);
+      Base_X3DChildObject .prototype .addEvent .call (this);
    },
    update ()
    {
@@ -68823,7 +68821,7 @@ Object .assign (Object .setPrototypeOf (X3DPrototypeInstance .prototype, Core_X3
    {
       return this [_protoNode];
    },
-   setProtoNode (protoNode)
+   setProtoNode (protoNode, construct = false)
    {
       // Disconnect old proto node.
 
@@ -68835,12 +68833,13 @@ Object .assign (Object .setPrototypeOf (X3DPrototypeInstance .prototype, Core_X3
 
       // Get fields from new proto node.
 
-      this [_protoNode]   = protoNode;
-      this [_protoFields] = Array .from (protoNode .getUserDefinedFields ());
+      this [_protoNode]        = protoNode;
+      this [X3DPrototypeInstance_fieldDefinitions] = protoNode .getFieldDefinitions ();
+      this [_protoFields]      = Array .from (protoNode .getUserDefinedFields ());
 
       protoNode ._name_changed .addFieldInterest (this ._typeName_changed);
 
-      protoNode === oldProtoNode ? this .construct () : this .update ();
+      construct ? this .construct () : this .update ();
    },
    getBody ()
    {
@@ -83906,18 +83905,24 @@ Object .assign (Object .setPrototypeOf (Inline .prototype, Core_X3DChildNode .pr
    },
    setInternalScene (scene)
    {
-      this .scene .setExecutionContext (this .scene);
-      this .scene .setLive (false);
-      this .scene .rootNodes .removeFieldInterest (this .groupNode ._children);
+      if (this .scene !== this .getBrowser () .getDefaultScene ())
+         this .scene .dispose ();
 
       // Set new scene.
 
       this .scene = scene;
 
-      this .scene .setExecutionContext (this .getExecutionContext ());
-      this .scene .setLive (this .getLive () .getValue ());
-      this .scene .rootNodes .addFieldInterest (this .groupNode ._children);
-      this .groupNode ._children = this .scene .rootNodes;
+      if (this .scene !== this .getBrowser () .getDefaultScene ())
+      {
+         this .scene .setExecutionContext (this .getExecutionContext ());
+         this .scene .setLive (this .getLive () .getValue ());
+         this .scene .rootNodes .addFieldInterest (this .groupNode ._children);
+         this .groupNode ._children = this .scene .rootNodes;
+      }
+      else
+      {
+         this .groupNode ._children .length = 0;
+      }
 
       this .getBrowser () .addBrowserEvent ();
    },
@@ -90131,7 +90136,7 @@ const X3DShaderNode_default_ = X3DShaderNode;
 x_ite_Namespace .add ("X3DShaderNode", "x_ite/Components/Shaders/X3DShaderNode", X3DShaderNode_default_);
 /* harmony default export */ const Shaders_X3DShaderNode = (X3DShaderNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/X3DProgrammableShaderObject.js
-/* provided dependency */ var X3DProgrammableShaderObject_$ = __webpack_require__(268);
+/* provided dependency */ var X3DProgrammableShaderObject_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -95839,7 +95844,7 @@ const ShaderCompiler_default_ = ShaderCompiler;
 x_ite_Namespace .add ("ShaderCompiler", "x_ite/Browser/Shaders/ShaderCompiler", ShaderCompiler_default_);
 /* harmony default export */ const Shaders_ShaderCompiler = (ShaderCompiler_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/ShaderPart.js
-/* provided dependency */ var ShaderPart_$ = __webpack_require__(268);
+/* provided dependency */ var ShaderPart_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -96496,7 +96501,7 @@ const X3DAppearanceNode_default_ = X3DAppearanceNode;
 x_ite_Namespace .add ("X3DAppearanceNode", "x_ite/Components/Shape/X3DAppearanceNode", X3DAppearanceNode_default_);
 /* harmony default export */ const Shape_X3DAppearanceNode = (X3DAppearanceNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/Appearance.js
-/* provided dependency */ var Appearance_$ = __webpack_require__(268);
+/* provided dependency */ var Appearance_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -105448,8 +105453,8 @@ const GifMedia_default_ = GifMedia;
 x_ite_Namespace .add ("GifMedia", "x_ite/Browser/Texturing/GifMedia", GifMedia_default_);
 /* harmony default export */ const Texturing_GifMedia = (GifMedia_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/MovieTexture.js
-/* provided dependency */ var MovieTexture_$ = __webpack_require__(268);
-/* provided dependency */ var SuperGif = __webpack_require__(719);
+/* provided dependency */ var MovieTexture_$ = __webpack_require__(250);
+/* provided dependency */ var SuperGif = __webpack_require__(389);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -108857,7 +108862,7 @@ const gettext_default_ = (string) => locale .get (string) || string;
 x_ite_Namespace .add ("gettext", "locale/gettext", gettext_default_);
 /* harmony default export */ const gettext = (gettext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/BrowserTimings.js
-/* provided dependency */ var BrowserTimings_$ = __webpack_require__(268);
+/* provided dependency */ var BrowserTimings_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -109430,7 +109435,7 @@ const TextureQuality_default_ = TextureQuality;
 x_ite_Namespace .add ("TextureQuality", "x_ite/Browser/Core/TextureQuality", TextureQuality_default_);
 /* harmony default export */ const Core_TextureQuality = (TextureQuality_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/BrowserOptions.js
-/* provided dependency */ var BrowserOptions_$ = __webpack_require__(268);
+/* provided dependency */ var BrowserOptions_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -110024,7 +110029,7 @@ const RenderingProperties_default_ = RenderingProperties;
 x_ite_Namespace .add ("RenderingProperties", "x_ite/Browser/Core/RenderingProperties", RenderingProperties_default_);
 /* harmony default export */ const Core_RenderingProperties = (RenderingProperties_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/Notification.js
-/* provided dependency */ var Notification_$ = __webpack_require__(268);
+/* provided dependency */ var Notification_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -110147,8 +110152,8 @@ const Notification_default_ = Notification;
 x_ite_Namespace .add ("Notification", "x_ite/Browser/Core/Notification", Notification_default_);
 /* harmony default export */ const Core_Notification = (Notification_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/ContextMenu.js
-/* provided dependency */ var jquery_fullscreen = __webpack_require__(600);
-/* provided dependency */ var ContextMenu_$ = __webpack_require__(268);
+/* provided dependency */ var jquery_fullscreen = __webpack_require__(226);
+/* provided dependency */ var ContextMenu_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -111702,7 +111707,7 @@ const
 
 function X3DScene (browser)
 {
-   Execution_X3DExecutionContext .call (this, this, null, browser);
+   Execution_X3DExecutionContext .call (this, null, null, browser);
 
    this .addType (Base_X3DConstants .X3DScene)
 
@@ -111738,10 +111743,6 @@ function X3DScene (browser)
 
 Object .assign (Object .setPrototypeOf (X3DScene .prototype, Execution_X3DExecutionContext .prototype),
 {
-   isMainScene ()
-   {
-      return this === this .getExecutionContext ();
-   },
    isScene ()
    {
       return true;
@@ -111774,10 +111775,8 @@ Object .assign (Object .setPrototypeOf (X3DScene .prototype, Execution_X3DExecut
    {
       if (this [_worldURL] .match (/^(?:data|blob):/))
       {
-         if (this .isMainScene ())
-            return this .getBrowser () .getBaseURL ();
-
-         return this .getExecutionContext () .getBaseURL ();
+         return this .getExecutionContext () ?.getBaseURL ()
+            ?? this .getBrowser () .getBaseURL ();
       }
 
       return this [_worldURL];
@@ -112624,7 +112623,7 @@ Object .assign (Object .setPrototypeOf (X3DScene .prototype, Execution_X3DExecut
 {
    setExecutionContext (executionContext)
    {
-      if (!this .isMainScene ())
+      if (this .getExecutionContext ())
       {
          const scene = this .getScene ();
 
@@ -112634,7 +112633,7 @@ Object .assign (Object .setPrototypeOf (X3DScene .prototype, Execution_X3DExecut
 
       Execution_X3DExecutionContext .prototype .setExecutionContext .call (this, executionContext);
 
-      if (!this .isMainScene ())
+      if (this .getExecutionContext ())
       {
          const scene = this .getScene ();
 
@@ -112663,15 +112662,12 @@ Object .assign (Object .setPrototypeOf (X3DScene .prototype, Execution_X3DExecut
 
       this ._loadCount = this [_loadingObjects] .size;
 
-      const
-         browser = this .getBrowser (),
-         scene   = this .getScene ();
+      const browser = this .getBrowser ();
 
       if (this === browser .getExecutionContext ())
          browser .addLoadingObject (node);
 
-      if (!this .isMainScene ())
-         scene .addLoadingObject (node);
+      this .getScene () ?.addLoadingObject (node);
    },
    removeLoadingObject (node)
    {
@@ -112682,15 +112678,12 @@ Object .assign (Object .setPrototypeOf (X3DScene .prototype, Execution_X3DExecut
 
       this ._loadCount = this [_loadingObjects] .size;
 
-      const
-         browser = this .getBrowser (),
-         scene   = this .getScene ();
+      const browser = this .getBrowser ();
 
       if (this === browser .getExecutionContext ())
          browser .removeLoadingObject (node);
 
-      if (!this .isMainScene ())
-         scene .removeLoadingObject (node);
+      this .getScene () ?.removeLoadingObject (node);
    },
 });
 
@@ -112727,6 +112720,11 @@ Object .defineProperties (X3DScene .prototype,
    worldURL:
    {
       get: X3DScene .prototype .getWorldURL,
+      enumerable: true,
+   },
+   baseURL:
+   {
+      get: X3DScene .prototype .getBaseURL,
       enumerable: true,
    },
    units:
@@ -112909,7 +112907,7 @@ const DataStorage_default_ = DataStorage;
 x_ite_Namespace .add ("DataStorage", "standard/Utility/DataStorage", DataStorage_default_);
 /* harmony default export */ const Utility_DataStorage = (DataStorage_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/X3DCoreContext.js
-/* provided dependency */ var X3DCoreContext_$ = __webpack_require__(268);
+/* provided dependency */ var X3DCoreContext_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -115432,8 +115430,8 @@ const X3DViewer_default_ = X3DViewer;
 x_ite_Namespace .add ("X3DViewer", "x_ite/Browser/Navigation/X3DViewer", X3DViewer_default_);
 /* harmony default export */ const Navigation_X3DViewer = (X3DViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/ExamineViewer.js
-/* provided dependency */ var jquery_mousewheel = __webpack_require__(482);
-/* provided dependency */ var ExamineViewer_$ = __webpack_require__(268);
+/* provided dependency */ var jquery_mousewheel = __webpack_require__(496);
+/* provided dependency */ var ExamineViewer_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -116305,8 +116303,8 @@ const ExamineViewer_default_ = ExamineViewer;
 x_ite_Namespace .add ("ExamineViewer", "x_ite/Browser/Navigation/ExamineViewer", ExamineViewer_default_);
 /* harmony default export */ const Navigation_ExamineViewer = (ExamineViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/X3DFlyViewer.js
-/* provided dependency */ var X3DFlyViewer_jquery_mousewheel = __webpack_require__(482);
-/* provided dependency */ var X3DFlyViewer_$ = __webpack_require__(268);
+/* provided dependency */ var X3DFlyViewer_jquery_mousewheel = __webpack_require__(496);
+/* provided dependency */ var X3DFlyViewer_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -117315,8 +117313,8 @@ const FlyViewer_default_ = FlyViewer;
 x_ite_Namespace .add ("FlyViewer", "x_ite/Browser/Navigation/FlyViewer", FlyViewer_default_);
 /* harmony default export */ const Navigation_FlyViewer = (FlyViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/PlaneViewer.js
-/* provided dependency */ var PlaneViewer_jquery_mousewheel = __webpack_require__(482);
-/* provided dependency */ var PlaneViewer_$ = __webpack_require__(268);
+/* provided dependency */ var PlaneViewer_jquery_mousewheel = __webpack_require__(496);
+/* provided dependency */ var PlaneViewer_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -117647,8 +117645,8 @@ const NoneViewer_default_ = NoneViewer;
 x_ite_Namespace .add ("NoneViewer", "x_ite/Browser/Navigation/NoneViewer", NoneViewer_default_);
 /* harmony default export */ const Navigation_NoneViewer = (NoneViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/LookAtViewer.js
-/* provided dependency */ var LookAtViewer_jquery_mousewheel = __webpack_require__(482);
-/* provided dependency */ var LookAtViewer_$ = __webpack_require__(268);
+/* provided dependency */ var LookAtViewer_jquery_mousewheel = __webpack_require__(496);
+/* provided dependency */ var LookAtViewer_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -118786,8 +118784,8 @@ const X3DPickingContext_default_ = X3DPickingContext;
 x_ite_Namespace .add ("X3DPickingContext", "x_ite/Browser/Picking/X3DPickingContext", X3DPickingContext_default_);
 /* harmony default export */ const Picking_X3DPickingContext = (X3DPickingContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/PointingDeviceSensor/PointingDevice.js
-/* provided dependency */ var PointingDevice_jquery_mousewheel = __webpack_require__(482);
-/* provided dependency */ var PointingDevice_$ = __webpack_require__(268);
+/* provided dependency */ var PointingDevice_jquery_mousewheel = __webpack_require__(496);
+/* provided dependency */ var PointingDevice_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -120091,7 +120089,7 @@ const MultiSampleFrameBuffer_default_ = MultiSampleFrameBuffer;
 x_ite_Namespace .add ("MultiSampleFrameBuffer", "x_ite/Rendering/MultiSampleFrameBuffer", MultiSampleFrameBuffer_default_);
 /* harmony default export */ const Rendering_MultiSampleFrameBuffer = (MultiSampleFrameBuffer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Rendering/X3DRenderingContext.js
-/* provided dependency */ var X3DRenderingContext_$ = __webpack_require__(268);
+/* provided dependency */ var X3DRenderingContext_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -121039,7 +121037,7 @@ const X3DSoundContext_default_ = X3DSoundContext;
 x_ite_Namespace .add ("X3DSoundContext", "x_ite/Browser/Sound/X3DSoundContext", X3DSoundContext_default_);
 /* harmony default export */ const Sound_X3DSoundContext = (X3DSoundContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Texturing/KTXDecoder.js
-/* provided dependency */ var KTXDecoder_$ = __webpack_require__(268);
+/* provided dependency */ var KTXDecoder_$ = __webpack_require__(250);
 const KTXDecoder_default_ = class KTXDecoder
 {
    constructor (gl, externalKtxlib, scriptDir)
@@ -122593,7 +122591,7 @@ const Components_default_ = Components;
 x_ite_Namespace .add ("Components", "x_ite/Components", Components_default_);
 /* harmony default export */ const x_ite_Components = ((/* unused pure expression or super */ null && (Components_default_)));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/DOMIntegration.js
-/* provided dependency */ var DOMIntegration_$ = __webpack_require__(268);
+/* provided dependency */ var DOMIntegration_$ = __webpack_require__(250);
 /*******************************************************************************
  * MIT License
  *
@@ -123727,7 +123725,7 @@ const SupportedProfiles_default_ = SupportedProfiles;
 x_ite_Namespace .add ("SupportedProfiles", "x_ite/Configuration/SupportedProfiles", SupportedProfiles_default_);
 /* harmony default export */ const Configuration_SupportedProfiles = (SupportedProfiles_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/X3DBrowser.js
-/* provided dependency */ var X3DBrowser_$ = __webpack_require__(268);
+/* provided dependency */ var X3DBrowser_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -124159,7 +124157,7 @@ Object .assign (Object .setPrototypeOf (X3DBrowser .prototype, Browser_X3DBrowse
 
          // Detach scene from parent.
 
-         scene .setExecutionContext (scene);
+         scene .setExecutionContext (null);
          scene .setLive (this .isLive ());
 
          // Replace.
@@ -124257,18 +124255,18 @@ Object .assign (Object .setPrototypeOf (X3DBrowser .prototype, Browser_X3DBrowse
       {
          this .removeLoadingObject (fileLoader);
 
-         if (scene)
-         {
-            // Handle getLive for script scenes here:
+         if (!scene)
+            return;
 
-            if (!external)
-               scene .setExecutionContext (currentScene);
+         // Handle getLive for script scenes here:
 
-            scene .setLive (true);
+         if (!external)
+            scene .setExecutionContext (currentScene);
 
-            // Wait until scene is completely loaded, scene ._loadCount must be 0.
-            field .setValue (scene .rootNodes);
-         }
+         scene .setLive (true);
+
+         // Wait until scene is completely loaded, scene ._loadCount must be 0.
+         field .setValue (scene .rootNodes);
       });
    },
    createX3DFromURL (url, node, event)
@@ -124818,7 +124816,7 @@ const X3DBrowser_default_ = X3DBrowser;
 x_ite_Namespace .add ("X3DBrowser", "x_ite/Browser/X3DBrowser", X3DBrowser_default_);
 /* harmony default export */ const Browser_X3DBrowser = (X3DBrowser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/X3DCanvasElement.js
-/* provided dependency */ var X3DCanvasElement_$ = __webpack_require__(268);
+/* provided dependency */ var X3DCanvasElement_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -124955,8 +124953,8 @@ const X3DCanvasElement_default_ = X3DCanvasElement;
 x_ite_Namespace .add ("X3DCanvasElement", "x_ite/X3DCanvasElement", X3DCanvasElement_default_);
 /* harmony default export */ const x_ite_X3DCanvasElement = (X3DCanvasElement_default_);
 ;// CONCATENATED MODULE: ./src/lib/jquery.js
-/* provided dependency */ var jquery_$ = __webpack_require__(268);
-/* provided dependency */ var pako = __webpack_require__(752);
+/* provided dependency */ var jquery_$ = __webpack_require__(250);
+/* provided dependency */ var pako = __webpack_require__(82);
 Object .assign (jquery_$,
 {
    decodeText (input)
@@ -125033,14 +125031,14 @@ const jquery_default_ = jquery_$;
 x_ite_Namespace .add ("jquery", "lib/jquery", jquery_default_);
 /* harmony default export */ const jquery = ((/* unused pure expression or super */ null && (jquery_default_)));
 ;// CONCATENATED MODULE: ./src/lib/libtess.js
-/* provided dependency */ var libtess_libtess = __webpack_require__(937);
+/* provided dependency */ var libtess_libtess = __webpack_require__(979);
 const libtess_default_ = libtess_libtess;
 ;
 
 x_ite_Namespace .add ("libtess", "lib/libtess", libtess_default_);
 /* harmony default export */ const lib_libtess = ((/* unused pure expression or super */ null && (libtess_default_)));
 ;// CONCATENATED MODULE: ./src/x_ite/X3D.js
-/* provided dependency */ var X3D_$ = __webpack_require__(268);
+/* provided dependency */ var X3D_$ = __webpack_require__(250);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -125348,7 +125346,7 @@ Object .assign (X3D,
 
 // Assign X3D to global namespace.
 
-window [Symbol .for ("X_ITE.X3D-9.6.0")] = x_ite_X3D;
+window [Symbol .for ("X_ITE.X3D-9.6.1")] = x_ite_X3D;
 
 customElements .define ("x3d-canvas", x_ite_X3DCanvasElement);
 
