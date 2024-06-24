@@ -1,4 +1,4 @@
-/* X_ITE v9.7.0 */(function webpackUniversalModuleDefinition(root, factory) {
+/* X_ITE v10.0.0 */(function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
@@ -11,10 +11,10 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 827:
+/***/ 653:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-/* provided dependency */ var jQuery = __webpack_require__(63);
+/* provided dependency */ var jQuery = __webpack_require__(749);
 /**
  * @preserve jquery.fullscreen 1.1.5
  * https://github.com/code-lts/jquery-fullscreen-plugin
@@ -210,7 +210,7 @@ installFullScreenHandlers();
 
 /***/ }),
 
-/***/ 623:
+/***/ 189:
 /***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -224,7 +224,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 (function (factory) {
     if ( true ) {
         // AMD. Register as an anonymous module.
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(63)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(749)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 		(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -435,7 +435,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
-/***/ 63:
+/***/ 749:
 /***/ (function(module, exports) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11159,7 +11159,7 @@ return jQuery;
 
 /***/ }),
 
-/***/ 844:
+/***/ 382:
 /***/ ((module) => {
 
 /**
@@ -15938,7 +15938,7 @@ if (true) {
 
 /***/ }),
 
-/***/ 807:
+/***/ 481:
 /***/ (function(__unused_webpack_module, exports) {
 
 
@@ -19183,7 +19183,7 @@ if (true) {
 
 /***/ }),
 
-/***/ 584:
+/***/ 862:
 /***/ (function(module, exports) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -20311,7 +20311,7 @@ Object .defineProperty (Namespace, "add",
       }
       else
       {
-         const X3D = window [Symbol .for ("X_ITE.X3D-9.7.0")];
+         const X3D = window [Symbol .for ("X_ITE.X3D-10.0.0")];
 
          if (X3D)
             X3D [name] = module;
@@ -23465,7 +23465,7 @@ x_ite_Namespace .add ("SFBool", "x_ite/Fields/SFBool", SFBool_default_);
 
 
 
-const { clamp, interval, degrees } = Math_Algorithm;
+const { interval, degrees } = Math_Algorithm;
 
 const
    _r = Symbol .for ("X_ITE.Color3.r"),
@@ -23474,9 +23474,9 @@ const
 
 function Color3 (r = 0, g = 0, b = 0)
 {
-   this [_r] = clamp (r, 0, 1);
-   this [_g] = clamp (g, 0, 1);
-   this [_b] = clamp (b, 0, 1);
+   this [_r] = Math .max (r, 0);
+   this [_g] = Math .max (g, 0);
+   this [_b] = Math .max (b, 0);
 }
 
 Object .assign (Color3 .prototype,
@@ -23504,9 +23504,9 @@ Object .assign (Color3 .prototype,
    },
    set (r, g, b)
    {
-      this [_r] = clamp (r, 0, 1);
-      this [_g] = clamp (g, 0, 1);
-      this [_b] = clamp (b, 0, 1);
+      this [_r] = Math .max (r, 0);
+      this [_g] = Math .max (g, 0);
+      this [_b] = Math .max (b, 0);
       return this;
    },
    equals (color)
@@ -23519,8 +23519,15 @@ Object .assign (Color3 .prototype,
    {
       let h, s, v;
 
-      const min = Math .min (this [_r], this [_g], this [_b]);
-      const max = Math .max (this [_r], this [_g], this [_b]);
+      const
+         r = this [_r],
+         g = this [_g],
+         b = this [_b];
+
+      const
+         min = Math .min (r, g, b),
+         max = Math .max (r, g, b);
+
       v = max; // value
 
       const delta = max - min;
@@ -23529,19 +23536,22 @@ Object .assign (Color3 .prototype,
       {
          s = delta / max; // s
 
-         if (this [_r] === max)
-            h =     (this [_g] - this [_b]) / delta;  // between yellow & magenta
-         else if (this [_g] === max)
-            h = 2 + (this [_b] - this [_r]) / delta;  // between cyan & yellow
+         if (r === max)
+            h =     (g - b) / delta;  // between yellow & magenta
+         else if (g === max)
+            h = 2 + (b - r) / delta;  // between cyan & yellow
          else
-            h = 4 + (this [_r] - this [_g]) / delta;  // between magenta & cyan
+            h = 4 + (r - g) / delta;  // between magenta & cyan
 
          h *= Math .PI / 3;  // radiants
+
          if (h < 0)
             h += Math .PI * 2;
       }
       else
-         s = h = 0;         // s = 0, h is undefined
+      {
+         s = h = 0; // s = 0, h is undefined
+      }
 
       result [0] = h;
       result [1] = s;
@@ -23551,8 +23561,8 @@ Object .assign (Color3 .prototype,
    },
    setHSV (h, s, v)
    {
-      s = clamp (s, 0, 1),
-      v = clamp (v, 0, 1);
+      s = Math .max (s, 0),
+      v = Math .max (v, 0);
 
       // H is given on [0, 2 * Pi]. S and V are given on [0, 1].
       // RGB are each returned on [0, 1].
@@ -23598,17 +23608,17 @@ for (const key of Object .keys (Color3 .prototype))
 
 const r = {
    get () { return this [_r]; },
-   set (value) { this [_r] = clamp (value, 0, 1); },
+   set (value) { this [_r] = Math .max (value, 0); },
 };
 
 const g = {
    get () { return this [_g]; },
-   set (value) { this [_g] = clamp (value, 0, 1); },
+   set (value) { this [_g] = Math .max (value, 0); },
 };
 
 const b = {
    get () { return this [_b]; },
-   set (value) { this [_b] = clamp (value, 0, 1); },
+   set (value) { this [_b] = Math .max (value, 0); },
 };
 
 Object .defineProperties (Color3 .prototype,
@@ -23967,9 +23977,6 @@ x_ite_Namespace .add ("SFColor", "x_ite/Fields/SFColor", SFColor_default_);
 
 
 
-
-const { clamp: Color4_clamp } = Math_Algorithm;
-
 const
    Color4_r = Symbol .for ("X_ITE.Color3.r"),
    Color4_g = Symbol .for ("X_ITE.Color3.g"),
@@ -23978,10 +23985,10 @@ const
 
 function Color4 (r = 0, g = 0, b = 0, a = 0)
 {
-   this [Color4_r] = Color4_clamp (r, 0, 1);
-   this [Color4_g] = Color4_clamp (g, 0, 1);
-   this [Color4_b] = Color4_clamp (b, 0, 1);
-   this [_a] = Color4_clamp (a, 0, 1);
+   this [Color4_r] = Math .max (r, 0);
+   this [Color4_g] = Math .max (g, 0);
+   this [Color4_b] = Math .max (b, 0);
+   this [_a] = Math .max (a, 0);
 }
 
 Object .assign (Color4 .prototype,
@@ -24012,10 +24019,10 @@ Object .assign (Color4 .prototype,
    },
    set (r, g, b, a)
    {
-      this [Color4_r] = Color4_clamp (r, 0, 1);
-      this [Color4_g] = Color4_clamp (g, 0, 1);
-      this [Color4_b] = Color4_clamp (b, 0, 1);
-      this [_a] = Color4_clamp (a, 0, 1);
+      this [Color4_r] = Math .max (r, 0);
+      this [Color4_g] = Math .max (g, 0);
+      this [Color4_b] = Math .max (b, 0);
+      this [_a] = Math .max (a, 0);
       return this;
    },
    equals (color)
@@ -24037,7 +24044,7 @@ Object .assign (Color4 .prototype,
    {
       Numbers_Color3 .prototype .setHSV .call (this, h, s, v);
 
-      this [_a] = Color4_clamp (a, 0, 1);
+      this [_a] = Math .max (a, 0);
 
       return this;
    },
@@ -24055,22 +24062,22 @@ for (const key of Object .keys (Color4 .prototype))
 
 const Numbers_Color4_r = {
    get () { return this [Color4_r]; },
-   set (value) { this [Color4_r] = Color4_clamp (value, 0, 1); },
+   set (value) { this [Color4_r] = Math .max (value, 0); },
 };
 
 const Numbers_Color4_g = {
    get () { return this [Color4_g]; },
-   set (value) { this [Color4_g] = Color4_clamp (value, 0, 1); },
+   set (value) { this [Color4_g] = Math .max (value, 0); },
 };
 
 const Numbers_Color4_b = {
    get () { return this [Color4_b]; },
-   set (value) { this [Color4_b] = Color4_clamp (value, 0, 1); },
+   set (value) { this [Color4_b] = Math .max (value, 0); },
 };
 
 const a = {
    get () { return this [_a]; },
-   set (value) { this [_a] = Color4_clamp (value, 0, 1); },
+   set (value) { this [_a] = Math .max (value, 0); },
 };
 
 Object .defineProperties (Color4 .prototype,
@@ -34236,7 +34243,7 @@ const X3DBaseNode_default_ = X3DBaseNode;
 x_ite_Namespace .add ("X3DBaseNode", "x_ite/Base/X3DBaseNode", X3DBaseNode_default_);
 /* harmony default export */ const Base_X3DBaseNode = (X3DBaseNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Legacy.js
-/* provided dependency */ var $ = __webpack_require__(63);
+/* provided dependency */ var $ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -34373,7 +34380,7 @@ x_ite_Namespace .add ("Legacy", "x_ite/Browser/Legacy", Legacy_default_);
  *
  ******************************************************************************/
 
-const BROWSER_VERSION_default_ = "9.7.0";
+const BROWSER_VERSION_default_ = "10.0.0";
 ;
 
 x_ite_Namespace .add ("BROWSER_VERSION", "x_ite/BROWSER_VERSION", BROWSER_VERSION_default_);
@@ -37558,6 +37565,1120 @@ const X3DBindableNode_default_ = X3DBindableNode;
 
 x_ite_Namespace .add ("X3DBindableNode", "x_ite/Components/Core/X3DBindableNode", X3DBindableNode_default_);
 /* harmony default export */ const Core_X3DBindableNode = (X3DBindableNode_default_);
+;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Triangle3.js
+/* provided dependency */ var libtess = __webpack_require__(382);
+/*******************************************************************************
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
+ *
+ * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * The copyright notice above does not evidence any actual of intended
+ * publication of such source code, and is an unpublished work by create3000.
+ * This material contains CONFIDENTIAL INFORMATION that is the property of
+ * create3000.
+ *
+ * No permission is granted to copy, distribute, or create derivative works from
+ * the contents of this software, in whole or in part, without the prior written
+ * permission of create3000.
+ *
+ * NON-MILITARY USE ONLY
+ *
+ * All create3000 software are effectively free software with a non-military use
+ * restriction. It is free. Well commented source is provided. You may reuse the
+ * source in any way you please with the exception anything that uses it must be
+ * marked to indicate is contains 'non-military use only' components.
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * This file is part of the X_ITE Project.
+ *
+ * X_ITE is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License version 3 only, as published by the
+ * Free Software Foundation.
+ *
+ * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
+ * details (a copy is included in the LICENSE file that accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version 3
+ * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
+ * copy of the GPLv3 License.
+ *
+ * For Silvio, Joy and Adi.
+ *
+ ******************************************************************************/
+
+
+
+const Triangle3 =
+{
+   area: (() =>
+   {
+      const
+         B = new Numbers_Vector3 (),
+         C = new Numbers_Vector3 ();
+
+      return function (a, b, c)
+      {
+         return B .assign (b) .subtract (a) .cross (C .assign (c) .subtract (a)) .magnitude () / 2;
+      };
+   })(),
+   normal (v1, v2, v3, normal)
+   {
+      const
+         x1 = v3 .x - v2 .x,
+         y1 = v3 .y - v2 .y,
+         z1 = v3 .z - v2 .z,
+         x2 = v1 .x - v2 .x,
+         y2 = v1 .y - v2 .y,
+         z2 = v1 .z - v2 .z;
+
+      normal .set (y1 * z2 - z1 * y2,
+                   z1 * x2 - x1 * z2,
+                   x1 * y2 - y1 * x2);
+
+      return normal .normalize ();
+   },
+   quadNormal (v1, v2, v3, v4, normal)
+   {
+      const
+         x1 = v3 .x - v1 .x,
+         y1 = v3 .y - v1 .y,
+         z1 = v3 .z - v1 .z,
+         x2 = v4 .x - v2 .x,
+         y2 = v4 .y - v2 .y,
+         z2 = v4 .z - v2 .z;
+
+      normal .set (y1 * z2 - z1 * y2,
+                   z1 * x2 - x1 * z2,
+                   x1 * y2 - y1 * x2);
+
+      return normal .normalize ();
+   },
+   triangulatePolygon: (() =>
+   {
+      // Function called for each vertex of tesselator output.
+
+      function vertexCallback (index, triangles)
+      {
+         triangles .push (index);
+      }
+
+      // Required in case of a combine, otherwise an empty array is returned.
+
+      function combineCallback (coords, data, weight)
+      {
+         return data [0];
+      }
+
+      const tessy = new libtess .GluTesselator ();
+
+      tessy .gluTessCallback (libtess .gluEnum .GLU_TESS_VERTEX_DATA,  vertexCallback);
+      tessy .gluTessCallback (libtess .gluEnum .GLU_TESS_COMBINE,      combineCallback);
+      tessy .gluTessProperty (libtess .gluEnum .GLU_TESS_WINDING_RULE, libtess .windingRule .GLU_TESS_WINDING_ODD);
+
+      return function (polygon, triangles)
+      {
+         tessy .gluTessBeginPolygon (triangles);
+         tessy .gluTessBeginContour ();
+
+         for (const point of polygon)
+            tessy .gluTessVertex (point, point .index);
+
+         tessy .gluTessEndContour ();
+         tessy .gluTessEndPolygon ();
+
+         // Return array of indices.
+         return triangles;
+      };
+   })(),
+   triangulateConvexPolygon (vertices, triangles)
+   {
+      // Fallback: Very simple triangulation for convex polygons.
+      for (let i = 1, length = vertices .length - 1; i < length; ++ i)
+         triangles .push (vertices [0], vertices [i], vertices [i + 1]);
+   },
+};
+
+const Triangle3_default_ = Triangle3;
+;
+
+x_ite_Namespace .add ("Triangle3", "standard/Math/Geometry/Triangle3", Triangle3_default_);
+/* harmony default export */ const Geometry_Triangle3 = (Triangle3_default_);
+;// CONCATENATED MODULE: ./src/standard/Math/Algorithms/SAT.js
+/*******************************************************************************
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
+ *
+ * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * The copyright notice above does not evidence any actual of intended
+ * publication of such source code, and is an unpublished work by create3000.
+ * This material contains CONFIDENTIAL INFORMATION that is the property of
+ * create3000.
+ *
+ * No permission is granted to copy, distribute, or create derivative works from
+ * the contents of this software, in whole or in part, without the prior written
+ * permission of create3000.
+ *
+ * NON-MILITARY USE ONLY
+ *
+ * All create3000 software are effectively free software with a non-military use
+ * restriction. It is free. Well commented source is provided. You may reuse the
+ * source in any way you please with the exception anything that uses it must be
+ * marked to indicate is contains 'non-military use only' components.
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * This file is part of the X_ITE Project.
+ *
+ * X_ITE is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License version 3 only, as published by the
+ * Free Software Foundation.
+ *
+ * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
+ * details (a copy is included in the LICENSE file that accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version 3
+ * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
+ * copy of the GPLv3 License.
+ *
+ * For Silvio, Joy and Adi.
+ *
+ ******************************************************************************/
+
+const
+   extents1 = { min: 0, max: 0 },
+   extents2 = { min: 0, max: 0 };
+
+/**
+ *  Class to represent the Separating Axis Theorem.
+ */
+function SAT () { }
+
+SAT .isSeparated = function (axes, points1, points2)
+{
+   // https://gamedev.stackexchange.com/questions/25397/obb-vs-obb-collision-detection
+
+   for (const axis of axes)
+   {
+      project (points1, axis, extents1);
+      project (points2, axis, extents2);
+
+      if (overlaps (extents1 .min, extents1 .max, extents2 .min, extents2 .max))
+         continue;
+
+      return true;
+   }
+
+   return false;
+};
+
+///  Projects @a points to @a axis and returns the minimum and maximum bounds.
+function project (points, axis, extents)
+{
+   extents .min = Number .POSITIVE_INFINITY;
+   extents .max = Number .NEGATIVE_INFINITY;
+
+   for (const point of points)
+   {
+      // Just dot it to get the min and max along this axis.
+      // NOTE: the axis must be normalized to get accurate projections to calculate the MTV, but if it is only needed to
+      // know whether it overlaps, every axis can be used.
+
+      const dotVal = point .dot (axis);
+
+      if (dotVal < extents .min)
+         extents .min = dotVal;
+
+      if (dotVal > extents .max)
+         extents .max = dotVal;
+   }
+}
+
+///  Returns true if both ranges overlap, otherwise false.
+function overlaps (min1, max1, min2, max2)
+{
+   return is_between (min2, min1, max1) || is_between (min1, min2, max2);
+}
+
+///  Returns true if @a value is between @a lowerBound and @a upperBound, otherwise false.
+function is_between (value, lowerBound, upperBound)
+{
+   return lowerBound <= value && value <= upperBound;
+}
+
+const SAT_default_ = SAT;
+;
+
+x_ite_Namespace .add ("SAT", "standard/Math/Algorithms/SAT", SAT_default_);
+/* harmony default export */ const Algorithms_SAT = (SAT_default_);
+;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Box3.js
+/*******************************************************************************
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
+ *
+ * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * The copyright notice above does not evidence any actual of intended
+ * publication of such source code, and is an unpublished work by create3000.
+ * This material contains CONFIDENTIAL INFORMATION that is the property of
+ * create3000.
+ *
+ * No permission is granted to copy, distribute, or create derivative works from
+ * the contents of this software, in whole or in part, without the prior written
+ * permission of create3000.
+ *
+ * NON-MILITARY USE ONLY
+ *
+ * All create3000 software are effectively free software with a non-military use
+ * restriction. It is free. Well commented source is provided. You may reuse the
+ * source in any way you please with the exception anything that uses it must be
+ * marked to indicate is contains 'non-military use only' components.
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * This file is part of the X_ITE Project.
+ *
+ * X_ITE is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License version 3 only, as published by the
+ * Free Software Foundation.
+ *
+ * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
+ * details (a copy is included in the LICENSE file that accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version 3
+ * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
+ * copy of the GPLv3 License.
+ *
+ * For Silvio, Joy and Adi.
+ *
+ ******************************************************************************/
+
+
+
+
+
+
+function Box3 (/* size, center */)
+{
+   this .matrix = new Numbers_Matrix4 ();
+
+   this .set (... arguments);
+}
+
+Object .assign (Box3 .prototype,
+{
+   copy ()
+   {
+      const copy = Object .create (Box3 .prototype);
+      copy .matrix = this .matrix .copy ();
+      return copy;
+   },
+   assign (box)
+   {
+      this .matrix .assign (box .matrix);
+      return this;
+   },
+   equals (box)
+   {
+      return this .matrix .equals (box .matrix);
+   },
+   getMatrix ()
+   {
+      return this .matrix;
+   },
+   set (size, center)
+   {
+      switch (arguments .length)
+      {
+         case 0:
+         {
+            this .matrix .set (0, 0, 0, 0,
+                               0, 0, 0, 0,
+                               0, 0, 0, 0,
+                               0, 0, 0, 0);
+
+            return this;
+         }
+         case 2:
+         {
+            this .matrix .set (size .x / 2, 0, 0, 0,
+                               0, size .y / 2, 0, 0,
+                               0, 0, size .z / 2, 0,
+                               center .x, center .y, center .z, 1);
+
+            return this;
+         }
+         // case 3:
+         // {
+         //    console .trace ()
+         //    return this .setExtents (arguments [0], arguments [1]);
+         // }
+      }
+   },
+   setExtents (min, max)
+   {
+      const
+         sx = (max .x - min .x) / 2,
+         sy = (max .y - min .y) / 2,
+         sz = (max .z - min .z) / 2,
+         cx = (max .x + min .x) / 2,
+         cy = (max .y + min .y) / 2,
+         cz = (max .z + min .z) / 2;
+
+      this .matrix .set (sx, 0,  0,  0,
+                         0,  sy, 0,  0,
+                         0,  0,  sz, 0,
+                         cx, cy, cz, 1);
+
+      return this;
+   },
+   getExtents (min, max)
+   {
+      this .getAbsoluteExtents (min, max);
+
+      min .add (this .center);
+      max .add (this .center);
+   },
+   getAbsoluteExtents: (() =>
+   {
+      const
+         r1 = new Numbers_Vector3 (),
+         p1 = new Numbers_Vector3 (),
+         p4 = new Numbers_Vector3 ();
+
+      return function (min, max)
+      {
+         const
+            m = this .matrix,
+            x = m .xAxis,
+            y = m .yAxis,
+            z = m .zAxis;
+
+         r1 .assign (y) .add (z);
+
+         const r2 = z .subtract (y);
+
+         p1 .assign (x) .add (r1),
+         p4 .assign (x) .add (r2);
+
+         const
+            p2 = r1 .subtract (x),
+            p3 = r2 .subtract (x);
+
+         min .assign (p1) .min (p2, p3, p4);
+         max .assign (p1) .max (p2, p3, p4);
+
+         p1 .negate ();
+         p2 .negate ();
+         p3 .negate ();
+         p4 .negate ();
+
+         min .min (p1, p2, p3, p4);
+         max .max (p1, p2, p3, p4);
+      };
+   })(),
+   getPoints: (() =>
+   {
+      const
+         x  = new Numbers_Vector3 (),
+         y  = new Numbers_Vector3 (),
+         z  = new Numbers_Vector3 (),
+         r1 = new Numbers_Vector3 ();
+
+      return function (points)
+      {
+         /*
+          * p6 ---------- p5
+          * | \           | \
+          * | p2------------ p1
+          * |  |          |  |
+          * |  |          |  |
+          * p7 |_________ p8 |
+          *  \ |           \ |
+          *   \|            \|
+          *    p3 ---------- p4
+          */
+
+         const m = this .matrix;
+
+         x .assign (m .xAxis);
+         y .assign (m .yAxis);
+         z .assign (m .zAxis);
+
+         r1 .assign (y) .add (z);
+
+         const r2 = z .subtract (y);
+
+         points [0] .assign (x)  .add (r1);
+         points [1] .assign (r1) .subtract (x);
+         points [2] .assign (r2) .subtract (x);
+         points [3] .assign (x)  .add (r2);
+
+         points [4] .assign (points [2]) .negate ();
+         points [5] .assign (points [3]) .negate ();
+         points [6] .assign (points [0]) .negate ();
+         points [7] .assign (points [1]) .negate ();
+
+         const center = this .center;
+
+         points [0] .add (center);
+         points [1] .add (center);
+         points [2] .add (center);
+         points [3] .add (center);
+
+         points [4] .add (center);
+         points [5] .add (center);
+         points [6] .add (center);
+         points [7] .add (center);
+
+         return points;
+      };
+   })(),
+   getAxes (axes)
+   {
+      const m = this .matrix;
+
+      axes [0] .assign (m .xAxis);
+      axes [1] .assign (m .yAxis);
+      axes [2] .assign (m .zAxis);
+
+      return axes;
+   },
+   getNormals: (() =>
+   {
+      const
+         x = new Numbers_Vector3 (),
+         y = new Numbers_Vector3 (),
+         z = new Numbers_Vector3 ();
+
+      const axes = [ Numbers_Vector3 .xAxis, Numbers_Vector3 .yAxis, Numbers_Vector3 .zAxis ];
+
+      return function (normals)
+      {
+         const m = this .matrix;
+
+         x .assign (m .xAxis);
+         y .assign (m .yAxis);
+         z .assign (m .zAxis);
+
+         if (x .norm () === 0)
+         {
+            x .assign (y) .cross (z);
+
+            if (x .norm () === 0)
+            {
+               for (const axis of axes)
+               {
+                  x .assign (axis) .cross (y);
+
+                  if (x .norm () !== 0)
+                     break;
+               }
+
+               if (x .norm () === 0)
+               {
+                  for (const axis of axes)
+                  {
+                     x .assign (axis) .cross (z);
+
+                     if (x .norm () !== 0)
+                        break;
+                  }
+
+                  if (x .norm () === 0)
+                     x .assign (Numbers_Vector3 .xAxis);
+               }
+            }
+         }
+
+         if (y .norm () === 0)
+         {
+            y .assign (z) .cross (x);
+
+            if (y .norm () === 0)
+            {
+               for (const axis of axes)
+               {
+                  y .assign (axis) .cross (z);
+
+                  if (y .norm () !== 0)
+                     break;
+               }
+
+               if (y .norm () === 0)
+               {
+                  for (const axis of axes)
+                  {
+                     y .assign (axis) .cross (x);
+
+                     if (y .norm () !== 0)
+                        break;
+                  }
+
+                  if (y .norm () === 0)
+                     y .assign (Numbers_Vector3 .yAxis);
+               }
+            }
+         }
+
+         if (z .norm () === 0)
+         {
+            z .assign (x) .cross (y);
+
+            if (z .norm () === 0)
+            {
+               for (const axis of axes)
+               {
+                  z .assign (axis) .cross (x);
+
+                  if (z .norm () !== 0)
+                     break;
+               }
+
+               if (z .norm () === 0)
+               {
+                  for (const axis of axes)
+                  {
+                     z .assign (axis) .cross (y);
+
+                     if (z .norm () !== 0)
+                        break;
+                  }
+
+                  if (z .norm () === 0)
+                     z .assign (Numbers_Vector3 .zAxis);
+               }
+            }
+         }
+
+         normals [0] .assign (y) .cross (z) .normalize ();
+         normals [1] .assign (z) .cross (x) .normalize ();
+         normals [2] .assign (x) .cross (y) .normalize ();
+
+         return normals;
+      };
+   })(),
+   isEmpty ()
+   {
+      return this .matrix [15] === 0;
+   },
+   add: (() =>
+   {
+      const
+         lhs_min = new Numbers_Vector3 (),
+         lhs_max = new Numbers_Vector3 (),
+         rhs_min = new Numbers_Vector3 (),
+         rhs_max = new Numbers_Vector3 ();
+
+      return function (box)
+      {
+         if (this .isEmpty ())
+            return this .assign (box);
+
+         if (box .isEmpty ())
+            return this;
+
+         this .getExtents (lhs_min, lhs_max);
+         box  .getExtents (rhs_min, rhs_max);
+
+         return this .setExtents (lhs_min .min (rhs_min), lhs_max .max (rhs_max));
+      };
+   })(),
+   multLeft (matrix)
+   {
+      this .matrix .multLeft (matrix);
+      return this;
+   },
+   multRight (matrix)
+   {
+      this .matrix .multRight (matrix);
+      return this;
+   },
+   containsPoint: (() =>
+   {
+      const
+         min = new Numbers_Vector3 (),
+         max = new Numbers_Vector3 ();
+
+      return function (point)
+      {
+         this .getExtents (min, max);
+
+         return min .x <= point .x &&
+                max .x >= point .x &&
+                min .y <= point .y &&
+                max .y >= point .y &&
+                min .z <= point .z &&
+                max .z >= point .z;
+      };
+   })(),
+   intersectsBox: (() =>
+   {
+      const points1 = [
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+      ];
+
+      const points2 = [
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+      ];
+
+      const axes1 = [
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+      ];
+
+      const axes2 = [
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+      ];
+
+      const axes9 = [
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+      ];
+
+      const normals = [
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+      ];
+
+      return function (other)
+      {
+         // Test special cases.
+
+         if (this .isEmpty ())
+            return false;
+
+         if (other .isEmpty ())
+            return false;
+
+         // Get points.
+
+         this  .getPoints (points1);
+         other .getPoints (points2);
+
+         // Test the three planes spanned by the normal vectors of the faces of the first parallelepiped.
+
+         if (Algorithms_SAT .isSeparated (this .getNormals (normals), points1, points2))
+            return false;
+
+         // Test the three planes spanned by the normal vectors of the faces of the second parallelepiped.
+
+         if (Algorithms_SAT .isSeparated (other .getNormals (normals), points1, points2))
+            return false;
+
+         // Test the nine other planes spanned by the edges of each parallelepiped.
+
+         this  .getAxes (axes1);
+         other .getAxes (axes2);
+
+         for (let i1 = 0; i1 < 3; ++ i1)
+         {
+            for (let i2 = 0; i2 < 3; ++ i2)
+               axes9 [i1 * 3 + i2] .assign (axes1 [i1]) .cross (axes2 [i2]);
+         }
+
+         if (Algorithms_SAT .isSeparated (axes9, points1, points2))
+            return false;
+
+         // Both boxes intersect.
+
+         return true;
+      };
+   })(),
+   intersectsTriangle: (() =>
+   {
+      const points1 = [
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+      ];
+
+      const axes1 = [
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+      ];
+
+      const axes9 = [
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+      ];
+
+      const normals = [
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+      ];
+
+      const triangle = [ ];
+
+      const triangleNormal = [ new Numbers_Vector3 () ];
+
+      const triangleEdges = [
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 (),
+         new Numbers_Vector3 ()
+      ];
+
+      return function (a, b, c)
+      {
+         // Test special cases.
+
+         if (this .isEmpty ())
+            return false;
+
+         // Get points.
+
+         this .getPoints (points1);
+
+         triangle [0] = a;
+         triangle [1] = b;
+         triangle [2] = c;
+
+         // Test the three planes spanned by the normal vectors of the faces of the first parallelepiped.
+
+         if (Algorithms_SAT .isSeparated (this .getNormals (normals), points1, triangle))
+            return false;
+
+         // Test the normal of the triangle.
+
+         Geometry_Triangle3 .normal (a, b, c, triangleNormal [0]);
+
+         if (Algorithms_SAT .isSeparated (triangleNormal, points1, triangle))
+            return false;
+
+         // Test the nine other planes spanned by the edges of each parallelepiped.
+
+         this .getAxes (axes1);
+
+         triangleEdges [0] .assign (a) .subtract (b);
+         triangleEdges [1] .assign (b) .subtract (c);
+         triangleEdges [2] .assign (c) .subtract (a);
+
+         for (let i1 = 0; i1 < 3; ++ i1)
+         {
+            for (let i2 = 0; i2 < 3; ++ i2)
+               axes9 [i1 * 3 + i2] .assign (axes1 [i1]) .cross (triangleEdges [i2]);
+         }
+
+         if (Algorithms_SAT .isSeparated (axes9, points1, triangle))
+            return false;
+
+         // Box and triangle intersect.
+
+         return true;
+      };
+   })(),
+   toString ()
+   {
+      return `${this .size}, ${this .center}`;
+   },
+});
+
+Object .assign (Box3,
+{
+   Extents (min, max)
+   {
+      return new Box3 () .setExtents (min, max);
+   },
+   Points (points)
+   {
+      const
+         min = new Numbers_Vector3 (Number .POSITIVE_INFINITY, Number .POSITIVE_INFINITY, Number .POSITIVE_INFINITY),
+         max = new Numbers_Vector3 (Number .NEGATIVE_INFINITY, Number .NEGATIVE_INFINITY, Number .NEGATIVE_INFINITY);
+
+      for (const point of points)
+      {
+         min .min (point);
+         max .max (point);
+      }
+
+      return new Box3 () .setExtents (min, max);
+   },
+});
+
+Object .defineProperties (Box3 .prototype,
+{
+   size:
+   {
+      get: (() =>
+      {
+         const
+            min = new Numbers_Vector3 (),
+            max = new Numbers_Vector3 ();
+
+         return function ()
+         {
+            this .getAbsoluteExtents (min, max);
+
+            return max .subtract (min);
+         };
+      })(),
+      enumerable: true,
+   },
+   center:
+   {
+      get ()
+      {
+         return this .matrix .origin;
+      },
+      enumerable: true,
+   },
+});
+
+const Box3_default_ = Box3;
+;
+
+x_ite_Namespace .add ("Box3", "standard/Math/Geometry/Box3", Box3_default_);
+/* harmony default export */ const Geometry_Box3 = (Box3_default_);
+;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping/X3DBoundedObject.js
+/*******************************************************************************
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
+ *
+ * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * The copyright notice above does not evidence any actual of intended
+ * publication of such source code, and is an unpublished work by create3000.
+ * This material contains CONFIDENTIAL INFORMATION that is the property of
+ * create3000.
+ *
+ * No permission is granted to copy, distribute, or create derivative works from
+ * the contents of this software, in whole or in part, without the prior written
+ * permission of create3000.
+ *
+ * NON-MILITARY USE ONLY
+ *
+ * All create3000 software are effectively free software with a non-military use
+ * restriction. It is free. Well commented source is provided. You may reuse the
+ * source in any way you please with the exception anything that uses it must be
+ * marked to indicate is contains 'non-military use only' components.
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * This file is part of the X_ITE Project.
+ *
+ * X_ITE is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License version 3 only, as published by the
+ * Free Software Foundation.
+ *
+ * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
+ * details (a copy is included in the LICENSE file that accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version 3
+ * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
+ * copy of the GPLv3 License.
+ *
+ * For Silvio, Joy and Adi.
+ *
+ ******************************************************************************/
+
+
+
+
+
+
+
+function X3DBoundedObject (executionContext)
+{
+   this .addType (Base_X3DConstants .X3DBoundedObject);
+
+   this .addChildObjects (Base_X3DConstants .inputOutput, "hidden",                   new x_ite_Fields .SFBool (),
+                          Base_X3DConstants .outputOnly,  "display",                  new x_ite_Fields .SFBool (true),
+                          Base_X3DConstants .outputOnly,  "transformSensors_changed", new x_ite_Fields .SFTime ());
+
+   this ._bboxSize   .setUnit ("length");
+   this ._bboxCenter .setUnit ("length");
+
+   this .childBBox            = new Geometry_Box3 (); // Must be unique for each X3DBoundedObject.
+   this .transformSensorNodes = new Set ();
+}
+
+Object .assign (X3DBoundedObject .prototype,
+{
+   childBBox: new Geometry_Box3 (),
+   initialize ()
+   {
+      this ._hidden  .addInterest ("set_visible_and_hidden__", this);
+      this ._visible .addInterest ("set_visible_and_hidden__", this);
+
+      this .set_visible_and_hidden__ ();
+   },
+   isHidden ()
+   {
+      return this ._hidden .getValue ();
+   },
+   setHidden (value)
+   {
+      if (value === this ._hidden .getValue ())
+         return;
+
+      this ._hidden = value;
+   },
+   getDefaultBBoxSize: (() =>
+   {
+      const defaultBBoxSize = new Numbers_Vector3 (-1, -1, -1);
+
+      return function ()
+      {
+         return defaultBBoxSize;
+      };
+   })(),
+   getBBox (nodes, bbox, shadows)
+   {
+      // Must be unique for each X3DBoundedObject.
+      const childBBox = this .childBBox;
+
+      // Add bounding boxes.
+
+      bbox .set ();
+
+      for (const node of nodes)
+      {
+         if (node .getBBox)
+            bbox .add (node .getBBox (childBBox, shadows));
+      }
+
+      return bbox;
+   },
+   displayBBox: (() =>
+   {
+      const
+         bbox   = new Geometry_Box3 (),
+         matrix = new Numbers_Matrix4 ();
+
+      return function (type, renderObject)
+      {
+         const modelViewMatrix = renderObject .getModelViewMatrix ();
+
+         this .getBBox (bbox);
+         matrix .set (bbox .center, null, bbox .size);
+
+         modelViewMatrix .push ();
+         modelViewMatrix .multLeft (matrix);
+
+         this .getBrowser () .getBBoxNode () .traverse (type, renderObject);
+
+         modelViewMatrix .pop ();
+      };
+   })(),
+   addTransformSensor (transformSensorNode)
+   {
+      this .transformSensorNodes .add (transformSensorNode);
+
+      this ._transformSensors_changed = this .getBrowser () .getCurrentTime ();
+   },
+   removeTransformSensor (transformSensorNode)
+   {
+      this .transformSensorNodes .delete (transformSensorNode);
+
+      this ._transformSensors_changed = this .getBrowser () .getCurrentTime ();
+   },
+   getTransformSensors ()
+   {
+      return this .transformSensorNodes;
+   },
+   set_visible_and_hidden__ ()
+   {
+      const value = this ._visible .getValue () && !this ._hidden .getValue ();
+
+      if (value === this ._display .getValue ())
+         return;
+
+      this ._display = value;
+   },
+   dispose () { },
+});
+
+Object .defineProperties (X3DBoundedObject,
+{
+   typeName:
+   {
+      value: "X3DBoundedObject",
+      enumerable: true,
+   },
+   componentInfo:
+   {
+      value: Object .freeze ({ name: "Grouping", level: 1 }),
+      enumerable: true,
+   },
+});
+
+const X3DBoundedObject_default_ = X3DBoundedObject;
+;
+
+x_ite_Namespace .add ("X3DBoundedObject", "x_ite/Components/Grouping/X3DBoundedObject", X3DBoundedObject_default_);
+/* harmony default export */ const Grouping_X3DBoundedObject = (X3DBoundedObject_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/NamedNodesArray.js
 /*******************************************************************************
  *
@@ -39015,7 +40136,7 @@ const X3DProtoDeclaration_default_ = X3DProtoDeclaration;
 x_ite_Namespace .add ("X3DProtoDeclaration", "x_ite/Prototype/X3DProtoDeclaration", X3DProtoDeclaration_default_);
 /* harmony default export */ const Prototype_X3DProtoDeclaration = (X3DProtoDeclaration_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/X3DParser.js
-/* provided dependency */ var X3DParser_$ = __webpack_require__(63);
+/* provided dependency */ var X3DParser_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -39273,7 +40394,7 @@ const Expressions_default_ = Expressions;
 x_ite_Namespace .add ("Expressions", "x_ite/Parser/Expressions", Expressions_default_);
 /* harmony default export */ const Parser_Expressions = (Expressions_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/VRMLParser.js
-/* provided dependency */ var VRMLParser_$ = __webpack_require__(63);
+/* provided dependency */ var VRMLParser_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -41973,7 +43094,7 @@ const VRMLParser_default_ = VRMLParser;
 x_ite_Namespace .add ("VRMLParser", "x_ite/Parser/VRMLParser", VRMLParser_default_);
 /* harmony default export */ const Parser_VRMLParser = (VRMLParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/XMLParser.js
-/* provided dependency */ var XMLParser_$ = __webpack_require__(63);
+/* provided dependency */ var XMLParser_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -43665,11 +44786,11 @@ x_ite_Namespace .add ("JSONParser", "x_ite/Parser/JSONParser", JSONParser_defaul
 
 
 
+
 function X3DOptimizer () { }
 
 Object .assign (X3DOptimizer .prototype,
 {
-   removeGroups: false,
    removeEmptyGroups: false,
    combineGroupingNodes: false,
    optimizeInterpolators: false,
@@ -43677,15 +44798,15 @@ Object .assign (X3DOptimizer .prototype,
    {
       const removedNodes = [ ];
 
-      nodes .setValue (this .optimizeNodes (nodes, true, removedNodes));
+      nodes .setValue (this .optimizeNodes (null, nodes, true, removedNodes));
 
       removedNodes .forEach (node => node .dispose ());
    },
-   optimizeNodes (nodes, combine, removedNodes)
+   optimizeNodes (parent, nodes, combine, removedNodes)
    {
-      return [... nodes] .flatMap (node => this .optimizeNode (node, combine, removedNodes));
+      return Array .from (nodes) .flatMap (node => this .optimizeNode (parent, node, combine, removedNodes));
    },
-   optimizeNode (node, combine, removedNodes)
+   optimizeNode (parent, node, combine, removedNodes)
    {
       if (!node)
          return [ ];
@@ -43697,13 +44818,7 @@ Object .assign (X3DOptimizer .prototype,
       {
          case "Transform":
          {
-            node .children = this .optimizeNodes (node .children, true, removedNodes);
-            break;
-         }
-         case "Anchor":
-         case "Group":
-         {
-            node .children = this .optimizeNodes (node .children, true, removedNodes);
+            node .children = this .optimizeNodes (node, node .children, true, removedNodes);
 
             if (this .removeEmptyGroups)
             {
@@ -43711,30 +44826,50 @@ Object .assign (X3DOptimizer .prototype,
                   return [ ];
             }
 
-            if (this .removeGroups)
-               break;
+            break;
+         }
+         case "Anchor":
+         case "Group":
+         {
+            node .children = this .optimizeNodes (node, node .children, true, removedNodes);
 
-            return node;
+            return this .removeIfNoChildren (node, removedNodes);
          }
          case "Collision":
          case "LOD":
          case "Switch":
          {
-            this .optimizeNodes (node .children, false, removedNodes);
-            return node;
+            this .optimizeNodes (node, node .children, false, removedNodes);
+
+            return this .removeIfNoChildren (node, removedNodes);
          }
          case "HAnimJoint":
          case "HAnimSegment":
          case "HAnimSite":
          {
-            node .children = this .optimizeNodes (node .children, true, removedNodes);
-            return node;
+            node .children = this .optimizeNodes (node, node .children, true, removedNodes);
+
+            switch (parent ?.getNodeTypeName ())
+            {
+               case "HAnimHumanoid":
+               case "HAnimJoint":
+               case "HAnimSegment":
+               case "HAnimSite":
+               {
+                  return node;
+               }
+               default:
+               {
+                  return this .removeIfNoChildren (node, removedNodes);
+               }
+            }
          }
          case "HAnimHumanoid":
          {
-            node .skeleton = this .optimizeNodes (node .skeleton, true, removedNodes);
-            node .skin     = this .optimizeNodes (node .skin,     true, removedNodes);
-            return node;
+            node .skeleton = this .optimizeNodes (node, node .skeleton, true, removedNodes);
+            node .skin     = this .optimizeNodes (node, node .skin,     true, removedNodes);
+
+            return this .removeIfNoChildren (node, removedNodes);
          }
          default:
          {
@@ -43744,12 +44879,6 @@ Object .assign (X3DOptimizer .prototype,
 
       if (!combine)
          return node;
-
-      if (this .removeEmptyGroups)
-      {
-         if (node .children .length === 0)
-            return [ ];
-      }
 
       if (!this .combineGroupingNodes)
          return node;
@@ -43771,14 +44900,54 @@ Object .assign (X3DOptimizer .prototype,
             return node;
       }
 
-      if (node .children)
-      {
-         removedNodes .push (node);
+      if (!node .children)
+         return node;
 
-         return [... node .children];
+      const children = Array .from (node .children);
+
+      removedNodes .push (this .removeChildren (node));
+
+      return children;
+   },
+   removeChildren (node)
+   {
+      for (const field of node .getValue () .getFields ())
+      {
+         switch (field .getType ())
+         {
+            case Base_X3DConstants .SFNode:
+               field .setValue (null);
+               break;
+            case Base_X3DConstants .MFNode:
+               field .length = 0;
+               break;
+         }
       }
 
       return node;
+   },
+   removeIfNoChildren (node, removedNodes)
+   {
+      if (!this .removeEmptyGroups)
+         return node;
+
+      switch (node .getNodeTypeName ())
+      {
+         case "HAnimHumanoid":
+         {
+            if (node .skeleton .length || node .skin .length)
+               return node;
+         }
+         default:
+         {
+            if (node .children .length !== 0)
+               return node;
+         }
+      }
+
+      removedNodes .push (node);
+
+      return [ ];
    },
    removeInterpolatorsWithOnlyOneValue (node, removedNodes)
    {
@@ -43799,7 +44968,7 @@ Object .assign (X3DOptimizer .prototype,
 
          node [route .destinationField] = sourceNode .keyValue [0];
 
-         removedNodes .push (sourceNode);
+         removedNodes .push (this .removeChildren (sourceNode));
 
          route .dispose ();
       }
@@ -43826,6 +44995,9 @@ Object .assign (X3DOptimizer .prototype,
          case "PointLight":
          case "SpotLight":
             return this .combineLight (node, child, removedNodes);
+         case "Viewpoint":
+         case "OrthoViewpoint":
+            return this .combineViewpoint (node, child, removedNodes);
          default:
             return node;
       }
@@ -43870,7 +45042,7 @@ Object .assign (X3DOptimizer .prototype,
          executionContext .addNamedNode (executionContext .getUniqueName (node .getNodeTypeName ()), child);
       }
 
-      removedNodes .push (node);
+      removedNodes .push (this .removeChildren (node));
 
       return child;
    },
@@ -43892,9 +45064,90 @@ Object .assign (X3DOptimizer .prototype,
       if (child .direction)
          child .direction = nodeMatrix .multDirMatrix (child .direction .getValue ()) .normalize ();
 
-      removedNodes .push (node);
+      removedNodes .push (this .removeChildren (node));
 
       return child;
+   },
+   combineViewpoint (node, child, removedNodes)
+   {
+      // Combine single viewpoint nodes.
+
+      const
+         nodeMatrix      = new Numbers_Matrix4 (),
+         viewpointMatrix = new Numbers_Matrix4 (),
+         translation     = new Numbers_Vector3 (),
+         rotation        = new Numbers_Rotation4 ();
+
+      nodeMatrix .set (node .translation .getValue (),
+                       node .rotation .getValue (),
+                       node .scale .getValue (),
+                       node .scaleOrientation .getValue (),
+                       node .center .getValue ());
+
+      viewpointMatrix .set (child .position .getValue (),
+                            child .orientation .getValue ());
+
+      viewpointMatrix
+         .multRight (nodeMatrix)
+         .get (translation, rotation);
+
+      child .position         = translation;
+      child .orientation      = rotation;
+      child .centerOfRotation = nodeMatrix .multVecMatrix (child .centerOfRotation .getValue ());
+
+      removedNodes .push (this .removeChildren (node));
+
+      return child;
+   },
+   viewpointsCenterOfRotation (scene)
+   {
+      const
+         bbox        = scene .getBBox (new Geometry_Box3 ()),
+         modelMatrix = new Numbers_Matrix4 (),
+         seen        = new Set ();
+
+      this .viewpointsCenterOfRotationNodes (scene .rootNodes, bbox, modelMatrix, seen);
+   },
+   viewpointsCenterOfRotationNodes (nodes, bbox, modelMatrix, seen)
+   {
+      for (const node of nodes)
+         this .viewpointsCenterOfRotationNode (node ?.getValue (), bbox, modelMatrix, seen);
+   },
+   viewpointsCenterOfRotationNode (node, bbox, modelMatrix, seen)
+   {
+      if (!node)
+         return;
+
+      if (seen .has (node))
+         return;
+
+      seen .add (node);
+
+      if (node .getMatrix)
+         modelMatrix = modelMatrix .copy () .multLeft (node .getMatrix ());
+
+      switch (node .getType () .at (-1))
+      {
+         case Base_X3DConstants .Viewpoint:
+         case Base_X3DConstants .OrthoViewpoint:
+         {
+            node ._centerOfRotation = modelMatrix .copy () .inverse () .multVecMatrix (bbox .center);
+            break;
+         }
+      }
+
+      for (const field of node .getFields ())
+      {
+         switch (field .getType ())
+         {
+            case Base_X3DConstants .SFNode:
+               this .viewpointsCenterOfRotationNode (field .getValue (), bbox, modelMatrix, seen);
+               break;
+            case Base_X3DConstants .MFNode:
+               this .viewpointsCenterOfRotationNodes (field, bbox, modelMatrix, seen);
+               break;
+         }
+      }
    },
 });
 
@@ -44017,7 +45270,7 @@ const URLs_default_ = URLs;
 x_ite_Namespace .add ("URLs", "x_ite/Browser/Networking/URLs", URLs_default_);
 /* harmony default export */ const Networking_URLs = (URLs_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GLTF2Parser.js
-/* provided dependency */ var GLTF2Parser_$ = __webpack_require__(63);
+/* provided dependency */ var GLTF2Parser_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -44077,6 +45330,8 @@ x_ite_Namespace .add ("URLs", "x_ite/Browser/Networking/URLs", URLs_default_);
 
 
 
+
+
 // https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html
 // https://github.com/KhronosGroup/glTF-Sample-Models
 
@@ -44089,7 +45344,6 @@ function GLTF2Parser (scene)
 
    // Optimizer
 
-   this .removeGroups          = false;
    this .removeEmptyGroups     = true;
    this .combineGroupingNodes  = true;
    this .optimizeInterpolators = true;
@@ -44097,19 +45351,20 @@ function GLTF2Parser (scene)
    // Globals
 
    this .extensions            = new Set ();
-   this .lights                = [ ];
    this .envLights             = [ ];
+   this .lights                = [ ];
    this .usedLights            = 0;
+   this .materialVariants      = [ ];
+   this .materialVariantNodes  = [ ];
    this .buffers               = [ ];
    this .bufferViews           = [ ];
    this .accessors             = [ ];
    this .samplers              = [ ];
    this .materials             = [ ];
-   this .defaultAppearance     = [ ];
    this .textureTransformNodes = [ ];
    this .meshes                = [ ];
    this .cameras               = [ ];
-   this .viewpoints            = 0;
+   this .viewpointNodes        = [ ];
    this .nodes                 = [ ];
    this .skins                 = [ ];
    this .joints                = new Set ();
@@ -44207,8 +45462,8 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
       // Parse root objects.
 
       this .assetObject      (glTF .asset);
-      this .extensionsArray  (glTF .extensionsUsed, this .extensions);
       this .extensionsArray  (glTF .extensionsRequired, this .extensions);
+      this .extensionsArray  (glTF .extensionsUsed, this .extensions);
       this .extensionsObject (glTF .extensions);
 
       await browser .loadComponents (scene);
@@ -44232,14 +45487,10 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
       this .scenesArray     (glTF .scenes, glTF .scene);
       this .animationsArray (glTF .animations);
 
-      try
-      {
-         this .optimizeSceneGraph (this .getExecutionContext () .getRootNodes ());
-      }
-      catch (error)
-      {
-         console .error (error)
-      }
+      this .viewpointsCenterOfRotation (this .getScene ());
+      this .optimizeSceneGraph (this .getScene () .getRootNodes ());
+      this .viewpointsGroup ();
+      this .materialVariantsSwitch ();
 
       return this .getScene ();
    },
@@ -44249,7 +45500,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
          return;
 
       const
-         scene         = this .getExecutionContext (),
+         scene         = this .getScene (),
          worldURL      = scene .getWorldURL (),
          worldInfoNode = scene .createNode ("WorldInfo", false);
 
@@ -44291,7 +45542,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
 
       const
          browser = this .getBrowser (),
-         scene   = this .getExecutionContext ();
+         scene   = this .getScene ();
 
       for (const extension of extensions)
       {
@@ -44314,6 +45565,18 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
             //    break;
             // },
             case "EXT_mesh_gpu_instancing":
+            case "KHR_materials_pbrSpecularGlossiness":
+            case "KHR_materials_anisotropy":
+            case "KHR_materials_clearcoat":
+            case "KHR_materials_dispersion":
+            case "KHR_materials_emissive_strength":
+            case "KHR_materials_ior":
+            case "KHR_materials_iridescence":
+            case "KHR_materials_sheen":
+            case "KHR_materials_specular":
+            case "KHR_materials_transmission":
+            case "KHR_materials_unlit":
+            case "KHR_materials_volume":
             {
                const component = browser .getComponent ("X_ITE", 1);
 
@@ -44343,15 +45606,107 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
       {
          switch (key)
          {
-            case "KHR_lights_punctual":
-               return this .khrLightsPunctualObject (value);
             case "EXT_lights_image_based":
-               return this .extLightsImageBasedObject (value);
+               this .extLightsImageBasedObject (value);
+               break;
             // https://github.com/KhronosGroup/glTF/pull/1956
             // case "KHR_lights_environment": // in development
-            //    return this .khrLightsEnvironment (value);
+            //    this .khrLightsEnvironment (value);
+            //    break;
+            case "KHR_lights_punctual":
+               this .khrLightsPunctualObject (value);
+               break;
+            case "KHR_materials_variants":
+               this .khrMaterialsVariantsObjectVariants (value);
+               break;
          }
       }
+   },
+   extLightsImageBasedObject (EXT_lights_image_based)
+   {
+      if (!(EXT_lights_image_based instanceof Object))
+         return;
+
+      this .envLightsArray (EXT_lights_image_based .lights);
+   },
+   envLightsArray (lights)
+   {
+      if (!(lights instanceof Array))
+         return;
+
+      this .envLights = lights;
+   },
+   envLightObject (id, light = this .envLights [id])
+   {
+      if (!(light instanceof Object))
+         return null;
+
+      if (light .node)
+         return light .node;
+
+      const
+         scene      = this .getScene (),
+         lightNode  = scene .createNode ("EnvironmentLight", false),
+         name       = `EnvironmentLight${id}`,
+         quaternion = new Numbers_Quaternion ();
+
+      scene .addNamedNode    (scene .getUniqueName       (name), lightNode);
+      scene .addExportedNode (scene .getUniqueExportName (name), lightNode);
+
+      lightNode ._global    = false;
+      lightNode ._intensity = this .numberValue (light .intensity, 1);
+
+      if (this .vectorValue (lightNode .rotation, quaternion))
+         lightNode ._rotation = new Numbers_Rotation4 (0, 0, 1, Math .PI) .multRight (new Numbers_Rotation4 (quaternion));
+      else
+         lightNode ._rotation = new Numbers_Rotation4 (0, 0, 1, Math .PI);
+
+      if (light .irradianceCoefficients instanceof Array)
+      {
+         for (const irradianceCoefficient of light .irradianceCoefficients)
+         {
+            if (!(irradianceCoefficient instanceof Array))
+               continue;
+
+            lightNode ._diffuseCoefficients .push (... irradianceCoefficient);
+         }
+      }
+
+      if (light .specularImages instanceof Array)
+      {
+         const
+            specularTextureNode = scene .createNode ("ComposedCubeMapTexture", false),
+            baseImages          = light .specularImages [0];
+
+         if (baseImages instanceof Array)
+         {
+            const faces = ["right", "left", "bottom", "top", "front", "back"];
+
+            for (const [i, image] of baseImages .map (image => this .images [image]) .entries ())
+            {
+               const
+                  textureNode = scene .createNode ("ImageTexture", false),
+                  name        = this .sanitizeName (image ?.name);
+
+               if (name)
+                  scene .addNamedNode (scene .getUniqueName (name), textureNode);
+
+               textureNode ._description = image ?.name ?? "";
+               textureNode ._url         = image ? [image .uri] : [ ];
+               textureNode .setup ();
+
+               specularTextureNode [`_${faces [i]}Texture`] = textureNode;
+            }
+
+            specularTextureNode .setup ();
+
+            lightNode ._specularTexture = specularTextureNode;
+         }
+      }
+
+      lightNode .setup ();
+
+      return light .node = lightNode;
    },
    khrLightsPunctualObject (KHR_lights_punctual)
    {
@@ -44381,7 +45736,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
          return null;
 
       const
-         scene = this .getExecutionContext (),
+         scene = this .getScene (),
          name  = this .sanitizeName (light .name) || `Light${id}`;
 
       const color = new Numbers_Color3 (1, 1, 1);
@@ -44414,7 +45769,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    directionalLight (light)
    {
       const
-         scene     = this .getExecutionContext (),
+         scene     = this .getScene (),
          lightNode = scene .createNode ("DirectionalLight", false);
 
       return lightNode;
@@ -44422,7 +45777,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    spotLight (light)
    {
       const
-         scene     = this .getExecutionContext (),
+         scene     = this .getScene (),
          lightNode = scene .createNode ("SpotLight", false);
 
       lightNode ._radius      = this .numberValue (light .range, 0) || -1;
@@ -44435,7 +45790,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    pointLight (light)
    {
       const
-         scene     = this .getExecutionContext (),
+         scene     = this .getScene (),
          lightNode = scene .createNode ("PointLight", false);
 
       lightNode ._radius      = this .numberValue (light .range, 0) || -1;
@@ -44443,89 +45798,17 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
 
       return lightNode;
    },
-   extLightsImageBasedObject (EXT_lights_image_based)
+   khrMaterialsVariantsObjectVariants (KHR_materials_variants)
    {
-      if (!(EXT_lights_image_based instanceof Object))
+      if (!(KHR_materials_variants instanceof Object))
          return;
 
-      this .envLightsArray (EXT_lights_image_based .lights);
-   },
-   envLightsArray (lights)
-   {
-      if (!(lights instanceof Array))
+      const variants = KHR_materials_variants .variants;
+
+      if (!(variants instanceof Array))
          return;
 
-      this .envLights = lights;
-   },
-   envLightObject (id, light = this .envLights [id])
-   {
-      if (!(light instanceof Object))
-         return null;
-
-      if (light .node)
-         return light .node;
-
-      const
-         scene      = this .getExecutionContext (),
-         lightNode  = scene .createNode ("EnvironmentLight", false),
-         name       = `EnvironmentLight${id}`,
-         quaternion = new Numbers_Quaternion ();
-
-      scene .addNamedNode    (scene .getUniqueName       (name), lightNode);
-      scene .addExportedNode (scene .getUniqueExportName (name), lightNode);
-
-      lightNode ._global    = false;
-      lightNode ._intensity = this .numberValue (light .intensity, 1);
-
-      if (this .vectorValue (lightNode .rotation, quaternion))
-         lightNode ._rotation = new Numbers_Rotation4 (quaternion);
-
-      if (light .irradianceCoefficients instanceof Array)
-      {
-         for (const irradianceCoefficient of light .irradianceCoefficients)
-         {
-            if (!(irradianceCoefficient instanceof Array))
-               continue;
-
-            lightNode ._diffuseCoefficients .push (... irradianceCoefficient);
-         }
-      }
-
-      if (light .specularImages instanceof Array)
-      {
-         const
-            specularTextureNode = scene .createNode ("ComposedCubeMapTexture", false),
-            baseImages          = light .specularImages [0];
-
-         if (baseImages instanceof Array)
-         {
-            const faces = ["right", "left", "top", "bottom", "front", "back"];
-
-            for (const [i, image] of baseImages .map (image => this .images [image]) .entries ())
-            {
-               const
-                  textureNode = scene .createNode ("ImageTexture", false),
-                  name        = this .sanitizeName (image ?.name);
-
-               if (name)
-                  scene .addNamedNode (scene .getUniqueName (name), textureNode);
-
-               textureNode ._description = image ?.name ?? "";
-               textureNode ._url         = image ? [image .uri] : [ ];
-               textureNode .setup ();
-
-               specularTextureNode [`_${faces [i]}Texture`] = textureNode;
-            }
-
-            specularTextureNode .setup ();
-
-            lightNode ._specularTexture = specularTextureNode;
-         }
-      }
-
-      lightNode .setup ();
-
-      return light .node = lightNode;
+      this .materialVariants = variants;
    },
    async buffersArray (buffers)
    {
@@ -44543,7 +45826,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
          return this .buffers [i];
 
       const
-         url         = new URL (buffer .uri, this .getExecutionContext () .getBaseURL ()),
+         url         = new URL (buffer .uri, this .getScene () .getBaseURL ()),
          response    = await fetch (url),
          blob        = await response .blob (),
          arrayBuffer = await blob .arrayBuffer ();
@@ -44781,7 +46064,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
             get: () =>
             {
                const
-                  scene                 = this .getExecutionContext (),
+                  scene                 = this .getScene (),
                   texturePropertiesNode = scene .createNode ("TextureProperties", false),
                   name                  = this .sanitizeName (sampler .name);
 
@@ -44790,7 +46073,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
 
                // minFilter
 
-               const minificationFilter = MinificationFilters .get (sampler .minFilter) ?? ["AVG_PIXEL", false];
+               const minificationFilter = MinificationFilters .get (sampler .minFilter) ?? ["AVG_PIXEL_AVG_MIPMAP", true];
 
                texturePropertiesNode ._minificationFilter = minificationFilter [0];
                texturePropertiesNode ._generateMipMaps    = minificationFilter [1];
@@ -44803,6 +46086,10 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
 
                texturePropertiesNode ._boundaryModeS = BoundaryModes .get (sampler .wrapS) ?? "REPEAT";
                texturePropertiesNode ._boundaryModeT = BoundaryModes .get (sampler .wrapT) ?? "REPEAT";
+
+               // anisotropicDegree
+
+               texturePropertiesNode ._anisotropicDegree = this .getBrowser () .getRenderingProperty ("MaxAnisotropicDegree");
 
                // setup
 
@@ -44879,7 +46166,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
          return texture .textureNode;
 
       const
-         scene       = this .getExecutionContext (),
+         scene       = this .getScene (),
          textureNode = scene .createNode ("ImageTexture", false),
          name        = this .sanitizeName (texture .name || images [0] .name);
 
@@ -44917,10 +46204,10 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
 
       this .materials = materials;
    },
-   materialObject ({ material, mode = 4 })
+   materialObject ({ material })
    {
       if (!(material instanceof Object))
-         return this .getDefaultAppearance (mode);
+         return this .getDefaultAppearance ();
 
       if (material .appearanceNode)
          return material .appearanceNode;
@@ -44930,12 +46217,13 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
       this .texCoordIndex         = Array .from (texCoordIndices) .reduce (Math .max, -1);
       this .textureTransformNodes = [ ];
       this .texCoordMappings      = new Map ();
+      this .texCoordOfNode        = new Map ();
       material .texCoordMappings  = this .texCoordMappings;
 
       const
-         scene          = this .getExecutionContext (),
+         scene          = this .getScene (),
          appearanceNode = scene .createNode ("Appearance", false),
-         materialNode   = this .refineMaterial (mode, this .createMaterial (material, mode)),
+         materialNode   = this .createMaterial (material),
          name           = this .sanitizeName (material .name);
 
       const emissiveFactor = new Numbers_Color3 ();
@@ -44989,47 +46277,6 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
 
       return material .appearanceNode = appearanceNode;
    },
-   refineMaterial (mode, materialNode)
-   {
-      if (mode > 3)
-         return materialNode
-
-      switch (materialNode .getTypeName ())
-      {
-         default:
-         {
-            return materialNode;
-         }
-         case "Material":
-         {
-            const
-               scene             = this .getExecutionContext (),
-               unlitMaterialNode = scene .createNode ("UnlitMaterial", false);
-
-            unlitMaterialNode ._emissiveColor          = materialNode ._diffuseColor;
-            unlitMaterialNode ._emissiveTextureMapping = materialNode ._diffuseTextureMapping;
-            unlitMaterialNode ._emissiveTexture        = materialNode ._diffuseTexture;
-
-            materialNode .dispose ();
-
-            return unlitMaterialNode;
-         }
-         case "PhysicalMaterial":
-         {
-            const
-               scene             = this .getExecutionContext (),
-               unlitMaterialNode = scene .createNode ("UnlitMaterial", false);
-
-            unlitMaterialNode ._emissiveColor          = materialNode ._baseColor;
-            unlitMaterialNode ._emissiveTextureMapping = materialNode ._baseTextureMapping;
-            unlitMaterialNode ._emissiveTexture        = materialNode ._baseTexture;
-
-            materialNode .dispose ();
-
-            return unlitMaterialNode;
-         }
-      }
-   },
    texCoordIndices (key, object, indices = new Set ())
    {
       if (!(object instanceof Object))
@@ -45043,7 +46290,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
 
       return indices;
    },
-   createMaterial (material, mode)
+   createMaterial (material)
    {
       const materials = [
          this .pbrMetallicRoughnessObject  .bind (this, material .pbrMetallicRoughness),
@@ -45053,19 +46300,19 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
 
       for (const material of materials)
       {
-         const materialNode = material (mode);
+         const materialNode = material ();
 
          if (materialNode)
             return materialNode;
       }
    },
-   pbrMetallicRoughnessObject (pbrMetallicRoughness, mode)
+   pbrMetallicRoughnessObject (pbrMetallicRoughness)
    {
       if (!(pbrMetallicRoughness instanceof Object))
          return null;
 
       const
-         scene        = this .getExecutionContext (),
+         scene        = this .getScene (),
          materialNode = scene .createNode ("PhysicalMaterial", false);
 
       const
@@ -45081,9 +46328,9 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
       materialNode ._metallic  = this .numberValue (pbrMetallicRoughness .metallicFactor,  1);
       materialNode ._roughness = this .numberValue (pbrMetallicRoughness .roughnessFactor, 1);
 
-      materialNode ._baseTexture                     = this .textureInfo    (pbrMetallicRoughness .baseColorTexture);
+      materialNode ._baseTexture                     = this .textureInfo (pbrMetallicRoughness .baseColorTexture);
       materialNode ._baseTextureMapping              = this .textureMapping (pbrMetallicRoughness .baseColorTexture);
-      materialNode ._metallicRoughnessTexture        = this .textureInfo    (pbrMetallicRoughness .metallicRoughnessTexture);
+      materialNode ._metallicRoughnessTexture        = this .textureInfo (pbrMetallicRoughness .metallicRoughnessTexture);
       materialNode ._metallicRoughnessTextureMapping = this .textureMapping (pbrMetallicRoughness .metallicRoughnessTexture);
 
       return materialNode;
@@ -45094,8 +46341,8 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
          return null;
 
       const
-         scene        = this .getExecutionContext (),
-         materialNode = scene .createNode ("Material", false);
+         scene        = this .getScene (),
+         materialNode = scene .createNode ("SpecularGlossinessMaterial", false);
 
       const
          diffuseFactor  = new Numbers_Color4 (),
@@ -45107,24 +46354,19 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
          materialNode ._diffuseColor = diffuseColor .set (... diffuseFactor);
          materialNode ._transparency = 1 - diffuseFactor .a;
       }
-      else
-      {
-         materialNode ._diffuseColor = Numbers_Color3 .White;
-      }
+
+      materialNode ._diffuseTexture        = this .textureInfo (pbrSpecularGlossiness .diffuseTexture);
+      materialNode ._diffuseTextureMapping = this .textureMapping (pbrSpecularGlossiness .diffuseTexture);
 
       if (this .vectorValue (pbrSpecularGlossiness .specularFactor, specularFactor))
          materialNode ._specularColor = specularFactor;
       else
          materialNode ._specularColor = Numbers_Color3 .White;
 
-      materialNode ._shininess = this .numberValue (pbrSpecularGlossiness .glossinessFactor, 1);
+      materialNode ._glossiness = this .numberValue (pbrSpecularGlossiness .glossinessFactor, 1);
 
-      materialNode ._diffuseTexture          = this .textureInfo    (pbrSpecularGlossiness .diffuseTexture);
-      materialNode ._diffuseTextureMapping   = this .textureMapping (pbrSpecularGlossiness .diffuseTexture);
-      materialNode ._specularTexture         = this .textureInfo    (pbrSpecularGlossiness .specularGlossinessTexture);
-      materialNode ._specularTextureMapping  = this .textureMapping (pbrSpecularGlossiness .specularGlossinessTexture);
-      materialNode ._shininessTexture        = this .textureInfo    (pbrSpecularGlossiness .specularGlossinessTexture);
-      materialNode ._shininessTextureMapping = this .textureMapping (pbrSpecularGlossiness .specularGlossinessTexture);
+      materialNode ._specularGlossinessTexture        = this .textureInfo (pbrSpecularGlossiness .specularGlossinessTexture);
+      materialNode ._specularGlossinessTextureMapping = this .textureMapping (pbrSpecularGlossiness .specularGlossinessTexture);
 
       return materialNode;
    },
@@ -45174,51 +46416,219 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
       {
          switch (key)
          {
-            case "KHR_materials_unlit":
-               this .khrMaterialsUnlitObject (materialNode);
+            case "KHR_materials_anisotropy":
+               this .khrMaterialsAnisotropyObject (value, materialNode);
+               break;
+            case "KHR_materials_clearcoat":
+               this .khrMaterialsClearcoatObject (value, materialNode);
+               break;
+            case "KHR_materials_dispersion":
+               this .khrMaterialsDispersionObject (value, materialNode);
                break;
             case "KHR_materials_emissive_strength":
                this .khrMaterialsEmissiveStrengthObject (value, materialNode);
                break;
+            case "KHR_materials_ior":
+               this .khrMaterialsIorStrengthObject (value, materialNode);
+               break;
+            case "KHR_materials_iridescence":
+               this .khrMaterialsIridescenceObject (value, materialNode);
+               break;
+            case "KHR_materials_sheen":
+               this .khrMaterialsSheenObject (value, materialNode);
+               break;
+            case "KHR_materials_specular":
+               this .khrMaterialsSpecularObject (value, materialNode);
+               break;
+            case "KHR_materials_transmission":
+               this .khrMaterialsTransmission (value, materialNode);
+               break;
+            case "KHR_materials_unlit":
+               this .khrMaterialsUnlitObject (value, materialNode);
+               break;
+            case "KHR_materials_volume":
+               this .khrMaterialsVolumeObject (value, materialNode);
+               break;
          }
       }
    },
-   khrMaterialsUnlitObject (materialNode)
+   khrMaterialsAnisotropyObject (KHR_materials_anisotropy, materialNode)
    {
-      switch (materialNode .getTypeName ())
-      {
-         case "PhysicalMaterial":
-         {
-            materialNode ._emissiveColor          = materialNode ._baseColor;
-            materialNode ._emissiveTextureMapping = materialNode ._baseTextureMapping;
-            materialNode ._emissiveTexture        = materialNode ._baseTexture;
-            materialNode ._baseColor              = Numbers_Color3 .Black;
-            materialNode ._baseTextureMapping     = "";
-            materialNode ._baseTexture            = null;
-            break;
-         }
-         case "Material":
-         {
-            materialNode ._emissiveColor          = materialNode ._diffuseColor;
-            materialNode ._emissiveTextureMapping = materialNode ._diffuseTextureMapping;
-            materialNode ._emissiveTexture        = materialNode ._diffuseTexture;
-            materialNode ._diffuseColor           = Numbers_Color3 .Black;
-            materialNode ._diffuseTextureMapping  = "";
-            materialNode ._diffuseTexture         = null;
-            break;
-         }
-      }
+      if (!(KHR_materials_anisotropy instanceof Object))
+         return;
+
+      const extension = this .getScene () .createNode ("AnisotropyMaterialExtension", false);
+
+      extension ._anisotropyStrength       = this .numberValue (KHR_materials_anisotropy .anisotropyStrength, 0);
+      extension ._anisotropyRotation       = this .numberValue (KHR_materials_anisotropy .anisotropyRotation, 0);
+      extension ._anisotropyTexture        = this .textureInfo (KHR_materials_anisotropy .anisotropyTexture);
+      extension ._anisotropyTextureMapping = this .textureMapping (KHR_materials_anisotropy .anisotropyTexture);
+
+      extension .setup ();
+
+      materialNode ._extensions .push (extension);
+   },
+   khrMaterialsClearcoatObject (KHR_materials_clearcoat, materialNode)
+   {
+      if (!(KHR_materials_clearcoat instanceof Object))
+         return;
+
+      const extension = this .getScene () .createNode ("ClearcoatMaterialExtension", false);
+
+      extension ._clearcoat               = this .numberValue (KHR_materials_clearcoat .clearcoatFactor, 0);
+      extension ._clearcoatTexture        = this .textureInfo (KHR_materials_clearcoat .clearcoatTexture);
+      extension ._clearcoatTextureMapping = this .textureMapping (KHR_materials_clearcoat .clearcoatTexture);
+
+      extension ._clearcoatRoughness               = this .numberValue (KHR_materials_clearcoat .clearcoatRoughnessFactor, 0);
+      extension ._clearcoatRoughnessTexture        = this .textureInfo (KHR_materials_clearcoat .clearcoatRoughnessTexture);
+      extension ._clearcoatRoughnessTextureMapping = this .textureMapping (KHR_materials_clearcoat .clearcoatRoughnessTexture);
+
+      extension ._clearcoatNormalTexture        = this .textureInfo (KHR_materials_clearcoat .clearcoatNormalTexture);
+      extension ._clearcoatNormalTextureMapping = this .textureMapping (KHR_materials_clearcoat .clearcoatNormalTexture);
+
+      extension .setup ();
+
+      materialNode ._extensions .push (extension);
+   },
+   khrMaterialsDispersionObject (KHR_materials_dispersion, materialNode)
+   {
+      if (!(KHR_materials_dispersion instanceof Object))
+         return;
+
+      const extension = this .getScene () .createNode ("DispersionMaterialExtension", false);
+
+      extension ._dispersion = this .numberValue (KHR_materials_dispersion .dispersion, 0);
+
+      extension .setup ();
+
+      materialNode ._extensions .push (extension);
    },
    khrMaterialsEmissiveStrengthObject (KHR_materials_emissive_strength, materialNode)
    {
       if (!(KHR_materials_emissive_strength instanceof Object))
          return;
 
-      const emissiveStrength = this .numberValue (KHR_materials_emissive_strength .emissiveStrength, 1);
+      const extension = this .getScene () .createNode ("EmissiveStrengthMaterialExtension", false);
 
-      materialNode ._emissiveColor .r *= emissiveStrength;
-      materialNode ._emissiveColor .g *= emissiveStrength;
-      materialNode ._emissiveColor .b *= emissiveStrength;
+      extension ._emissiveStrength = this .numberValue (KHR_materials_emissive_strength .emissiveStrength, 1);
+
+      extension .setup ();
+
+      materialNode ._extensions .push (extension);
+   },
+   khrMaterialsIorStrengthObject (KHR_materials_ior, materialNode)
+   {
+      const extension = this .getScene () .createNode ("IORMaterialExtension", false);
+
+      extension ._indexOfRefraction = this .numberValue (KHR_materials_ior .ior, 1.5);
+
+      extension .setup ();
+
+      materialNode ._extensions .push (extension);
+   },
+   khrMaterialsIridescenceObject (KHR_materials_iridescence, materialNode)
+   {
+      const extension = this .getScene () .createNode ("IridescenceMaterialExtension", false);
+
+      extension ._iridescence                        = this .numberValue (KHR_materials_iridescence .iridescenceFactor, 0);
+      extension ._iridescenceTexture                 = this .textureInfo (KHR_materials_iridescence .iridescenceTexture);
+      extension ._iridescenceTextureMapping          = this .textureMapping (KHR_materials_iridescence .iridescenceTexture);
+      extension ._iridescenceIndexOfRefraction       = this .numberValue (KHR_materials_iridescence .iridescenceIor, 1.3);
+      extension ._iridescenceThicknessMinimum        = this .numberValue (KHR_materials_iridescence .iridescenceThicknessMinimum, 100);
+      extension ._iridescenceThicknessMaximum        = this .numberValue (KHR_materials_iridescence .iridescenceThicknessMaximum, 400);
+      extension ._iridescenceThicknessTexture        = this .textureInfo (KHR_materials_iridescence .iridescenceThicknessTexture);
+      extension ._iridescenceThicknessTextureMapping = this .textureMapping (KHR_materials_iridescence .iridescenceThicknessTexture);
+
+      extension .setup ();
+
+      materialNode ._extensions .push (extension);
+   },
+   khrMaterialsSheenObject (KHR_materials_sheen, materialNode)
+   {
+      if (!(KHR_materials_sheen instanceof Object))
+         return;
+
+      const extension = this .getScene () .createNode ("SheenMaterialExtension", false);
+
+      const sheenColorFactor = new Numbers_Color3 ();
+
+      if (this .vectorValue (KHR_materials_sheen .sheenColorFactor, sheenColorFactor))
+         extension ._sheenColor = sheenColorFactor;
+
+      extension ._sheenColorTexture        = this .textureInfo (KHR_materials_sheen .sheenColorTexture);
+      extension ._sheenColorTextureMapping = this .textureMapping (KHR_materials_sheen .sheenColorTexture);
+
+      extension ._sheenRoughness               = this .numberValue (KHR_materials_sheen .sheenRoughnessFactor, 0);
+      extension ._sheenRoughnessTexture        = this .textureInfo (KHR_materials_sheen .sheenRoughnessTexture);
+      extension ._sheenRoughnessTextureMapping = this .textureMapping (KHR_materials_sheen .sheenRoughnessTexture);
+
+      extension .setup ();
+
+      materialNode ._extensions .push (extension);
+   },
+   khrMaterialsSpecularObject (KHR_materials_specular, materialNode)
+   {
+      if (!(KHR_materials_specular instanceof Object))
+         return;
+
+      const extension = this .getScene () .createNode ("SpecularMaterialExtension", false);
+
+      extension ._specular               = this .numberValue (KHR_materials_specular .specularFactor, 1);
+      extension ._specularTexture        = this .textureInfo (KHR_materials_specular .specularTexture);
+      extension ._specularTextureMapping = this .textureMapping (KHR_materials_specular .specularTexture);
+
+      const specularColorFactor = new Numbers_Color3 ();
+
+      if (this .vectorValue (KHR_materials_specular .specularColorFactor, specularColorFactor))
+         extension ._specularColor = specularColorFactor;
+
+      extension ._specularColorTexture        = this .textureInfo (KHR_materials_specular .specularColorTexture);
+      extension ._specularColorTextureMapping = this .textureMapping (KHR_materials_specular .specularColorTexture);
+
+      extension .setup ();
+
+      materialNode ._extensions .push (extension);
+   },
+   khrMaterialsTransmission (KHR_materials_transmission, materialNode)
+   {
+      if (!(KHR_materials_transmission instanceof Object))
+         return;
+
+      const extension = this .getScene () .createNode ("TransmissionMaterialExtension", false);
+
+      extension ._transmission               = this .numberValue (KHR_materials_transmission .transmissionFactor, 0);
+      extension ._transmissionTexture        = this .textureInfo (KHR_materials_transmission .transmissionTexture);
+      extension ._transmissionTextureMapping = this .textureMapping (KHR_materials_transmission .transmissionTexture);
+
+      extension .setup ();
+
+      materialNode ._extensions .push (extension);
+   },
+   khrMaterialsUnlitObject (KHR_materials_unlit, materialNode)
+   {
+      const extension = this .getScene () .createNode ("UnlitMaterialExtension", false);
+
+      extension .setup ();
+
+      materialNode ._extensions .push (extension);
+   },
+   khrMaterialsVolumeObject (KHR_materials_volume, materialNode)
+   {
+      const extension = this .getScene () .createNode ("VolumeMaterialExtension", false);
+
+      extension ._thickness               = this .numberValue (KHR_materials_volume .thicknessFactor, 0);
+      extension ._thicknessTexture        = this .textureInfo (KHR_materials_volume .thicknessTexture);
+      extension ._thicknessTextureMapping = this .textureMapping (KHR_materials_volume .thicknessTexture);
+      extension ._attenuationDistance     = this .numberValue (KHR_materials_volume .attenuationDistance, 1_000_000);
+
+      const attenuationColor = new Numbers_Color3 ();
+
+      if (this .vectorValue (KHR_materials_volume .attenuationColor, attenuationColor))
+         extension ._attenuationColor = attenuationColor;
+
+      extension .setup ();
+
+      materialNode ._extensions .push (extension);
    },
    textureTransformObject (KHR_texture_transform, texCoord)
    {
@@ -45228,10 +46638,9 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
       if (!this .extensions .has ("KHR_texture_transform"))
          return;
 
-      const
-         scene                = this .getExecutionContext (),
-         textureTransformNode = scene .createNode ("TextureTransformMatrix3D", false),
-         mapping              = `TEXCOORD_${this .texCoordIndex + this .textureTransformNodes .length + 1}`;
+      texCoord = KHR_texture_transform .texCoord ?? texCoord;
+
+      // Create matrix.
 
       const
          translation = new Numbers_Vector2 (),
@@ -45249,13 +46658,28 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
       if (this .vectorValue (KHR_texture_transform .scale, scale))
          matrix .scale (new Numbers_Vector3 (... scale, 1));
 
-      textureTransformNode ._mapping = mapping;
-      textureTransformNode ._matrix  = matrix;
+      // Check for existing node.
+
+      const existing = this .textureTransformNodes .find (node => this .texCoordOfNode .get (node) === texCoord && node ._matrix .getValue () .equals (matrix));
+
+      if (existing)
+         return existing ._mapping .getValue ();
+
+      // Create new TextureTransformMatrix3D.
+
+      const
+         scene                = this .getScene (),
+         textureTransformNode = scene .createNode ("TextureTransformMatrix3D", false),
+         mapping              = `TEXCOORD_${this .texCoordIndex + this .textureTransformNodes .length + 1}`;
+
+      textureTransformNode ._mapping   = mapping;
+      textureTransformNode ._matrix    = matrix;
 
       textureTransformNode .setup ();
 
       this .textureTransformNodes .push (textureTransformNode);
-      this .texCoordMappings .set (mapping, KHR_texture_transform .texCoord ?? texCoord);
+      this .texCoordMappings .set (mapping, texCoord);
+      this .texCoordOfNode .set (textureTransformNode, texCoord);
 
       return mapping;
    },
@@ -45289,7 +46713,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
       // Name Shape nodes.
 
       const
-         scene = this .getExecutionContext (),
+         scene = this .getScene (),
          name  = this .sanitizeName (mesh .name);
 
       if (name)
@@ -45323,9 +46747,16 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
       primitive .indices  = this .accessors [primitive .indices];
       primitive .material = this .materials [primitive .material];
 
-      this .primitiveExtensionsObject (primitive .extensions, primitive)
+      this .primitiveExtensionsObject (primitive .extensions, primitive);
 
-      shapeNodes .push (primitive .shapeNode = this .createShape (primitive, weights, skin, EXT_mesh_gpu_instancing));
+      const
+         shapeNode    = this .createShape (primitive, weights, skin, EXT_mesh_gpu_instancing),
+         variantsNode = this .khrMaterialsVariantsExtension (primitive .extensions, shapeNode);
+
+      if (variantsNode)
+         variantsNode ._children [this .materialVariants .length] = shapeNode;
+
+      shapeNodes .push (primitive .shapeNode = variantsNode ?? shapeNode);
    },
    attributesObject (attributes)
    {
@@ -45367,7 +46798,8 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
          switch (key)
          {
             case "KHR_draco_mesh_compression":
-               return this .khrDracoMeshCompressionObject (value, primitive);
+               this .khrDracoMeshCompressionObject (value, primitive);
+               break;
          }
       }
    },
@@ -45502,6 +46934,71 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
          return this .constructor .draco = draco;
       }
    },
+   khrMaterialsVariantsExtension (extensions, shapeNode)
+   {
+      if (!(extensions instanceof Object))
+         return;
+
+      return this .khrMaterialsVariantsObjectMappings (extensions .KHR_materials_variants, shapeNode);
+   },
+   khrMaterialsVariantsObjectMappings (KHR_materials_variants, shapeNode)
+   {
+      if (!(KHR_materials_variants instanceof Object))
+         return;
+
+      const mappings = KHR_materials_variants .mappings;
+
+      if (!(mappings instanceof Array))
+         return;
+
+      if (!mappings .length)
+         return;
+
+      const
+         scene        = this .getScene (),
+         variantsNode = scene .createNode ("Switch", false);
+
+      variantsNode ._whichChoice = 0;
+
+      for (const mapping of mappings)
+         this .khrMaterialsVariantsObjectMapping (mapping, shapeNode, variantsNode);
+
+      variantsNode .setup ();
+
+      if (!variantsNode ._children .length)
+         return;
+
+      this .materialVariantNodes .push (variantsNode);
+
+      return variantsNode;
+   },
+   khrMaterialsVariantsObjectMapping (mapping, shapeNode, variantsNode)
+   {
+      if (!(mapping instanceof Object))
+         return;
+
+      mapping .material = this .materials [mapping .material];
+
+      if (!mapping .material)
+         return;
+
+      const
+         scene          = this .getScene (),
+         variantNode    = this .getScene () .createNode ("Shape", false),
+         appearanceNode = this .materialObject (mapping),
+         variant        = mapping .variants ?.[0] ?? 0,
+         name           = this .sanitizeName (this .materialVariants [variant] ?.name ?? "");
+
+      if (name)
+         scene .addNamedNode (scene .getUniqueName (name), variantNode);
+
+      variantNode ._appearance = appearanceNode;
+      variantNode ._geometry   = shapeNode ._geometry;
+
+      variantNode .setup ();
+
+      variantsNode ._children [variant] = variantNode;
+   },
    camerasArray (cameras)
    {
       if (!(cameras instanceof Array))
@@ -45523,7 +47020,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
          return camera .viewpointNode = null;
 
       const
-         scene = this .getExecutionContext (),
+         scene = this .getScene (),
          name  = this .sanitizeName (camera .name);
 
       // Name
@@ -45534,9 +47031,10 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
          scene .addExportedNode (scene .getUniqueExportName (name), viewpointNode);
       }
 
-      viewpointNode ._description      = camera .name ? this .description (camera .name) : `Viewpoint ${++ this .viewpoints}`;
-      viewpointNode ._position         = Numbers_Vector3 .Zero;
-      viewpointNode ._centerOfRotation = new Numbers_Vector3 (0, 0, -10);
+      this .viewpointNodes .push (viewpointNode);
+
+      viewpointNode ._description = this .description (camera .name || `Viewpoint ${this .viewpointNodes .length}`);
+      viewpointNode ._position    = Numbers_Vector3 .Zero;
 
       return camera .viewpointNode = viewpointNode;
    },
@@ -45554,20 +47052,23 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    },
    orthographicCamera (camera)
    {
+      if (!(camera instanceof Object))
+         return null;
+
       const
-         scene         = this .getExecutionContext (),
+         scene         = this .getScene (),
          viewpointNode = scene .createNode ("OrthoViewpoint", false);
 
       if (typeof camera .xmag === "number")
       {
-         viewpointNode ._fieldOfView [0] = -camera .xmag / 2;
-         viewpointNode ._fieldOfView [2] = +camera .xmag / 2;
+         viewpointNode ._fieldOfView [0] = -camera .xmag;
+         viewpointNode ._fieldOfView [2] = +camera .xmag;
       }
 
       if (typeof camera .ymag === "number")
       {
-         viewpointNode ._fieldOfView [1] = -camera .ymag / 2;
-         viewpointNode ._fieldOfView [3] = +camera .ymag / 2;
+         viewpointNode ._fieldOfView [1] = -camera .ymag;
+         viewpointNode ._fieldOfView [3] = +camera .ymag;
       }
 
       if (typeof camera .znear === "number")
@@ -45582,8 +47083,11 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    },
    perspectiveCamera (camera)
    {
+      if (!(camera instanceof Object))
+         return null;
+
       const
-         scene         = this .getExecutionContext (),
+         scene         = this .getScene (),
          viewpointNode = scene .createNode ("Viewpoint", false);
 
       if (typeof camera .yfov === "number")
@@ -45623,7 +47127,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
       // Create Transform or HAnimJoint.
 
       const
-         scene         = this .getExecutionContext (),
+         scene         = this .getScene (),
          typeName      = this .joints .has (index) ? "HAnimJoint" : "Transform",
          transformNode = scene .createNode (typeName, false);
 
@@ -45667,7 +47171,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    nodeChildren (node)
    {
       const
-         scene         = this .getExecutionContext (),
+         scene         = this .getScene (),
          transformNode = node .transformNode,
          name          = this .sanitizeName (node .name);
 
@@ -45892,7 +47396,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
          return;
 
       const
-         scene    = this .getExecutionContext (),
+         scene    = this .getScene (),
          children = scenes .map (scene => this .sceneObject (scene)) .filter (node => node);
 
       switch (children .length)
@@ -45963,7 +47467,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
          default:
          {
             const
-               scene     = this .getExecutionContext (),
+               scene     = this .getScene (),
                groupNode = scene .createNode ("Group", false),
                name      = this .sanitizeName (scene .name);
 
@@ -45982,6 +47486,50 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    {
       return this .nodeChildrenArray (nodes);
    },
+   viewpointsGroup ()
+   {
+      if (!this .viewpointNodes .length)
+         return;
+
+      const
+         scene     = this .getScene (),
+         groupNode = scene .createNode ("Group", false);
+
+      scene .addNamedNode    (scene .getUniqueName       ("Viewpoints"), groupNode);
+      scene .addExportedNode (scene .getUniqueExportName ("Viewpoints"), groupNode);
+
+      groupNode ._visible  = false;
+      groupNode ._children = this .viewpointNodes;
+
+      groupNode .setup ();
+
+      scene .getRootNodes () .push (groupNode);
+   },
+   materialVariantsSwitch ()
+   {
+      if (!this .materialVariantNodes .length)
+         return;
+
+      const
+         scene      = this .getScene (),
+         switchNode = scene .createNode ("Switch", false),
+         names      = this .materialVariants .map (object => object .name);
+
+      scene .addNamedNode    (scene .getUniqueName       ("MaterialVariants"), switchNode);
+      scene .addExportedNode (scene .getUniqueExportName ("MaterialVariants"), switchNode);
+
+      switchNode ._whichChoice = 0;
+      switchNode ._visible     = false;
+
+      switchNode .setup ();
+
+      switchNode .setMetaData ("MaterialVariants/names", new x_ite_Fields .MFString (... names));
+
+      for (const variantNode of this .materialVariantNodes)
+         scene .addRoute (switchNode, "whichChoice", variantNode, "whichChoice");
+
+      scene .getRootNodes () .push (switchNode);
+   },
    animationsArray (animations)
    {
       if (!(animations instanceof Array))
@@ -45995,7 +47543,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
          return;
 
       const
-         scene     = this .getExecutionContext (),
+         scene     = this .getScene (),
          groupNode = scene .createNode ("Group", false);
 
       scene .addNamedNode    (scene .getUniqueName       ("Animations"), groupNode);
@@ -46014,7 +47562,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
          return null;
 
       const
-         scene          = this .getExecutionContext (),
+         scene          = this .getScene (),
          timeSensorNode = scene .createNode ("TimeSensor", false),
          channelNodes   = this .animationChannelsArray (animation .channels, animation .samplers, timeSensorNode);
 
@@ -46100,7 +47648,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    createNavigationInfo ()
    {
       const
-         scene              = this .getExecutionContext (),
+         scene              = this .getScene (),
          navigationInfoNode = scene .createNode ("NavigationInfo", false);
 
       navigationInfoNode ._headlight = false;
@@ -46112,7 +47660,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    createShape (primitive, weights, skin, EXT_mesh_gpu_instancing)
    {
       const
-         scene          = this .getExecutionContext (),
+         scene          = this .getScene (),
          shapeNode      = this .meshInstancing (EXT_mesh_gpu_instancing) ?? scene .createNode ("Shape", false),
          appearanceNode = this .materialObject (primitive),
          geometryNode   = this .createGeometry (primitive, weights, skin);
@@ -46178,32 +47726,40 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
 
       return instancedShapeNode;
    },
-   getDefaultAppearance (mode)
+   getDefaultAppearance ()
    {
-      mode = mode > 3;
-
-      if (this .defaultAppearance [mode])
-         return this .defaultAppearance [mode];
+      if (this .defaultAppearance)
+         return this .defaultAppearance;
 
       const
-         scene          = this .getExecutionContext (),
+         scene          = this .getScene (),
          appearanceNode = scene .createNode ("Appearance", false),
-         materialNode   = scene .createNode (mode ? "PhysicalMaterial" : "UnlitMaterial", false);
+         materialNode   = scene .createNode ("PhysicalMaterial", false);
 
       appearanceNode ._alphaMode = "OPAQUE";
       appearanceNode ._material  = materialNode;
-
-      if (mode)
-         materialNode ._metallic = 0;
+      materialNode   ._metallic  = 0;
 
       materialNode   .setup ();
       appearanceNode .setup ();
 
-      return this .defaultAppearance [mode] = appearanceNode;
+      return this .defaultAppearance = appearanceNode;
+   },
+   hasTextures (materialNode)
+   {
+      // Test PhysicalMaterial, ...
+
+      if (+materialNode .getTextureBits ())
+         return true;
+
+      if (materialNode ._extensions .some (extension => +extension .getValue () .getTextureBits ()))
+         return true;
+
+      return false;
    },
    createMultiTextureTransform (materialNode)
    {
-      if (!+materialNode .getTextureBits ())
+      if (!this .hasTextures (materialNode))
          return null;
 
       const textureTransformNodes = this .textureTransformNodes
@@ -46217,7 +47773,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
                return this .textureTransformNode;
 
             const
-               scene                = this .getExecutionContext (),
+               scene                = this .getScene (),
                textureTransformNode = scene .createNode ("TextureTransform", false);
 
             textureTransformNode ._translation .y = -1;
@@ -46234,7 +47790,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
          default:
          {
             const
-               scene                = this .getExecutionContext (),
+               scene                = this .getScene (),
                textureTransformNode = scene .createNode ("MultiTextureTransform", false);
 
             textureTransformNode ._textureTransform = textureTransformNodes;
@@ -46295,12 +47851,13 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    createPointSet ({ attributes, material, targets }, weights, skin)
    {
       const
-         scene        = this .getExecutionContext (),
+         scene        = this .getScene (),
          geometryNode = scene .createNode ("PointSet", false);
 
-      geometryNode ._color  = this .createColor (attributes .COLOR [0], material);
-      geometryNode ._normal = this .createNormal (attributes .NORMAL, targets, weights);
-      geometryNode ._coord  = this .createCoordinate (attributes .POSITION, targets, weights);
+      geometryNode ._color   = this .createColor (attributes .COLOR [0], material);
+      geometryNode ._normal  = this .createNormal (attributes .NORMAL, targets, weights);
+      geometryNode ._tangent = this .createTangent (attributes .TANGENT);
+      geometryNode ._coord   = this .createCoordinate (attributes .POSITION, targets, weights);
 
       this .attributesJointsArray (skin, attributes .JOINTS, attributes .WEIGHTS);
       this .skinGeometry (skin, geometryNode);
@@ -46312,12 +47869,13 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    createIndexedLineSet ({ attributes, indices, material, targets }, weights, skin, mode)
    {
       const
-         scene        = this .getExecutionContext (),
+         scene        = this .getScene (),
          geometryNode = scene .createNode ("IndexedLineSet", false);
 
-      geometryNode ._color  = this .createColor (attributes .COLOR [0], material);
-      geometryNode ._normal = this .createNormal (attributes .NORMAL, targets, weights);
-      geometryNode ._coord  = this .createCoordinate (attributes .POSITION, targets, weights);
+      geometryNode ._color   = this .createColor (attributes .COLOR [0], material);
+      geometryNode ._normal  = this .createNormal (attributes .NORMAL, targets, weights);
+      geometryNode ._tangent = this .createTangent (attributes .TANGENT);
+      geometryNode ._coord   = this .createCoordinate (attributes .POSITION, targets, weights);
 
       switch (mode)
       {
@@ -46399,12 +47957,13 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    createLineSet ({ attributes, material, targets }, weights, skin)
    {
       const
-         scene        = this .getExecutionContext (),
+         scene        = this .getScene (),
          geometryNode = scene .createNode ("LineSet", false);
 
-      geometryNode ._color  = this .createColor (attributes .COLOR [0], material);
-      geometryNode ._normal = this .createNormal (attributes .NORMAL, targets, weights);
-      geometryNode ._coord  = this .createCoordinate (attributes .POSITION, targets, weights);
+      geometryNode ._color   = this .createColor (attributes .COLOR [0], material);
+      geometryNode ._normal  = this .createNormal (attributes .NORMAL, targets, weights);
+      geometryNode ._tangent = this .createTangent (attributes .TANGENT);
+      geometryNode ._coord   = this .createCoordinate (attributes .POSITION, targets, weights);
 
       this .attributesJointsArray (skin, attributes .JOINTS, attributes .WEIGHTS);
       this .skinGeometry (skin, geometryNode);
@@ -46416,7 +47975,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    createIndexedTriangleSet ({ attributes, indices, material, targets }, weights, skin)
    {
       const
-         scene        = this .getExecutionContext (),
+         scene        = this .getScene (),
          geometryNode = scene .createNode ("IndexedTriangleSet", false);
 
       geometryNode ._solid           = !material ?.doubleSided;
@@ -46424,6 +47983,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
       geometryNode ._color           = this .createColor (attributes .COLOR [0], material);
       geometryNode ._texCoord        = this .createMultiTextureCoordinate (attributes .TEXCOORD, material);
       geometryNode ._normal          = this .createNormal (attributes .NORMAL, targets, weights);
+      geometryNode ._tangent         = this .createTangent (attributes .TANGENT);
       geometryNode ._coord           = this .createCoordinate (attributes .POSITION, targets, weights);
       geometryNode ._normalPerVertex = !! geometryNode ._normal .getValue ();
 
@@ -46437,13 +47997,14 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    createTriangleSet ({ attributes, material, targets }, weights, skin)
    {
       const
-         scene        = this .getExecutionContext (),
+         scene        = this .getScene (),
          geometryNode = scene .createNode ("TriangleSet", false);
 
       geometryNode ._solid           = !material ?.doubleSided;
       geometryNode ._color           = this .createColor (attributes .COLOR [0], material);
       geometryNode ._texCoord        = this .createMultiTextureCoordinate (attributes .TEXCOORD, material);
       geometryNode ._normal          = this .createNormal (attributes .NORMAL, targets, weights);
+      geometryNode ._tangent         = this .createTangent (attributes .TANGENT);
       geometryNode ._coord           = this .createCoordinate (attributes .POSITION, targets, weights);
       geometryNode ._normalPerVertex = !! geometryNode ._normal .getValue ();
 
@@ -46457,7 +48018,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    createIndexedTriangleStripSet ({ attributes, indices, material, targets }, weights, skin)
    {
       const
-         scene        = this .getExecutionContext (),
+         scene        = this .getScene (),
          geometryNode = scene .createNode ("IndexedTriangleStripSet", false);
 
       geometryNode ._solid           = !material ?.doubleSided;
@@ -46465,6 +48026,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
       geometryNode ._color           = this .createColor (attributes .COLOR [0], material);
       geometryNode ._texCoord        = this .createMultiTextureCoordinate (attributes .TEXCOORD, material);
       geometryNode ._normal          = this .createNormal (attributes .NORMAL, targets, weights);
+      geometryNode ._tangent         = this .createTangent (attributes .TANGENT);
       geometryNode ._coord           = this .createCoordinate (attributes .POSITION, targets, weights);
       geometryNode ._normalPerVertex = !! geometryNode ._normal .getValue ();
 
@@ -46478,13 +48040,14 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    createTriangleStripSet ({ attributes, material, targets }, weights, skin)
    {
       const
-         scene        = this .getExecutionContext (),
+         scene        = this .getScene (),
          geometryNode = scene .createNode ("TriangleStripSet", false);
 
       geometryNode ._solid           = !material ?.doubleSided;
       geometryNode ._color           = this .createColor (attributes .COLOR [0], material);
       geometryNode ._texCoord        = this .createMultiTextureCoordinate (attributes .TEXCOORD, material);
       geometryNode ._normal          = this .createNormal (attributes .NORMAL, targets, weights);
+      geometryNode ._tangent         = this .createTangent (attributes .TANGENT);
       geometryNode ._coord           = this .createCoordinate (attributes .POSITION, targets, weights);
       geometryNode ._normalPerVertex = !! geometryNode ._normal .getValue ();
 
@@ -46506,7 +48069,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    createIndexedTriangleFanSet ({ attributes, indices, material, targets }, weights, skin)
    {
       const
-         scene        = this .getExecutionContext (),
+         scene        = this .getScene (),
          geometryNode = scene .createNode ("IndexedTriangleFanSet", false);
 
       geometryNode ._solid           = !material ?.doubleSided;
@@ -46514,6 +48077,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
       geometryNode ._color           = this .createColor (attributes .COLOR [0], material);
       geometryNode ._texCoord        = this .createMultiTextureCoordinate (attributes .TEXCOORD, material);
       geometryNode ._normal          = this .createNormal (attributes .NORMAL, targets, weights);
+      geometryNode ._tangent         = this .createTangent (attributes .TANGENT);
       geometryNode ._coord           = this .createCoordinate (attributes .POSITION, targets, weights);
       geometryNode ._normalPerVertex = !! geometryNode ._normal .getValue ();
 
@@ -46527,13 +48091,14 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    createTriangleFanSet ({ attributes, material, targets }, weights, skin)
    {
       const
-         scene        = this .getExecutionContext (),
+         scene        = this .getScene (),
          geometryNode = scene .createNode ("TriangleFanSet", false);
 
       geometryNode ._solid           = !material ?.doubleSided;
       geometryNode ._color           = this .createColor (attributes .COLOR [0], material);
       geometryNode ._texCoord        = this .createMultiTextureCoordinate (attributes .TEXCOORD, material);
       geometryNode ._normal          = this .createNormal (attributes .NORMAL, targets, weights);
+      geometryNode ._tangent         = this .createTangent (attributes .TANGENT);
       geometryNode ._coord           = this .createCoordinate (attributes .POSITION, targets, weights);
       geometryNode ._normalPerVertex = !! geometryNode ._normal .getValue ();
 
@@ -46573,7 +48138,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
             return color .colorNode;
 
          const
-            scene          = this .getExecutionContext (),
+            scene          = this .getScene (),
             appearanceNode = this .materialObject ({ material }),
             opaque         = appearanceNode ._alphaMode .getValue () === "OPAQUE",
             colorNode      = scene .createNode (opaque ? "Color" : typeName, false);
@@ -46589,15 +48154,17 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    })(),
    createMultiTextureCoordinate (texCoords, material)
    {
-      const appearanceNode = this .materialObject ({ material });
+      const
+         appearanceNode = this .materialObject ({ material }),
+         materialNode   = appearanceNode ._material .getValue ();
 
-      if (!+appearanceNode ._material .getValue () .getTextureBits ())
+      if (!this .hasTextures (materialNode))
          return null;
 
       if (texCoords .textureCoordinateNode)
          return texCoords .textureCoordinateNode;
 
-      switch (material .texCoordMappings .size)
+      switch (texCoords .length === 1 ? 1 : material .texCoordMappings .size)
       {
          case 0:
          {
@@ -46617,7 +48184,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
                return null;
 
             const
-               scene                 = this .getExecutionContext (),
+               scene                 = this .getScene (),
                textureCoordinateNode = scene .createNode ("MultiTextureCoordinate", false);
 
             textureCoordinateNode ._texCoord = textureCoordinateNodes;
@@ -46637,7 +48204,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
          return texCoord [mapping];
 
       const
-         scene                 = this .getExecutionContext (),
+         scene                 = this .getScene (),
          textureCoordinateNode = scene .createNode ("TextureCoordinate", false);
 
       textureCoordinateNode ._mapping = mapping;
@@ -46656,7 +48223,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
          return normal .normalNode;
 
       const
-         scene      = this .getExecutionContext (),
+         scene      = this .getScene (),
          normalNode = scene .createNode ("Normal", false);
 
       normalNode ._vector = normal .normalizedArray;
@@ -46681,6 +48248,24 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
 
       return normal .normalNode = normalNode;
    },
+   createTangent (tangent)
+   {
+      if (tangent ?.type !== "VEC4")
+         return null;
+
+      if (tangent .tangentNode)
+         return tangent .tangentNode;
+
+      const
+         scene       = this .getScene (),
+         tangentNode = scene .createNode ("Tangent", false);
+
+      tangentNode ._vector = tangent .array;
+
+      tangentNode .setup ();
+
+      return tangent .tangentNode = tangentNode;
+   },
    createCoordinate (position, targets, weights)
    {
       if (position ?.type !== "VEC3")
@@ -46690,7 +48275,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
          return position .coordinateNode;
 
       const
-         scene          = this .getExecutionContext (),
+         scene          = this .getScene (),
          coordinateNode = scene .createNode ("Coordinate", false);
 
       coordinateNode ._point = position .array;
@@ -46852,7 +48437,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    },
    createInterpolator (timeSensorNode, node, target, interpolation, times, keyValues, cycleInterval)
    {
-      const scene = this .getExecutionContext ();
+      const scene = this .getScene ();
 
       switch (target .path)
       {
@@ -46938,7 +48523,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    },
    createPositionInterpolator (interpolation, times, keyValues, cycleInterval)
    {
-      const scene = this .getExecutionContext ();
+      const scene = this .getScene ();
 
       switch (interpolation)
       {
@@ -47012,7 +48597,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    },
    createOrientationInterpolator (interpolation, times, keyValues, cycleInterval)
    {
-      const scene = this .getExecutionContext ();
+      const scene = this .getScene ();
 
       switch (interpolation)
       {
@@ -47106,7 +48691,7 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
    createArrayInterpolator (typeName, interpolation, times, weights, cycleInterval, targets, accessors, key, normalized)
    {
       const
-         scene    = this .getExecutionContext (),
+         scene    = this .getScene (),
          accessor = accessors [key];
 
       if (!accessor)
@@ -47319,7 +48904,7 @@ const GLTF2Parser_default_ = GLTF2Parser;
 x_ite_Namespace .add ("GLTF2Parser", "x_ite/Parser/GLTF2Parser", GLTF2Parser_default_);
 /* harmony default export */ const Parser_GLTF2Parser = (GLTF2Parser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GLB2Parser.js
-/* provided dependency */ var GLB2Parser_$ = __webpack_require__(63);
+/* provided dependency */ var GLB2Parser_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -47471,7 +49056,7 @@ const GLB2Parser_default_ = GLB2Parser;
 x_ite_Namespace .add ("GLB2Parser", "x_ite/Parser/GLB2Parser", GLB2Parser_default_);
 /* harmony default export */ const Parser_GLB2Parser = (GLB2Parser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/OBJParser.js
-/* provided dependency */ var OBJParser_$ = __webpack_require__(63);
+/* provided dependency */ var OBJParser_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -47581,7 +49166,6 @@ function OBJParser (scene)
 
    // Optimizer
 
-   this .removeGroups         = true;
    this .removeEmptyGroups    = true;
    this .combineGroupingNodes = false;
 
@@ -50830,8 +52414,8 @@ const MatrixStack_default_ = MatrixStack;
 x_ite_Namespace .add ("MatrixStack", "standard/Math/Utility/MatrixStack", MatrixStack_default_);
 /* harmony default export */ const Utility_MatrixStack = (MatrixStack_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/SVGParser.js
-/* provided dependency */ var SVGParser_$ = __webpack_require__(63);
-/* provided dependency */ var libtess = __webpack_require__(844);
+/* provided dependency */ var SVGParser_$ = __webpack_require__(749);
+/* provided dependency */ var SVGParser_libtess = __webpack_require__(382);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -50952,9 +52536,8 @@ function SVGParser (scene)
 
    // Optimizer
 
-   this .removeGroups         = true;
    this .removeEmptyGroups    = true;
-   this .combineGroupingNodes = false;
+   this .combineGroupingNodes = true;
 
    // Options
 
@@ -50970,6 +52553,7 @@ function SVGParser (scene)
    this .tessy            = this .createTesselator ();
    this .canvas           = document .createElement ("canvas");
    this .context          = this .canvas .getContext ("2d");
+   this .numSwitchNodes   = 0;
 
    this .styles = [{
       display: "inline",
@@ -51293,7 +52877,10 @@ Object .assign (Object .setPrototypeOf (SVGParser .prototype, Parser_X3DParser .
          switchNode    = scene .createNode ("Switch");
 
       transformNode .children .push (switchNode);
+
       switchNode .whichChoice = 0;
+
+      scene .addExportedNode (scene .getUniqueExportName (`Switch${++ this .numSwitchNodes}`), node);
 
       // Get child elements.
 
@@ -52045,11 +53632,11 @@ Object .assign (Object .setPrototypeOf (SVGParser .prototype, Parser_X3DParser .
          scene = this .getExecutionContext (),
          name  = this .sanitizeName (attribute);
 
-      if (name)
-      {
-         scene .addNamedNode (scene .getUniqueName (name), node);
-         scene .addExportedNode (scene .getUniqueExportName (name), node);
-      }
+      if (!name)
+         return;
+
+      scene .addNamedNode (scene .getUniqueName (name), node);
+      scene .addExportedNode (scene .getUniqueExportName (name), node);
    },
    viewBoxAttribute (attribute, defaultValue)
    {
@@ -53539,9 +55126,9 @@ Object .assign (Object .setPrototypeOf (SVGParser .prototype, Parser_X3DParser .
          triangles .push (index);
       }
 
-      const tessy = new libtess .GluTesselator ();
+      const tessy = new SVGParser_libtess .GluTesselator ();
 
-      tessy .gluTessCallback (libtess .gluEnum .GLU_TESS_VERTEX_DATA, vertexCallback);
+      tessy .gluTessCallback (SVGParser_libtess .gluEnum .GLU_TESS_VERTEX_DATA, vertexCallback);
       tessy .gluTessNormal (0, 0, 1);
 
       return tessy;
@@ -53564,8 +55151,8 @@ Object .assign (Object .setPrototypeOf (SVGParser .prototype, Parser_X3DParser .
          winding   = this .style .fillRule === "evenodd" ? "GLU_TESS_WINDING_ODD" : "GLU_TESS_WINDING_NONZERO",
          triangles = [ ];
 
-      tessy .gluTessProperty (libtess .gluEnum .GLU_TESS_WINDING_RULE, libtess .windingRule [winding]);
-      tessy .gluTessCallback (libtess .gluEnum .GLU_TESS_COMBINE,      combineCallback);
+      tessy .gluTessProperty (SVGParser_libtess .gluEnum .GLU_TESS_WINDING_RULE, SVGParser_libtess .windingRule [winding]);
+      tessy .gluTessCallback (SVGParser_libtess .gluEnum .GLU_TESS_COMBINE,      combineCallback);
       tessy .gluTessBeginPolygon (triangles);
 
       for (const points of contours)
@@ -53599,7 +55186,7 @@ const SVGParser_default_ = SVGParser;
 x_ite_Namespace .add ("SVGParser", "x_ite/Parser/SVGParser", SVGParser_default_);
 /* harmony default export */ const Parser_SVGParser = (SVGParser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GoldenGate.js
-/* provided dependency */ var GoldenGate_$ = __webpack_require__(63);
+/* provided dependency */ var GoldenGate_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -53965,266 +55552,6 @@ const Plane3_default_ = Plane3;
 
 x_ite_Namespace .add ("Plane3", "standard/Math/Geometry/Plane3", Plane3_default_);
 /* harmony default export */ const Geometry_Plane3 = (Plane3_default_);
-;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Triangle3.js
-/* provided dependency */ var Triangle3_libtess = __webpack_require__(844);
-/*******************************************************************************
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
- *
- * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
- *
- * The copyright notice above does not evidence any actual of intended
- * publication of such source code, and is an unpublished work by create3000.
- * This material contains CONFIDENTIAL INFORMATION that is the property of
- * create3000.
- *
- * No permission is granted to copy, distribute, or create derivative works from
- * the contents of this software, in whole or in part, without the prior written
- * permission of create3000.
- *
- * NON-MILITARY USE ONLY
- *
- * All create3000 software are effectively free software with a non-military use
- * restriction. It is free. Well commented source is provided. You may reuse the
- * source in any way you please with the exception anything that uses it must be
- * marked to indicate is contains 'non-military use only' components.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
- *
- * This file is part of the X_ITE Project.
- *
- * X_ITE is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License version 3 only, as published by the
- * Free Software Foundation.
- *
- * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
- * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
- * details (a copy is included in the LICENSE file that accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version 3
- * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
- * copy of the GPLv3 License.
- *
- * For Silvio, Joy and Adi.
- *
- ******************************************************************************/
-
-
-
-const Triangle3 =
-{
-   area: (() =>
-   {
-      const
-         B = new Numbers_Vector3 (),
-         C = new Numbers_Vector3 ();
-
-      return function (a, b, c)
-      {
-         return B .assign (b) .subtract (a) .cross (C .assign (c) .subtract (a)) .magnitude () / 2;
-      };
-   })(),
-   normal (v1, v2, v3, normal)
-   {
-      const
-         x1 = v3 .x - v2 .x,
-         y1 = v3 .y - v2 .y,
-         z1 = v3 .z - v2 .z,
-         x2 = v1 .x - v2 .x,
-         y2 = v1 .y - v2 .y,
-         z2 = v1 .z - v2 .z;
-
-      normal .set (y1 * z2 - z1 * y2,
-                   z1 * x2 - x1 * z2,
-                   x1 * y2 - y1 * x2);
-
-      return normal .normalize ();
-   },
-   quadNormal (v1, v2, v3, v4, normal)
-   {
-      const
-         x1 = v3 .x - v1 .x,
-         y1 = v3 .y - v1 .y,
-         z1 = v3 .z - v1 .z,
-         x2 = v4 .x - v2 .x,
-         y2 = v4 .y - v2 .y,
-         z2 = v4 .z - v2 .z;
-
-      normal .set (y1 * z2 - z1 * y2,
-                   z1 * x2 - x1 * z2,
-                   x1 * y2 - y1 * x2);
-
-      return normal .normalize ();
-   },
-   triangulatePolygon: (() =>
-   {
-      // Function called for each vertex of tesselator output.
-
-      function vertexCallback (index, triangles)
-      {
-         triangles .push (index);
-      }
-
-      // Required in case of a combine, otherwise an empty array is returned.
-
-      function combineCallback (coords, data, weight)
-      {
-         return data [0];
-      }
-
-      const tessy = new Triangle3_libtess .GluTesselator ();
-
-      tessy .gluTessCallback (Triangle3_libtess .gluEnum .GLU_TESS_VERTEX_DATA,  vertexCallback);
-      tessy .gluTessCallback (Triangle3_libtess .gluEnum .GLU_TESS_COMBINE,      combineCallback);
-      tessy .gluTessProperty (Triangle3_libtess .gluEnum .GLU_TESS_WINDING_RULE, Triangle3_libtess .windingRule .GLU_TESS_WINDING_ODD);
-
-      return function (polygon, triangles)
-      {
-         tessy .gluTessBeginPolygon (triangles);
-         tessy .gluTessBeginContour ();
-
-         for (const point of polygon)
-            tessy .gluTessVertex (point, point .index);
-
-         tessy .gluTessEndContour ();
-         tessy .gluTessEndPolygon ();
-
-         // Return array of indices.
-         return triangles;
-      };
-   })(),
-   triangulateConvexPolygon (vertices, triangles)
-   {
-      // Fallback: Very simple triangulation for convex polygons.
-      for (let i = 1, length = vertices .length - 1; i < length; ++ i)
-         triangles .push (vertices [0], vertices [i], vertices [i + 1]);
-   },
-};
-
-const Triangle3_default_ = Triangle3;
-;
-
-x_ite_Namespace .add ("Triangle3", "standard/Math/Geometry/Triangle3", Triangle3_default_);
-/* harmony default export */ const Geometry_Triangle3 = (Triangle3_default_);
-;// CONCATENATED MODULE: ./src/standard/Math/Algorithms/SAT.js
-/*******************************************************************************
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
- *
- * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
- *
- * The copyright notice above does not evidence any actual of intended
- * publication of such source code, and is an unpublished work by create3000.
- * This material contains CONFIDENTIAL INFORMATION that is the property of
- * create3000.
- *
- * No permission is granted to copy, distribute, or create derivative works from
- * the contents of this software, in whole or in part, without the prior written
- * permission of create3000.
- *
- * NON-MILITARY USE ONLY
- *
- * All create3000 software are effectively free software with a non-military use
- * restriction. It is free. Well commented source is provided. You may reuse the
- * source in any way you please with the exception anything that uses it must be
- * marked to indicate is contains 'non-military use only' components.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
- *
- * This file is part of the X_ITE Project.
- *
- * X_ITE is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License version 3 only, as published by the
- * Free Software Foundation.
- *
- * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
- * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
- * details (a copy is included in the LICENSE file that accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version 3
- * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
- * copy of the GPLv3 License.
- *
- * For Silvio, Joy and Adi.
- *
- ******************************************************************************/
-
-const
-   extents1 = { min: 0, max: 0 },
-   extents2 = { min: 0, max: 0 };
-
-/**
- *  Class to represent the Separating Axis Theorem.
- */
-function SAT () { }
-
-SAT .isSeparated = function (axes, points1, points2)
-{
-   // https://gamedev.stackexchange.com/questions/25397/obb-vs-obb-collision-detection
-
-   for (const axis of axes)
-   {
-      project (points1, axis, extents1);
-      project (points2, axis, extents2);
-
-      if (overlaps (extents1 .min, extents1 .max, extents2 .min, extents2 .max))
-         continue;
-
-      return true;
-   }
-
-   return false;
-};
-
-///  Projects @a points to @a axis and returns the minimum and maximum bounds.
-function project (points, axis, extents)
-{
-   extents .min = Number .POSITIVE_INFINITY;
-   extents .max = Number .NEGATIVE_INFINITY;
-
-   for (const point of points)
-   {
-      // Just dot it to get the min and max along this axis.
-      // NOTE: the axis must be normalized to get accurate projections to calculate the MTV, but if it is only needed to
-      // know whether it overlaps, every axis can be used.
-
-      const dotVal = point .dot (axis);
-
-      if (dotVal < extents .min)
-         extents .min = dotVal;
-
-      if (dotVal > extents .max)
-         extents .max = dotVal;
-   }
-}
-
-///  Returns true if both ranges overlap, otherwise false.
-function overlaps (min1, max1, min2, max2)
-{
-   return is_between (min2, min1, max1) || is_between (min1, min2, max2);
-}
-
-///  Returns true if @a value is between @a lowerBound and @a upperBound, otherwise false.
-function is_between (value, lowerBound, upperBound)
-{
-   return lowerBound <= value && value <= upperBound;
-}
-
-const SAT_default_ = SAT;
-;
-
-x_ite_Namespace .add ("SAT", "standard/Math/Algorithms/SAT", SAT_default_);
-/* harmony default export */ const Algorithms_SAT = (SAT_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/ViewVolume.js
 /*******************************************************************************
  *
@@ -54704,7 +56031,7 @@ x_ite_Namespace .add ("ViewVolume", "standard/Math/Geometry/ViewVolume", ViewVol
 
 
 
-function TextureBuffer (browser, width, height, float = false)
+function TextureBuffer (browser, width, height, float = false, mipMaps = false)
 {
    const gl = browser .getContext ();
 
@@ -54738,8 +56065,17 @@ function TextureBuffer (browser, width, height, float = false)
    gl .bindTexture (gl .TEXTURE_2D, this .colorTexture);
    gl .texParameteri (gl .TEXTURE_2D, gl .TEXTURE_WRAP_S,     gl .CLAMP_TO_EDGE);
    gl .texParameteri (gl .TEXTURE_2D, gl .TEXTURE_WRAP_T,     gl .CLAMP_TO_EDGE);
-   gl .texParameteri (gl .TEXTURE_2D, gl .TEXTURE_MIN_FILTER, gl .LINEAR);
-   gl .texParameteri (gl .TEXTURE_2D, gl .TEXTURE_MAG_FILTER, gl .LINEAR);
+
+   if (mipMaps)
+   {
+      gl .texParameteri (gl .TEXTURE_2D, gl .TEXTURE_MIN_FILTER, gl .LINEAR_MIPMAP_LINEAR);
+      gl .texParameteri (gl .TEXTURE_2D, gl .TEXTURE_MAG_FILTER, gl .LINEAR);
+   }
+   else
+   {
+      gl .texParameteri (gl .TEXTURE_2D, gl .TEXTURE_MIN_FILTER, gl .LINEAR);
+      gl .texParameteri (gl .TEXTURE_2D, gl .TEXTURE_MAG_FILTER, gl .LINEAR);
+   }
 
    if (float)
       gl .texImage2D (gl .TEXTURE_2D, 0, gl .getVersion () > 1 ? gl .RGBA32F : gl .RGBA, width, height, 0, gl .RGBA, gl .FLOAT, null);
@@ -54854,7 +56190,7 @@ Object .assign (TextureBuffer .prototype,
 
       gl .bindFramebuffer (gl .FRAMEBUFFER, this .frameBuffer);
    },
-   delete ()
+   dispose ()
    {
       const gl = this .context;
 
@@ -55181,676 +56517,6 @@ const Camera_default_ = Camera;
 
 x_ite_Namespace .add ("Camera", "standard/Math/Geometry/Camera", Camera_default_);
 /* harmony default export */ const Geometry_Camera = (Camera_default_);
-;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Box3.js
-/*******************************************************************************
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
- *
- * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
- *
- * The copyright notice above does not evidence any actual of intended
- * publication of such source code, and is an unpublished work by create3000.
- * This material contains CONFIDENTIAL INFORMATION that is the property of
- * create3000.
- *
- * No permission is granted to copy, distribute, or create derivative works from
- * the contents of this software, in whole or in part, without the prior written
- * permission of create3000.
- *
- * NON-MILITARY USE ONLY
- *
- * All create3000 software are effectively free software with a non-military use
- * restriction. It is free. Well commented source is provided. You may reuse the
- * source in any way you please with the exception anything that uses it must be
- * marked to indicate is contains 'non-military use only' components.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
- *
- * This file is part of the X_ITE Project.
- *
- * X_ITE is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License version 3 only, as published by the
- * Free Software Foundation.
- *
- * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
- * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
- * details (a copy is included in the LICENSE file that accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version 3
- * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
- * copy of the GPLv3 License.
- *
- * For Silvio, Joy and Adi.
- *
- ******************************************************************************/
-
-
-
-
-
-
-function Box3 (/* size, center */)
-{
-   this .matrix = new Numbers_Matrix4 ();
-
-   this .set (... arguments);
-}
-
-Object .assign (Box3 .prototype,
-{
-   copy ()
-   {
-      const copy = Object .create (Box3 .prototype);
-      copy .matrix = this .matrix .copy ();
-      return copy;
-   },
-   assign (box)
-   {
-      this .matrix .assign (box .matrix);
-      return this;
-   },
-   equals (box)
-   {
-      return this .matrix .equals (box .matrix);
-   },
-   getMatrix ()
-   {
-      return this .matrix;
-   },
-   set (size, center)
-   {
-      switch (arguments .length)
-      {
-         case 0:
-         {
-            this .matrix .set (0, 0, 0, 0,
-                               0, 0, 0, 0,
-                               0, 0, 0, 0,
-                               0, 0, 0, 0);
-
-            return this;
-         }
-         case 2:
-         {
-            this .matrix .set (size .x / 2, 0, 0, 0,
-                               0, size .y / 2, 0, 0,
-                               0, 0, size .z / 2, 0,
-                               center .x, center .y, center .z, 1);
-
-            return this;
-         }
-         // case 3:
-         // {
-         //    console .trace ()
-         //    return this .setExtents (arguments [0], arguments [1]);
-         // }
-      }
-   },
-   setExtents (min, max)
-   {
-      const
-         sx = (max .x - min .x) / 2,
-         sy = (max .y - min .y) / 2,
-         sz = (max .z - min .z) / 2,
-         cx = (max .x + min .x) / 2,
-         cy = (max .y + min .y) / 2,
-         cz = (max .z + min .z) / 2;
-
-      this .matrix .set (sx, 0,  0,  0,
-                         0,  sy, 0,  0,
-                         0,  0,  sz, 0,
-                         cx, cy, cz, 1);
-
-      return this;
-   },
-   getExtents (min, max)
-   {
-      this .getAbsoluteExtents (min, max);
-
-      min .add (this .center);
-      max .add (this .center);
-   },
-   getAbsoluteExtents: (() =>
-   {
-      const
-         r1 = new Numbers_Vector3 (),
-         p1 = new Numbers_Vector3 (),
-         p4 = new Numbers_Vector3 ();
-
-      return function (min, max)
-      {
-         const
-            m = this .matrix,
-            x = m .xAxis,
-            y = m .yAxis,
-            z = m .zAxis;
-
-         r1 .assign (y) .add (z);
-
-         const r2 = z .subtract (y);
-
-         p1 .assign (x) .add (r1),
-         p4 .assign (x) .add (r2);
-
-         const
-            p2 = r1 .subtract (x),
-            p3 = r2 .subtract (x);
-
-         min .assign (p1) .min (p2, p3, p4);
-         max .assign (p1) .max (p2, p3, p4);
-
-         p1 .negate ();
-         p2 .negate ();
-         p3 .negate ();
-         p4 .negate ();
-
-         min .min (p1, p2, p3, p4);
-         max .max (p1, p2, p3, p4);
-      };
-   })(),
-   getPoints: (() =>
-   {
-      const
-         x  = new Numbers_Vector3 (),
-         y  = new Numbers_Vector3 (),
-         z  = new Numbers_Vector3 (),
-         r1 = new Numbers_Vector3 ();
-
-      return function (points)
-      {
-         /*
-          * p6 ---------- p5
-          * | \           | \
-          * | p2------------ p1
-          * |  |          |  |
-          * |  |          |  |
-          * p7 |_________ p8 |
-          *  \ |           \ |
-          *   \|            \|
-          *    p3 ---------- p4
-          */
-
-         const m = this .matrix;
-
-         x .assign (m .xAxis);
-         y .assign (m .yAxis);
-         z .assign (m .zAxis);
-
-         r1 .assign (y) .add (z);
-
-         const r2 = z .subtract (y);
-
-         points [0] .assign (x)  .add (r1);
-         points [1] .assign (r1) .subtract (x);
-         points [2] .assign (r2) .subtract (x);
-         points [3] .assign (x)  .add (r2);
-
-         points [4] .assign (points [2]) .negate ();
-         points [5] .assign (points [3]) .negate ();
-         points [6] .assign (points [0]) .negate ();
-         points [7] .assign (points [1]) .negate ();
-
-         const center = this .center;
-
-         points [0] .add (center);
-         points [1] .add (center);
-         points [2] .add (center);
-         points [3] .add (center);
-
-         points [4] .add (center);
-         points [5] .add (center);
-         points [6] .add (center);
-         points [7] .add (center);
-
-         return points;
-      };
-   })(),
-   getAxes (axes)
-   {
-      const m = this .matrix;
-
-      axes [0] .assign (m .xAxis);
-      axes [1] .assign (m .yAxis);
-      axes [2] .assign (m .zAxis);
-
-      return axes;
-   },
-   getNormals: (() =>
-   {
-      const
-         x = new Numbers_Vector3 (),
-         y = new Numbers_Vector3 (),
-         z = new Numbers_Vector3 ();
-
-      const axes = [ Numbers_Vector3 .xAxis, Numbers_Vector3 .yAxis, Numbers_Vector3 .zAxis ];
-
-      return function (normals)
-      {
-         const m = this .matrix;
-
-         x .assign (m .xAxis);
-         y .assign (m .yAxis);
-         z .assign (m .zAxis);
-
-         if (x .norm () === 0)
-         {
-            x .assign (y) .cross (z);
-
-            if (x .norm () === 0)
-            {
-               for (const axis of axes)
-               {
-                  x .assign (axis) .cross (y);
-
-                  if (x .norm () !== 0)
-                     break;
-               }
-
-               if (x .norm () === 0)
-               {
-                  for (const axis of axes)
-                  {
-                     x .assign (axis) .cross (z);
-
-                     if (x .norm () !== 0)
-                        break;
-                  }
-
-                  if (x .norm () === 0)
-                     x .assign (Numbers_Vector3 .xAxis);
-               }
-            }
-         }
-
-         if (y .norm () === 0)
-         {
-            y .assign (z) .cross (x);
-
-            if (y .norm () === 0)
-            {
-               for (const axis of axes)
-               {
-                  y .assign (axis) .cross (z);
-
-                  if (y .norm () !== 0)
-                     break;
-               }
-
-               if (y .norm () === 0)
-               {
-                  for (const axis of axes)
-                  {
-                     y .assign (axis) .cross (x);
-
-                     if (y .norm () !== 0)
-                        break;
-                  }
-
-                  if (y .norm () === 0)
-                     y .assign (Numbers_Vector3 .yAxis);
-               }
-            }
-         }
-
-         if (z .norm () === 0)
-         {
-            z .assign (x) .cross (y);
-
-            if (z .norm () === 0)
-            {
-               for (const axis of axes)
-               {
-                  z .assign (axis) .cross (x);
-
-                  if (z .norm () !== 0)
-                     break;
-               }
-
-               if (z .norm () === 0)
-               {
-                  for (const axis of axes)
-                  {
-                     z .assign (axis) .cross (y);
-
-                     if (z .norm () !== 0)
-                        break;
-                  }
-
-                  if (z .norm () === 0)
-                     z .assign (Numbers_Vector3 .zAxis);
-               }
-            }
-         }
-
-         normals [0] .assign (y) .cross (z) .normalize ();
-         normals [1] .assign (z) .cross (x) .normalize ();
-         normals [2] .assign (x) .cross (y) .normalize ();
-
-         return normals;
-      };
-   })(),
-   isEmpty ()
-   {
-      return this .matrix [15] === 0;
-   },
-   add: (() =>
-   {
-      const
-         lhs_min = new Numbers_Vector3 (),
-         lhs_max = new Numbers_Vector3 (),
-         rhs_min = new Numbers_Vector3 (),
-         rhs_max = new Numbers_Vector3 ();
-
-      return function (box)
-      {
-         if (this .isEmpty ())
-            return this .assign (box);
-
-         if (box .isEmpty ())
-            return this;
-
-         this .getExtents (lhs_min, lhs_max);
-         box  .getExtents (rhs_min, rhs_max);
-
-         return this .setExtents (lhs_min .min (rhs_min), lhs_max .max (rhs_max));
-      };
-   })(),
-   multLeft (matrix)
-   {
-      this .matrix .multLeft (matrix);
-      return this;
-   },
-   multRight (matrix)
-   {
-      this .matrix .multRight (matrix);
-      return this;
-   },
-   containsPoint: (() =>
-   {
-      const
-         min = new Numbers_Vector3 (),
-         max = new Numbers_Vector3 ();
-
-      return function (point)
-      {
-         this .getExtents (min, max);
-
-         return min .x <= point .x &&
-                max .x >= point .x &&
-                min .y <= point .y &&
-                max .y >= point .y &&
-                min .z <= point .z &&
-                max .z >= point .z;
-      };
-   })(),
-   intersectsBox: (() =>
-   {
-      const points1 = [
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-      ];
-
-      const points2 = [
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-      ];
-
-      const axes1 = [
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-      ];
-
-      const axes2 = [
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-      ];
-
-      const axes9 = [
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-      ];
-
-      const normals = [
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-      ];
-
-      return function (other)
-      {
-         // Test special cases.
-
-         if (this .isEmpty ())
-            return false;
-
-         if (other .isEmpty ())
-            return false;
-
-         // Get points.
-
-         this  .getPoints (points1);
-         other .getPoints (points2);
-
-         // Test the three planes spanned by the normal vectors of the faces of the first parallelepiped.
-
-         if (Algorithms_SAT .isSeparated (this .getNormals (normals), points1, points2))
-            return false;
-
-         // Test the three planes spanned by the normal vectors of the faces of the second parallelepiped.
-
-         if (Algorithms_SAT .isSeparated (other .getNormals (normals), points1, points2))
-            return false;
-
-         // Test the nine other planes spanned by the edges of each parallelepiped.
-
-         this  .getAxes (axes1);
-         other .getAxes (axes2);
-
-         for (let i1 = 0; i1 < 3; ++ i1)
-         {
-            for (let i2 = 0; i2 < 3; ++ i2)
-               axes9 [i1 * 3 + i2] .assign (axes1 [i1]) .cross (axes2 [i2]);
-         }
-
-         if (Algorithms_SAT .isSeparated (axes9, points1, points2))
-            return false;
-
-         // Both boxes intersect.
-
-         return true;
-      };
-   })(),
-   intersectsTriangle: (() =>
-   {
-      const points1 = [
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-      ];
-
-      const axes1 = [
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-      ];
-
-      const axes9 = [
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-      ];
-
-      const normals = [
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-      ];
-
-      const triangle = [ ];
-
-      const triangleNormal = [ new Numbers_Vector3 () ];
-
-      const triangleEdges = [
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 (),
-         new Numbers_Vector3 ()
-      ];
-
-      return function (a, b, c)
-      {
-         // Test special cases.
-
-         if (this .isEmpty ())
-            return false;
-
-         // Get points.
-
-         this .getPoints (points1);
-
-         triangle [0] = a;
-         triangle [1] = b;
-         triangle [2] = c;
-
-         // Test the three planes spanned by the normal vectors of the faces of the first parallelepiped.
-
-         if (Algorithms_SAT .isSeparated (this .getNormals (normals), points1, triangle))
-            return false;
-
-         // Test the normal of the triangle.
-
-         Geometry_Triangle3 .normal (a, b, c, triangleNormal [0]);
-
-         if (Algorithms_SAT .isSeparated (triangleNormal, points1, triangle))
-            return false;
-
-         // Test the nine other planes spanned by the edges of each parallelepiped.
-
-         this .getAxes (axes1);
-
-         triangleEdges [0] .assign (a) .subtract (b);
-         triangleEdges [1] .assign (b) .subtract (c);
-         triangleEdges [2] .assign (c) .subtract (a);
-
-         for (let i1 = 0; i1 < 3; ++ i1)
-         {
-            for (let i2 = 0; i2 < 3; ++ i2)
-               axes9 [i1 * 3 + i2] .assign (axes1 [i1]) .cross (triangleEdges [i2]);
-         }
-
-         if (Algorithms_SAT .isSeparated (axes9, points1, triangle))
-            return false;
-
-         // Box and triangle intersect.
-
-         return true;
-      };
-   })(),
-   toString ()
-   {
-      return `${this .size}, ${this .center}`;
-   },
-});
-
-Object .assign (Box3,
-{
-   Extents (min, max)
-   {
-      return new Box3 () .setExtents (min, max);
-   },
-   Points (points)
-   {
-      const
-         min = new Numbers_Vector3 (Number .POSITIVE_INFINITY, Number .POSITIVE_INFINITY, Number .POSITIVE_INFINITY),
-         max = new Numbers_Vector3 (Number .NEGATIVE_INFINITY, Number .NEGATIVE_INFINITY, Number .NEGATIVE_INFINITY);
-
-      for (const point of points)
-      {
-         min .min (point);
-         max .max (point);
-      }
-
-      return new Box3 () .setExtents (min, max);
-   },
-});
-
-Object .defineProperties (Box3 .prototype,
-{
-   size:
-   {
-      get: (() =>
-      {
-         const
-            min = new Numbers_Vector3 (),
-            max = new Numbers_Vector3 ();
-
-         return function ()
-         {
-            this .getAbsoluteExtents (min, max);
-
-            return max .subtract (min);
-         };
-      })(),
-      enumerable: true,
-   },
-   center:
-   {
-      get ()
-      {
-         return this .matrix .origin;
-      },
-      enumerable: true,
-   },
-});
-
-const Box3_default_ = Box3;
-;
-
-x_ite_Namespace .add ("Box3", "standard/Math/Geometry/Box3", Box3_default_);
-/* harmony default export */ const Geometry_Box3 = (Box3_default_);
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Line3.js
 /*******************************************************************************
  *
@@ -56091,138 +56757,6 @@ const Line3_default_ = Line3;
 
 x_ite_Namespace .add ("Line3", "standard/Math/Geometry/Line3", Line3_default_);
 /* harmony default export */ const Geometry_Line3 = (Line3_default_);
-;// CONCATENATED MODULE: ./src/standard/Utility/BitSet.js
-/*******************************************************************************
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
- *
- * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
- *
- * The copyright notice above does not evidence any actual of intended
- * publication of such source code, and is an unpublished work by create3000.
- * This material contains CONFIDENTIAL INFORMATION that is the property of
- * create3000.
- *
- * No permission is granted to copy, distribute, or create derivative works from
- * the contents of this software, in whole or in part, without the prior written
- * permission of create3000.
- *
- * NON-MILITARY USE ONLY
- *
- * All create3000 software are effectively free software with a non-military use
- * restriction. It is free. Well commented source is provided. You may reuse the
- * source in any way you please with the exception anything that uses it must be
- * marked to indicate is contains 'non-military use only' components.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
- *
- * This file is part of the X_ITE Project.
- *
- * X_ITE is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License version 3 only, as published by the
- * Free Software Foundation.
- *
- * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
- * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
- * details (a copy is included in the LICENSE file that accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version 3
- * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
- * copy of the GPLv3 License.
- *
- * For Silvio, Joy and Adi.
- *
- ******************************************************************************/
-
-
-
-const BitSet_value = Symbol ();
-
-function BitSet (value = 0)
-{
-   this [BitSet_value] = value >>> 0;
-}
-
-Object .assign (BitSet .prototype,
-{
-   *[Symbol .iterator] ()
-   {
-      let
-         value = this [BitSet_value],
-         index = 0;
-
-      while (value)
-      {
-         if (value & 1)
-            yield index;
-
-         value >>>= 1;
-         ++ index;
-      }
-   },
-   get (index)
-   {
-      const mask = 1 << index;
-
-      return !! (this [BitSet_value] & mask);
-   },
-   set (index, value)
-   {
-      if (value)
-         this .add (index);
-      else
-         this .remove (index);
-   },
-   add (index, mask = 1)
-   {
-      this [BitSet_value] |= mask << index;
-      this [BitSet_value] >>>= 0;
-   },
-   remove (index, mask = 1)
-   {
-      this [BitSet_value] &= ~(mask << index);
-      this [BitSet_value] >>>= 0;
-   },
-   clear ()
-   {
-      this [BitSet_value] = 0;
-   },
-   *entries ()
-   {
-      for (const i of this)
-         yield [i, i];
-   },
-   valueOf ()
-   {
-      return this [BitSet_value];
-   },
-   toString (radix)
-   {
-      return this [BitSet_value] .toString (radix);
-   },
-});
-
-BitSet .prototype .keys   = BitSet .prototype [Symbol .iterator];
-BitSet .prototype .values = BitSet .prototype [Symbol .iterator];
-
-Object .defineProperty (BitSet .prototype, "size",
-{
-   get ()
-   {
-      return Math_Algorithm .bitCount (this [BitSet_value]);
-   },
-});
-
-const BitSet_default_ = BitSet;
-;
-
-x_ite_Namespace .add ("BitSet", "standard/Utility/BitSet", BitSet_default_);
-/* harmony default export */ const Utility_BitSet = (BitSet_default_);
 ;// CONCATENATED MODULE: ./src/standard/Time/StopWatch.js
 /*******************************************************************************
  *
@@ -56374,66 +56908,126 @@ x_ite_Namespace .add ("StopWatch", "standard/Time/StopWatch", StopWatch_default_
 
 
 
-
 const DEPTH_BUFFER_SIZE = 16;
 
 function X3DRenderObject (executionContext)
 {
    const browser = executionContext .getBrowser ();
 
-   this .renderBits               = new Utility_BitSet ();
-   this .renderCount              = 0;
-   this .viewVolumes              = [ ];
-   this .cameraSpaceMatrix        = new Utility_MatrixStack (Numbers_Matrix4);
-   this .viewMatrix               = new Utility_MatrixStack (Numbers_Matrix4);
-   this .projectionMatrix         = new Utility_MatrixStack (Numbers_Matrix4);
-   this .modelViewMatrix          = new Utility_MatrixStack (Numbers_Matrix4);
-   this .viewportArray            = new Int32Array (4);
-   this .projectionMatrixArray    = new Float32Array (16);
-   this .cameraSpaceMatrixArray   = new Float32Array (16);
-   this .hitRay                   = new Geometry_Line3 (Numbers_Vector3 .Zero, Numbers_Vector3 .Zero);
-   this .sensors                  = [[ ]];
-   this .viewpointGroups          = [ ];
-   this .localObjectsKeys         = [ ];
-   this .globalLightsKeys         = [ ];
-   this .globalLights             = [ ];
-   this .localObjects             = [ ];
-   this .lights                   = [ ];
-   this .globalShadows            = [ false ];
-   this .localShadows             = [ false ];
-   this .localFogs                = [ null ];
-   this .layouts                  = [ ];
-   this .humanoids                = [ ];
-   this .generatedCubeMapTextures = [ ];
-   this .collisions               = [ ];
-   this .collisionTime            = new Time_StopWatch ();
-   this .numPointingShapes        = 0;
-   this .numCollisionShapes       = 0;
-   this .numShadowShapes          = 0;
-   this .numOpaqueShapes          = 0;
-   this .numTransparentShapes     = 0;
-   this .pointingShapes           = [ ];
-   this .collisionShapes          = [ ];
-   this .activeCollisions         = [ ];
-   this .shadowShapes             = [ ];
-   this .opaqueShapes             = [ ];
-   this .transparentShapes        = [ ];
-   this .transparencySorter       = new Algorithms_MergeSort (this .transparentShapes, (a, b) => a .distance < b .distance);
-   this .speed                    = 0;
-   this .depthBuffer              = new Rendering_TextureBuffer (browser, DEPTH_BUFFER_SIZE, DEPTH_BUFFER_SIZE, true);
+   this .renderKey                      = "";
+   this .renderCount                    = 0;
+   this .viewVolumes                    = [ ];
+   this .projectionMatrix               = new Utility_MatrixStack (Numbers_Matrix4);
+   this .modelViewMatrix                = new Utility_MatrixStack (Numbers_Matrix4);
+   this .viewMatrix                     = new Utility_MatrixStack (Numbers_Matrix4);
+   this .cameraSpaceMatrix              = new Utility_MatrixStack (Numbers_Matrix4);
+   this .viewportArray                  = new Int32Array (4);
+   this .projectionMatrixArray          = new Float32Array (16);
+   this .viewMatrixArray                = new Float32Array (16);
+   this .cameraSpaceMatrixArray         = new Float32Array (16);
+   this .hitRay                         = new Geometry_Line3 (Numbers_Vector3 .Zero, Numbers_Vector3 .Zero);
+   this .sensors                        = [[ ]];
+   this .viewpointGroups                = [ ];
+   this .localObjectsKeys               = [ ];
+   this .globalLightsKeys               = [ ];
+   this .globalLights                   = [ ];
+   this .localObjects                   = [ ];
+   this .lights                         = [ ];
+   this .globalShadows                  = [ false ];
+   this .localShadows                   = [ false ];
+   this .localFogs                      = [ null ];
+   this .layouts                        = [ ];
+   this .humanoids                      = [ null ];
+   this .generatedCubeMapTextures       = [ ];
+   this .collisions                     = [ ];
+   this .collisionTime                  = new Time_StopWatch ();
+   this .numPointingShapes              = 0;
+   this .numCollisionShapes             = 0;
+   this .numShadowShapes                = 0;
+   this .numOpaqueShapes                = 0;
+   this .numTransparentShapes           = 0;
+   this .pointingShapes                 = [ ];
+   this .collisionShapes                = [ ];
+   this .activeCollisions               = [ ];
+   this .shadowShapes                   = [ ];
+   this .opaqueShapes                   = [ ];
+   this .transparentShapes              = [ ];
+   this .transmissionShapes             = [ ];
+   this .transmissionOpaqueShapes       = [ ];
+   this .transmissionTransparentShapes  = [ ];
+   this .transparencySorter             = new Algorithms_MergeSort (this .transparentShapes, (a, b) => a .distance < b .distance);
+   this .transmissionTransparencySorter = new Algorithms_MergeSort (this .transmissionTransparentShapes, (a, b) => a .distance < b .distance);
+   this .speed                          = 0;
+   this .depthBuffer                    = new Rendering_TextureBuffer (browser, DEPTH_BUFFER_SIZE, DEPTH_BUFFER_SIZE, true);
 }
 
 Object .assign (X3DRenderObject .prototype,
 {
    initialize ()
-   { },
+   {
+      const browser = this .getBrowser ();
+
+      browser .getRenderingProperties () ._LogarithmicDepthBuffer  .addInterest ("set_renderKey__", this);
+      browser .getBrowserOptions () ._OrderIndependentTransparency .addInterest ("set_renderKey__", this);
+      browser .getBrowserOptions () ._ToneMapping                  .addInterest ("set_renderKey__", this);
+
+      this .getViewpointStack ()  .addInterest ("set_renderKey__", this);
+
+      this .set_renderKey__ ();
+   },
    isIndependent ()
    {
       return true;
    },
-   getRenderBits ()
+   getNode ()
    {
-      return this .renderBits;
+      return null;
+   },
+   set_renderKey__ ()
+   {
+      const browser = this .getBrowser ();
+
+      this .logarithmicDepthBuffer       = browser .getRenderingProperty ("LogarithmicDepthBuffer")
+         || this .getViewpoint () .getLogarithmicDepthBuffer ();
+      this .orderIndependentTransparency = browser .getBrowserOption ("OrderIndependentTransparency");
+
+      let renderKey = "";
+
+      renderKey += this .logarithmicDepthBuffer ? 1 : 0;
+      renderKey += this .orderIndependentTransparency ? 1 : 0;
+
+      switch (browser .getBrowserOption ("ToneMapping"))
+      {
+         default: // NONE
+            renderKey += 0;
+            break;
+         case "ACES_NARKOWICZ":
+            renderKey += 1;
+            break;
+         case "ACES_HILL":
+            renderKey += 2;
+            break;
+         case "ACES_HILL_EXPOSURE_BOOST":
+            renderKey += 3;
+            break;
+         case "KHR_PBR_NEUTRAL":
+            renderKey += 4;
+            break;
+      }
+
+      this .renderKey = renderKey;
+   },
+   getLogarithmicDepthBuffer ()
+   {
+      return this .logarithmicDepthBuffer ;
+   },
+   getOrderIndependentTransparency ()
+   {
+      return this .orderIndependentTransparency;
+   },
+   getRenderKey ()
+   {
+      return this .renderKey;
    },
    getRenderCount ()
    {
@@ -56457,14 +57051,6 @@ Object .assign (X3DRenderObject .prototype,
    {
       return this .viewVolumes .at (-1);
    },
-   getCameraSpaceMatrix ()
-   {
-      return this .cameraSpaceMatrix;
-   },
-   getViewMatrix ()
-   {
-      return this .viewMatrix;
-   },
    getProjectionMatrix ()
    {
       return this .projectionMatrix;
@@ -56473,6 +57059,14 @@ Object .assign (X3DRenderObject .prototype,
    {
       return this .modelViewMatrix;
    },
+   getViewMatrix ()
+   {
+      return this .viewMatrix;
+   },
+   getCameraSpaceMatrix ()
+   {
+      return this .cameraSpaceMatrix;
+   },
    getViewportArray ()
    {
       return this .viewportArray;
@@ -56480,6 +57074,10 @@ Object .assign (X3DRenderObject .prototype,
    getProjectionMatrixArray ()
    {
       return this .projectionMatrixArray;
+   },
+   getViewMatrixArray ()
+   {
+      return this .viewMatrixArray;
    },
    getCameraSpaceMatrixArray ()
    {
@@ -56794,6 +57392,10 @@ Object .assign (X3DRenderObject .prototype,
             this .numOpaqueShapes      = 0;
             this .numTransparentShapes = 0;
 
+            this .transmission                          = false;
+            this .transmissionOpaqueShapes      .length = 0;
+            this .transmissionTransparentShapes .length = 0;
+
             this .setGlobalFog (this .getFog ());
 
             callback .call (group, type, this);
@@ -56982,6 +57584,11 @@ Object .assign (X3DRenderObject .prototype,
                var renderContext = this .transparentShapes [num];
 
                renderContext .distance = bboxCenter .z;
+
+               if (shapeNode .isTransmission ())
+                  this .transmission = true;
+               else
+                  this .transmissionTransparentShapes .push (renderContext);
             }
             else
             {
@@ -56991,6 +57598,11 @@ Object .assign (X3DRenderObject .prototype,
                   this .opaqueShapes .push (this .createRenderContext (false));
 
                var renderContext = this .opaqueShapes [num];
+
+               if (shapeNode .isTransmission ())
+                  this .transmission = true;
+               else
+                  this .transmissionOpaqueShapes .push (renderContext);
             }
 
             renderContext .modelViewMatrix .set (modelViewMatrix);
@@ -57327,6 +57939,7 @@ Object .assign (X3DRenderObject .prototype,
          browser                  = this .getBrowser (),
          gl                       = browser .getContext (),
          frameBuffer              = browser .getFrameBuffer (),
+         independent              = this .isIndependent (),
          viewport                 = this .getViewVolume () .getViewport (),
          lights                   = this .lights,
          globalLightsKeys         = this .globalLightsKeys,
@@ -57335,16 +57948,13 @@ Object .assign (X3DRenderObject .prototype,
          globalShadows            = this .globalShadows,
          shadows                  = globalShadows .at (-1),
          headlight                = this .getNavigationInfo () ._headlight .getValue (),
-         oit                      = frameBuffer .getOIT ();
+         oit                      = frameBuffer .getOIT () && independent;
 
       this .renderCount = this .getNextRenderCount ();
 
-      this .renderBits .set (0, browser .getRenderingProperty ("LogarithmicDepthBuffer") || this .getViewpoint () .getLogarithmicDepthBuffer ());
-      this .renderBits .set (1, browser .getBrowserOption ("OrderIndependentTransparency"));
-
       // PREPARATIONS
 
-      if (this .isIndependent ())
+      if (independent)
       {
          // Render shadow maps.
 
@@ -57355,8 +57965,6 @@ Object .assign (X3DRenderObject .prototype,
 
          for (const generatedCubeMapTexture of generatedCubeMapTextures)
             generatedCubeMapTexture .renderTexture (this);
-
-         frameBuffer .bind ();
       }
 
       // Set up shadow matrix for all lights, and matrix for all projective textures.
@@ -57373,76 +57981,68 @@ Object .assign (X3DRenderObject .prototype,
       // Set global uniforms.
 
       this .viewportArray          .set (viewport);
-      this .cameraSpaceMatrixArray .set (this .getCameraSpaceMatrix () .get ());
       this .projectionMatrixArray  .set (this .getProjectionMatrix () .get ());
+      this .viewMatrixArray        .set (this .getViewMatrix () .get ());
+      this .cameraSpaceMatrixArray .set (this .getCameraSpaceMatrix () .get ());
 
-      // DRAW
+      // Prepare opaque objects.
 
-      // Configure viewport and background
+      const
+         opaqueShapes    = this .opaqueShapes,
+         numOpaqueShapes = this .numOpaqueShapes;
 
-      gl .viewport (... viewport);
-      gl .scissor (... viewport);
-
-      // Draw background.
-
-      gl .clear (gl .DEPTH_BUFFER_BIT);
-      gl .blendFuncSeparate (gl .SRC_ALPHA, gl .ONE_MINUS_SRC_ALPHA, gl .ONE, gl .ONE_MINUS_SRC_ALPHA);
-
-      this .getBackground () .display (gl, this, viewport);
-
-      // Sorted blend or order independent transparency
-
-      // Render opaque objects first
-
-      const opaqueShapes = this .opaqueShapes;
-
-      for (let i = 0, length = this .numOpaqueShapes; i < length; ++ i)
+      for (let i = 0; i < numOpaqueShapes; ++ i)
       {
          const renderContext = opaqueShapes [i];
 
-         gl .scissor (... renderContext .scissor);
-
          renderContext .shadows = renderContext .shadows || shadows;
          renderContext .objectsKeys .push (... globalLightsKeys);
-
-         renderContext .shapeNode .display (gl, renderContext);
-         browser .resetTextureUnits ();
       }
 
-      // Render transparent objects
+      // Prepare transparent objects.
 
-      const transparentShapes = this .transparentShapes;
+      const
+         transparentShapes    = this .transparentShapes,
+         numTransparentShapes = this .numTransparentShapes;
 
-      if (oit)
-         frameBuffer .bindTransparency ();
-      else
-         this .transparencySorter .sort (0, this .numTransparentShapes);
-
-      gl .depthMask (false);
-      gl .enable (gl .BLEND);
-
-      for (let i = 0, length = this .numTransparentShapes; i < length; ++ i)
+      for (let i = 0; i < numTransparentShapes; ++ i)
       {
          const renderContext = transparentShapes [i];
 
-         gl .scissor (... renderContext .scissor);
-
          renderContext .shadows = renderContext .shadows || shadows;
          renderContext .objectsKeys .push (... globalLightsKeys);
-
-         renderContext .shapeNode .display (gl, renderContext);
-         browser .resetTextureUnits ();
       }
 
-      gl .depthMask (true);
-      gl .disable (gl .BLEND);
+      // DRAW
 
-      if (oit)
-         frameBuffer .compose ();
+      if (independent && this .transmission)
+      {
+         // Transmission
+
+         const
+            transmissionBuffer               = browser .getTransmissionBuffer (),
+            transmissionOpaqueShapes         = this .transmissionOpaqueShapes,
+            transmissionTransparentShapes    = this .transmissionTransparentShapes,
+            numTransmissionOpaqueShapes      = transmissionOpaqueShapes .length,
+            numTransmissionTransparentShapes = transmissionTransparentShapes .length;
+
+         this .drawShapes (gl, browser, true, transmissionBuffer, gl .COLOR_BUFFER_BIT, false, viewport, transmissionOpaqueShapes, numTransmissionOpaqueShapes, transmissionTransparentShapes, numTransmissionTransparentShapes, this .transmissionTransparencySorter);
+
+         gl .bindTexture (gl .TEXTURE_2D, transmissionBuffer .getColorTexture ());
+         gl .generateMipmap (gl .TEXTURE_2D);
+
+         this .drawShapes (gl, browser, true, frameBuffer, 0, oit, viewport, opaqueShapes, numOpaqueShapes, transparentShapes, numTransparentShapes, this .transparencySorter);
+      }
+      else
+      {
+         // Draw with sorted blend or OIT.
+
+         this .drawShapes (gl, browser, independent, frameBuffer, 0, oit, viewport, opaqueShapes, numOpaqueShapes, transparentShapes, numTransparentShapes, this .transparencySorter);
+      }
 
       // POST DRAW
 
-      if (this .isIndependent ())
+      if (independent)
       {
          // Recycle clip planes, local fogs, local lights, and local projective textures.
 
@@ -57466,6 +58066,64 @@ Object .assign (X3DRenderObject .prototype,
       lights                   .length = 0;
       globalShadows            .length = 1;
       generatedCubeMapTextures .length = 0;
+   },
+   drawShapes (gl, browser, independent, frameBuffer, clear, oit, viewport, opaqueShapes, numOpaqueShapes, transparentShapes, numTransparentShapes, transparencySorter)
+   {
+      if (independent)
+         frameBuffer .bind ();
+
+      // Configure viewport and background
+
+      gl .viewport (... viewport);
+      gl .scissor (... viewport);
+
+      // Draw background.
+
+      gl .clearColor (0, 0, 0, 0);
+      gl .clear (gl .DEPTH_BUFFER_BIT | clear);
+      gl .blendFuncSeparate (gl .SRC_ALPHA, gl .ONE_MINUS_SRC_ALPHA, gl .ONE, gl .ONE_MINUS_SRC_ALPHA);
+
+      this .getBackground () .display (gl, this, viewport);
+
+      // Sorted blend or order independent transparency
+
+      // Render opaque objects first
+
+      for (let i = 0; i < numOpaqueShapes; ++ i)
+      {
+         const renderContext = opaqueShapes [i];
+
+         gl .scissor (... renderContext .scissor);
+
+         renderContext .shapeNode .display (gl, renderContext);
+         browser .resetTextureUnits ();
+      }
+
+      // Render transparent objects
+
+      if (oit)
+         frameBuffer .bindTransparency ();
+      else
+         transparencySorter .sort (0, numTransparentShapes);
+
+      gl .depthMask (false);
+      gl .enable (gl .BLEND);
+
+      for (let i = 0; i < numTransparentShapes; ++ i)
+      {
+         const renderContext = transparentShapes [i];
+
+         gl .scissor (... renderContext .scissor);
+
+         renderContext .shapeNode .display (gl, renderContext);
+         browser .resetTextureUnits ();
+      }
+
+      gl .depthMask (true);
+      gl .disable (gl .BLEND);
+
+      if (oit)
+         frameBuffer .compose ();
    },
 });
 
@@ -57858,189 +58516,6 @@ const BindableList_default_ = BindableList;
 
 x_ite_Namespace .add ("BindableList", "x_ite/Execution/BindableList", BindableList_default_);
 /* harmony default export */ const Execution_BindableList = (BindableList_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping/X3DBoundedObject.js
-/*******************************************************************************
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
- *
- * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
- *
- * The copyright notice above does not evidence any actual of intended
- * publication of such source code, and is an unpublished work by create3000.
- * This material contains CONFIDENTIAL INFORMATION that is the property of
- * create3000.
- *
- * No permission is granted to copy, distribute, or create derivative works from
- * the contents of this software, in whole or in part, without the prior written
- * permission of create3000.
- *
- * NON-MILITARY USE ONLY
- *
- * All create3000 software are effectively free software with a non-military use
- * restriction. It is free. Well commented source is provided. You may reuse the
- * source in any way you please with the exception anything that uses it must be
- * marked to indicate is contains 'non-military use only' components.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
- *
- * This file is part of the X_ITE Project.
- *
- * X_ITE is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License version 3 only, as published by the
- * Free Software Foundation.
- *
- * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
- * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
- * details (a copy is included in the LICENSE file that accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version 3
- * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
- * copy of the GPLv3 License.
- *
- * For Silvio, Joy and Adi.
- *
- ******************************************************************************/
-
-
-
-
-
-
-
-function X3DBoundedObject (executionContext)
-{
-   this .addType (Base_X3DConstants .X3DBoundedObject);
-
-   this .addChildObjects (Base_X3DConstants .inputOutput, "hidden",                   new x_ite_Fields .SFBool (),
-                          Base_X3DConstants .outputOnly,  "display",                  new x_ite_Fields .SFBool (true),
-                          Base_X3DConstants .outputOnly,  "transformSensors_changed", new x_ite_Fields .SFTime ());
-
-   this ._bboxSize   .setUnit ("length");
-   this ._bboxCenter .setUnit ("length");
-
-   this .childBBox            = new Geometry_Box3 (); // Must be unique for each X3DBoundedObject.
-   this .transformSensorNodes = new Set ();
-}
-
-Object .assign (X3DBoundedObject .prototype,
-{
-   initialize ()
-   {
-      this ._hidden  .addInterest ("set_visible_and_hidden__", this);
-      this ._visible .addInterest ("set_visible_and_hidden__", this);
-
-      this .set_visible_and_hidden__ ();
-   },
-   isHidden ()
-   {
-      return this ._hidden .getValue ();
-   },
-   setHidden (value)
-   {
-      if (value === this ._hidden .getValue ())
-         return;
-
-      this ._hidden = value;
-   },
-   getDefaultBBoxSize: (() =>
-   {
-      const defaultBBoxSize = new Numbers_Vector3 (-1, -1, -1);
-
-      return function ()
-      {
-         return defaultBBoxSize;
-      };
-   })(),
-   getBBox (nodes, bbox, shadows)
-   {
-      // Must be unique for each X3DBoundedObject.
-      const childBBox = this .childBBox;
-
-      // Add bounding boxes.
-
-      bbox .set ();
-
-      for (const node of nodes)
-      {
-         if (node .getBBox)
-            bbox .add (node .getBBox (childBBox, shadows));
-      }
-
-      return bbox;
-   },
-   displayBBox: (() =>
-   {
-      const
-         bbox   = new Geometry_Box3 (),
-         matrix = new Numbers_Matrix4 ();
-
-      return function (type, renderObject)
-      {
-         const modelViewMatrix = renderObject .getModelViewMatrix ();
-
-         this .getBBox (bbox);
-         matrix .set (bbox .center, null, bbox .size);
-
-         modelViewMatrix .push ();
-         modelViewMatrix .multLeft (matrix);
-
-         this .getBrowser () .getBBoxNode () .traverse (type, renderObject);
-
-         modelViewMatrix .pop ();
-      };
-   })(),
-   addTransformSensor (transformSensorNode)
-   {
-      this .transformSensorNodes .add (transformSensorNode);
-
-      this ._transformSensors_changed = this .getBrowser () .getCurrentTime ();
-   },
-   removeTransformSensor (transformSensorNode)
-   {
-      this .transformSensorNodes .delete (transformSensorNode);
-
-      this ._transformSensors_changed = this .getBrowser () .getCurrentTime ();
-   },
-   getTransformSensors ()
-   {
-      return this .transformSensorNodes;
-   },
-   set_visible_and_hidden__ ()
-   {
-      const value = this ._visible .getValue () && !this ._hidden .getValue ();
-
-      if (value === this ._display .getValue ())
-         return;
-
-      this ._display = value;
-   },
-   dispose () { },
-});
-
-Object .defineProperties (X3DBoundedObject,
-{
-   typeName:
-   {
-      value: "X3DBoundedObject",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Grouping", level: 1 }),
-      enumerable: true,
-   },
-});
-
-const X3DBoundedObject_default_ = X3DBoundedObject;
-;
-
-x_ite_Namespace .add ("X3DBoundedObject", "x_ite/Components/Grouping/X3DBoundedObject", X3DBoundedObject_default_);
-/* harmony default export */ const Grouping_X3DBoundedObject = (X3DBoundedObject_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DCast.js
 /*******************************************************************************
  *
@@ -59714,7 +60189,7 @@ Object .assign (VertexArray .prototype,
    update (value = true)
    {
       if (value)
-         this .delete ();
+         this .dispose ();
 
       return this;
    },
@@ -59732,7 +60207,7 @@ Object .assign (VertexArray .prototype,
       {
          // Memory leak prevention when shaders are reloaded. There should normally be no more than maybe 10 VAOs, except when shaders are often reloaded.
          if (this .vertexArrays .size > 100)
-            this .delete ();
+            this .dispose ();
 
          const vertexArray = this .gl .createVertexArray ();
 
@@ -59745,7 +60220,7 @@ Object .assign (VertexArray .prototype,
          return true; // Rebuild
       }
    },
-   delete ()
+   dispose ()
    {
       for (const vertexArray of this .vertexArrays .values ())
          this .gl .deleteVertexArray (vertexArray);
@@ -59926,6 +60401,7 @@ function X3DGeometryNode (executionContext)
    this .colors                   = X3DGeometryNode .createArray ();
    this .normals                  = X3DGeometryNode .createArray ();
    this .flatNormals              = X3DGeometryNode .createArray ();
+   this .tangents                 = X3DGeometryNode .createArray ();
    this .vertices                 = X3DGeometryNode .createArray ();
    this .hasFogCoords             = false;
    this .hasNormals               = false;
@@ -60006,6 +60482,7 @@ Object .assign (Object .setPrototypeOf (X3DGeometryNode .prototype, Core_X3DNode
       this .fogDepthBuffer        = gl .createBuffer ();
       this .colorBuffer           = gl .createBuffer ();
       this .normalBuffer          = gl .createBuffer ();
+      this .tangentBuffer         = gl .createBuffer ();
       this .vertexBuffer          = gl .createBuffer ();
       this .vertexArrayObject     = new Rendering_VertexArray (gl);
 
@@ -60161,6 +60638,14 @@ Object .assign (Object .setPrototypeOf (X3DGeometryNode .prototype, Core_X3DNode
    getNormals ()
    {
       return this .normals;
+   },
+   setTangents (value)
+   {
+      this .tangents .assign (value);
+   },
+   getTangents ()
+   {
+      return this .tangents;
    },
    setVertices (value)
    {
@@ -60614,6 +61099,7 @@ Object .assign (Object .setPrototypeOf (X3DGeometryNode .prototype, Core_X3DNode
          this .fogDepths    .shrinkToFit ();
          this .colors       .shrinkToFit ();
          this .normals      .shrinkToFit ();
+         this .tangents     .shrinkToFit ();
          this .vertices     .shrinkToFit ();
 
          // Determine bbox.
@@ -60692,6 +61178,7 @@ Object .assign (Object .setPrototypeOf (X3DGeometryNode .prototype, Core_X3DNode
       this .multiTexCoords .length = 0;
       this .texCoords      .length = 0;
       this .normals        .length = 0;
+      this .tangents       .length = 0;
       this .flatNormals    .length = 0;
       this .vertices       .length = 0;
    },
@@ -60758,6 +61245,18 @@ Object .assign (Object .setPrototypeOf (X3DGeometryNode .prototype, Core_X3DNode
       if (this .hasNormals !== lastHasNormals)
          this .updateVertexArrays ();
 
+      // Transfer tangents.
+
+      const lastHasTangents = this .hasTangents;
+
+      gl .bindBuffer (gl .ARRAY_BUFFER, this .tangentBuffer);
+      gl .bufferData (gl .ARRAY_BUFFER, this .tangents .getValue (), gl .DYNAMIC_DRAW);
+
+      this .hasTangents = !! this .tangents .length;
+
+      if (this .hasTangents !== lastHasTangents)
+         this .updateVertexArrays ();
+
       // Transfer vertices.
 
       gl .bindBuffer (gl .ARRAY_BUFFER, this .vertexBuffer);
@@ -60772,6 +61271,7 @@ Object .assign (Object .setPrototypeOf (X3DGeometryNode .prototype, Core_X3DNode
       this .geometryKey += this .hasFogCoords  ? "1" : "0";
       this .geometryKey += this .colorMaterial ? "1" : "0";
       this .geometryKey += this .hasNormals    ? "1" : "0";
+      this .geometryKey += this .hasTangents   ? "1" : "0";
    },
    updateRenderFunctions ()
    {
@@ -60864,6 +61364,9 @@ Object .assign (Object .setPrototypeOf (X3DGeometryNode .prototype, Core_X3DNode
          if (this .colorMaterial)
             shaderNode .enableColorAttribute (gl, this .colorBuffer, 0, 0);
 
+         if (this .hasTangents)
+            shaderNode .enableTangentAttribute (gl, this .tangentBuffer, 0, 0);
+
          shaderNode .enableTexCoordAttribute (gl, this .texCoordBuffers, 0, 0);
          shaderNode .enableNormalAttribute   (gl, this .normalBuffer,    0, 0);
          shaderNode .enableVertexAttribute   (gl, this .vertexBuffer,    0, 0);
@@ -60938,6 +61441,9 @@ Object .assign (Object .setPrototypeOf (X3DGeometryNode .prototype, Core_X3DNode
 
          if (this .coordIndices .length)
             shaderNode .enableCoordIndexAttribute (gl, this .coordIndexBuffer, 0, 0);
+
+         if (this .hasTangents)
+            shaderNode .enableTangentAttribute  (gl, this .tangentBuffer, 0, 0);
 
          shaderNode .enableTexCoordAttribute (gl, this .texCoordBuffers, 0, 0);
          shaderNode .enableNormalAttribute   (gl, this .normalBuffer,    0, 0);
@@ -61014,6 +61520,9 @@ Object .assign (Object .setPrototypeOf (X3DGeometryNode .prototype, Core_X3DNode
 
          if (this .colorMaterial)
             shaderNode .enableColorAttribute (gl, this .colorBuffer, 0, 0);
+
+         if (this .hasTangents)
+            shaderNode .enableTangentAttribute  (gl, this .tangentBuffer, 0, 0);
 
          shaderNode .enableTexCoordAttribute (gl, this .texCoordBuffers, 0, 0);
          shaderNode .enableNormalAttribute   (gl, this .normalBuffer,    0, 0);
@@ -61205,6 +61714,7 @@ function GeometryContext (options = { })
       hasFogCoords: false,
       colorMaterial: false,
       hasNormals: false,
+      hasTangents: false,
       textureNode: null,
       objectsKeys: [ ],
       textureCoordinateMapping: new Map (),
@@ -61233,6 +61743,138 @@ const GeometryContext_default_ = GeometryContext;
 
 x_ite_Namespace .add ("GeometryContext", "x_ite/Browser/Rendering/GeometryContext", GeometryContext_default_);
 /* harmony default export */ const Rendering_GeometryContext = (GeometryContext_default_);
+;// CONCATENATED MODULE: ./src/standard/Utility/BitSet.js
+/*******************************************************************************
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
+ *
+ * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * The copyright notice above does not evidence any actual of intended
+ * publication of such source code, and is an unpublished work by create3000.
+ * This material contains CONFIDENTIAL INFORMATION that is the property of
+ * create3000.
+ *
+ * No permission is granted to copy, distribute, or create derivative works from
+ * the contents of this software, in whole or in part, without the prior written
+ * permission of create3000.
+ *
+ * NON-MILITARY USE ONLY
+ *
+ * All create3000 software are effectively free software with a non-military use
+ * restriction. It is free. Well commented source is provided. You may reuse the
+ * source in any way you please with the exception anything that uses it must be
+ * marked to indicate is contains 'non-military use only' components.
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * This file is part of the X_ITE Project.
+ *
+ * X_ITE is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License version 3 only, as published by the
+ * Free Software Foundation.
+ *
+ * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
+ * details (a copy is included in the LICENSE file that accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version 3
+ * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
+ * copy of the GPLv3 License.
+ *
+ * For Silvio, Joy and Adi.
+ *
+ ******************************************************************************/
+
+
+
+const BitSet_value = Symbol ();
+
+function BitSet (value = 0)
+{
+   this [BitSet_value] = value >>> 0;
+}
+
+Object .assign (BitSet .prototype,
+{
+   *[Symbol .iterator] ()
+   {
+      let
+         value = this [BitSet_value],
+         index = 0;
+
+      while (value)
+      {
+         if (value & 1)
+            yield index;
+
+         value >>>= 1;
+         ++ index;
+      }
+   },
+   get (index)
+   {
+      const mask = 1 << index;
+
+      return !! (this [BitSet_value] & mask);
+   },
+   set (index, value)
+   {
+      if (value)
+         this .add (index);
+      else
+         this .remove (index);
+   },
+   add (index, mask = 1)
+   {
+      this [BitSet_value] |= mask << index;
+      this [BitSet_value] >>>= 0;
+   },
+   remove (index, mask = 1)
+   {
+      this [BitSet_value] &= ~(mask << index);
+      this [BitSet_value] >>>= 0;
+   },
+   clear ()
+   {
+      this [BitSet_value] = 0;
+   },
+   *entries ()
+   {
+      for (const i of this)
+         yield [i, i];
+   },
+   valueOf ()
+   {
+      return this [BitSet_value];
+   },
+   toString (radix)
+   {
+      return this [BitSet_value] .toString (radix);
+   },
+});
+
+BitSet .prototype .keys   = BitSet .prototype [Symbol .iterator];
+BitSet .prototype .values = BitSet .prototype [Symbol .iterator];
+
+Object .defineProperty (BitSet .prototype, "size",
+{
+   get ()
+   {
+      return Math_Algorithm .bitCount (this [BitSet_value]);
+   },
+});
+
+const BitSet_default_ = BitSet;
+;
+
+x_ite_Namespace .add ("BitSet", "standard/Utility/BitSet", BitSet_default_);
+/* harmony default export */ const Utility_BitSet = (BitSet_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalEffects/X3DBackgroundNode.js
 /*******************************************************************************
  *
@@ -62098,6 +62740,7 @@ x_ite_Namespace .add ("X3DTextureNode", "x_ite/Components/Texturing/X3DTextureNo
 
 
 
+
 function X3DSingleTextureNode (executionContext)
 {
    Texturing_X3DTextureNode .call (this, executionContext);
@@ -62160,6 +62803,14 @@ Object .assign (Object .setPrototypeOf (X3DSingleTextureNode .prototype, Texturi
       if (value !== this ._linear .getValue ())
          this ._linear = value;
    },
+   getMipMaps ()
+   {
+      return this .mipMaps;
+   },
+   setMipMaps (value)
+   {
+      this .mipMaps = value;
+   },
    getMatrix ()
    {
       // Normally the identity matrix or a flipY matrix.
@@ -62190,79 +62841,64 @@ Object .assign (Object .setPrototypeOf (X3DSingleTextureNode .prototype, Texturi
       if (update)
          this .updateTextureParameters ();
    },
-   updateTextureParameters: (() =>
+   updateTextureParameters (target, haveTextureProperties, textureProperties, width, height, repeatS, repeatT, repeatR)
    {
-      // Anisotropic Filtering in WebGL is handled by an extension, use one of getExtension depending on browser:
+      const
+         browser = this .getBrowser (),
+         gl      = browser .getContext ();
 
-      const ANISOTROPIC_EXT = [
-         "EXT_texture_filter_anisotropic",
-         "MOZ_EXT_texture_filter_anisotropic",
-         "WEBKIT_EXT_texture_filter_anisotropic",
-      ];
+      gl .bindTexture (target, this .getTexture ());
 
-      return function (target, haveTextureProperties, textureProperties, width, height, repeatS, repeatT, repeatR)
+      if (!haveTextureProperties && Math .max (width, height) < browser .getMinTextureSize ())
       {
-         const gl = this .getBrowser () .getContext ();
+         // Don't generate MipMaps.
+         gl .texParameteri (target, gl .TEXTURE_MIN_FILTER, gl .NEAREST);
+         gl .texParameteri (target, gl .TEXTURE_MAG_FILTER, gl .NEAREST);
+      }
+      else if (this .getMipMaps () && textureProperties ._generateMipMaps .getValue ())
+      {
+         // Can MipMaps and wants MipMaps.
+         gl .generateMipmap (target);
 
-         gl .bindTexture (target, this .getTexture ());
+         gl .texParameteri (target, gl .TEXTURE_MIN_FILTER, gl [textureProperties .getMinificationFilter ()]);
+         gl .texParameteri (target, gl .TEXTURE_MAG_FILTER, gl [textureProperties .getMagnificationFilter ()]);
+      }
+      else
+      {
+         // No MipMaps.
+         gl .texParameteri (target, gl .TEXTURE_MIN_FILTER, gl [textureProperties .getMinificationFilter (false)]);
+         gl .texParameteri (target, gl .TEXTURE_MAG_FILTER, gl [textureProperties .getMagnificationFilter (false)]);
+      }
 
-         if (!haveTextureProperties && Math .max (width, height) < this .getBrowser () .getMinTextureSize ())
-         {
-            // Don't generate MipMaps.
-            gl .texParameteri (target, gl .TEXTURE_MIN_FILTER, gl .NEAREST);
-            gl .texParameteri (target, gl .TEXTURE_MAG_FILTER, gl .NEAREST);
-         }
-         else if (!this .isLinear () || haveTextureProperties)
-         {
-            // All linear textures (KTX2, HDR) do NOT support mip-maps.
+      if (haveTextureProperties)
+      {
+         gl .texParameteri (target, gl .TEXTURE_WRAP_S, gl [textureProperties .getBoundaryModeS ()]);
+         gl .texParameteri (target, gl .TEXTURE_WRAP_T, gl [textureProperties .getBoundaryModeT ()]);
 
-            if (!this .isLinear ())
-            {
-               if (textureProperties ._generateMipMaps .getValue ())
-                  gl .generateMipmap (target);
-            }
+         if (gl .getVersion () >= 2)
+            gl .texParameteri (target, gl .TEXTURE_WRAP_R, gl [textureProperties .getBoundaryModeR ()]);
+      }
+      else
+      {
+         gl .texParameteri (target, gl .TEXTURE_WRAP_S, repeatS ? gl .REPEAT : gl .CLAMP_TO_EDGE);
+         gl .texParameteri (target, gl .TEXTURE_WRAP_T, repeatT ? gl .REPEAT : gl .CLAMP_TO_EDGE);
 
-            gl .texParameteri (target, gl .TEXTURE_MIN_FILTER, gl [textureProperties .getMinificationFilter ()]);
-            gl .texParameteri (target, gl .TEXTURE_MAG_FILTER, gl [textureProperties .getMagnificationFilter ()]);
-         }
-         else
-         {
-            gl .texParameteri (target, gl .TEXTURE_MIN_FILTER, gl .LINEAR);
-            gl .texParameteri (target, gl .TEXTURE_MAG_FILTER, gl .LINEAR);
-         }
+         if (gl .getVersion () >= 2)
+            gl .texParameteri (target, gl .TEXTURE_WRAP_R, repeatR ? gl .REPEAT : gl .CLAMP_TO_EDGE);
+      }
 
-         if (haveTextureProperties)
-         {
-            gl .texParameteri (target, gl .TEXTURE_WRAP_S, gl [textureProperties .getBoundaryModeS ()]);
-            gl .texParameteri (target, gl .TEXTURE_WRAP_T, gl [textureProperties .getBoundaryModeT ()]);
+      //gl .texParameterfv (target, gl .TEXTURE_BORDER_COLOR, textureProperties ._borderColor .getValue ());
+      //gl .texParameterf  (target, gl .TEXTURE_PRIORITY,     textureProperties ._texturePriority .getValue ());
 
-            if (gl .getVersion () >= 2)
-               gl .texParameteri (target, gl .TEXTURE_WRAP_R, gl [textureProperties .getBoundaryModeR ()]);
-         }
-         else
-         {
-            gl .texParameteri (target, gl .TEXTURE_WRAP_S, repeatS ? gl .REPEAT : gl .CLAMP_TO_EDGE);
-            gl .texParameteri (target, gl .TEXTURE_WRAP_T, repeatT ? gl .REPEAT : gl .CLAMP_TO_EDGE);
+      const ext = browser .getAnisotropicExtension ();
 
-            if (gl .getVersion () >= 2)
-               gl .texParameteri (target, gl .TEXTURE_WRAP_R, repeatR ? gl .REPEAT : gl .CLAMP_TO_EDGE);
-         }
+      if (ext)
+      {
+         const max = gl .getParameter (ext .MAX_TEXTURE_MAX_ANISOTROPY_EXT);
 
-         //gl .texParameterfv (target, gl .TEXTURE_BORDER_COLOR, textureProperties ._borderColor .getValue ());
-         //gl .texParameterf  (target, gl .TEXTURE_PRIORITY,     textureProperties ._texturePriority .getValue ());
-
-         for (const extension of ANISOTROPIC_EXT)
-         {
-            const ext = gl .getExtension (extension);
-
-            if (ext)
-            {
-               gl .texParameterf (target, ext .TEXTURE_MAX_ANISOTROPY_EXT, textureProperties ._anisotropicDegree .getValue ());
-               break;
-            }
-         }
-      };
-   })(),
+         gl .texParameterf (target, ext .TEXTURE_MAX_ANISOTROPY_EXT, Math_Algorithm .clamp (textureProperties ._anisotropicDegree .getValue (), 0, max));
+      }
+   },
    getTextureBits ()
    {
       return (this .isLinear () << 3) | this .getTextureType ();
@@ -62271,15 +62907,37 @@ Object .assign (Object .setPrototypeOf (X3DSingleTextureNode .prototype, Texturi
    {
       textureBits .add (channel * 4, this .getTextureBits ());
    },
-   getShaderOptions (options, channel = 0)
+   getShaderOptions (options, name = 0, ext = false)
    {
-      options .push (`X3D_TEXTURE${channel}_${this .getTextureTypeString ()}`);
+      if (typeof name === "number")
+      {
+         options .push (`X3D_TEXTURE${name}_${this .getTextureTypeString ()}`);
 
-      if (this .getTextureType () === 1)
-         options .push (`X3D_TEXTURE${channel}_FLIP_Y`);
+         if (this .getTextureType () === 1)
+            options .push (`X3D_TEXTURE${name}_FLIP_Y`);
 
-      if (this .isLinear ())
-         options .push (`X3D_TEXTURE${channel}_LINEAR`);
+         if (this .isLinear ())
+            options .push (`X3D_TEXTURE${name}_LINEAR`);
+      }
+      else
+      {
+         ext = ext ? "_EXT" : "";
+
+         options .push (`X3D_${name}_TEXTURE${ext}`, `X3D_${name}_TEXTURE${ext}_${this .getTextureTypeString ()}`);
+
+         if (this .getTextureType () === 1)
+            options .push (`X3D_${name}_TEXTURE${ext}_FLIP_Y`);
+
+         if (this .isLinear ())
+            options .push (`X3D_${name}_TEXTURE${ext}_LINEAR`);
+      }
+   },
+   setNamedShaderUniforms (gl, shaderObject, renderObject, uniformStruct, mapping, textureTransformMapping, textureCoordinateMapping)
+   {
+      this .setShaderUniforms (gl, shaderObject, renderObject, uniformStruct);
+
+      gl .uniform1i (uniformStruct .textureTransformMapping,  textureTransformMapping  .get (mapping) ?? 0);
+      gl .uniform1i (uniformStruct .textureCoordinateMapping, textureCoordinateMapping .get (mapping) ?? 0);
    },
 });
 
@@ -62495,7 +63153,7 @@ const X3DTexture2DNode_default_ = X3DTexture2DNode;
 x_ite_Namespace .add ("X3DTexture2DNode", "x_ite/Components/Texturing/X3DTexture2DNode", X3DTexture2DNode_default_);
 /* harmony default export */ const Texturing_X3DTexture2DNode = (X3DTexture2DNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/ImageTexture.js
-/* provided dependency */ var ImageTexture_$ = __webpack_require__(63);
+/* provided dependency */ var ImageTexture_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -62610,6 +63268,7 @@ Object .assign (Object .setPrototypeOf (ImageTexture .prototype, Texturing_X3DTe
       if (this .URL .pathname .match (/\.ktx2?(?:\.gz)?$/) || this .URL .href .match (/^data:image\/ktx2[;,]/))
       {
          this .setLinear (true);
+         this .setMipMaps (false);
 
          this .getBrowser () .getKTXDecoder ()
             .then (decoder => decoder .loadKTXFromURL (this .URL, this .getCache ()))
@@ -62619,6 +63278,7 @@ Object .assign (Object .setPrototypeOf (ImageTexture .prototype, Texturing_X3DTe
       else
       {
          this .setLinear (false);
+         this .setMipMaps (true);
 
          if (this .URL .protocol !== "data:")
          {
@@ -66077,7 +66737,7 @@ const X3DWorld_default_ = X3DWorld;
 x_ite_Namespace .add ("X3DWorld", "x_ite/Execution/X3DWorld", X3DWorld_default_);
 /* harmony default export */ const Execution_X3DWorld = (X3DWorld_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/InputOutput/FileLoader.js
-/* provided dependency */ var FileLoader_$ = __webpack_require__(63);
+/* provided dependency */ var FileLoader_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -67011,7 +67671,7 @@ const ProtoDeclarationArray_default_ = ProtoDeclarationArray;
 x_ite_Namespace .add ("ProtoDeclarationArray", "x_ite/Prototype/ProtoDeclarationArray", ProtoDeclarationArray_default_);
 /* harmony default export */ const Prototype_ProtoDeclarationArray = (ProtoDeclarationArray_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Routing/X3DRoute.js
-/* provided dependency */ var X3DRoute_$ = __webpack_require__(63);
+/* provided dependency */ var X3DRoute_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -67613,6 +68273,7 @@ x_ite_Namespace .add ("RouteArray", "x_ite/Routing/RouteArray", RouteArray_defau
 
 
 
+
 const
    _outerNode     = Symbol (),
    _namedNodes    = Symbol (),
@@ -67689,6 +68350,13 @@ Object .assign (Object .setPrototypeOf (X3DExecutionContext .prototype, Base_X3D
    setCountPrimitives (value)
    {
       this ._countPrimitives = (this .getExecutionContext () ?.getCountPrimitives () ?? true) && value;
+   },
+   getBBox (bbox, shadows)
+   {
+      const nodes = Array .from (this .getRootNodes (), node => Base_X3DCast (Base_X3DConstants .X3DBoundedObject, node))
+         .filter (node => node);
+
+      return Grouping_X3DBoundedObject .prototype .getBBox (nodes, bbox, shadows);
    },
    getSpecificationVersion ()
    {
@@ -74799,6 +75467,10 @@ Object .assign (Object .setPrototypeOf (ElevationGrid .prototype, Rendering_X3DG
    {
       return this .normalNode;
    },
+   getTangent ()
+   {
+      return this .tangentNode;
+   },
    getHeight (index)
    {
       if (index < this ._height .length)
@@ -74932,11 +75604,13 @@ Object .assign (Object .setPrototypeOf (ElevationGrid .prototype, Rendering_X3DG
          colorNode          = this .getColor (),
          texCoordNode       = this .getTexCoord (),
          normalNode         = this .getNormal (),
+         tangentNode        = this .getTangent (),
          points             = this .createPoints (),
          fogDepthArray      = this .getFogDepths (),
          colorArray         = this .getColors (),
          multiTexCoordArray = this .getMultiTexCoords (),
          normalArray        = this .getNormals (),
+         tangentArray       = this .getTangent (),
          vertexArray        = this .getVertices ();
 
       let face = 0;
@@ -74984,7 +75658,8 @@ Object .assign (Object .setPrototypeOf (ElevationGrid .prototype, Rendering_X3DG
                texCoordArray .push (x, y, 0, 1);
             }
 
-            normalNode ?.addVector (normalPerVertex ? index : face, normalArray);
+            normalNode  ?.addVector (normalPerVertex ? index : face, normalArray);
+            tangentNode ?.addVector (normalPerVertex ? index : face, tangentArray);
 
             vertexArray .push (x, y, z, 1);
          }
@@ -75046,6 +75721,7 @@ Object .defineProperties (ElevationGrid,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "color",           new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "texCoord",        new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "normal",          new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "tangent",         new x_ite_Fields .SFNode ()), // experimental
          new Base_X3DFieldDefinition (Base_X3DConstants .initializeOnly, "height",          new x_ite_Fields .MFFloat ()),
       ]),
       enumerable: true,
@@ -75854,6 +76530,7 @@ function X3DComposedGeometryNode (executionContext)
    this .colorNode    = null;
    this .texCoordNode = null;
    this .normalNode   = null;
+   this .tangentNode  = null;
    this .coordNode    = null;
 }
 
@@ -75868,6 +76545,7 @@ Object .assign (Object .setPrototypeOf (X3DComposedGeometryNode .prototype, Rend
       this ._color    .addInterest ("set_color__",    this);
       this ._texCoord .addInterest ("set_texCoord__", this);
       this ._normal   .addInterest ("set_normal__",   this);
+      this ._tangent  .addInterest ("set_tangent__",  this);
       this ._coord    .addInterest ("set_coord__",    this);
 
       this .set_attrib__ ();
@@ -75875,6 +76553,7 @@ Object .assign (Object .setPrototypeOf (X3DComposedGeometryNode .prototype, Rend
       this .set_color__ ();
       this .set_texCoord__ ();
       this .set_normal__ ();
+      this .set_tangent__ ();
       this .set_coord__ ();
    },
    getFogCoord ()
@@ -75892,6 +76571,10 @@ Object .assign (Object .setPrototypeOf (X3DComposedGeometryNode .prototype, Rend
    getNormal ()
    {
       return this .normalNode;
+   },
+   getTangent ()
+   {
+      return this .tangentNode;
    },
    getCoord ()
    {
@@ -75961,6 +76644,14 @@ Object .assign (Object .setPrototypeOf (X3DComposedGeometryNode .prototype, Rend
 
       this .normalNode ?.addInterest ("requestRebuild", this);
    },
+   set_tangent__ ()
+   {
+      this .tangentNode ?.removeInterest ("requestRebuild", this);
+
+      this .tangentNode = Base_X3DCast (Base_X3DConstants .Tangent, this ._tangent);
+
+      this .tangentNode ?.addInterest ("requestRebuild", this);
+   },
    set_coord__ ()
    {
       this .coordNode ?.removeInterest ("requestRebuild", this);
@@ -75998,11 +76689,13 @@ Object .assign (Object .setPrototypeOf (X3DComposedGeometryNode .prototype, Rend
          colorNode          = this .getColor (),
          texCoordNode       = this .getTexCoord (),
          normalNode         = this .getNormal (),
+         tangentNode        = this .getTangent (),
          coordNode          = this .getCoord (),
          fogDepthArray      = this .getFogDepths (),
          colorArray         = this .getColors (),
          multiTexCoordArray = this .getMultiTexCoords (),
          normalArray        = this .getNormals (),
+         tangentArray       = this .getTangents (),
          vertexArray        = this .getVertices ();
 
       texCoordNode ?.init (multiTexCoordArray);
@@ -76026,7 +76719,8 @@ Object .assign (Object .setPrototypeOf (X3DComposedGeometryNode .prototype, Rend
 
          texCoordNode ?.addPoint (index, multiTexCoordArray);
 
-         normalNode ?.addVector (normalPerVertex ? index : face, normalArray);
+         normalNode  ?.addVector (normalPerVertex ? index : face, normalArray);
+         tangentNode ?.addVector (normalPerVertex ? index : face, tangentArray);
 
          coordNode .addPoint (index, vertexArray);
       }
@@ -76283,11 +76977,13 @@ Object .assign (Object .setPrototypeOf (IndexedFaceSet .prototype, Rendering_X3D
          colorNode          = this .getColor (),
          texCoordNode       = this .getTexCoord (),
          normalNode         = this .getNormal (),
+         tangentNode        = this .getTangent (),
          coordNode          = this .getCoord (),
          fogDepthArray      = this .getFogDepths (),
          colorArray         = this .getColors (),
          multiTexCoordArray = this .getMultiTexCoords (),
          normalArray        = this .getNormals (),
+         tangentArray       = this .getTangent (),
          vertexArray        = this .getVertices ();
 
       texCoordNode ?.init (multiTexCoordArray);
@@ -76309,7 +77005,8 @@ Object .assign (Object .setPrototypeOf (IndexedFaceSet .prototype, Rendering_X3D
 
             texCoordNode ?.addPoint (this .getTexCoordPerVertexIndex (i), multiTexCoordArray);
 
-            normalNode ?.addVector (normalPerVertex ? this .getNormalPerVertexIndex (i) : this .getNormalIndex (face), normalArray);
+            normalNode  ?.addVector (normalPerVertex ? this .getNormalPerVertexIndex (i) : this .getNormalIndex (face), normalArray);
+            tangentNode ?.addVector (normalPerVertex ? this .getNormalPerVertexIndex (i) : this .getNormalIndex (face), tangentArray);
 
             coordNode .addPoint (index, vertexArray);
          }
@@ -76592,6 +77289,7 @@ Object .defineProperties (IndexedFaceSet,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "color",             new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "texCoord",          new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "normal",            new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "tangent",           new x_ite_Fields .SFNode ()), // experimental
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "coord",             new x_ite_Fields .SFNode ()),
       ]),
       enumerable: true,
@@ -80724,11 +81422,15 @@ x_ite_Namespace .add ("DirectionalLight", "x_ite/Components/Lighting/Directional
 
 
 
+
+
 const EnvironmentLights = Utility_ObjectCache (EnvironmentLightContainer);
 
 function EnvironmentLightContainer ()
 {
    this .modelViewMatrix = new Utility_MatrixStack (Numbers_Matrix4);
+   this .rotation        = new Numbers_Rotation4 ();
+   this .rotationMatrix  = new Float32Array (9);
 }
 
 Object .assign (EnvironmentLightContainer .prototype,
@@ -80738,19 +81440,28 @@ Object .assign (EnvironmentLightContainer .prototype,
       this .browser   = lightNode .getBrowser ();
       this .lightNode = lightNode;
       this .global    = lightNode .getGlobal ();
+
+      this .modelViewMatrix .pushMatrix (modelViewMatrix);
    },
    renderShadowMap (renderObject)
    { },
    setGlobalVariables (renderObject)
-   { },
+   {
+      this .modelViewMatrix .get () .get (null, this .rotation);
+
+      this .rotation
+         .multLeft (this .lightNode ._rotation .getValue ())
+         .inverse ()
+         .getMatrix (this .rotationMatrix);
+   },
    setShaderUniforms (gl, shaderObject)
    {
       const
          { browser, lightNode, global } = this,
-         color           = lightNode .getColor (),
-         diffuseTexture  = lightNode .getDiffuseTexture (),
-         specularTexture = lightNode .getSpecularTexture (),
-         GGXLUTTexture   = browser .getGGXLUTTexture ();
+         color             = lightNode .getColor (),
+         diffuseTexture    = lightNode .getDiffuseTexture (),
+         specularTexture   = lightNode .getSpecularTexture (),
+         GGXLUTTexture     = browser .getLibraryTexture ("lut_ggx.png");
 
       const diffuseTextureUnit = global
          ? this .diffuseTextureUnit = this .diffuseTextureUnit ?? browser .popTextureCubeUnit ()
@@ -80771,7 +81482,7 @@ Object .assign (EnvironmentLightContainer .prototype,
 
       gl .uniform3f        (shaderObject .x3d_EnvironmentLightColor,                 color .r, color .g, color .b);
       gl .uniform1f        (shaderObject .x3d_EnvironmentLightIntensity,             lightNode .getIntensity ());
-      gl .uniformMatrix3fv (shaderObject .x3d_EnvironmentLightRotation, false,       lightNode .getRotation ());
+      gl .uniformMatrix3fv (shaderObject .x3d_EnvironmentLightRotation, false,       this .rotationMatrix);
       gl .uniform1i        (shaderObject .x3d_EnvironmentLightDiffuseTextureLinear,  diffuseTexture ?.isLinear ());
       gl .uniform1i        (shaderObject .x3d_EnvironmentLightSpecularTextureLinear, specularTexture ?.isLinear ());
       gl .uniform1i        (shaderObject .x3d_EnvironmentLightSpecularTextureLevels, specularTextureLevels);
@@ -80787,6 +81498,19 @@ Object .assign (EnvironmentLightContainer .prototype,
       gl .activeTexture (gl .TEXTURE0 + GGXLUTTextureUnit);
       gl .bindTexture (gl .TEXTURE_2D, GGXLUTTexture .getTexture ());
       gl .uniform1i (shaderObject .x3d_EnvironmentLightGGXLUTTexture, GGXLUTTextureUnit);
+
+      if (shaderObject .x3d_EnvironmentLightCharlieLUTTexture)
+      {
+         const CharlieLUTTexture = browser .getLibraryTexture ("lut_charlie.png");
+
+         const CharlieLUTTextureUnit = global
+            ? this .CharlieLUTTextureUnit = this .CharlieLUTTextureUnit ?? browser .popTexture2DUnit ()
+            : browser .getTexture2DUnit ();
+
+         gl .activeTexture (gl .TEXTURE0 + CharlieLUTTextureUnit);
+         gl .bindTexture (gl .TEXTURE_2D, CharlieLUTTexture .getTexture ());
+         gl .uniform1i (shaderObject .x3d_EnvironmentLightCharlieLUTTexture, CharlieLUTTextureUnit);
+      }
    },
    dispose ()
    {
@@ -80795,12 +81519,14 @@ Object .assign (EnvironmentLightContainer .prototype,
       browser .pushTextureCubeUnit (this .diffuseTextureUnit);
       browser .pushTextureCubeUnit (this .specularTextureUnit);
       browser .pushTexture2DUnit   (this .GGXLUTTextureUnit);
+      browser .pushTexture2DUnit   (this .CharlieLUTTextureUnit);
 
       this .modelViewMatrix .clear ();
 
-      this .diffuseTextureUnit  = undefined;
-      this .specularTextureUnit = undefined;
-      this .GGXLUTTextureUnit   = undefined;
+      this .diffuseTextureUnit    = undefined;
+      this .specularTextureUnit   = undefined;
+      this .GGXLUTTextureUnit     = undefined;
+      this .CharlieLUTTextureUnit = undefined;
 
       // Return container
 
@@ -80813,8 +81539,6 @@ function EnvironmentLight (executionContext)
    Lighting_X3DLightNode .call (this, executionContext);
 
    this .addType (Base_X3DConstants .EnvironmentLight);
-
-   this .rotationMatrix = new Float32Array (9);
 }
 
 Object .assign (Object .setPrototypeOf (EnvironmentLight .prototype, Lighting_X3DLightNode .prototype),
@@ -80823,21 +81547,15 @@ Object .assign (Object .setPrototypeOf (EnvironmentLight .prototype, Lighting_X3
    {
       Lighting_X3DLightNode .prototype .initialize .call (this);
 
-      this ._rotation        .addInterest ("set_rotation__",        this);
       this ._diffuseTexture  .addInterest ("set_diffuseTexture__",  this);
       this ._specularTexture .addInterest ("set_specularTexture__", this);
 
-      this .set_rotation__ ();
       this .set_diffuseTexture__ ();
       this .set_specularTexture__ ();
    },
    getLightKey ()
    {
       return 2;
-   },
-   getRotation ()
-   {
-      return this .rotationMatrix;
    },
    getDiffuseTexture ()
    {
@@ -80850,10 +81568,6 @@ Object .assign (Object .setPrototypeOf (EnvironmentLight .prototype, Lighting_X3
    getLights ()
    {
       return EnvironmentLights;
-   },
-   set_rotation__ ()
-   {
-      this ._rotation .getValue () .getMatrix (this .rotationMatrix);
    },
    set_diffuseTexture__ ()
    {
@@ -87274,6 +87988,9 @@ Object .assign (Object .setPrototypeOf (X3DLineGeometryNode .prototype, Renderin
          if (this .hasNormals)
             shaderNode .enableNormalAttribute (gl, this .normalBuffer, 0, 0);
 
+         if (this .hasTangents)
+            shaderNode .enableTangentAttribute (gl, this .tangentBuffer, 0, 0);
+
          shaderNode .enableVertexAttribute (gl, this .vertexBuffer, 0, 0);
       }
 
@@ -87482,6 +88199,9 @@ Object .assign (Object .setPrototypeOf (X3DLineGeometryNode .prototype, Renderin
 
             if (this .hasNormals)
                shaderNode .enableNormalAttribute (gl, this .normalBuffer, 0, 0);
+
+            if (this .hasTangents)
+               shaderNode .enableTangentAttribute (gl, this .tangentBuffer, 0, 0);
 
             shaderNode .enableVertexAttribute (gl, this .vertexBuffer, 0, 0);
          }
@@ -87860,16 +88580,19 @@ Object .assign (Object .setPrototypeOf (IndexedLineSet .prototype, Rendering_X3D
 
       this ._set_colorIndex .addFieldInterest (this ._colorIndex);
       this ._set_coordIndex .addFieldInterest (this ._coordIndex);
-      this ._attrib         .addInterest ("set_attrib__",   this);
-      this ._fogCoord       .addInterest ("set_fogCoord__", this);
-      this ._color          .addInterest ("set_color__",    this);
-      this ._normal         .addInterest ("set_normal__",   this);
-      this ._coord          .addInterest ("set_coord__",    this);
+
+      this ._attrib   .addInterest ("set_attrib__",   this);
+      this ._fogCoord .addInterest ("set_fogCoord__", this);
+      this ._color    .addInterest ("set_color__",    this);
+      this ._normal   .addInterest ("set_normal__",   this);
+      this ._tangent  .addInterest ("set_tangent__",  this);
+      this ._coord    .addInterest ("set_coord__",    this);
 
       this .set_attrib__ ();
       this .set_fogCoord__ ();
       this .set_color__ ();
       this .set_normal__ ();
+      this .set_tangent__ ();
       this .set_coord__ ();
    },
    set_attrib__ ()
@@ -87925,6 +88648,14 @@ Object .assign (Object .setPrototypeOf (IndexedLineSet .prototype, Rendering_X3D
       this .normalNode = Base_X3DCast (Base_X3DConstants .X3DNormalNode, this ._normal);
 
       this .normalNode ?.addInterest ("requestRebuild", this);
+   },
+   set_tangent__ ()
+   {
+      this .tangentNode ?.removeInterest ("requestRebuild", this);
+
+      this .tangentNode = Base_X3DCast (Base_X3DConstants .Tangent, this ._tangent);
+
+      this .tangentNode ?.addInterest ("requestRebuild", this);
    },
    set_coord__ ()
    {
@@ -88001,9 +88732,11 @@ Object .assign (Object .setPrototypeOf (IndexedLineSet .prototype, Rendering_X3D
          colorNode         = this .colorNode,
          coordNode         = this .coordNode,
          normalNode        = this .normalNode,
+         tangentNode       = this .tangentNode,
          fogDepthArray     = this .getFogDepths (),
          colorArray        = this .getColors (),
          normalArray       = this .getNormals (),
+         tangentArray      = this .getTangents (),
          vertexArray       = this .getVertices ();
 
       // Fill GeometryNode
@@ -88033,7 +88766,8 @@ Object .assign (Object .setPrototypeOf (IndexedLineSet .prototype, Rendering_X3D
 
                   colorNode ?.addColor (colorPerVertex ? this .getColorPerVertexIndex (i) : this .getColorIndex (face), colorArray);
 
-                  normalNode ?.addVector (index, normalArray);
+                  normalNode  ?.addVector (index, normalArray);
+                  tangentNode ?.addVector (index, tangentArray);
 
                   coordNode .addPoint (index, vertexArray);
                }
@@ -88080,6 +88814,7 @@ Object .defineProperties (IndexedLineSet,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "fogCoord",       new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "color",          new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "normal",         new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "tangent",        new x_ite_Fields .SFNode ()), // experimental
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "coord",          new x_ite_Fields .SFNode ()),
       ]),
       enumerable: true,
@@ -88258,6 +88993,7 @@ Object .defineProperties (IndexedTriangleFanSet,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "color",           new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "texCoord",        new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "normal",          new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "tangent",         new x_ite_Fields .SFNode ()), // experimental
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "coord",           new x_ite_Fields .SFNode ()),
       ]),
       enumerable: true,
@@ -88393,6 +89129,7 @@ Object .defineProperties (IndexedTriangleSet,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "color",           new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "texCoord",        new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "normal",          new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "tangent",         new x_ite_Fields .SFNode ()), // experimental
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "coord",           new x_ite_Fields .SFNode ()),
       ]),
       enumerable: true,
@@ -88579,6 +89316,7 @@ Object .defineProperties (IndexedTriangleStripSet,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "color",           new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "texCoord",        new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "normal",          new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "tangent",         new x_ite_Fields .SFNode ()), // experimental
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "coord",           new x_ite_Fields .SFNode ()),
       ]),
       enumerable: true,
@@ -88667,12 +89405,14 @@ Object .assign (Object .setPrototypeOf (LineSet .prototype, Rendering_X3DLineGeo
       this ._fogCoord .addInterest ("set_fogCoord__", this);
       this ._color    .addInterest ("set_color__",    this);
       this ._normal   .addInterest ("set_normal__",   this);
+      this ._tangent  .addInterest ("set_tangent__",  this);
       this ._coord    .addInterest ("set_coord__",    this);
 
       this .set_attrib__ ();
       this .set_fogCoord__ ();
       this .set_color__ ();
       this .set_normal__ ();
+      this .set_tangent__ ();
       this .set_coord__ ();
    },
    set_attrib__ ()
@@ -88729,6 +89469,14 @@ Object .assign (Object .setPrototypeOf (LineSet .prototype, Rendering_X3DLineGeo
 
       this .normalNode ?.addInterest ("requestRebuild", this);
    },
+   set_tangent__ ()
+   {
+      this .tangentNode ?.removeInterest ("requestRebuild", this);
+
+      this .tangentNode = Base_X3DCast (Base_X3DConstants .Tangent, this ._tangent);
+
+      this .tangentNode ?.addInterest ("requestRebuild", this);
+   },
    set_coord__ ()
    {
       this .coordNode ?.removeInterest ("requestRebuild", this);
@@ -88753,10 +89501,12 @@ Object .assign (Object .setPrototypeOf (LineSet .prototype, Rendering_X3DLineGeo
          fogCoordNode      = this .fogCoordNode,
          colorNode         = this .colorNode,
          normalNode        = this .normalNode,
+         tangentNode       = this .tangentNode,
          coordNode         = this .coordNode,
          fogDepthArray     = this .getFogDepths (),
          colorArray        = this .getColors (),
          normalArray       = this .getNormals (),
+         tangentArray      = this .getTangents (),
          vertexArray       = this .getVertices (),
          size              = coordNode .getSize ();
 
@@ -88781,6 +89531,7 @@ Object .assign (Object .setPrototypeOf (LineSet .prototype, Rendering_X3DLineGeo
                fogCoordNode ?.addDepth  (index, fogDepthArray);
                colorNode    ?.addColor  (index, colorArray);
                normalNode   ?.addVector (index, normalArray);
+               tangentNode  ?.addVector (index, tangentArray);
 
                coordNode .addPoint (index, vertexArray);
             }
@@ -88824,6 +89575,7 @@ Object .defineProperties (LineSet,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "fogCoord",    new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "color",       new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "normal",      new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "tangent",     new x_ite_Fields .SFNode ()), // experimental
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "coord",       new x_ite_Fields .SFNode ()),
       ]),
       enumerable: true,
@@ -89005,7 +89757,7 @@ Object .assign (Object .setPrototypeOf (Normal .prototype, Rendering_X3DNormalNo
          return array .push (0, 0, 0);
       }
    },
-   addNormals (array, min = this .length)
+   addVectors (array, min = this .length)
    {
       const length = this .length;
 
@@ -89177,6 +89929,9 @@ Object .assign (Object .setPrototypeOf (X3DPointGeometryNode .prototype, Renderi
          if (this .hasNormals)
             shaderNode .enableNormalAttribute (gl, this .normalBuffer, 0, 0);
 
+         if (this .hasTangents)
+            shaderNode .enableTangentAttribute (gl, this .tangentBuffer, 0, 0);
+
          shaderNode .enableVertexAttribute (gl, this .vertexBuffer, 0, 0);
       }
 
@@ -89235,6 +89990,9 @@ Object .assign (Object .setPrototypeOf (X3DPointGeometryNode .prototype, Renderi
 
          if (this .hasNormals)
             shaderNode .enableNormalAttribute (gl, this .normalBuffer, 0, 0);
+
+         if (this .hasTangents)
+            shaderNode .enableTangentAttribute (gl, this .tangentBuffer, 0, 0);
 
          shaderNode .enableVertexAttribute (gl, this .vertexBuffer, 0, 0);
 
@@ -89346,12 +90104,14 @@ Object .assign (Object .setPrototypeOf (PointSet .prototype, Rendering_X3DPointG
       this ._fogCoord .addInterest ("set_fogCoord__", this);
       this ._color    .addInterest ("set_color__",    this);
       this ._normal   .addInterest ("set_normal__",   this);
+      this ._tangent  .addInterest ("set_tangent__",  this);
       this ._coord    .addInterest ("set_coord__",    this);
 
       this .set_attrib__ ();
       this .set_fogCoord__ ();
       this .set_color__ ();
       this .set_normal__ ();
+      this .set_tangent__ ();
       this .set_coord__ ();
    },
    getCoord ()
@@ -89410,6 +90170,14 @@ Object .assign (Object .setPrototypeOf (PointSet .prototype, Rendering_X3DPointG
 
       this .normalNode ?.addInterest ("requestRebuild", this);
    },
+   set_tangent__ ()
+   {
+      this .tangentNode ?.removeInterest ("requestRebuild", this);
+
+      this .tangentNode = Base_X3DCast (Base_X3DConstants .Tangent, this ._tangent);
+
+      this .tangentNode ?.addInterest ("requestRebuild", this);
+   },
    set_coord__ ()
    {
       this .coordNode ?.removeInterest ("requestRebuild", this);
@@ -89435,6 +90203,8 @@ Object .assign (Object .setPrototypeOf (PointSet .prototype, Rendering_X3DPointG
          coordNode         = this .coordNode,
          normalArray       = this .getNormals (),
          normalNode        = this .normalNode,
+         tangentArray      = this .getTangents (),
+         tangentNode       = this .tangentNode,
          vertexArray       = this .getVertices (),
          numPoints         = coordNode ._point .length;
 
@@ -89449,7 +90219,8 @@ Object .assign (Object .setPrototypeOf (PointSet .prototype, Rendering_X3DPointG
 
       fogCoordNode ?.addDepths  (fogDepthArray, numPoints);
       colorNode    ?.addColors  (colorArray,    numPoints);
-      normalNode   ?.addNormals (normalArray,   numPoints);
+      normalNode   ?.addVectors (normalArray,   numPoints);
+      tangentNode  ?.addVectors (tangentArray,  numPoints);
 
       coordNode .addPoints (vertexArray);
    },
@@ -89485,6 +90256,7 @@ Object .defineProperties (PointSet,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "fogCoord", new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "color",    new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "normal",   new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "tangent",  new x_ite_Fields .SFNode ()), // experimental
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "coord",    new x_ite_Fields .SFNode ()),
       ]),
       enumerable: true,
@@ -89496,6 +90268,159 @@ const PointSet_default_ = PointSet;
 
 x_ite_Namespace .add ("PointSet", "x_ite/Components/Rendering/PointSet", PointSet_default_);
 /* harmony default export */ const Rendering_PointSet = (PointSet_default_);
+;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/Tangent.js
+/*******************************************************************************
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
+ *
+ * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * The copyright notice above does not evidence any actual of intended
+ * publication of such source code, and is an unpublished work by create3000.
+ * This material contains CONFIDENTIAL INFORMATION that is the property of
+ * create3000.
+ *
+ * No permission is granted to copy, distribute, or create derivative works from
+ * the contents of this software, in whole or in part, without the prior written
+ * permission of create3000.
+ *
+ * NON-MILITARY USE ONLY
+ *
+ * All create3000 software are effectively free software with a non-military use
+ * restriction. It is free. Well commented source is provided. You may reuse the
+ * source in any way you please with the exception anything that uses it must be
+ * marked to indicate is contains 'non-military use only' components.
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * This file is part of the X_ITE Project.
+ *
+ * X_ITE is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License version 3 only, as published by the
+ * Free Software Foundation.
+ *
+ * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
+ * details (a copy is included in the LICENSE file that accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version 3
+ * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
+ * copy of the GPLv3 License.
+ *
+ * For Silvio, Joy and Adi.
+ *
+ ******************************************************************************/
+
+
+
+
+
+
+
+function Tangent (executionContext)
+{
+   Rendering_X3DGeometricPropertyNode .call (this, executionContext);
+
+   this .addType (Base_X3DConstants .Tangent);
+}
+
+Object .assign (Object .setPrototypeOf (Tangent .prototype, Rendering_X3DGeometricPropertyNode .prototype),
+{
+   initialize ()
+   {
+      Rendering_X3DGeometricPropertyNode .prototype .initialize .call (this);
+
+      this ._vector .addInterest ("set_vector__", this);
+
+      this .set_vector__ ();
+   },
+   set_vector__ ()
+   {
+      this .vector = this ._vector .getValue ();
+      this .length = this ._vector .length;
+   },
+   addVector (index, array)
+   {
+      if (index >= 0 && this .length)
+      {
+         const
+            vector = this .vector,
+            i      = (index % this .length) * 4;
+
+         array .push (vector [i], vector [i + 1], vector [i + 2], vector [i + 3]);
+      }
+      else
+      {
+         return array .push (1, 0, 0, 1);
+      }
+   },
+   addVectors (array, min = this .length)
+   {
+      const length = this .length;
+
+      if (length)
+      {
+         const vector = this .vector;
+
+         for (let index = 0; index < min; ++ index)
+         {
+            const i = (index % length) * 4;
+
+            array .push (vector [i], vector [i + 1], vector [i + 2], vector [i + 3]);
+         }
+      }
+      else
+      {
+         for (let index = 0; index < min; ++ index)
+            array .push (1, 0, 0, 1);
+      }
+
+      return array;
+   },
+});
+
+Object .defineProperties (Tangent,
+{
+   typeName:
+   {
+      value: "Tangent",
+      enumerable: true,
+   },
+   componentInfo:
+   {
+      value: Object .freeze ({ name: "Rendering", level: 5 }),
+      enumerable: true,
+   },
+   containerField:
+   {
+      value: "tangent",
+      enumerable: true,
+   },
+   specificationRange:
+   {
+      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
+      enumerable: true,
+   },
+   fieldDefinitions:
+   {
+      value: new Base_FieldDefinitionArray ([
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "metadata", new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "vector",   new x_ite_Fields .MFVec4f ()),
+      ]),
+      enumerable: true,
+   },
+});
+
+const Tangent_default_ = Tangent;
+;
+
+x_ite_Namespace .add ("Tangent", "x_ite/Components/Rendering/Tangent", Tangent_default_);
+/* harmony default export */ const Rendering_Tangent = (Tangent_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/TriangleFanSet.js
 /*******************************************************************************
  *
@@ -89645,6 +90570,7 @@ Object .defineProperties (TriangleFanSet,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "color",           new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "texCoord",        new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "normal",          new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "tangent",         new x_ite_Fields .SFNode ()), // experimental
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "coord",           new x_ite_Fields .SFNode ()),
       ]),
       enumerable: true,
@@ -89775,6 +90701,7 @@ Object .defineProperties (TriangleSet,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "color",           new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "texCoord",        new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "normal",          new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "tangent",         new x_ite_Fields .SFNode ()), // experimental
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "coord",           new x_ite_Fields .SFNode ()),
       ]),
       enumerable: true,
@@ -89939,6 +90866,7 @@ Object .defineProperties (TriangleStripSet,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "color",           new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "texCoord",        new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "normal",          new x_ite_Fields .SFNode ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "tangent",         new x_ite_Fields .SFNode ()), // experimental
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput,    "coord",           new x_ite_Fields .SFNode ()),
       ]),
       enumerable: true,
@@ -90020,6 +90948,7 @@ x_ite_Namespace .add ("TriangleStripSet", "x_ite/Components/Rendering/TriangleSt
 
 
 
+
 const Rendering_default_ = {
    name: "Rendering",
    concreteNodes:
@@ -90036,6 +90965,7 @@ const Rendering_default_ = {
       Rendering_LineSet,
       Rendering_Normal,
       Rendering_PointSet,
+      Rendering_Tangent,
       Rendering_TriangleFanSet,
       Rendering_TriangleSet,
       Rendering_TriangleStripSet,
@@ -90163,8 +91093,114 @@ const X3DShaderNode_default_ = X3DShaderNode;
 
 x_ite_Namespace .add ("X3DShaderNode", "x_ite/Components/Shaders/X3DShaderNode", X3DShaderNode_default_);
 /* harmony default export */ const Shaders_X3DShaderNode = (X3DShaderNode_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/MaterialTextures.js
+const MaterialTextures_default_ = {
+   names: [
+      "x3d_AmbientTexture",
+      "x3d_DiffuseTexture",
+      "x3d_SpecularTexture",
+      "x3d_EmissiveTexture",
+      "x3d_ShininessTexture",
+      "x3d_BaseTexture",
+      "x3d_MetallicRoughnessTexture",
+      "x3d_SpecularGlossinessTexture",
+      "x3d_OcclusionTexture",
+      "x3d_NormalTexture",
+      "x3d_AnisotropyTextureEXT",
+      "x3d_ClearcoatTextureEXT",
+      "x3d_ClearcoatRoughnessTextureEXT",
+      "x3d_ClearcoatNormalTextureEXT",
+      "x3d_IridescenceTextureEXT",
+      "x3d_IridescenceThicknessTextureEXT",
+      "x3d_SheenColorTextureEXT",
+      "x3d_SheenRoughnessTextureEXT",
+      "x3d_SpecularTextureEXT",
+      "x3d_SpecularColorTextureEXT",
+      "x3d_TransmissionTextureEXT",
+      "x3d_ThicknessTextureEXT",
+   ],
+   texture (name, components = "rgba", colorspace = "")
+   {
+      const ext = !!name .match (/EXT$/);
+
+      name = name .replace (/EXT$/, "");
+
+      const
+         type   = ["", "float", "vec2", "vec3", "vec4"] [components .length],
+         define = name .replace (/([a-z])([A-Z])/g, "$1_$2") .toUpperCase (),
+          EXT   = ext ?  "EXT" : "",
+         _EXT   = ext ? "_EXT" : "";
+
+      return /* glsl */ `
+#if defined(${define}${_EXT})
+uniform ${name}Parameters${EXT}
+${name}${EXT};
+${type}
+get${name .replace (/^x3d_/g, "")}${EXT} (){vec3 texCoord=getTexCoord(${name}${EXT} .textureTransformMapping,${name}${EXT} .textureCoordinateMapping);
+#if defined(${define}${_EXT}_FLIP_Y)
+texCoord.t=1.0-texCoord.t;
+#endif
+#if __VERSION__==100
+#if defined(${define}${_EXT}_2D)
+vec4 textureColor=texture2D(${name}${EXT} .texture2D,texCoord.st);
+#elif defined(${define}${_EXT}_CUBE)
+vec4 textureColor=textureCube(${name}${EXT} .textureCube,texCoord);
+#endif
+#else
+#if defined(${define}${_EXT}_2D)
+vec4 textureColor=texture(${name}${EXT} .texture2D,texCoord.st);
+#elif defined(${define}${_EXT}_3D)
+vec4 textureColor=texture(${name}${EXT} .texture3D,texCoord);
+#elif defined(${define}${_EXT}_CUBE)
+vec4 textureColor=texture(${name}${EXT} .textureCube,texCoord);
+#endif
+#endif
+${type}
+textureColorComponents=textureColor.${components};
+#if defined(${define}${_EXT}_LINEAR)
+#if ${colorspace === "sRGB" ? 1 : 0}
+textureColorComponents=linearTosRGB(textureColorComponents);
+#endif
+#else
+#if ${colorspace === "linear" ? 1 : 0}
+textureColorComponents=sRGBToLinear(textureColorComponents);
+#endif
+#endif
+return textureColorComponents;}
+#endif
+`
+   },
+   structs ()
+   {
+      return this .names .map (name =>
+      {
+         const define = name .replace (/([a-z])([A-Z])/g, "$1_$2") .toUpperCase ();
+
+         return /* glsl */ `
+#if defined(${define})
+struct ${name .replace (/(EXT)?$/, "Parameters$1")}
+{mediump int textureTransformMapping;mediump int textureCoordinateMapping;
+#if defined(${define}_2D)
+mediump sampler2D texture2D;
+#endif
+#if defined(${define}_3D)&&__VERSION__!=100
+mediump sampler3D texture3D;
+#endif
+#if defined(${define}_CUBE)
+mediump samplerCube textureCube;
+#endif
+};
+#endif
+`
+      }) .join ("\n");
+   }
+};
+;
+
+x_ite_Namespace .add ("MaterialTextures", "assets/shaders/MaterialTextures", MaterialTextures_default_);
+/* harmony default export */ const MaterialTextures = (MaterialTextures_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/X3DProgrammableShaderObject.js
-/* provided dependency */ var X3DProgrammableShaderObject_$ = __webpack_require__(63);
+/* provided dependency */ var X3DProgrammableShaderObject_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -90211,6 +91247,7 @@ x_ite_Namespace .add ("X3DShaderNode", "x_ite/Components/Shaders/X3DShaderNode",
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -90309,17 +91346,12 @@ Object .assign (X3DProgrammableShaderObject .prototype,
        * Uniforms.
        */
 
-      this .x3d_Id                      = gl .getUniformLocation (program, "x3d_Id");
-      this .x3d_LogarithmicFarFactor1_2 = gl .getUniformLocation (program, "x3d_LogarithmicFarFactor1_2");
-
       for (let i = 0; i < maxClipPlanes; ++ i)
          this .x3d_ClipPlane [i] = gl .getUniformLocation (program, "x3d_ClipPlane[" + i + "]");
 
       this .x3d_FogColor           = this .getUniformLocation (gl, program, "x3d_Fog.color",           "x3d_FogColor");
       this .x3d_FogVisibilityRange = this .getUniformLocation (gl, program, "x3d_Fog.visibilityRange", "x3d_FogVisibilityRange");
       this .x3d_FogMatrix          = this .getUniformLocation (gl, program, "x3d_Fog.matrix",          "x3d_FogMatrix");
-
-      this .x3d_AlphaCutoff = gl .getUniformLocation (program, "x3d_AlphaCutoff");
 
       this .x3d_PointPropertiesPointSizeScaleFactor = gl .getUniformLocation (program, "x3d_PointProperties.pointSizeScaleFactor");
       this .x3d_PointPropertiesPointSizeMinValue    = gl .getUniformLocation (program, "x3d_PointProperties.pointSizeMinValue");
@@ -90368,6 +91400,7 @@ Object .assign (X3DProgrammableShaderObject .prototype,
       this .x3d_EnvironmentLightSpecularTextureLinear = gl .getUniformLocation (program, "x3d_EnvironmentLightSource.specularTextureLinear");
       this .x3d_EnvironmentLightSpecularTextureLevels = gl .getUniformLocation (program, "x3d_EnvironmentLightSource.specularTextureLevels");
       this .x3d_EnvironmentLightGGXLUTTexture         = gl .getUniformLocation (program, "x3d_EnvironmentLightSource.GGXLUTTexture");
+      this .x3d_EnvironmentLightCharlieLUTTexture     = gl .getUniformLocation (program, "x3d_EnvironmentLightSource.CharlieLUTTexture");
 
       this .x3d_AmbientIntensity  = this .getUniformLocation (gl, program, "x3d_Material.ambientIntensity", "x3d_FrontMaterial.ambientIntensity");
       this .x3d_DiffuseColor      = this .getUniformLocation (gl, program, "x3d_Material.diffuseColor",     "x3d_FrontMaterial.diffuseColor");
@@ -90377,23 +91410,58 @@ Object .assign (X3DProgrammableShaderObject .prototype,
       this .x3d_BaseColor         = gl .getUniformLocation (program, "x3d_Material.baseColor");
       this .x3d_Metallic          = gl .getUniformLocation (program, "x3d_Material.metallic");
       this .x3d_Roughness         = gl .getUniformLocation (program, "x3d_Material.roughness");
+      this .x3d_Glossiness        = gl .getUniformLocation (program, "x3d_Material.glossiness");
       this .x3d_OcclusionStrength = gl .getUniformLocation (program, "x3d_Material.occlusionStrength");
       this .x3d_NormalScale       = gl .getUniformLocation (program, "x3d_Material.normalScale");
       this .x3d_Transparency      = this .getUniformLocation (gl, program, "x3d_Material.transparency",     "x3d_FrontMaterial.transparency");
 
-      const materialTextures = [
-         "x3d_AmbientTexture",
-         "x3d_DiffuseTexture",
-         "x3d_SpecularTexture",
-         "x3d_EmissiveTexture",
-         "x3d_ShininessTexture",
-         "x3d_BaseTexture",
-         "x3d_MetallicRoughnessTexture",
-         "x3d_OcclusionTexture",
-         "x3d_NormalTexture",
+      const commonUniforms = [
+         // Matrices
+         "x3d_Viewport",
+         "x3d_ProjectionMatrix",
+         "x3d_ModelViewMatrix",
+         "x3d_NormalMatrix",
+         "x3d_ViewMatrix",
+         "x3d_CameraSpaceMatrix",
+         // ParticleSystem and Skinning
+         "x3d_TexCoordRamp",
+         "x3d_JointsTexture",
+         "x3d_DisplacementsTexture",
+         "x3d_JointMatricesTexture",
+         // Common
+         "x3d_Id", // Pointing ID
+         "x3d_AlphaCutoff",
+         "x3d_Exposure",
+         "x3d_LogarithmicFarFactor1_2",
+         "x3d_MultiTextureColor",
+         // Extensions
+         "x3d_AnisotropyEXT",
+         "x3d_ClearcoatEXT",
+         "x3d_ClearcoatRoughnessEXT",
+         "x3d_DispersionEXT",
+         "x3d_EmissiveStrengthEXT",
+         "x3d_IorEXT",
+         "x3d_IridescenceEXT",
+         "x3d_IridescenceIndexOfRefractionEXT",
+         "x3d_IridescenceThicknessMinimumEXT",
+         "x3d_IridescenceThicknessMaximumEXT",
+         "x3d_SheenColorEXT",
+         "x3d_SheenRoughnessEXT",
+         "x3d_SheenELUTTextureEXT",
+         "x3d_SpecularEXT",
+         "x3d_SpecularColorEXT",
+         "x3d_TransmissionEXT",
+         "x3d_TransmissionFramebufferSamplerEXT",
+         "x3d_TransmissionFramebufferSizeEXT",
+         "x3d_ThicknessEXT",
+         "x3d_AttenuationDistanceEXT",
+         "x3d_AttenuationColoEXT",
       ];
 
-      for (const materialTexture of materialTextures)
+      for (const name of commonUniforms)
+         this [name] = gl .getUniformLocation (program, name);
+
+      for (const materialTexture of MaterialTextures .names)
       {
          this [materialTexture] = {
             textureTransformMapping:  gl .getUniformLocation (program, materialTexture + ".textureTransformMapping"),
@@ -90403,8 +91471,6 @@ Object .assign (X3DProgrammableShaderObject .prototype,
             textureCube:              gl .getUniformLocation (program, materialTexture + ".textureCube"),
          };
       }
-
-      this .x3d_MultiTextureColor = gl .getUniformLocation (program, "x3d_MultiTextureColor");
 
       this .x3d_TexCoord .length = 0;
 
@@ -90448,17 +91514,6 @@ Object .assign (X3DProgrammableShaderObject .prototype,
             this .x3d_TexCoord .push ([i, x3d_TexCoord]);
       }
 
-      this .x3d_TexCoordRamp         = gl .getUniformLocation (program, "x3d_TexCoordRamp");
-      this .x3d_JointsTexture        = gl .getUniformLocation (program, "x3d_JointsTexture");
-      this .x3d_DisplacementsTexture = gl .getUniformLocation (program, "x3d_DisplacementsTexture");
-      this .x3d_JointMatricesTexture = gl .getUniformLocation (program, "x3d_JointMatricesTexture");
-
-      this .x3d_Viewport          = gl .getUniformLocation (program, "x3d_Viewport");
-      this .x3d_ProjectionMatrix  = gl .getUniformLocation (program, "x3d_ProjectionMatrix");
-      this .x3d_ModelViewMatrix   = gl .getUniformLocation (program, "x3d_ModelViewMatrix");
-      this .x3d_NormalMatrix      = gl .getUniformLocation (program, "x3d_NormalMatrix");
-      this .x3d_CameraSpaceMatrix = gl .getUniformLocation (program, "x3d_CameraSpaceMatrix");
-
       /*
        * Attributes.
        */
@@ -90469,6 +91524,7 @@ Object .assign (X3DProgrammableShaderObject .prototype,
          "FogDepth",
          "Color",
          "Normal",
+         "Tangent",
          "Vertex",
          "Particle",
          "ParticleVelocity",
@@ -90524,12 +91580,16 @@ Object .assign (X3DProgrammableShaderObject .prototype,
        * Fill uniforms with defaults.
        */
 
+      // Fill browser options.
+
+      gl .uniform1f (this .x3d_Exposure, Math .max (browser .getBrowserOption ("Exposure"), 0));
+
       // Fill special uniforms with default values, textures for units are created in X3DTexturingContext.
 
       gl .uniform1i  (this .x3d_LinePropertiesTexture, browser .getDefaultTexture2DUnit ());
       gl .uniform1i  (this .x3d_FillPropertiesTexture, browser .getDefaultTexture2DUnit ());
 
-      for (const materialTexture of materialTextures)
+      for (const materialTexture of MaterialTextures .names)
       {
          gl .uniform1i (this [materialTexture] .texture2D,   browser .getDefaultTexture2DUnit ());
          gl .uniform1i (this [materialTexture] .texture3D,   browser .getDefaultTexture3DUnit ());
@@ -90549,9 +91609,10 @@ Object .assign (X3DProgrammableShaderObject .prototype,
       for (const uniform of this .x3d_ShadowMap)
          gl .uniform1i (uniform, browser .getDefaultTexture2DUnit ());
 
-      gl .uniform1i (this .x3d_EnvironmentLightDiffuseTexture,  browser .getDefaultTextureCubeUnit ());
-      gl .uniform1i (this .x3d_EnvironmentLightSpecularTexture, browser .getDefaultTextureCubeUnit ());
-      gl .uniform1i (this .x3d_EnvironmentLightGGXLUTTexture,   browser .getDefaultTexture2DUnit ());
+      gl .uniform1i (this .x3d_EnvironmentLightDiffuseTexture,    browser .getDefaultTextureCubeUnit ());
+      gl .uniform1i (this .x3d_EnvironmentLightSpecularTexture,   browser .getDefaultTextureCubeUnit ());
+      gl .uniform1i (this .x3d_EnvironmentLightGGXLUTTexture,     browser .getDefaultTexture2DUnit ());
+      gl .uniform1i (this .x3d_EnvironmentLightCharlieLUTTexture, browser .getDefaultTexture2DUnit ());
 
       for (const uniform of this .x3d_TextureProjectorTexture)
          gl .uniform1i (uniform, browser .getDefaultTexture2DUnit ());
@@ -91194,6 +92255,7 @@ Object .assign (X3DProgrammableShaderObject .prototype,
             // Set projection matrix.
 
             gl .uniformMatrix4fv (this .x3d_ProjectionMatrix,  false, renderObject .getProjectionMatrixArray ());
+            gl .uniformMatrix4fv (this .x3d_ViewMatrix,        false, renderObject .getViewMatrixArray ());
             gl .uniformMatrix4fv (this .x3d_CameraSpaceMatrix, false, renderObject .getCameraSpaceMatrixArray ());
 
             // Fog
@@ -91210,12 +92272,12 @@ Object .assign (X3DProgrammableShaderObject .prototype,
             for (const globalLights of renderObject .getGlobalLights ())
                globalLights .setShaderUniforms (gl, this, renderObject);
 
-            this .numGlobalLights             = this .numLights;
+            this .numGlobalLights            = this .numLights;
             this .numGlobalTextureProjectors = this .numTextureProjectors;
 
             // Logarithmic depth buffer support
 
-            if (renderObject .getRenderBits () .get (0))
+            if (renderObject .getLogarithmicDepthBuffer ())
             {
                const
                   viewpoint      = renderObject .getViewpoint (),
@@ -91414,6 +92476,18 @@ Object .assign (X3DProgrammableShaderObject .prototype,
    normalAttributeDivisor (gl, divisor)
    {
       gl .vertexAttribDivisor (this .x3d_Normal, divisor);
+   },
+   enableTangentAttribute (gl, buffer, stride, offset)
+   {
+      const location = this .x3d_Tangent;
+
+      gl .bindBuffer (gl .ARRAY_BUFFER, buffer);
+      gl .enableVertexAttribArray (location);
+      gl .vertexAttribPointer (location, 4, gl .FLOAT, false, stride, offset);
+   },
+   tangentAttributeDivisor (gl, divisor)
+   {
+      gl .vertexAttribDivisor (this .x3d_Tangent, divisor);
    },
    enableVertexAttribute (gl, buffer, stride, offset)
    {
@@ -92596,7 +93670,10 @@ const ProgramShader_default_ = ProgramShader;
 x_ite_Namespace .add ("ProgramShader", "x_ite/Components/Shaders/ProgramShader", ProgramShader_default_);
 /* harmony default export */ const Shaders_ProgramShader = (ProgramShader_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/Types.glsl.js
-const Types_glsl_default_ = /* glsl */ `#if defined(X3D_FOG)
+
+
+const Types_glsl_default_ = /* glsl */ `
+#if defined(X3D_FOG)
 struct x3d_FogParameters{mediump int type;mediump vec3 color;mediump float visibilityRange;mediump mat3 matrix;};
 #endif
 #if defined(X3D_LIGHTING)
@@ -92607,7 +93684,11 @@ mediump vec3 shadowColor;mediump float shadowIntensity;mediump float shadowBias;
 };
 #endif
 #if defined(X3D_USE_IBL)
-struct x3d_EnvironmentLightSourceParameters{mediump vec3 color;mediump float intensity;mediump float ambientIntensity;mediump mat3 rotation;mediump samplerCube diffuseTexture;bool diffuseTextureLinear;mediump samplerCube specularTexture;bool specularTextureLinear;mediump int specularTextureLevels;mediump sampler2D GGXLUTTexture;};
+struct x3d_EnvironmentLightSourceParameters{mediump vec3 color;mediump float intensity;mediump float ambientIntensity;mediump mat3 rotation;mediump samplerCube diffuseTexture;bool diffuseTextureLinear;mediump samplerCube specularTexture;bool specularTextureLinear;mediump int specularTextureLevels;mediump sampler2D GGXLUTTexture;
+#if defined(X3D_SHEEN_MATERIAL_EXT)
+mediump sampler2D CharlieLUTTexture;
+#endif
+};
 #endif
 #if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
 struct x3d_PointPropertiesParameters{mediump float pointSizeScaleFactor;mediump float pointSizeMinValue;mediump float pointSizeMaxValue;mediump vec3 attenuation;};
@@ -92633,125 +93714,15 @@ struct x3d_UnlitMaterialParameters{mediump vec3 emissiveColor;mediump float norm
 struct x3d_MaterialParameters{mediump float ambientIntensity;mediump vec3 diffuseColor;mediump vec3 specularColor;mediump vec3 emissiveColor;mediump float shininess;mediump float occlusionStrength;mediump float normalScale;mediump float transparency;};
 #endif
 #if defined(X3D_PHYSICAL_MATERIAL)
-struct x3d_PhysicalMaterialParameters{mediump vec3 baseColor;mediump vec3 emissiveColor;mediump float metallic;mediump float roughness;mediump float occlusionStrength;mediump float normalScale;mediump float transparency;};
+struct x3d_PhysicalMaterialParameters{
+#if defined(X3D_MATERIAL_SPECULAR_GLOSSINESS)
+mediump vec3 diffuseColor;mediump vec3 specularColor;mediump float glossiness;
+#elif defined(X3D_MATERIAL_METALLIC_ROUGHNESS)
+mediump vec3 baseColor;mediump float metallic;mediump float roughness;
 #endif
-#if defined(X3D_AMBIENT_TEXTURE)
-struct x3d_AmbientTextureParameters{mediump int textureTransformMapping;mediump int textureCoordinateMapping;
-#if defined(X3D_AMBIENT_TEXTURE_2D)
-mediump sampler2D texture2D;
+mediump vec3 emissiveColor;mediump float occlusionStrength;mediump float normalScale;mediump float transparency;};
 #endif
-#if defined(X3D_AMBIENT_TEXTURE_3D)&&__VERSION__!=100
-mediump sampler3D texture3D;
-#endif
-#if defined(X3D_AMBIENT_TEXTURE_CUBE)
-mediump samplerCube textureCube;
-#endif
-};
-#endif
-#if defined(X3D_DIFFUSE_TEXTURE)
-struct x3d_DiffuseTextureParameters{mediump int textureTransformMapping;mediump int textureCoordinateMapping;
-#if defined(X3D_DIFFUSE_TEXTURE_2D)
-mediump sampler2D texture2D;
-#endif
-#if defined(X3D_DIFFUSE_TEXTURE_3D)&&__VERSION__!=100
-mediump sampler3D texture3D;
-#endif
-#if defined(X3D_DIFFUSE_TEXTURE_CUBE)
-mediump samplerCube textureCube;
-#endif
-};
-#endif
-#if defined(X3D_SPECULAR_TEXTURE)
-struct x3d_SpecularTextureParameters{mediump int textureTransformMapping;mediump int textureCoordinateMapping;
-#if defined(X3D_SPECULAR_TEXTURE_2D)
-mediump sampler2D texture2D;
-#endif
-#if defined(X3D_SPECULAR_TEXTURE_3D)&&__VERSION__!=100
-mediump sampler3D texture3D;
-#endif
-#if defined(X3D_SPECULAR_TEXTURE_CUBE)
-mediump samplerCube textureCube;
-#endif
-};
-#endif
-#if defined(X3D_EMISSIVE_TEXTURE)
-struct x3d_EmissiveTextureParameters{mediump int textureTransformMapping;mediump int textureCoordinateMapping;
-#if defined(X3D_EMISSIVE_TEXTURE_2D)
-mediump sampler2D texture2D;
-#endif
-#if defined(X3D_EMISSIVE_TEXTURE_3D)&&__VERSION__!=100
-mediump sampler3D texture3D;
-#endif
-#if defined(X3D_EMISSIVE_TEXTURE_CUBE)
-mediump samplerCube textureCube;
-#endif
-};
-#endif
-#if defined(X3D_SHININESS_TEXTURE)
-struct x3d_ShininessTextureParameters{mediump int textureTransformMapping;mediump int textureCoordinateMapping;
-#if defined(X3D_SHININESS_TEXTURE_2D)
-mediump sampler2D texture2D;
-#endif
-#if defined(X3D_SHININESS_TEXTURE_3D)&&__VERSION__!=100
-mediump sampler3D texture3D;
-#endif
-#if defined(X3D_SHININESS_TEXTURE_CUBE)
-mediump samplerCube textureCube;
-#endif
-};
-#endif
-#if defined(X3D_BASE_TEXTURE)
-struct x3d_BaseTextureParameters{mediump int textureTransformMapping;mediump int textureCoordinateMapping;
-#if defined(X3D_BASE_TEXTURE_2D)
-mediump sampler2D texture2D;
-#endif
-#if defined(X3D_BASE_TEXTURE_3D)&&__VERSION__!=100
-mediump sampler3D texture3D;
-#endif
-#if defined(X3D_BASE_TEXTURE_CUBE)
-mediump samplerCube textureCube;
-#endif
-};
-#endif
-#if defined(X3D_METALLIC_ROUGHNESS_TEXTURE)
-struct x3d_MetallicRoughnessTextureParameters{mediump int textureTransformMapping;mediump int textureCoordinateMapping;
-#if defined(X3D_METALLIC_ROUGHNESS_TEXTURE_2D)
-mediump sampler2D texture2D;
-#endif
-#if defined(X3D_METALLIC_ROUGHNESS_TEXTURE_3D)&&__VERSION__!=100
-mediump sampler3D texture3D;
-#endif
-#if defined(X3D_METALLIC_ROUGHNESS_TEXTURE_CUBE)
-mediump samplerCube textureCube;
-#endif
-};
-#endif
-#if defined(X3D_OCCLUSION_TEXTURE)
-struct x3d_OcclusionTextureParameters{mediump int textureTransformMapping;mediump int textureCoordinateMapping;
-#if defined(X3D_OCCLUSION_TEXTURE_2D)
-mediump sampler2D texture2D;
-#endif
-#if defined(X3D_OCCLUSION_TEXTURE_3D)&&__VERSION__!=100
-mediump sampler3D texture3D;
-#endif
-#if defined(X3D_OCCLUSION_TEXTURE_CUBE)
-mediump samplerCube textureCube;
-#endif
-};
-#endif
-#if defined(X3D_NORMAL_TEXTURE)
-struct x3d_NormalTextureParameters{mediump int textureTransformMapping;mediump int textureCoordinateMapping;
-#if defined(X3D_NORMAL_TEXTURE_2D)
-mediump sampler2D texture2D;
-#endif
-#if defined(X3D_NORMAL_TEXTURE_3D)&&__VERSION__!=100
-mediump sampler3D texture3D;
-#endif
-#if defined(X3D_NORMAL_TEXTURE_CUBE)
-mediump samplerCube textureCube;
-#endif
-};
-#endif
+${MaterialTextures .structs ()}
 #if defined(X3D_MULTI_TEXTURING)
 struct x3d_MultiTextureParameters{mediump int mode;mediump int alphaMode;mediump int source;mediump int function;};
 #endif
@@ -93246,35 +94217,6 @@ const ShaderSource_default_ = ShaderSource;
 
 x_ite_Namespace .add ("ShaderSource", "x_ite/Browser/Shaders/ShaderSource", ShaderSource_default_);
 /* harmony default export */ const Shaders_ShaderSource = (ShaderSource_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/common/ClipPlanes1.glsl.js
-const ClipPlanes1_glsl_default_ = /* glsl */ `#if defined(X3D_CLIP_PLANES)
-uniform vec4 x3d_ClipPlane[X3D_NUM_CLIP_PLANES];void clip(){for(int i=0;i<X3D_NUM_CLIP_PLANES;++i){if(dot(vertex,x3d_ClipPlane[i].xyz)-x3d_ClipPlane[i].w<0.0)discard;}}
-#endif
-`
-;
-
-x_ite_Namespace .add ("ClipPlanes1.glsl", "assets/shaders/webgl1/common/ClipPlanes1.glsl", ClipPlanes1_glsl_default_);
-/* harmony default export */ const ClipPlanes1_glsl = (ClipPlanes1_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/common/Fog1.glsl.js
-const Fog1_glsl_default_ = /* glsl */ `#if defined(X3D_FOG)
-uniform x3d_FogParameters x3d_Fog;float getFogInterpolant(){
-#if defined(X3D_FOG_COORDS)
-return clamp(1.0-fogDepth,0.0,1.0);
-#else
-float visibilityRange=x3d_Fog.visibilityRange;float dV=length(x3d_Fog.matrix*vertex);
-#if defined(X3D_FOG_LINEAR)
-return max(0.0,visibilityRange-dV)/visibilityRange;
-#elif defined(X3D_FOG_EXPONENTIAL)
-return exp(-dV/max(0.001,visibilityRange-dV));
-#endif
-#endif
-}vec3 getFogColor(const in vec3 color){return mix(x3d_Fog.color,color,getFogInterpolant());}
-#endif
-`
-;
-
-x_ite_Namespace .add ("Fog1.glsl", "assets/shaders/webgl1/common/Fog1.glsl", Fog1_glsl_default_);
-/* harmony default export */ const Fog1_glsl = (Fog1_glsl_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Texturing/TexturingConfiguration.js
 // The numbers must remain in single digits, otherwise the number base must
 // be increased in the number output for the material shader key.
@@ -93286,7 +94228,8 @@ const maxTextures          = 4;
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/common/Fragment1.glsl.js
 
 
-const Fragment1_glsl_default_ = /* glsl */ `#if defined(X3D_NORMAL_TEXTURE)
+const Fragment1_glsl_default_ = /* glsl */ `
+#if defined(X3D_NORMAL_TEXTURE)
 #extension GL_OES_standard_derivatives:enable
 #endif
 #if defined(X3D_LOGARITHMIC_DEPTH_BUFFER)
@@ -93303,29 +94246,28 @@ varying vec4 color;
 #endif
 #if!defined(X3D_GEOMETRY_0D)&&!defined(X3D_GEOMETRY_1D)
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
-
 ${Array .from ({ length: maxTexCoords }, (_, i) => /* glsl */ `
 #if X3D_NUM_TEXTURE_COORDINATES > ${i}
 varying vec4 texCoord${i};
 #endif
 `) .join ("\n")}
- 
 #endif
 #else
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
-
 ${Array .from ({ length: maxTexCoords }, (_, i) => /* glsl */ `
 #if X3D_NUM_TEXTURE_COORDINATES > ${i}
 vec4 texCoord${i} = vec4 (0.0, 0.0, 0.0, 1.0);
 #endif
 `) .join ("\n")}
- 
 #endif
 #endif
 #if defined(X3D_NORMALS)
 varying vec3 normal;
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
 varying vec3 localNormal;
+#endif
+#if defined(X3D_TANGENTS)
+varying mat3 TBN;
 #endif
 #else
 const vec3 normal=vec3(0.0,0.0,1.0);
@@ -93378,118 +94320,9 @@ gl_FragDepthEXT=log2(depth)*x3d_LogarithmicFarFactor1_2;
 
 x_ite_Namespace .add ("Fragment1.glsl", "assets/shaders/webgl1/common/Fragment1.glsl", Fragment1_glsl_default_);
 /* harmony default export */ const Fragment1_glsl = (Fragment1_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/common/Hatch1.glsl.js
-const Hatch1_glsl_default_ = /* glsl */ `#if(defined(X3D_GEOMETRY_2D)||defined(X3D_GEOMETRY_3D))&&defined(X3D_STYLE_PROPERTIES)
-uniform x3d_FillPropertiesParameters x3d_FillProperties;vec4 getHatchColor(vec4 color){vec4 finalColor=x3d_FillProperties.filled?color:vec4(0.0);
-#if defined(X3D_STYLE_PROPERTIES_TEXTURE)
-vec2 t=gl_FragCoord.xy/(32.0*x3d_FillProperties.scale);vec4 hatch=texture2D(x3d_FillProperties.texture,vec2(t.x,1.0-t.y));hatch.rgb*=x3d_FillProperties.hatchColor;finalColor=mix(finalColor,hatch,hatch.a);
-#endif
-return finalColor;}
-#endif
-`
-;
-
-x_ite_Namespace .add ("Hatch1.glsl", "assets/shaders/webgl1/common/Hatch1.glsl", Hatch1_glsl_default_);
-/* harmony default export */ const Hatch1_glsl = (Hatch1_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/common/Lighting1.glsl.js
-const Lighting1_glsl_default_ = /* glsl */ `#if defined(X3D_LIGHTING)
-float getAttenuation(const in vec3 attenuation,const in float distanceToLight){return 1.0/max(dot(attenuation,vec3(1.0,distanceToLight,distanceToLight*distanceToLight)),1.0);}float getSpotFactor(const in vec3 pointToLight,const in vec3 direction,const in float cutOffAngle,const in float beamWidth){float spotAngle=acos(clamp(dot(-pointToLight,direction),-1.0,1.0));if(spotAngle>=cutOffAngle)return 0.0;else if(spotAngle<=beamWidth)return 1.0;return(spotAngle-cutOffAngle)/(beamWidth-cutOffAngle);}
-#endif
-`
-;
-
-x_ite_Namespace .add ("Lighting1.glsl", "assets/shaders/webgl1/common/Lighting1.glsl", Lighting1_glsl_default_);
-/* harmony default export */ const Lighting1_glsl = (Lighting1_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/common/Material1.glsl.js
-const Material1_glsl_default_ = /* glsl */ `uniform x3d_MaterialParameters x3d_Material;
-#if defined(X3D_LIGHTING)
-#pragma X3D include "Lighting.glsl"
-#pragma X3D include "Shadow.glsl"
-uniform x3d_LightSourceParameters x3d_LightSource[X3D_NUM_LIGHTS];vec3 getMaterialColor(const in vec3 vertex,const in vec3 N,const in vec3 ambientColor,const in vec3 diffuseColor,const in vec3 specularColor,const in float shininess){vec3 V=normalize(-vertex);vec3 finalColor=vec3(0.0);for(int i=0;i<X3D_NUM_LIGHTS;++i){x3d_LightSourceParameters light=x3d_LightSource[i];vec3 vL=light.location-vertex;float dL=length(light.matrix*vL);bool di=light.type==x3d_DirectionalLight;if(di||dL<=light.radius||light.radius<0.0){vec3 d=light.direction;vec3 c=light.attenuation;vec3 L=di?-d:normalize(vL);vec3 H=normalize(L+V);float lightAngle=max(dot(N,L),0.0);vec3 diffuseTerm=diffuseColor*lightAngle;float specularFactor=shininess>0.0?pow(max(dot(N,H),0.0),shininess*128.0):1.0;vec3 specularTerm=specularColor*specularFactor;float attenuationFactor=di?1.0:getAttenuation(c,dL);float spotFactor=light.type==x3d_SpotLight?getSpotFactor(L,d,light.cutOffAngle,light.beamWidth):1.0;float attenuationSpotFactor=attenuationFactor*spotFactor;vec3 ambientTerm=light.ambientIntensity*ambientColor;vec3 diffuseSpecularTerm=light.intensity*(diffuseTerm+specularTerm);
-#if defined(X3D_FRAGMENT_SHADER)&&defined(X3D_SHADOWS)
-if(lightAngle>0.0&&light.shadowIntensity>0.0)diffuseSpecularTerm=mix(diffuseSpecularTerm,light.shadowColor,getShadowIntensity(i,light));
-#endif
-finalColor+=attenuationSpotFactor*light.color*(ambientTerm+diffuseSpecularTerm);}}return finalColor;}
-#endif
-`
-;
-
-x_ite_Namespace .add ("Material1.glsl", "assets/shaders/webgl1/common/Material1.glsl", Material1_glsl_default_);
-/* harmony default export */ const Material1_glsl = (Material1_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/common/Normal1.glsl.js
-const Normal1_glsl_default_ = /* glsl */ `#if defined(X3D_NORMAL_TEXTURE)
-mat3 getTBNMatrix(const in vec2 texCoord){vec3 pos_dx=dFdx(vertex);vec3 pos_dy=dFdy(vertex);vec3 tex_dx=dFdx(vec3(texCoord,0.0));vec3 tex_dy=dFdy(vec3(texCoord,0.0));vec3 t=(tex_dy.t*pos_dx-tex_dx.t*pos_dy)/(tex_dx.s*tex_dy.t-tex_dy.s*tex_dx.t);vec3 N=normalize(normal);vec3 T=normalize(t-N*dot(N,t));vec3 B=normalize(cross(N,T));mat3 tbn=mat3(T,B,N);return tbn;}
-#endif
-#if defined(X3D_NORMAL_TEXTURE)
-uniform x3d_NormalTextureParameters x3d_NormalTexture;
-#endif
-vec3 getNormalVector(const in float normalScale){float facing=gl_FrontFacing?1.0:-1.0;
-#if defined(X3D_NORMAL_TEXTURE)&&!defined(X3D_NORMAL_TEXTURE_3D)
-vec3 texCoord=getTexCoord(x3d_NormalTexture.textureTransformMapping,x3d_NormalTexture.textureCoordinateMapping);
-#if defined(X3D_NORMAL_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-vec3 scale=vec3(vec2(normalScale),1.0);mat3 tbn=getTBNMatrix(texCoord.st);
-#if defined(X3D_NORMAL_TEXTURE_2D)
-vec3 n=texture2D(x3d_NormalTexture.texture2D,texCoord.st).rgb;
-#elif defined(X3D_NORMAL_TEXTURE_CUBE)
-vec3 n=textureCube(x3d_NormalTexture.textureCube,texCoord).rgb;
-#endif
-return normalize(tbn*((n*2.0-1.0)*scale))*facing;
-#else
-return normalize(normal)*facing;
-#endif
-}`
-;
-
-x_ite_Namespace .add ("Normal1.glsl", "assets/shaders/webgl1/common/Normal1.glsl", Normal1_glsl_default_);
-/* harmony default export */ const Normal1_glsl = (Normal1_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/common/Perlin1.glsl.js
-const Perlin1_glsl_default_ = /* glsl */ `float rand(const in vec2 co){return fract(sin(dot(co.xy,vec2(12.9898,78.233)))*43758.5453);}float rand(const in vec2 co,const in float l){return rand(vec2(rand(co),l));}float rand(const in vec2 co,const in float l,const in float t){return rand(vec2(rand(co,l),t));}float perlin(const in vec2 p,const in float dim,const in float time){const float M_PI=3.14159265358979323846;vec2 pos=floor(p*dim);vec2 posx=pos+vec2(1.0,0.0);vec2 posy=pos+vec2(0.0,1.0);vec2 posxy=pos+vec2(1.0);float c=rand(pos,dim,time);float cx=rand(posx,dim,time);float cy=rand(posy,dim,time);float cxy=rand(posxy,dim,time);vec2 d=fract(p*dim);d=-0.5*cos(d*M_PI)+0.5;float ccx=mix(c,cx,d.x);float cycxy=mix(cy,cxy,d.x);float center=mix(ccx,cycxy,d.y);return center*2.0-1.0;}vec3 perlin(const in vec3 p){return vec3(perlin(p.xy,1.0,0.0),perlin(p.yz,1.0,0.0),perlin(p.zx,1.0,0.0));}`
-;
-
-x_ite_Namespace .add ("Perlin1.glsl", "assets/shaders/webgl1/common/Perlin1.glsl", Perlin1_glsl_default_);
-/* harmony default export */ const Perlin1_glsl = (Perlin1_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/common/Point1.glsl.js
-
-
-const Point1_glsl_default_ = /* glsl */ `#if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
-#if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
-void setPointTexCoords(){vec4 texCoord=vec4(gl_PointCoord.x,1.0-gl_PointCoord.y,0.0,1.0);
-${Array .from ({ length: maxTexCoords }, (_, i) => /* glsl */ `
-#if X3D_NUM_TEXTURE_COORDINATES > ${i}
-texCoord${i} = texCoord;
-#endif
-`) .join ("\n")}
-}
-#define getPointColor(color)(color)
-#else
-#define setPointTexCoords()
-varying float pointSize;vec4 getPointColor(in vec4 color){if(pointSize>1.0)color.a*=clamp(pointSize*(0.5-distance(vec2(0.5),gl_PointCoord)),0.0,1.0);else color.a*=pointSize;return color;}
-#endif
-#endif
-`
-;
-
-x_ite_Namespace .add ("Point1.glsl", "assets/shaders/webgl1/common/Point1.glsl", Point1_glsl_default_);
-/* harmony default export */ const Point1_glsl = (Point1_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/common/PointSize1.glsl.js
-const PointSize1_glsl_default_ = /* glsl */ `#if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
-uniform x3d_PointPropertiesParameters x3d_PointProperties;varying float pointSize;float getPointSize(const in vec3 vertex){float pointSizeMinValue=x3d_PointProperties.pointSizeMinValue;float pointSizeMaxValue=x3d_PointProperties.pointSizeMaxValue;vec3 attenuation=x3d_PointProperties.attenuation;float dL=length(vertex);float pointSize=0.0;pointSize=x3d_PointProperties.pointSizeScaleFactor;pointSize/=dot(attenuation,vec3(1.0,dL,dL*dL));pointSize=clamp(pointSize,pointSizeMinValue,pointSizeMaxValue);
-#if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURE)
-return pointSize;
-#else
-return pointSize+1.0-step(pointSize,1.0);
-#endif
-}
-#endif
-`
-;
-
-x_ite_Namespace .add ("PointSize1.glsl", "assets/shaders/webgl1/common/PointSize1.glsl", PointSize1_glsl_default_);
-/* harmony default export */ const PointSize1_glsl = (PointSize1_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/common/Shadow1.glsl.js
-const Shadow1_glsl_default_ = /* glsl */ `#if defined(X3D_FRAGMENT_SHADER)&&defined(X3D_SHADOWS)
+const Shadow1_glsl_default_ = /* glsl */ `
+#if defined(X3D_FRAGMENT_SHADER)&&defined(X3D_SHADOWS)
 uniform sampler2D x3d_ShadowMap[X3D_NUM_LIGHTS];float getShadowDepth(const in int index,const in vec2 shadowCoord){
 #if X3D_NUM_LIGHTS>0
 if(index==0)return texture2D(x3d_ShadowMap[0],shadowCoord).r;
@@ -93518,7 +94351,7 @@ if(index==7)return texture2D(x3d_ShadowMap[7],shadowCoord).r;
 return 0.0;}float texture2DCompare(const in int index,const in vec2 texCoord,const in float compare){float shadowDepth=getShadowDepth(index,texCoord);return(1.0-step(1.0,shadowDepth))*step(shadowDepth,compare);}float texture2DShadowLerp(const in int index,const in vec2 texelSize,const in float shadowMapSize,const in vec2 texCoord,const in float compare){const vec2 offset=vec2(0.0,1.0);vec2 centroidTexCoord=floor(texCoord*shadowMapSize+0.5)/shadowMapSize;float lb=texture2DCompare(index,centroidTexCoord+texelSize*offset.xx,compare);float lt=texture2DCompare(index,centroidTexCoord+texelSize*offset.xy,compare);float rb=texture2DCompare(index,centroidTexCoord+texelSize*offset.yx,compare);float rt=texture2DCompare(index,centroidTexCoord+texelSize*offset.yy,compare);vec2 f=fract(texCoord*shadowMapSize+0.5);float a=mix(lb,lt,f.y);float b=mix(rb,rt,f.y);float c=mix(a,b,f.x);return c;}vec2 cubeToUVCompact(in vec3 v,const float texelSizeY){vec3 absV=abs(v);float scaleToCube=1.0/max(absV.x,max(absV.y,absV.z));absV*=scaleToCube;v*=scaleToCube*(1.0-2.0*texelSizeY);vec2 planar=v.xy;float almostATexel=1.5*texelSizeY;float almostOne=1.0-almostATexel;if(absV.z>=almostOne){if(v.z>0.0)planar.x=4.0-v.x;}else if(absV.x>=almostOne){float signX=sign(v.x);planar.x=v.z*signX+2.0*signX;}else if(absV.y>=almostOne){float signY=sign(v.y);planar.x=(v.x+0.5+signY)*2.0;planar.y=v.z*signY-2.0;}return vec2(0.125,0.25)*planar+vec2(0.375,0.75);}mat4 getPointLightRotations(const in vec3 vector){mat4 rotations[6];rotations[0]=mat4(0,0,1,0,0,1,0,0,-1,0,0,0,0,0,0,1);rotations[1]=mat4(0,0,-1,0,0,1,0,0,1,0,0,0,0,0,0,1);rotations[2]=mat4(-1,0,0,0,0,1,0,0,0,0,-1,0,0,0,0,1);rotations[3]=mat4(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);rotations[4]=mat4(1,0,0,0,0,0,1,0,0,-1,0,0,0,0,0,1);rotations[5]=mat4(1,0,0,0,0,0,-1,0,0,1,0,0,0,0,0,1);vec3 a=abs(vector.xyz);if(a.x>a.y){if(a.x>a.z)return vector.x>0.0?rotations[1]:rotations[0];else return vector.z>0.0?rotations[2]:rotations[3];}else{if(a.y>a.z)return vector.y>0.0?rotations[5]:rotations[4];else return vector.z>0.0?rotations[2]:rotations[3];}return rotations[3];}float getShadowIntensity(const in int index,const in x3d_LightSourceParameters light){if(light.type==x3d_PointLight){const mat4 biasMatrix=mat4(0.5,0.0,0.0,0.0,0.0,0.5,0.0,0.0,0.0,0.0,0.5,0.0,0.5,0.5,0.5,1.0);const mat4 projectionMatrix=mat4(1.0,0.0,0.0,0.0,0.0,0.5,0.0,0.0,0.0,0.0,-1.000025000312504,-1.0,0,0.0,-0.25000312503906297,0.0);vec2 texelSize=vec2(1.0)/(float(light.shadowMapSize)*vec2(4.0,2.0));vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);vec3 lightToPosition=shadowCoord.xyz;shadowCoord=biasMatrix*(projectionMatrix*(getPointLightRotations(lightToPosition)*shadowCoord));shadowCoord.z-=light.shadowBias;shadowCoord.xyz/=shadowCoord.w;
 #if defined(X3D_PCF_FILTERING)||defined(X3D_PCF_SOFT_FILTERING)
 vec2 offset=vec2(-1,1)*(texelSize.y*42.0);float value=(texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.xyy,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.yyy,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.xyx,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.yyx,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.xxy,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.yxy,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.xxx,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.yxx,texelSize.y),shadowCoord.z))*(1.0/9.0);return light.shadowIntensity*value;
-#else 
+#else
 float value=texture2DCompare(index,cubeToUVCompact(lightToPosition,texelSize.y),shadowCoord.z);return light.shadowIntensity*value;
 #endif
 }else{
@@ -93526,7 +94359,7 @@ float value=texture2DCompare(index,cubeToUVCompact(lightToPosition,texelSize.y),
 vec2 texelSize=vec2(1.0)/vec2(light.shadowMapSize);vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);shadowCoord.z-=light.shadowBias;shadowCoord.xyz/=shadowCoord.w;if(any(greaterThan(abs(shadowCoord.xy-0.5),vec2(0.5))))return 0.0;vec2 d0=-texelSize;vec2 d1=texelSize;float value=(texture2DCompare(index,shadowCoord.xy+d0,shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(0.0,d0.y),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(d1.x,d0.y),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(d0.x,0.0),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy,shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(d1.x,0.0),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(d0.x,d1.y),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(0.0,d1.y),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+d1,shadowCoord.z))*(1.0/9.0);return light.shadowIntensity*value;
 #elif defined(X3D_PCF_SOFT_FILTERING)
 vec2 texelSize=vec2(1.0)/vec2(light.shadowMapSize);vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);shadowCoord.z-=light.shadowBias;shadowCoord.xyz/=shadowCoord.w;if(any(greaterThan(abs(shadowCoord.xy-0.5),vec2(0.5))))return 0.0;vec2 d0=-texelSize;vec2 d1=texelSize;float value=(texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+d0,shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(0.0,d0.y),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(d1.x,d0.y),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(d0.x,0.0),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy,shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(d1.x,0.0),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(d0.x,d1.y),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(0.0,d1.y),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+d1,shadowCoord.z))*(1.0/9.0);return light.shadowIntensity*value;
-#else 
+#else
 vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);shadowCoord.z-=light.shadowBias;shadowCoord.xyz/=shadowCoord.w;if(any(greaterThan(abs(shadowCoord.xy-0.5),vec2(0.5))))return 0.0;float value=texture2DCompare(index,shadowCoord.xy,shadowCoord.z);return light.shadowIntensity*value;
 #endif
 }return 0.0;}
@@ -93539,7 +94372,8 @@ x_ite_Namespace .add ("Shadow1.glsl", "assets/shaders/webgl1/common/Shadow1.glsl
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/common/Texture1.glsl.js
 
 
-const Texture1_glsl_default_ = /* glsl */ `#if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
+const Texture1_glsl_default_ = /* glsl */ `
+#if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
 #pragma X3D include "Perlin.glsl"
 uniform mat4 x3d_TextureMatrix[X3D_NUM_TEXTURE_TRANSFORMS];mat4 getTextureMatrix(const in int i){
 #if X3D_NUM_TEXTURE_TRANSFORMS>1
@@ -93550,7 +94384,7 @@ ${i === 0 ? "" : "else"} if (i == ${i})
 textureTransformMatrix = x3d_TextureMatrix [${i}];
 #endif
 `) .join ("\n")}
- return textureTransformMatrix;
+return textureTransformMatrix;
 #else
 return x3d_TextureMatrix[0];
 #endif
@@ -93563,7 +94397,7 @@ ${i === 0 ? "" : "else"} if (i == ${i})
 texCoord = texCoord${i};
 #endif
 `) .join ("\n")}
- return texCoord;
+return texCoord;
 #else
 return texCoord0;
 #endif
@@ -93574,19 +94408,18 @@ ${i === 0 ? "" : "else"} if (textureCoordinateMapping == ${i})
 texCoord = getTexCoord (x3d_TextureCoordinateGenerator [${i}], textureTransformMapping, textureCoordinateMapping);
 #endif
 `) .join ("\n")}
- 
 #if defined(X3D_GEOMETRY_2D)
 if(gl_FrontFacing==false)texCoord.s=1.0-texCoord.s;
 #endif
 return texCoord.stp;}
-#endif 
+#endif
 #if defined(X3D_TEXTURE)
 uniform sampler2D x3d_Texture2D[X3D_NUM_TEXTURES];uniform samplerCube x3d_TextureCube[X3D_NUM_TEXTURES];vec4 getTexture(const in int i,in vec3 texCoord){vec4 textureColor=vec4(1.0);
 ${Array .from ({ length: maxTextures }, (_, i) => /* glsl */ `
 #if X3D_NUM_TEXTURES > ${i}
 ${i === 0 ? "" : "else"} if (i == ${i})
 {
-#if !defined (X3D_PHYSICAL_MATERIAL) && defined (X3D_TEXTURE${i}_FLIP_Y)
+#if defined (X3D_TEXTURE${i}_FLIP_Y)
 texCoord .t = 1.0 - texCoord .t;
 #endif
 #if defined (X3D_TEXTURE${i}_2D)
@@ -93602,7 +94435,7 @@ textureColor = linearTosRGB (textureColor);
 }
 #endif
 `) .join ("\n")}
- return textureColor;}
+return textureColor;}
 #if defined(X3D_MULTI_TEXTURING)
 uniform vec4 x3d_MultiTextureColor;uniform x3d_MultiTextureParameters x3d_MultiTexture[X3D_NUM_TEXTURES];
 #endif
@@ -93624,14 +94457,14 @@ textureColor = texture2D (x3d_TextureProjectorTexture [${i}], texCoord);
 }
 #endif
 `) .join ("\n")}
- return textureColor;}vec3 getTextureProjectorColor(){vec3 currentColor=vec3(1.0);vec3 N=gl_FrontFacing?normal:-normal;for(int i=0;i<X3D_NUM_TEXTURE_PROJECTORS;++i){vec4 texCoord=x3d_TextureProjectorMatrix[i]*vec4(vertex,1.0);texCoord.stp/=texCoord.q;texCoord.p=clamp(texCoord.p,x3d_TextureProjectorParams[i].x,x3d_TextureProjectorParams[i].y);if(any(greaterThan(abs(texCoord.stp-0.5),vec3(0.5))))continue;vec3 p=x3d_TextureProjectorLocation[i]-vertex;if(dot(N,p)<0.0)continue;vec4 T=getTextureProjectorTexture(i,texCoord.st);
+return textureColor;}vec3 getTextureProjectorColor(){vec3 currentColor=vec3(1.0);vec3 N=gl_FrontFacing?normal:-normal;for(int i=0;i<X3D_NUM_TEXTURE_PROJECTORS;++i){vec4 texCoord=x3d_TextureProjectorMatrix[i]*vec4(vertex,1.0);texCoord.stp/=texCoord.q;texCoord.p=clamp(texCoord.p,x3d_TextureProjectorParams[i].x,x3d_TextureProjectorParams[i].y);if(any(greaterThan(abs(texCoord.stp-0.5),vec3(0.5))))continue;vec3 p=x3d_TextureProjectorLocation[i]-vertex;if(dot(N,p)<0.0)continue;vec4 T=getTextureProjectorTexture(i,texCoord.st);
 #if defined(X3D_PHYSICAL_MATERIAL)
 if(!bool(x3d_TextureProjectorParams[i].z))T=sRGBToLinear(T);
 #else
 if(bool(x3d_TextureProjectorParams[i].z))T=linearTosRGB(T);
 #endif
 currentColor*=mix(vec3(1.0),T.rgb*x3d_TextureProjectorColor[i],T.a*x3d_TextureProjectorIntensity[i]);}return currentColor;}
-#endif 
+#endif
 `
 ;
 
@@ -93640,7 +94473,8 @@ x_ite_Namespace .add ("Texture1.glsl", "assets/shaders/webgl1/common/Texture1.gl
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/common/Vertex1.glsl.js
 
 
-const Vertex1_glsl_default_ = /* glsl */ `uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;
+const Vertex1_glsl_default_ = /* glsl */ `
+uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;
 #if defined(X3D_FOG)&&defined(X3D_FOG_COORDS)
 attribute float x3d_FogDepth;
 #endif
@@ -93649,13 +94483,11 @@ attribute vec4 x3d_Color;
 #endif
 #if!defined(X3D_GEOMETRY_0D)&&!defined(X3D_GEOMETRY_1D)
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
-
 ${Array .from ({ length: maxTexCoords }, (_, i) => /* glsl */ `
 #if X3D_NUM_TEXTURE_COORDINATES > ${i}
 attribute vec4 x3d_TexCoord${i};
 #endif
 `) .join ("\n")}
- 
 #endif
 #endif
 attribute vec4 x3d_Vertex;
@@ -93667,19 +94499,20 @@ varying vec4 color;
 #endif
 #if!defined(X3D_GEOMETRY_0D)&&!defined(X3D_GEOMETRY_1D)
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
-
 ${Array .from ({ length: maxTexCoords }, (_, i) => /* glsl */ `
 #if X3D_NUM_TEXTURE_COORDINATES > ${i}
 varying vec4 texCoord${i};
 #endif
 `) .join ("\n")}
- 
 #endif
 #endif
 #if defined(X3D_NORMALS)
 uniform mat3 x3d_NormalMatrix;attribute vec3 x3d_Normal;varying vec3 normal;
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
 varying vec3 localNormal;
+#endif
+#if defined(X3D_TANGENTS)
+attribute vec4 x3d_Tangent;varying mat3 TBN;
 #endif
 #endif
 varying vec3 vertex;
@@ -93704,19 +94537,20 @@ color=x3d_Color;
 #endif
 #if!defined(X3D_GEOMETRY_0D)&&!defined(X3D_GEOMETRY_1D)
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
-
 ${Array .from ({ length: maxTexCoords }, (_, i) => /* glsl */ `
 #if X3D_NUM_TEXTURE_COORDINATES > ${i}
 texCoord${i} = x3d_TexCoord${i};
 #endif
 `) .join ("\n")}
- 
 #endif
 #endif
 #if defined(X3D_NORMALS)
 normal=x3d_NormalMatrix*x3d_Normal;
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
 localNormal=x3d_Normal;
+#endif
+#if defined(X3D_TANGENTS)
+vec3 tangent=x3d_NormalMatrix*x3d_Tangent.xyz;vec3 bitangent=cross(normal,tangent)*x3d_Tangent.w;TBN=mat3(tangent,bitangent,normal);
 #endif
 #endif
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
@@ -93732,7 +94566,8 @@ depth=1.0+gl_Position.w;
 x_ite_Namespace .add ("Vertex1.glsl", "assets/shaders/webgl1/common/Vertex1.glsl", Vertex1_glsl_default_);
 /* harmony default export */ const Vertex1_glsl = (Vertex1_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/ClipPlanes2.glsl.js
-const ClipPlanes2_glsl_default_ = /* glsl */ `#if defined(X3D_CLIP_PLANES)
+const ClipPlanes2_glsl_default_ = /* glsl */ `
+#if defined(X3D_CLIP_PLANES)
 uniform vec4 x3d_ClipPlane[X3D_NUM_CLIP_PLANES];void clip(){for(int i=0;i<X3D_NUM_CLIP_PLANES;++i){if(dot(vertex,x3d_ClipPlane[i].xyz)-x3d_ClipPlane[i].w<0.0)discard;}}
 #endif
 `
@@ -93741,7 +94576,8 @@ uniform vec4 x3d_ClipPlane[X3D_NUM_CLIP_PLANES];void clip(){for(int i=0;i<X3D_NU
 x_ite_Namespace .add ("ClipPlanes2.glsl", "assets/shaders/webgl2/common/ClipPlanes2.glsl", ClipPlanes2_glsl_default_);
 /* harmony default export */ const ClipPlanes2_glsl = (ClipPlanes2_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Fog2.glsl.js
-const Fog2_glsl_default_ = /* glsl */ `#if defined(X3D_FOG)
+const Fog2_glsl_default_ = /* glsl */ `
+#if defined(X3D_FOG)
 uniform x3d_FogParameters x3d_Fog;float getFogInterpolant(){
 #if defined(X3D_FOG_COORDS)
 return clamp(1.0-fogDepth,0.0,1.0);
@@ -93763,7 +94599,8 @@ x_ite_Namespace .add ("Fog2.glsl", "assets/shaders/webgl2/common/Fog2.glsl", Fog
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Fragment2.glsl.js
 
 
-const Fragment2_glsl_default_ = /* glsl */ `#if defined(X3D_ALPHA_MODE_MASK)
+const Fragment2_glsl_default_ = /* glsl */ `
+#if defined(X3D_ALPHA_MODE_MASK)
 uniform float x3d_AlphaCutoff;
 #endif
 #if defined(X3D_FOG)&&defined(X3D_FOG_COORDS)
@@ -93774,29 +94611,28 @@ in vec4 color;
 #endif
 #if!defined(X3D_GEOMETRY_0D)&&!defined(X3D_GEOMETRY_1D)
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
-
 ${Array .from ({ length: maxTexCoords }, (_, i) => /* glsl */ `
 #if X3D_NUM_TEXTURE_COORDINATES > ${i}
 in vec4 texCoord${i};
 #endif
 `) .join ("\n")}
- 
 #endif
 #else
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
-
 ${Array .from ({ length: maxTexCoords }, (_, i) => /* glsl */ `
 #if X3D_NUM_TEXTURE_COORDINATES > ${i}
 vec4 texCoord${i} = vec4 (0.0, 0.0, 0.0, 1.0);
 #endif
 `) .join ("\n")}
- 
 #endif
 #endif
 #if defined(X3D_NORMALS)
 in vec3 normal;
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
 in vec3 localNormal;
+#endif
+#if defined(X3D_TANGENTS)
+in mat3 TBN;
 #endif
 #else
 const vec3 normal=vec3(0.0,0.0,1.0);
@@ -93869,10 +94705,17 @@ gl_FragDepth=log2(depth)*x3d_LogarithmicFarFactor1_2;
 x_ite_Namespace .add ("Fragment2.glsl", "assets/shaders/webgl2/common/Fragment2.glsl", Fragment2_glsl_default_);
 /* harmony default export */ const Fragment2_glsl = (Fragment2_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Hatch2.glsl.js
-const Hatch2_glsl_default_ = /* glsl */ `#if(defined(X3D_GEOMETRY_2D)||defined(X3D_GEOMETRY_3D))&&defined(X3D_STYLE_PROPERTIES)
+const Hatch2_glsl_default_ = /* glsl */ `
+#if(defined(X3D_GEOMETRY_2D)||defined(X3D_GEOMETRY_3D))&&defined(X3D_STYLE_PROPERTIES)
 uniform x3d_FillPropertiesParameters x3d_FillProperties;vec4 getHatchColor(vec4 color){vec4 finalColor=x3d_FillProperties.filled?color:vec4(0.0);
 #if defined(X3D_STYLE_PROPERTIES_TEXTURE)
-vec2 t=gl_FragCoord.xy/(32.0*x3d_FillProperties.scale);vec4 hatch=texture(x3d_FillProperties.texture,vec2(t.x,1.0-t.y));hatch.rgb*=x3d_FillProperties.hatchColor;finalColor=mix(finalColor,hatch,hatch.a);
+vec2 t=gl_FragCoord.xy/(32.0*x3d_FillProperties.scale);
+#if __VERSION__==100
+vec4 hatch=texture2D(x3d_FillProperties.texture,vec2(t.x,1.0-t.y));
+#else
+vec4 hatch=texture(x3d_FillProperties.texture,vec2(t.x,1.0-t.y));
+#endif
+hatch.rgb*=x3d_FillProperties.hatchColor;finalColor=mix(finalColor,hatch,hatch.a);
 #endif
 return finalColor;}
 #endif
@@ -93882,7 +94725,8 @@ return finalColor;}
 x_ite_Namespace .add ("Hatch2.glsl", "assets/shaders/webgl2/common/Hatch2.glsl", Hatch2_glsl_default_);
 /* harmony default export */ const Hatch2_glsl = (Hatch2_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Lighting2.glsl.js
-const Lighting2_glsl_default_ = /* glsl */ `#if defined(X3D_LIGHTING)
+const Lighting2_glsl_default_ = /* glsl */ `
+#if defined(X3D_LIGHTING)
 float getAttenuation(const in vec3 attenuation,const in float distanceToLight){return 1.0/max(dot(attenuation,vec3(1.0,distanceToLight,distanceToLight*distanceToLight)),1.0);}float getSpotFactor(const in vec3 pointToLight,const in vec3 direction,const in float cutOffAngle,const in float beamWidth){float spotAngle=acos(clamp(dot(-pointToLight,direction),-1.0,1.0));if(spotAngle>=cutOffAngle)return 0.0;else if(spotAngle<=beamWidth)return 1.0;return(spotAngle-cutOffAngle)/(beamWidth-cutOffAngle);}
 #endif
 `
@@ -93891,19 +94735,21 @@ float getAttenuation(const in vec3 attenuation,const in float distanceToLight){r
 x_ite_Namespace .add ("Lighting2.glsl", "assets/shaders/webgl2/common/Lighting2.glsl", Lighting2_glsl_default_);
 /* harmony default export */ const Lighting2_glsl = (Lighting2_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Line22.glsl.js
-const Line22_glsl_default_ = /* glsl */ `struct Line2{vec2 point;vec2 direction;};Line2 line2(const in vec2 point1,const in vec2 point2){return Line2(point1,normalize(point2-point1));}vec2 closest_point(const in Line2 line,const in vec2 point){vec2 r=point-line.point;float d=dot(r,line.direction);return line.direction*d+line.point;}`
+const Line22_glsl_default_ = /* glsl */ `
+struct Line2{vec2 point;vec2 direction;};Line2 line2(const in vec2 point1,const in vec2 point2){return Line2(point1,normalize(point2-point1));}vec2 closest_point(const in Line2 line,const in vec2 point){vec2 r=point-line.point;float d=dot(r,line.direction);return line.direction*d+line.point;}`
 ;
 
 x_ite_Namespace .add ("Line22.glsl", "assets/shaders/webgl2/common/Line22.glsl", Line22_glsl_default_);
 /* harmony default export */ const Line22_glsl = (Line22_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Material2.glsl.js
-const Material2_glsl_default_ = /* glsl */ `uniform x3d_MaterialParameters x3d_Material;
+const Material2_glsl_default_ = /* glsl */ `
+uniform x3d_MaterialParameters x3d_Material;
 #if defined(X3D_LIGHTING)
 #pragma X3D include "Lighting.glsl"
 #pragma X3D include "Shadow.glsl"
 uniform x3d_LightSourceParameters x3d_LightSource[X3D_NUM_LIGHTS];vec3 getMaterialColor(const in vec3 vertex,const in vec3 N,const in vec3 ambientColor,const in vec3 diffuseColor,const in vec3 specularColor,const in float shininess){vec3 V=normalize(-vertex);vec3 finalColor=vec3(0.0);for(int i=0;i<X3D_NUM_LIGHTS;++i){x3d_LightSourceParameters light=x3d_LightSource[i];vec3 vL=light.location-vertex;float dL=length(light.matrix*vL);if(dL<=light.radius||light.radius<0.0){bool di=light.type==x3d_DirectionalLight;vec3 d=light.direction;vec3 c=light.attenuation;vec3 L=di?-d:normalize(vL);vec3 H=normalize(L+V);float lightAngle=max(dot(N,L),0.0);vec3 diffuseTerm=diffuseColor*lightAngle;float specularFactor=shininess>0.0?pow(max(dot(N,H),0.0),shininess*128.0):1.0;vec3 specularTerm=specularColor*specularFactor;float attenuationFactor=di?1.0:getAttenuation(c,dL);float spotFactor=light.type==x3d_SpotLight?getSpotFactor(L,d,light.cutOffAngle,light.beamWidth):1.0;float attenuationSpotFactor=attenuationFactor*spotFactor;vec3 ambientTerm=light.ambientIntensity*ambientColor;vec3 diffuseSpecularTerm=light.intensity*(diffuseTerm+specularTerm);
 #if defined(X3D_FRAGMENT_SHADER)&&defined(X3D_SHADOWS)
-if(lightAngle>0.0&&light.shadowIntensity>0.0)diffuseSpecularTerm=mix(diffuseSpecularTerm,light.shadowColor,getShadowIntensity(i,light));
+if(lightAngle>0.0)diffuseSpecularTerm=mix(diffuseSpecularTerm,light.shadowColor,getShadowIntensity(i,light));
 #endif
 finalColor+=attenuationSpotFactor*light.color*(ambientTerm+diffuseSpecularTerm);}}return finalColor;}
 #endif
@@ -93913,37 +94759,55 @@ finalColor+=attenuationSpotFactor*light.color*(ambientTerm+diffuseSpecularTerm);
 x_ite_Namespace .add ("Material2.glsl", "assets/shaders/webgl2/common/Material2.glsl", Material2_glsl_default_);
 /* harmony default export */ const Material2_glsl = (Material2_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Normal2.glsl.js
-const Normal2_glsl_default_ = /* glsl */ `#if defined(X3D_NORMAL_TEXTURE)
-mat3 getTBNMatrix(const in vec2 texCoord){vec3 pos_dx=dFdx(vertex);vec3 pos_dy=dFdy(vertex);vec2 tex_dx=dFdx(texCoord);vec2 tex_dy=dFdy(texCoord);vec3 t=(tex_dy.t*pos_dx-tex_dx.t*pos_dy)/(tex_dx.s*tex_dy.t-tex_dy.s*tex_dx.t);vec3 N=normalize(normal);vec3 T=normalize(t-N*dot(N,t));vec3 B=normalize(cross(N,T));mat3 tbn=mat3(T,B,N);return tbn;}
-#endif
+const Normal2_glsl_default_ = /* glsl */ `
+struct NormalInfo{vec3 ng;vec3 ntex;vec3 n;vec3 t;vec3 b;};
 #if defined(X3D_NORMAL_TEXTURE)
 uniform x3d_NormalTextureParameters x3d_NormalTexture;
 #endif
-vec3 getNormalVector(const in float normalScale){float facing=gl_FrontFacing?1.0:-1.0;
+NormalInfo getNormalInfo(const in float normalScale){
 #if defined(X3D_NORMAL_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_NormalTexture.textureTransformMapping,x3d_NormalTexture.textureCoordinateMapping);
-#if defined(X3D_NORMAL_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-vec3 scale=vec3(vec2(normalScale),1.0);mat3 tbn=getTBNMatrix(texCoord.st);
-#if defined(X3D_NORMAL_TEXTURE_2D)
-vec3 n=texture(x3d_NormalTexture.texture2D,texCoord.st).rgb;
-#elif defined(X3D_NORMAL_TEXTURE_3D)
-vec3 n=texture(x3d_NormalTexture.texture3D,texCoord).rgb;
-#elif defined(X3D_NORMAL_TEXTURE_CUBE)
-vec3 n=texture(x3d_NormalTexture.textureCube,texCoord).rgb;
-#endif
-return normalize(tbn*((n*2.0-1.0)*scale))*facing;
+vec3 UV=getTexCoord(x3d_NormalTexture.textureTransformMapping,x3d_NormalTexture.textureCoordinateMapping);
 #else
-return normalize(normal)*facing;
+vec3 UV=vec3(0.0);
 #endif
-}`
+#if defined(X3D_NORMAL_TEXTURE_FLIP_Y)
+UV.t=1.0-UV.t;
+#endif
+vec3 n,t,b,ng;
+#if defined(X3D_TANGENTS)
+t=normalize(TBN[0]);b=normalize(TBN[1]);ng=normalize(TBN[2]);
+#else
+vec2 uv_dx=dFdx(UV.st);vec2 uv_dy=dFdy(UV.st);if(length(uv_dx)<=1e-2)uv_dx=vec2(1.0,0.0);if(length(uv_dy)<=1e-2)uv_dy=vec2(0.0,1.0);vec3 t_=(uv_dy.t*dFdx(vertex)-uv_dx.t*dFdy(vertex))/(uv_dx.s*uv_dy.t-uv_dy.s*uv_dx.t);ng=normalize(normal);t=normalize(t_-ng*dot(ng,t_));b=cross(ng,t);
+#endif
+if(gl_FrontFacing==false){t*=-1.0;b*=-1.0;ng*=-1.0;}NormalInfo info;info.ng=ng;
+#if defined(X3D_NORMAL_TEXTURE)
+#if __VERSION__==100
+#if defined(X3D_NORMAL_TEXTURE_2D)
+info.ntex=texture2D(x3d_NormalTexture.texture2D,UV.st).rgb;
+#elif defined(X3D_NORMAL_TEXTURE_CUBE)
+info.ntex=textureCube(x3d_NormalTexture.textureCube,UV).rgb;
+#endif
+#else
+#if defined(X3D_NORMAL_TEXTURE_2D)
+info.ntex=texture(x3d_NormalTexture.texture2D,UV.st).rgb;
+#elif defined(X3D_NORMAL_TEXTURE_3D)
+info.ntex=texture(x3d_NormalTexture.texture3D,UV).rgb;
+#elif defined(X3D_NORMAL_TEXTURE_CUBE)
+info.ntex=texture(x3d_NormalTexture.textureCube,UV).rgb;
+#endif
+#endif
+info.ntex=info.ntex*2.0-vec3(1.0);info.ntex*=vec3(vec2(normalScale),1.0);info.ntex=normalize(info.ntex);info.n=normalize(mat3(t,b,ng)*info.ntex);
+#else
+info.n=ng;
+#endif
+info.t=t;info.b=b;return info;}vec3 getNormalVector(const in float normalScale){return getNormalInfo(normalScale).n;}`
 ;
 
 x_ite_Namespace .add ("Normal2.glsl", "assets/shaders/webgl2/common/Normal2.glsl", Normal2_glsl_default_);
 /* harmony default export */ const Normal2_glsl = (Normal2_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Instancing2.glsl.js
-const Instancing2_glsl_default_ = /* glsl */ `#if defined(X3D_INSTANCING)
+const Instancing2_glsl_default_ = /* glsl */ `
+#if defined(X3D_INSTANCING)
 #if defined(X3D_TEX_COORD_RAMP)
 uniform sampler2D x3d_TexCoordRamp;in vec4 x3d_Particle;vec4 getInstanceTexCoord(const in vec4 texCoord){const int map[6]=int[6](0,1,2,0,2,3);int index0=int(x3d_Particle[3]);return texelFetch(x3d_TexCoordRamp,index0+map[gl_VertexID % 6],0);}
 #else
@@ -93966,7 +94830,8 @@ in mat4 x3d_InstanceMatrix;vec4 getInstanceVertex(const in vec4 vertex){return x
 x_ite_Namespace .add ("Instancing2.glsl", "assets/shaders/webgl2/common/Instancing2.glsl", Instancing2_glsl_default_);
 /* harmony default export */ const Instancing2_glsl = (Instancing2_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Perlin2.glsl.js
-const Perlin2_glsl_default_ = /* glsl */ `float rand(const in vec2 co){return fract(sin(dot(co.xy,vec2(12.9898,78.233)))*43758.5453);}float rand(const in vec2 co,const in float l){return rand(vec2(rand(co),l));}float rand(const in vec2 co,const in float l,const in float t){return rand(vec2(rand(co,l),t));}float perlin(const in vec2 p,const in float dim,const in float time){const float M_PI=3.14159265358979323846;vec2 pos=floor(p*dim);vec2 posx=pos+vec2(1.0,0.0);vec2 posy=pos+vec2(0.0,1.0);vec2 posxy=pos+vec2(1.0);float c=rand(pos,dim,time);float cx=rand(posx,dim,time);float cy=rand(posy,dim,time);float cxy=rand(posxy,dim,time);vec2 d=fract(p*dim);d=-0.5*cos(d*M_PI)+0.5;float ccx=mix(c,cx,d.x);float cycxy=mix(cy,cxy,d.x);float center=mix(ccx,cycxy,d.y);return center*2.0-1.0;}vec3 perlin(const in vec3 p){return vec3(perlin(p.xy,1.0,0.0),perlin(p.yz,1.0,0.0),perlin(p.zx,1.0,0.0));}`
+const Perlin2_glsl_default_ = /* glsl */ `
+float rand(const in vec2 co){return fract(sin(dot(co.xy,vec2(12.9898,78.233)))*43758.5453);}float rand(const in vec2 co,const in float l){return rand(vec2(rand(co),l));}float rand(const in vec2 co,const in float l,const in float t){return rand(vec2(rand(co,l),t));}float perlin(const in vec2 p,const in float dim,const in float time){const float M_PI=3.14159265358979323846;vec2 pos=floor(p*dim);vec2 posx=pos+vec2(1.0,0.0);vec2 posy=pos+vec2(0.0,1.0);vec2 posxy=pos+vec2(1.0);float c=rand(pos,dim,time);float cx=rand(posx,dim,time);float cy=rand(posy,dim,time);float cxy=rand(posxy,dim,time);vec2 d=fract(p*dim);d=-0.5*cos(d*M_PI)+0.5;float ccx=mix(c,cx,d.x);float cycxy=mix(cy,cxy,d.x);float center=mix(ccx,cycxy,d.y);return center*2.0-1.0;}vec3 perlin(const in vec3 p){return vec3(perlin(p.xy,1.0,0.0),perlin(p.yz,1.0,0.0),perlin(p.zx,1.0,0.0));}`
 ;
 
 x_ite_Namespace .add ("Perlin2.glsl", "assets/shaders/webgl2/common/Perlin2.glsl", Perlin2_glsl_default_);
@@ -93974,19 +94839,29 @@ x_ite_Namespace .add ("Perlin2.glsl", "assets/shaders/webgl2/common/Perlin2.glsl
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Point2.glsl.js
 
 
-const Point2_glsl_default_ = /* glsl */ `#if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
+const Point2_glsl_default_ = /* glsl */ `
+#if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
 void setPointTexCoords(){vec4 texCoord=vec4(gl_PointCoord.x,1.0-gl_PointCoord.y,0.0,1.0);
 ${Array .from ({ length: maxTexCoords }, (_, i) => /* glsl */ `
 #if X3D_NUM_TEXTURE_COORDINATES > ${i}
+#if __VERSION__ == 100
+texCoord${i} = texCoord;
+#else
 texCoords [${i}] = texCoord;
+#endif
 #endif
 `) .join ("\n")}
 }
 #define getPointColor(color)(color)
 #else
 #define setPointTexCoords()
-in float pointSize;vec4 getPointColor(in vec4 color){if(pointSize>1.0)color.a*=clamp(pointSize*(0.5-distance(vec2(0.5),gl_PointCoord)),0.0,1.0);else color.a*=pointSize;return color;}
+#if __VERSION__==100
+varying float pointSize;
+#else
+in float pointSize;
+#endif
+vec4 getPointColor(in vec4 color){if(pointSize>1.0)color.a*=clamp(pointSize*(0.5-distance(vec2(0.5),gl_PointCoord)),0.0,1.0);else color.a*=pointSize;return color;}
 #endif
 #endif
 `
@@ -93995,8 +94870,15 @@ in float pointSize;vec4 getPointColor(in vec4 color){if(pointSize>1.0)color.a*=c
 x_ite_Namespace .add ("Point2.glsl", "assets/shaders/webgl2/common/Point2.glsl", Point2_glsl_default_);
 /* harmony default export */ const Point2_glsl = (Point2_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/PointSize2.glsl.js
-const PointSize2_glsl_default_ = /* glsl */ `#if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
-uniform x3d_PointPropertiesParameters x3d_PointProperties;out float pointSize;float getPointSize(const in vec3 vertex){float pointSizeMinValue=x3d_PointProperties.pointSizeMinValue;float pointSizeMaxValue=x3d_PointProperties.pointSizeMaxValue;vec3 attenuation=x3d_PointProperties.attenuation;float dL=length(vertex);float pointSize=0.0;pointSize=x3d_PointProperties.pointSizeScaleFactor;pointSize/=dot(attenuation,vec3(1.0,dL,dL*dL));pointSize=clamp(pointSize,pointSizeMinValue,pointSizeMaxValue);
+const PointSize2_glsl_default_ = /* glsl */ `
+#if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
+uniform x3d_PointPropertiesParameters x3d_PointProperties;
+#if __VERSION__==100
+varying float pointSize;
+#else
+out float pointSize;
+#endif
+float getPointSize(const in vec3 vertex){float pointSizeMinValue=x3d_PointProperties.pointSizeMinValue;float pointSizeMaxValue=x3d_PointProperties.pointSizeMaxValue;vec3 attenuation=x3d_PointProperties.attenuation;float dL=length(vertex);float pointSize=0.0;pointSize=x3d_PointProperties.pointSizeScaleFactor;pointSize/=dot(attenuation,vec3(1.0,dL,dL*dL));pointSize=clamp(pointSize,pointSizeMinValue,pointSizeMaxValue);
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURE)
 return pointSize;
 #else
@@ -94010,7 +94892,8 @@ return pointSize+1.0-step(pointSize,1.0);
 x_ite_Namespace .add ("PointSize2.glsl", "assets/shaders/webgl2/common/PointSize2.glsl", PointSize2_glsl_default_);
 /* harmony default export */ const PointSize2_glsl = (PointSize2_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Shadow2.glsl.js
-const Shadow2_glsl_default_ = /* glsl */ `#if defined(X3D_FRAGMENT_SHADER)&&defined(X3D_SHADOWS)
+const Shadow2_glsl_default_ = /* glsl */ `
+#if defined(X3D_FRAGMENT_SHADER)&&defined(X3D_SHADOWS)
 uniform sampler2D x3d_ShadowMap[X3D_NUM_LIGHTS];float getShadowDepth(const in int index,const in vec2 shadowCoord){switch(index){
 #if X3D_NUM_LIGHTS>0
 case 0:{return texture(x3d_ShadowMap[0],shadowCoord).r;}
@@ -94039,7 +94922,7 @@ case 7:{return texture(x3d_ShadowMap[7],shadowCoord).r;}
 default:{return 0.0;}}}float texture2DCompare(const in int index,const in vec2 texCoord,const in float compare){float shadowDepth=getShadowDepth(index,texCoord);return(1.0-step(1.0,shadowDepth))*step(shadowDepth,compare);}float texture2DShadowLerp(const in int index,const in vec2 texelSize,const in float shadowMapSize,const in vec2 texCoord,const in float compare){const vec2 offset=vec2(0.0,1.0);vec2 centroidTexCoord=floor(texCoord*shadowMapSize+0.5)/shadowMapSize;float lb=texture2DCompare(index,centroidTexCoord+texelSize*offset.xx,compare);float lt=texture2DCompare(index,centroidTexCoord+texelSize*offset.xy,compare);float rb=texture2DCompare(index,centroidTexCoord+texelSize*offset.yx,compare);float rt=texture2DCompare(index,centroidTexCoord+texelSize*offset.yy,compare);vec2 f=fract(texCoord*shadowMapSize+0.5);float a=mix(lb,lt,f.y);float b=mix(rb,rt,f.y);float c=mix(a,b,f.x);return c;}vec2 cubeToUVCompact(in vec3 v,const float texelSizeY){vec3 absV=abs(v);float scaleToCube=1.0/max(absV.x,max(absV.y,absV.z));absV*=scaleToCube;v*=scaleToCube*(1.0-2.0*texelSizeY);vec2 planar=v.xy;float almostATexel=1.5*texelSizeY;float almostOne=1.0-almostATexel;if(absV.z>=almostOne){if(v.z>0.0)planar.x=4.0-v.x;}else if(absV.x>=almostOne){float signX=sign(v.x);planar.x=v.z*signX+2.0*signX;}else if(absV.y>=almostOne){float signY=sign(v.y);planar.x=(v.x+0.5+signY)*2.0;planar.y=v.z*signY-2.0;}return vec2(0.125,0.25)*planar+vec2(0.375,0.75);}mat4 getPointLightRotations(const in vec3 vector){mat4 rotations[6];rotations[0]=mat4(0,0,1,0,0,1,0,0,-1,0,0,0,0,0,0,1);rotations[1]=mat4(0,0,-1,0,0,1,0,0,1,0,0,0,0,0,0,1);rotations[2]=mat4(-1,0,0,0,0,1,0,0,0,0,-1,0,0,0,0,1);rotations[3]=mat4(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);rotations[4]=mat4(1,0,0,0,0,0,1,0,0,-1,0,0,0,0,0,1);rotations[5]=mat4(1,0,0,0,0,0,-1,0,0,1,0,0,0,0,0,1);vec3 a=abs(vector.xyz);if(a.x>a.y){if(a.x>a.z)return vector.x>0.0?rotations[1]:rotations[0];else return vector.z>0.0?rotations[2]:rotations[3];}else{if(a.y>a.z)return vector.y>0.0?rotations[5]:rotations[4];else return vector.z>0.0?rotations[2]:rotations[3];}return rotations[3];}float getShadowIntensity(const in int index,const in x3d_LightSourceParameters light){if(light.type==x3d_PointLight){const mat4 biasMatrix=mat4(0.5,0.0,0.0,0.0,0.0,0.5,0.0,0.0,0.0,0.0,0.5,0.0,0.5,0.5,0.5,1.0);const mat4 projectionMatrix=mat4(1.0,0.0,0.0,0.0,0.0,0.5,0.0,0.0,0.0,0.0,-1.000025000312504,-1.0,0,0.0,-0.25000312503906297,0.0);vec2 texelSize=vec2(1.0)/(float(light.shadowMapSize)*vec2(4.0,2.0));vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);vec3 lightToPosition=shadowCoord.xyz;shadowCoord=biasMatrix*(projectionMatrix*(getPointLightRotations(lightToPosition)*shadowCoord));shadowCoord.z-=light.shadowBias;shadowCoord.xyz/=shadowCoord.w;
 #if defined(X3D_PCF_FILTERING)||defined(X3D_PCF_SOFT_FILTERING)
 vec2 offset=vec2(-1,1)*(texelSize.y*42.0);float value=(texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.xyy,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.yyy,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.xyx,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.yyx,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.xxy,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.yxy,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.xxx,texelSize.y),shadowCoord.z)+texture2DCompare(index,cubeToUVCompact(lightToPosition+offset.yxx,texelSize.y),shadowCoord.z))*(1.0/9.0);return light.shadowIntensity*value;
-#else 
+#else
 float value=texture2DCompare(index,cubeToUVCompact(lightToPosition,texelSize.y),shadowCoord.z);return light.shadowIntensity*value;
 #endif
 }else{
@@ -94047,7 +94930,7 @@ float value=texture2DCompare(index,cubeToUVCompact(lightToPosition,texelSize.y),
 vec2 texelSize=vec2(1.0)/vec2(light.shadowMapSize);vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);shadowCoord.z-=light.shadowBias;shadowCoord.xyz/=shadowCoord.w;if(any(greaterThan(abs(shadowCoord.xy-0.5),vec2(0.5))))return 0.0;vec2 d0=-texelSize;vec2 d1=texelSize;float value=(texture2DCompare(index,shadowCoord.xy+d0,shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(0.0,d0.y),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(d1.x,d0.y),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(d0.x,0.0),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy,shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(d1.x,0.0),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(d0.x,d1.y),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+vec2(0.0,d1.y),shadowCoord.z)+texture2DCompare(index,shadowCoord.xy+d1,shadowCoord.z))*(1.0/9.0);return light.shadowIntensity*value;
 #elif defined(X3D_PCF_SOFT_FILTERING)
 vec2 texelSize=vec2(1.0)/vec2(light.shadowMapSize);vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);shadowCoord.z-=light.shadowBias;shadowCoord.xyz/=shadowCoord.w;if(any(greaterThan(abs(shadowCoord.xy-0.5),vec2(0.5))))return 0.0;vec2 d0=-texelSize;vec2 d1=texelSize;float value=(texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+d0,shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(0.0,d0.y),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(d1.x,d0.y),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(d0.x,0.0),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy,shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(d1.x,0.0),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(d0.x,d1.y),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+vec2(0.0,d1.y),shadowCoord.z)+texture2DShadowLerp(index,texelSize,float(shadowMapSize),shadowCoord.xy+d1,shadowCoord.z))*(1.0/9.0);return light.shadowIntensity*value;
-#else 
+#else
 vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);shadowCoord.z-=light.shadowBias;shadowCoord.xyz/=shadowCoord.w;if(any(greaterThan(abs(shadowCoord.xy-0.5),vec2(0.5))))return 0.0;float value=texture2DCompare(index,shadowCoord.xy,shadowCoord.z);return light.shadowIntensity*value;
 #endif
 }return 0.0;}
@@ -94058,29 +94941,45 @@ vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);shadowCoord.z-=light.shadow
 x_ite_Namespace .add ("Shadow2.glsl", "assets/shaders/webgl2/common/Shadow2.glsl", Shadow2_glsl_default_);
 /* harmony default export */ const Shadow2_glsl = (Shadow2_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Skin2.glsl.js
-const Skin2_glsl_default_ = /* glsl */ `#if defined(X3D_SKINNING)
+const Skin2_glsl_default_ = /* glsl */ `
+#if defined(X3D_SKINNING)
 in float x3d_CoordIndex;uniform sampler2D x3d_JointsTexture;uniform sampler2D x3d_DisplacementsTexture;uniform sampler2D x3d_JointMatricesTexture;mat4 getJointMatrix(const in int joint){vec4 a=texelFetch(x3d_JointMatricesTexture,joint*8,0);vec4 b=texelFetch(x3d_JointMatricesTexture,joint*8+1,0);vec4 c=texelFetch(x3d_JointMatricesTexture,joint*8+2,0);vec4 d=texelFetch(x3d_JointMatricesTexture,joint*8+3,0);return mat4(a,b,c,d);}mat3 getDisplacementJointMatrix(const in int joint){mat4 m=getJointMatrix(joint);return mat3(m[0].xyz,m[1].xyz,m[2].xyz);}
 #if defined(X3D_NORMALS)
-vec3 skinNormal=vec3(0.0);mat3 getJointNormalMatrix(const in int joint){vec4 a=texelFetch(x3d_JointMatricesTexture,joint*8+4,0);vec4 b=texelFetch(x3d_JointMatricesTexture,joint*8+5,0);vec4 c=texelFetch(x3d_JointMatricesTexture,joint*8+6,0);return mat3(a.xyz,vec3(a.w,b.xy),vec3(b.zw,c.x));}
+vec3 skinNormal=vec3(0.0);
+#if defined(X3D_TANGENTS)
+vec3 skinTangent=vec3(0.0);
+#endif
+mat3 getJointNormalMatrix(const in int joint){vec4 a=texelFetch(x3d_JointMatricesTexture,joint*8+4,0);vec4 b=texelFetch(x3d_JointMatricesTexture,joint*8+5,0);vec4 c=texelFetch(x3d_JointMatricesTexture,joint*8+6,0);return mat3(a.xyz,vec3(a.w,b.xy),vec3(b.zw,c.x));}
 #define getSkinNormal(normal)(skinNormal)
+#if defined(X3D_TANGENTS)
+#define getSkinTangent(tangent)(skinTangent)
+#endif
 #else
 #define getSkinNormal(normal)(normal)
+#define getSkinTangent(tangent)(tangent)
 #endif
-vec4 getSkinVertex(const in vec4 vertex,const in vec3 normal){int coordIndex=int(x3d_CoordIndex);vec4 skin=vertex;
+vec4 getSkinVertex(const in vec4 vertex,const in vec3 normal,const in vec3 tangent){int coordIndex=int(x3d_CoordIndex);vec4 skin=vertex;
 #if defined(X3D_NORMALS)
 skinNormal=normal;
+#if defined(X3D_TANGENTS)
+skinTangent=tangent;
+#endif
 #endif
 #if X3D_NUM_DISPLACEMENTS>0
 {int coordIndexD=coordIndex*X3D_NUM_DISPLACEMENTS;int width=textureSize(x3d_DisplacementsTexture,0).x;int offset=(width*width)/2;for(int i=0;i<X3D_NUM_DISPLACEMENTS;++i){int index=coordIndexD+i;vec4 displacement=texelFetch(x3d_DisplacementsTexture,index,0);float weight=texelFetch(x3d_DisplacementsTexture,index+offset,0).x;skin.xyz+=getDisplacementJointMatrix(int(displacement.w))*displacement.xyz*weight;}}
 #endif
 int coordIndexJ=coordIndex*(X3D_NUM_JOINT_SETS*2);for(int i=0;i<X3D_NUM_JOINT_SETS;++i){int index=coordIndexJ+i;ivec4 joints=ivec4(texelFetch(x3d_JointsTexture,index,0));vec4 weights=texelFetch(x3d_JointsTexture,index+X3D_NUM_JOINT_SETS,0);for(int i=0;i<4;++i){int joint=joints[i];float weight=weights[i];skin+=(getJointMatrix(joint)*vertex-vertex)*weight;
 #if defined(X3D_NORMALS)
-skinNormal+=(getJointNormalMatrix(joint)*normal-normal)*weight;
+mat3 jointNormalMatrix=getJointNormalMatrix(joint);skinNormal+=(jointNormalMatrix*normal-normal)*weight;
+#if defined(X3D_TANGENTS)
+skinTangent+=(jointNormalMatrix*tangent-tangent)*weight;
+#endif
 #endif
 }}return skin;}
 #else
-#define getSkinVertex(vertex,normal)(vertex)
+#define getSkinVertex(vertex,normal,tangent)(vertex)
 #define getSkinNormal(normal)(normal)
+#define getSkinTangent(tangent)(tangent)
 #endif
 `
 ;
@@ -94088,7 +94987,8 @@ skinNormal+=(getJointNormalMatrix(joint)*normal-normal)*weight;
 x_ite_Namespace .add ("Skin2.glsl", "assets/shaders/webgl2/common/Skin2.glsl", Skin2_glsl_default_);
 /* harmony default export */ const Skin2_glsl = (Skin2_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Stipple2.glsl.js
-const Stipple2_glsl_default_ = /* glsl */ `#if defined(X3D_GEOMETRY_1D)&&defined(X3D_STYLE_PROPERTIES)
+const Stipple2_glsl_default_ = /* glsl */ `
+#if defined(X3D_GEOMETRY_1D)&&defined(X3D_STYLE_PROPERTIES)
 #pragma X3D include "Line2.glsl"
 uniform x3d_LinePropertiesParameters x3d_LineProperties;flat in float lengthSoFar;flat in vec2 startPoint;in vec2 midPoint;void stipple(){vec2 point=closest_point(line2(startPoint,midPoint),gl_FragCoord.xy);float s=(lengthSoFar+length(point-startPoint))*x3d_LineProperties.lineStippleScale;
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
@@ -94112,7 +95012,8 @@ x_ite_Namespace .add ("Stipple2.glsl", "assets/shaders/webgl2/common/Stipple2.gl
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Texture2.glsl.js
 
 
-const Texture2_glsl_default_ = /* glsl */ `#if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
+const Texture2_glsl_default_ = /* glsl */ `
+#if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
 #pragma X3D include "Perlin.glsl"
 vec4 texCoords[X3D_NUM_TEXTURE_COORDINATES];void setTexCoords(){
 ${Array .from ({ length: maxTexCoords }, (_, i) => /* glsl */ `
@@ -94125,14 +95026,14 @@ texCoords [${i}] = texCoord${i};
 if(gl_FrontFacing==false)texCoord.s=1.0-texCoord.s;
 #endif
 return texCoord.stp;}
-#endif 
+#endif
 #if defined(X3D_TEXTURE)
 uniform sampler2D x3d_Texture2D[X3D_NUM_TEXTURES];uniform sampler3D x3d_Texture3D[X3D_NUM_TEXTURES];uniform samplerCube x3d_TextureCube[X3D_NUM_TEXTURES];vec4 getTexture(const in int i,in vec3 texCoord){vec4 textureColor=vec4(1.0);switch(i){
 ${Array .from ({ length: maxTextures }, (_, i) => /* glsl */ `
 #if X3D_NUM_TEXTURES > ${i}
 case ${i}:
 {
-#if !defined (X3D_PHYSICAL_MATERIAL) && defined (X3D_TEXTURE${i}_FLIP_Y)
+#if defined (X3D_TEXTURE${i}_FLIP_Y)
 texCoord .t = 1.0 - texCoord .t;
 #endif
 #if defined (X3D_TEXTURE${i}_2D)
@@ -94162,7 +95063,7 @@ vec4 currentColor=diffuseColor;for(int i=0;i<X3D_NUM_TEXTURES;++i){vec3 texCoord
 vec3 texCoord=getTexCoord(0,0);vec4 textureColor=getTexture(0,texCoord);return diffuseColor*textureColor;
 #endif
 }
-#endif 
+#endif
 #if defined(X3D_TEXTURE_PROJECTION)
 uniform vec3 x3d_TextureProjectorColor[X3D_NUM_TEXTURE_PROJECTORS];uniform float x3d_TextureProjectorIntensity[X3D_NUM_TEXTURE_PROJECTORS];uniform vec3 x3d_TextureProjectorLocation[X3D_NUM_TEXTURE_PROJECTORS];uniform vec3 x3d_TextureProjectorParams[X3D_NUM_TEXTURE_PROJECTORS];uniform mat4 x3d_TextureProjectorMatrix[X3D_NUM_TEXTURE_PROJECTORS];uniform sampler2D x3d_TextureProjectorTexture[X3D_NUM_TEXTURE_PROJECTORS];vec4 getTextureProjectorTexture(const in int i,const in vec2 texCoord){vec4 textureColor=vec4(1.0);switch(i){
 ${Array .from ({ length: maxTextures }, (_, i) => /* glsl */ `
@@ -94179,14 +95080,15 @@ if(!bool(x3d_TextureProjectorParams[i].z))T=sRGBToLinear(T);
 if(bool(x3d_TextureProjectorParams[i].z))T=linearTosRGB(T);
 #endif
 currentColor*=mix(vec3(1.0),T.rgb*x3d_TextureProjectorColor[i],T.a*x3d_TextureProjectorIntensity[i]);}return currentColor;}
-#endif 
+#endif
 `
 ;
 
 x_ite_Namespace .add ("Texture2.glsl", "assets/shaders/webgl2/common/Texture2.glsl", Texture2_glsl_default_);
 /* harmony default export */ const Texture2_glsl = (Texture2_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Utils2.glsl.js
-const Utils2_glsl_default_ = /* glsl */ `#if defined(X3D_SKINNING)||defined(X3D_INSTANCING)
+const Utils2_glsl_default_ = /* glsl */ `
+#if defined(X3D_SKINNING)||defined(X3D_INSTANCING)
 vec4 texelFetch(const in sampler2D _sampler,const in int index,const in int lod){int x=textureSize(_sampler,lod).x;ivec2 p=ivec2(index % x,index/x);vec4 t=texelFetch(_sampler,p,lod);return t;}
 #endif
 `
@@ -94197,7 +95099,8 @@ x_ite_Namespace .add ("Utils2.glsl", "assets/shaders/webgl2/common/Utils2.glsl",
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Vertex2.glsl.js
 
 
-const Vertex2_glsl_default_ = /* glsl */ `uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;
+const Vertex2_glsl_default_ = /* glsl */ `
+uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;
 #if defined(X3D_GEOMETRY_1D)&&defined(X3D_STYLE_PROPERTIES)
 in vec3 x3d_LineStipple;
 #endif
@@ -94209,13 +95112,11 @@ in vec4 x3d_Color;
 #endif
 #if!defined(X3D_GEOMETRY_0D)&&!defined(X3D_GEOMETRY_1D)
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
-
 ${Array .from ({ length: maxTexCoords }, (_, i) => /* glsl */ `
 #if X3D_NUM_TEXTURE_COORDINATES > ${i}
 in vec4 x3d_TexCoord${i};
 #endif
 `) .join ("\n")}
- 
 #endif
 #endif
 in vec4 x3d_Vertex;
@@ -94227,19 +95128,22 @@ out vec4 color;
 #endif
 #if!defined(X3D_GEOMETRY_0D)&&!defined(X3D_GEOMETRY_1D)
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
-
 ${Array .from ({ length: maxTexCoords }, (_, i) => /* glsl */ `
 #if X3D_NUM_TEXTURE_COORDINATES > ${i}
 out vec4 texCoord${i};
 #endif
 `) .join ("\n")}
- 
 #endif
 #endif
 #if defined(X3D_NORMALS)
 uniform mat3 x3d_NormalMatrix;in vec3 x3d_Normal;out vec3 normal;
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
 out vec3 localNormal;
+#endif
+#if defined(X3D_TANGENTS)
+in vec4 x3d_Tangent;out mat3 TBN;
+#else
+vec4 x3d_Tangent;
 #endif
 #endif
 #if defined(X3D_GEOMETRY_1D)&&defined(X3D_STYLE_PROPERTIES)
@@ -94258,9 +95162,12 @@ out float depth;
 #pragma X3D include "PointSize.glsl"
 void vertex_main(){
 #if defined(X3D_NORMALS)
-vec4 x3d_TransformedVertex=getInstanceVertex(getSkinVertex(x3d_Vertex,x3d_Normal));vec3 x3d_TransformedNormal=getInstanceNormal(getSkinNormal(x3d_Normal));
+vec4 x3d_TransformedVertex=getInstanceVertex(getSkinVertex(x3d_Vertex,x3d_Normal,x3d_Tangent.xyz));vec3 x3d_TransformedNormal=getInstanceNormal(getSkinNormal(x3d_Normal));
+#if defined(X3D_TANGENTS)
+vec3 x3d_TransformedTangent=getInstanceNormal(getSkinTangent(x3d_Tangent.xyz));
+#endif
 #else
-vec4 x3d_TransformedVertex=getInstanceVertex(getSkinVertex(x3d_Vertex,vec3(0.0)));
+vec4 x3d_TransformedVertex=getInstanceVertex(getSkinVertex(x3d_Vertex,vec3(0.0),vec3(0.0)));
 #endif
 vec4 position=x3d_ModelViewMatrix*x3d_TransformedVertex;vertex=position.xyz;
 #if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
@@ -94279,19 +95186,20 @@ color=x3d_Color;
 #endif
 #if!defined(X3D_GEOMETRY_0D)&&!defined(X3D_GEOMETRY_1D)
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
-
 ${Array .from ({ length: maxTexCoords }, (_, i) => /* glsl */ `
 #if X3D_NUM_TEXTURE_COORDINATES > ${i}
 texCoord${i} = getInstanceTexCoord (x3d_TexCoord${i});
 #endif
 `) .join ("\n")}
- 
 #endif
 #endif
 #if defined(X3D_NORMALS)
 normal=x3d_NormalMatrix*x3d_TransformedNormal;
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
 localNormal=x3d_TransformedNormal;
+#endif
+#if defined(X3D_TANGENTS)
+vec3 tangent=x3d_NormalMatrix*x3d_TransformedTangent;vec3 bitangent=cross(normal,tangent)*x3d_Tangent.w;TBN=mat3(tangent,bitangent,normal);
 #endif
 #endif
 #if defined(X3D_TEXTURE)||defined(X3D_MATERIAL_TEXTURES)
@@ -94307,13 +95215,15 @@ depth=1.0+gl_Position.w;
 x_ite_Namespace .add ("Vertex2.glsl", "assets/shaders/webgl2/common/Vertex2.glsl", Vertex2_glsl_default_);
 /* harmony default export */ const Vertex2_glsl = (Vertex2_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/FullScreen1.vs.js
-const FullScreen1_vs_default_ = /* glsl */ `precision highp float;precision highp int;precision highp sampler2D;attribute vec2 x3d_Vertex;varying vec2 texCoord;void main(){texCoord=x3d_Vertex;gl_Position=vec4(x3d_Vertex,0.0,1.0);}`
+const FullScreen1_vs_default_ = /* glsl */ `
+precision highp float;precision highp int;precision highp sampler2D;attribute vec2 x3d_Vertex;varying vec2 texCoord;void main(){texCoord=x3d_Vertex;gl_Position=vec4(x3d_Vertex,0.0,1.0);}`
 ;
 
 x_ite_Namespace .add ("FullScreen1.vs", "assets/shaders/webgl1/FullScreen1.vs", FullScreen1_vs_default_);
 /* harmony default export */ const FullScreen1_vs = (FullScreen1_vs_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Default1.vs.js
-const Default1_vs_default_ = /* glsl */ `precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
+const Default1_vs_default_ = /* glsl */ `
+precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
 #pragma X3D include "common/Vertex.glsl"
 void main(){vertex_main();}`
 ;
@@ -94321,7 +95231,8 @@ void main(){vertex_main();}`
 x_ite_Namespace .add ("Default1.vs", "assets/shaders/webgl1/Default1.vs", Default1_vs_default_);
 /* harmony default export */ const Default1_vs = (Default1_vs_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Depth1.fs.js
-const Depth1_fs_default_ = /* glsl */ `precision highp float;precision highp int;precision highp sampler2D;varying vec3 vertex;
+const Depth1_fs_default_ = /* glsl */ `
+precision highp float;precision highp int;precision highp sampler2D;varying vec3 vertex;
 #pragma X3D include "common/ClipPlanes.glsl"
 #pragma X3D include "common/Point.glsl"
 void main(){
@@ -94337,7 +95248,8 @@ gl_FragColor=vec4(gl_FragCoord.z);}`
 x_ite_Namespace .add ("Depth1.fs", "assets/shaders/webgl1/Depth1.fs", Depth1_fs_default_);
 /* harmony default export */ const Depth1_fs = (Depth1_fs_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Depth1.vs.js
-const Depth1_vs_default_ = /* glsl */ `precision highp float;precision highp int;uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;attribute vec4 x3d_Vertex;varying vec3 vertex;
+const Depth1_vs_default_ = /* glsl */ `
+precision highp float;precision highp int;uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;attribute vec4 x3d_Vertex;varying vec3 vertex;
 #pragma X3D include "common/PointSize.glsl"
 void main(){vec4 position=x3d_ModelViewMatrix*x3d_Vertex;vertex=position.xyz;
 #if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
@@ -94351,7 +95263,8 @@ gl_Position=x3d_ProjectionMatrix*position;}`
 x_ite_Namespace .add ("Depth1.vs", "assets/shaders/webgl1/Depth1.vs", Depth1_vs_default_);
 /* harmony default export */ const Depth1_vs = (Depth1_vs_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Gouraud1.fs.js
-const Gouraud1_fs_default_ = /* glsl */ `precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
+const Gouraud1_fs_default_ = /* glsl */ `
+precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
 #pragma X3D include "common/Fragment.glsl"
 varying vec4 frontColor;
 #if!defined(X3D_GEOMETRY_0D)&&!defined(X3D_GEOMETRY_1D)
@@ -94375,7 +95288,8 @@ return finalColor;}void main(){fragment_main();}`
 x_ite_Namespace .add ("Gouraud1.fs", "assets/shaders/webgl1/Gouraud1.fs", Gouraud1_fs_default_);
 /* harmony default export */ const Gouraud1_fs = (Gouraud1_fs_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Gouraud1.vs.js
-const Gouraud1_vs_default_ = /* glsl */ `precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
+const Gouraud1_vs_default_ = /* glsl */ `
+precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
 #pragma X3D include "common/Vertex.glsl"
 #pragma X3D include "common/Material.glsl"
 varying vec4 frontColor;
@@ -94409,55 +95323,129 @@ backColor=getMaterialColor(-normal,vertex,x3d_Material);
 x_ite_Namespace .add ("Gouraud1.vs", "assets/shaders/webgl1/Gouraud1.vs", Gouraud1_vs_default_);
 /* harmony default export */ const Gouraud1_vs = (Gouraud1_vs_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/PBR1.fs.js
-const PBR1_fs_default_ = /* glsl */ `#extension GL_OES_standard_derivatives:enable
+const PBR1_fs_default_ = /* glsl */ `
+#extension GL_OES_standard_derivatives:enable
 #extension GL_EXT_frag_depth:enable
 #extension GL_EXT_shader_texture_lod:enable
 precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
 #pragma X3D include "common/Fragment.glsl"
 #pragma X3D include "common/Normal.glsl"
 #pragma X3D include "common/Shadow.glsl"
+#if defined(X3D_TRANSMISSION_MATERIAL_EXT)
+uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;
+#endif
 #if defined(X3D_LIGHTING)
 uniform x3d_LightSourceParameters x3d_LightSource[X3D_NUM_LIGHTS];
 #endif
 uniform x3d_PhysicalMaterialParameters x3d_Material;
-#pragma X3D include "pbr/BDRF.glsl"
+#pragma X3D include "pbr/BRDF.glsl"
 #pragma X3D include "pbr/MaterialInfo.glsl"
 #pragma X3D include "pbr/Punctual.glsl"
 #pragma X3D include "pbr/IBL.glsl"
+#pragma X3D include "pbr/Iridescence.glsl"
 vec4 getMaterialColor(){vec4 baseColor=getBaseColor();
 #if defined(X3D_TEXTURE_PROJECTION)
 baseColor.rgb*=getTextureProjectorColor();
 #endif
-#if defined(X3D_LIGHTING)||defined(X3D_USE_IBL)
-vec3 n=getNormalVector(x3d_Material.normalScale);
+vec3 v=normalize(-vertex);
+#if defined(X3D_USE_IBL)||defined(X3D_LIGHTING)||defined(X3D_ANISOTROPY_MATERIAL_EXT)||defined(X3D_CLEARCOAT_MATERIAL_EXT)
+NormalInfo normalInfo=getNormalInfo(x3d_Material.normalScale);vec3 n=normalInfo.n;float NdotV=clamp(dot(n,v),0.0,1.0);
 #endif
-vec3 v=normalize(-vertex);MaterialInfo materialInfo;materialInfo.baseColor=baseColor.rgb;materialInfo.ior=1.5;materialInfo.f0=vec3(0.04);materialInfo.specularWeight=1.0;
+MaterialInfo materialInfo;materialInfo.baseColor=baseColor.rgb;materialInfo.ior=1.5;materialInfo.f0=vec3(0.04);materialInfo.specularWeight=1.0;
 #if defined(X3D_MATERIAL_METALLIC_ROUGHNESS)
 materialInfo=getMetallicRoughnessInfo(materialInfo);
 #endif
-materialInfo.perceptualRoughness=clamp(materialInfo.perceptualRoughness,0.0,1.0);materialInfo.metallic=clamp(materialInfo.metallic,0.0,1.0);materialInfo.alphaRoughness=materialInfo.perceptualRoughness*materialInfo.perceptualRoughness;float reflectance=max(max(materialInfo.f0.r,materialInfo.f0.g),materialInfo.f0.b);materialInfo.f90=vec3(1.0);vec3 f_specular=vec3(0.0);vec3 f_diffuse=vec3(0.0);vec3 f_emissive=vec3(0.0);vec3 f_clearcoat=vec3(0.0);vec3 f_sheen=vec3(0.0);vec3 f_transmission=vec3(0.0);float albedoSheenScaling=1.0;
+#if defined(X3D_SHEEN_MATERIAL_EXT)
+materialInfo=getSheenInfo(materialInfo);
+#endif
+#if defined(X3D_CLEARCOAT_MATERIAL_EXT)
+materialInfo=getClearCoatInfo(materialInfo,normalInfo);
+#endif
+#if defined(X3D_SPECULAR_MATERIAL_EXT)
+materialInfo=getSpecularInfo(materialInfo);
+#endif
+#if defined(X3D_TRANSMISSION_MATERIAL_EXT)
+materialInfo=getTransmissionInfo(materialInfo);
+#endif
+#if defined(X3D_VOLUME_MATERIAL_EXT)
+materialInfo=getVolumeInfo(materialInfo);
+#endif
+#if defined(X3D_IRIDESCENCE_MATERIAL_EXT)
+materialInfo=getIridescenceInfo(materialInfo);
+#endif
+#if defined(X3D_ANISOTROPY_MATERIAL_EXT)
+materialInfo=getAnisotropyInfo(materialInfo,normalInfo);
+#endif
+materialInfo.perceptualRoughness=clamp(materialInfo.perceptualRoughness,0.0,1.0);materialInfo.metallic=clamp(materialInfo.metallic,0.0,1.0);materialInfo.alphaRoughness=materialInfo.perceptualRoughness*materialInfo.perceptualRoughness;float reflectance=max3(materialInfo.f0);materialInfo.f90=vec3(1.0);vec3 f_specular=vec3(0.0);vec3 f_diffuse=vec3(0.0);vec3 f_emissive=vec3(0.0);vec3 f_clearcoat=vec3(0.0);vec3 f_sheen=vec3(0.0);vec3 f_transmission=vec3(0.0);float albedoSheenScaling=1.0;
+#if defined(X3D_IRIDESCENCE_MATERIAL_EXT)&&(defined(X3D_USE_IBL)||defined(X3D_LIGHTING))
+vec3 iridescenceFresnel=evalIridescence(1.0,materialInfo.iridescenceIor,NdotV,materialInfo.iridescenceThickness,materialInfo.f0);vec3 iridescenceF0=Schlick_to_F0(iridescenceFresnel,NdotV);if(materialInfo.iridescenceThickness==0.0)materialInfo.iridescenceFactor=0.0;
+#endif
 #if defined(X3D_USE_IBL)
+#if defined(X3D_IRIDESCENCE_MATERIAL_EXT)
+f_specular+=getIBLRadianceGGXIridescence(n,v,materialInfo.perceptualRoughness,materialInfo.f0,iridescenceFresnel,materialInfo.iridescenceFactor,materialInfo.specularWeight);f_diffuse+=getIBLRadianceLambertianIridescence(n,v,materialInfo.perceptualRoughness,materialInfo.c_diff,materialInfo.f0,iridescenceF0,materialInfo.iridescenceFactor,materialInfo.specularWeight);
+#elif defined(X3D_ANISOTROPY_MATERIAL_EXT)
+f_specular+=getIBLRadianceAnisotropy(n,v,materialInfo.perceptualRoughness,materialInfo.anisotropyStrength,materialInfo.anisotropicB,materialInfo.f0,materialInfo.specularWeight);f_diffuse+=getIBLRadianceLambertian(n,v,materialInfo.perceptualRoughness,materialInfo.c_diff,materialInfo.f0,materialInfo.specularWeight);
+#else
 f_specular+=getIBLRadianceGGX(n,v,materialInfo.perceptualRoughness,materialInfo.f0,materialInfo.specularWeight);f_diffuse+=getIBLRadianceLambertian(n,v,materialInfo.perceptualRoughness,materialInfo.c_diff,materialInfo.f0,materialInfo.specularWeight);
+#endif
+#if defined(X3D_CLEARCOAT_MATERIAL_EXT)
+f_clearcoat+=getIBLRadianceGGX(materialInfo.clearcoatNormal,v,materialInfo.clearcoatRoughness,materialInfo.clearcoatF0,1.0);
+#endif
+#if defined(X3D_SHEEN_MATERIAL_EXT)
+f_sheen+=getIBLRadianceCharlie(n,v,materialInfo.sheenRoughnessFactor,materialInfo.sheenColorFactor);albedoSheenScaling=1.0-max3(materialInfo.sheenColorFactor)*albedoSheenScalingLUT(NdotV,materialInfo.sheenRoughnessFactor);
+#endif
+#if defined(X3D_TRANSMISSION_MATERIAL_EXT)
+f_transmission+=getIBLVolumeRefraction(n,v,materialInfo.perceptualRoughness,materialInfo.c_diff,materialInfo.f0,materialInfo.f90,vertex,x3d_ModelViewMatrix,x3d_ProjectionMatrix,materialInfo.ior,materialInfo.thickness,materialInfo.attenuationColor,materialInfo.attenuationDistance,materialInfo.dispersion);
+#endif
 #endif
 vec3 f_diffuse_ibl=f_diffuse;vec3 f_specular_ibl=f_specular;vec3 f_sheen_ibl=f_sheen;vec3 f_clearcoat_ibl=f_clearcoat;f_diffuse=vec3(0.0);f_specular=vec3(0.0);f_sheen=vec3(0.0);f_clearcoat=vec3(0.0);
 #if defined(X3D_LIGHTING)
-for(int i=0;i<X3D_NUM_LIGHTS;++i){x3d_LightSourceParameters light=x3d_LightSource[i];vec3 pointToLight;float distanceToLight;if(light.type!=x3d_DirectionalLight){pointToLight=light.location-vertex;distanceToLight=length(light.matrix*pointToLight);}else{pointToLight=-light.direction;distanceToLight=-1.0;}if(distanceToLight<=light.radius||light.radius<0.0){vec3 l=normalize(pointToLight);vec3 h=normalize(l+v);float NdotL=clamp(dot(n,l),0.0,1.0);float NdotV=clamp(dot(n,v),0.0,1.0);float NdotH=clamp(dot(n,h),0.0,1.0);float VdotH=clamp(dot(v,h),0.0,1.0);if(NdotL>0.0||NdotV>0.0){vec3 intensity=getLightIntensity(light,l,distanceToLight);
+for(int i=0;i<X3D_NUM_LIGHTS;++i){x3d_LightSourceParameters light=x3d_LightSource[i];vec3 pointToLight;float distanceToLight;if(light.type!=x3d_DirectionalLight){pointToLight=light.location-vertex;distanceToLight=length(light.matrix*pointToLight);}else{pointToLight=-light.direction;distanceToLight=-1.0;}if(distanceToLight<=light.radius||light.radius<0.0){vec3 l=normalize(pointToLight);vec3 h=normalize(l+v);float NdotL=clamp(dot(n,l),0.0,1.0);float NdotH=clamp(dot(n,h),0.0,1.0);float VdotH=clamp(dot(v,h),0.0,1.0);if(NdotL>0.0||NdotV>0.0){vec3 intensity=getLightIntensity(light,l,distanceToLight);
 #if defined(X3D_SHADOWS)
-if(light.shadowIntensity>0.0)intensity=mix(intensity,light.shadowColor,getShadowIntensity(i,light));
+intensity=mix(intensity,light.shadowColor,getShadowIntensity(i,light));
 #endif
-f_diffuse+=intensity*NdotL*BRDF_lambertian(materialInfo.f0,materialInfo.f90,materialInfo.c_diff,materialInfo.specularWeight,VdotH);f_specular+=intensity*NdotL*BRDF_specularGGX(materialInfo.f0,materialInfo.f90,materialInfo.alphaRoughness,materialInfo.specularWeight,VdotH,NdotL,NdotV,NdotH);}}}
+vec3 l_diffuse=vec3(0.0);vec3 l_specular=vec3(0.0);
+#if defined(X3D_IRIDESCENCE_MATERIAL_EXT)
+l_diffuse+=intensity*NdotL*BRDF_lambertianIridescence(materialInfo.f0,materialInfo.f90,iridescenceFresnel,materialInfo.iridescenceFactor,materialInfo.c_diff,materialInfo.specularWeight,VdotH);l_specular+=intensity*NdotL*BRDF_specularGGXIridescence(materialInfo.f0,materialInfo.f90,iridescenceFresnel,materialInfo.alphaRoughness,materialInfo.iridescenceFactor,materialInfo.specularWeight,VdotH,NdotL,NdotV,NdotH);
+#elif defined(X3D_ANISOTROPY_MATERIAL_EXT)
+l_diffuse+=intensity*NdotL*BRDF_lambertian(materialInfo.f0,materialInfo.f90,materialInfo.c_diff,materialInfo.specularWeight,VdotH);l_specular+=intensity*NdotL*BRDF_specularGGXAnisotropy(materialInfo.f0,materialInfo.f90,materialInfo.alphaRoughness,materialInfo.anisotropyStrength,n,v,l,h,materialInfo.anisotropicT,materialInfo.anisotropicB);
+#else
+l_diffuse+=intensity*NdotL*BRDF_lambertian(materialInfo.f0,materialInfo.f90,materialInfo.c_diff,materialInfo.specularWeight,VdotH);l_specular+=intensity*NdotL*BRDF_specularGGX(materialInfo.f0,materialInfo.f90,materialInfo.alphaRoughness,materialInfo.specularWeight,VdotH,NdotL,NdotV,NdotH);
+#endif
+#if defined(X3D_SHEEN_MATERIAL_EXT)
+f_sheen+=intensity*getPunctualRadianceSheen(materialInfo.sheenColorFactor,materialInfo.sheenRoughnessFactor,NdotL,NdotV,NdotH);float l_albedoSheenScaling=min(1.0-max3(materialInfo.sheenColorFactor)*albedoSheenScalingLUT(NdotV,materialInfo.sheenRoughnessFactor),1.0-max3(materialInfo.sheenColorFactor)*albedoSheenScalingLUT(NdotL,materialInfo.sheenRoughnessFactor));l_diffuse*=l_albedoSheenScaling;l_specular*=l_albedoSheenScaling;
+#endif
+f_diffuse+=l_diffuse;f_specular+=l_specular;
+#if defined(X3D_CLEARCOAT_MATERIAL_EXT)
+f_clearcoat+=intensity*getPunctualRadianceClearCoat(materialInfo.clearcoatNormal,v,l,h,VdotH,materialInfo.clearcoatF0,materialInfo.clearcoatF90,materialInfo.clearcoatRoughness);
+#endif
+}
+#if defined(X3D_TRANSMISSION_MATERIAL_EXT)
+vec3 transmissionRay=getVolumeTransmissionRay(n,v,materialInfo.thickness,materialInfo.ior,x3d_ModelViewMatrix);pointToLight-=transmissionRay;l=normalize(pointToLight);vec3 intensity=getLightIntensity(light,pointToLight,distanceToLight);vec3 transmittedLight=intensity*getPunctualRadianceTransmission(n,v,l,materialInfo.alphaRoughness,materialInfo.f0,materialInfo.f90,materialInfo.c_diff,materialInfo.ior);
+#if defined(X3D_VOLUME_MATERIAL_EXT)
+transmittedLight=applyVolumeAttenuation(transmittedLight,length(transmissionRay),materialInfo.attenuationColor,materialInfo.attenuationDistance);
+#endif
+f_transmission+=transmittedLight;
+#endif
+}}
 #endif
 f_emissive=getEmissiveColor();float clearcoatFactor=0.0;vec3 clearcoatFresnel=vec3(0.0);vec3 diffuse;vec3 specular;vec3 sheen;vec3 clearcoat;
 #if defined(X3D_OCCLUSION_TEXTURE)
-float ao=getOcclusionFactor();diffuse=f_diffuse+mix(f_diffuse_ibl,f_diffuse_ibl*ao,x3d_Material.occlusionStrength);specular=f_specular+mix(f_specular_ibl,f_specular_ibl*ao,x3d_Material.occlusionStrength);sheen=f_sheen+mix(f_sheen_ibl,f_sheen_ibl*ao,x3d_Material.occlusionStrength);clearcoat=f_clearcoat+mix(f_clearcoat_ibl,f_clearcoat_ibl*ao,x3d_Material.occlusionStrength);
+float ao=getOcclusionFactor();float occlusionStrength=x3d_Material.occlusionStrength;diffuse=f_diffuse+mix(f_diffuse_ibl,f_diffuse_ibl*ao,occlusionStrength)*albedoSheenScaling;specular=f_specular+mix(f_specular_ibl,f_specular_ibl*ao,occlusionStrength)*albedoSheenScaling;sheen=f_sheen+mix(f_sheen_ibl,f_sheen_ibl*ao,occlusionStrength);clearcoat=f_clearcoat+mix(f_clearcoat_ibl,f_clearcoat_ibl*ao,occlusionStrength);
 #else
-diffuse=f_diffuse_ibl+f_diffuse;specular=f_specular_ibl+f_specular;sheen=f_sheen_ibl+f_sheen;clearcoat=f_clearcoat_ibl+f_clearcoat;
+diffuse=f_diffuse_ibl*albedoSheenScaling+f_diffuse;specular=f_specular_ibl*albedoSheenScaling+f_specular;sheen=f_sheen_ibl+f_sheen;clearcoat=f_clearcoat_ibl+f_clearcoat;
+#endif
+#if defined(X3D_CLEARCOAT_MATERIAL_EXT)
+clearcoatFactor=materialInfo.clearcoatFactor;clearcoatFresnel=F_Schlick(materialInfo.clearcoatF0,materialInfo.clearcoatF90,clamp(dot(materialInfo.clearcoatNormal,v),0.0,1.0));clearcoat*=clearcoatFactor;
+#endif
+#if defined(X3D_TRANSMISSION_MATERIAL_EXT)
+diffuse=mix(diffuse,f_transmission,materialInfo.transmissionFactor);
 #endif
 vec3 color=vec3(0.0);
-#if defined(X3D_MATERIAL_UNLIT)
+#if defined(X3D_UNLIT_MATERIAL_EXT)
 color=baseColor.rgb;
 #else
-color=f_emissive+diffuse+specular;color=sheen+color*albedoSheenScaling;color=color*(1.0-clearcoatFactor*clearcoatFresnel)+clearcoat;
+color=f_emissive+diffuse+specular;color=sheen+color;color=color*(1.0-clearcoatFactor*clearcoatFresnel)+clearcoat;
 #endif
 #if defined(X3D_LINEAR_OUTPUT)
 return vec4(color,baseColor.a);
@@ -94470,38 +95458,24 @@ return vec4(toneMap(color),baseColor.a);
 x_ite_Namespace .add ("PBR1.fs", "assets/shaders/webgl1/PBR1.fs", PBR1_fs_default_);
 /* harmony default export */ const PBR1_fs = (PBR1_fs_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Phong1.fs.js
-const Phong1_fs_default_ = /* glsl */ `#extension GL_OES_standard_derivatives:enable
+
+
+const Phong1_fs_default_ = /* glsl */ `
+#extension GL_OES_standard_derivatives:enable
 #extension GL_EXT_frag_depth:enable
 precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
 #pragma X3D include "common/Fragment.glsl"
 #pragma X3D include "common/Material.glsl"
 #pragma X3D include "common/Normal.glsl"
-#if defined(X3D_AMBIENT_TEXTURE)
-uniform x3d_AmbientTextureParameters x3d_AmbientTexture;
-#endif
+${MaterialTextures .texture ("x3d_AmbientTexture", "rgb", "sRGB")}
 vec3 getAmbientColor(const in vec3 diffuseColor){vec3 ambientColor=x3d_Material.ambientIntensity*diffuseColor;
 #if defined(X3D_AMBIENT_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_AmbientTexture.textureTransformMapping,x3d_AmbientTexture.textureCoordinateMapping);
-#if defined(X3D_AMBIENT_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_AMBIENT_TEXTURE_2D)
-vec3 textureColor=texture2D(x3d_AmbientTexture.texture2D,texCoord.st).rgb;
-#elif defined(X3D_AMBIENT_TEXTURE_CUBE)
-vec3 textureColor=textureCube(x3d_AmbientTexture.textureCube,texCoord).rgb;
-#endif
-#if defined(X3D_AMBIENT_TEXTURE_LINEAR)
-ambientColor*=linearTosRGB(textureColor);
-#else
-ambientColor*=textureColor;
-#endif
+ambientColor*=getAmbientTexture();
 #else
 return ambientColor;
 #endif
 }
-#if defined(X3D_DIFFUSE_TEXTURE)
-uniform x3d_DiffuseTextureParameters x3d_DiffuseTexture;
-#endif
+${MaterialTextures .texture ("x3d_DiffuseTexture", "rgba", "sRGB")}
 vec4 getDiffuseColor(){float alpha=1.0-x3d_Material.transparency;
 #if defined(X3D_COLOR_MATERIAL)
 vec4 diffuseColor=vec4(color.rgb,color.a*alpha);
@@ -94509,96 +95483,33 @@ vec4 diffuseColor=vec4(color.rgb,color.a*alpha);
 vec4 diffuseColor=vec4(x3d_Material.diffuseColor,alpha);
 #endif
 #if defined(X3D_DIFFUSE_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_DiffuseTexture.textureTransformMapping,x3d_DiffuseTexture.textureCoordinateMapping);
-#if defined(X3D_DIFFUSE_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_DIFFUSE_TEXTURE_2D)
-vec4 textureColor=texture2D(x3d_DiffuseTexture.texture2D,texCoord.st);
-#elif defined(X3D_DIFFUSE_TEXTURE_CUBE)
-vec4 textureColor=textureCube(x3d_DiffuseTexture.textureCube,texCoord);
-#endif
-#if defined(X3D_DIFFUSE_TEXTURE_LINEAR)
-diffuseColor*=linearTosRGB(textureColor);
-#else
-diffuseColor*=textureColor;
-#endif
+diffuseColor*=getDiffuseTexture();
 #elif defined(X3D_TEXTURE)
 diffuseColor=getTextureColor(diffuseColor,vec4(x3d_Material.specularColor,alpha));
 #endif
 return diffuseColor;}
-#if defined(X3D_SPECULAR_TEXTURE)
-uniform x3d_SpecularTextureParameters x3d_SpecularTexture;
-#endif
+${MaterialTextures .texture ("x3d_SpecularTexture", "rgb", "sRGB")}
 vec3 getSpecularColor(){vec3 specularColor=x3d_Material.specularColor;
 #if defined(X3D_SPECULAR_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_SpecularTexture.textureTransformMapping,x3d_SpecularTexture.textureCoordinateMapping);
-#if defined(X3D_SPECULAR_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_SPECULAR_TEXTURE_2D)
-vec3 textureColor=texture2D(x3d_SpecularTexture.texture2D,texCoord.st).rgb;
-#elif defined(X3D_SPECULAR_TEXTURE_CUBE)
-vec3 textureColor=textureCube(x3d_SpecularTexture.textureCube,texCoord).rgb;
-#endif
-#if defined(X3D_SPECULAR_TEXTURE_LINEAR)
-specularColor*=linearTosRGB(textureColor);
-#else
-specularColor*=textureColor;
-#endif
+specularColor*=getSpecularTexture();
 #endif
 return specularColor;}
-#if defined(X3D_EMISSIVE_TEXTURE)
-uniform x3d_EmissiveTextureParameters x3d_EmissiveTexture;
-#endif
+${MaterialTextures .texture ("x3d_EmissiveTexture", "rgb", "sRGB")}
 vec3 getEmissiveColor(){vec3 emissiveColor=x3d_Material.emissiveColor;
 #if defined(X3D_EMISSIVE_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_EmissiveTexture.textureTransformMapping,x3d_EmissiveTexture.textureCoordinateMapping);
-#if defined(X3D_EMISSIVE_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_EMISSIVE_TEXTURE_2D)
-vec3 textureColor=texture2D(x3d_EmissiveTexture.texture2D,texCoord.st).rgb;
-#elif defined(X3D_EMISSIVE_TEXTURE_CUBE)
-vec3 textureColor=textureCube(x3d_EmissiveTexture.textureCube,texCoord).rgb;
-#endif
-#if defined(X3D_EMISSIVE_TEXTURE_LINEAR)
-emissiveColor*=linearTosRGB(textureColor);
-#else
-emissiveColor*=textureColor;
-#endif
+emissiveColor*=getEmissiveTexture();
 #endif
 return emissiveColor;}
-#if defined(X3D_SHININESS_TEXTURE)
-uniform x3d_ShininessTextureParameters x3d_ShininessTexture;
-#endif
+${MaterialTextures .texture ("x3d_ShininessTexture", "a")}
 float getShininessFactor(){float shininess=x3d_Material.shininess;
 #if defined(X3D_SHININESS_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_ShininessTexture.textureTransformMapping,x3d_ShininessTexture.textureCoordinateMapping);
-#if defined(X3D_SHININESS_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_SHININESS_TEXTURE_2D)
-shininess*=texture2D(x3d_ShininessTexture.texture2D,texCoord.st).a;
-#elif defined(X3D_SHININESS_TEXTURE_CUBE)
-shininess*=textureCube(x3d_ShininessTexture.textureCube,texCoord).a;
-#endif
+shininess*=getShininessTexture();
 #endif
 return shininess;}
-#if defined(X3D_OCCLUSION_TEXTURE)
-uniform x3d_OcclusionTextureParameters x3d_OcclusionTexture;
-#endif
+${MaterialTextures .texture ("x3d_OcclusionTexture", "r")}
 float getOcclusionFactor(){
 #if defined(X3D_OCCLUSION_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_OcclusionTexture.textureTransformMapping,x3d_OcclusionTexture.textureCoordinateMapping);
-#if defined(X3D_OCCLUSION_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_OCCLUSION_TEXTURE_2D)
-return texture2D(x3d_OcclusionTexture.texture2D,texCoord.st).r;
-#elif defined(X3D_OCCLUSION_TEXTURE_CUBE)
-return textureCube(x3d_OcclusionTexture.textureCube,texCoord).r;
-#endif
+return getOcclusionTexture();
 #else
 return 1.0;
 #endif
@@ -94620,7 +95531,8 @@ finalColor+=getEmissiveColor();return vec4(finalColor,alpha);}void main(){fragme
 x_ite_Namespace .add ("Phong1.fs", "assets/shaders/webgl1/Phong1.fs", Phong1_fs_default_);
 /* harmony default export */ const Phong1_fs = (Phong1_fs_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Pointing1.fs.js
-const Pointing1_fs_default_ = /* glsl */ `#extension GL_EXT_draw_buffers:enable
+const Pointing1_fs_default_ = /* glsl */ `
+#extension GL_EXT_draw_buffers:enable
 precision highp float;precision highp int;precision highp sampler2D;varying vec3 vertex;varying vec3 normal;
 #if!defined(X3D_GEOMETRY_0D)&&!defined(X3D_GEOMETRY_1D)
 varying vec4 texCoord0;
@@ -94642,7 +95554,8 @@ gl_FragData[0]=vec4(vertex,x3d_Id);gl_FragData[1]=vec4(normal,0.0);gl_FragData[2
 x_ite_Namespace .add ("Pointing1.fs", "assets/shaders/webgl1/Pointing1.fs", Pointing1_fs_default_);
 /* harmony default export */ const Pointing1_fs = (Pointing1_fs_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Pointing1.vs.js
-const Pointing1_vs_default_ = /* glsl */ `precision highp float;precision highp int;uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;attribute vec4 x3d_Vertex;attribute vec3 x3d_Normal;
+const Pointing1_vs_default_ = /* glsl */ `
+precision highp float;precision highp int;uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;attribute vec4 x3d_Vertex;attribute vec3 x3d_Normal;
 #if!defined(X3D_GEOMETRY_0D)&&!defined(X3D_GEOMETRY_1D)
 attribute vec4 x3d_TexCoord0;
 #endif
@@ -94667,14 +95580,15 @@ gl_Position=x3d_ProjectionMatrix*position;}`
 x_ite_Namespace .add ("Pointing1.vs", "assets/shaders/webgl1/Pointing1.vs", Pointing1_vs_default_);
 /* harmony default export */ const Pointing1_vs = (Pointing1_vs_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Unlit1.fs.js
-const Unlit1_fs_default_ = /* glsl */ `#extension GL_OES_standard_derivatives:enable
+
+
+const Unlit1_fs_default_ = /* glsl */ `
+#extension GL_OES_standard_derivatives:enable
 #extension GL_EXT_frag_depth:enable
 precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
 #pragma X3D include "common/Fragment.glsl"
 uniform x3d_UnlitMaterialParameters x3d_Material;
-#if defined(X3D_EMISSIVE_TEXTURE)
-uniform x3d_EmissiveTextureParameters x3d_EmissiveTexture;
-#endif
+${MaterialTextures .texture ("x3d_EmissiveTexture", "rgba", "sRGB")}
 vec4 getEmissiveColor(){float alpha=1.0-x3d_Material.transparency;
 #if defined(X3D_COLOR_MATERIAL)
 vec4 emissiveColor=vec4(color.rgb,color.a*alpha);
@@ -94682,20 +95596,7 @@ vec4 emissiveColor=vec4(color.rgb,color.a*alpha);
 vec4 emissiveColor=vec4(x3d_Material.emissiveColor,alpha);
 #endif
 #if defined(X3D_EMISSIVE_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_EmissiveTexture.textureTransformMapping,x3d_EmissiveTexture.textureCoordinateMapping);
-#if defined(X3D_EMISSIVE_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_EMISSIVE_TEXTURE_2D)
-vec4 textureColor=texture2D(x3d_EmissiveTexture.texture2D,texCoord.st);
-#elif defined(X3D_EMISSIVE_TEXTURE_CUBE)
-vec4 textureColor=textureCube(x3d_EmissiveTexture.textureCube,texCoord);
-#endif
-#if defined(X3D_EMISSIVE_TEXTURE_LINEAR)
-emissiveColor*=linearTosRGB(textureColor);
-#else
-emissiveColor*=textureColor;
-#endif
+emissiveColor*=getEmissiveTexture();
 #elif defined(X3D_TEXTURE)
 emissiveColor=getTextureColor(emissiveColor,vec4(vec3(1.0),alpha));
 #endif
@@ -94748,7 +95649,7 @@ precision highp float;precision highp int;precision highp sampler2D;uniform mat4
 #pragma X3D include "common/Skin.glsl"
 #pragma X3D include "common/Instancing.glsl"
 #pragma X3D include "common/PointSize.glsl"
-void main(){vec4 x3d_TransformedVertex=getInstanceVertex(getSkinVertex(x3d_Vertex,vec3(0.0)));vec4 position=x3d_ModelViewMatrix*x3d_TransformedVertex;vertex=position.xyz;
+void main(){vec4 x3d_TransformedVertex=getInstanceVertex(getSkinVertex(x3d_Vertex,vec3(0.0),vec3(0.0)));vec4 position=x3d_ModelViewMatrix*x3d_TransformedVertex;vertex=position.xyz;
 #if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
 gl_PointSize=pointSize=getPointSize(vertex);
 #else
@@ -94856,48 +95757,127 @@ precision highp float;precision highp int;precision highp sampler2D;precision hi
 #pragma X3D include "common/Fragment.glsl"
 #pragma X3D include "common/Normal.glsl"
 #pragma X3D include "common/Shadow.glsl"
+#if defined(X3D_TRANSMISSION_MATERIAL_EXT)
+uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;
+#endif
 #if defined(X3D_LIGHTING)
 uniform x3d_LightSourceParameters x3d_LightSource[X3D_NUM_LIGHTS];
 #endif
 uniform x3d_PhysicalMaterialParameters x3d_Material;
-#pragma X3D include "pbr/BDRF.glsl"
+#pragma X3D include "pbr/BRDF.glsl"
 #pragma X3D include "pbr/MaterialInfo.glsl"
 #pragma X3D include "pbr/Punctual.glsl"
 #pragma X3D include "pbr/IBL.glsl"
+#pragma X3D include "pbr/Iridescence.glsl"
 vec4 getMaterialColor(){vec4 baseColor=getBaseColor();
 #if defined(X3D_TEXTURE_PROJECTION)
 baseColor.rgb*=getTextureProjectorColor();
 #endif
-#if defined(X3D_LIGHTING)||defined(X3D_USE_IBL)
-vec3 n=getNormalVector(x3d_Material.normalScale);
+vec3 v=normalize(-vertex);
+#if defined(X3D_USE_IBL)||defined(X3D_LIGHTING)||defined(X3D_ANISOTROPY_MATERIAL_EXT)||defined(X3D_CLEARCOAT_MATERIAL_EXT)
+NormalInfo normalInfo=getNormalInfo(x3d_Material.normalScale);vec3 n=normalInfo.n;float NdotV=clamp(dot(n,v),0.0,1.0);
 #endif
-vec3 v=normalize(-vertex);MaterialInfo materialInfo;materialInfo.baseColor=baseColor.rgb;materialInfo.ior=1.5;materialInfo.f0=vec3(0.04);materialInfo.specularWeight=1.0;
+MaterialInfo materialInfo;materialInfo.baseColor=baseColor.rgb;materialInfo.ior=1.5;materialInfo.f0=vec3(0.04);materialInfo.specularWeight=1.0;
+#if defined(X3D_IOR_MATERIAL_EXT)
+materialInfo=getIorInfo(materialInfo);
+#endif
+#if defined(X3D_MATERIAL_SPECULAR_GLOSSINESS)
+materialInfo=getSpecularGlossinessInfo(materialInfo);
+#endif
 #if defined(X3D_MATERIAL_METALLIC_ROUGHNESS)
 materialInfo=getMetallicRoughnessInfo(materialInfo);
 #endif
-materialInfo.perceptualRoughness=clamp(materialInfo.perceptualRoughness,0.0,1.0);materialInfo.metallic=clamp(materialInfo.metallic,0.0,1.0);materialInfo.alphaRoughness=materialInfo.perceptualRoughness*materialInfo.perceptualRoughness;float reflectance=max(max(materialInfo.f0.r,materialInfo.f0.g),materialInfo.f0.b);materialInfo.f90=vec3(1.0);vec3 f_specular=vec3(0.0);vec3 f_diffuse=vec3(0.0);vec3 f_emissive=vec3(0.0);vec3 f_clearcoat=vec3(0.0);vec3 f_sheen=vec3(0.0);vec3 f_transmission=vec3(0.0);float albedoSheenScaling=1.0;
+#if defined(X3D_SHEEN_MATERIAL_EXT)
+materialInfo=getSheenInfo(materialInfo);
+#endif
+#if defined(X3D_CLEARCOAT_MATERIAL_EXT)
+materialInfo=getClearCoatInfo(materialInfo,normalInfo);
+#endif
+#if defined(X3D_SPECULAR_MATERIAL_EXT)
+materialInfo=getSpecularInfo(materialInfo);
+#endif
+#if defined(X3D_TRANSMISSION_MATERIAL_EXT)
+materialInfo=getTransmissionInfo(materialInfo);
+#endif
+#if defined(X3D_VOLUME_MATERIAL_EXT)
+materialInfo=getVolumeInfo(materialInfo);
+#endif
+#if defined(X3D_IRIDESCENCE_MATERIAL_EXT)
+materialInfo=getIridescenceInfo(materialInfo);
+#endif
+#if defined(X3D_ANISOTROPY_MATERIAL_EXT)
+materialInfo=getAnisotropyInfo(materialInfo,normalInfo);
+#endif
+materialInfo.perceptualRoughness=clamp(materialInfo.perceptualRoughness,0.0,1.0);materialInfo.metallic=clamp(materialInfo.metallic,0.0,1.0);materialInfo.alphaRoughness=materialInfo.perceptualRoughness*materialInfo.perceptualRoughness;float reflectance=max3(materialInfo.f0);materialInfo.f90=vec3(1.0);vec3 f_specular=vec3(0.0);vec3 f_diffuse=vec3(0.0);vec3 f_emissive=vec3(0.0);vec3 f_clearcoat=vec3(0.0);vec3 f_sheen=vec3(0.0);vec3 f_transmission=vec3(0.0);float albedoSheenScaling=1.0;
+#if defined(X3D_IRIDESCENCE_MATERIAL_EXT)&&(defined(X3D_USE_IBL)||defined(X3D_LIGHTING))
+vec3 iridescenceFresnel=evalIridescence(1.0,materialInfo.iridescenceIor,NdotV,materialInfo.iridescenceThickness,materialInfo.f0);vec3 iridescenceF0=Schlick_to_F0(iridescenceFresnel,NdotV);if(materialInfo.iridescenceThickness==0.0)materialInfo.iridescenceFactor=0.0;
+#endif
 #if defined(X3D_USE_IBL)
+#if defined(X3D_IRIDESCENCE_MATERIAL_EXT)
+f_specular+=getIBLRadianceGGXIridescence(n,v,materialInfo.perceptualRoughness,materialInfo.f0,iridescenceFresnel,materialInfo.iridescenceFactor,materialInfo.specularWeight);f_diffuse+=getIBLRadianceLambertianIridescence(n,v,materialInfo.perceptualRoughness,materialInfo.c_diff,materialInfo.f0,iridescenceF0,materialInfo.iridescenceFactor,materialInfo.specularWeight);
+#elif defined(X3D_ANISOTROPY_MATERIAL_EXT)
+f_specular+=getIBLRadianceAnisotropy(n,v,materialInfo.perceptualRoughness,materialInfo.anisotropyStrength,materialInfo.anisotropicB,materialInfo.f0,materialInfo.specularWeight);f_diffuse+=getIBLRadianceLambertian(n,v,materialInfo.perceptualRoughness,materialInfo.c_diff,materialInfo.f0,materialInfo.specularWeight);
+#else
 f_specular+=getIBLRadianceGGX(n,v,materialInfo.perceptualRoughness,materialInfo.f0,materialInfo.specularWeight);f_diffuse+=getIBLRadianceLambertian(n,v,materialInfo.perceptualRoughness,materialInfo.c_diff,materialInfo.f0,materialInfo.specularWeight);
+#endif
+#if defined(X3D_CLEARCOAT_MATERIAL_EXT)
+f_clearcoat+=getIBLRadianceGGX(materialInfo.clearcoatNormal,v,materialInfo.clearcoatRoughness,materialInfo.clearcoatF0,1.0);
+#endif
+#if defined(X3D_SHEEN_MATERIAL_EXT)
+f_sheen+=getIBLRadianceCharlie(n,v,materialInfo.sheenRoughnessFactor,materialInfo.sheenColorFactor);albedoSheenScaling=1.0-max3(materialInfo.sheenColorFactor)*albedoSheenScalingLUT(NdotV,materialInfo.sheenRoughnessFactor);
+#endif
+#if defined(X3D_TRANSMISSION_MATERIAL_EXT)
+f_transmission+=getIBLVolumeRefraction(n,v,materialInfo.perceptualRoughness,materialInfo.c_diff,materialInfo.f0,materialInfo.f90,vertex,x3d_ModelViewMatrix,x3d_ProjectionMatrix,materialInfo.ior,materialInfo.thickness,materialInfo.attenuationColor,materialInfo.attenuationDistance,materialInfo.dispersion);
+#endif
 #endif
 vec3 f_diffuse_ibl=f_diffuse;vec3 f_specular_ibl=f_specular;vec3 f_sheen_ibl=f_sheen;vec3 f_clearcoat_ibl=f_clearcoat;f_diffuse=vec3(0.0);f_specular=vec3(0.0);f_sheen=vec3(0.0);f_clearcoat=vec3(0.0);
 #if defined(X3D_LIGHTING)
-for(int i=0;i<X3D_NUM_LIGHTS;++i){x3d_LightSourceParameters light=x3d_LightSource[i];vec3 pointToLight;float distanceToLight;if(light.type!=x3d_DirectionalLight){pointToLight=light.location-vertex;distanceToLight=length(light.matrix*pointToLight);}else{pointToLight=-light.direction;distanceToLight=-1.0;}if(distanceToLight<=light.radius||light.radius<0.0){vec3 l=normalize(pointToLight);vec3 h=normalize(l+v);float NdotL=clamp(dot(n,l),0.0,1.0);float NdotV=clamp(dot(n,v),0.0,1.0);float NdotH=clamp(dot(n,h),0.0,1.0);float VdotH=clamp(dot(v,h),0.0,1.0);if(NdotL>0.0||NdotV>0.0){vec3 intensity=getLightIntensity(light,l,distanceToLight);
+for(int i=0;i<X3D_NUM_LIGHTS;++i){x3d_LightSourceParameters light=x3d_LightSource[i];vec3 pointToLight;float distanceToLight;if(light.type!=x3d_DirectionalLight){pointToLight=light.location-vertex;distanceToLight=length(light.matrix*pointToLight);}else{pointToLight=-light.direction;distanceToLight=-1.0;}if(distanceToLight<=light.radius||light.radius<0.0){vec3 l=normalize(pointToLight);vec3 h=normalize(l+v);float NdotL=clamp(dot(n,l),0.0,1.0);float NdotH=clamp(dot(n,h),0.0,1.0);float VdotH=clamp(dot(v,h),0.0,1.0);if(NdotL>0.0||NdotV>0.0){vec3 intensity=getLightIntensity(light,l,distanceToLight);
 #if defined(X3D_SHADOWS)
-if(light.shadowIntensity>0.0)intensity=mix(intensity,light.shadowColor,getShadowIntensity(i,light));
+intensity=mix(intensity,light.shadowColor,getShadowIntensity(i,light));
 #endif
-f_diffuse+=intensity*NdotL*BRDF_lambertian(materialInfo.f0,materialInfo.f90,materialInfo.c_diff,materialInfo.specularWeight,VdotH);f_specular+=intensity*NdotL*BRDF_specularGGX(materialInfo.f0,materialInfo.f90,materialInfo.alphaRoughness,materialInfo.specularWeight,VdotH,NdotL,NdotV,NdotH);}}}
+vec3 l_diffuse=vec3(0.0);vec3 l_specular=vec3(0.0);
+#if defined(X3D_IRIDESCENCE_MATERIAL_EXT)
+l_diffuse+=intensity*NdotL*BRDF_lambertianIridescence(materialInfo.f0,materialInfo.f90,iridescenceFresnel,materialInfo.iridescenceFactor,materialInfo.c_diff,materialInfo.specularWeight,VdotH);l_specular+=intensity*NdotL*BRDF_specularGGXIridescence(materialInfo.f0,materialInfo.f90,iridescenceFresnel,materialInfo.alphaRoughness,materialInfo.iridescenceFactor,materialInfo.specularWeight,VdotH,NdotL,NdotV,NdotH);
+#elif defined(X3D_ANISOTROPY_MATERIAL_EXT)
+l_diffuse+=intensity*NdotL*BRDF_lambertian(materialInfo.f0,materialInfo.f90,materialInfo.c_diff,materialInfo.specularWeight,VdotH);l_specular+=intensity*NdotL*BRDF_specularGGXAnisotropy(materialInfo.f0,materialInfo.f90,materialInfo.alphaRoughness,materialInfo.anisotropyStrength,n,v,l,h,materialInfo.anisotropicT,materialInfo.anisotropicB);
+#else
+l_diffuse+=intensity*NdotL*BRDF_lambertian(materialInfo.f0,materialInfo.f90,materialInfo.c_diff,materialInfo.specularWeight,VdotH);l_specular+=intensity*NdotL*BRDF_specularGGX(materialInfo.f0,materialInfo.f90,materialInfo.alphaRoughness,materialInfo.specularWeight,VdotH,NdotL,NdotV,NdotH);
+#endif
+#if defined(X3D_SHEEN_MATERIAL_EXT)
+f_sheen+=intensity*getPunctualRadianceSheen(materialInfo.sheenColorFactor,materialInfo.sheenRoughnessFactor,NdotL,NdotV,NdotH);float l_albedoSheenScaling=min(1.0-max3(materialInfo.sheenColorFactor)*albedoSheenScalingLUT(NdotV,materialInfo.sheenRoughnessFactor),1.0-max3(materialInfo.sheenColorFactor)*albedoSheenScalingLUT(NdotL,materialInfo.sheenRoughnessFactor));l_diffuse*=l_albedoSheenScaling;l_specular*=l_albedoSheenScaling;
+#endif
+f_diffuse+=l_diffuse;f_specular+=l_specular;
+#if defined(X3D_CLEARCOAT_MATERIAL_EXT)
+f_clearcoat+=intensity*getPunctualRadianceClearCoat(materialInfo.clearcoatNormal,v,l,h,VdotH,materialInfo.clearcoatF0,materialInfo.clearcoatF90,materialInfo.clearcoatRoughness);
+#endif
+}
+#if defined(X3D_TRANSMISSION_MATERIAL_EXT)
+vec3 transmissionRay=getVolumeTransmissionRay(n,v,materialInfo.thickness,materialInfo.ior,x3d_ModelViewMatrix);pointToLight-=transmissionRay;l=normalize(pointToLight);vec3 intensity=getLightIntensity(light,pointToLight,distanceToLight);vec3 transmittedLight=intensity*getPunctualRadianceTransmission(n,v,l,materialInfo.alphaRoughness,materialInfo.f0,materialInfo.f90,materialInfo.c_diff,materialInfo.ior);
+#if defined(X3D_VOLUME_MATERIAL_EXT)
+transmittedLight=applyVolumeAttenuation(transmittedLight,length(transmissionRay),materialInfo.attenuationColor,materialInfo.attenuationDistance);
+#endif
+f_transmission+=transmittedLight;
+#endif
+}}
 #endif
 f_emissive=getEmissiveColor();float clearcoatFactor=0.0;vec3 clearcoatFresnel=vec3(0.0);vec3 diffuse;vec3 specular;vec3 sheen;vec3 clearcoat;
 #if defined(X3D_OCCLUSION_TEXTURE)
-float ao=getOcclusionFactor();diffuse=f_diffuse+mix(f_diffuse_ibl,f_diffuse_ibl*ao,x3d_Material.occlusionStrength);specular=f_specular+mix(f_specular_ibl,f_specular_ibl*ao,x3d_Material.occlusionStrength);sheen=f_sheen+mix(f_sheen_ibl,f_sheen_ibl*ao,x3d_Material.occlusionStrength);clearcoat=f_clearcoat+mix(f_clearcoat_ibl,f_clearcoat_ibl*ao,x3d_Material.occlusionStrength);
+float ao=getOcclusionFactor();float occlusionStrength=x3d_Material.occlusionStrength;diffuse=f_diffuse+mix(f_diffuse_ibl,f_diffuse_ibl*ao,occlusionStrength)*albedoSheenScaling;specular=f_specular+mix(f_specular_ibl,f_specular_ibl*ao,occlusionStrength)*albedoSheenScaling;sheen=f_sheen+mix(f_sheen_ibl,f_sheen_ibl*ao,occlusionStrength);clearcoat=f_clearcoat+mix(f_clearcoat_ibl,f_clearcoat_ibl*ao,occlusionStrength);
 #else
-diffuse=f_diffuse_ibl+f_diffuse;specular=f_specular_ibl+f_specular;sheen=f_sheen_ibl+f_sheen;clearcoat=f_clearcoat_ibl+f_clearcoat;
+diffuse=f_diffuse_ibl*albedoSheenScaling+f_diffuse;specular=f_specular_ibl*albedoSheenScaling+f_specular;sheen=f_sheen_ibl+f_sheen;clearcoat=f_clearcoat_ibl+f_clearcoat;
+#endif
+#if defined(X3D_CLEARCOAT_MATERIAL_EXT)
+clearcoatFactor=materialInfo.clearcoatFactor;clearcoatFresnel=F_Schlick(materialInfo.clearcoatF0,materialInfo.clearcoatF90,clamp(dot(materialInfo.clearcoatNormal,v),0.0,1.0));clearcoat*=clearcoatFactor;
+#endif
+#if defined(X3D_TRANSMISSION_MATERIAL_EXT)
+diffuse=mix(diffuse,f_transmission,materialInfo.transmissionFactor);
 #endif
 vec3 color=vec3(0.0);
-#if defined(X3D_MATERIAL_UNLIT)
+#if defined(X3D_UNLIT_MATERIAL_EXT)
 color=baseColor.rgb;
 #else
-color=f_emissive+diffuse+specular;color=sheen+color*albedoSheenScaling;color=color*(1.0-clearcoatFactor*clearcoatFresnel)+clearcoat;
+color=f_emissive+diffuse+specular;color=sheen+color;color=color*(1.0-clearcoatFactor*clearcoatFresnel)+clearcoat;
 #endif
 #if defined(X3D_LINEAR_OUTPUT)
 return vec4(color,baseColor.a);
@@ -94910,37 +95890,20 @@ return vec4(toneMap(color),baseColor.a);
 x_ite_Namespace .add ("PBR2.fs", "assets/shaders/webgl2/PBR2.fs", PBR2_fs_default_);
 /* harmony default export */ const PBR2_fs = (PBR2_fs_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Phong2.fs.js
+
+
 const Phong2_fs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;precision highp sampler3D;precision highp samplerCube;
 #pragma X3D include "common/Fragment.glsl"
 #pragma X3D include "common/Material.glsl"
 #pragma X3D include "common/Normal.glsl"
-#if defined(X3D_AMBIENT_TEXTURE)
-uniform x3d_AmbientTextureParameters x3d_AmbientTexture;
-#endif
+${MaterialTextures .texture ("x3d_AmbientTexture", "rgb", "sRGB")}
 vec3 getAmbientColor(const in vec3 diffuseColor){vec3 ambientColor=x3d_Material.ambientIntensity*diffuseColor;
 #if defined(X3D_AMBIENT_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_AmbientTexture.textureTransformMapping,x3d_AmbientTexture.textureCoordinateMapping);
-#if defined(X3D_AMBIENT_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_AMBIENT_TEXTURE_2D)
-vec3 textureColor=texture(x3d_AmbientTexture.texture2D,texCoord.st).rgb;
-#elif defined(X3D_AMBIENT_TEXTURE_3D)
-vec3 textureColor=texture(x3d_AmbientTexture.texture3D,texCoord).rgb;
-#elif defined(X3D_AMBIENT_TEXTURE_CUBE)
-vec3 textureColor=texture(x3d_AmbientTexture.textureCube,texCoord).rgb;
-#endif
-#if defined(X3D_AMBIENT_TEXTURE_LINEAR)
-ambientColor*=linearTosRGB(textureColor);
-#else
-ambientColor*=textureColor;
-#endif
+ambientColor*=getAmbientTexture();
 #endif
 return ambientColor;}
-#if defined(X3D_DIFFUSE_TEXTURE)
-uniform x3d_DiffuseTextureParameters x3d_DiffuseTexture;
-#endif
+${MaterialTextures .texture ("x3d_DiffuseTexture", "rgba", "sRGB")}
 vec4 getDiffuseColor(){float alpha=1.0-x3d_Material.transparency;
 #if defined(X3D_COLOR_MATERIAL)
 vec4 diffuseColor=vec4(color.rgb,color.a*alpha);
@@ -94948,106 +95911,33 @@ vec4 diffuseColor=vec4(color.rgb,color.a*alpha);
 vec4 diffuseColor=vec4(x3d_Material.diffuseColor,alpha);
 #endif
 #if defined(X3D_DIFFUSE_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_DiffuseTexture.textureTransformMapping,x3d_DiffuseTexture.textureCoordinateMapping);
-#if defined(X3D_DIFFUSE_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_DIFFUSE_TEXTURE_2D)
-vec4 textureColor=texture(x3d_DiffuseTexture.texture2D,texCoord.st);
-#elif defined(X3D_DIFFUSE_TEXTURE_3D)
-vec4 textureColor=texture(x3d_DiffuseTexture.texture3D,texCoord);
-#elif defined(X3D_DIFFUSE_TEXTURE_CUBE)
-vec4 textureColor=texture(x3d_DiffuseTexture.textureCube,texCoord);
-#endif
-#if defined(X3D_DIFFUSE_TEXTURE_LINEAR)
-diffuseColor*=linearTosRGB(textureColor);
-#else
-diffuseColor*=textureColor;
-#endif
+diffuseColor*=getDiffuseTexture();
 #elif defined(X3D_TEXTURE)
 diffuseColor=getTextureColor(diffuseColor,vec4(x3d_Material.specularColor,alpha));
 #endif
 return diffuseColor;}
-#if defined(X3D_SPECULAR_TEXTURE)
-uniform x3d_SpecularTextureParameters x3d_SpecularTexture;
-#endif
+${MaterialTextures .texture ("x3d_SpecularTexture", "rgb", "sRGB")}
 vec3 getSpecularColor(){vec3 specularColor=x3d_Material.specularColor;
 #if defined(X3D_SPECULAR_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_SpecularTexture.textureTransformMapping,x3d_SpecularTexture.textureCoordinateMapping);
-#if defined(X3D_SPECULAR_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_SPECULAR_TEXTURE_2D)
-vec3 textureColor=texture(x3d_SpecularTexture.texture2D,texCoord.st).rgb;
-#elif defined(X3D_SPECULAR_TEXTURE_3D)
-vec3 textureColor=texture(x3d_SpecularTexture.texture3D,texCoord).rgb;
-#elif defined(X3D_SPECULAR_TEXTURE_CUBE)
-vec3 textureColor=texture(x3d_SpecularTexture.textureCube,texCoord).rgb;
-#endif
-#if defined(X3D_SPECULAR_TEXTURE_LINEAR)
-specularColor*=linearTosRGB(textureColor);
-#else
-specularColor*=textureColor;
-#endif
+specularColor*=getSpecularTexture();
 #endif
 return specularColor;}
-#if defined(X3D_EMISSIVE_TEXTURE)
-uniform x3d_EmissiveTextureParameters x3d_EmissiveTexture;
-#endif
+${MaterialTextures .texture ("x3d_EmissiveTexture", "rgb", "sRGB")}
 vec3 getEmissiveColor(){vec3 emissiveColor=x3d_Material.emissiveColor;
 #if defined(X3D_EMISSIVE_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_EmissiveTexture.textureTransformMapping,x3d_EmissiveTexture.textureCoordinateMapping);
-#if defined(X3D_EMISSIVE_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_EMISSIVE_TEXTURE_2D)
-vec3 textureColor=texture(x3d_EmissiveTexture.texture2D,texCoord.st).rgb;
-#elif defined(X3D_EMISSIVE_TEXTURE_3D)
-vec3 textureColor=texture(x3d_EmissiveTexture.texture3D,texCoord).rgb;
-#elif defined(X3D_EMISSIVE_TEXTURE_CUBE)
-vec3 textureColor=texture(x3d_EmissiveTexture.textureCube,texCoord).rgb;
-#endif
-#if defined(X3D_EMISSIVE_TEXTURE_LINEAR)
-emissiveColor*=linearTosRGB(textureColor);
-#else
-emissiveColor*=textureColor;
-#endif
+emissiveColor*=getEmissiveTexture();
 #endif
 return emissiveColor;}
-#if defined(X3D_SHININESS_TEXTURE)
-uniform x3d_ShininessTextureParameters x3d_ShininessTexture;
-#endif
+${MaterialTextures .texture ("x3d_ShininessTexture", "a")}
 float getShininessFactor(){float shininess=x3d_Material.shininess;
 #if defined(X3D_SHININESS_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_ShininessTexture.textureTransformMapping,x3d_ShininessTexture.textureCoordinateMapping);
-#if defined(X3D_SHININESS_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_SHININESS_TEXTURE_2D)
-shininess*=texture(x3d_ShininessTexture.texture2D,texCoord.st).a;
-#elif defined(X3D_SHININESS_TEXTURE_3D)
-shininess*=texture(x3d_ShininessTexture.texture3D,texCoord).a;
-#elif defined(X3D_SHININESS_TEXTURE_CUBE)
-shininess*=texture(x3d_ShininessTexture.textureCube,texCoord).a;
-#endif
+shininess*=getShininessTexture();
 #endif
 return shininess;}
-#if defined(X3D_OCCLUSION_TEXTURE)
-uniform x3d_OcclusionTextureParameters x3d_OcclusionTexture;
-#endif
+${MaterialTextures .texture ("x3d_OcclusionTexture", "r")}
 float getOcclusionFactor(){
 #if defined(X3D_OCCLUSION_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_OcclusionTexture.textureTransformMapping,x3d_OcclusionTexture.textureCoordinateMapping);
-#if defined(X3D_OCCLUSION_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_OCCLUSION_TEXTURE_2D)
-return texture(x3d_OcclusionTexture.texture2D,texCoord.st).r;
-#elif defined(X3D_OCCLUSION_TEXTURE_3D)
-return texture(x3d_OcclusionTexture.texture3D,texCoord).r;
-#elif defined(X3D_OCCLUSION_TEXTURE_CUBE)
-return texture(x3d_OcclusionTexture.textureCube,texCoord).r;
-#endif
+return getOcclusionTexture();
 #else
 return 1.0;
 #endif
@@ -95124,7 +96014,7 @@ void main(){
 #if defined(X3D_GEOMETRY_1D)&&defined(X3D_STYLE_PROPERTIES)
 lengthSoFar=x3d_LineStipple.z;startPoint=x3d_LineStipple.xy;midPoint=x3d_LineStipple.xy;
 #endif
-vec4 x3d_TransformedVertex=getInstanceVertex(getSkinVertex(x3d_Vertex,x3d_Normal));vec4 position=x3d_ModelViewMatrix*x3d_TransformedVertex;vertex=position.xyz;normal=getInstanceNormal(getSkinNormal(x3d_Normal));
+vec4 x3d_TransformedVertex=getInstanceVertex(getSkinVertex(x3d_Vertex,x3d_Normal,vec3(0.0)));vec4 position=x3d_ModelViewMatrix*x3d_TransformedVertex;vertex=position.xyz;normal=getInstanceNormal(getSkinNormal(x3d_Normal));
 #if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
 gl_PointSize=pointSize=max(getPointSize(vertex),2.0);
 #else
@@ -95139,13 +96029,13 @@ gl_Position=x3d_ProjectionMatrix*position;}`
 x_ite_Namespace .add ("Pointing2.vs", "assets/shaders/webgl2/Pointing2.vs", Pointing2_vs_default_);
 /* harmony default export */ const Pointing2_vs = (Pointing2_vs_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Unlit2.fs.js
+
+
 const Unlit2_fs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;precision highp sampler3D;precision highp samplerCube;
 #pragma X3D include "common/Fragment.glsl"
 uniform x3d_UnlitMaterialParameters x3d_Material;
-#if defined(X3D_EMISSIVE_TEXTURE)
-uniform x3d_EmissiveTextureParameters x3d_EmissiveTexture;
-#endif
+${MaterialTextures .texture ("x3d_EmissiveTexture", "rgba", "sRGB")}
 vec4 getEmissiveColor(){float alpha=1.0-x3d_Material.transparency;
 #if defined(X3D_COLOR_MATERIAL)
 vec4 emissiveColor=vec4(color.rgb,color.a*alpha);
@@ -95153,22 +96043,7 @@ vec4 emissiveColor=vec4(color.rgb,color.a*alpha);
 vec4 emissiveColor=vec4(x3d_Material.emissiveColor,alpha);
 #endif
 #if defined(X3D_EMISSIVE_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_EmissiveTexture.textureTransformMapping,x3d_EmissiveTexture.textureCoordinateMapping);
-#if defined(X3D_EMISSIVE_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_EMISSIVE_TEXTURE_2D)
-vec4 textureColor=texture(x3d_EmissiveTexture.texture2D,texCoord.st);
-#elif defined(X3D_EMISSIVE_TEXTURE_3D)
-vec4 textureColor=texture(x3d_EmissiveTexture.texture3D,texCoord);
-#elif defined(X3D_EMISSIVE_TEXTURE_CUBE)
-vec4 textureColor=texture(x3d_EmissiveTexture.textureCube,texCoord);
-#endif
-#if defined(X3D_EMISSIVE_TEXTURE_LINEAR)
-emissiveColor*=linearTosRGB(textureColor);
-#else
-emissiveColor*=textureColor;
-#endif
+emissiveColor*=getEmissiveTexture();
 #elif defined(X3D_TEXTURE)
 emissiveColor=getTextureColor(emissiveColor,vec4(vec3(1.0),alpha));
 #endif
@@ -95181,201 +96056,145 @@ return finalColor;}void main(){fragment_main();}`
 
 x_ite_Namespace .add ("Unlit2.fs", "assets/shaders/webgl2/Unlit2.fs", Unlit2_fs_default_);
 /* harmony default export */ const Unlit2_fs = (Unlit2_fs_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/pbr/BDRF1.glsl.js
-const BDRF1_glsl_default_ = /* glsl */ `#if defined(X3D_LIGHTING)
-const float M_PI=3.14159265359;vec3 F_Schlick(vec3 f0,vec3 f90,float VdotH){return f0+(f90-f0)*pow(clamp(1.0-VdotH,0.0,1.0),5.0);}float V_GGX(float NdotL,float NdotV,float alphaRoughness){float alphaRoughnessSq=alphaRoughness*alphaRoughness;float GGXV=NdotL*sqrt(NdotV*NdotV*(1.0-alphaRoughnessSq)+alphaRoughnessSq);float GGXL=NdotV*sqrt(NdotL*NdotL*(1.0-alphaRoughnessSq)+alphaRoughnessSq);float GGX=GGXV+GGXL;if(GGX>0.0){return 0.5/GGX;}return 0.0;}float D_GGX(float NdotH,float alphaRoughness){float alphaRoughnessSq=alphaRoughness*alphaRoughness;float f=(NdotH*NdotH)*(alphaRoughnessSq-1.0)+1.0;return alphaRoughnessSq/(M_PI*f*f);}vec3 BRDF_lambertian(vec3 f0,vec3 f90,vec3 diffuseColor,float specularWeight,float VdotH){return(1.0-specularWeight*F_Schlick(f0,f90,VdotH))*(diffuseColor/M_PI);}vec3 BRDF_specularGGX(vec3 f0,vec3 f90,float alphaRoughness,float specularWeight,float VdotH,float NdotL,float NdotV,float NdotH){vec3 F=F_Schlick(f0,f90,VdotH);float Vis=V_GGX(NdotL,NdotV,alphaRoughness);float D=D_GGX(NdotH,alphaRoughness);return specularWeight*F*Vis*D;}
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/pbr/BRDF2.glsl.js
+const BRDF2_glsl_default_ = /* glsl */ `
+const float M_PI=3.1415926535897932384626433832795;float max3(const in vec3 value){return max(max(value.x,value.y),value.z);}vec3 F_Schlick(const in vec3 f0,const in vec3 f90,const in float VdotH){return f0+(f90-f0)*pow(clamp(1.0-VdotH,0.0,1.0),5.0);}float F_Schlick(const in float f0,const in float f90,const in float VdotH){float x=clamp(1.0-VdotH,0.0,1.0);float x2=x*x;float x5=x*x2*x2;return f0+(f90-f0)*x5;}float F_Schlick(const in float f0,const in float VdotH){float f90=1.0;return F_Schlick(f0,f90,VdotH);}vec3 F_Schlick(const in vec3 f0,const in float f90,const in float VdotH){float x=clamp(1.0-VdotH,0.0,1.0);float x2=x*x;float x5=x*x2*x2;return f0+(f90-f0)*x5;}vec3 F_Schlick(const in vec3 f0,const in float VdotH){float f90=1.0;return F_Schlick(f0,f90,VdotH);}vec3 Schlick_to_F0(const in vec3 f,const in vec3 f90,const in float VdotH){float x=clamp(1.0-VdotH,0.0,1.0);float x2=x*x;float x5=clamp(x*x2*x2,0.0,0.9999);return(f-f90*x5)/(1.0-x5);}float Schlick_to_F0(const in float f,const in float f90,const in float VdotH){float x=clamp(1.0-VdotH,0.0,1.0);float x2=x*x;float x5=clamp(x*x2*x2,0.0,0.9999);return(f-f90*x5)/(1.0-x5);}vec3 Schlick_to_F0(const in vec3 f,const in float VdotH){return Schlick_to_F0(f,vec3(1.0),VdotH);}float Schlick_to_F0(const in float f,const in float VdotH){return Schlick_to_F0(f,1.0,VdotH);}float V_GGX(const in float NdotL,const in float NdotV,const in float alphaRoughness){float alphaRoughnessSq=alphaRoughness*alphaRoughness;float GGXV=NdotL*sqrt(NdotV*NdotV*(1.0-alphaRoughnessSq)+alphaRoughnessSq);float GGXL=NdotV*sqrt(NdotL*NdotL*(1.0-alphaRoughnessSq)+alphaRoughnessSq);float GGX=GGXV+GGXL;if(GGX>0.0){return 0.5/GGX;}return 0.0;}float D_GGX(const in float NdotH,const in float alphaRoughness){float alphaRoughnessSq=alphaRoughness*alphaRoughness;float f=(NdotH*NdotH)*(alphaRoughnessSq-1.0)+1.0;return alphaRoughnessSq/(M_PI*f*f);}
+#if defined(X3D_LIGHTING)
+vec3 BRDF_lambertian(const in vec3 f0,const in vec3 f90,const in vec3 diffuseColor,const in float specularWeight,const in float VdotH){return(1.0-specularWeight*F_Schlick(f0,f90,VdotH))*(diffuseColor/M_PI);}vec3 BRDF_specularGGX(const in vec3 f0,const in vec3 f90,const in float alphaRoughness,const in float specularWeight,const in float VdotH,const in float NdotL,const in float NdotV,const in float NdotH){vec3 F=F_Schlick(f0,f90,VdotH);float Vis=V_GGX(NdotL,NdotV,alphaRoughness);float D=D_GGX(NdotH,alphaRoughness);return specularWeight*F*Vis*D;}
+#if defined(X3D_IRIDESCENCE_MATERIAL_EXT)
+vec3 BRDF_lambertianIridescence(const in vec3 f0,const in vec3 f90,const in vec3 iridescenceFresnel,const in float iridescenceFactor,const in vec3 diffuseColor,const in float specularWeight,const in float VdotH){vec3 iridescenceFresnelMax=vec3(max(max(iridescenceFresnel.r,iridescenceFresnel.g),iridescenceFresnel.b));vec3 schlickFresnel=F_Schlick(f0,f90,VdotH);vec3 F=mix(schlickFresnel,iridescenceFresnelMax,iridescenceFactor);return(1.0-specularWeight*F)*(diffuseColor/M_PI);}vec3 BRDF_specularGGXIridescence(const in vec3 f0,const in vec3 f90,const in vec3 iridescenceFresnel,const in float alphaRoughness,const in float iridescenceFactor,const in float specularWeight,const in float VdotH,const in float NdotL,const in float NdotV,const in float NdotH){vec3 F=mix(F_Schlick(f0,f90,VdotH),iridescenceFresnel,iridescenceFactor);float Vis=V_GGX(NdotL,NdotV,alphaRoughness);float D=D_GGX(NdotH,alphaRoughness);return specularWeight*F*Vis*D;}
+#endif
+#if defined(X3D_ANISOTROPY_MATERIAL_EXT)
+float D_GGX_anisotropic(const in float NdotH,const in float TdotH,const in float BdotH,const in float anisotropy,const in float at,const in float ab){float a2=at*ab;vec3 f=vec3(ab*TdotH,at*BdotH,a2*NdotH);float w2=a2/dot(f,f);return a2*w2*w2/M_PI;}float V_GGX_anisotropic(const in float NdotL,const in float NdotV,const in float BdotV,const in float TdotV,const in float TdotL,const in float BdotL,const in float at,const in float ab){float GGXV=NdotL*length(vec3(at*TdotV,ab*BdotV,NdotV));float GGXL=NdotV*length(vec3(at*TdotL,ab*BdotL,NdotL));float v=0.5/(GGXV+GGXL);return clamp(v,0.0,1.0);}vec3 BRDF_specularGGXAnisotropy(const in vec3 f0,const in vec3 f90,const in float alphaRoughness,const in float anisotropy,const in vec3 n,const in vec3 v,const in vec3 l,const in vec3 h,const in vec3 t,const in vec3 b){float at=mix(alphaRoughness,1.0,anisotropy*anisotropy);float ab=clamp(alphaRoughness,0.001,1.0);float NdotL=clamp(dot(n,l),0.0,1.0);float NdotH=clamp(dot(n,h),0.001,1.0);float NdotV=dot(n,v);float VdotH=clamp(dot(v,h),0.0,1.0);float V=V_GGX_anisotropic(NdotL,NdotV,dot(b,v),dot(t,v),dot(t,l),dot(b,l),at,ab);float D=D_GGX_anisotropic(NdotH,dot(t,h),dot(b,h),anisotropy,at,ab);vec3 F=F_Schlick(f0,f90,VdotH);return F*V*D;}
+#endif
+#if defined(X3D_SHEEN_MATERIAL_EXT)
+float lambdaSheenNumericHelper(const in float x,const in float alphaG){float oneMinusAlphaSq=(1.0-alphaG)*(1.0-alphaG);float a=mix(21.5473,25.3245,oneMinusAlphaSq);float b=mix(3.82987,3.32435,oneMinusAlphaSq);float c=mix(0.19823,0.16801,oneMinusAlphaSq);float d=mix(-1.97760,-1.27393,oneMinusAlphaSq);float e=mix(-4.32054,-4.85967,oneMinusAlphaSq);return a/(1.0+b*pow(x,c))+d*x+e;}float lambdaSheen(const in float cosTheta,const in float alphaG){if(abs(cosTheta)<0.5)return exp(lambdaSheenNumericHelper(cosTheta,alphaG));else return exp(2.0*lambdaSheenNumericHelper(0.5,alphaG)-lambdaSheenNumericHelper(1.0-cosTheta,alphaG));}float V_Sheen(const in float NdotL,const in float NdotV,in float sheenRoughness){sheenRoughness=max(sheenRoughness,0.000001);float alphaG=sheenRoughness*sheenRoughness;return clamp(1.0/((1.0+lambdaSheen(NdotV,alphaG)+lambdaSheen(NdotL,alphaG))*(4.0*NdotV*NdotL)),0.0,1.0);}float D_Charlie(in float sheenRoughness,const in float NdotH){sheenRoughness=max(sheenRoughness,0.000001);float alphaG=sheenRoughness*sheenRoughness;float invR=1.0/alphaG;float cos2h=NdotH*NdotH;float sin2h=1.0-cos2h;return(2.0+invR)*pow(sin2h,invR*0.5)/(2.0*M_PI);}vec3 BRDF_specularSheen(const in vec3 sheenColor,const in float sheenRoughness,const in float NdotL,const in float NdotV,const in float NdotH){float sheenDistribution=D_Charlie(sheenRoughness,NdotH);float sheenVisibility=V_Sheen(NdotL,NdotV,sheenRoughness);return sheenColor*sheenDistribution*sheenVisibility;}
+#endif
 #endif
 `
 ;
 
-x_ite_Namespace .add ("BDRF1.glsl", "assets/shaders/webgl1/pbr/BDRF1.glsl", BDRF1_glsl_default_);
-/* harmony default export */ const BDRF1_glsl = (BDRF1_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/pbr/IBL1.glsl.js
-const IBL1_glsl_default_ = /* glsl */ `#if defined(X3D_USE_IBL)
-uniform x3d_EnvironmentLightSourceParameters x3d_EnvironmentLightSource;vec3 getDiffuseLight(const in vec3 n){vec3 textureColor=textureCube(x3d_EnvironmentLightSource.diffuseTexture,x3d_EnvironmentLightSource.rotation*n).rgb;if(!x3d_EnvironmentLightSource.diffuseTextureLinear)textureColor=sRGBToLinear(textureColor);return textureColor*x3d_EnvironmentLightSource.color*x3d_EnvironmentLightSource.intensity;}vec3 getSpecularLight(const in vec3 reflection,const in float lod){vec3 textureColor=textureCubeLodEXT(x3d_EnvironmentLightSource.specularTexture,x3d_EnvironmentLightSource.rotation*reflection,lod).rgb;if(!x3d_EnvironmentLightSource.specularTextureLinear)textureColor=sRGBToLinear(textureColor);return textureColor*x3d_EnvironmentLightSource.color*x3d_EnvironmentLightSource.intensity;}vec3 getIBLRadianceGGX(const in vec3 n,const in vec3 v,const in float roughness,const in vec3 F0,const in float specularWeight){float NdotV=clamp(dot(n,v),0.0,1.0);float lod=roughness*float(x3d_EnvironmentLightSource.specularTextureLevels-1);vec3 reflection=normalize(reflect(-v,n));vec2 brdfSamplePoint=clamp(vec2(NdotV,roughness),vec2(0.0),vec2(1.0));vec2 f_ab=texture2D(x3d_EnvironmentLightSource.GGXLUTTexture,brdfSamplePoint).rg;vec3 specularLight=getSpecularLight(reflection,lod);vec3 Fr=max(vec3(1.0-roughness),F0)-F0;vec3 k_S=F0+Fr*pow(1.0-NdotV,5.0);vec3 FssEss=k_S*f_ab.x+f_ab.y;return specularWeight*specularLight*FssEss;}vec3 getIBLRadianceLambertian(const in vec3 n,const in vec3 v,const in float roughness,const in vec3 diffuseColor,const in vec3 F0,const in float specularWeight){float NdotV=clamp(dot(n,v),0.0,1.0);vec2 brdfSamplePoint=clamp(vec2(NdotV,roughness),vec2(0.0),vec2(1.0));vec2 f_ab=texture2D(x3d_EnvironmentLightSource.GGXLUTTexture,brdfSamplePoint).rg;vec3 irradiance=getDiffuseLight(n);vec3 Fr=max(vec3(1.0-roughness),F0)-F0;vec3 k_S=F0+Fr*pow(1.0-NdotV,5.0);vec3 FssEss=specularWeight*k_S*f_ab.x+f_ab.y;float Ems=(1.0-(f_ab.x+f_ab.y));vec3 F_avg=specularWeight*(F0+(1.0-F0)/21.0);vec3 FmsEms=Ems*FssEss*F_avg/(1.0-F_avg*Ems);vec3 k_D=diffuseColor*(1.0-FssEss+FmsEms);return(FmsEms+k_D)*irradiance;}
-#endif
-`
-;
-
-x_ite_Namespace .add ("IBL1.glsl", "assets/shaders/webgl1/pbr/IBL1.glsl", IBL1_glsl_default_);
-/* harmony default export */ const IBL1_glsl = (IBL1_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/pbr/Punctual1.glsl.js
-const Punctual1_glsl_default_ = /* glsl */ `#if defined(X3D_LIGHTING)
-#pragma X3D include "../common/Lighting.glsl"
-vec3 getLightIntensity(const in x3d_LightSourceParameters light,const in vec3 pointToLight,const in float distanceToLight){float attenuationFactor=1.0;float spotFactor=1.0;if(light.type!=x3d_DirectionalLight){attenuationFactor=getAttenuation(light.attenuation,distanceToLight);}if(light.type==x3d_SpotLight){spotFactor=getSpotFactor(pointToLight,light.direction,light.cutOffAngle,light.beamWidth);}return attenuationFactor*spotFactor*light.intensity*light.color;}
-#endif
-`
-;
-
-x_ite_Namespace .add ("Punctual1.glsl", "assets/shaders/webgl1/pbr/Punctual1.glsl", Punctual1_glsl_default_);
-/* harmony default export */ const Punctual1_glsl = (Punctual1_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/pbr/MaterialInfo1.glsl.js
-const MaterialInfo1_glsl_default_ = /* glsl */ `struct MaterialInfo{float ior;float perceptualRoughness;vec3 f0;float alphaRoughness;vec3 c_diff;vec3 f90;float metallic;vec3 baseColor;float sheenRoughnessFactor;vec3 sheenColorFactor;vec3 clearcoatF0;vec3 clearcoatF90;float clearcoatFactor;vec3 clearcoatNormal;float clearcoatRoughness;float specularWeight;float transmissionFactor;float thickness;vec3 attenuationColor;float attenuationDistance;float iridescenceFactor;float iridescenceIor;float iridescenceThickness;vec3 anisotropicT;vec3 anisotropicB;float anisotropyStrength;};
-#if defined(X3D_MATERIAL_SPECULAR_GLOSSINESS)
-#if defined(X3D_DIFFUSE_TEXTURE)
-uniform x3d_DiffuseTextureParameters x3d_DiffuseTexture;
-#endif
-#elif defined(X3D_MATERIAL_METALLIC_ROUGHNESS)
-#if defined(X3D_BASE_TEXTURE)
-uniform x3d_BaseTextureParameters x3d_BaseTexture;
-#endif
-#endif
-vec4 getBaseColor(){float alpha=1.0-x3d_Material.transparency;
-#if defined(X3D_MATERIAL_SPECULAR_GLOSSINESS)
-vec4 baseColor=vec4(x3d_Material.diffuseColor,alpha);
-#elif defined(X3D_MATERIAL_METALLIC_ROUGHNESS)
-vec4 baseColor=vec4(x3d_Material.baseColor,alpha);
-#endif
-#if defined(X3D_COLOR_MATERIAL)
-baseColor*=color;
-#endif
-#if defined(X3D_MATERIAL_SPECULAR_GLOSSINESS)
-#if defined(X3D_DIFFUSE_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_DiffuseTexture.textureTransformMapping,x3d_DiffuseTexture.textureCoordinateMapping);
-#if defined(X3D_DIFFUSE_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_DIFFUSE_TEXTURE_2D)
-vec4 textureColor=texture2D(x3d_DiffuseTexture.texture2D,texCoord.st);
-#elif defined(X3D_DIFFUSE_TEXTURE_CUBE)
-vec4 textureColor=textureCube(x3d_DiffuseTexture.textureCube,texCoord);
-#endif
-#if defined(X3D_BASE_TEXTURE_LINEAR)
-baseColor*=textureColor;
-#else
-baseColor*=sRGBToLinear(textureColor);
-#endif
-#elif defined(X3D_TEXTURE)
-baseColor=getTextureColor(baseColor,vec4(vec3(1.0),alpha));
-#endif
-#elif defined(X3D_MATERIAL_METALLIC_ROUGHNESS)
-#if defined(X3D_BASE_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_BaseTexture.textureTransformMapping,x3d_BaseTexture.textureCoordinateMapping);
-#if defined(X3D_BASE_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_BASE_TEXTURE_2D)
-vec4 textureColor=texture2D(x3d_BaseTexture.texture2D,texCoord.st);
-#elif defined(X3D_BASE_TEXTURE_CUBE)
-vec4 textureColor=textureCube(x3d_BaseTexture.textureCube,texCoord);
-#endif
-#if defined(X3D_BASE_TEXTURE_LINEAR)
-baseColor*=textureColor;
-#else
-baseColor*=sRGBToLinear(textureColor);
-#endif
-#elif defined(X3D_TEXTURE)
-baseColor=getTextureColor(baseColor,vec4(vec3(1.0),alpha));
-#endif
-#endif
-return baseColor;}
-#if defined(X3D_MATERIAL_METALLIC_ROUGHNESS)
-#if defined(X3D_METALLIC_ROUGHNESS_TEXTURE)
-uniform x3d_MetallicRoughnessTextureParameters x3d_MetallicRoughnessTexture;
-#endif
-MaterialInfo getMetallicRoughnessInfo(in MaterialInfo info){info.metallic=x3d_Material.metallic;info.perceptualRoughness=x3d_Material.roughness;
-#if defined(X3D_METALLIC_ROUGHNESS_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_MetallicRoughnessTexture.textureTransformMapping,x3d_MetallicRoughnessTexture.textureCoordinateMapping);
-#if defined(X3D_METALLIC_ROUGHNESS_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_METALLIC_ROUGHNESS_TEXTURE_2D)
-vec4 mrSample=texture2D(x3d_MetallicRoughnessTexture.texture2D,texCoord.st);
-#elif defined(X3D_METALLIC_ROUGHNESS_TEXTURE_CUBE)
-vec4 mrSample=textureCube(x3d_MetallicRoughnessTexture.textureCube,texCoord);
-#endif
-info.metallic*=mrSample.b;info.perceptualRoughness*=mrSample.g;
-#endif
-info.c_diff=mix(info.baseColor.rgb,vec3(0.0),info.metallic);info.f0=mix(info.f0,info.baseColor.rgb,info.metallic);return info;}
-#endif
-#if defined(X3D_EMISSIVE_TEXTURE)
-uniform x3d_EmissiveTextureParameters x3d_EmissiveTexture;
-#endif
-vec3 getEmissiveColor(){vec3 emissiveColor=x3d_Material.emissiveColor;
-#if defined(X3D_EMISSIVE_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_EmissiveTexture.textureTransformMapping,x3d_EmissiveTexture.textureCoordinateMapping);
-#if defined(X3D_EMISSIVE_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_EMISSIVE_TEXTURE_2D)
-vec3 textureColor=texture2D(x3d_EmissiveTexture.texture2D,texCoord.st).rgb;
-#elif defined(X3D_EMISSIVE_TEXTURE_CUBE)
-vec3 textureColor=textureCube(x3d_EmissiveTexture.textureCube,texCoord).rgb;
-#endif
-#if defined(X3D_EMISSIVE_TEXTURE_LINEAR)
-emissiveColor*=textureColor;
-#else
-emissiveColor*=sRGBToLinear(textureColor);
-#endif
-#endif
-return emissiveColor;}
-#if defined(X3D_OCCLUSION_TEXTURE)
-uniform x3d_OcclusionTextureParameters x3d_OcclusionTexture;
-#endif
-float getOcclusionFactor(){
-#if defined(X3D_OCCLUSION_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_OcclusionTexture.textureTransformMapping,x3d_OcclusionTexture.textureCoordinateMapping);
-#if defined(X3D_OCCLUSION_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_OCCLUSION_TEXTURE_2D)
-return texture2D(x3d_OcclusionTexture.texture2D,texCoord.st).r;
-#elif defined(X3D_OCCLUSION_TEXTURE_CUBE)
-return textureCube(x3d_OcclusionTexture.textureCube,texCoord).r;
-#endif
-#else
-return 1.0;
-#endif
-}`
-;
-
-x_ite_Namespace .add ("MaterialInfo1.glsl", "assets/shaders/webgl1/pbr/MaterialInfo1.glsl", MaterialInfo1_glsl_default_);
-/* harmony default export */ const MaterialInfo1_glsl = (MaterialInfo1_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/pbr/ToneMapping1.glsl.js
-const ToneMapping1_glsl_default_ = /* glsl */ `const float exposure=1.0;const float GAMMA=2.2;const float INV_GAMMA=1.0/GAMMA;vec3 linearTosRGB(const in vec3 color){return pow(color,vec3(INV_GAMMA));}vec4 linearTosRGB(const in vec4 color){return vec4(linearTosRGB(color.rgb),color.a);}vec3 sRGBToLinear(const in vec3 color){return pow(color,vec3(GAMMA));}vec4 sRGBToLinear(const in vec4 color){return vec4(sRGBToLinear(color.rgb),color.a);}
-#if defined(X3D_TONEMAP_ACES_NARKOWICZ)
-vec3 toneMapACES_Narkowicz(const in vec3 color){const float A=2.51;const float B=0.03;const float C=2.43;const float D=0.59;const float E=0.14;return clamp((color*(A*color+B))/(color*(C*color+D)+E),0.0,1.0);}
-#endif
-#if defined(X3D_TONEMAP_ACES_HILL)||defined(X3D_TONEMAP_ACES_HILL_EXPOSURE_BOOST)
-const mat3 ACESInputMat=mat3(0.59719,0.07600,0.02840,0.35458,0.90834,0.13383,0.04823,0.01566,0.83777);const mat3 ACESOutputMat=mat3(1.60475,-0.10208,-0.00327,-0.53108,1.10813,-0.07276,-0.07367,-0.00605,1.07602);vec3 RRTAndODTFit(const in vec3 color){vec3 a=color*(color+0.0245786)-0.000090537;vec3 b=color*(0.983729*color+0.4329510)+0.238081;return a/b;}vec3 toneMapACES_Hill(in vec3 color){color=ACESInputMat*color;color=RRTAndODTFit(color);color=ACESOutputMat*color;color=clamp(color,0.0,1.0);return color;}
-#endif
-vec3 toneMap(in vec3 color){color*=exposure;
-#if defined(X3D_TONEMAP_ACES_NARKOWICZ)
-color=toneMapACES_Narkowicz(color);
-#endif
-#if defined(X3D_TONEMAP_ACES_HILL)
-color=toneMapACES_Hill(color);
-#endif
-#if defined(X3D_TONEMAP_ACES_HILL_EXPOSURE_BOOST)
-color/=0.6;color=toneMapACES_Hill(color);
-#endif
-return linearTosRGB(color);}`
-;
-
-x_ite_Namespace .add ("ToneMapping1.glsl", "assets/shaders/webgl1/pbr/ToneMapping1.glsl", ToneMapping1_glsl_default_);
-/* harmony default export */ const ToneMapping1_glsl = (ToneMapping1_glsl_default_);
-;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/pbr/BDRF2.glsl.js
-const BDRF2_glsl_default_ = /* glsl */ `#if defined(X3D_LIGHTING)
-const float M_PI=3.1415926535897932384626433832795;vec3 F_Schlick(vec3 f0,vec3 f90,float VdotH){return f0+(f90-f0)*pow(clamp(1.0-VdotH,0.0,1.0),5.0);}float V_GGX(float NdotL,float NdotV,float alphaRoughness){float alphaRoughnessSq=alphaRoughness*alphaRoughness;float GGXV=NdotL*sqrt(NdotV*NdotV*(1.0-alphaRoughnessSq)+alphaRoughnessSq);float GGXL=NdotV*sqrt(NdotL*NdotL*(1.0-alphaRoughnessSq)+alphaRoughnessSq);float GGX=GGXV+GGXL;if(GGX>0.0){return 0.5/GGX;}return 0.0;}float D_GGX(float NdotH,float alphaRoughness){float alphaRoughnessSq=alphaRoughness*alphaRoughness;float f=(NdotH*NdotH)*(alphaRoughnessSq-1.0)+1.0;return alphaRoughnessSq/(M_PI*f*f);}vec3 BRDF_lambertian(vec3 f0,vec3 f90,vec3 diffuseColor,float specularWeight,float VdotH){return(1.0-specularWeight*F_Schlick(f0,f90,VdotH))*(diffuseColor/M_PI);}vec3 BRDF_specularGGX(vec3 f0,vec3 f90,float alphaRoughness,float specularWeight,float VdotH,float NdotL,float NdotV,float NdotH){vec3 F=F_Schlick(f0,f90,VdotH);float Vis=V_GGX(NdotL,NdotV,alphaRoughness);float D=D_GGX(NdotH,alphaRoughness);return specularWeight*F*Vis*D;}
-#endif
-`
-;
-
-x_ite_Namespace .add ("BDRF2.glsl", "assets/shaders/webgl2/pbr/BDRF2.glsl", BDRF2_glsl_default_);
-/* harmony default export */ const BDRF2_glsl = (BDRF2_glsl_default_);
+x_ite_Namespace .add ("BRDF2.glsl", "assets/shaders/webgl2/pbr/BRDF2.glsl", BRDF2_glsl_default_);
+/* harmony default export */ const BRDF2_glsl = (BRDF2_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/pbr/IBL2.glsl.js
-const IBL2_glsl_default_ = /* glsl */ `#if defined(X3D_USE_IBL)
-uniform x3d_EnvironmentLightSourceParameters x3d_EnvironmentLightSource;vec3 getDiffuseLight(const in vec3 n){vec3 textureColor=texture(x3d_EnvironmentLightSource.diffuseTexture,x3d_EnvironmentLightSource.rotation*n).rgb;if(!x3d_EnvironmentLightSource.diffuseTextureLinear)textureColor=sRGBToLinear(textureColor);return textureColor*x3d_EnvironmentLightSource.color*x3d_EnvironmentLightSource.intensity;}vec3 getSpecularLight(const in vec3 reflection,const in float lod){vec3 textureColor=textureLod(x3d_EnvironmentLightSource.specularTexture,x3d_EnvironmentLightSource.rotation*reflection,lod).rgb;if(!x3d_EnvironmentLightSource.specularTextureLinear)textureColor=sRGBToLinear(textureColor);return textureColor*x3d_EnvironmentLightSource.color*x3d_EnvironmentLightSource.intensity;}vec3 getIBLRadianceGGX(const in vec3 n,const in vec3 v,const in float roughness,const in vec3 F0,const in float specularWeight){float NdotV=clamp(dot(n,v),0.0,1.0);float lod=roughness*float(x3d_EnvironmentLightSource.specularTextureLevels-1);vec3 reflection=normalize(reflect(-v,n));vec2 brdfSamplePoint=clamp(vec2(NdotV,roughness),vec2(0.0),vec2(1.0));vec2 f_ab=texture(x3d_EnvironmentLightSource.GGXLUTTexture,brdfSamplePoint).rg;vec3 specularLight=getSpecularLight(reflection,lod);vec3 Fr=max(vec3(1.0-roughness),F0)-F0;vec3 k_S=F0+Fr*pow(1.0-NdotV,5.0);vec3 FssEss=k_S*f_ab.x+f_ab.y;return specularWeight*specularLight*FssEss;}vec3 getIBLRadianceLambertian(const in vec3 n,const in vec3 v,const in float roughness,const in vec3 diffuseColor,const in vec3 F0,const in float specularWeight){float NdotV=clamp(dot(n,v),0.0,1.0);vec2 brdfSamplePoint=clamp(vec2(NdotV,roughness),vec2(0.0),vec2(1.0));vec2 f_ab=texture(x3d_EnvironmentLightSource.GGXLUTTexture,brdfSamplePoint).rg;vec3 irradiance=getDiffuseLight(n);vec3 Fr=max(vec3(1.0-roughness),F0)-F0;vec3 k_S=F0+Fr*pow(1.0-NdotV,5.0);vec3 FssEss=specularWeight*k_S*f_ab.x+f_ab.y;float Ems=(1.0-(f_ab.x+f_ab.y));vec3 F_avg=specularWeight*(F0+(1.0-F0)/21.0);vec3 FmsEms=Ems*FssEss*F_avg/(1.0-F_avg*Ems);vec3 k_D=diffuseColor*(1.0-FssEss+FmsEms);return(FmsEms+k_D)*irradiance;}
+const IBL2_glsl_default_ = /* glsl */ `
+#if defined(X3D_USE_IBL)
+uniform x3d_EnvironmentLightSourceParameters x3d_EnvironmentLightSource;vec3 getDiffuseLight(const in vec3 n){vec3 texCoord=x3d_EnvironmentLightSource.rotation*n*vec3(-1.0,1.0,1.0);
+#if __VERSION__==100
+vec3 textureColor=textureCube(x3d_EnvironmentLightSource.diffuseTexture,texCoord).rgb;
+#else
+vec3 textureColor=texture(x3d_EnvironmentLightSource.diffuseTexture,texCoord).rgb;
+#endif
+if(!x3d_EnvironmentLightSource.diffuseTextureLinear)textureColor=sRGBToLinear(textureColor);return textureColor*x3d_EnvironmentLightSource.color*x3d_EnvironmentLightSource.intensity;}vec3 getSpecularLight(const in vec3 reflection,const in float lod){vec3 texCoord=x3d_EnvironmentLightSource.rotation*reflection*vec3(-1.0,1.0,1.0);
+#if __VERSION__==100
+vec3 textureColor=textureCubeLodEXT(x3d_EnvironmentLightSource.specularTexture,texCoord,lod).rgb;
+#else
+vec3 textureColor=textureLod(x3d_EnvironmentLightSource.specularTexture,texCoord,lod).rgb;
+#endif
+if(!x3d_EnvironmentLightSource.specularTextureLinear)textureColor=sRGBToLinear(textureColor);return textureColor*x3d_EnvironmentLightSource.color*x3d_EnvironmentLightSource.intensity;}
+#if defined(X3D_SHEEN_MATERIAL_EXT)
+vec3 getSheenLight(const in vec3 reflection,const in float lod){return vec3(0.5)*(lod/float(x3d_EnvironmentLightSource.specularTextureLevels))*x3d_EnvironmentLightSource.intensity;}
+#endif
+vec3 getIBLRadianceGGX(const in vec3 n,const in vec3 v,const in float roughness,const in vec3 F0,const in float specularWeight){float NdotV=clamp(dot(n,v),0.0,1.0);float lod=roughness*float(x3d_EnvironmentLightSource.specularTextureLevels);vec3 reflection=normalize(reflect(-v,n));vec2 brdfSamplePoint=clamp(vec2(NdotV,roughness),vec2(0.0),vec2(1.0));
+#if __VERSION__==100
+vec2 f_ab=texture2D(x3d_EnvironmentLightSource.GGXLUTTexture,brdfSamplePoint).rg;
+#else
+vec2 f_ab=texture(x3d_EnvironmentLightSource.GGXLUTTexture,brdfSamplePoint).rg;
+#endif
+vec3 specularLight=getSpecularLight(reflection,lod);vec3 Fr=max(vec3(1.0-roughness),F0)-F0;vec3 k_S=F0+Fr*pow(1.0-NdotV,5.0);vec3 FssEss=k_S*f_ab.x+f_ab.y;return specularWeight*specularLight*FssEss;}vec3 getIBLRadianceLambertian(const in vec3 n,const in vec3 v,const in float roughness,const in vec3 diffuseColor,const in vec3 F0,const in float specularWeight){float NdotV=clamp(dot(n,v),0.0,1.0);vec2 brdfSamplePoint=clamp(vec2(NdotV,roughness),vec2(0.0),vec2(1.0));
+#if __VERSION__==100
+vec2 f_ab=texture2D(x3d_EnvironmentLightSource.GGXLUTTexture,brdfSamplePoint).rg;
+#else
+vec2 f_ab=texture(x3d_EnvironmentLightSource.GGXLUTTexture,brdfSamplePoint).rg;
+#endif
+vec3 irradiance=getDiffuseLight(n);vec3 Fr=max(vec3(1.0-roughness),F0)-F0;vec3 k_S=F0+Fr*pow(1.0-NdotV,5.0);vec3 FssEss=specularWeight*k_S*f_ab.x+f_ab.y;float Ems=(1.0-(f_ab.x+f_ab.y));vec3 F_avg=specularWeight*(F0+(1.0-F0)/21.0);vec3 FmsEms=Ems*FssEss*F_avg/(1.0-F_avg*Ems);vec3 k_D=diffuseColor*(1.0-FssEss+FmsEms);return(FmsEms+k_D)*irradiance;}
+#if defined(X3D_IRIDESCENCE_MATERIAL_EXT)
+vec3 getIBLRadianceGGXIridescence(const in vec3 n,const in vec3 v,const in float roughness,const in vec3 F0,const in vec3 iridescenceFresnel,const in float iridescenceFactor,const in float specularWeight){float NdotV=clamp(dot(n,v),0.0,1.0);float lod=roughness*float(x3d_EnvironmentLightSource.specularTextureLevels);vec3 reflection=normalize(reflect(-v,n));vec2 brdfSamplePoint=clamp(vec2(NdotV,roughness),vec2(0.0),vec2(1.0));
+#if __VERSION__==100
+vec2 f_ab=texture2D(x3d_EnvironmentLightSource.GGXLUTTexture,brdfSamplePoint).rg;
+#else
+vec2 f_ab=texture(x3d_EnvironmentLightSource.GGXLUTTexture,brdfSamplePoint).rg;
+#endif
+vec3 specularLight=getSpecularLight(reflection,lod);vec3 Fr=max(vec3(1.0-roughness),F0)-F0;vec3 k_S=mix(F0+Fr*pow(1.0-NdotV,5.0),iridescenceFresnel,iridescenceFactor);vec3 FssEss=k_S*f_ab.x+f_ab.y;return specularWeight*specularLight*FssEss;}vec3 getIBLRadianceLambertianIridescence(const in vec3 n,const in vec3 v,const in float roughness,const in vec3 diffuseColor,const in vec3 F0,const in vec3 iridescenceF0,const in float iridescenceFactor,const in float specularWeight){float NdotV=clamp(dot(n,v),0.0,1.0);vec2 brdfSamplePoint=clamp(vec2(NdotV,roughness),vec2(0.0,0.0),vec2(1.0,1.0));
+#if __VERSION__==100
+vec2 f_ab=texture2D(x3d_EnvironmentLightSource.GGXLUTTexture,brdfSamplePoint).rg;
+#else
+vec2 f_ab=texture(x3d_EnvironmentLightSource.GGXLUTTexture,brdfSamplePoint).rg;
+#endif
+vec3 irradiance=getDiffuseLight(n);vec3 iridescenceF0Max=vec3(max(max(iridescenceF0.r,iridescenceF0.g),iridescenceF0.b));vec3 mixedF0=mix(F0,iridescenceF0Max,iridescenceFactor);vec3 Fr=max(vec3(1.0-roughness),mixedF0)-mixedF0;vec3 k_S=mixedF0+Fr*pow(1.0-NdotV,5.0);vec3 FssEss=specularWeight*k_S*f_ab.x+f_ab.y;float Ems=(1.0-(f_ab.x+f_ab.y));vec3 F_avg=specularWeight*(mixedF0+(1.0-mixedF0)/21.0);vec3 FmsEms=Ems*FssEss*F_avg/(1.0-F_avg*Ems);vec3 k_D=diffuseColor*(1.0-FssEss+FmsEms);return(FmsEms+k_D)*irradiance;}
+#endif
+#if defined(X3D_TRANSMISSION_MATERIAL_EXT)
+uniform sampler2D x3d_TransmissionFramebufferSamplerEXT;uniform ivec2 x3d_TransmissionFramebufferSizeEXT;uniform ivec4 x3d_Viewport;vec3 getTransmissionSample(in vec2 fragCoord,const in float roughness,const in float ior){fragCoord=fragCoord*vec2(x3d_Viewport.zw)/vec2(x3d_TransmissionFramebufferSizeEXT)+vec2(x3d_Viewport.xy)/vec2(x3d_Viewport.zw);
+#if __VERSION__==100
+float framebufferSize=max(float(x3d_TransmissionFramebufferSizeEXT.x),float(x3d_TransmissionFramebufferSizeEXT.y));float framebufferLod=log2(framebufferSize)*applyIorToRoughness(roughness,ior);vec3 transmittedLight=texture2DLodEXT(x3d_TransmissionFramebufferSamplerEXT,fragCoord,framebufferLod).rgb;
+#else
+int framebufferSize=max(x3d_TransmissionFramebufferSizeEXT.x,x3d_TransmissionFramebufferSizeEXT.y);float framebufferLod=log2(float(framebufferSize))*applyIorToRoughness(roughness,ior);vec3 transmittedLight=textureLod(x3d_TransmissionFramebufferSamplerEXT,fragCoord,framebufferLod).rgb;
+#endif
+return sRGBToLinear(transmittedLight);}vec3 getIBLVolumeRefraction(const in vec3 n,const in vec3 v,const in float perceptualRoughness,const in vec3 baseColor,const in vec3 f0,const in vec3 f90,const in vec3 position,const in mat4 modelMatrix,const in mat4 projMatrix,const in float ior,const in float thickness,const in vec3 attenuationColor,const in float attenuationDistance,const in float dispersion){
+#if defined(X3D_DISPERSION_MATERIAL_EXT)
+float halfSpread=(ior-1.0)*0.025*dispersion;vec3 iors=vec3(ior-halfSpread,ior,ior+halfSpread);vec3 transmittedLight;float transmissionRayLength;for(int i=0;i<3;i++){vec3 transmissionRay=getVolumeTransmissionRay(n,v,thickness,iors[i],modelMatrix);transmissionRayLength=length(transmissionRay);vec3 refractedRayExit=position+transmissionRay;vec4 ndcPos=projMatrix*vec4(refractedRayExit,1.0);vec2 refractionCoords=ndcPos.xy/ndcPos.w;refractionCoords+=1.0;refractionCoords/=2.0;transmittedLight[i]=getTransmissionSample(refractionCoords,perceptualRoughness,iors[i])[i];}
+#else
+vec3 transmissionRay=getVolumeTransmissionRay(n,v,thickness,ior,modelMatrix);float transmissionRayLength=length(transmissionRay);vec3 refractedRayExit=position+transmissionRay;vec4 ndcPos=projMatrix*vec4(refractedRayExit,1.0);vec2 refractionCoords=ndcPos.xy/ndcPos.w;refractionCoords+=1.0;refractionCoords/=2.0;vec3 transmittedLight=getTransmissionSample(refractionCoords,perceptualRoughness,ior);
+#endif
+vec3 attenuatedColor=applyVolumeAttenuation(transmittedLight,transmissionRayLength,attenuationColor,attenuationDistance);float NdotV=clamp(dot(n,v),0.0,1.0);vec2 brdfSamplePoint=clamp(vec2(NdotV,perceptualRoughness),vec2(0.0),vec2(1.0));
+#if __VERSION__==100
+vec2 brdf=texture2D(x3d_EnvironmentLightSource.GGXLUTTexture,brdfSamplePoint).rg;
+#else
+vec2 brdf=texture(x3d_EnvironmentLightSource.GGXLUTTexture,brdfSamplePoint).rg;
+#endif
+vec3 specularColor=f0*brdf.x+f90*brdf.y;return(1.0-specularColor)*attenuatedColor*baseColor;}
+#endif
+#if defined(X3D_ANISOTROPY_MATERIAL_EXT)
+vec3 getIBLRadianceAnisotropy(const in vec3 n,const in vec3 v,const in float roughness,const in float anisotropy,const in vec3 anisotropyDirection,const in vec3 F0,const in float specularWeight){float NdotV=clamp(dot(n,v),0.0,1.0);float tangentRoughness=mix(roughness,1.0,anisotropy*anisotropy);vec3 anisotropicTangent=cross(anisotropyDirection,v);vec3 anisotropicNormal=cross(anisotropicTangent,anisotropyDirection);float bendFactor=1.0-anisotropy*(1.0-roughness);float bendFactorPow4=bendFactor*bendFactor*bendFactor*bendFactor;vec3 bentNormal=normalize(mix(anisotropicNormal,n,bendFactorPow4));float lod=roughness*float(x3d_EnvironmentLightSource.specularTextureLevels);vec3 reflection=normalize(reflect(-v,bentNormal));vec2 brdfSamplePoint=clamp(vec2(NdotV,roughness),vec2(0.0),vec2(1.0));
+#if __VERSION__==100
+vec2 f_ab=texture2D(x3d_EnvironmentLightSource.GGXLUTTexture,brdfSamplePoint).rg;
+#else
+vec2 f_ab=texture(x3d_EnvironmentLightSource.GGXLUTTexture,brdfSamplePoint).rg;
+#endif
+vec3 specularLight=getSpecularLight(reflection,lod);vec3 Fr=max(vec3(1.0-roughness),F0)-F0;vec3 k_S=F0+Fr*pow(1.0-NdotV,5.0);vec3 FssEss=k_S*f_ab.x+f_ab.y;return specularWeight*specularLight*FssEss;}
+#endif
+#if defined(X3D_SHEEN_MATERIAL_EXT)
+vec3 getIBLRadianceCharlie(const in vec3 n,const in vec3 v,const in float sheenRoughness,const in vec3 sheenColor){float NdotV=clamp(dot(n,v),0.0,1.0);float lod=sheenRoughness*float(x3d_EnvironmentLightSource.specularTextureLevels);vec3 reflection=normalize(reflect(-v,n));vec2 brdfSamplePoint=clamp(vec2(NdotV,sheenRoughness),vec2(0.0),vec2(1.0));
+#if __VERSION__==100
+float brdf=texture2D(x3d_EnvironmentLightSource.CharlieLUTTexture,brdfSamplePoint).b;
+#else
+float brdf=texture(x3d_EnvironmentLightSource.CharlieLUTTexture,brdfSamplePoint).b;
+#endif
+vec3 sheenLight=getSheenLight(reflection,lod);return sheenLight*sheenColor*brdf;}
+#endif
 #endif
 `
 ;
 
 x_ite_Namespace .add ("IBL2.glsl", "assets/shaders/webgl2/pbr/IBL2.glsl", IBL2_glsl_default_);
 /* harmony default export */ const IBL2_glsl = (IBL2_glsl_default_);
+;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/pbr/Iridescence2.glsl.js
+const Iridescence2_glsl_default_ = /* glsl */ `
+#if defined(X3D_IRIDESCENCE_MATERIAL_EXT)
+const mat3 XYZ_TO_REC709=mat3(3.2404542,-0.9692660,0.0556434,-1.5371385,1.8760108,-0.2040259,-0.4985314,0.0415560,1.0572252);float sq(const in float v){return v*v;}vec3 sq(const in vec3 v){return v*v;}vec3 Fresnel0ToIor(const in vec3 fresnel0){vec3 sqrtF0=sqrt(fresnel0);return(vec3(1.0)+sqrtF0)/(vec3(1.0)-sqrtF0);}vec3 IorToFresnel0(const in vec3 transmittedIor,const in float incidentIor){return sq((transmittedIor-vec3(incidentIor))/(transmittedIor+vec3(incidentIor)));}float IorToFresnel0(const in float transmittedIor,const in float incidentIor){return sq((transmittedIor-incidentIor)/(transmittedIor+incidentIor));}vec3 evalSensitivity(const in float OPD,const in vec3 shift){float phase=2.0*M_PI*OPD*1.0e-9;vec3 val=vec3(5.4856e-13,4.4201e-13,5.2481e-13);vec3 pos=vec3(1.6810e+06,1.7953e+06,2.2084e+06);vec3 var=vec3(4.3278e+09,9.3046e+09,6.6121e+09);vec3 xyz=val*sqrt(2.0*M_PI*var)*cos(pos*phase+shift)*exp(-sq(phase)*var);xyz.x+=9.7470e-14*sqrt(2.0*M_PI*4.5282e+09)*cos(2.2399e+06*phase+shift[0])*exp(-4.5282e+09*sq(phase));xyz/=1.0685e-7;vec3 srgb=XYZ_TO_REC709*xyz;return srgb;}vec3 evalIridescence(const in float outsideIOR,const in float eta2,const in float cosTheta1,const in float thinFilmThickness,const in vec3 baseF0){vec3 I;float iridescenceIor=mix(outsideIOR,eta2,smoothstep(0.0,0.03,thinFilmThickness));float sinTheta2Sq=sq(outsideIOR/iridescenceIor)*(1.0-sq(cosTheta1));float cosTheta2Sq=1.0-sinTheta2Sq;if(cosTheta2Sq<0.0)return vec3(1.0);float cosTheta2=sqrt(cosTheta2Sq);float R0=IorToFresnel0(iridescenceIor,outsideIOR);float R12=F_Schlick(R0,cosTheta1);float R21=R12;float T121=1.0-R12;float phi12=0.0;if(iridescenceIor<outsideIOR)phi12=M_PI;float phi21=M_PI-phi12;vec3 baseIOR=Fresnel0ToIor(clamp(baseF0,0.0,0.9999));vec3 R1=IorToFresnel0(baseIOR,iridescenceIor);vec3 R23=F_Schlick(R1,cosTheta2);vec3 phi23=vec3(0.0);if(baseIOR[0]<iridescenceIor)phi23[0]=M_PI;if(baseIOR[1]<iridescenceIor)phi23[1]=M_PI;if(baseIOR[2]<iridescenceIor)phi23[2]=M_PI;float OPD=2.0*iridescenceIor*thinFilmThickness*cosTheta2;vec3 phi=vec3(phi21)+phi23;vec3 R123=clamp(R12*R23,1e-5,0.9999);vec3 r123=sqrt(R123);vec3 Rs=sq(T121)*R23/(vec3(1.0)-R123);vec3 C0=R12+Rs;I=C0;vec3 Cm=Rs-T121;for(int m=1;m<=2;++m){Cm*=r123;vec3 Sm=2.0*evalSensitivity(float(m)*OPD,float(m)*phi);I+=Cm*Sm;}return max(I,vec3(0.0));}
+#endif
+`
+;
+
+x_ite_Namespace .add ("Iridescence2.glsl", "assets/shaders/webgl2/pbr/Iridescence2.glsl", Iridescence2_glsl_default_);
+/* harmony default export */ const Iridescence2_glsl = (Iridescence2_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/pbr/Punctual2.glsl.js
-const Punctual2_glsl_default_ = /* glsl */ `#if defined(X3D_LIGHTING)
+const Punctual2_glsl_default_ = /* glsl */ `
+#if defined(X3D_TRANSMISSION_MATERIAL_EXT)
+float applyIorToRoughness(const in float roughness,const in float ior){return roughness*clamp(ior*2.0-2.0,0.0,1.0);}
+#endif
+#if defined(X3D_LIGHTING)
 #pragma X3D include "../common/Lighting.glsl"
 vec3 getLightIntensity(const in x3d_LightSourceParameters light,const in vec3 pointToLight,const in float distanceToLight){float attenuationFactor=1.0;float spotFactor=1.0;if(light.type!=x3d_DirectionalLight){attenuationFactor=getAttenuation(light.attenuation,distanceToLight);}if(light.type==x3d_SpotLight){spotFactor=getSpotFactor(pointToLight,light.direction,light.cutOffAngle,light.beamWidth);}return attenuationFactor*spotFactor*light.intensity*light.color;}
+#if defined(X3D_SHEEN_MATERIAL_EXT)
+vec3 getPunctualRadianceSheen(const in vec3 sheenColor,const in float sheenRoughness,const in float NdotL,const in float NdotV,const in float NdotH){return NdotL*BRDF_specularSheen(sheenColor,sheenRoughness,NdotL,NdotV,NdotH);}
+#endif
+#if defined(X3D_CLEARCOAT_MATERIAL_EXT)
+vec3 getPunctualRadianceClearCoat(const in vec3 clearcoatNormal,const in vec3 v,const in vec3 l,const in vec3 h,const in float VdotH,const in vec3 f0,const in vec3 f90,const in float clearcoatRoughness){float NdotL=clamp(dot(clearcoatNormal,l),0.0,1.0);float NdotV=clamp(dot(clearcoatNormal,v),0.0,1.0);float NdotH=clamp(dot(clearcoatNormal,h),0.0,1.0);return NdotL*BRDF_specularGGX(f0,f90,clearcoatRoughness*clearcoatRoughness,1.0,VdotH,NdotL,NdotV,NdotH);}
+#endif
+#endif
+#if defined(X3D_TRANSMISSION_MATERIAL_EXT)
+vec3 getPunctualRadianceTransmission(const in vec3 n,const in vec3 v,const in vec3 l,const in float alphaRoughness,const in vec3 f0,const in vec3 f90,const in vec3 baseColor,const in float ior){float transmissionRoughness=applyIorToRoughness(alphaRoughness,ior);vec3 l_mirror=normalize(l+2.0*n*dot(-l,n));vec3 h=normalize(l_mirror+v);float D=D_GGX(clamp(dot(n,h),0.0,1.0),transmissionRoughness);vec3 F=F_Schlick(f0,f90,clamp(dot(v,h),0.0,1.0));float Vis=V_GGX(clamp(dot(n,l_mirror),0.0,1.0),clamp(dot(n,v),0.0,1.0),transmissionRoughness);return(1.0-F)*baseColor*D*Vis;}vec3 applyVolumeAttenuation(const in vec3 radiance,const in float transmissionDistance,const in vec3 attenuationColor,const in float attenuationDistance){if(attenuationDistance==0.0){return radiance;}else{vec3 attenuationCoefficient=-log(attenuationColor)/attenuationDistance;vec3 transmittance=exp(-attenuationCoefficient*transmissionDistance);return transmittance*radiance;}}vec3 getVolumeTransmissionRay(const in vec3 n,const in vec3 v,const in float thickness,const in float ior,const in mat4 modelMatrix){vec3 refractionVector=refract(-v,normalize(n),1.0/ior);vec3 modelScale;modelScale.x=length(vec3(modelMatrix[0].xyz));modelScale.y=length(vec3(modelMatrix[1].xyz));modelScale.z=length(vec3(modelMatrix[2].xyz));return normalize(refractionVector)*thickness*modelScale;}
 #endif
 `
 ;
@@ -95383,15 +96202,14 @@ vec3 getLightIntensity(const in x3d_LightSourceParameters light,const in vec3 po
 x_ite_Namespace .add ("Punctual2.glsl", "assets/shaders/webgl2/pbr/Punctual2.glsl", Punctual2_glsl_default_);
 /* harmony default export */ const Punctual2_glsl = (Punctual2_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/pbr/MaterialInfo2.glsl.js
-const MaterialInfo2_glsl_default_ = /* glsl */ `struct MaterialInfo{float ior;float perceptualRoughness;vec3 f0;float alphaRoughness;vec3 c_diff;vec3 f90;float metallic;vec3 baseColor;float sheenRoughnessFactor;vec3 sheenColorFactor;vec3 clearcoatF0;vec3 clearcoatF90;float clearcoatFactor;vec3 clearcoatNormal;float clearcoatRoughness;float specularWeight;float transmissionFactor;float thickness;vec3 attenuationColor;float attenuationDistance;float iridescenceFactor;float iridescenceIor;float iridescenceThickness;vec3 anisotropicT;vec3 anisotropicB;float anisotropyStrength;};
+
+
+const MaterialInfo2_glsl_default_ = /* glsl */ `
+struct MaterialInfo{float ior;float perceptualRoughness;vec3 f0;float alphaRoughness;vec3 c_diff;vec3 f90;float metallic;vec3 baseColor;float sheenRoughnessFactor;vec3 sheenColorFactor;vec3 clearcoatF0;vec3 clearcoatF90;float clearcoatFactor;vec3 clearcoatNormal;float clearcoatRoughness;float specularWeight;float transmissionFactor;float thickness;vec3 attenuationColor;float attenuationDistance;float iridescenceFactor;float iridescenceIor;float iridescenceThickness;vec3 anisotropicT;vec3 anisotropicB;float anisotropyStrength;float dispersion;};
 #if defined(X3D_MATERIAL_SPECULAR_GLOSSINESS)
-#if defined(X3D_DIFFUSE_TEXTURE)
-uniform x3d_DiffuseTextureParameters x3d_DiffuseTexture;
-#endif
+${MaterialTextures .texture ("x3d_DiffuseTexture", "rgba", "linear")}
 #elif defined(X3D_MATERIAL_METALLIC_ROUGHNESS)
-#if defined(X3D_BASE_TEXTURE)
-uniform x3d_BaseTextureParameters x3d_BaseTexture;
-#endif
+${MaterialTextures .texture ("x3d_BaseTexture", "rgba", "linear")}
 #endif
 vec4 getBaseColor(){float alpha=1.0-x3d_Material.transparency;
 #if defined(X3D_MATERIAL_SPECULAR_GLOSSINESS)
@@ -95404,125 +96222,176 @@ baseColor*=color;
 #endif
 #if defined(X3D_MATERIAL_SPECULAR_GLOSSINESS)
 #if defined(X3D_DIFFUSE_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_DiffuseTexture.textureTransformMapping,x3d_DiffuseTexture.textureCoordinateMapping);
-#if defined(X3D_DIFFUSE_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_DIFFUSE_TEXTURE_2D)
-vec4 textureColor=texture(x3d_DiffuseTexture.texture2D,texCoord.st);
-#elif defined(X3D_DIFFUSE_TEXTURE_3D)
-vec4 textureColor=texture(x3d_DiffuseTexture.texture3D,texCoord);
-#elif defined(X3D_DIFFUSE_TEXTURE_CUBE)
-vec4 textureColor=texture(x3d_DiffuseTexture.textureCube,texCoord);
-#endif
-#if defined(X3D_BASE_TEXTURE_LINEAR)
-baseColor*=textureColor;
-#else
-baseColor*=sRGBToLinear(textureColor);
-#endif
+baseColor*=getDiffuseTexture();
 #elif defined(X3D_TEXTURE)
 baseColor=getTextureColor(baseColor,vec4(vec3(1.0),alpha));
 #endif
 #elif defined(X3D_MATERIAL_METALLIC_ROUGHNESS)
 #if defined(X3D_BASE_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_BaseTexture.textureTransformMapping,x3d_BaseTexture.textureCoordinateMapping);
-#if defined(X3D_BASE_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_BASE_TEXTURE_2D)
-vec4 textureColor=texture(x3d_BaseTexture.texture2D,texCoord.st);
-#elif defined(X3D_BASE_TEXTURE_3D)
-vec4 textureColor=texture(x3d_BaseTexture.texture3D,texCoord);
-#elif defined(X3D_BASE_TEXTURE_CUBE)
-vec4 textureColor=texture(x3d_BaseTexture.textureCube,texCoord);
-#endif
-#if defined(X3D_BASE_TEXTURE_LINEAR)
-baseColor*=textureColor;
-#else
-baseColor*=sRGBToLinear(textureColor);
-#endif
+baseColor*=getBaseTexture();
 #elif defined(X3D_TEXTURE)
 baseColor=getTextureColor(baseColor,vec4(vec3(1.0),alpha));
 #endif
 #endif
 return baseColor;}
-#if defined(X3D_MATERIAL_METALLIC_ROUGHNESS)
-#if defined(X3D_METALLIC_ROUGHNESS_TEXTURE)
-uniform x3d_MetallicRoughnessTextureParameters x3d_MetallicRoughnessTexture;
+#if defined(X3D_MATERIAL_SPECULAR_GLOSSINESS)
+${MaterialTextures .texture ("x3d_SpecularGlossinessTexture", "rgba", "linear")}
+MaterialInfo getSpecularGlossinessInfo(in MaterialInfo info){info.f0=x3d_Material.specularColor;info.perceptualRoughness=x3d_Material.glossiness;
+#if defined(X3D_SPECULAR_GLOSSINESS_TEXTURE)
+vec4 sgSample=getSpecularGlossinessTexture();info.perceptualRoughness*=sgSample.a;info.f0*=sgSample.rgb;
 #endif
+info.perceptualRoughness=1.0-info.perceptualRoughness;info.c_diff=info.baseColor.rgb*(1.0-max(max(info.f0.r,info.f0.g),info.f0.b));return info;}
+#endif
+#if defined(X3D_MATERIAL_METALLIC_ROUGHNESS)
+${MaterialTextures .texture ("x3d_MetallicRoughnessTexture")}
 MaterialInfo getMetallicRoughnessInfo(in MaterialInfo info){info.metallic=x3d_Material.metallic;info.perceptualRoughness=x3d_Material.roughness;
 #if defined(X3D_METALLIC_ROUGHNESS_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_MetallicRoughnessTexture.textureTransformMapping,x3d_MetallicRoughnessTexture.textureCoordinateMapping);
-#if defined(X3D_METALLIC_ROUGHNESS_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_METALLIC_ROUGHNESS_TEXTURE_2D)
-vec4 mrSample=texture(x3d_MetallicRoughnessTexture.texture2D,texCoord.st);
-#elif defined(X3D_METALLIC_ROUGHNESS_TEXTURE_3D)
-vec4 mrSample=texture(x3d_MetallicRoughnessTexture.texture3D,texCoord);
-#elif defined(X3D_METALLIC_ROUGHNESS_TEXTURE_CUBE)
-vec4 mrSample=texture(x3d_MetallicRoughnessTexture.textureCube,texCoord);
-#endif
-info.metallic*=mrSample.b;info.perceptualRoughness*=mrSample.g;
+vec4 mrSample=getMetallicRoughnessTexture();info.metallic*=mrSample.b;info.perceptualRoughness*=mrSample.g;
 #endif
 info.c_diff=mix(info.baseColor.rgb,vec3(0.0),info.metallic);info.f0=mix(info.f0,info.baseColor.rgb,info.metallic);return info;}
 #endif
-#if defined(X3D_EMISSIVE_TEXTURE)
-uniform x3d_EmissiveTextureParameters x3d_EmissiveTexture;
+${MaterialTextures .texture ("x3d_EmissiveTexture", "rgb", "linear")}
+#if defined(X3D_EMISSIVE_STRENGTH_MATERIAL_EXT)
+uniform float x3d_EmissiveStrengthEXT;
 #endif
 vec3 getEmissiveColor(){vec3 emissiveColor=x3d_Material.emissiveColor;
+#if defined(X3D_EMISSIVE_STRENGTH_MATERIAL_EXT)
+emissiveColor*=x3d_EmissiveStrengthEXT;
+#endif
 #if defined(X3D_EMISSIVE_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_EmissiveTexture.textureTransformMapping,x3d_EmissiveTexture.textureCoordinateMapping);
-#if defined(X3D_EMISSIVE_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_EMISSIVE_TEXTURE_2D)
-vec3 textureColor=texture(x3d_EmissiveTexture.texture2D,texCoord.st).rgb;
-#elif defined(X3D_EMISSIVE_TEXTURE_3D)
-vec3 textureColor=texture(x3d_EmissiveTexture.texture3D,texCoord).rgb;
-#elif defined(X3D_EMISSIVE_TEXTURE_CUBE)
-vec3 textureColor=texture(x3d_EmissiveTexture.textureCube,texCoord).rgb;
-#endif
-#if defined(X3D_EMISSIVE_TEXTURE_LINEAR)
-emissiveColor*=textureColor;
-#else
-emissiveColor*=sRGBToLinear(textureColor);
-#endif
+emissiveColor*=getEmissiveTexture();
 #endif
 return emissiveColor;}
-#if defined(X3D_OCCLUSION_TEXTURE)
-uniform x3d_OcclusionTextureParameters x3d_OcclusionTexture;
-#endif
+${MaterialTextures .texture ("x3d_OcclusionTexture", "r")}
 float getOcclusionFactor(){
 #if defined(X3D_OCCLUSION_TEXTURE)
-vec3 texCoord=getTexCoord(x3d_OcclusionTexture.textureTransformMapping,x3d_OcclusionTexture.textureCoordinateMapping);
-#if defined(X3D_OCCLUSION_TEXTURE_FLIP_Y)
-texCoord.t=1.0-texCoord.t;
-#endif
-#if defined(X3D_OCCLUSION_TEXTURE_2D)
-return texture(x3d_OcclusionTexture.texture2D,texCoord.st).r;
-#elif defined(X3D_OCCLUSION_TEXTURE_3D)
-return texture(x3d_OcclusionTexture.texture3D,texCoord).r;
-#elif defined(X3D_OCCLUSION_TEXTURE_CUBE)
-return texture(x3d_OcclusionTexture.textureCube,texCoord).r;
-#endif
+return getOcclusionTexture();
 #else
 return 1.0;
 #endif
-}`
+}
+#if defined(X3D_IOR_MATERIAL_EXT)
+uniform float x3d_IorEXT;MaterialInfo getIorInfo(in MaterialInfo info){info.f0=vec3(pow((x3d_IorEXT-1.0)/(x3d_IorEXT+1.0),2.0));info.ior=x3d_IorEXT;return info;}
+#endif
+#if defined(X3D_SHEEN_MATERIAL_EXT)
+${MaterialTextures .texture ("x3d_SheenColorTextureEXT",
+"rgb", "linear")}
+${MaterialTextures .texture ("x3d_SheenRoughnessTextureEXT", "a")}
+uniform vec3 x3d_SheenColorEXT;uniform float x3d_SheenRoughnessEXT;MaterialInfo getSheenInfo(in MaterialInfo info){info.sheenColorFactor=x3d_SheenColorEXT;info.sheenRoughnessFactor=x3d_SheenRoughnessEXT;
+#if defined(X3D_SHEEN_COLOR_TEXTURE_EXT)
+info.sheenColorFactor*=getSheenColorTextureEXT();
+#endif
+#if defined(X3D_SHEEN_ROUGHNESS_TEXTURE_EXT)
+info.sheenRoughnessFactor*=getSheenRoughnessTextureEXT();
+#endif
+return info;}uniform sampler2D x3d_SheenELUTTextureEXT;
+#if __VERSION__==100
+float albedoSheenScalingLUT(const in float NdotV,const in float sheenRoughnessFactor){return texture2D(x3d_SheenELUTTextureEXT,vec2(NdotV,sheenRoughnessFactor)).r;}
+#else
+float albedoSheenScalingLUT(const in float NdotV,const in float sheenRoughnessFactor){return texture(x3d_SheenELUTTextureEXT,vec2(NdotV,sheenRoughnessFactor)).r;}
+#endif
+#endif
+#if defined(X3D_CLEARCOAT_MATERIAL_EXT)
+${MaterialTextures .texture ("x3d_ClearcoatTextureEXT",
+"r")}
+${MaterialTextures .texture ("x3d_ClearcoatRoughnessTextureEXT", "g")}
+${MaterialTextures .texture ("x3d_ClearcoatNormalTextureEXT",
+"rgb")}
+#if defined(X3D_CLEARCOAT_NORMAL_TEXTURE_EXT)
+const float x3d_ClearcoatNormalScaleEXT=1.0;
+#endif
+vec3 getClearcoatNormalEXT(const in NormalInfo normalInfo){
+#if defined(X3D_CLEARCOAT_NORMAL_TEXTURE_EXT)
+vec3 color=getClearcoatNormalTextureEXT();vec3 n=color*2.0-vec3(1.0);n*=vec3(vec2(x3d_ClearcoatNormalScaleEXT),1.0);n=mat3(normalInfo.t,normalInfo.b,normalInfo.ng)*normalize(n);return n;
+#else
+return normalInfo.ng;
+#endif
+}uniform float x3d_ClearcoatEXT;uniform float x3d_ClearcoatRoughnessEXT;MaterialInfo getClearCoatInfo(in MaterialInfo info,const in NormalInfo normalInfo){info.clearcoatFactor=x3d_ClearcoatEXT;info.clearcoatRoughness=x3d_ClearcoatRoughnessEXT;info.clearcoatF0=vec3(pow((info.ior-1.0)/(info.ior+1.0),2.0));info.clearcoatF90=vec3(1.0);
+#if defined(X3D_CLEARCOAT_TEXTURE_EXT)
+info.clearcoatFactor*=getClearcoatTextureEXT();
+#endif
+#if defined(X3D_CLEARCOAT_ROUGHNESS_TEXTURE_EXT)
+info.clearcoatRoughness*=getClearcoatRoughnessTextureEXT();
+#endif
+info.clearcoatNormal=getClearcoatNormalEXT(normalInfo);info.clearcoatRoughness=clamp(info.clearcoatRoughness,0.0,1.0);return info;}
+#endif
+#if defined(X3D_SPECULAR_MATERIAL_EXT)
+${MaterialTextures .texture ("x3d_SpecularTextureEXT",
+"a")}
+${MaterialTextures .texture ("x3d_SpecularColorTextureEXT", "rgb", "linear")}
+uniform float x3d_SpecularEXT;uniform vec3 x3d_SpecularColorEXT;MaterialInfo getSpecularInfo(in MaterialInfo info){vec4 specularTexture=vec4(1.0);
+#if defined(X3D_SPECULAR_TEXTURE_EXT)
+specularTexture.a=getSpecularTextureEXT();
+#endif
+#if defined(X3D_SPECULAR_COLOR_TEXTURE_EXT)
+specularTexture.rgb=getSpecularColorTextureEXT();
+#endif
+vec3 dielectricSpecularF0=min(info.f0*x3d_SpecularColorEXT*specularTexture.rgb,vec3(1.0));info.f0=mix(dielectricSpecularF0,info.baseColor.rgb,info.metallic);info.specularWeight=x3d_SpecularEXT*specularTexture.a;info.c_diff=mix(info.baseColor.rgb,vec3(0.0),info.metallic);return info;}
+#endif
+#if defined(X3D_VOLUME_MATERIAL_EXT)
+${MaterialTextures .texture ("x3d_ThicknessTextureEXT", "g")}
+uniform float x3d_ThicknessEXT;uniform float x3d_AttenuationDistanceEXT;uniform vec3 x3d_AttenuationColoEXT;MaterialInfo getVolumeInfo(in MaterialInfo info){info.thickness=x3d_ThicknessEXT;info.attenuationDistance=x3d_AttenuationDistanceEXT;info.attenuationColor=x3d_AttenuationColoEXT;
+#if defined(X3D_THICKNESS_TEXTURE_EXT)
+info.thickness*=getThicknessTextureEXT();
+#endif
+return info;}
+#endif
+#if defined(X3D_IRIDESCENCE_MATERIAL_EXT)
+${MaterialTextures .texture ("x3d_IridescenceTextureEXT",
+"r")}
+${MaterialTextures .texture ("x3d_IridescenceThicknessTextureEXT", "g")}
+uniform float x3d_IridescenceEXT;uniform float x3d_IridescenceIndexOfRefractionEXT;uniform float x3d_IridescenceThicknessMinimumEXT;uniform float x3d_IridescenceThicknessMaximumEXT;MaterialInfo getIridescenceInfo(in MaterialInfo info){info.iridescenceFactor=x3d_IridescenceEXT;info.iridescenceIor=x3d_IridescenceIndexOfRefractionEXT;info.iridescenceThickness=x3d_IridescenceThicknessMaximumEXT;
+#if defined(X3D_IRIDESCENCE_TEXTURE_EXT)
+info.iridescenceFactor*=getIridescenceTextureEXT();
+#endif
+#if defined(X3D_IRIDESCENCE_THICKNESS_TEXTURE_EXT)
+float thicknessSampled=getIridescenceThicknessTextureEXT();float thickness=mix(x3d_IridescenceThicknessMinimumEXT,x3d_IridescenceThicknessMaximumEXT,thicknessSampled);info.iridescenceThickness=thickness;
+#endif
+return info;}
+#endif
+#if defined(X3D_TRANSMISSION_MATERIAL_EXT)
+${MaterialTextures .texture ("x3d_TransmissionTextureEXT", "r")}
+uniform float x3d_TransmissionEXT;
+#if defined(X3D_DISPERSION_MATERIAL_EXT)
+uniform float x3d_DispersionEXT;
+#endif
+MaterialInfo getTransmissionInfo(in MaterialInfo info){info.transmissionFactor=x3d_TransmissionEXT;
+#if defined(X3D_TRANSMISSION_TEXTURE_EXT)
+info.transmissionFactor*=getTransmissionTextureEXT();
+#endif
+#if defined(X3D_DISPERSION_MATERIAL_EXT)
+info.dispersion=x3d_DispersionEXT;
+#else
+info.dispersion=0.0;
+#endif
+return info;}
+#endif
+#if defined(X3D_ANISOTROPY_MATERIAL_EXT)
+${MaterialTextures .texture ("x3d_AnisotropyTextureEXT", "rgb")}
+uniform vec3 x3d_AnisotropyEXT;MaterialInfo getAnisotropyInfo(in MaterialInfo info,const in NormalInfo normalInfo){vec2 direction=vec2(1.0,0.0);float strengthFactor=1.0;
+#if defined(X3D_ANISOTROPY_TEXTURE_EXT)
+vec3 anisotropySample=getAnisotropyTextureEXT();direction=anisotropySample.xy*2.0-vec2(1.0);strengthFactor=anisotropySample.z;
+#endif
+vec2 directionRotation=x3d_AnisotropyEXT.xy;mat2 rotationMatrix=mat2(directionRotation.xy,-directionRotation.y,directionRotation.x);direction=rotationMatrix*direction;info.anisotropicT=mat3(normalInfo.t,normalInfo.b,normalInfo.n)*normalize(vec3(direction,0.0));info.anisotropicB=cross(normalInfo.ng,info.anisotropicT);info.anisotropyStrength=clamp(x3d_AnisotropyEXT.z*strengthFactor,0.0,1.0);return info;}
+#endif
+`
 ;
 
 x_ite_Namespace .add ("MaterialInfo2.glsl", "assets/shaders/webgl2/pbr/MaterialInfo2.glsl", MaterialInfo2_glsl_default_);
 /* harmony default export */ const MaterialInfo2_glsl = (MaterialInfo2_glsl_default_);
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/pbr/ToneMapping2.glsl.js
-const ToneMapping2_glsl_default_ = /* glsl */ `const float exposure=1.0;const float GAMMA=2.2;const float INV_GAMMA=1.0/GAMMA;vec3 linearTosRGB(const in vec3 color){return pow(color,vec3(INV_GAMMA));}vec4 linearTosRGB(const in vec4 color){return vec4(linearTosRGB(color.rgb),color.a);}vec3 sRGBToLinear(const in vec3 color){return pow(color,vec3(GAMMA));}vec4 sRGBToLinear(const in vec4 color){return vec4(sRGBToLinear(color.rgb),color.a);}
+const ToneMapping2_glsl_default_ = /* glsl */ `
+const float GAMMA=2.2;const float INV_GAMMA=1.0/GAMMA;vec3 linearTosRGB(const in vec3 color){return pow(color,vec3(INV_GAMMA));}vec4 linearTosRGB(const in vec4 color){return vec4(linearTosRGB(color.rgb),color.a);}vec3 sRGBToLinear(const in vec3 color){return pow(color,vec3(GAMMA));}vec4 sRGBToLinear(const in vec4 color){return vec4(sRGBToLinear(color.rgb),color.a);}
 #if defined(X3D_TONEMAP_ACES_NARKOWICZ)
 vec3 toneMapACES_Narkowicz(const in vec3 color){const float A=2.51;const float B=0.03;const float C=2.43;const float D=0.59;const float E=0.14;return clamp((color*(A*color+B))/(color*(C*color+D)+E),0.0,1.0);}
 #endif
 #if defined(X3D_TONEMAP_ACES_HILL)||defined(X3D_TONEMAP_ACES_HILL_EXPOSURE_BOOST)
 const mat3 ACESInputMat=mat3(0.59719,0.07600,0.02840,0.35458,0.90834,0.13383,0.04823,0.01566,0.83777);const mat3 ACESOutputMat=mat3(1.60475,-0.10208,-0.00327,-0.53108,1.10813,-0.07276,-0.07367,-0.00605,1.07602);vec3 RRTAndODTFit(const in vec3 color){vec3 a=color*(color+0.0245786)-0.000090537;vec3 b=color*(0.983729*color+0.4329510)+0.238081;return a/b;}vec3 toneMapACES_Hill(in vec3 color){color=ACESInputMat*color;color=RRTAndODTFit(color);color=ACESOutputMat*color;color=clamp(color,0.0,1.0);return color;}
 #endif
-vec3 toneMap(in vec3 color){color*=exposure;
+#if defined(X3D_TONEMAP_KHR_PBR_NEUTRAL)
+vec3 toneMap_KhronosPbrNeutral(in vec3 color){const float startCompression=0.8-0.04;const float desaturation=0.15;float x=min(color.r,min(color.g,color.b));float offset=x<0.08?x-6.25*x*x:0.04;color-=offset;float peak=max(color.r,max(color.g,color.b));if(peak<startCompression)return color;const float d=1.-startCompression;float newPeak=1.-d*d/(peak+d-startCompression);color*=newPeak/peak;float g=1.-1./(desaturation*(peak-newPeak)+1.);return mix(color,newPeak*vec3(1.0),g);}
+#endif
+uniform float x3d_Exposure;vec3 toneMap(in vec3 color){color*=x3d_Exposure;
 #if defined(X3D_TONEMAP_ACES_NARKOWICZ)
 color=toneMapACES_Narkowicz(color);
 #endif
@@ -95531,6 +96400,9 @@ color=toneMapACES_Hill(color);
 #endif
 #if defined(X3D_TONEMAP_ACES_HILL_EXPOSURE_BOOST)
 color/=0.6;color=toneMapACES_Hill(color);
+#endif
+#if defined(X3D_TONEMAP_KHR_PBR_NEUTRAL)
+color=toneMap_KhronosPbrNeutral(color);
 #endif
 return linearTosRGB(color);}`
 ;
@@ -95591,15 +96463,6 @@ x_ite_Namespace .add ("ToneMapping2.glsl", "assets/shaders/webgl2/pbr/ToneMappin
 
 
 
-
-
-
-
-
-
-
-
-
 /* WebGL 2 */
 
 
@@ -95649,14 +96512,8 @@ x_ite_Namespace .add ("ToneMapping2.glsl", "assets/shaders/webgl2/pbr/ToneMappin
 
 
 
-/* PBR 1 */
-
-
-
-
-
-
 /* PBR 2 */
+
 
 
 
@@ -95666,25 +96523,26 @@ x_ite_Namespace .add ("ToneMapping2.glsl", "assets/shaders/webgl2/pbr/ToneMappin
 const ShaderRegistry = {
    includes: {
       1: {
-         ClipPlanes: ClipPlanes1_glsl,
-         Fog: Fog1_glsl,
+         ClipPlanes: ClipPlanes2_glsl,
+         Fog: Fog2_glsl,
          Fragment: Fragment1_glsl,
-         Hatch: Hatch1_glsl,
-         Lighting: Lighting1_glsl,
-         Material: Material1_glsl,
-         Normal: Normal1_glsl,
-         Perlin: Perlin1_glsl,
-         Point: Point1_glsl,
-         PointSize: PointSize1_glsl,
+         Hatch: Hatch2_glsl,
+         Lighting: Lighting2_glsl,
+         Material: Material2_glsl,
+         Normal: Normal2_glsl,
+         Perlin: Perlin2_glsl,
+         Point: Point2_glsl,
+         PointSize: PointSize2_glsl,
          Shadow: Shadow1_glsl,
          Texture: Texture1_glsl,
          Vertex: Vertex1_glsl,
          // PBR
-         BDRF: BDRF1_glsl,
-         IBL: IBL1_glsl,
-         MaterialInfo: MaterialInfo1_glsl,
-         Punctual: Punctual1_glsl,
-         ToneMapping: ToneMapping1_glsl,
+         BRDF: BRDF2_glsl,
+         IBL: IBL2_glsl,
+         Iridescence: Iridescence2_glsl,
+         MaterialInfo: MaterialInfo2_glsl,
+         Punctual: Punctual2_glsl,
+         ToneMapping: ToneMapping2_glsl,
       },
       2: {
          ClipPlanes: ClipPlanes2_glsl,
@@ -95706,8 +96564,9 @@ const ShaderRegistry = {
          Utils: Utils2_glsl,
          Vertex: Vertex2_glsl,
          // PBR
-         BDRF: BDRF2_glsl,
+         BRDF: BRDF2_glsl,
          IBL: IBL2_glsl,
+         Iridescence: Iridescence2_glsl,
          MaterialInfo: MaterialInfo2_glsl,
          Punctual: Punctual2_glsl,
          ToneMapping: ToneMapping2_glsl,
@@ -95860,7 +96719,7 @@ const ShaderCompiler_default_ = ShaderCompiler;
 x_ite_Namespace .add ("ShaderCompiler", "x_ite/Browser/Shaders/ShaderCompiler", ShaderCompiler_default_);
 /* harmony default export */ const Shaders_ShaderCompiler = (ShaderCompiler_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/ShaderPart.js
-/* provided dependency */ var ShaderPart_$ = __webpack_require__(63);
+/* provided dependency */ var ShaderPart_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -96481,7 +97340,8 @@ function X3DAppearanceNode (executionContext)
 
    this .addType (Base_X3DConstants .X3DAppearanceNode);
 
-   this .addChildObjects (Base_X3DConstants .outputOnly, "transparent", new x_ite_Fields .SFBool ());
+   this .addChildObjects (Base_X3DConstants .outputOnly, "transparent",  new x_ite_Fields .SFBool (),
+                          Base_X3DConstants .outputOnly, "transmission", new x_ite_Fields .SFBool ());
 }
 
 Object .assign (Object .setPrototypeOf (X3DAppearanceNode .prototype, Core_X3DNode .prototype),
@@ -96494,6 +97354,15 @@ Object .assign (Object .setPrototypeOf (X3DAppearanceNode .prototype, Core_X3DNo
    isTransparent ()
    {
       return this ._transparent .getValue ();
+   },
+   setTransmission (value)
+   {
+      if (!!value !== this ._transmission .getValue ())
+         this ._transmission = value;
+   },
+   isTransmission ()
+   {
+      return this ._transmission .getValue ();
    },
 });
 
@@ -96517,7 +97386,7 @@ const X3DAppearanceNode_default_ = X3DAppearanceNode;
 x_ite_Namespace .add ("X3DAppearanceNode", "x_ite/Components/Shape/X3DAppearanceNode", X3DAppearanceNode_default_);
 /* harmony default export */ const Shape_X3DAppearanceNode = (X3DAppearanceNode_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/Appearance.js
-/* provided dependency */ var Appearance_$ = __webpack_require__(63);
+/* provided dependency */ var Appearance_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -96767,7 +97636,10 @@ Object .assign (Object .setPrototypeOf (Appearance .prototype, Shape_X3DAppearan
    set_material__ ()
    {
       if (this .materialNode)
-         this .materialNode ._transparent .removeInterest ("set_transparent__", this);
+      {
+         this .materialNode ._transparent  .removeInterest ("set_transparent__",  this);
+         this .materialNode ._transmission .removeInterest ("set_transmission__", this);
+      }
 
       this .materialNode = Base_X3DCast (Base_X3DConstants .X3DMaterialNode, this ._material);
 
@@ -96775,7 +97647,10 @@ Object .assign (Object .setPrototypeOf (Appearance .prototype, Shape_X3DAppearan
          this .materialNode = this .getBrowser () .getDefaultMaterial ();
 
       if (this .materialNode)
-         this .materialNode ._transparent .addInterest ("set_transparent__", this);
+      {
+         this .materialNode ._transparent  .addInterest ("set_transparent__",  this);
+         this .materialNode ._transmission .addInterest ("set_transmission__", this);
+      }
 
       // Depreciated TwoSidedMaterial handling.
 
@@ -96917,6 +97792,12 @@ Object .assign (Object .setPrototypeOf (Appearance .prototype, Shape_X3DAppearan
                             this .backMaterialNode ?.isTransparent () ||
                             this .textureNode ?.isTransparent () ||
                             this .blendModeNode);
+   },
+   set_transmission__ ()
+   {
+      this .setTransmission (this .materialNode ?.isTransmission () ||
+                             this .backMaterialNode ?.isTransmission ());
+
    },
    traverse (type, renderObject)
    {
@@ -97408,7 +98289,8 @@ function X3DMaterialNode (executionContext)
 
    this .addType (Base_X3DConstants .X3DMaterialNode);
 
-   this .addChildObjects (Base_X3DConstants .outputOnly, "transparent", new x_ite_Fields .SFBool ());
+   this .addChildObjects (Base_X3DConstants .outputOnly, "transparent",  new x_ite_Fields .SFBool (),
+                          Base_X3DConstants .outputOnly, "transmission", new x_ite_Fields .SFBool ());
 
    this .textureBits = new Utility_BitSet ();
    this .shaderNodes = this .getBrowser () .getShaders ();
@@ -97424,6 +98306,15 @@ Object .assign (Object .setPrototypeOf (X3DMaterialNode .prototype, Shape_X3DApp
    isTransparent ()
    {
       return this ._transparent .getValue ();
+   },
+   setTransmission (value)
+   {
+      if (!!value !== this ._transmission .getValue ())
+         this ._transmission = value;
+   },
+   isTransmission ()
+   {
+      return this ._transmission .getValue ();
    },
    setTexture (index, textureNode)
    {
@@ -97442,6 +98333,7 @@ Object .assign (Object .setPrototypeOf (X3DMaterialNode .prototype, Shape_X3DApp
 
       key += this .textureBits .toString (16);
       key += ".";
+      key += this .getMaterialKey ();
       key += geometryContext .geometryKey;
 
       if (renderContext)
@@ -97449,8 +98341,7 @@ Object .assign (Object .setPrototypeOf (X3DMaterialNode .prototype, Shape_X3DApp
          const { renderObject, shadows, fogNode, shapeNode, appearanceNode, textureNode, humanoidNode, objectsKeys } = renderContext;
 
          key += shapeNode .getAlphaMode ();
-         key += this .getMaterialKey ();
-         key += renderObject .getRenderBits () .toString (32); // 5 Bits
+         key += renderObject .getRenderKey ();
          key += shadows ? 1 : 0;
          key += fogNode ?.getFogType () ?? 0;
          key += shapeNode .getShapeKey ();
@@ -97471,7 +98362,6 @@ Object .assign (Object .setPrototypeOf (X3DMaterialNode .prototype, Shape_X3DApp
          const { alphaMode, textureNode, objectsKeys } = geometryContext;
 
          key += alphaMode;
-         key += this .getMaterialKey ();
          key += "0000011.0.";
          key += objectsKeys .sort () .join (""); // ClipPlane, X3DLightNode
          key += ".";
@@ -97498,11 +98388,14 @@ Object .assign (Object .setPrototypeOf (X3DMaterialNode .prototype, Shape_X3DApp
       if (geometryContext .hasNormals)
          options .push ("X3D_NORMALS");
 
+      if (geometryContext .hasTangents)
+         options .push ("X3D_TANGENTS");
+
       if (renderContext)
       {
          const { renderObject, fogNode, shapeNode, appearanceNode, humanoidNode, objectsKeys, textureNode } = renderContext;
 
-         if (renderObject .getRenderBits () .get (0))
+         if (renderObject .getLogarithmicDepthBuffer ())
             options .push ("X3D_LOGARITHMIC_DEPTH_BUFFER");
 
          switch (shapeNode .getAlphaMode ())
@@ -97521,7 +98414,7 @@ Object .assign (Object .setPrototypeOf (X3DMaterialNode .prototype, Shape_X3DApp
             {
                options .push ("X3D_ALPHA_MODE_BLEND");
 
-               if (renderObject .getRenderBits () .get (1))
+               if (renderObject .getOrderIndependentTransparency ())
                   options .push ("X3D_ORDER_INDEPENDENT_TRANSPARENCY");
 
                break;
@@ -97566,7 +98459,7 @@ Object .assign (Object .setPrototypeOf (X3DMaterialNode .prototype, Shape_X3DApp
             options .push (`X3D_NUM_LIGHTS ${Math .min (numLights, browser .getMaxLights ())}`);
          }
 
-         if (numEnvironmentLights && geometryContext .hasNormals)
+         if (numEnvironmentLights)
          {
             options .push ("X3D_USE_IBL")
             options .push (`X3D_NUM_ENVIRONMENT_LIGHTS ${Math .min (numEnvironmentLights, browser .getMaxLights ())}`);
@@ -97778,14 +98671,13 @@ x_ite_Namespace .add ("X3DMaterialNode", "x_ite/Components/Shape/X3DMaterialNode
 
 
 
-
 function X3DOneSidedMaterialNode (executionContext)
 {
    Shape_X3DMaterialNode .call (this, executionContext);
 
    this .addType (Base_X3DConstants .X3DOneSidedMaterialNode);
 
-   this .emissiveColor = new Float32Array (3);
+   this .emissiveColorArray = new Float32Array (3);
 }
 
 Object .assign (Object .setPrototypeOf (X3DOneSidedMaterialNode .prototype, Shape_X3DMaterialNode .prototype),
@@ -97808,15 +98700,15 @@ Object .assign (Object .setPrototypeOf (X3DOneSidedMaterialNode .prototype, Shap
    set_emissiveColor__ ()
    {
       //We cannot use this in Windows Edge:
-      //this .emissiveColor .set (this ._emissiveColor .getValue ());
+      //this .emissiveColorArray .set (this ._emissiveColor .getValue ());
 
       const
-         emissiveColor  = this .emissiveColor,
-         emissiveColor_ = this ._emissiveColor .getValue ();
+         emissiveColorArray = this .emissiveColorArray,
+         emissiveColor      = this ._emissiveColor .getValue ();
 
-      emissiveColor [0] = emissiveColor_ .r;
-      emissiveColor [1] = emissiveColor_ .g;
-      emissiveColor [2] = emissiveColor_ .b;
+      emissiveColorArray [0] = emissiveColor .r;
+      emissiveColorArray [1] = emissiveColor .g;
+      emissiveColorArray [2] = emissiveColor .b;
    },
    set_emissiveTexture__ ()
    {
@@ -97866,61 +98758,38 @@ Object .assign (Object .setPrototypeOf (X3DOneSidedMaterialNode .prototype, Shap
 
       if (+this .getTextureBits ())
       {
-         if (this .getEmissiveTexture ())
-            options .push ("X3D_EMISSIVE_TEXTURE", `X3D_EMISSIVE_TEXTURE_${this .getEmissiveTexture () .getTextureTypeString ()}`);
-
-         if (this .getEmissiveTexture () ?.getTextureType () === 1)
-            options .push ("X3D_EMISSIVE_TEXTURE_FLIP_Y");
-
-         if (this .getEmissiveTexture () ?.isLinear ())
-            options .push ("X3D_EMISSIVE_TEXTURE_LINEAR");
-
-         if (this .getNormalTexture ())
-            options .push ("X3D_NORMAL_TEXTURE", `X3D_NORMAL_TEXTURE_${this .getNormalTexture () .getTextureTypeString ()}`);
-
-         if (this .getNormalTexture () ?.getTextureType () === 1)
-            options .push ("X3D_NORMAL_TEXTURE_FLIP_Y");
+         this .getEmissiveTexture () ?.getShaderOptions (options, "EMISSIVE");
+         this .getNormalTexture ()   ?.getShaderOptions (options, "NORMAL");
       }
 
       return options;
    },
    setShaderUniforms (gl, shaderObject, renderObject, textureTransformMapping, textureCoordinateMapping)
    {
-      gl .uniform3fv (shaderObject .x3d_EmissiveColor, this .emissiveColor);
+      gl .uniform3fv (shaderObject .x3d_EmissiveColor, this .emissiveColorArray);
       gl .uniform1f  (shaderObject .x3d_Transparency,  this .transparency);
 
-      if (+this .getTextureBits ())
-      {
-         // Emissive parameters
+      if (!+this .getTextureBits ())
+         return;
 
-         if (this .emissiveTextureNode)
-         {
-            const
-               emissiveTextureMapping = this ._emissiveTextureMapping .getValue (),
-               emissiveTexture        = shaderObject .x3d_EmissiveTexture;
+      this .emissiveTextureNode ?.setNamedShaderUniforms (gl,
+         shaderObject,
+         renderObject,
+         shaderObject .x3d_EmissiveTexture,
+         this ._emissiveTextureMapping .getValue (),
+         textureTransformMapping,
+         textureCoordinateMapping);
 
-            this .emissiveTextureNode .setShaderUniforms (gl, shaderObject, renderObject, emissiveTexture);
+      if (this .normalTextureNode)
+         gl .uniform1f (shaderObject .x3d_NormalScale, Math .max (this ._normalScale .getValue (), 0));
 
-            gl .uniform1i (emissiveTexture .textureTransformMapping,  textureTransformMapping  .get (emissiveTextureMapping) ?? 0);
-            gl .uniform1i (emissiveTexture .textureCoordinateMapping, textureCoordinateMapping .get (emissiveTextureMapping) ?? 0);
-         }
-
-         // Normal parameters
-
-         if (this .normalTextureNode)
-         {
-            const
-               normalTextureMapping = this ._normalTextureMapping .getValue (),
-               normalTexture        = shaderObject .x3d_NormalTexture;
-
-            gl .uniform1f (shaderObject .x3d_NormalScale, Math .max (this ._normalScale .getValue (), 0));
-
-            this .normalTextureNode .setShaderUniforms (gl, shaderObject, renderObject, normalTexture);
-
-            gl .uniform1i (normalTexture .textureTransformMapping,  textureTransformMapping  .get (normalTextureMapping) ?? 0);
-            gl .uniform1i (normalTexture .textureCoordinateMapping, textureCoordinateMapping .get (normalTextureMapping) ?? 0);
-         }
-      }
+      this .normalTextureNode ?.setNamedShaderUniforms (gl,
+         shaderObject,
+         renderObject,
+         shaderObject .x3d_NormalTexture,
+         this ._normalTextureMapping .getValue (),
+         textureTransformMapping,
+         textureCoordinateMapping);
    },
 });
 
@@ -98013,8 +98882,8 @@ function Material (executionContext)
 
    // Private properties
 
-   this .diffuseColor  = new Float32Array (3);
-   this .specularColor = new Float32Array (3);
+   this .diffuseColorArray  = new Float32Array (3);
+   this .specularColorArray = new Float32Array (3);
 }
 
 Object .assign (Object .setPrototypeOf (Material .prototype, Shape_X3DOneSidedMaterialNode .prototype),
@@ -98093,15 +98962,15 @@ Object .assign (Object .setPrototypeOf (Material .prototype, Shape_X3DOneSidedMa
    set_diffuseColor__ ()
    {
       //We cannot use this in Windows Edge:
-      //this .diffuseColor .set (this ._diffuseColor .getValue ());
+      //this .diffuseColorArray .set (this ._diffuseColor .getValue ());
 
       const
-         diffuseColor  = this .diffuseColor,
-         diffuseColor_ = this ._diffuseColor .getValue ();
+         diffuseColorArray = this .diffuseColorArray,
+         diffuseColor      = this ._diffuseColor .getValue ();
 
-      diffuseColor [0] = diffuseColor_ .r;
-      diffuseColor [1] = diffuseColor_ .g;
-      diffuseColor [2] = diffuseColor_ .b;
+      diffuseColorArray [0] = diffuseColor .r;
+      diffuseColorArray [1] = diffuseColor .g;
+      diffuseColorArray [2] = diffuseColor .b;
    },
    set_diffuseTexture__ ()
    {
@@ -98126,15 +98995,15 @@ Object .assign (Object .setPrototypeOf (Material .prototype, Shape_X3DOneSidedMa
    set_specularColor__ ()
    {
       //We cannot use this in Windows Edge:
-      //this .specularColor .set (this ._specularColor .getValue ());
+      //this .specularColorArray .set (this ._specularColor .getValue ());
 
       const
-         specularColor  = this .specularColor,
-         specularColor_ = this ._specularColor .getValue ();
+         specularColorArray = this .specularColorArray,
+         specularColor      = this ._specularColor .getValue ();
 
-      specularColor [0] = specularColor_ .r;
-      specularColor [1] = specularColor_ .g;
-      specularColor [2] = specularColor_ .b;
+      specularColorArray [0] = specularColor .r;
+      specularColorArray [1] = specularColor .g;
+      specularColorArray [2] = specularColor .b;
    },
    set_specularTexture__ ()
    {
@@ -98184,44 +99053,11 @@ Object .assign (Object .setPrototypeOf (Material .prototype, Shape_X3DOneSidedMa
 
          if (+this .getTextureBits ())
          {
-            if (this .ambientTextureNode)
-               options .push ("X3D_AMBIENT_TEXTURE", `X3D_AMBIENT_TEXTURE_${this .ambientTextureNode .getTextureTypeString ()}`);
-
-            if (this .ambientTextureNode ?.getTextureType () === 1)
-               options .push ("X3D_AMBIENT_TEXTURE_FLIP_Y");
-
-            if (this .ambientTextureNode ?.isLinear ())
-               options .push ("X3D_AMBIENT_TEXTURE_LINEAR");
-
-            if (this .diffuseTextureNode)
-               options .push ("X3D_DIFFUSE_TEXTURE", `X3D_DIFFUSE_TEXTURE_${this .diffuseTextureNode .getTextureTypeString ()}`);
-
-            if (this .diffuseTextureNode ?.getTextureType () === 1)
-               options .push ("X3D_DIFFUSE_TEXTURE_FLIP_Y");
-
-            if (this .diffuseTextureNode ?.isLinear ())
-               options .push ("X3D_DIFFUSE_TEXTURE_LINEAR");
-
-            if (this .specularTextureNode)
-               options .push ("X3D_SPECULAR_TEXTURE", `X3D_SPECULAR_TEXTURE_${this .specularTextureNode .getTextureTypeString ()}`);
-
-            if (this .specularTextureNode ?.getTextureType () === 1)
-               options .push ("X3D_SPECULAR_TEXTURE_FLIP_Y");
-
-            if (this .specularTextureNode ?.isLinear ())
-               options .push ("X3D_SPECULAR_TEXTURE_LINEAR");
-
-            if (this .shininessTextureNode)
-               options .push ("X3D_SHININESS_TEXTURE", `X3D_SHININESS_TEXTURE_${this .shininessTextureNode .getTextureTypeString ()}`);
-
-            if (this .shininessTextureNode ?.getTextureType () === 1)
-               options .push ("X3D_SHININESS_TEXTURE_FLIP_Y");
-
-            if (this .occlusionTextureNode)
-               options .push ("X3D_OCCLUSION_TEXTURE", `X3D_OCCLUSION_TEXTURE_${this .occlusionTextureNode .getTextureTypeString ()}`);
-
-            if (this .occlusionTextureNode ?.getTextureType () === 1)
-               options .push ("X3D_OCCLUSION_TEXTURE_FLIP_Y");
+            this .ambientTextureNode   ?.getShaderOptions (options, "AMBIENT");
+            this .diffuseTextureNode   ?.getShaderOptions (options, "DIFFUSE");
+            this .specularTextureNode  ?.getShaderOptions (options, "SPECULAR");
+            this .shininessTextureNode ?.getShaderOptions (options, "SHININESS");
+            this .occlusionTextureNode ?.getShaderOptions (options, "OCCLUSION");
          }
 
          switch (this .getMaterialKey ())
@@ -98261,84 +99097,55 @@ Object .assign (Object .setPrototypeOf (Material .prototype, Shape_X3DOneSidedMa
       Shape_X3DOneSidedMaterialNode .prototype .setShaderUniforms .call (this, gl, shaderObject, renderObject, textureTransformMapping, textureCoordinateMapping);
 
       gl .uniform1f  (shaderObject .x3d_AmbientIntensity, this .ambientIntensity);
-      gl .uniform3fv (shaderObject .x3d_DiffuseColor,     this .diffuseColor);
-      gl .uniform3fv (shaderObject .x3d_SpecularColor,    this .specularColor);
+      gl .uniform3fv (shaderObject .x3d_DiffuseColor,     this .diffuseColorArray);
+      gl .uniform3fv (shaderObject .x3d_SpecularColor,    this .specularColorArray);
       gl .uniform1f  (shaderObject .x3d_Shininess,        this .shininess);
 
-      if (+this .getTextureBits ())
-      {
-         // Ambient parameters
+      if (!+this .getTextureBits ())
+         return;
 
-         if (this .ambientTextureNode)
-         {
-            const
-               ambientTextureMapping = this ._ambientTextureMapping .getValue (),
-               ambientTexture        = shaderObject .x3d_AmbientTexture;
+      this .ambientTextureNode ?.setNamedShaderUniforms (gl,
+         shaderObject,
+         renderObject,
+         shaderObject .x3d_AmbientTexture,
+         this ._ambientTextureMapping .getValue (),
+         textureTransformMapping,
+         textureCoordinateMapping);
 
-            this .ambientTextureNode .setShaderUniforms (gl, shaderObject, renderObject, ambientTexture);
+      this .diffuseTextureNode ?.setNamedShaderUniforms (gl,
+         shaderObject,
+         renderObject,
+         shaderObject .x3d_DiffuseTexture,
+         this ._diffuseTextureMapping .getValue (),
+         textureTransformMapping,
+         textureCoordinateMapping);
 
-            gl .uniform1i (ambientTexture .textureTransformMapping,  textureTransformMapping  .get (ambientTextureMapping) ?? 0);
-            gl .uniform1i (ambientTexture .textureCoordinateMapping, textureCoordinateMapping .get (ambientTextureMapping) ?? 0);
-         }
+      this .specularTextureNode ?.setNamedShaderUniforms (gl,
+         shaderObject,
+         renderObject,
+         shaderObject .x3d_SpecularTexture,
+         this ._specularTextureMapping .getValue (),
+         textureTransformMapping,
+         textureCoordinateMapping);
 
-         // Diffuse parameters
+      this .shininessTextureNode ?.setNamedShaderUniforms (gl,
+         shaderObject,
+         renderObject,
+         shaderObject .x3d_ShininessTexture,
+         this ._shininessTextureMapping .getValue (),
+         textureTransformMapping,
+         textureCoordinateMapping);
 
-         if (this .diffuseTextureNode)
-         {
-            const
-               diffuseTextureMapping = this ._diffuseTextureMapping .getValue (),
-               diffuseTexture        = shaderObject .x3d_DiffuseTexture;
+      if (this .occlusionTextureNode)
+         gl .uniform1f (shaderObject .x3d_OcclusionStrength, this .occlusionStrength);
 
-            this .diffuseTextureNode .setShaderUniforms (gl, shaderObject, renderObject, diffuseTexture);
-
-            gl .uniform1i (diffuseTexture .textureTransformMapping,  textureTransformMapping  .get (diffuseTextureMapping) ?? 0);
-            gl .uniform1i (diffuseTexture .textureCoordinateMapping, textureCoordinateMapping .get (diffuseTextureMapping) ?? 0);
-         }
-
-         // Specular parameters
-
-         if (this .specularTextureNode)
-         {
-            const
-               specularTextureMapping = this ._specularTextureMapping .getValue (),
-               specularTexture        = shaderObject .x3d_SpecularTexture;
-
-            this .specularTextureNode .setShaderUniforms (gl, shaderObject, renderObject, specularTexture);
-
-            gl .uniform1i (specularTexture .textureTransformMapping,  textureTransformMapping  .get (specularTextureMapping) ?? 0);
-            gl .uniform1i (specularTexture .textureCoordinateMapping, textureCoordinateMapping .get (specularTextureMapping) ?? 0);
-         }
-
-         // Shininess parameters
-
-         if (this .shininessTextureNode)
-         {
-            const
-               shininessTextureMapping = this ._shininessTextureMapping .getValue (),
-               shininessTexture        = shaderObject .x3d_ShininessTexture;
-
-            this .shininessTextureNode .setShaderUniforms (gl, shaderObject, renderObject, shininessTexture);
-
-            gl .uniform1i (shininessTexture .textureTransformMapping,  textureTransformMapping  .get (shininessTextureMapping) ?? 0);
-            gl .uniform1i (shininessTexture .textureCoordinateMapping, textureCoordinateMapping .get (shininessTextureMapping) ?? 0);
-         }
-
-         // Occlusion parameters
-
-         if (this .occlusionTextureNode)
-         {
-            const
-               occlusionTextureMapping = this ._occlusionTextureMapping .getValue (),
-               occlusionTexture        = shaderObject .x3d_OcclusionTexture;
-
-            gl .uniform1f (shaderObject .x3d_OcclusionStrength, this .occlusionStrength);
-
-            this .occlusionTextureNode .setShaderUniforms (gl, shaderObject, renderObject, occlusionTexture);
-
-            gl .uniform1i (occlusionTexture .textureTransformMapping,  textureTransformMapping  .get (occlusionTextureMapping) ?? 0);
-            gl .uniform1i (occlusionTexture .textureCoordinateMapping, textureCoordinateMapping .get (occlusionTextureMapping) ?? 0);
-         }
-      }
+      this .occlusionTextureNode ?.setNamedShaderUniforms (gl,
+         shaderObject,
+         renderObject,
+         shaderObject .x3d_OcclusionTexture,
+         this ._occlusionTextureMapping .getValue (),
+         textureTransformMapping,
+         textureCoordinateMapping);
    },
 });
 
@@ -98481,7 +99288,9 @@ function PhysicalMaterial (executionContext)
 
    this .addType (Base_X3DConstants .PhysicalMaterial);
 
-   this .baseColor = new Float32Array (3);
+   this .materialKey    = "3/";
+   this .baseColorArray = new Float32Array (3);
+   this .extensionNodes = [ ];
 }
 
 Object .assign (Object .setPrototypeOf (PhysicalMaterial .prototype, Shape_X3DOneSidedMaterialNode .prototype),
@@ -98498,6 +99307,7 @@ Object .assign (Object .setPrototypeOf (PhysicalMaterial .prototype, Shape_X3DOn
       this ._metallicRoughnessTexture .addInterest ("set_metallicRoughnessTexture__", this);
       this ._occlusionStrength        .addInterest ("set_occlusionStrength__",        this);
       this ._occlusionTexture         .addInterest ("set_occlusionTexture__",         this);
+      this ._extensions               .addInterest ("set_extensions__",               this);
 
       this .set_baseColor__ ();
       this .set_baseTexture__ ();
@@ -98506,11 +99316,12 @@ Object .assign (Object .setPrototypeOf (PhysicalMaterial .prototype, Shape_X3DOn
       this .set_metallicRoughnessTexture__ ();
       this .set_occlusionStrength__ ();
       this .set_occlusionTexture__ ();
+      this .set_extensions__ ();
       this .set_transparent__ ();
    },
    getMaterialKey ()
    {
-      return "3";
+      return this .materialKey;
    },
    getTextureIndices: (() =>
    {
@@ -98536,15 +99347,15 @@ Object .assign (Object .setPrototypeOf (PhysicalMaterial .prototype, Shape_X3DOn
    set_baseColor__ ()
    {
       //We cannot use this in Windows Edge:
-      //this .baseColor .set (this ._baseColor .getValue ());
+      //this .baseColorArray .set (this ._baseColor .getValue ());
 
       const
-         baseColor  = this .baseColor,
-         baseColor_ = this ._baseColor .getValue ();
+         baseColorArray = this .baseColorArray,
+         baseColor      = this ._baseColor .getValue ();
 
-      baseColor [0] = baseColor_ .r;
-      baseColor [1] = baseColor_ .g;
-      baseColor [2] = baseColor_ .b;
+      baseColorArray [0] = baseColor .r;
+      baseColorArray [1] = baseColor .g;
+      baseColorArray [2] = baseColor .b;
    },
    set_baseTexture__ ()
    {
@@ -98592,7 +99403,44 @@ Object .assign (Object .setPrototypeOf (PhysicalMaterial .prototype, Shape_X3DOn
    },
    set_transparent__ ()
    {
-      this .setTransparent (this .getTransparency () || this .baseTextureNode ?.isTransparent ());
+      this .setTransparent (this .getTransparency () ||
+                            this .baseTextureNode ?.isTransparent () ||
+                            this .isTransmission ());
+   },
+   set_extensions__ ()
+   {
+      const extensionNodes = this .extensionNodes;
+
+      for (const extensionNode of extensionNodes)
+         extensionNode .removeInterest ("set_extensionsKey__", this);
+
+      extensionNodes .length = 0;
+
+      for (const node of this ._extensions)
+      {
+         const extensionNode = Base_X3DCast (Base_X3DConstants .X3DMaterialExtensionNode, node);
+
+         if (extensionNode)
+            extensionNodes .push (extensionNode);
+      }
+
+      extensionNodes .sort ((a, b) => a .getExtensionKey () - b .getExtensionKey ());
+
+      for (const extensionNode of extensionNodes)
+         extensionNode .addInterest ("set_extensionsKey__", this);
+
+      this .setTransmission (extensionNodes .some (extensionNode => extensionNode .getType () .includes (Base_X3DConstants .TransmissionMaterialExtension)));
+
+      this .set_transparent__ ();
+      this .set_extensionsKey__ ();
+   },
+   set_extensionsKey__ ()
+   {
+      const extensionsKey = this .extensionNodes
+         .map (extensionNode => `${extensionNode .getExtensionKey () .toString (16)}${extensionNode .getTextureBits () .toString (16)}`)
+         .join ("");
+
+      this .materialKey = `[3.${extensionsKey}]`;
    },
    createShader (key, geometryContext, renderContext)
    {
@@ -98600,46 +99448,31 @@ Object .assign (Object .setPrototypeOf (PhysicalMaterial .prototype, Shape_X3DOn
          browser = this .getBrowser (),
          options = this .getShaderOptions (geometryContext, renderContext);
 
-      if (geometryContext .hasNormals)
+      for (const extensionNode of this .extensionNodes)
+         extensionNode .getShaderOptions (options);
+
+      options .push ("X3D_PHYSICAL_MATERIAL", "X3D_MATERIAL_METALLIC_ROUGHNESS");
+
+      switch (browser .getBrowserOption ("ToneMapping"))
       {
-         options .push ("X3D_PHYSICAL_MATERIAL", "X3D_MATERIAL_METALLIC_ROUGHNESS");
-
-         if (+this .getTextureBits ())
-         {
-            if (this .baseTextureNode)
-               options .push ("X3D_BASE_TEXTURE", `X3D_BASE_TEXTURE_${this .baseTextureNode .getTextureTypeString ()}`);
-
-            if (this .baseTextureNode ?.getTextureType () === 1)
-               options .push ("X3D_BASE_TEXTURE_FLIP_Y");
-
-            if (this .baseTextureNode ?.isLinear ())
-               options .push ("X3D_BASE_TEXTURE_LINEAR");
-
-            if (this .metallicRoughnessTextureNode)
-               options .push ("X3D_METALLIC_ROUGHNESS_TEXTURE", `X3D_METALLIC_ROUGHNESS_TEXTURE_${this .metallicRoughnessTextureNode .getTextureTypeString ()}`);
-
-            if (this .metallicRoughnessTextureNode ?.getTextureType () === 1)
-               options .push ("X3D_METALLIC_ROUGHNESS_TEXTURE_FLIP_Y");
-
-            if (this .occlusionTextureNode)
-               options .push ("X3D_OCCLUSION_TEXTURE", `X3D_OCCLUSION_TEXTURE_${this .occlusionTextureNode .getTextureTypeString ()}`);
-
-            if (this .occlusionTextureNode ?.getTextureType () === 1)
-               options .push ("X3D_OCCLUSION_TEXTURE_FLIP_Y");
-         }
-
-         var shaderNode = browser .createShader ("PBR", "Default", "PBR", options);
+         default: // NONE
+            break;
+         case "ACES_NARKOWICZ":
+         case "ACES_HILL":
+         case "ACES_HILL_EXPOSURE_BOOST":
+         case "KHR_PBR_NEUTRAL":
+            options .push (`X3D_TONEMAP_${browser .getBrowserOption ("ToneMapping")}`);
+            break;
       }
-      else
+
+      if (+this .getTextureBits ())
       {
-         // If the Material node is used together with unlit points and lines, geometry shall be rendered as unlit and only the emissiveColor is used.
-
-         options .push ("X3D_UNLIT_MATERIAL");
-
-         var shaderNode = browser .createShader ("Unlit", "Default", "Unlit", options);
-
-         browser .getShaders () .set (key, shaderNode);
+         this .baseTextureNode              ?.getShaderOptions (options, "BASE");
+         this .metallicRoughnessTextureNode ?.getShaderOptions (options, "METALLIC_ROUGHNESS");
+         this .occlusionTextureNode         ?.getShaderOptions (options, "OCCLUSION");
       }
+
+      const shaderNode = browser .createShader ("PBR", "Default", "PBR", options);
 
       browser .getShaders () .set (key, shaderNode);
 
@@ -98649,56 +99482,42 @@ Object .assign (Object .setPrototypeOf (PhysicalMaterial .prototype, Shape_X3DOn
    {
       Shape_X3DOneSidedMaterialNode .prototype .setShaderUniforms .call (this, gl, shaderObject, renderObject, textureTransformMapping, textureCoordinateMapping);
 
-      gl .uniform3fv (shaderObject .x3d_BaseColor, this .baseColor);
+      for (const extensionNode of this .extensionNodes)
+         extensionNode .setShaderUniforms (gl, shaderObject, renderObject, textureTransformMapping, textureCoordinateMapping);
+
+      gl .uniform3fv (shaderObject .x3d_BaseColor, this .baseColorArray);
       gl .uniform1f  (shaderObject .x3d_Metallic,  this .metallic);
       gl .uniform1f  (shaderObject .x3d_Roughness, this .roughness);
 
-      if (+this .getTextureBits ())
-      {
-         // Base parameters
+      if (!+this .getTextureBits ())
+         return;
 
-         if (this .baseTextureNode)
-         {
-            const
-               baseTextureMapping = this ._baseTextureMapping .getValue (),
-               baseTexture        = shaderObject .x3d_BaseTexture;
+      this .baseTextureNode ?.setNamedShaderUniforms (gl,
+         shaderObject,
+         renderObject,
+         shaderObject .x3d_BaseTexture,
+         this ._baseTextureMapping .getValue (),
+         textureTransformMapping,
+         textureCoordinateMapping);
 
-            this .baseTextureNode .setShaderUniforms (gl, shaderObject, renderObject, baseTexture);
+      this .metallicRoughnessTextureNode ?.setNamedShaderUniforms (gl,
+         shaderObject,
+         renderObject,
+         shaderObject .x3d_MetallicRoughnessTexture,
+         this ._metallicRoughnessTextureMapping .getValue (),
+         textureTransformMapping,
+         textureCoordinateMapping);
 
-            gl .uniform1i (baseTexture .textureTransformMapping,  textureTransformMapping  .get (baseTextureMapping) ?? 0);
-            gl .uniform1i (baseTexture .textureCoordinateMapping, textureCoordinateMapping .get (baseTextureMapping) ?? 0);
-         }
+      if (this .occlusionTextureNode)
+         gl .uniform1f (shaderObject .x3d_OcclusionStrength, this .occlusionStrength);
 
-         // Metallic roughness parameters
-
-         if (this .metallicRoughnessTextureNode)
-         {
-            const
-               metallicRoughnessTextureMapping = this ._metallicRoughnessTextureMapping .getValue (),
-               metallicRoughnessTexture        = shaderObject .x3d_MetallicRoughnessTexture;
-
-            this .metallicRoughnessTextureNode .setShaderUniforms (gl, shaderObject, renderObject, metallicRoughnessTexture);
-
-            gl .uniform1i (metallicRoughnessTexture .textureTransformMapping,  textureTransformMapping  .get (metallicRoughnessTextureMapping) ?? 0);
-            gl .uniform1i (metallicRoughnessTexture .textureCoordinateMapping, textureCoordinateMapping .get (metallicRoughnessTextureMapping) ?? 0);
-         }
-
-         // Occlusion parameters
-
-         if (this .occlusionTextureNode)
-         {
-            const
-               occlusionTextureMapping = this ._occlusionTextureMapping .getValue (),
-               occlusionTexture        = shaderObject .x3d_OcclusionTexture;
-
-            gl .uniform1f (shaderObject .x3d_OcclusionStrength, this .occlusionStrength);
-
-            this .occlusionTextureNode .setShaderUniforms (gl, shaderObject, renderObject, occlusionTexture);
-
-            gl .uniform1i (occlusionTexture .textureTransformMapping,  textureTransformMapping  .get (occlusionTextureMapping) ?? 0);
-            gl .uniform1i (occlusionTexture .textureCoordinateMapping, textureCoordinateMapping .get (occlusionTextureMapping) ?? 0);
-         }
-      }
+      this .occlusionTextureNode ?.setNamedShaderUniforms (gl,
+         shaderObject,
+         renderObject,
+         shaderObject .x3d_OcclusionTexture,
+         this ._occlusionTextureMapping .getValue (),
+         textureTransformMapping,
+         textureCoordinateMapping);
    },
 });
 
@@ -98745,6 +99564,7 @@ Object .defineProperties (PhysicalMaterial,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "normalTextureMapping",            new x_ite_Fields .SFString ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "normalTexture",                   new x_ite_Fields .SFNode ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "transparency",                    new x_ite_Fields .SFFloat ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "extensions",                      new x_ite_Fields .MFNode ()), // experimental
       ]),
       enumerable: true,
    },
@@ -99056,6 +99876,14 @@ Object .assign (Object .setPrototypeOf (X3DShapeNode .prototype, Core_X3DChildNo
    {
       this .transparent = !!value;
    },
+   isTransmission ()
+   {
+      return this .transmission;
+   },
+   setTransmission (value)
+   {
+      this .transmission = !!value;
+   },
    getAlphaMode ()
    {
       return this .alphaMode;
@@ -99080,16 +99908,18 @@ Object .assign (Object .setPrototypeOf (X3DShapeNode .prototype, Core_X3DChildNo
    {
       if (this .appearanceNode)
       {
-         this .appearanceNode ._alphaMode   .removeInterest ("set_transparent__", this);
-         this .appearanceNode ._transparent .removeInterest ("set_transparent__", this);
+         this .appearanceNode ._alphaMode    .removeInterest ("set_transparent__",  this);
+         this .appearanceNode ._transparent  .removeInterest ("set_transparent__",  this);
+         this .appearanceNode ._transmission .removeInterest ("set_transmission__", this);
       }
 
       this .appearanceNode = Base_X3DCast (Base_X3DConstants .X3DAppearanceNode, this ._appearance);
 
       if (this .appearanceNode)
       {
-         this .appearanceNode ._alphaMode   .addInterest ("set_transparent__", this);
-         this .appearanceNode ._transparent .addInterest ("set_transparent__", this);
+         this .appearanceNode ._alphaMode    .addInterest ("set_transparent__", this);
+         this .appearanceNode ._transparent  .addInterest ("set_transparent__",  this);
+         this .appearanceNode ._transmission .addInterest ("set_transmission__", this);
       }
       else
       {
@@ -99097,6 +99927,7 @@ Object .assign (Object .setPrototypeOf (X3DShapeNode .prototype, Core_X3DChildNo
       }
 
       this .set_transparent__ ();
+      this .set_transmission__ ();
    },
    set_geometry__ ()
    {
@@ -99133,6 +99964,10 @@ Object .assign (Object .setPrototypeOf (X3DShapeNode .prototype, Core_X3DChildNo
          this .transparent = alphaMode === Shape_AlphaMode .BLEND;
          this .alphaMode   = alphaMode;
       }
+   },
+   set_transmission__ ()
+   {
+      this .transmission = this .appearanceNode .isTransmission ();
    },
    set_bbox__ ()
    {
@@ -99461,13 +100296,13 @@ function TwoSidedMaterial (executionContext)
 
    this .addType (Base_X3DConstants .TwoSidedMaterial);
 
-   this .diffuseColor  = new Float32Array (3);
-   this .specularColor = new Float32Array (3);
-   this .emissiveColor = new Float32Array (3);
+   this .diffuseColorArray  = new Float32Array (3);
+   this .specularColorArray = new Float32Array (3);
+   this .emissiveColorArray = new Float32Array (3);
 
-   this .backDiffuseColor  = new Float32Array (3);
-   this .backSpecularColor = new Float32Array (3);
-   this .backEmissiveColor = new Float32Array (3);
+   this .backDiffuseColorArray  = new Float32Array (3);
+   this .backSpecularColorArray = new Float32Array (3);
+   this .backEmissiveColorArray = new Float32Array (3);
 }
 
 Object .assign (Object .setPrototypeOf (TwoSidedMaterial .prototype, Shape_X3DMaterialNode .prototype),
@@ -99517,41 +100352,41 @@ Object .assign (Object .setPrototypeOf (TwoSidedMaterial .prototype, Shape_X3DMa
    set_diffuseColor__ ()
    {
       //We cannot use this in Windows Edge:
-      //this .diffuseColor .set (this ._diffuseColor .getValue ());
+      //this .diffuseColorArray .set (this ._diffuseColor .getValue ());
 
       const
-         diffuseColor  = this .diffuseColor,
-         diffuseColor_ = this ._diffuseColor .getValue ();
+         diffuseColorArray = this .diffuseColorArray,
+         diffuseColor      = this ._diffuseColor .getValue ();
 
-      diffuseColor [0] = diffuseColor_ .r;
-      diffuseColor [1] = diffuseColor_ .g;
-      diffuseColor [2] = diffuseColor_ .b;
+      diffuseColorArray [0] = diffuseColor .r;
+      diffuseColorArray [1] = diffuseColor .g;
+      diffuseColorArray [2] = diffuseColor .b;
    },
    set_specularColor__ ()
    {
       //We cannot use this in Windows Edge:
-      //this .specularColor .set (this ._specularColor .getValue ());
+      //this .specularColorArray .set (this ._specularColor .getValue ());
 
       const
-         specularColor  = this .specularColor,
-         specularColor_ = this ._specularColor .getValue ();
+         specularColorArray = this .specularColorArray,
+         specularColor      = this ._specularColor .getValue ();
 
-      specularColor [0] = specularColor_ .r;
-      specularColor [1] = specularColor_ .g;
-      specularColor [2] = specularColor_ .b;
+      specularColorArray [0] = specularColor .r;
+      specularColorArray [1] = specularColor .g;
+      specularColorArray [2] = specularColor .b;
    },
    set_emissiveColor__ ()
    {
       //We cannot use this in Windows Edge:
-      //this .emissiveColor .set (this ._emissiveColor .getValue ());
+      //this .emissiveColorArray .set (this ._emissiveColor .getValue ());
 
       const
-         emissiveColor  = this .emissiveColor,
-         emissiveColor_ = this ._emissiveColor .getValue ();
+         emissiveColorArray = this .emissiveColorArray,
+         emissiveColor      = this ._emissiveColor .getValue ();
 
-      emissiveColor [0] = emissiveColor_ .r;
-      emissiveColor [1] = emissiveColor_ .g;
-      emissiveColor [2] = emissiveColor_ .b;
+      emissiveColorArray [0] = emissiveColor .r;
+      emissiveColorArray [1] = emissiveColor .g;
+      emissiveColorArray [2] = emissiveColor .b;
    },
    set_shininess__ ()
    {
@@ -99571,41 +100406,41 @@ Object .assign (Object .setPrototypeOf (TwoSidedMaterial .prototype, Shape_X3DMa
    set_backDiffuseColor__ ()
    {
       //We cannot use this in Windows Edge:
-      //this .backDiffuseColor .set (this ._backDiffuseColor .getValue ());
+      //this .backDiffuseColorArray .set (this ._backDiffuseColor .getValue ());
 
       const
-         backDiffuseColor  = this .backDiffuseColor,
-         backDiffuseColor_ = this ._backDiffuseColor .getValue ();
+         backDiffuseColorArray = this .backDiffuseColorArray,
+         backDiffuseColor      = this ._backDiffuseColor .getValue ();
 
-      backDiffuseColor [0] = backDiffuseColor_ .r;
-      backDiffuseColor [1] = backDiffuseColor_ .g;
-      backDiffuseColor [2] = backDiffuseColor_ .b;
+      backDiffuseColorArray [0] = backDiffuseColor .r;
+      backDiffuseColorArray [1] = backDiffuseColor .g;
+      backDiffuseColorArray [2] = backDiffuseColor .b;
    },
    set_backSpecularColor__ ()
    {
       //We cannot use this in Windows Edge:
-      //this .backSpecularColor .set (this ._backSpecularColor .getValue ());
+      //this .backSpecularColorArray .set (this ._backSpecularColor .getValue ());
 
       const
-         backSpecularColor  = this .backSpecularColor,
-         backSpecularColor_ = this ._backSpecularColor .getValue ();
+         backSpecularColorArray = this .backSpecularColorArray,
+         backSpecularColor      = this ._backSpecularColor .getValue ();
 
-      backSpecularColor [0] = backSpecularColor_ .r;
-      backSpecularColor [1] = backSpecularColor_ .g;
-      backSpecularColor [2] = backSpecularColor_ .b;
+      backSpecularColorArray [0] = backSpecularColor .r;
+      backSpecularColorArray [1] = backSpecularColor .g;
+      backSpecularColorArray [2] = backSpecularColor .b;
    },
    set_backEmissiveColor__ ()
    {
       //We cannot use this in Windows Edge:
-      //this .backEmissiveColor .set (this ._backEmissiveColor .getValue ());
+      //this .backEmissiveColorArray .set (this ._backEmissiveColor .getValue ());
 
       const
-         backEmissiveColor  = this .backEmissiveColor,
-         backEmissiveColor_ = this ._backEmissiveColor .getValue ();
+         backEmissiveColorArray = this .backEmissiveColorArray,
+         backEmissiveColor      = this ._backEmissiveColor .getValue ();
 
-      backEmissiveColor [0] = backEmissiveColor_ .r;
-      backEmissiveColor [1] = backEmissiveColor_ .g;
-      backEmissiveColor [2] = backEmissiveColor_ .b;
+      backEmissiveColorArray [0] = backEmissiveColor .r;
+      backEmissiveColorArray [1] = backEmissiveColor .g;
+      backEmissiveColorArray [2] = backEmissiveColor .b;
    },
    set_backShininess__ ()
    {
@@ -99624,21 +100459,21 @@ Object .assign (Object .setPrototypeOf (TwoSidedMaterial .prototype, Shape_X3DMa
    createShader: Shape_Material .prototype .createShader,
    setShaderUniforms (gl, shaderObject, renderObject, textureTransformMapping, textureCoordinateMapping, front)
    {
-      if (! front && this ._separateBackColor .getValue ())
+      if (!front && this ._separateBackColor .getValue ())
       {
          gl .uniform1f  (shaderObject .x3d_AmbientIntensity, this .backAmbientIntensity);
-         gl .uniform3fv (shaderObject .x3d_DiffuseColor,     this .backDiffuseColor);
-         gl .uniform3fv (shaderObject .x3d_SpecularColor,    this .backSpecularColor);
-         gl .uniform3fv (shaderObject .x3d_EmissiveColor,    this .backEmissiveColor);
+         gl .uniform3fv (shaderObject .x3d_DiffuseColor,     this .backDiffuseColorArray);
+         gl .uniform3fv (shaderObject .x3d_SpecularColor,    this .backSpecularColorArray);
+         gl .uniform3fv (shaderObject .x3d_EmissiveColor,    this .backEmissiveColorArray);
          gl .uniform1f  (shaderObject .x3d_Shininess,        this .backShininess);
          gl .uniform1f  (shaderObject .x3d_Transparency,     this .backTransparency);
       }
       else
       {
          gl .uniform1f  (shaderObject .x3d_AmbientIntensity, this .ambientIntensity);
-         gl .uniform3fv (shaderObject .x3d_DiffuseColor,     this .diffuseColor);
-         gl .uniform3fv (shaderObject .x3d_SpecularColor,    this .specularColor);
-         gl .uniform3fv (shaderObject .x3d_EmissiveColor,    this .emissiveColor);
+         gl .uniform3fv (shaderObject .x3d_DiffuseColor,     this .diffuseColorArray);
+         gl .uniform3fv (shaderObject .x3d_SpecularColor,    this .specularColorArray);
+         gl .uniform3fv (shaderObject .x3d_EmissiveColor,    this .emissiveColorArray);
          gl .uniform1f  (shaderObject .x3d_Shininess,        this .shininess);
          gl .uniform1f  (shaderObject .x3d_Transparency,     this .transparency);
       }
@@ -105469,8 +106304,8 @@ const GifMedia_default_ = GifMedia;
 x_ite_Namespace .add ("GifMedia", "x_ite/Browser/Texturing/GifMedia", GifMedia_default_);
 /* harmony default export */ const Texturing_GifMedia = (GifMedia_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/MovieTexture.js
-/* provided dependency */ var MovieTexture_$ = __webpack_require__(63);
-/* provided dependency */ var SuperGif = __webpack_require__(584);
+/* provided dependency */ var MovieTexture_$ = __webpack_require__(749);
+/* provided dependency */ var SuperGif = __webpack_require__(862);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -107473,12 +108308,7 @@ Object .assign (Object .setPrototypeOf (TextureProperties .prototype, Core_X3DNo
 
       return function (string)
       {
-         const boundaryMode = boundaryModes .get (string);
-
-         if (boundaryMode !== undefined)
-            return boundaryMode;
-
-         return "REPEAT";
+         return boundaryModes .get (string) ?? "REPEAT";
       };
    })(),
    getBoundaryModeS ()
@@ -107496,29 +108326,22 @@ Object .assign (Object .setPrototypeOf (TextureProperties .prototype, Core_X3DNo
    getMinificationFilter: (() =>
    {
       const minificationFilters = new Map ([
-         ["AVG_PIXEL_AVG_MIPMAP",         "LINEAR_MIPMAP_LINEAR"],
-         ["AVG_PIXEL",                    "LINEAR"],
-         ["AVG_PIXEL_NEAREST_MIPMAP",     "LINEAR_MIPMAP_NEAREST"],
-         ["NEAREST_PIXEL_AVG_MIPMAP",     "NEAREST_MIPMAP_LINEAR"],
-         ["NEAREST_PIXEL_NEAREST_MIPMAP", "NEAREST_MIPMAP_NEAREST"],
-         ["NEAREST_PIXEL",                "NEAREST"],
-         ["NICEST",                       "LINEAR_MIPMAP_LINEAR"],
-         ["FASTEST",                      "NEAREST"],
+         ["AVG_PIXEL_AVG_MIPMAP",         ["LINEAR",  "LINEAR_MIPMAP_LINEAR"]],
+         ["AVG_PIXEL",                    ["LINEAR",  "LINEAR"]],
+         ["AVG_PIXEL_NEAREST_MIPMAP",     ["LINEAR",  "LINEAR_MIPMAP_NEAREST"]],
+         ["NEAREST_PIXEL_AVG_MIPMAP",     ["NEAREST", "NEAREST_MIPMAP_LINEAR"]],
+         ["NEAREST_PIXEL_NEAREST_MIPMAP", ["NEAREST", "NEAREST_MIPMAP_NEAREST"]],
+         ["NEAREST_PIXEL",                ["NEAREST", "NEAREST"]],
+         ["NICEST",                       ["LINEAR",  "LINEAR_MIPMAP_LINEAR"]],
+         ["FASTEST",                      ["NEAREST", "NEAREST"]],
       ]);
 
-      return function ()
+      return function (mipMaps = true)
       {
-         if (this ._generateMipMaps .getValue ())
-         {
-            const minificationFilter = minificationFilters .get (this ._minificationFilter .getValue ());
+         const i = mipMaps && this ._generateMipMaps .getValue () ? 1 : 0;
 
-            if (minificationFilter !== undefined)
-               return minificationFilter;
-
-            return this .getBrowser () .getDefaultTextureProperties () .getMinificationFilter ();
-         }
-
-         return "LINEAR";
+         return minificationFilters .get (this ._minificationFilter .getValue ()) ?.[i]
+            ?? this .getBrowser () .getDefaultTextureProperties () .getMinificationFilter (mipMaps);
       };
    })(),
    getMagnificationFilter: (() =>
@@ -107532,13 +108355,8 @@ Object .assign (Object .setPrototypeOf (TextureProperties .prototype, Core_X3DNo
 
       return function ()
       {
-         const magnificationFilter = magnificationFilters .get (this ._magnificationFilter .getValue ());
-
-         if (magnificationFilter !== undefined)
-            return magnificationFilter;
-
-         // DEFAULT
-         return this .getBrowser () .getDefaultTextureProperties () .getMagnificationFilter ();
+         return magnificationFilters .get (this ._magnificationFilter .getValue ())
+            ?? this .getBrowser () .getDefaultTextureProperties () .getMagnificationFilter ();
       };
    })(),
    getTextureCompression: (() =>
@@ -107558,13 +108376,9 @@ Object .assign (Object .setPrototypeOf (TextureProperties .prototype, Core_X3DNo
             browser            = this .getBrowser (),
             gl                 = browser .getContext (),
             compressedTexture  = gl .getExtension ("WEBGL_compressed_texture_etc"), // TODO: find suitable compression.
-            textureCompression = compressedTexture ? compressedTexture [textureCompressions .get (this ._textureCompression .getValue ())] : undefined;
+            textureCompression = compressedTexture ?.[textureCompressions .get (this ._textureCompression .getValue ())];
 
-         if (textureCompression !== undefined)
-            return textureCompression;
-
-         // DEFAULT
-         return gl .RGBA;
+         return textureCompression ?? gl .RGBA;
       };
    })(),
 });
@@ -108131,10 +108945,20 @@ const Context =
             {
                const ext = gl .getExtension ("OES_vertex_array_object");
 
-               gl .bindVertexArray   =  ext .bindVertexArrayOES   .bind (ext);
-               gl .createVertexArray =  ext .createVertexArrayOES .bind (ext);
-               gl .deleteVertexArray =  ext .deleteVertexArrayOES .bind (ext);
-               gl .isVertexArray     =  ext .isVertexArrayOES     .bind (ext);
+               gl .bindVertexArray   = ext .bindVertexArrayOES   .bind (ext);
+               gl .createVertexArray = ext .createVertexArrayOES .bind (ext);
+               gl .deleteVertexArray = ext .deleteVertexArrayOES .bind (ext);
+               gl .isVertexArray     = ext .isVertexArrayOES     .bind (ext);
+            }
+
+            {
+               const ext = gl .getExtension ("ANGLE_instanced_arrays");
+
+               gl .VERTEX_ATTRIB_ARRAY_DIVISOR = ext .VERTEX_ATTRIB_ARRAY_DIVISOR_ANGLE;
+
+               gl .vertexAttribDivisor   = ext .vertexAttribDivisorANGLE   .bind (ext);
+               gl .drawArraysInstanced   = ext .drawArraysInstancedANGLE   .bind (ext);
+               gl .drawElementsInstanced = ext .drawElementsInstancedANGLE .bind (ext);
             }
          }
       }
@@ -108878,7 +109702,7 @@ const gettext_default_ = (string) => locale .get (string) || string;
 x_ite_Namespace .add ("gettext", "locale/gettext", gettext_default_);
 /* harmony default export */ const gettext = (gettext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/BrowserTimings.js
-/* provided dependency */ var BrowserTimings_$ = __webpack_require__(63);
+/* provided dependency */ var BrowserTimings_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -109451,7 +110275,7 @@ const TextureQuality_default_ = TextureQuality;
 x_ite_Namespace .add ("TextureQuality", "x_ite/Browser/Core/TextureQuality", TextureQuality_default_);
 /* harmony default export */ const Core_TextureQuality = (TextureQuality_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/BrowserOptions.js
-/* provided dependency */ var BrowserOptions_$ = __webpack_require__(63);
+/* provided dependency */ var BrowserOptions_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -109545,6 +110369,7 @@ Object .assign (Object .setPrototypeOf (BrowserOptions .prototype, Base_X3DBaseN
       this ._StraightenHorizon            .addInterest ("set_straightenHorizon__",            this);
       this ._AutoUpdate                   .addInterest ("set_autoUpdate__",                   this);
       this ._ContentScale                 .addInterest ("set_contentScale__",                 this);
+      this ._Exposure                     .addInterest ("set_exposure__",                     this);
       this ._LogarithmicDepthBuffer       .addInterest ("set_logarithmicDepthBuffer__",       this);
       this ._Multisampling                .addInterest ("set_multisampling__",                this);
       this ._OrderIndependentTransparency .addInterest ("set_orderIndependentTransparency__", this);
@@ -109553,6 +110378,7 @@ Object .assign (Object .setPrototypeOf (BrowserOptions .prototype, Base_X3DBaseN
       this .set_antialiased__                  (this ._Antialiased);
       this .set_shading__                      (this ._Shading);
       this .set_contentScale__                 (this ._ContentScale);
+      this .set_exposure__                     (this ._Exposure);
       this .set_logarithmicDepthBuffer__       (this ._LogarithmicDepthBuffer);
       this .set_multisampling__                (this ._Multisampling);
       this .set_orderIndependentTransparency__ (this ._OrderIndependentTransparency);
@@ -109568,11 +110394,13 @@ Object .assign (Object .setPrototypeOf (BrowserOptions .prototype, Base_X3DBaseN
          "ContentScale",
          "ContextMenu",
          "Debug",
+         "Exposure",
          "LogarithmicDepthBuffer",
          "Multisampling",
          "Notifications",
          "OrderIndependentTransparency",
          "SplashScreen",
+         "ToneMapping",
       ]);
 
       const mappings = new Map ([
@@ -109771,6 +110599,19 @@ Object .assign (Object .setPrototypeOf (BrowserOptions .prototype, Base_X3DBaseN
 
       browser .reshape ();
    },
+   set_exposure__ ()
+   {
+      const
+         browser  = this .getBrowser (),
+         gl       = browser .getContext (),
+         exposure = Math .max (this ._Exposure .getValue (), 0);
+
+      for (const shaderNode of browser .getShaders () .values ())
+      {
+         gl .useProgram (shaderNode .getProgram ());
+         gl .uniform1f (shaderNode .x3d_Exposure, exposure);
+      }
+   },
    set_logarithmicDepthBuffer__ (logarithmicDepthBuffer)
    {
       const
@@ -109827,6 +110668,7 @@ Object .defineProperties (BrowserOptions,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "ContentScale",                 new x_ite_Fields .SFDouble (1)),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "ContextMenu",                  new x_ite_Fields .SFBool (true)),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "Debug",                        new x_ite_Fields .SFBool ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "Exposure",                     new x_ite_Fields .SFFloat (1)),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "Gravity",                      new x_ite_Fields .SFDouble (9.80665)),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "LoadUrlObjects",               new x_ite_Fields .SFBool (true)),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "LogarithmicDepthBuffer",       new x_ite_Fields .SFBool ()),
@@ -109837,6 +110679,7 @@ Object .defineProperties (BrowserOptions,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "OrderIndependentTransparency", new x_ite_Fields .SFBool ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "StraightenHorizon",            new x_ite_Fields .SFBool (true)),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "Timings",                      new x_ite_Fields .SFBool ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "ToneMapping",                  new x_ite_Fields .SFString ("NONE")),
       ]),
       enumerable: true,
    },
@@ -110005,12 +110848,13 @@ Object .assign (Object .setPrototypeOf (RenderingProperties .prototype, Base_X3D
 
       const browser = this .getBrowser ();
 
-      this ._MaxTextureSize = browser .getMaxTextureSize ();
-      this ._TextureUnits   = browser .getMaxCombinedTextureUnits ();
-      this ._MaxLights      = browser .getMaxLights ();
-      this ._ColorDepth     = browser .getColorDepth ();
-      this ._TextureMemory  = browser .getTextureMemory ();
-      this ._MaxSamples     = browser .getMaxSamples ();
+      this ._MaxTextureSize       = browser .getMaxTextureSize ();
+      this ._TextureUnits         = browser .getMaxCombinedTextureUnits ();
+      this ._MaxLights            = browser .getMaxLights ();
+      this ._ColorDepth           = browser .getColorDepth ();
+      this ._TextureMemory        = browser .getTextureMemory ();
+      this ._MaxAnisotropicDegree = browser .getMaxAnisotropicDegree ();
+      this ._MaxSamples           = browser .getMaxSamples ();
    },
 });
 
@@ -110033,7 +110877,8 @@ Object .defineProperties (RenderingProperties,
          new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly, "TextureMemory",          new x_ite_Fields .SFDouble ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly, "ContentScale",           new x_ite_Fields .SFDouble (1)),
          new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly, "LogarithmicDepthBuffer", new x_ite_Fields .SFBool ()),
-         new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly, "MaxSamples",             new x_ite_Fields .SFInt32 ()),
+         new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly, "MaxAnisotropicDegree",   new x_ite_Fields .SFFloat (1)),
+         new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly, "MaxSamples",             new x_ite_Fields .SFInt32 (0)),
          new Base_X3DFieldDefinition (Base_X3DConstants .outputOnly, "Multisampling",          new x_ite_Fields .SFInt32 (4)),
       ]),
       enumerable: true,
@@ -110046,7 +110891,7 @@ const RenderingProperties_default_ = RenderingProperties;
 x_ite_Namespace .add ("RenderingProperties", "x_ite/Browser/Core/RenderingProperties", RenderingProperties_default_);
 /* harmony default export */ const Core_RenderingProperties = (RenderingProperties_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/Notification.js
-/* provided dependency */ var Notification_$ = __webpack_require__(63);
+/* provided dependency */ var Notification_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -110169,8 +111014,8 @@ const Notification_default_ = Notification;
 x_ite_Namespace .add ("Notification", "x_ite/Browser/Core/Notification", Notification_default_);
 /* harmony default export */ const Core_Notification = (Notification_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/ContextMenu.js
-/* provided dependency */ var jquery_fullscreen = __webpack_require__(827);
-/* provided dependency */ var ContextMenu_$ = __webpack_require__(63);
+/* provided dependency */ var jquery_fullscreen = __webpack_require__(653);
+/* provided dependency */ var ContextMenu_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -112923,7 +113768,7 @@ const DataStorage_default_ = DataStorage;
 x_ite_Namespace .add ("DataStorage", "standard/Utility/DataStorage", DataStorage_default_);
 /* harmony default export */ const Utility_DataStorage = (DataStorage_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/X3DCoreContext.js
-/* provided dependency */ var X3DCoreContext_$ = __webpack_require__(63);
+/* provided dependency */ var X3DCoreContext_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -113248,6 +114093,11 @@ Object .assign (X3DCoreContext .prototype,
             this .setBrowserOption ("Debug", this .parseBooleanAttribute (newValue, false));
             break;
          }
+         case "exposure":
+         {
+            this .setBrowserOption ("Exposure", newValue);
+            break;
+         }
          case "logarithmicDepthBuffer":
          case "logarithmicdepthbuffer":
          {
@@ -113312,6 +114162,12 @@ Object .assign (X3DCoreContext .prototype,
          case "timings":
          {
             this .setBrowserOption ("Timings", this .parseBooleanAttribute (newValue, false));
+            break;
+         }
+         case "toneMapping":
+         case "tonemapping":
+         {
+            this .setBrowserOption ("ToneMapping", newValue);
             break;
          }
          case "update":
@@ -115185,9 +116041,10 @@ x_ite_Namespace .add ("X3DLayeringContext", "x_ite/Browser/Layering/X3DLayeringC
 
 
 
+
 const
    _maxLights     = Symbol (),
-   _GGXLUTTexture = Symbol (),
+   _textures      = Symbol (),
    _shadowBuffers = Symbol ();
 
 function X3DLightingContext ()
@@ -115201,6 +116058,7 @@ function X3DLightingContext ()
    else
       this [_maxLights] = 2;
 
+   this [_textures]      = new Map ();
    this [_shadowBuffers] = [ ]; // Shadow buffer cache
 }
 
@@ -115210,19 +116068,33 @@ Object .assign (X3DLightingContext .prototype,
    {
       return this [_maxLights];
    },
-   getGGXLUTTexture ()
+   getLibraryTexture (name)
    {
-      this [_GGXLUTTexture] = new Texturing_ImageTexture (this .getPrivateScene ());
-      this [_GGXLUTTexture] ._url     = [Networking_URLs .getLibraryURL ("lut_ggx.png")];
-      this [_GGXLUTTexture] ._repeatS = false;
-      this [_GGXLUTTexture] ._repeatT = false;
-      this [_GGXLUTTexture] .setup ();
+      return this [_textures] .get (name) ?? this .createLibraryTexture (name);
+   },
+   createLibraryTexture (name)
+   {
+      const
+         texture           = new Texturing_ImageTexture (this .getPrivateScene ()),
+         textureProperties = new Texturing_TextureProperties (this .getPrivateScene ());
 
-      this .getGGXLUTTexture = function () { return this [_GGXLUTTexture]; };
+      textureProperties ._generateMipMaps     = false;
+      textureProperties ._minificationFilter  = "AVG_PIXEL";
+      textureProperties ._magnificationFilter = "AVG_PIXEL";
+      textureProperties ._boundaryModeS       = "CLAMP_TO_BOUNDARY";
+      textureProperties ._boundaryModeT       = "CLAMP_TO_BOUNDARY";
+      textureProperties ._boundaryModeR       = "CLAMP_TO_BOUNDARY";
 
-      Object .defineProperty (this, "getGGXLUTTexture", { enumerable: false });
+      textureProperties .setup ();
 
-      return this [_GGXLUTTexture];
+      texture ._url               = [Networking_URLs .getLibraryURL (name)];
+      texture ._textureProperties = textureProperties;
+
+      texture .setup ();
+
+      this [_textures] .set (name, texture)
+
+      return texture;
    },
    popShadowBuffer (shadowMapSize)
    {
@@ -115417,7 +116289,7 @@ Object .assign (Object .setPrototypeOf (X3DViewer .prototype, Base_X3DBaseNode .
    },
    lookAtPoint (x, y, straightenHorizon)
    {
-      if (! this .touch (x, y))
+      if (!this .touch (x, y))
          return;
 
       const
@@ -115428,7 +116300,7 @@ Object .assign (Object .setPrototypeOf (X3DViewer .prototype, Base_X3DBaseNode .
    },
    lookAtBBox (x, y, straightenHorizon)
    {
-      if (! this .touch (x, y))
+      if (!this .touch (x, y))
          return;
 
       const
@@ -115470,8 +116342,8 @@ const X3DViewer_default_ = X3DViewer;
 x_ite_Namespace .add ("X3DViewer", "x_ite/Browser/Navigation/X3DViewer", X3DViewer_default_);
 /* harmony default export */ const Navigation_X3DViewer = (X3DViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/ExamineViewer.js
-/* provided dependency */ var jquery_mousewheel = __webpack_require__(623);
-/* provided dependency */ var ExamineViewer_$ = __webpack_require__(63);
+/* provided dependency */ var jquery_mousewheel = __webpack_require__(189);
+/* provided dependency */ var ExamineViewer_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -115531,19 +116403,20 @@ x_ite_Namespace .add ("X3DViewer", "x_ite/Browser/Navigation/X3DViewer", X3DView
 
 
 
+
 typeof jquery_mousewheel; // import plugin
 
-const macOS = /Mac OS X/i .test (navigator .userAgent)
+const macOS = /Mac OS X/i .test (navigator .userAgent);
 
 const
-   MOTION_TIME       = 0.05 * 1000,
-   SPIN_RELEASE_TIME = 0.04 * 1000,
-   SPIN_ANGLE        = 0.003,
+   SPIN_RELEASE_TIME = 20,
+   SPIN_ANGLE        = Math_Algorithm .radians (2),
    SPIN_FACTOR       = 0.4,
    SCROLL_FACTOR     = macOS ? 1 / 120 : 1 / 20,
    MOVE_TIME         = 0.2,
    ROTATE_TIME       = 0.2,
-   CRITICAL_ANGLE    = 0.97;
+   DISK_ANGLE        = Math_Algorithm .radians (15),
+   CRITICAL_ANGLE    = Math_Algorithm .radians (0.1);
 
 function ExamineViewer (executionContext, navigationInfo)
 {
@@ -115553,13 +116426,15 @@ function ExamineViewer (executionContext, navigationInfo)
    this .orientationOffset        = new Numbers_Rotation4 ();
    this .fromVector               = new Numbers_Vector3 ();
    this .toVector                 = new Numbers_Vector3 ();
+   this .fromPointer              = new Numbers_Vector2 ();
    this .fromPoint                = new Numbers_Vector3 ();
    this .toPoint                  = new Numbers_Vector3 ();
+   this .startOrientation         = new Numbers_Rotation4 ();
+   this .roll                     = new Numbers_Rotation4 ();
    this .rotation                 = new Numbers_Rotation4 ();
+   this .deltaRotation            = new Numbers_Rotation4 ();
    this .direction                = new Numbers_Vector3 ();
    this .axis                     = new Numbers_Vector3 ();
-   this .pressTime                = 0;
-   this .motionTime               = 0;
 
    this .touchMode                = 0;
    this .touch1                   = new Numbers_Vector2 ();
@@ -115628,7 +116503,11 @@ Object .assign (Object .setPrototypeOf (ExamineViewer .prototype, Navigation_X3D
          const viewpoint = this .getActiveViewpoint ();
 
          if (viewpoint)
-            viewpoint ._orientationOffset = this .getOrientationOffset (Numbers_Rotation4 .Identity, viewpoint ._orientationOffset .getValue (), false);
+         {
+            this .startOrientation .assign (viewpoint .getUserOrientation ());
+
+            viewpoint ._orientationOffset = this .getOrientationOffset (Numbers_Rotation4 .Identity, Numbers_Rotation4 .Identity, viewpoint ._orientationOffset .getValue ());
+         }
       }
 
       this .disconnect ();
@@ -115637,8 +116516,6 @@ Object .assign (Object .setPrototypeOf (ExamineViewer .prototype, Navigation_X3D
    {
       if (this .button >= 0)
          return;
-
-      this .pressTime = Date .now ();
 
       const { x, y } = this .getBrowser () .getPointerFromEvent (event);
 
@@ -115666,10 +116543,24 @@ Object .assign (Object .setPrototypeOf (ExamineViewer .prototype, Navigation_X3D
             this .getActiveViewpoint () .transitionStop ();
             this .getBrowser () .setCursor ("MOVE");
 
-            this .trackballProjectToSphere (x, y, this .fromVector);
-            this .rotation .assign (Numbers_Rotation4 .Identity);
+            if (this .getStraightenHorizon ())
+            {
+               const viewpoint = this .getActiveViewpoint ();
 
-            this .motionTime = 0;
+               this .fromPointer .set (x, y);
+               this .startOrientation .assign (viewpoint .getUserOrientation ());
+               this .lastRoll = 0;
+               this .negate   = 0;
+            }
+            else
+            {
+               this .trackballProjectToSphere (x, y, this .fromVector);
+            }
+
+            this .rotation .assign (Numbers_Rotation4 .Identity);
+            this .deltaRotation .assign (Numbers_Rotation4 .Identity);
+
+            this .motionTime = Date .now ();
 
             this ._isActive = true;
             break;
@@ -115721,8 +116612,8 @@ Object .assign (Object .setPrototypeOf (ExamineViewer .prototype, Navigation_X3D
 
             this .getBrowser () .setCursor ("DEFAULT");
 
-            if (Math .abs (this .rotation .angle) > SPIN_ANGLE && Date .now () - this .motionTime < SPIN_RELEASE_TIME)
-               this .addSpinning (this .rotation);
+            if (Math .abs (this .deltaRotation .angle) > SPIN_ANGLE && Date .now () - this .motionTime < SPIN_RELEASE_TIME)
+               this .addSpinning (this .deltaRotation);
 
             this ._isActive = false;
             break;
@@ -115755,7 +116646,10 @@ Object .assign (Object .setPrototypeOf (ExamineViewer .prototype, Navigation_X3D
    },
    mousemove: (() =>
    {
-      const fromPoint = new Numbers_Vector3 ();
+      const
+         translation = new Numbers_Vector2 (),
+         axis        = new Numbers_Vector3 (),
+         fromPoint   = new Numbers_Vector3 ();
 
       return function (event)
       {
@@ -115771,16 +116665,66 @@ Object .assign (Object .setPrototypeOf (ExamineViewer .prototype, Navigation_X3D
                event .preventDefault ();
                event .stopImmediatePropagation ();
 
-               const toVector = this .trackballProjectToSphere (x, y, this .toVector);
+               if (this .getStraightenHorizon ())
+               {
+                  const
+                     viewpoint = this .getActiveViewpoint (),
+                     upVector  = viewpoint .getUpVector (true);
 
-               this .rotation .setFromToVec (toVector, this .fromVector);
+                  translation .set (x, y) .subtract (this .fromPointer);
 
-               if (Math .abs (this .rotation .angle) < SPIN_ANGLE && Date .now () - this .pressTime < MOTION_TIME)
-                  return;
+                  const
+                     pixelPerRevolutionX = this .getViewport () [2] * 2,
+                     pixelPerRevolutionY = this .getViewport () [3] * 2,
+                     startRoll           = Math .acos (Math_Algorithm .clamp (this .startOrientation .multVecRot (axis .assign (Numbers_Vector3 .zAxis)) .dot (upVector), -1, 1)),
+                     roll                = Math .PI * 2 * +translation .y / pixelPerRevolutionY,
+                     clampedRoll         = Math_Algorithm .clamp (startRoll + roll, CRITICAL_ANGLE, Math .PI - CRITICAL_ANGLE) - startRoll;
 
-               this .addRotate (this .rotation);
+                  // Adjust fromPointer y.
 
-               this .fromVector .assign (toVector);
+                  if (this .lastRoll - Math .abs (roll) > 0)
+                     this .fromPointer .y += (roll - clampedRoll) / (Math .PI * 2) * pixelPerRevolutionY;
+
+                  this .lastRoll = Math .abs (roll);
+
+                  // Check disk angle.
+
+                  if (!this .negate)
+                  {
+                     if (Math .PI / 2 - Math .abs (startRoll - Math .PI / 2) < DISK_ANGLE)
+                     {
+                        if (y - this .getViewport () [1] > this .getViewport () [3] / 2)
+                           this .negate = startRoll < Math .PI / 4 ? -1 : 1;
+                        else
+                           this .negate = startRoll > Math .PI / 4 ? -1 : 1;
+                     }
+                     else
+                     {
+                        this .negate = 1;
+                     }
+                  }
+
+                  // Determine roll and rotation.
+
+                  this .deltaRotation .assign (this .rotation);
+                  this .roll .set (1, 0, 0, clampedRoll);
+                  this .rotation .setAxisAngle (upVector, Math .PI * 2 * -translation .x / pixelPerRevolutionX * this .negate);
+                  this .deltaRotation .inverse () .multRight (this .rotation);
+               }
+               else
+               {
+                  const toVector = this .trackballProjectToSphere (x, y, this .toVector);
+
+                  // Determine roll and rotation.
+
+                  this .deltaRotation .assign (this .rotation);
+                  this .roll .assign (Numbers_Rotation4 .Identity);
+                  this .rotation .setFromToVec (toVector, this .fromVector);
+                  this .deltaRotation .inverse () .multRight (this .rotation);
+               }
+
+               this .addRotate (this .roll, this .rotation, this .deltaRotation);
+
                this .motionTime = Date .now ();
                break;
             }
@@ -116031,68 +116975,38 @@ Object .assign (Object .setPrototypeOf (ExamineViewer .prototype, Navigation_X3D
    {
       const viewpoint = this .getActiveViewpoint ();
 
-      viewpoint ._orientationOffset = this .getOrientationOffset (value .getValue (), this .initialOrientationOffset, false);
+      viewpoint ._orientationOffset = this .getOrientationOffset (this .roll, value .getValue (), this .initialOrientationOffset);
       viewpoint ._positionOffset    = this .getPositionOffset (this .initialPositionOffset, this .initialOrientationOffset, viewpoint ._orientationOffset .getValue ());
    },
-   addRotate: (() =>
+   addRotate (roll, rotation, deltaRotation)
    {
-      const destination = new Numbers_Rotation4 ();
+      const viewpoint = this .getActiveViewpoint ();
 
-      return function (rotationChange)
+      if (this .rotationChaser ._value_changed .hasInterest ("set_rotation__", this))
       {
-         const viewpoint = this .getActiveViewpoint ();
+         // console .warn ("active")
 
-         if (this .rotationChaser ._isActive .getValue () && this .rotationChaser ._value_changed .hasInterest ("set_rotation__", this))
-         {
-            try
-            {
-               destination .assign (this .rotationChaser ._set_destination .getValue ())
-                  .multLeft (rotationChange);
+         this .getOrientationOffset (roll, rotation, this .initialOrientationOffset);
 
-               // Check for critical angle.
-               this .getOrientationOffset (destination, this .initialOrientationOffset, true);
+         this .rotationChaser ._set_destination = rotation;
+      }
+      else
+      {
+         // console .warn ("start")
 
-               this .rotationChaser ._set_destination = destination;
-            }
-            catch
-            {
-               // Slide along critical angle.
+         this .initialOrientationOffset .assign (viewpoint ._orientationOffset .getValue ());
+         this .initialPositionOffset    .assign (viewpoint ._positionOffset    .getValue ());
 
-               rotationChange = this .getHorizonRotation (rotationChange);
+         this .getOrientationOffset (roll, rotation, this .initialOrientationOffset);
 
-               destination .assign (this .rotationChaser ._set_destination .getValue ())
-                  .multLeft (rotationChange);
+         this .rotationChaser ._set_value       = Numbers_Rotation4 .Identity;
+         this .rotationChaser ._set_destination = rotation;
+      }
 
-               this .rotationChaser ._set_destination = destination;
-            }
-         }
-         else
-         {
-            try
-            {
-               this .initialOrientationOffset .assign (viewpoint ._orientationOffset .getValue ());
-               this .initialPositionOffset    .assign (viewpoint ._positionOffset    .getValue ());
-
-               // Check for critical angle.
-               this .getOrientationOffset (rotationChange, this .initialOrientationOffset, true);
-
-               this .rotationChaser ._set_value       = Numbers_Rotation4 .Identity;
-               this .rotationChaser ._set_destination = rotationChange;
-            }
-            catch
-            {
-               // Slide along critical angle.
-
-               this .rotationChaser ._set_value       = Numbers_Rotation4 .Identity;
-               this .rotationChaser ._set_destination = this .getHorizonRotation (rotationChange);
-            }
-         }
-
-         this .disconnect ();
-         this .rotationChaser ._value_changed .addInterest ("set_rotation__", this);
-      };
-   })(),
-   addSpinning (rotationChange)
+      this .disconnect ();
+      this .rotationChaser ._value_changed .addInterest ("set_rotation__", this);
+   },
+   addSpinning (deltaRotation)
    {
       this .disconnect ();
 
@@ -116100,18 +117014,18 @@ Object .assign (Object .setPrototypeOf (ExamineViewer .prototype, Navigation_X3D
       {
          const
             viewpoint            = this .getActiveViewpoint (),
+            upVector             = viewpoint .getUpVector (true),
             userPosition         = viewpoint .getUserPosition (),
             userCenterOfRotation = viewpoint .getUserCenterOfRotation (),
             direction            = userPosition .copy () .subtract (userCenterOfRotation),
-            rotation             = this .getHorizonRotation (rotationChange),
-            axis                 = viewpoint .getUpVector (true);
+            angle                = Math .min (Math .abs (deltaRotation .angle), Math .PI / 4);
 
-         this .axis .assign (axis);
+         this .axis .assign (upVector);
 
-         if (rotation .getAxis (new Numbers_Vector3 ()) .dot (Numbers_Vector3 .yAxis) < 0 !== rotation .angle < 0)
+         if (Math .sign (deltaRotation .getAxis () .dot (upVector)) !== Math .sign (deltaRotation .angle))
             this .axis .negate ();
 
-         this .timeSensor ._cycleInterval = Math .PI / (rotationChange .angle * SPIN_FACTOR * 30);
+         this .timeSensor ._cycleInterval = Math .PI / (angle * SPIN_FACTOR * 25);
          this .timeSensor ._startTime     = this .getBrowser () .getCurrentTime ();
 
          const lookAtRotation = viewpoint .getLookAtRotation (userPosition, userCenterOfRotation);
@@ -116122,7 +117036,7 @@ Object .assign (Object .setPrototypeOf (ExamineViewer .prototype, Navigation_X3D
       else
       {
          this .getBrowser () .prepareEvents () .addInterest ("spin", this);
-         this .rotation .assign (rotationChange);
+         this .rotation .assign (deltaRotation);
       }
    },
    spin: (() =>
@@ -116160,7 +117074,7 @@ Object .assign (Object .setPrototypeOf (ExamineViewer .prototype, Navigation_X3D
 
             this .orientationOffset .assign (viewpoint ._orientationOffset .getValue ());
 
-            viewpoint ._orientationOffset = this .getOrientationOffset (rotation, this .orientationOffset);
+            viewpoint ._orientationOffset = this .getOrientationOffset (Numbers_Rotation4 .Identity, rotation, this .orientationOffset);
             viewpoint ._positionOffset    = this .getPositionOffset (viewpoint ._positionOffset .getValue (), this .orientationOffset, viewpoint ._orientationOffset .getValue ());
          }
       };
@@ -116240,57 +117154,57 @@ Object .assign (Object .setPrototypeOf (ExamineViewer .prototype, Navigation_X3D
    {
       const
          userOrientation   = new Numbers_Rotation4 (),
-         orientationOffset = new Numbers_Rotation4 (),
-         zAxis             = new Numbers_Vector3 ();
+         orientationOffset = new Numbers_Rotation4 ();
 
-      return function (rotation, orientationOffsetBefore, _throw)
+      return function (roll, rotation, orientationOffsetBefore)
       {
          const
             viewpoint         = this .getActiveViewpoint (),
             straightenHorizon = this .getStraightenHorizon ();
 
-         userOrientation
-            .assign (rotation)
-            .multRight (viewpoint .getOrientation ())
-            .multRight (orientationOffsetBefore);
-
          if (straightenHorizon)
+         {
+            // Determine userOrientation.
+
+            userOrientation
+               .assign (roll)
+               .multRight (this .startOrientation)
+               .multRight (rotation);
+
+            // Straighten horizon of userOrientation.
+
             viewpoint .straightenHorizon (userOrientation);
+         }
+         else
+         {
+            userOrientation
+               .assign (rotation)
+               .multRight (viewpoint .getOrientation ())
+               .multRight (orientationOffsetBefore);
+         }
 
          const orientationOffsetAfter = orientationOffset
             .assign (viewpoint .getOrientation ())
             .inverse ()
             .multRight (userOrientation);
 
-         if (straightenHorizon)
-         {
-            if (! _throw)
-               return orientationOffsetAfter;
-
-            const userVector = userOrientation .multVecRot (zAxis .assign (Numbers_Vector3 .zAxis));
-
-            if (Math .abs (viewpoint .getUpVector (true) .dot (userVector)) < CRITICAL_ANGLE)
-               return orientationOffsetAfter;
-
-            throw new Error ("Critical angle");
-         }
-         else
-         {
-            return orientationOffsetAfter;
-         }
+         return orientationOffsetAfter;
       };
    })(),
    getHorizonRotation: (() =>
    {
-      const zAxis = new Numbers_Vector3 ();
+      const
+         V = new Numbers_Vector3 (),
+         N = new Numbers_Vector3 (),
+         H = new Numbers_Vector3 (),
+         r = new Numbers_Rotation4 ();
 
       return function (rotation)
       {
-         const
-            V = rotation .multVecRot (zAxis .assign (Numbers_Vector3 .zAxis)),
-            N = Numbers_Vector3 .yAxis .copy () .cross (V),
-            H = N .copy () .cross (Numbers_Vector3 .yAxis),
-            r = new Numbers_Rotation4 (Numbers_Vector3 .zAxis, H);
+         rotation .multVecRot (V .assign (Numbers_Vector3 .zAxis));
+         N .assign (Numbers_Vector3 .yAxis) .cross (V);
+         H .assign (N) .cross (Numbers_Vector3 .yAxis);
+         r .setFromToVec (Numbers_Vector3 .zAxis, H);
 
          return r;
       };
@@ -116343,8 +117257,8 @@ const ExamineViewer_default_ = ExamineViewer;
 x_ite_Namespace .add ("ExamineViewer", "x_ite/Browser/Navigation/ExamineViewer", ExamineViewer_default_);
 /* harmony default export */ const Navigation_ExamineViewer = (ExamineViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/X3DFlyViewer.js
-/* provided dependency */ var X3DFlyViewer_jquery_mousewheel = __webpack_require__(623);
-/* provided dependency */ var X3DFlyViewer_$ = __webpack_require__(63);
+/* provided dependency */ var X3DFlyViewer_jquery_mousewheel = __webpack_require__(189);
+/* provided dependency */ var X3DFlyViewer_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -117099,7 +118013,7 @@ Object .assign (Object .setPrototypeOf (X3DFlyViewer .prototype, Navigation_X3DV
       const gl = this .getBrowser () .getContext ();
 
       gl .deleteBuffer (this .lineVertexBuffer);
-      this .lineVertexArrayObject .delete (gl);
+      this .lineVertexArrayObject .dispose (gl);
 
       this .disconnect ();
       this .getBrowser () ._controlKey .removeInterest ("set_controlKey__", this);
@@ -117353,8 +118267,8 @@ const FlyViewer_default_ = FlyViewer;
 x_ite_Namespace .add ("FlyViewer", "x_ite/Browser/Navigation/FlyViewer", FlyViewer_default_);
 /* harmony default export */ const Navigation_FlyViewer = (FlyViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/PlaneViewer.js
-/* provided dependency */ var PlaneViewer_jquery_mousewheel = __webpack_require__(623);
-/* provided dependency */ var PlaneViewer_$ = __webpack_require__(63);
+/* provided dependency */ var PlaneViewer_jquery_mousewheel = __webpack_require__(189);
+/* provided dependency */ var PlaneViewer_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -117685,8 +118599,8 @@ const NoneViewer_default_ = NoneViewer;
 x_ite_Namespace .add ("NoneViewer", "x_ite/Browser/Navigation/NoneViewer", NoneViewer_default_);
 /* harmony default export */ const Navigation_NoneViewer = (NoneViewer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/LookAtViewer.js
-/* provided dependency */ var LookAtViewer_jquery_mousewheel = __webpack_require__(623);
-/* provided dependency */ var LookAtViewer_$ = __webpack_require__(63);
+/* provided dependency */ var LookAtViewer_jquery_mousewheel = __webpack_require__(189);
+/* provided dependency */ var LookAtViewer_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -118379,11 +119293,16 @@ Object .assign (X3DNavigationContext .prototype,
    },
    set_activeNavigationInfo__ ()
    {
-      this ._activeNavigationInfo .getValue () ?._viewer .removeFieldInterest (this ._viewer);
+      const activeNavigationInfo = this ._activeNavigationInfo .getValue ();
+
+      activeNavigationInfo ?._viewer .removeFieldInterest (this ._viewer);
 
       if (this ._activeLayer .getValue ())
       {
          this ._activeNavigationInfo = this ._activeLayer .getValue () .getNavigationInfo ();
+
+         if (this ._activeNavigationInfo .getValue () === activeNavigationInfo)
+            return;
 
          this ._activeNavigationInfo .getValue () ._viewer .addFieldInterest (this ._viewer);
 
@@ -118397,10 +119316,7 @@ Object .assign (X3DNavigationContext .prototype,
    },
    set_activeViewpoint__ ()
    {
-      if (this ._activeLayer .getValue ())
-         this ._activeViewpoint = this ._activeLayer .getValue () .getViewpoint ();
-      else
-         this ._activeViewpoint = null;
+      this ._activeViewpoint = this ._activeLayer .getValue () ?.getViewpoint () ?? null;
    },
    set_viewer__ (viewer)
    {
@@ -118824,8 +119740,8 @@ const X3DPickingContext_default_ = X3DPickingContext;
 x_ite_Namespace .add ("X3DPickingContext", "x_ite/Browser/Picking/X3DPickingContext", X3DPickingContext_default_);
 /* harmony default export */ const Picking_X3DPickingContext = (X3DPickingContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/PointingDeviceSensor/PointingDevice.js
-/* provided dependency */ var PointingDevice_jquery_mousewheel = __webpack_require__(623);
-/* provided dependency */ var PointingDevice_$ = __webpack_require__(63);
+/* provided dependency */ var PointingDevice_jquery_mousewheel = __webpack_require__(189);
+/* provided dependency */ var PointingDevice_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -120129,7 +121045,7 @@ const MultiSampleFrameBuffer_default_ = MultiSampleFrameBuffer;
 x_ite_Namespace .add ("MultiSampleFrameBuffer", "x_ite/Rendering/MultiSampleFrameBuffer", MultiSampleFrameBuffer_default_);
 /* harmony default export */ const Rendering_MultiSampleFrameBuffer = (MultiSampleFrameBuffer_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Rendering/X3DRenderingContext.js
-/* provided dependency */ var X3DRenderingContext_$ = __webpack_require__(63);
+/* provided dependency */ var X3DRenderingContext_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -120180,15 +121096,17 @@ x_ite_Namespace .add ("MultiSampleFrameBuffer", "x_ite/Rendering/MultiSampleFram
 
 
 
+
 const
-   _viewport         = Symbol (),
-   _frameBuffer      = Symbol (),
-   _resizer          = Symbol (),
-   _localObjects     = Symbol (),
-   _fullscreenArray  = Symbol (),
-   _fullscreenBuffer = Symbol (),
-   _composeShader    = Symbol (),
-   _depthShaders     = Symbol ();
+   _viewport           = Symbol (),
+   _frameBuffer        = Symbol (),
+   _transmissionBuffer = Symbol (),
+   _resizer            = Symbol (),
+   _localObjects       = Symbol (),
+   _fullscreenArray    = Symbol (),
+   _fullscreenBuffer   = Symbol (),
+   _composeShader      = Symbol (),
+   _depthShaders       = Symbol ();
 
 function X3DRenderingContext ()
 {
@@ -120294,6 +121212,20 @@ Object .assign (X3DRenderingContext .prototype,
    {
       return this [_frameBuffer];
    },
+   getTransmissionBuffer ()
+   {
+      this [_transmissionBuffer] = new Rendering_TextureBuffer (this,
+         this [_frameBuffer] .getWidth (),
+         this [_frameBuffer] .getHeight (),
+         false,
+         true);
+
+      this .getTransmissionBuffer = function () { return this [_transmissionBuffer]; };
+
+      Object .defineProperty (this, "getTransmissionBuffer", { enumerable: false });
+
+      return this [_transmissionBuffer];
+   },
    getFullscreenVertexArrayObject ()
    {
       // Quad for fullscreen rendering.
@@ -120306,8 +121238,8 @@ Object .assign (X3DRenderingContext .prototype,
       gl .bindVertexArray (this [_fullscreenArray]);
       gl .bindBuffer (gl .ARRAY_BUFFER, this [_fullscreenBuffer]);
       gl .bufferData (gl .ARRAY_BUFFER, new Float32Array ([-1, 1, -1, -1, 1, -1, -1, 1, 1, -1, 1, 1]), gl .STATIC_DRAW);
+      gl .enableVertexAttribArray (0);
       gl .vertexAttribPointer (0, 2, gl .FLOAT, false, 0, 0);
-      gl .enableVertexAttribArray (null);
 
       this .getFullscreenVertexArrayObject = function () { return this [_fullscreenArray]; };
 
@@ -120395,8 +121327,8 @@ Object .assign (X3DRenderingContext .prototype,
          contentScale = this .getRenderingProperty ("ContentScale"),
          samples      = this .getRenderingProperty ("Multisampling"),
          oit          = this .getBrowserOption ("OrderIndependentTransparency"),
-         width        = canvas .width () * contentScale,
-         height       = canvas .height () * contentScale;
+         width        = Math .max (canvas .width () * contentScale, 1),
+         height       = Math .max (canvas .height () * contentScale, 1);
 
       canvas .prop ("width",  width);
       canvas .prop ("height", height);
@@ -120411,6 +121343,12 @@ Object .assign (X3DRenderingContext .prototype,
       {
          this [_frameBuffer] .dispose ();
          this [_frameBuffer] = new Rendering_MultiSampleFrameBuffer (this, width, height, samples, oit);
+
+         if (this [_transmissionBuffer])
+         {
+            this [_transmissionBuffer] .dispose ();
+            this [_transmissionBuffer] = new Rendering_TextureBuffer (this, width, height, false, true);
+         }
       }
 
       this .addBrowserEvent ();
@@ -120423,6 +121361,10 @@ Object .assign (X3DRenderingContext .prototype,
          element .addClass ("x_ite-fullscreen");
       else
          element .removeClass ("x_ite-fullscreen");
+   },
+   dispose ()
+   {
+      this [_resizer] .disconnect ();
    },
 });
 
@@ -121078,7 +122020,7 @@ const X3DSoundContext_default_ = X3DSoundContext;
 x_ite_Namespace .add ("X3DSoundContext", "x_ite/Browser/Sound/X3DSoundContext", X3DSoundContext_default_);
 /* harmony default export */ const Sound_X3DSoundContext = (X3DSoundContext_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Texturing/KTXDecoder.js
-/* provided dependency */ var KTXDecoder_$ = __webpack_require__(63);
+/* provided dependency */ var KTXDecoder_$ = __webpack_require__(749);
 const KTXDecoder_default_ = class KTXDecoder
 {
    constructor (gl, externalKtxlib, scriptDir)
@@ -121334,6 +122276,37 @@ Object .assign (X3DTexturingContext .prototype,
       const gl = this .getContext ();
 
       return gl .getParameter (gl .MAX_TEXTURE_SIZE);
+   },
+   getAnisotropicExtension: (() =>
+   {
+      // Anisotropic Filtering in WebGL is handled by an extension, use one of getExtension depending on browser:
+
+      const ANISOTROPIC_EXT = [
+         "EXT_texture_filter_anisotropic",
+         "MOZ_EXT_texture_filter_anisotropic",
+         "WEBKIT_EXT_texture_filter_anisotropic",
+      ];
+
+      return function ()
+      {
+         const gl = this .getContext ();
+
+         for (const extension of ANISOTROPIC_EXT)
+         {
+            const ext = gl .getExtension (extension);
+
+            if (ext)
+               return ext;
+         }
+      };
+   })(),
+   getMaxAnisotropicDegree ()
+   {
+      const
+         gl  = this .getContext (),
+         ext = this .getAnisotropicExtension ();
+
+      return ext ? gl .getParameter (ext .MAX_TEXTURE_MAX_ANISOTROPY_EXT) : 1;
    },
    getMaxCombinedTextureUnits ()
    {
@@ -122638,7 +123611,7 @@ const Components_default_ = Components;
 x_ite_Namespace .add ("Components", "x_ite/Components", Components_default_);
 /* harmony default export */ const x_ite_Components = ((/* unused pure expression or super */ null && (Components_default_)));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/DOMIntegration.js
-/* provided dependency */ var DOMIntegration_$ = __webpack_require__(63);
+/* provided dependency */ var DOMIntegration_$ = __webpack_require__(749);
 /*******************************************************************************
  * MIT License
  *
@@ -123906,7 +124879,7 @@ const FieldTypes_default_ = new Configuration_FieldTypesArray (Object .values (x
 x_ite_Namespace .add ("FieldTypes", "x_ite/Configuration/FieldTypes", FieldTypes_default_);
 /* harmony default export */ const FieldTypes = (FieldTypes_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/X3DBrowser.js
-/* provided dependency */ var X3DBrowser_$ = __webpack_require__(63);
+/* provided dependency */ var X3DBrowser_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -125008,7 +125981,7 @@ const X3DBrowser_default_ = X3DBrowser;
 x_ite_Namespace .add ("X3DBrowser", "x_ite/Browser/X3DBrowser", X3DBrowser_default_);
 /* harmony default export */ const Browser_X3DBrowser = (X3DBrowser_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/X3DCanvasElement.js
-/* provided dependency */ var X3DCanvasElement_$ = __webpack_require__(63);
+/* provided dependency */ var X3DCanvasElement_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -125095,6 +126068,7 @@ class X3DCanvasElement extends HTMLElement
          "contextMenu",
          "contextmenu",
          "debug",
+         "exposure",
          "logarithmicDepthBuffer",
          "logarithmicdepthbuffer",
          "multisampling",
@@ -125107,6 +126081,8 @@ class X3DCanvasElement extends HTMLElement
          "splashscreen",
          "src",
          "timings",
+         "toneMapping",
+         "tonemapping",
          "update",
          "url",
       ];
@@ -125147,8 +126123,8 @@ const X3DCanvasElement_default_ = X3DCanvasElement;
 x_ite_Namespace .add ("X3DCanvasElement", "x_ite/X3DCanvasElement", X3DCanvasElement_default_);
 /* harmony default export */ const x_ite_X3DCanvasElement = (X3DCanvasElement_default_);
 ;// CONCATENATED MODULE: ./src/lib/jquery.js
-/* provided dependency */ var jquery_$ = __webpack_require__(63);
-/* provided dependency */ var pako = __webpack_require__(807);
+/* provided dependency */ var jquery_$ = __webpack_require__(749);
+/* provided dependency */ var pako = __webpack_require__(481);
 Object .assign (jquery_$,
 {
    decodeText (input)
@@ -125225,14 +126201,14 @@ const jquery_default_ = jquery_$;
 x_ite_Namespace .add ("jquery", "lib/jquery", jquery_default_);
 /* harmony default export */ const jquery = ((/* unused pure expression or super */ null && (jquery_default_)));
 ;// CONCATENATED MODULE: ./src/lib/libtess.js
-/* provided dependency */ var libtess_libtess = __webpack_require__(844);
+/* provided dependency */ var libtess_libtess = __webpack_require__(382);
 const libtess_default_ = libtess_libtess;
 ;
 
 x_ite_Namespace .add ("libtess", "lib/libtess", libtess_default_);
 /* harmony default export */ const lib_libtess = ((/* unused pure expression or super */ null && (libtess_default_)));
 ;// CONCATENATED MODULE: ./src/x_ite/X3D.js
-/* provided dependency */ var X3D_$ = __webpack_require__(63);
+/* provided dependency */ var X3D_$ = __webpack_require__(749);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -125540,7 +126516,7 @@ Object .assign (X3D,
 
 // Assign X3D to global namespace.
 
-window [Symbol .for ("X_ITE.X3D-9.7.0")] = x_ite_X3D;
+window [Symbol .for ("X_ITE.X3D-10.0.0")] = x_ite_X3D;
 
 customElements .define ("x3d-canvas", x_ite_X3DCanvasElement);
 

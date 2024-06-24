@@ -1,11 +1,11 @@
-/* X_ITE v9.7.0 */(() => { // webpackBootstrap
+/* X_ITE v10.0.0 */(() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 823:
 /***/ ((module) => {
 
-module.exports = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("lib/jquery");
+module.exports = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("lib/jquery");
 
 /***/ })
 
@@ -67,19 +67,18 @@ module.exports = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("lib/jquery"
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
 
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/CubeMapTexturing/Panorama1.fs.js
-const __default__ = /* glsl */ `precision highp float;precision highp int;precision highp sampler2D;const float M_PI=3.1415926535897932384626433832795;varying vec2 texCoord;uniform sampler2D x3d_PanoramaTexture;uniform int x3d_CurrentFace;vec3 uvToXYZ(const in int face,const in vec2 uv){vec3 xyz;if(face==0)xyz=vec3(1.0,uv.y,uv.x);else if(face==1)xyz=vec3(-1.0,uv.y,-uv.x);else if(face==2)xyz=vec3(uv.x,uv.y,-1.0);else if(face==3)xyz=vec3(-uv.x,uv.y,1.0);else if(face==4)xyz=vec3(uv.y,-1.0,uv.x);else xyz=vec3(-uv.y,1.0,uv.x);return xyz;}vec2 dirToUV(const in vec3 dir){return vec2(0.5+0.5*atan(dir.z,dir.x)/M_PI,1.0-acos(dir.y)/M_PI);}vec3 panoramaToCubeMap(const in int face,const in vec2 texCoord){vec3 scan=uvToXYZ(face,texCoord);vec3 direction=normalize(scan);vec2 src=dirToUV(direction);return texture2D(x3d_PanoramaTexture,src).rgb;}void main(){gl_FragColor=vec4(panoramaToCubeMap(x3d_CurrentFace,texCoord),1.0);}`
+const __default__ = /* glsl */ `
+precision highp float;precision highp int;precision highp sampler2D;const float M_PI=3.1415926535897932384626433832795;varying vec2 texCoord;uniform sampler2D x3d_PanoramaTexture;uniform int x3d_CurrentFace;vec3 uvToXYZ(const in int face,const in vec2 uv){vec3 xyz;if(face==0)xyz=vec3(1.0,uv.y,uv.x);else if(face==1)xyz=vec3(-1.0,uv.y,-uv.x);else if(face==2)xyz=vec3(uv.x,uv.y,-1.0);else if(face==3)xyz=vec3(-uv.x,uv.y,1.0);else if(face==4)xyz=vec3(uv.y,-1.0,uv.x);else xyz=vec3(-uv.y,1.0,uv.x);return xyz;}vec2 dirToUV(const in vec3 dir){return vec2(0.5+0.5*atan(dir.z,dir.x)/M_PI,1.0-acos(dir.y)/M_PI);}vec3 panoramaToCubeMap(const in int face,const in vec2 texCoord){vec3 scan=uvToXYZ(face,texCoord);vec3 direction=normalize(scan);vec2 src=dirToUV(direction);return texture2D(x3d_PanoramaTexture,src).rgb;}void main(){gl_FragColor=vec4(panoramaToCubeMap(x3d_CurrentFace,texCoord),1.0);}`
 ;
 
 Namespace_default().add ("Panorama1.fs", "x_ite/Browser/CubeMapTexturing/Panorama1.fs", __default__);
@@ -164,19 +163,19 @@ const X3DCubeMapTexturingContext_default_ = X3DCubeMapTexturingContext;
 Namespace_default().add ("X3DCubeMapTexturingContext", "x_ite/Browser/CubeMapTexturing/X3DCubeMapTexturingContext", X3DCubeMapTexturingContext_default_);
 /* harmony default export */ const CubeMapTexturing_X3DCubeMapTexturingContext = (X3DCubeMapTexturingContext_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Texturing/X3DSingleTextureNode\")"
-const X3DSingleTextureNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("x_ite/Components/Texturing/X3DSingleTextureNode");
+const X3DSingleTextureNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("x_ite/Components/Texturing/X3DSingleTextureNode");
 var X3DSingleTextureNode_default = /*#__PURE__*/__webpack_require__.n(X3DSingleTextureNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/CubeMapTexturing/X3DEnvironmentTextureNode.js
 /*******************************************************************************
@@ -333,10 +332,10 @@ const X3DEnvironmentTextureNode_default_ = X3DEnvironmentTextureNode;
 Namespace_default().add ("X3DEnvironmentTextureNode", "x_ite/Components/CubeMapTexturing/X3DEnvironmentTextureNode", X3DEnvironmentTextureNode_default_);
 /* harmony default export */ const CubeMapTexturing_X3DEnvironmentTextureNode = (X3DEnvironmentTextureNode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
-const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("x_ite/Base/X3DCast");
+const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Utility/BitSet\")"
-const BitSet_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("standard/Utility/BitSet");
+const BitSet_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("standard/Utility/BitSet");
 var BitSet_default = /*#__PURE__*/__webpack_require__.n(BitSet_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/CubeMapTexturing/ComposedCubeMapTexture.js
 /*******************************************************************************
@@ -545,6 +544,7 @@ Object .assign (Object .setPrototypeOf (ComposedCubeMapTexture .prototype, CubeM
 
          this .setTransparent (textureNodes .some (textureNode => textureNode .isTransparent ()));
          this .setLinear (textureNodes .some (textureNode => textureNode .isLinear ()));
+         this .setMipMaps (textureNodes .every (textureNode => textureNode .getMipMaps ()));
          this .updateTextureParameters ();
       }
       else
@@ -607,13 +607,13 @@ const ComposedCubeMapTexture_default_ = ComposedCubeMapTexture;
 Namespace_default().add ("ComposedCubeMapTexture", "x_ite/Components/CubeMapTexturing/ComposedCubeMapTexture", ComposedCubeMapTexture_default_);
 /* harmony default export */ const CubeMapTexturing_ComposedCubeMapTexture = (ComposedCubeMapTexture_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DBaseNode\")"
-const X3DBaseNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("x_ite/Base/X3DBaseNode");
+const X3DBaseNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("x_ite/Base/X3DBaseNode");
 var X3DBaseNode_default = /*#__PURE__*/__webpack_require__.n(X3DBaseNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Rendering/X3DRenderObject\")"
-const X3DRenderObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("x_ite/Rendering/X3DRenderObject");
+const X3DRenderObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("x_ite/Rendering/X3DRenderObject");
 var X3DRenderObject_default = /*#__PURE__*/__webpack_require__.n(X3DRenderObject_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Rendering/TraverseType\")"
-const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("x_ite/Rendering/TraverseType");
+const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("x_ite/Rendering/TraverseType");
 var TraverseType_default = /*#__PURE__*/__webpack_require__.n(TraverseType_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Rendering/DependentRenderer.js
 /*******************************************************************************
@@ -667,12 +667,13 @@ var TraverseType_default = /*#__PURE__*/__webpack_require__.n(TraverseType_names
 
 
 
-function DependentRenderer (executionContext)
+function DependentRenderer (executionContext, renderObject, node)
 {
    X3DBaseNode_default().call (this, executionContext);
    X3DRenderObject_default().call (this, executionContext);
 
-   this .renderObject = null;
+   this .node         = node;
+   this .renderObject = renderObject;
 }
 
 Object .assign (Object .setPrototypeOf (DependentRenderer .prototype, (X3DBaseNode_default()).prototype),
@@ -687,9 +688,9 @@ Object .assign (Object .setPrototypeOf (DependentRenderer .prototype, (X3DBaseNo
    {
       return false;
    },
-   setRenderer (value)
+   getNode ()
    {
-      this .renderObject = value;
+      return this .node;
    },
    getLayer ()
    {
@@ -710,6 +711,10 @@ Object .assign (Object .setPrototypeOf (DependentRenderer .prototype, (X3DBaseNo
    getViewpoint ()
    {
       return this .renderObject .getViewpoint ();
+   },
+   getViewpointStack ()
+   {
+      return this .renderObject .getViewpointStack ();
    },
    getLightContainer ()
    {
@@ -753,28 +758,28 @@ const DependentRenderer_default_ = DependentRenderer;
 Namespace_default().add ("DependentRenderer", "x_ite/Rendering/DependentRenderer", DependentRenderer_default_);
 /* harmony default export */ const Rendering_DependentRenderer = (DependentRenderer_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Rendering/TextureBuffer\")"
-const TextureBuffer_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("x_ite/Rendering/TextureBuffer");
+const TextureBuffer_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("x_ite/Rendering/TextureBuffer");
 var TextureBuffer_default = /*#__PURE__*/__webpack_require__.n(TextureBuffer_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Camera\")"
-const Camera_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("standard/Math/Geometry/Camera");
+const Camera_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("standard/Math/Geometry/Camera");
 var Camera_default = /*#__PURE__*/__webpack_require__.n(Camera_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/ViewVolume\")"
-const ViewVolume_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("standard/Math/Geometry/ViewVolume");
+const ViewVolume_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("standard/Math/Geometry/ViewVolume");
 var ViewVolume_default = /*#__PURE__*/__webpack_require__.n(ViewVolume_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Rotation4\")"
-const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("standard/Math/Numbers/Rotation4");
+const Rotation4_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("standard/Math/Numbers/Rotation4");
 var Rotation4_default = /*#__PURE__*/__webpack_require__.n(Rotation4_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
-const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("standard/Math/Numbers/Vector3");
+const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector4\")"
-const Vector4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("standard/Math/Numbers/Vector4");
+const Vector4_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("standard/Math/Numbers/Vector4");
 var Vector4_default = /*#__PURE__*/__webpack_require__.n(Vector4_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix4\")"
-const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("standard/Math/Numbers/Matrix4");
+const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("standard/Math/Numbers/Matrix4");
 var Matrix4_default = /*#__PURE__*/__webpack_require__.n(Matrix4_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Algorithm\")"
-const Algorithm_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("standard/Math/Algorithm");
+const Algorithm_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("standard/Math/Algorithm");
 var Algorithm_default = /*#__PURE__*/__webpack_require__.n(Algorithm_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/CubeMapTexturing/GeneratedCubeMapTexture.js
 /*******************************************************************************
@@ -846,10 +851,10 @@ function GeneratedCubeMapTexture (executionContext)
 
    this .addType ((X3DConstants_default()).GeneratedCubeMapTexture);
 
-   this .dependentRenderer = new Rendering_DependentRenderer (executionContext);
-   this .projectionMatrix  = new (Matrix4_default()) ();
-   this .modelMatrix       = new (Matrix4_default()) ();
-   this .viewVolume        = new (ViewVolume_default()) ();
+   this .dependentRenderers = new WeakMap ();
+   this .projectionMatrix   = new (Matrix4_default()) ();
+   this .modelMatrix        = new (Matrix4_default()) ();
+   this .viewVolume         = new (ViewVolume_default()) ();
 }
 
 Object .assign (Object .setPrototypeOf (GeneratedCubeMapTexture .prototype, CubeMapTexturing_X3DEnvironmentTextureNode .prototype),
@@ -859,8 +864,6 @@ Object .assign (Object .setPrototypeOf (GeneratedCubeMapTexture .prototype, Cube
       CubeMapTexturing_X3DEnvironmentTextureNode .prototype .initialize .call (this);
 
       this ._size .addInterest ("set_size__", this);
-
-      this .dependentRenderer .setup ();
 
       this .set_size__ ();
    },
@@ -948,10 +951,17 @@ Object .assign (Object .setPrototypeOf (GeneratedCubeMapTexture .prototype, Cube
 
       return function (renderObject)
       {
-         this .dependentRenderer .setRenderer (renderObject);
+         if (!this .dependentRenderers .has (renderObject))
+         {
+            const dependentRenderer = new Rendering_DependentRenderer (this .getExecutionContext (), renderObject, this);
+
+            dependentRenderer .setup ();
+
+            this .dependentRenderers .set (renderObject, dependentRenderer);
+         }
 
          const
-            dependentRenderer  = this .dependentRenderer,
+            dependentRenderer  = this .dependentRenderers .get (renderObject),
             browser            = this .getBrowser (),
             layer              = renderObject .getLayer (),
             gl                 = browser .getContext (),
@@ -1032,7 +1042,7 @@ Object .assign (Object .setPrototypeOf (GeneratedCubeMapTexture .prototype, Cube
       {
          CubeMapTexturing_X3DEnvironmentTextureNode .prototype .setShaderUniforms .call (this, gl, shaderObject, renderObject, channel);
 
-         if (renderObject === this .dependentRenderer)
+         if (renderObject .getNode () === this)
             gl .uniformMatrix4fv (shaderObject .x3d_ModelViewMatrix, false, zeros);
       };
    })(),
@@ -1079,13 +1089,13 @@ const GeneratedCubeMapTexture_default_ = GeneratedCubeMapTexture;
 Namespace_default().add ("GeneratedCubeMapTexture", "x_ite/Components/CubeMapTexturing/GeneratedCubeMapTexture", GeneratedCubeMapTexture_default_);
 /* harmony default export */ const CubeMapTexturing_GeneratedCubeMapTexture = (GeneratedCubeMapTexture_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Networking/X3DUrlObject\")"
-const X3DUrlObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("x_ite/Components/Networking/X3DUrlObject");
+const X3DUrlObject_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("x_ite/Components/Networking/X3DUrlObject");
 var X3DUrlObject_default = /*#__PURE__*/__webpack_require__.n(X3DUrlObject_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector2\")"
-const Vector2_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("standard/Math/Numbers/Vector2");
+const Vector2_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("standard/Math/Numbers/Vector2");
 var Vector2_default = /*#__PURE__*/__webpack_require__.n(Vector2_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/DEVELOPMENT\")"
-const DEVELOPMENT_namespaceObject = window [Symbol .for ("X_ITE.X3D-9.7.0")] .require ("x_ite/DEVELOPMENT");
+const DEVELOPMENT_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.0")] .require ("x_ite/DEVELOPMENT");
 var DEVELOPMENT_default = /*#__PURE__*/__webpack_require__.n(DEVELOPMENT_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/CubeMapTexturing/ImageCubeMapTexture.js
 /* provided dependency */ var $ = __webpack_require__(823);
@@ -1208,6 +1218,7 @@ Object .assign (Object .setPrototypeOf (ImageCubeMapTexture .prototype, CubeMapT
       if (this .URL .pathname .match (/\.ktx2?(?:\.gz)?$/) || this .URL .href .match (/^data:image\/ktx2[;,]/))
       {
          this .setLinear (true);
+         this .setMipMaps (false);
 
          this .getBrowser () .getKTXDecoder ()
             .then (decoder => decoder .loadKTXFromURL (this .URL, this .getCache ()))
@@ -1217,6 +1228,7 @@ Object .assign (Object .setPrototypeOf (ImageCubeMapTexture .prototype, CubeMapT
       else
       {
          this .setLinear (false);
+         this .setMipMaps (true);
 
          if (this .URL .protocol !== "data:")
          {
@@ -1278,6 +1290,10 @@ Object .assign (Object .setPrototypeOf (ImageCubeMapTexture .prototype, CubeMapT
 
          gl .bindTexture (gl .TEXTURE_2D, texture);
          gl .texImage2D (gl .TEXTURE_2D, 0, gl .RGBA, gl .RGBA, gl .UNSIGNED_BYTE, this .image [0]);
+         gl .texParameteri (gl .TEXTURE_2D, gl .TEXTURE_MIN_FILTER, gl .LINEAR);
+         gl .texParameteri (gl .TEXTURE_2D, gl .TEXTURE_MAG_FILTER, gl .LINEAR);
+         gl .texParameteri (gl .TEXTURE_2D, gl .TEXTURE_WRAP_S, gl .CLAMP_TO_EDGE);
+         gl .texParameteri (gl .TEXTURE_2D, gl .TEXTURE_WRAP_T, gl .CLAMP_TO_EDGE);
 
          this .imageToCubeMap (texture, this .image .prop ("width"), this .image .prop ("height"), false);
 
@@ -1327,8 +1343,8 @@ Object .assign (Object .setPrototypeOf (ImageCubeMapTexture .prototype, CubeMapT
          const
             gl          = this .getBrowser () .getContext (),
             framebuffer = gl .createFramebuffer (),
-            width1_4    = width / 4,
-            height1_3   = height / 3,
+            width1_4    = Math .floor (width / 4),
+            height1_3   = Math .floor (height / 3),
             data        = new Uint8Array (width1_4 * height1_3 * 4);
 
          // Init cube map texture.
@@ -1380,7 +1396,7 @@ Object .assign (Object .setPrototypeOf (ImageCubeMapTexture .prototype, CubeMapT
          shaderNode  = browser .getPanoramaShader (),
          framebuffer = gl .createFramebuffer (),
          textureUnit = browser .getTextureCubeUnit (),
-         size        = height / 2,
+         size        = Math .floor (height / 2),
          data        = new Uint8Array (size * size * 4);
 
       // Adjust panorama texture.
@@ -1408,6 +1424,7 @@ Object .assign (Object .setPrototypeOf (ImageCubeMapTexture .prototype, CubeMapT
 
       gl .bindFramebuffer (gl .FRAMEBUFFER, framebuffer);
       gl .viewport (0, 0, size, size);
+      gl .scissor (0, 0, size, size);
       gl .disable (gl .DEPTH_TEST);
       gl .enable (gl .CULL_FACE);
       gl .frontFace (gl .CCW);
@@ -1566,7 +1583,5 @@ const CubeMapTexturing_default_ = undefined;
 
 Namespace_default().add ("CubeMapTexturing", "assets/components/CubeMapTexturing", CubeMapTexturing_default_);
 /* harmony default export */ const CubeMapTexturing = ((/* unused pure expression or super */ null && (CubeMapTexturing_default_)));
-})();
-
 /******/ })()
 ;
