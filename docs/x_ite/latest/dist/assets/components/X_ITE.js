@@ -1,4 +1,4 @@
-/* X_ITE v10.0.1 */(() => { // webpackBootstrap
+/* X_ITE v10.0.2 */(() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
 /******/ 	var __webpack_require__ = {};
@@ -39,25 +39,25 @@ var __webpack_exports__ = {};
 // UNUSED EXPORTS: default
 
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components\")"
-const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.1")] .require ("x_ite/Components");
+const Components_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.2")] .require ("x_ite/Components");
 var Components_default = /*#__PURE__*/__webpack_require__.n(Components_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Fields\")"
-const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.1")] .require ("x_ite/Fields");
+const Fields_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.2")] .require ("x_ite/Fields");
 var Fields_default = /*#__PURE__*/__webpack_require__.n(Fields_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DFieldDefinition\")"
-const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.1")] .require ("x_ite/Base/X3DFieldDefinition");
+const X3DFieldDefinition_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.2")] .require ("x_ite/Base/X3DFieldDefinition");
 var X3DFieldDefinition_default = /*#__PURE__*/__webpack_require__.n(X3DFieldDefinition_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/FieldDefinitionArray\")"
-const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.1")] .require ("x_ite/Base/FieldDefinitionArray");
+const FieldDefinitionArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.2")] .require ("x_ite/Base/FieldDefinitionArray");
 var FieldDefinitionArray_default = /*#__PURE__*/__webpack_require__.n(FieldDefinitionArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Shape/X3DAppearanceChildNode\")"
-const X3DAppearanceChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.1")] .require ("x_ite/Components/Shape/X3DAppearanceChildNode");
+const X3DAppearanceChildNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.2")] .require ("x_ite/Components/Shape/X3DAppearanceChildNode");
 var X3DAppearanceChildNode_default = /*#__PURE__*/__webpack_require__.n(X3DAppearanceChildNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DConstants\")"
-const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.1")] .require ("x_ite/Base/X3DConstants");
+const X3DConstants_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.2")] .require ("x_ite/Base/X3DConstants");
 var X3DConstants_default = /*#__PURE__*/__webpack_require__.n(X3DConstants_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Namespace\")"
-const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.1")] .require ("x_ite/Namespace");
+const Namespace_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.2")] .require ("x_ite/Namespace");
 var Namespace_default = /*#__PURE__*/__webpack_require__.n(Namespace_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/X_ITE/BlendMode.js
 /*******************************************************************************
@@ -171,45 +171,33 @@ Object .assign (Object .setPrototypeOf (BlendMode .prototype, (X3DAppearanceChil
    },
    set_sourceColorFactor__ ()
    {
-      this .sourceColorFactorType = this .factorTypes .get (this ._sourceColorFactor .getValue ());
-
-      if (this .sourceColorFactorType === undefined)
-         this .sourceColorFactorType = this .factorTypes .get ("SRC_ALPHA");
+      this .sourceColorFactorType = this .factorTypes .get (this ._sourceColorFactor .getValue ())
+         ?? this .factorTypes .get ("SRC_ALPHA");
    },
    set_sourceAlphaFactor__ ()
    {
-      this .sourceAlphaFactorType = this .factorTypes .get (this ._sourceAlphaFactor .getValue ());
-
-      if (this .sourceAlphaFactorType === undefined)
-         this .sourceAlphaFactorType = this .factorTypes .get ("ONE");
+      this .sourceAlphaFactorType = this .factorTypes .get (this ._sourceAlphaFactor .getValue ())
+         ?? this .factorTypes .get ("ONE");
    },
    set_destinationColorFactor__ ()
    {
-      this .destinationColorFactorType = this .factorTypes .get (this ._destinationColorFactor .getValue ());
-
-      if (this .destinationColorFactorType === undefined)
-         this .destinationColorFactorType = this .factorTypes .get ("ONE_MINUS_SRC_ALPHA");
+      this .destinationColorFactorType = this .factorTypes .get (this ._destinationColorFactor .getValue ())
+         ?? this .factorTypes .get ("ONE_MINUS_SRC_ALPHA");
    },
    set_destinationAlphaFactor__ ()
    {
-      this .destinationAlphaFactorType = this .factorTypes .get (this ._destinationAlphaFactor .getValue ());
-
-      if (this .destinationAlphaFactorType === undefined)
-         this .destinationAlphaFactorType = this .factorTypes .get ("ONE_MINUS_SRC_ALPHA");
+      this .destinationAlphaFactorType = this .factorTypes .get (this ._destinationAlphaFactor .getValue ())
+      ??    this .factorTypes .get ("ONE_MINUS_SRC_ALPHA");
    },
    set_colorEquation__ ()
    {
-      this .colorEquationType = this .equationTypes .get (this ._colorEquation .getValue ());
-
-      if (this .colorEquationType === undefined)
-         this .colorEquationType = this .equationTypes .get ("FUNC_ADD");
+      this .colorEquationType = this .equationTypes .get (this ._colorEquation .getValue ())
+         ?? this .equationTypes .get ("FUNC_ADD");
    },
    set_alphaEquation__ ()
    {
-      this .alphaEquationType = this .equationTypes .get (this ._alphaEquation .getValue ());
-
-      if (this .alphaEquationType === undefined)
-         this .alphaEquationType = this .equationTypes .get ("FUNC_ADD");
+      this .alphaEquationType = this .equationTypes .get (this ._alphaEquation .getValue ())
+         ?? this .equationTypes .get ("FUNC_ADD");
    },
    enable (gl)
    {
@@ -436,22 +424,22 @@ const DepthMode_default_ = DepthMode;
 Namespace_default().add ("DepthMode", "x_ite/Components/X_ITE/DepthMode", DepthMode_default_);
 /* harmony default export */ const X_ITE_DepthMode = (DepthMode_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Shape/X3DShapeNode\")"
-const X3DShapeNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.1")] .require ("x_ite/Components/Shape/X3DShapeNode");
+const X3DShapeNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.2")] .require ("x_ite/Components/Shape/X3DShapeNode");
 var X3DShapeNode_default = /*#__PURE__*/__webpack_require__.n(X3DShapeNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Rendering/TraverseType\")"
-const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.1")] .require ("x_ite/Rendering/TraverseType");
+const TraverseType_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.2")] .require ("x_ite/Rendering/TraverseType");
 var TraverseType_default = /*#__PURE__*/__webpack_require__.n(TraverseType_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Rendering/VertexArray\")"
-const VertexArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.1")] .require ("x_ite/Rendering/VertexArray");
+const VertexArray_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.2")] .require ("x_ite/Rendering/VertexArray");
 var VertexArray_default = /*#__PURE__*/__webpack_require__.n(VertexArray_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Vector3\")"
-const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.1")] .require ("standard/Math/Numbers/Vector3");
+const Vector3_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.2")] .require ("standard/Math/Numbers/Vector3");
 var Vector3_default = /*#__PURE__*/__webpack_require__.n(Vector3_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Numbers/Matrix4\")"
-const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.1")] .require ("standard/Math/Numbers/Matrix4");
+const Matrix4_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.2")] .require ("standard/Math/Numbers/Matrix4");
 var Matrix4_default = /*#__PURE__*/__webpack_require__.n(Matrix4_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Geometry/Box3\")"
-const Box3_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.1")] .require ("standard/Math/Geometry/Box3");
+const Box3_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.2")] .require ("standard/Math/Geometry/Box3");
 var Box3_default = /*#__PURE__*/__webpack_require__.n(Box3_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/X_ITE/InstancedShape.js
 /*******************************************************************************
@@ -780,13 +768,13 @@ const InstancedShape_default_ = InstancedShape;
 Namespace_default().add ("InstancedShape", "x_ite/Components/X_ITE/InstancedShape", InstancedShape_default_);
 /* harmony default export */ const X_ITE_InstancedShape = (InstancedShape_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Shape/X3DOneSidedMaterialNode\")"
-const X3DOneSidedMaterialNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.1")] .require ("x_ite/Components/Shape/X3DOneSidedMaterialNode");
+const X3DOneSidedMaterialNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.2")] .require ("x_ite/Components/Shape/X3DOneSidedMaterialNode");
 var X3DOneSidedMaterialNode_default = /*#__PURE__*/__webpack_require__.n(X3DOneSidedMaterialNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Base/X3DCast\")"
-const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.1")] .require ("x_ite/Base/X3DCast");
+const X3DCast_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.2")] .require ("x_ite/Base/X3DCast");
 var X3DCast_default = /*#__PURE__*/__webpack_require__.n(X3DCast_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Math/Algorithm\")"
-const Algorithm_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.1")] .require ("standard/Math/Algorithm");
+const Algorithm_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.2")] .require ("standard/Math/Algorithm");
 var Algorithm_default = /*#__PURE__*/__webpack_require__.n(Algorithm_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/X_ITE/SpecularGlossinessMaterial.js
 /*******************************************************************************
@@ -846,6 +834,8 @@ var Algorithm_default = /*#__PURE__*/__webpack_require__.n(Algorithm_namespaceOb
 
 function SpecularGlossinessMaterial (executionContext)
 {
+   console .warn ("SpecularGlossinessMaterial is depreciated, please use PhysicalMaterial instead.");
+
    X3DOneSidedMaterialNode_default().call (this, executionContext);
 
    this .addType ((X3DConstants_default()).SpecularGlossinessMaterial);
@@ -976,8 +966,7 @@ Object .assign (Object .setPrototypeOf (SpecularGlossinessMaterial .prototype, (
    set_transparent__ ()
    {
       this .setTransparent (this .getTransparency () ||
-                            this .diffuseTextureNode ?.isTransparent () ||
-                            this .isTransmission ());
+                            this .diffuseTextureNode ?.isTransparent ());
    },
    set_extensions__ ()
    {
@@ -1003,7 +992,6 @@ Object .assign (Object .setPrototypeOf (SpecularGlossinessMaterial .prototype, (
 
       this .setTransmission (extensionNodes .some (extensionNode => extensionNode .getType () .includes ((X3DConstants_default()).TransmissionMaterialExtension)));
 
-      this .set_transparent__ ();
       this .set_extensionsKey__ ();
    },
    set_extensionsKey__ ()
@@ -1025,18 +1013,6 @@ Object .assign (Object .setPrototypeOf (SpecularGlossinessMaterial .prototype, (
 
       options .push ("X3D_PHYSICAL_MATERIAL", "X3D_MATERIAL_SPECULAR_GLOSSINESS");
 
-      switch (browser .getBrowserOption ("ToneMapping"))
-      {
-         default: // NONE
-            break;
-         case "ACES_NARKOWICZ":
-         case "ACES_HILL":
-         case "ACES_HILL_EXPOSURE_BOOST":
-         case "KHR_PBR_NEUTRAL":
-            options .push (`X3D_TONEMAP_${browser .getBrowserOption ("ToneMapping")}`);
-            break;
-      }
-
       if (+this .getTextureBits ())
       {
          this .diffuseTextureNode            ?.getShaderOptions (options, "DIFFUSE");
@@ -1044,7 +1020,7 @@ Object .assign (Object .setPrototypeOf (SpecularGlossinessMaterial .prototype, (
          this .occlusionTextureNode          ?.getShaderOptions (options, "OCCLUSION");
       }
 
-      const shaderNode = browser .createShader ("PBR", "Default", "PBR", options);
+      const shaderNode = browser .createShader ("SpecularGlossiness", "Default", "Physical", options);
 
       browser .getShaders () .set (key, shaderNode);
 
@@ -1156,10 +1132,10 @@ const SpecularGlossinessMaterial_default_ = SpecularGlossinessMaterial;
 Namespace_default().add ("SpecularGlossinessMaterial", "x_ite/Components/X_ITE/SpecularGlossinessMaterial", SpecularGlossinessMaterial_default_);
 /* harmony default export */ const X_ITE_SpecularGlossinessMaterial = (SpecularGlossinessMaterial_default_);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"x_ite/Components/Core/X3DNode\")"
-const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.1")] .require ("x_ite/Components/Core/X3DNode");
+const X3DNode_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.2")] .require ("x_ite/Components/Core/X3DNode");
 var X3DNode_default = /*#__PURE__*/__webpack_require__.n(X3DNode_namespaceObject);
 ;// CONCATENATED MODULE: external "window [Symbol .for (\"X_ITE.X3D\")] .require (\"standard/Utility/BitSet\")"
-const BitSet_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.1")] .require ("standard/Utility/BitSet");
+const BitSet_namespaceObject = window [Symbol .for ("X_ITE.X3D-10.0.2")] .require ("standard/Utility/BitSet");
 var BitSet_default = /*#__PURE__*/__webpack_require__.n(BitSet_namespaceObject);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/X_ITE/X3DMaterialExtensionNode.js
 /*******************************************************************************
@@ -2022,7 +1998,7 @@ Object .assign (Object .setPrototypeOf (IORMaterialExtension .prototype, X_ITE_X
    },
    set_indexOfRefraction__ ()
    {
-      this .indexOfRefraction = Math .max (this ._indexOfRefraction .getValue (), 0);
+      this .indexOfRefraction = Math .max (this ._indexOfRefraction .getValue (), 1);
    },
    getExtensionKey ()
    {
@@ -2170,7 +2146,7 @@ Object .assign (Object .setPrototypeOf (IridescenceMaterialExtension .prototype,
    },
    set_iridescenceIndexOfRefraction__ ()
    {
-      this .iridescenceIndexOfRefraction = Math .max (this ._iridescenceIndexOfRefraction .getValue (), 0);
+      this .iridescenceIndexOfRefraction = Math .max (this ._iridescenceIndexOfRefraction .getValue (), 1);
    },
    set_iridescenceThicknessMinimum__ ()
    {
@@ -2838,118 +2814,6 @@ const TransmissionMaterialExtension_default_ = TransmissionMaterialExtension;
 
 Namespace_default().add ("TransmissionMaterialExtension", "x_ite/Components/X_ITE/TransmissionMaterialExtension", TransmissionMaterialExtension_default_);
 /* harmony default export */ const X_ITE_TransmissionMaterialExtension = (TransmissionMaterialExtension_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/X_ITE/UnlitMaterialExtension.js
-/*******************************************************************************
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
- *
- * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
- *
- * The copyright notice above does not evidence any actual of intended
- * publication of such source code, and is an unpublished work by create3000.
- * This material contains CONFIDENTIAL INFORMATION that is the property of
- * create3000.
- *
- * No permission is granted to copy, distribute, or create derivative works from
- * the contents of this software, in whole or in part, without the prior written
- * permission of create3000.
- *
- * NON-MILITARY USE ONLY
- *
- * All create3000 software are effectively free software with a non-military use
- * restriction. It is free. Well commented source is provided. You may reuse the
- * source in any way you please with the exception anything that uses it must be
- * marked to indicate is contains 'non-military use only' components.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
- *
- * This file is part of the X_ITE Project.
- *
- * X_ITE is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License version 3 only, as published by the
- * Free Software Foundation.
- *
- * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
- * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
- * details (a copy is included in the LICENSE file that accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version 3
- * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
- * copy of the GPLv3 License.
- *
- * For Silvio, Joy and Adi.
- *
- ******************************************************************************/
-
-
-
-
-
-
-
-
-function UnlitMaterialExtension (executionContext)
-{
-   X_ITE_X3DMaterialExtensionNode .call (this, executionContext);
-
-   this .addType ((X3DConstants_default()).UnlitMaterialExtension);
-}
-
-Object .assign (Object .setPrototypeOf (UnlitMaterialExtension .prototype, X_ITE_X3DMaterialExtensionNode .prototype),
-{
-   getExtensionKey ()
-   {
-      return X_ITE_ExtensionKeys .UNLIT_MATERIAL_EXTENSION;
-   },
-   getShaderOptions (options)
-   {
-      options .push ("X3D_UNLIT_MATERIAL_EXT");
-   },
-   setShaderUniforms ()
-   { },
-});
-
-Object .defineProperties (UnlitMaterialExtension,
-{
-   typeName:
-   {
-      value: "UnlitMaterialExtension",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "X_ITE", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "extensions",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
-   fieldDefinitions:
-   {
-      value: new (FieldDefinitionArray_default()) ([
-         new (X3DFieldDefinition_default()) ((X3DConstants_default()).inputOutput, "metadata", new (Fields_default()).SFNode ()),
-      ]),
-      enumerable: true,
-   },
-});
-
-const UnlitMaterialExtension_default_ = UnlitMaterialExtension;
-;
-
-Namespace_default().add ("UnlitMaterialExtension", "x_ite/Components/X_ITE/UnlitMaterialExtension", UnlitMaterialExtension_default_);
-/* harmony default export */ const X_ITE_UnlitMaterialExtension = (UnlitMaterialExtension_default_);
 ;// CONCATENATED MODULE: ./src/x_ite/Components/X_ITE/VolumeMaterialExtension.js
 /*******************************************************************************
  *
@@ -3077,7 +2941,7 @@ Object .assign (Object .setPrototypeOf (VolumeMaterialExtension .prototype, X_IT
    {
       gl .uniform1f  (shaderObject .x3d_ThicknessEXT,           this .thickness);
       gl .uniform1f  (shaderObject .x3d_AttenuationDistanceEXT, this .attenuationDistance);
-      gl .uniform3fv (shaderObject .x3d_AttenuationColoEXT,     this .attenuationColorArray);
+      gl .uniform3fv (shaderObject .x3d_AttenuationColorEXT,    this .attenuationColorArray);
 
       if (!+this .getTextureBits ())
          return;
@@ -3198,7 +3062,6 @@ Namespace_default().add ("VolumeMaterialExtension", "x_ite/Components/X_ITE/Volu
 
 
 
-
 Components_default().add ({
    name: "X_ITE",
    concreteNodes:
@@ -3216,7 +3079,6 @@ Components_default().add ({
       X_ITE_SheenMaterialExtension,
       X_ITE_SpecularMaterialExtension,
       X_ITE_TransmissionMaterialExtension,
-      X_ITE_UnlitMaterialExtension,
       X_ITE_VolumeMaterialExtension,
    ],
    abstractNodes:
