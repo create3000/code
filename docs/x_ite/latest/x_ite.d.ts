@@ -1158,6 +1158,7 @@ interface X3DConstants
    readonly CylinderSensor: number;
    readonly Delay: number;
    readonly DepthMode: number;
+   readonly DiffuseTransmissionMaterialExtension: number;
    readonly DirectionalLight: number;
    readonly DISEntityManager: number;
    readonly DISEntityTypeMapping: number;
@@ -2923,7 +2924,7 @@ interface AnchorProxy extends X3DGroupingNodeProxy, X3DUrlObjectProxy
    visible: boolean;
 }
 
-/** AnisotropyMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node. */
+/** AnisotropyMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node. */
 interface AnisotropyMaterialExtensionProxy extends X3DMaterialExtensionNodeProxy
 {
    /**
@@ -4602,7 +4603,7 @@ interface Circle2DProxy extends X3DGeometryNodeProxy
    radius: number;
 }
 
-/** ClearcoatMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node. */
+/** ClearcoatMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node. */
 interface ClearcoatMaterialExtensionProxy extends X3DMaterialExtensionNodeProxy
 {
    /**
@@ -6309,6 +6310,53 @@ interface DepthModeProxy extends X3DAppearanceChildNodeProxy
    polygonOffset: SFVec2f;
 }
 
+/** DiffuseTransmissionMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node. */
+interface DiffuseTransmissionMaterialExtensionProxy extends X3DMaterialExtensionNodeProxy
+{
+   /**
+   * The percentage of reflected, non-specularly reflected light that is transmitted through the surface via the Lambertian diffuse transmission, i.e., the strength of the diffuse transmission effect.
+   *
+   * This field is of access type 'inputOutput' and type SFFloat.
+   */
+   diffuseTransmission: number;
+   /**
+   * The color of the transmitted light.
+   *
+   * This field is of access type 'inputOutput' and type SFColor.
+   */
+   diffuseTransmissionColor: SFColor;
+   /**
+   * A texture that defines the color of the transmitted light, stored in the RGB channels and encoded in sRGB. This texture will be multiplied by diffuseTransmissionColorFactor.
+   *
+   * This field is of access type 'inputOutput' and type SFNode.
+   */
+   diffuseTransmissionColorTexture: SFNode | null;
+   /**
+   * Input/Output field *diffuseTransmissionColorTextureMapping*.
+   *
+   * This field is of access type 'inputOutput' and type SFString.
+   */
+   diffuseTransmissionColorTextureMapping: string;
+   /**
+   * A texture that defines the strength of the diffuse transmission effect, stored in the alpha (A) channel. Will be multiplied by the diffuseTransmissionFactor.
+   *
+   * This field is of access type 'inputOutput' and type SFNode.
+   */
+   diffuseTransmissionTexture: SFNode | null;
+   /**
+   * Input/Output field *diffuseTransmissionTextureMapping*.
+   *
+   * This field is of access type 'inputOutput' and type SFString.
+   */
+   diffuseTransmissionTextureMapping: string;
+   /**
+   * Information about this node can be contained in a MetadataBoolean, MetadataDouble, MetadataFloat, MetadataInteger, MetadataString or MetadataSet node.
+   *
+   * This field is of access type 'inputOutput' and type SFNode.
+   */
+   metadata: SFNode | null;
+}
+
 /** DirectionalLight might not be scoped by parent Group or Transform at levels 1 or 2. */
 interface DirectionalLightProxy extends X3DLightNodeProxy
 {
@@ -6533,7 +6581,7 @@ interface Disk2DProxy extends X3DGeometryNodeProxy
    solid: boolean;
 }
 
-/** DispersionMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node. */
+/** DispersionMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node. */
 interface DispersionMaterialExtensionProxy extends X3DMaterialExtensionNodeProxy
 {
    /**
@@ -7017,7 +7065,7 @@ interface ElevationGridProxy extends X3DGeometryNodeProxy
    zSpacing: number;
 }
 
-/** EmissiveStrengthMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node. */
+/** EmissiveStrengthMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. */
 interface EmissiveStrengthMaterialExtensionProxy extends X3DMaterialExtensionNodeProxy
 {
    /**
@@ -7034,7 +7082,7 @@ interface EmissiveStrengthMaterialExtensionProxy extends X3DMaterialExtensionNod
    metadata: SFNode | null;
 }
 
-/** EnvironmentLight ... This node only affects PhysicalMaterial nodes and SpecularGlossinessMaterial nodes. */
+/** EnvironmentLight ... This node only affects the PhysicalMaterial and SpecularGlossinessMaterial nodes. */
 interface EnvironmentLightProxy extends X3DLightNodeProxy
 {
    /**
@@ -10736,7 +10784,7 @@ interface IntegerTriggerProxy extends X3DTriggerNodeProxy
    readonly triggerValue: number;
 }
 
-/** IORMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node. */
+/** IORMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node. */
 interface IORMaterialExtensionProxy extends X3DMaterialExtensionNodeProxy
 {
    /**
@@ -10753,7 +10801,7 @@ interface IORMaterialExtensionProxy extends X3DMaterialExtensionNodeProxy
    metadata: SFNode | null;
 }
 
-/** IridescenceMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node. */
+/** IridescenceMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node. */
 interface IridescenceMaterialExtensionProxy extends X3DMaterialExtensionNodeProxy
 {
    /**
@@ -16303,7 +16351,7 @@ interface ShapeProxy extends X3DShapeNodeProxy
    visible: boolean;
 }
 
-/** SheenMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node. */
+/** SheenMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node. */
 interface SheenMaterialExtensionProxy extends X3DMaterialExtensionNodeProxy
 {
    /**
@@ -17083,7 +17131,7 @@ interface SpecularGlossinessMaterialProxy extends X3DOneSidedMaterialNodeProxy
    transparency: number;
 }
 
-/** SpecularMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node. */
+/** SpecularMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node. */
 interface SpecularMaterialExtensionProxy extends X3DMaterialExtensionNodeProxy
 {
    /**
@@ -18990,7 +19038,7 @@ interface TransformSensorProxy extends X3DEnvironmentalSensorNodeProxy
    targetObject: X3DGroupingNodeProxy | X3DShapeNodeProxy | null;
 }
 
-/** TransmissionMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node. */
+/** TransmissionMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node. */
 interface TransmissionMaterialExtensionProxy extends X3DMaterialExtensionNodeProxy
 {
    /**
@@ -20181,7 +20229,7 @@ interface VolumeEmitterProxy extends X3DParticleEmitterNodeProxy
    variation: number;
 }
 
-/** VolumeMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node. */
+/** VolumeMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node. */
 interface VolumeMaterialExtensionProxy extends X3DMaterialExtensionNodeProxy
 {
    /**
@@ -22238,6 +22286,7 @@ type ConcreteNodeTypes = {
    CylinderSensor: CylinderSensorProxy,
    Delay: DelayProxy,
    DepthMode: DepthModeProxy,
+   DiffuseTransmissionMaterialExtension: DiffuseTransmissionMaterialExtensionProxy,
    DirectionalLight: DirectionalLightProxy,
    DISEntityManager: DISEntityManagerProxy,
    DISEntityTypeMapping: DISEntityTypeMappingProxy,

@@ -9,7 +9,7 @@
 		<ConcreteNode name="EnvironmentLight">
 			<InterfaceDefinition
 				specificationUrl="https://create3000.github.io/x_ite/components/lighting/environmentlight"
-				appinfo="EnvironmentLight ... This node only affects PhysicalMaterial nodes and SpecularGlossinessMaterial nodes.">
+				appinfo="EnvironmentLight ... This node only affects the PhysicalMaterial and SpecularGlossinessMaterial nodes.">
 				<componentInfo name="Lighting" level="3" />
 				<Inheritance baseType="X3DLightNode" />
 				<field name="metadata"
@@ -215,7 +215,7 @@
 		<ConcreteNode name="AnisotropyMaterialExtension">
 			<InterfaceDefinition
 				specificationUrl="https://create3000.github.io/x_ite/components/x-ite/anisotropymaterialextension"
-				appinfo="AnisotropyMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node.">
+				appinfo="AnisotropyMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node.">
 				<componentInfo name="X_ITE" level="1" />
 				<Inheritance baseType="X3DMaterialExtensionNode" />
 				<field name="metadata"
@@ -405,7 +405,7 @@
 		<ConcreteNode name="ClearcoatMaterialExtension">
 			<InterfaceDefinition
 				specificationUrl="https://create3000.github.io/x_ite/components/x-ite/clearcoatmaterialextension"
-				appinfo="ClearcoatMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node.">
+				appinfo="ClearcoatMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node.">
 				<componentInfo name="X_ITE" level="1" />
 				<Inheritance baseType="X3DMaterialExtensionNode" />
 				<field name="metadata"
@@ -530,7 +530,7 @@
 		<ConcreteNode name="DispersionMaterialExtension">
 			<InterfaceDefinition
 				specificationUrl="https://create3000.github.io/x_ite/components/x-ite/dispersionmaterialextension"
-				appinfo="DispersionMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node.">
+				appinfo="DispersionMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node.">
 				<componentInfo name="X_ITE" level="1" />
 				<Inheritance baseType="X3DMaterialExtensionNode" />
 				<field name="metadata"
@@ -553,7 +553,7 @@
 		<ConcreteNode name="EmissiveStrengthMaterialExtension">
 			<InterfaceDefinition
 				specificationUrl="https://create3000.github.io/x_ite/components/x-ite/emissivestrengthmaterialextension"
-				appinfo="EmissiveStrengthMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node.">
+				appinfo="EmissiveStrengthMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes.">
 				<componentInfo name="X_ITE" level="1" />
 				<Inheritance baseType="X3DMaterialExtensionNode" />
 				<field name="metadata"
@@ -576,7 +576,7 @@
 		<ConcreteNode name="IORMaterialExtension">
 			<InterfaceDefinition
 				specificationUrl="https://create3000.github.io/x_ite/components/x-ite/iormaterialextension"
-				appinfo="IORMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node.">
+				appinfo="IORMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node.">
 				<componentInfo name="X_ITE" level="1" />
 				<Inheritance baseType="X3DMaterialExtensionNode" />
 				<field name="metadata"
@@ -681,7 +681,7 @@
 		<ConcreteNode name="IridescenceMaterialExtension">
 			<InterfaceDefinition
 				specificationUrl="https://create3000.github.io/x_ite/components/x-ite/iridescencematerialextension"
-				appinfo="IridescenceMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node.">
+				appinfo="IridescenceMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node.">
 				<componentInfo name="X_ITE" level="1" />
 				<Inheritance baseType="X3DMaterialExtensionNode" />
 				<field name="metadata"
@@ -751,7 +751,7 @@
 		<ConcreteNode name="SheenMaterialExtension">
 			<InterfaceDefinition
 				specificationUrl="https://create3000.github.io/x_ite/components/x-ite/sheenmaterialextension"
-				appinfo="SheenMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node.">
+				appinfo="SheenMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node.">
 				<componentInfo name="X_ITE" level="1" />
 				<Inheritance baseType="X3DMaterialExtensionNode" />
 				<field name="metadata"
@@ -950,7 +950,7 @@
 		<ConcreteNode name="SpecularMaterialExtension">
 			<InterfaceDefinition
 				specificationUrl="https://create3000.github.io/x_ite/components/x-ite/specularmaterialextension"
-				appinfo="SpecularMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node.">
+				appinfo="SpecularMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node.">
 				<componentInfo name="X_ITE" level="1" />
 				<Inheritance baseType="X3DMaterialExtensionNode" />
 				<field name="metadata"
@@ -1007,7 +1007,7 @@
 		<ConcreteNode name="TransmissionMaterialExtension">
 			<InterfaceDefinition
 				specificationUrl="https://create3000.github.io/x_ite/components/x-ite/transmissionmaterialextension"
-				appinfo="TransmissionMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node.">
+				appinfo="TransmissionMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node.">
 				<componentInfo name="X_ITE" level="1" />
 				<Inheritance baseType="X3DMaterialExtensionNode" />
 				<field name="metadata"
@@ -1043,7 +1043,7 @@
 		<ConcreteNode name="VolumeMaterialExtension">
 			<InterfaceDefinition
 				specificationUrl="https://create3000.github.io/x_ite/components/x-ite/volumematerialextension"
-				appinfo="VolumeMaterialExtension is an extension for PhysicalMaterial node and SpecularGlossinessMaterial node.">
+				appinfo="VolumeMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node.">
 				<componentInfo name="X_ITE" level="1" />
 				<Inheritance baseType="X3DMaterialExtensionNode" />
 				<field name="metadata"
@@ -1088,6 +1088,64 @@
 					maxInclusive="1"
 					description="The color that white light turns into due to absorption when reaching the attenuation distance."
 				/>
+				<containerField default="extensions" type="xs:NMTOKEN" />
+			</InterfaceDefinition>
+		</ConcreteNode>
+
+		<ConcreteNode name="DiffuseTransmissionMaterialExtension">
+			<InterfaceDefinition
+				specificationUrl="https://create3000.github.io/x_ite/components/x-ite/diffusetransmissionmaterialextension"
+				appinfo="DiffuseTransmissionMaterialExtension is an extension for the PhysicalMaterial and SpecularGlossinessMaterial nodes. For this node to have an effect, add an EnvironmentLight node.">
+				<componentInfo name="X_ITE" level="1" />
+				<Inheritance baseType="X3DMaterialExtensionNode" />
+				<field name="metadata"
+					type="SFNode"
+					accessType="inputOutput"
+					default="NULL"
+					inheritedFrom="X3DMetadataObject"
+					description="Information about this node can be contained in a MetadataBoolean, MetadataDouble, MetadataFloat, MetadataInteger, MetadataString or MetadataSet node."
+				></field>
+				<field name="diffuseTransmission"
+					type="SFFloat"
+					accessType="inputOutput"
+					default="0"
+					minInclusive="0"
+					description="The percentage of reflected, non-specularly reflected light that is transmitted through the surface via the Lambertian diffuse transmission, i.e., the strength of the diffuse transmission effect."
+				></field>
+				<field name="diffuseTransmissionTextureMapping"
+					type="SFString"
+					accessType="inputOutput"
+					default=""
+					description="Input/Output field *diffuseTransmissionTextureMapping*."
+				></field>
+				<field name="diffuseTransmissionTexture"
+					type="SFNode"
+					accessType="inputOutput"
+					default="NULL"
+					inheritedFrom="X3DSingleTextureNode"
+					description="A texture that defines the strength of the diffuse transmission effect, stored in the alpha (A) channel. Will be multiplied by the diffuseTransmissionFactor."
+				></field>
+				<field name="diffuseTransmissionColor"
+					type="SFColor"
+					accessType="inputOutput"
+					default="1 1 1"
+					minInclusive="0"
+					maxInclusive="1"
+					description="The color of the transmitted light."
+				></field>
+				<field name="diffuseTransmissionColorTextureMapping"
+					type="SFString"
+					accessType="inputOutput"
+					default=""
+					description="Input/Output field *diffuseTransmissionColorTextureMapping*."
+				></field>
+				<field name="diffuseTransmissionColorTexture"
+					type="SFNode"
+					accessType="inputOutput"
+					default="NULL"
+					inheritedFrom="X3DSingleTextureNode"
+					description="A texture that defines the color of the transmitted light, stored in the RGB channels and encoded in sRGB. This texture will be multiplied by diffuseTransmissionColorFactor."
+				></field>
 				<containerField default="extensions" type="xs:NMTOKEN" />
 			</InterfaceDefinition>
 		</ConcreteNode>
