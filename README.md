@@ -1,6 +1,6 @@
 # code
 
-Code hosting for releases of X_ITE.
+Code hosting for releases of X_ITE[.](https://rawgit.com/create3000/x_ite/xr/x_ite.min.html)
 
 Although this repository exists and can be used, we ask you to use the [jsDelivr](https://create3000.github.io/x_ite/#jsdelivr-cdn) domain instead.
 
