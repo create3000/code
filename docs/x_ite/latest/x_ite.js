@@ -1,4 +1,5 @@
-/* X_ITE v10.2.0 */(function webpackUniversalModuleDefinition(root, factory) {
+/* X_ITE v10.3.0 */
+(function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
@@ -11,10 +12,10 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 48:
+/***/ 491:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-/* provided dependency */ var jQuery = __webpack_require__(812);
+/* provided dependency */ var jQuery = __webpack_require__(703);
 /**
  * @preserve jquery.fullscreen 1.1.5
  * https://github.com/code-lts/jquery-fullscreen-plugin
@@ -210,7 +211,7 @@ installFullScreenHandlers();
 
 /***/ }),
 
-/***/ 354:
+/***/ 839:
 /***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -224,7 +225,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 (function (factory) {
     if ( true ) {
         // AMD. Register as an anonymous module.
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(812)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(703)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 		(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -435,7 +436,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
-/***/ 812:
+/***/ 703:
 /***/ (function(module, exports) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11159,7 +11160,7 @@ return jQuery;
 
 /***/ }),
 
-/***/ 193:
+/***/ 860:
 /***/ ((module) => {
 
 /**
@@ -15938,7 +15939,7 @@ if (true) {
 
 /***/ }),
 
-/***/ 552:
+/***/ 943:
 /***/ (function(__unused_webpack_module, exports) {
 
 
@@ -19183,7 +19184,7 @@ if (true) {
 
 /***/ }),
 
-/***/ 807:
+/***/ 296:
 /***/ (function(module, exports) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -20298,34 +20299,29 @@ __webpack_require__.d(__webpack_exports__, {
  *
  ******************************************************************************/
 
-const Namespace = new Map ();
+const Namespace = { };
 
 Object .defineProperty (Namespace, "add",
 {
-   value (name, path, module)
+   value (name, module)
    {
       if (Namespace .hasOwnProperty (name))
       {
-         // if (!path .match (/\/components\/\w+$/i))
-         //    console .warn (`Module ${name} (${path}) already defined.`);
-      }
-      else
-      {
-         const X3D = window [Symbol .for ("X_ITE.X3D-10.2.0")];
-
-         if (X3D)
-            X3D [name] = module;
-
-         Namespace [name] = module;
+         console .error (new Error (`Namespace: "${name}" already exists.`));
+         return module;
       }
 
-      Namespace .set (path, module);
+      const X3D = window [Symbol .for ("X_ITE.X3D-10.3.0")];
+
+      if (X3D)
+         X3D [name] = module;
+
+      // For x_ite.js:
+      return Namespace [name] = module;
    },
 });
 
-Namespace .add ("Namespace", "x_ite/Namespace", Namespace);
-
-/* harmony default export */ const x_ite_Namespace = (Namespace);
+/* harmony default export */ const x_ite_Namespace = (Namespace .add ("Namespace", Namespace));
 
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DConstants.js
 /*******************************************************************************
@@ -20487,8 +20483,7 @@ Object .entries ({
 const __default__ = X3DConstants;
 ;
 
-x_ite_Namespace .add ("X3DConstants", "x_ite/Base/X3DConstants", __default__);
-/* harmony default export */ const Base_X3DConstants = (__default__);
+/* harmony default export */ const Base_X3DConstants = (x_ite_Namespace .add ("X3DConstants", __default__));
 ;// CONCATENATED MODULE: ./src/standard/Math/Algorithm.js
 /*******************************************************************************
  *
@@ -20718,8 +20713,7 @@ const Algorithm =
 const Algorithm_default_ = Algorithm;
 ;
 
-x_ite_Namespace .add ("Algorithm", "standard/Math/Algorithm", Algorithm_default_);
-/* harmony default export */ const Math_Algorithm = (Algorithm_default_);
+/* harmony default export */ const Math_Algorithm = (x_ite_Namespace .add ("Algorithm", Algorithm_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/NamedNodesHandling.js
 /*******************************************************************************
  *
@@ -21373,8 +21367,7 @@ for (const key of Object .keys (Generator .prototype))
 const Generator_default_ = Generator;
 ;
 
-x_ite_Namespace .add ("Generator", "x_ite/InputOutput/Generator", Generator_default_);
-/* harmony default export */ const InputOutput_Generator = (Generator_default_);
+/* harmony default export */ const InputOutput_Generator = (x_ite_Namespace .add ("Generator", Generator_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/DEVELOPMENT.js
 /*******************************************************************************
  *
@@ -21428,8 +21421,7 @@ x_ite_Namespace .add ("Generator", "x_ite/InputOutput/Generator", Generator_defa
 const DEVELOPMENT_default_ = false;
 ;
 
-x_ite_Namespace .add ("DEVELOPMENT", "x_ite/DEVELOPMENT", DEVELOPMENT_default_);
-/* harmony default export */ const DEVELOPMENT = (DEVELOPMENT_default_);
+/* harmony default export */ const DEVELOPMENT = (x_ite_Namespace .add ("DEVELOPMENT", DEVELOPMENT_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Features.js
 /*******************************************************************************
  *
@@ -21573,8 +21565,7 @@ const Features =
 const Features_default_ = Features;
 ;
 
-x_ite_Namespace .add ("Features", "x_ite/Features", Features_default_);
-/* harmony default export */ const x_ite_Features = (Features_default_);
+/* harmony default export */ const x_ite_Features = (x_ite_Namespace .add ("Features", Features_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DObject.js
 /*******************************************************************************
  *
@@ -21840,8 +21831,7 @@ Object .assign (X3DObject,
 const X3DObject_default_ = X3DObject;
 ;
 
-x_ite_Namespace .add ("X3DObject", "x_ite/Base/X3DObject", X3DObject_default_);
-/* harmony default export */ const Base_X3DObject = (X3DObject_default_);
+/* harmony default export */ const Base_X3DObject = (x_ite_Namespace .add ("X3DObject", X3DObject_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Base/IterableWeakSet.js
 /*******************************************************************************
  *
@@ -21987,8 +21977,7 @@ class IterableWeakSet extends Set
 };
 ;
 
-x_ite_Namespace .add ("IterableWeakSet", "x_ite/Base/IterableWeakSet", IterableWeakSet_default_);
-/* harmony default export */ const IterableWeakSet = (IterableWeakSet_default_);
+/* harmony default export */ const IterableWeakSet = (x_ite_Namespace .add ("IterableWeakSet", IterableWeakSet_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DChildObject.js
 /*******************************************************************************
  *
@@ -22152,8 +22141,7 @@ for (const key of Object .keys (X3DChildObject .prototype))
 const X3DChildObject_default_ = X3DChildObject;
 ;
 
-x_ite_Namespace .add ("X3DChildObject", "x_ite/Base/X3DChildObject", X3DChildObject_default_);
-/* harmony default export */ const Base_X3DChildObject = (X3DChildObject_default_);
+/* harmony default export */ const Base_X3DChildObject = (x_ite_Namespace .add ("X3DChildObject", X3DChildObject_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Base/Events.js
 /*******************************************************************************
  *
@@ -22238,8 +22226,7 @@ for (const key of Object .keys (Events))
 const Events_default_ = Events;
 ;
 
-x_ite_Namespace .add ("Events", "x_ite/Base/Events", Events_default_);
-/* harmony default export */ const Base_Events = (Events_default_);
+/* harmony default export */ const Base_Events = (x_ite_Namespace .add ("Events", Events_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DFieldDefinition.js
 /*******************************************************************************
  *
@@ -22318,8 +22305,7 @@ Object .defineProperties (X3DFieldDefinition,
 const X3DFieldDefinition_default_ = X3DFieldDefinition;
 ;
 
-x_ite_Namespace .add ("X3DFieldDefinition", "x_ite/Base/X3DFieldDefinition", X3DFieldDefinition_default_);
-/* harmony default export */ const Base_X3DFieldDefinition = (X3DFieldDefinition_default_);
+/* harmony default export */ const Base_X3DFieldDefinition = (x_ite_Namespace .add ("X3DFieldDefinition", X3DFieldDefinition_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DInfoArray.js
 /*******************************************************************************
  *
@@ -22711,8 +22697,7 @@ Object .defineProperties (X3DInfoArray .prototype,
 const X3DInfoArray_default_ = X3DInfoArray;
 ;
 
-x_ite_Namespace .add ("X3DInfoArray", "x_ite/Base/X3DInfoArray", X3DInfoArray_default_);
-/* harmony default export */ const Base_X3DInfoArray = (X3DInfoArray_default_);
+/* harmony default export */ const Base_X3DInfoArray = (x_ite_Namespace .add ("X3DInfoArray", X3DInfoArray_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Base/FieldDefinitionArray.js
 /*******************************************************************************
  *
@@ -22786,8 +22771,7 @@ Object .defineProperties (FieldDefinitionArray,
 const FieldDefinitionArray_default_ = FieldDefinitionArray;
 ;
 
-x_ite_Namespace .add ("FieldDefinitionArray", "x_ite/Base/FieldDefinitionArray", FieldDefinitionArray_default_);
-/* harmony default export */ const Base_FieldDefinitionArray = (FieldDefinitionArray_default_);
+/* harmony default export */ const Base_FieldDefinitionArray = (x_ite_Namespace .add ("FieldDefinitionArray", FieldDefinitionArray_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DField.js
 /*******************************************************************************
  *
@@ -23198,8 +23182,7 @@ for (const key of Object .keys (X3DField .prototype))
 const X3DField_default_ = X3DField;
 ;
 
-x_ite_Namespace .add ("X3DField", "x_ite/Base/X3DField", X3DField_default_);
-/* harmony default export */ const Base_X3DField = (X3DField_default_);
+/* harmony default export */ const Base_X3DField = (x_ite_Namespace .add ("X3DField", X3DField_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Base/FieldArray.js
 /*******************************************************************************
  *
@@ -23273,8 +23256,7 @@ Object .defineProperties (FieldArray,
 const FieldArray_default_ = FieldArray;
 ;
 
-x_ite_Namespace .add ("FieldArray", "x_ite/Base/FieldArray", FieldArray_default_);
-/* harmony default export */ const Base_FieldArray = (FieldArray_default_);
+/* harmony default export */ const Base_FieldArray = (x_ite_Namespace .add ("FieldArray", FieldArray_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFBool.js
 /*******************************************************************************
  *
@@ -23382,8 +23364,7 @@ Object .defineProperties (SFBool,
 const SFBool_default_ = SFBool;
 ;
 
-x_ite_Namespace .add ("SFBool", "x_ite/Fields/SFBool", SFBool_default_);
-/* harmony default export */ const Fields_SFBool = (SFBool_default_);
+/* harmony default export */ const Fields_SFBool = (x_ite_Namespace .add ("SFBool", SFBool_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Color3.js
 /*******************************************************************************
  *
@@ -23674,8 +23655,7 @@ Object .assign (Color3,
 const Color3_default_ = Color3;
 ;
 
-x_ite_Namespace .add ("Color3", "standard/Math/Numbers/Color3", Color3_default_);
-/* harmony default export */ const Numbers_Color3 = (Color3_default_);
+/* harmony default export */ const Numbers_Color3 = (x_ite_Namespace .add ("Color3", Color3_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFColor.js
 /*******************************************************************************
  *
@@ -23918,8 +23898,7 @@ Object .defineProperties (SFColor,
 const SFColor_default_ = SFColor;
 ;
 
-x_ite_Namespace .add ("SFColor", "x_ite/Fields/SFColor", SFColor_default_);
-/* harmony default export */ const Fields_SFColor = (SFColor_default_);
+/* harmony default export */ const Fields_SFColor = (x_ite_Namespace .add ("SFColor", SFColor_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Color4.js
 /*******************************************************************************
  *
@@ -24127,8 +24106,7 @@ Object .assign (Color4,
 const Color4_default_ = Color4;
 ;
 
-x_ite_Namespace .add ("Color4", "standard/Math/Numbers/Color4", Color4_default_);
-/* harmony default export */ const Numbers_Color4 = (Color4_default_);
+/* harmony default export */ const Numbers_Color4 = (x_ite_Namespace .add ("Color4", Color4_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFColorRGBA.js
 /*******************************************************************************
  *
@@ -24338,8 +24316,7 @@ Object .defineProperties (SFColorRGBA,
 const SFColorRGBA_default_ = SFColorRGBA;
 ;
 
-x_ite_Namespace .add ("SFColorRGBA", "x_ite/Fields/SFColorRGBA", SFColorRGBA_default_);
-/* harmony default export */ const Fields_SFColorRGBA = (SFColorRGBA_default_);
+/* harmony default export */ const Fields_SFColorRGBA = (x_ite_Namespace .add ("SFColorRGBA", SFColorRGBA_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFDouble.js
 /*******************************************************************************
  *
@@ -24451,8 +24428,7 @@ Object .defineProperties (SFDouble,
 const SFDouble_default_ = SFDouble;
 ;
 
-x_ite_Namespace .add ("SFDouble", "x_ite/Fields/SFDouble", SFDouble_default_);
-/* harmony default export */ const Fields_SFDouble = (SFDouble_default_);
+/* harmony default export */ const Fields_SFDouble = (x_ite_Namespace .add ("SFDouble", SFDouble_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFFloat.js
 /*******************************************************************************
  *
@@ -24564,8 +24540,7 @@ Object .defineProperties (SFFloat,
 const SFFloat_default_ = SFFloat;
 ;
 
-x_ite_Namespace .add ("SFFloat", "x_ite/Fields/SFFloat", SFFloat_default_);
-/* harmony default export */ const Fields_SFFloat = (SFFloat_default_);
+/* harmony default export */ const Fields_SFFloat = (x_ite_Namespace .add ("SFFloat", SFFloat_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFInt32.js
 /*******************************************************************************
  *
@@ -24673,8 +24648,7 @@ Object .defineProperties (SFInt32,
 const SFInt32_default_ = SFInt32;
 ;
 
-x_ite_Namespace .add ("SFInt32", "x_ite/Fields/SFInt32", SFInt32_default_);
-/* harmony default export */ const Fields_SFInt32 = (SFInt32_default_);
+/* harmony default export */ const Fields_SFInt32 = (x_ite_Namespace .add ("SFInt32", SFInt32_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFMatrixPrototypeTemplate.js
 /*******************************************************************************
  *
@@ -24904,8 +24878,7 @@ function SFMatrixPrototypeTemplate (Constructor, TypeName, Matrix, double)
 const SFMatrixPrototypeTemplate_default_ = SFMatrixPrototypeTemplate;
 ;
 
-x_ite_Namespace .add ("SFMatrixPrototypeTemplate", "x_ite/Fields/SFMatrixPrototypeTemplate", SFMatrixPrototypeTemplate_default_);
-/* harmony default export */ const Fields_SFMatrixPrototypeTemplate = (SFMatrixPrototypeTemplate_default_);
+/* harmony default export */ const Fields_SFMatrixPrototypeTemplate = (x_ite_Namespace .add ("SFMatrixPrototypeTemplate", SFMatrixPrototypeTemplate_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Vector2.js
 /*******************************************************************************
  *
@@ -25150,8 +25123,7 @@ Object .assign (Vector2,
 const Vector2_default_ = Vector2;
 ;
 
-x_ite_Namespace .add ("Vector2", "standard/Math/Numbers/Vector2", Vector2_default_);
-/* harmony default export */ const Numbers_Vector2 = (Vector2_default_);
+/* harmony default export */ const Numbers_Vector2 = (x_ite_Namespace .add ("Vector2", Vector2_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Vector3.js
 /*******************************************************************************
  *
@@ -25450,8 +25422,7 @@ Object .assign (Vector3,
 const Vector3_default_ = Vector3;
 ;
 
-x_ite_Namespace .add ("Vector3", "standard/Math/Numbers/Vector3", Vector3_default_);
-/* harmony default export */ const Numbers_Vector3 = (Vector3_default_);
+/* harmony default export */ const Numbers_Vector3 = (x_ite_Namespace .add ("Vector3", Vector3_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Matrix2.js
 /*******************************************************************************
  *
@@ -25733,8 +25704,7 @@ Object .assign (Matrix2,
 const Matrix2_default_ = Matrix2;
 ;
 
-x_ite_Namespace .add ("Matrix2", "standard/Math/Numbers/Matrix2", Matrix2_default_);
-/* harmony default export */ const Numbers_Matrix2 = (Matrix2_default_);
+/* harmony default export */ const Numbers_Matrix2 = (x_ite_Namespace .add ("Matrix2", Matrix2_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Algorithms/eigen_decomposition.js
 /*******************************************************************************
  *
@@ -25928,8 +25898,7 @@ function eigen_decomposition (matrix, result)
 const eigen_decomposition_default_ = eigen_decomposition;
 ;
 
-x_ite_Namespace .add ("eigen_decomposition", "standard/Math/Algorithms/eigen_decomposition", eigen_decomposition_default_);
-/* harmony default export */ const Algorithms_eigen_decomposition = (eigen_decomposition_default_);
+/* harmony default export */ const Algorithms_eigen_decomposition = (x_ite_Namespace .add ("eigen_decomposition", eigen_decomposition_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Matrix3.js
 /*******************************************************************************
  *
@@ -26577,8 +26546,7 @@ const m = new Matrix3 ();
 const Matrix3_default_ = Matrix3;
 ;
 
-x_ite_Namespace .add ("Matrix3", "standard/Math/Numbers/Matrix3", Matrix3_default_);
-/* harmony default export */ const Numbers_Matrix3 = (Matrix3_default_);
+/* harmony default export */ const Numbers_Matrix3 = (x_ite_Namespace .add ("Matrix3", Matrix3_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFMatrix3.js
 /*******************************************************************************
  *
@@ -26732,8 +26700,7 @@ const SFMatrix3 = {
 const SFMatrix3_default_ = SFMatrix3;
 ;
 
-x_ite_Namespace .add ("SFMatrix3", "x_ite/Fields/SFMatrix3", SFMatrix3_default_);
-/* harmony default export */ const Fields_SFMatrix3 = (SFMatrix3_default_);
+/* harmony default export */ const Fields_SFMatrix3 = (x_ite_Namespace .add ("SFMatrix3", SFMatrix3_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Vector4.js
 /*******************************************************************************
  *
@@ -27047,8 +27014,7 @@ Object .assign (Vector4,
 const Vector4_default_ = Vector4;
 ;
 
-x_ite_Namespace .add ("Vector4", "standard/Math/Numbers/Vector4", Vector4_default_);
-/* harmony default export */ const Numbers_Vector4 = (Vector4_default_);
+/* harmony default export */ const Numbers_Vector4 = (x_ite_Namespace .add ("Vector4", Vector4_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Quaternion.js
 /*******************************************************************************
  *
@@ -27720,8 +27686,7 @@ const
 const Quaternion_default_ = Quaternion;
 ;
 
-x_ite_Namespace .add ("Quaternion", "standard/Math/Numbers/Quaternion", Quaternion_default_);
-/* harmony default export */ const Numbers_Quaternion = (Quaternion_default_);
+/* harmony default export */ const Numbers_Quaternion = (x_ite_Namespace .add ("Quaternion", Quaternion_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Rotation4.js
 /*******************************************************************************
  *
@@ -28244,8 +28209,7 @@ Object .assign (Rotation4,
 const Rotation4_default_ = Rotation4;
 ;
 
-x_ite_Namespace .add ("Rotation4", "standard/Math/Numbers/Rotation4", Rotation4_default_);
-/* harmony default export */ const Numbers_Rotation4 = (Rotation4_default_);
+/* harmony default export */ const Numbers_Rotation4 = (x_ite_Namespace .add ("Rotation4", Rotation4_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Matrix4.js
 /*******************************************************************************
  *
@@ -29015,8 +28979,7 @@ const
 const Matrix4_default_ = Matrix4_Matrix4;
 ;
 
-x_ite_Namespace .add ("Matrix4", "standard/Math/Numbers/Matrix4", Matrix4_default_);
-/* harmony default export */ const Numbers_Matrix4 = (Matrix4_default_);
+/* harmony default export */ const Numbers_Matrix4 = (x_ite_Namespace .add ("Matrix4", Matrix4_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFMatrix4.js
 /*******************************************************************************
  *
@@ -29152,8 +29115,7 @@ const SFMatrix4 = {
 const SFMatrix4_default_ = SFMatrix4;
 ;
 
-x_ite_Namespace .add ("SFMatrix4", "x_ite/Fields/SFMatrix4", SFMatrix4_default_);
-/* harmony default export */ const Fields_SFMatrix4 = (SFMatrix4_default_);
+/* harmony default export */ const Fields_SFMatrix4 = (x_ite_Namespace .add ("SFMatrix4", SFMatrix4_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFNodeCache.js
 /*******************************************************************************
  *
@@ -29262,8 +29224,7 @@ function dispose ()
 const SFNodeCache_default_ = SFNodeCache;
 ;
 
-x_ite_Namespace .add ("SFNodeCache", "x_ite/Fields/SFNodeCache", SFNodeCache_default_);
-/* harmony default export */ const Fields_SFNodeCache = (SFNodeCache_default_);
+/* harmony default export */ const Fields_SFNodeCache = (x_ite_Namespace .add ("SFNodeCache", SFNodeCache_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFNode.js
 /*******************************************************************************
  *
@@ -29726,8 +29687,7 @@ Object .defineProperties (SFNode,
 const SFNode_default_ = SFNode;
 ;
 
-x_ite_Namespace .add ("SFNode", "x_ite/Fields/SFNode", SFNode_default_);
-/* harmony default export */ const Fields_SFNode = (SFNode_default_);
+/* harmony default export */ const Fields_SFNode = (x_ite_Namespace .add ("SFNode", SFNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFVecPrototypeTemplate.js
 /*******************************************************************************
  *
@@ -29932,8 +29892,7 @@ function SFVecPrototypeTemplate (Constructor, TypeName, Vector, double)
 const SFVecPrototypeTemplate_default_ = SFVecPrototypeTemplate;
 ;
 
-x_ite_Namespace .add ("SFVecPrototypeTemplate", "x_ite/Fields/SFVecPrototypeTemplate", SFVecPrototypeTemplate_default_);
-/* harmony default export */ const Fields_SFVecPrototypeTemplate = (SFVecPrototypeTemplate_default_);
+/* harmony default export */ const Fields_SFVecPrototypeTemplate = (x_ite_Namespace .add ("SFVecPrototypeTemplate", SFVecPrototypeTemplate_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFVec3.js
 /*******************************************************************************
  *
@@ -30077,8 +30036,7 @@ const SFVec3 = {
 const SFVec3_default_ = SFVec3;
 ;
 
-x_ite_Namespace .add ("SFVec3", "x_ite/Fields/SFVec3", SFVec3_default_);
-/* harmony default export */ const Fields_SFVec3 = (SFVec3_default_);
+/* harmony default export */ const Fields_SFVec3 = (x_ite_Namespace .add ("SFVec3", SFVec3_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFRotation.js
 /*******************************************************************************
  *
@@ -30381,8 +30339,7 @@ Object .defineProperties (SFRotation,
 const SFRotation_default_ = SFRotation;
 ;
 
-x_ite_Namespace .add ("SFRotation", "x_ite/Fields/SFRotation", SFRotation_default_);
-/* harmony default export */ const Fields_SFRotation = (SFRotation_default_);
+/* harmony default export */ const Fields_SFRotation = (x_ite_Namespace .add ("SFRotation", SFRotation_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFString.js
 /*******************************************************************************
  *
@@ -30520,8 +30477,7 @@ Object .assign (SFString,
 const SFString_default_ = SFString;
 ;
 
-x_ite_Namespace .add ("SFString", "x_ite/Fields/SFString", SFString_default_);
-/* harmony default export */ const Fields_SFString = (SFString_default_);
+/* harmony default export */ const Fields_SFString = (x_ite_Namespace .add ("SFString", SFString_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFTime.js
 /*******************************************************************************
  *
@@ -30629,8 +30585,7 @@ Object .defineProperties (SFTime,
 const SFTime_default_ = SFTime;
 ;
 
-x_ite_Namespace .add ("SFTime", "x_ite/Fields/SFTime", SFTime_default_);
-/* harmony default export */ const Fields_SFTime = (SFTime_default_);
+/* harmony default export */ const Fields_SFTime = (x_ite_Namespace .add ("SFTime", SFTime_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFVec2.js
 /*******************************************************************************
  *
@@ -30754,8 +30709,7 @@ const SFVec2 = {
 const SFVec2_default_ = SFVec2;
 ;
 
-x_ite_Namespace .add ("SFVec2", "x_ite/Fields/SFVec2", SFVec2_default_);
-/* harmony default export */ const Fields_SFVec2 = (SFVec2_default_);
+/* harmony default export */ const Fields_SFVec2 = (x_ite_Namespace .add ("SFVec2", SFVec2_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFVec4.js
 /*******************************************************************************
  *
@@ -30907,8 +30861,7 @@ const SFVec4 = {
 const SFVec4_default_ = SFVec4;
 ;
 
-x_ite_Namespace .add ("SFVec4", "x_ite/Fields/SFVec4", SFVec4_default_);
-/* harmony default export */ const Fields_SFVec4 = (SFVec4_default_);
+/* harmony default export */ const Fields_SFVec4 = (x_ite_Namespace .add ("SFVec4", SFVec4_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DArrayField.js
 /*******************************************************************************
  *
@@ -31051,8 +31004,7 @@ for (const key of Object .keys (X3DArrayField .prototype))
 const X3DArrayField_default_ = X3DArrayField;
 ;
 
-x_ite_Namespace .add ("X3DArrayField", "x_ite/Base/X3DArrayField", X3DArrayField_default_);
-/* harmony default export */ const Base_X3DArrayField = (X3DArrayField_default_);
+/* harmony default export */ const Base_X3DArrayField = (x_ite_Namespace .add ("X3DArrayField", X3DArrayField_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DObjectArrayField.js
 /*******************************************************************************
  *
@@ -31586,8 +31538,7 @@ Object .defineProperty (X3DObjectArrayField .prototype, "length",
 const X3DObjectArrayField_default_ = X3DObjectArrayField;
 ;
 
-x_ite_Namespace .add ("X3DObjectArrayField", "x_ite/Base/X3DObjectArrayField", X3DObjectArrayField_default_);
-/* harmony default export */ const Base_X3DObjectArrayField = (X3DObjectArrayField_default_);
+/* harmony default export */ const Base_X3DObjectArrayField = (x_ite_Namespace .add ("X3DObjectArrayField", X3DObjectArrayField_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DTypedArrayField.js
 /*******************************************************************************
  *
@@ -32614,8 +32565,7 @@ function addEvent (index, components, value)
 const X3DTypedArrayField_default_ = X3DTypedArrayField;
 ;
 
-x_ite_Namespace .add ("X3DTypedArrayField", "x_ite/Base/X3DTypedArrayField", X3DTypedArrayField_default_);
-/* harmony default export */ const Base_X3DTypedArrayField = (X3DTypedArrayField_default_);
+/* harmony default export */ const Base_X3DTypedArrayField = (x_ite_Namespace .add ("X3DTypedArrayField", X3DTypedArrayField_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/ArrayFields.js
 /*******************************************************************************
  *
@@ -33103,8 +33053,7 @@ const ArrayFields =
 const ArrayFields_default_ = ArrayFields;
 ;
 
-x_ite_Namespace .add ("ArrayFields", "x_ite/Fields/ArrayFields", ArrayFields_default_);
-/* harmony default export */ const Fields_ArrayFields = (ArrayFields_default_);
+/* harmony default export */ const Fields_ArrayFields = (x_ite_Namespace .add ("ArrayFields", ArrayFields_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields/SFImage.js
 /*******************************************************************************
  *
@@ -33483,8 +33432,7 @@ Object .defineProperties (SFImage,
 const SFImage_default_ = SFImage;
 ;
 
-x_ite_Namespace .add ("SFImage", "x_ite/Fields/SFImage", SFImage_default_);
-/* harmony default export */ const Fields_SFImage = (SFImage_default_);
+/* harmony default export */ const Fields_SFImage = (x_ite_Namespace .add ("SFImage", SFImage_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Fields.js
 /*******************************************************************************
  *
@@ -33575,8 +33523,7 @@ const Fields = {
 const Fields_default_ = Fields;
 ;
 
-x_ite_Namespace .add ("Fields", "x_ite/Fields", Fields_default_);
-/* harmony default export */ const x_ite_Fields = (Fields_default_);
+/* harmony default export */ const x_ite_Fields = (x_ite_Namespace .add ("Fields", Fields_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/HTMLSupport.js
 /*******************************************************************************
  *
@@ -33654,8 +33601,7 @@ const HTMLSupport =
 const HTMLSupport_default_ = HTMLSupport;
 ;
 
-x_ite_Namespace .add ("HTMLSupport", "x_ite/Parser/HTMLSupport", HTMLSupport_default_);
-/* harmony default export */ const Parser_HTMLSupport = (HTMLSupport_default_);
+/* harmony default export */ const Parser_HTMLSupport = (x_ite_Namespace .add ("HTMLSupport", HTMLSupport_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DBaseNode.js
 /*******************************************************************************
  *
@@ -34108,23 +34054,16 @@ Object .assign (Object .setPrototypeOf (X3DBaseNode .prototype, Base_X3DChildObj
    },
    isDefaultValue (field)
    {
-      const f = this [_userDefinedFields] .get (field .getName ()) ?? this [_predefinedFields] .get (field .getName ());
+      const
+         name = field .getName (),
+         f    = this [_userDefinedFields] .get (name) ?? this [_predefinedFields] .get (name);
 
       if (f === field)
-         var fieldDefinition = this [_fieldDefinitions] .get (field .getName ());
+         var fieldDefinition = this [_fieldDefinitions] .get (name);
       else if (this .constructor .fieldDefinitions)
-         var fieldDefinition = this .constructor .fieldDefinitions .get (field .getName ());
+         var fieldDefinition = this .constructor .fieldDefinitions .get (name);
 
-      if (fieldDefinition)
-      {
-         // User-defined fields are their own field definition value.
-         if (fieldDefinition .value === field)
-            return false;
-
-         return fieldDefinition .value .equals (field);
-      }
-
-      return !field .getModificationTime ();
+      return fieldDefinition ?.value .equals (field) ?? !field .getModificationTime ();
    },
    getExtendedEventHandling ()
    {
@@ -34277,10 +34216,9 @@ Object .defineProperties (X3DBaseNode .prototype,
 const X3DBaseNode_default_ = X3DBaseNode;
 ;
 
-x_ite_Namespace .add ("X3DBaseNode", "x_ite/Base/X3DBaseNode", X3DBaseNode_default_);
-/* harmony default export */ const Base_X3DBaseNode = (X3DBaseNode_default_);
+/* harmony default export */ const Base_X3DBaseNode = (x_ite_Namespace .add ("X3DBaseNode", X3DBaseNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Legacy.js
-/* provided dependency */ var $ = __webpack_require__(812);
+/* provided dependency */ var $ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -34367,8 +34305,7 @@ const Legacy =
 const Legacy_default_ = Legacy;
 ;
 
-x_ite_Namespace .add ("Legacy", "x_ite/Browser/Legacy", Legacy_default_);
-/* harmony default export */ const Browser_Legacy = (Legacy_default_);
+/* harmony default export */ const Browser_Legacy = (x_ite_Namespace .add ("Legacy", Legacy_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/BROWSER_VERSION.js
 /*******************************************************************************
  *
@@ -34417,11 +34354,10 @@ x_ite_Namespace .add ("Legacy", "x_ite/Browser/Legacy", Legacy_default_);
  *
  ******************************************************************************/
 
-const BROWSER_VERSION_default_ = "10.2.0";
+const BROWSER_VERSION_default_ = "10.3.0";
 ;
 
-x_ite_Namespace .add ("BROWSER_VERSION", "x_ite/BROWSER_VERSION", BROWSER_VERSION_default_);
-/* harmony default export */ const BROWSER_VERSION = (BROWSER_VERSION_default_);
+/* harmony default export */ const BROWSER_VERSION = (x_ite_Namespace .add ("BROWSER_VERSION", BROWSER_VERSION_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/X3DNode.js
 /*******************************************************************************
  *
@@ -36201,23 +36137,48 @@ for (const key of Object .keys (X3DNode .prototype))
 
 Object .defineProperties (X3DNode,
 {
-   typeName:
+   getStaticProperties:
    {
-      value: "X3DNode",
-      enumerable: true,
+      value: function (typeName, componentName, componentLevel, containerField, fromVersion, toVersion = "Infinity")
+      {
+         return {
+            typeName:
+            {
+               value: typeName,
+               enumerable: true,
+            },
+            componentInfo:
+            {
+               value: Object .freeze ({ name: componentName, level: componentLevel }),
+               enumerable: true,
+            },
+            ... containerField ?
+            {
+               containerField:
+               {
+                  value: containerField,
+                  enumerable: true,
+               },
+            } : { },
+            ... fromVersion && toVersion ?
+            {
+               specificationRange:
+               {
+                  value: Object .freeze ({ from: fromVersion, to: toVersion }),
+                  enumerable: true,
+               },
+            } : { },
+         };
+      },
    },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Core", level: 1 }),
-      enumerable: true,
-   },
-});
+})
+
+Object .defineProperties (X3DNode, X3DNode .getStaticProperties ("X3DNode", "Core", 1));
 
 const X3DNode_default_ = X3DNode;
 ;
 
-x_ite_Namespace .add ("X3DNode", "x_ite/Components/Core/X3DNode", X3DNode_default_);
-/* harmony default export */ const Core_X3DNode = (X3DNode_default_);
+/* harmony default export */ const Core_X3DNode = (x_ite_Namespace .add ("X3DNode", X3DNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/X3DMetadataObject.js
 /*******************************************************************************
  *
@@ -36268,6 +36229,7 @@ x_ite_Namespace .add ("X3DNode", "x_ite/Components/Core/X3DNode", X3DNode_defaul
 
 
 
+
 function X3DMetadataObject (executionContext)
 {
    this .addType (Base_X3DConstants .X3DMetadataObject);
@@ -36279,25 +36241,12 @@ Object .assign (X3DMetadataObject .prototype,
    dispose () { },
 });
 
-Object .defineProperties (X3DMetadataObject,
-{
-   typeName:
-   {
-      value: "X3DMetadataObject",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Core", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DMetadataObject, Core_X3DNode .getStaticProperties ("X3DMetadataObject", "Core", 1));
 
 const X3DMetadataObject_default_ = X3DMetadataObject;
 ;
 
-x_ite_Namespace .add ("X3DMetadataObject", "x_ite/Components/Core/X3DMetadataObject", X3DMetadataObject_default_);
-/* harmony default export */ const Core_X3DMetadataObject = (X3DMetadataObject_default_);
+/* harmony default export */ const Core_X3DMetadataObject = (x_ite_Namespace .add ("X3DMetadataObject", X3DMetadataObject_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/LATEST_VERSION.js
 /*******************************************************************************
  *
@@ -36351,8 +36300,7 @@ x_ite_Namespace .add ("X3DMetadataObject", "x_ite/Components/Core/X3DMetadataObj
 const LATEST_VERSION_default_ = "4.0";
 ;
 
-x_ite_Namespace .add ("LATEST_VERSION", "x_ite/LATEST_VERSION", LATEST_VERSION_default_);
-/* harmony default export */ const LATEST_VERSION = (LATEST_VERSION_default_);
+/* harmony default export */ const LATEST_VERSION = (x_ite_Namespace .add ("LATEST_VERSION", LATEST_VERSION_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/MetadataBoolean.js
 /*******************************************************************************
  *
@@ -36441,26 +36389,7 @@ Object .assign (Object .setPrototypeOf (MetadataBoolean .prototype, Core_X3DNode
 
 Object .defineProperties (MetadataBoolean,
 {
-   typeName:
-   {
-      value: "MetadataBoolean",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Core", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "value",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("MetadataBoolean", "Core", 1, "value", "3.3"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -36476,8 +36405,7 @@ Object .defineProperties (MetadataBoolean,
 const MetadataBoolean_default_ = MetadataBoolean;
 ;
 
-x_ite_Namespace .add ("MetadataBoolean", "x_ite/Components/Core/MetadataBoolean", MetadataBoolean_default_);
-/* harmony default export */ const Core_MetadataBoolean = (MetadataBoolean_default_);
+/* harmony default export */ const Core_MetadataBoolean = (x_ite_Namespace .add ("MetadataBoolean", MetadataBoolean_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/MetadataDouble.js
 /*******************************************************************************
  *
@@ -36566,26 +36494,7 @@ Object .assign (Object .setPrototypeOf (MetadataDouble .prototype, Core_X3DNode 
 
 Object .defineProperties (MetadataDouble,
 {
-   typeName:
-   {
-      value: "MetadataDouble",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Core", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "value",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("MetadataDouble", "Core", 1, "value", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -36601,8 +36510,7 @@ Object .defineProperties (MetadataDouble,
 const MetadataDouble_default_ = MetadataDouble;
 ;
 
-x_ite_Namespace .add ("MetadataDouble", "x_ite/Components/Core/MetadataDouble", MetadataDouble_default_);
-/* harmony default export */ const Core_MetadataDouble = (MetadataDouble_default_);
+/* harmony default export */ const Core_MetadataDouble = (x_ite_Namespace .add ("MetadataDouble", MetadataDouble_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/MetadataFloat.js
 /*******************************************************************************
  *
@@ -36691,26 +36599,7 @@ Object .assign (Object .setPrototypeOf (MetadataFloat .prototype, Core_X3DNode .
 
 Object .defineProperties (MetadataFloat,
 {
-   typeName:
-   {
-      value: "MetadataFloat",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Core", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "value",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("MetadataFloat", "Core", 1, "value", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -36726,8 +36615,7 @@ Object .defineProperties (MetadataFloat,
 const MetadataFloat_default_ = MetadataFloat;
 ;
 
-x_ite_Namespace .add ("MetadataFloat", "x_ite/Components/Core/MetadataFloat", MetadataFloat_default_);
-/* harmony default export */ const Core_MetadataFloat = (MetadataFloat_default_);
+/* harmony default export */ const Core_MetadataFloat = (x_ite_Namespace .add ("MetadataFloat", MetadataFloat_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/MetadataInteger.js
 /*******************************************************************************
  *
@@ -36816,26 +36704,7 @@ Object .assign (Object .setPrototypeOf (MetadataInteger .prototype, Core_X3DNode
 
 Object .defineProperties (MetadataInteger,
 {
-   typeName:
-   {
-      value: "MetadataInteger",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Core", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "value",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("MetadataInteger", "Core", 1, "value", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -36851,8 +36720,7 @@ Object .defineProperties (MetadataInteger,
 const MetadataInteger_default_ = MetadataInteger;
 ;
 
-x_ite_Namespace .add ("MetadataInteger", "x_ite/Components/Core/MetadataInteger", MetadataInteger_default_);
-/* harmony default export */ const Core_MetadataInteger = (MetadataInteger_default_);
+/* harmony default export */ const Core_MetadataInteger = (x_ite_Namespace .add ("MetadataInteger", MetadataInteger_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/MetadataSet.js
 /*******************************************************************************
  *
@@ -37011,26 +36879,7 @@ Object .assign (Object .setPrototypeOf (MetadataSet .prototype, Core_X3DNode .pr
 
 Object .defineProperties (MetadataSet,
 {
-   typeName:
-   {
-      value: "MetadataSet",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Core", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "value",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("MetadataSet", "Core", 1, "value", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -37046,8 +36895,7 @@ Object .defineProperties (MetadataSet,
 const MetadataSet_default_ = MetadataSet;
 ;
 
-x_ite_Namespace .add ("MetadataSet", "x_ite/Components/Core/MetadataSet", MetadataSet_default_);
-/* harmony default export */ const Core_MetadataSet = (MetadataSet_default_);
+/* harmony default export */ const Core_MetadataSet = (x_ite_Namespace .add ("MetadataSet", MetadataSet_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/MetadataString.js
 /*******************************************************************************
  *
@@ -37136,26 +36984,7 @@ Object .assign (Object .setPrototypeOf (MetadataString .prototype, Core_X3DNode 
 
 Object .defineProperties (MetadataString,
 {
-   typeName:
-   {
-      value: "MetadataString",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Core", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "value",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("MetadataString", "Core", 1, "value", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -37171,8 +37000,7 @@ Object .defineProperties (MetadataString,
 const MetadataString_default_ = MetadataString;
 ;
 
-x_ite_Namespace .add ("MetadataString", "x_ite/Components/Core/MetadataString", MetadataString_default_);
-/* harmony default export */ const Core_MetadataString = (MetadataString_default_);
+/* harmony default export */ const Core_MetadataString = (x_ite_Namespace .add ("MetadataString", MetadataString_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/X3DChildNode.js
 /*******************************************************************************
  *
@@ -37269,25 +37097,12 @@ Object .assign (Object .setPrototypeOf (X3DChildNode .prototype, Core_X3DNode .p
    },
 });
 
-Object .defineProperties (X3DChildNode,
-{
-   typeName:
-   {
-      value: "X3DChildNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Core", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DChildNode, Core_X3DNode .getStaticProperties ("X3DChildNode", "Core", 1));
 
 const X3DChildNode_default_ = X3DChildNode;
 ;
 
-x_ite_Namespace .add ("X3DChildNode", "x_ite/Components/Core/X3DChildNode", X3DChildNode_default_);
-/* harmony default export */ const Core_X3DChildNode = (X3DChildNode_default_);
+/* harmony default export */ const Core_X3DChildNode = (x_ite_Namespace .add ("X3DChildNode", X3DChildNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/X3DInfoNode.js
 /*******************************************************************************
  *
@@ -37339,6 +37154,7 @@ x_ite_Namespace .add ("X3DChildNode", "x_ite/Components/Core/X3DChildNode", X3DC
 
 
 
+
 function X3DInfoNode (executionContext)
 {
    Core_X3DChildNode .call (this, executionContext);
@@ -37348,25 +37164,12 @@ function X3DInfoNode (executionContext)
 
 Object .setPrototypeOf (X3DInfoNode .prototype, Core_X3DChildNode .prototype);
 
-Object .defineProperties (X3DInfoNode,
-{
-   typeName:
-   {
-      value: "X3DInfoNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Core", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DInfoNode, Core_X3DNode .getStaticProperties ("X3DInfoNode", "Core", 1));
 
 const X3DInfoNode_default_ = X3DInfoNode;
 ;
 
-x_ite_Namespace .add ("X3DInfoNode", "x_ite/Components/Core/X3DInfoNode", X3DInfoNode_default_);
-/* harmony default export */ const Core_X3DInfoNode = (X3DInfoNode_default_);
+/* harmony default export */ const Core_X3DInfoNode = (x_ite_Namespace .add ("X3DInfoNode", X3DInfoNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/WorldInfo.js
 /*******************************************************************************
  *
@@ -37421,6 +37224,7 @@ x_ite_Namespace .add ("X3DInfoNode", "x_ite/Components/Core/X3DInfoNode", X3DInf
 
 
 
+
 function WorldInfo (executionContext)
 {
    Core_X3DInfoNode .call (this, executionContext);
@@ -37453,26 +37257,7 @@ Object .assign (Object .setPrototypeOf (WorldInfo .prototype, Core_X3DInfoNode .
 
 Object .defineProperties (WorldInfo,
 {
-   typeName:
-   {
-      value: "WorldInfo",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Core", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("WorldInfo", "Core", 1, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -37487,8 +37272,7 @@ Object .defineProperties (WorldInfo,
 const WorldInfo_default_ = WorldInfo;
 ;
 
-x_ite_Namespace .add ("WorldInfo", "x_ite/Components/Core/WorldInfo", WorldInfo_default_);
-/* harmony default export */ const Core_WorldInfo = (WorldInfo_default_);
+/* harmony default export */ const Core_WorldInfo = (x_ite_Namespace .add ("WorldInfo", WorldInfo_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/X3DBindableNode.js
 /*******************************************************************************
  *
@@ -37540,6 +37324,7 @@ x_ite_Namespace .add ("WorldInfo", "x_ite/Components/Core/WorldInfo", WorldInfo_
 
 
 
+
 let modificationCount = 0;
 
 function X3DBindableNode (executionContext)
@@ -37575,18 +37360,10 @@ Object .assign (Object .setPrototypeOf (X3DBindableNode .prototype, Core_X3DChil
    }
 });
 
+Object .defineProperties (X3DBindableNode, Core_X3DNode .getStaticProperties ("X3DBindableNode", "Core", 1));
+
 Object .defineProperties (X3DBindableNode,
 {
-   typeName:
-   {
-      value: "X3DBindableNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Core", level: 1 }),
-      enumerable: true,
-   },
    getModificationCount:
    {
       value: function ()
@@ -37600,10 +37377,9 @@ Object .defineProperties (X3DBindableNode,
 const X3DBindableNode_default_ = X3DBindableNode;
 ;
 
-x_ite_Namespace .add ("X3DBindableNode", "x_ite/Components/Core/X3DBindableNode", X3DBindableNode_default_);
-/* harmony default export */ const Core_X3DBindableNode = (X3DBindableNode_default_);
+/* harmony default export */ const Core_X3DBindableNode = (x_ite_Namespace .add ("X3DBindableNode", X3DBindableNode_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Triangle3.js
-/* provided dependency */ var libtess = __webpack_require__(193);
+/* provided dependency */ var libtess = __webpack_require__(860);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -37746,8 +37522,7 @@ const Triangle3 =
 const Triangle3_default_ = Triangle3;
 ;
 
-x_ite_Namespace .add ("Triangle3", "standard/Math/Geometry/Triangle3", Triangle3_default_);
-/* harmony default export */ const Geometry_Triangle3 = (Triangle3_default_);
+/* harmony default export */ const Geometry_Triangle3 = (x_ite_Namespace .add ("Triangle3", Triangle3_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Algorithms/SAT.js
 /*******************************************************************************
  *
@@ -37860,8 +37635,7 @@ function is_between (value, lowerBound, upperBound)
 const SAT_default_ = SAT;
 ;
 
-x_ite_Namespace .add ("SAT", "standard/Math/Algorithms/SAT", SAT_default_);
-/* harmony default export */ const Algorithms_SAT = (SAT_default_);
+/* harmony default export */ const Algorithms_SAT = (x_ite_Namespace .add ("SAT", SAT_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Box3.js
 /*******************************************************************************
  *
@@ -38530,8 +38304,7 @@ Object .defineProperties (Box3 .prototype,
 const Box3_default_ = Box3;
 ;
 
-x_ite_Namespace .add ("Box3", "standard/Math/Geometry/Box3", Box3_default_);
-/* harmony default export */ const Geometry_Box3 = (Box3_default_);
+/* harmony default export */ const Geometry_Box3 = (x_ite_Namespace .add ("Box3", Box3_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping/X3DBoundedObject.js
 /*******************************************************************************
  *
@@ -38579,6 +38352,7 @@ x_ite_Namespace .add ("Box3", "standard/Math/Geometry/Box3", Box3_default_);
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -38697,25 +38471,12 @@ Object .assign (X3DBoundedObject .prototype,
    dispose () { },
 });
 
-Object .defineProperties (X3DBoundedObject,
-{
-   typeName:
-   {
-      value: "X3DBoundedObject",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Grouping", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DBoundedObject, Core_X3DNode .getStaticProperties ("X3DBoundedObject", "Grouping", 1));
 
 const X3DBoundedObject_default_ = X3DBoundedObject;
 ;
 
-x_ite_Namespace .add ("X3DBoundedObject", "x_ite/Components/Grouping/X3DBoundedObject", X3DBoundedObject_default_);
-/* harmony default export */ const Grouping_X3DBoundedObject = (X3DBoundedObject_default_);
+/* harmony default export */ const Grouping_X3DBoundedObject = (x_ite_Namespace .add ("X3DBoundedObject", X3DBoundedObject_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/NamedNodesArray.js
 /*******************************************************************************
  *
@@ -38789,8 +38550,7 @@ Object .defineProperties (NamedNodesArray,
 const NamedNodesArray_default_ = NamedNodesArray;
 ;
 
-x_ite_Namespace .add ("NamedNodesArray", "x_ite/Execution/NamedNodesArray", NamedNodesArray_default_);
-/* harmony default export */ const Execution_NamedNodesArray = (NamedNodesArray_default_);
+/* harmony default export */ const Execution_NamedNodesArray = (x_ite_Namespace .add ("NamedNodesArray", NamedNodesArray_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/X3DImportedNode.js
 /*******************************************************************************
  *
@@ -39086,8 +38846,7 @@ Object .defineProperties (X3DImportedNode,
 const X3DImportedNode_default_ = X3DImportedNode;
 ;
 
-x_ite_Namespace .add ("X3DImportedNode", "x_ite/Execution/X3DImportedNode", X3DImportedNode_default_);
-/* harmony default export */ const Execution_X3DImportedNode = (X3DImportedNode_default_);
+/* harmony default export */ const Execution_X3DImportedNode = (x_ite_Namespace .add ("X3DImportedNode", X3DImportedNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/ImportedNodesArray.js
 /*******************************************************************************
  *
@@ -39161,8 +38920,7 @@ Object .defineProperties (ImportedNodesArray,
 const ImportedNodesArray_default_ = ImportedNodesArray;
 ;
 
-x_ite_Namespace .add ("ImportedNodesArray", "x_ite/Execution/ImportedNodesArray", ImportedNodesArray_default_);
-/* harmony default export */ const Execution_ImportedNodesArray = (ImportedNodesArray_default_);
+/* harmony default export */ const Execution_ImportedNodesArray = (x_ite_Namespace .add ("ImportedNodesArray", ImportedNodesArray_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Networking/X3DUrlObject.js
 /*******************************************************************************
  *
@@ -39210,6 +38968,7 @@ x_ite_Namespace .add ("ImportedNodesArray", "x_ite/Execution/ImportedNodesArray"
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -39446,25 +39205,12 @@ Object .assign (X3DUrlObject .prototype,
    dispose () { },
 });
 
-Object .defineProperties (X3DUrlObject,
-{
-   typeName:
-   {
-      value: "X3DUrlObject",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Networking", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DUrlObject, Core_X3DNode .getStaticProperties ("X3DUrlObject", "Networking", 1));
 
 const X3DUrlObject_default_ = X3DUrlObject;
 ;
 
-x_ite_Namespace .add ("X3DUrlObject", "x_ite/Components/Networking/X3DUrlObject", X3DUrlObject_default_);
-/* harmony default export */ const Networking_X3DUrlObject = (X3DUrlObject_default_);
+/* harmony default export */ const Networking_X3DUrlObject = (x_ite_Namespace .add ("X3DUrlObject", X3DUrlObject_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Prototype/X3DProtoDeclarationNode.js
 /*******************************************************************************
  *
@@ -39580,8 +39326,7 @@ Base_X3DConstants .addConstant (X3DProtoDeclarationNode .typeName);
 const X3DProtoDeclarationNode_default_ = X3DProtoDeclarationNode;
 ;
 
-x_ite_Namespace .add ("X3DProtoDeclarationNode", "x_ite/Prototype/X3DProtoDeclarationNode", X3DProtoDeclarationNode_default_);
-/* harmony default export */ const Prototype_X3DProtoDeclarationNode = (X3DProtoDeclarationNode_default_);
+/* harmony default export */ const Prototype_X3DProtoDeclarationNode = (x_ite_Namespace .add ("X3DProtoDeclarationNode", X3DProtoDeclarationNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Prototype/X3DProtoDeclaration.js
 /*******************************************************************************
  *
@@ -40170,10 +39915,9 @@ Base_X3DConstants .addConstant (X3DProtoDeclaration .typeName);
 const X3DProtoDeclaration_default_ = X3DProtoDeclaration;
 ;
 
-x_ite_Namespace .add ("X3DProtoDeclaration", "x_ite/Prototype/X3DProtoDeclaration", X3DProtoDeclaration_default_);
-/* harmony default export */ const Prototype_X3DProtoDeclaration = (X3DProtoDeclaration_default_);
+/* harmony default export */ const Prototype_X3DProtoDeclaration = (x_ite_Namespace .add ("X3DProtoDeclaration", X3DProtoDeclaration_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/X3DParser.js
-/* provided dependency */ var X3DParser_$ = __webpack_require__(812);
+/* provided dependency */ var X3DParser_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -40338,8 +40082,7 @@ Object .assign (X3DParser .prototype,
 const X3DParser_default_ = X3DParser;
 ;
 
-x_ite_Namespace .add ("X3DParser", "x_ite/Parser/X3DParser", X3DParser_default_);
-/* harmony default export */ const Parser_X3DParser = (X3DParser_default_);
+/* harmony default export */ const Parser_X3DParser = (x_ite_Namespace .add ("X3DParser", X3DParser_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/Expressions.js
 /*******************************************************************************
  *
@@ -40428,10 +40171,9 @@ function Expressions (Grammar)
 const Expressions_default_ = Expressions;
 ;
 
-x_ite_Namespace .add ("Expressions", "x_ite/Parser/Expressions", Expressions_default_);
-/* harmony default export */ const Parser_Expressions = (Expressions_default_);
+/* harmony default export */ const Parser_Expressions = (x_ite_Namespace .add ("Expressions", Expressions_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/VRMLParser.js
-/* provided dependency */ var VRMLParser_$ = __webpack_require__(812);
+/* provided dependency */ var VRMLParser_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -43128,10 +42870,9 @@ Base_X3DField .prototype .fromString = function (string, scene)
 const VRMLParser_default_ = VRMLParser;
 ;
 
-x_ite_Namespace .add ("VRMLParser", "x_ite/Parser/VRMLParser", VRMLParser_default_);
-/* harmony default export */ const Parser_VRMLParser = (VRMLParser_default_);
+/* harmony default export */ const Parser_VRMLParser = (x_ite_Namespace .add ("VRMLParser", VRMLParser_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/XMLParser.js
-/* provided dependency */ var XMLParser_$ = __webpack_require__(812);
+/* provided dependency */ var XMLParser_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -44352,8 +44093,7 @@ const HTMLParser =
 const XMLParser_default_ = XMLParser;
 ;
 
-x_ite_Namespace .add ("XMLParser", "x_ite/Parser/XMLParser", XMLParser_default_);
-/* harmony default export */ const Parser_XMLParser = (XMLParser_default_);
+/* harmony default export */ const Parser_XMLParser = (x_ite_Namespace .add ("XMLParser", XMLParser_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/JSONParser.js
 /*******************************************************************************
  *
@@ -44768,8 +44508,7 @@ Object .assign (Object .setPrototypeOf (JSONParser .prototype, Parser_X3DParser 
 const JSONParser_default_ = JSONParser;
 ;
 
-x_ite_Namespace .add ("JSONParser", "x_ite/Parser/JSONParser", JSONParser_default_);
-/* harmony default export */ const Parser_JSONParser = (JSONParser_default_);
+/* harmony default export */ const Parser_JSONParser = (x_ite_Namespace .add ("JSONParser", JSONParser_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/X3DOptimizer.js
 /*******************************************************************************
  *
@@ -45191,8 +44930,7 @@ Object .assign (X3DOptimizer .prototype,
 const X3DOptimizer_default_ = X3DOptimizer;
 ;
 
-x_ite_Namespace .add ("X3DOptimizer", "x_ite/Parser/X3DOptimizer", X3DOptimizer_default_);
-/* harmony default export */ const Parser_X3DOptimizer = (X3DOptimizer_default_);
+/* harmony default export */ const Parser_X3DOptimizer = (x_ite_Namespace .add ("X3DOptimizer", X3DOptimizer_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Networking/URLs.js
 /*******************************************************************************
  *
@@ -45243,6 +44981,7 @@ x_ite_Namespace .add ("X3DOptimizer", "x_ite/Parser/X3DOptimizer", X3DOptimizer_
 
 
 
+
 const URLs =
 {
    getScriptURL: (() =>
@@ -45266,6 +45005,9 @@ const URLs =
          }
       }
 
+      // Prevent caching issues with jsDelivr and UNPKG.
+      src = src .replace ("/x_ite@latest/", `/x_ite@${BROWSER_VERSION}/`);
+
       return function ()
       {
          return src;
@@ -45273,19 +45015,16 @@ const URLs =
    })(),
    getProviderURL (component)
    {
-      if (component)
-      {
-         if (this .getScriptURL () .match (/\.min\.js$/))
-            component += ".min";
+      if (!component)
+         return "https://create3000.github.io/x_ite/";
 
-         return new URL ("assets/components/" + component + ".js", this .getScriptURL ()) .href;
-      }
+      const min = this .getScriptURL () .match (/\.min\.m?js$/) && false ? 0 : "";
 
-      return "https://create3000.github.io/x_ite/";
+      return new URL (`assets/components/${component}Component${min}.js`, this .getScriptURL ()) .href;
    },
    getFontsURL (file)
    {
-      return new URL ("assets/fonts/" + file, this .getScriptURL ()) .href;
+      return new URL (`assets/fonts/${file}`, this .getScriptURL ()) .href;
    },
    getLinetypeURL ()
    {
@@ -45293,21 +45032,20 @@ const URLs =
    },
    getHatchingURL (index)
    {
-      return new URL ("assets/hatching/" + index + ".png", this .getScriptURL ()) .href;
+      return new URL (`assets/hatching/${index}.png`, this .getScriptURL ()) .href;
    },
    getLibraryURL (file)
    {
-      return new URL ("assets/lib/" + file, this .getScriptURL ()) .href;
+      return new URL (`assets/lib/${file}`, this .getScriptURL ()) .href;
    },
 };
 
 const URLs_default_ = URLs;
 ;
 
-x_ite_Namespace .add ("URLs", "x_ite/Browser/Networking/URLs", URLs_default_);
-/* harmony default export */ const Networking_URLs = (URLs_default_);
+/* harmony default export */ const Networking_URLs = (x_ite_Namespace .add ("URLs", URLs_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GLTF2Parser.js
-/* provided dependency */ var GLTF2Parser_$ = __webpack_require__(812);
+/* provided dependency */ var GLTF2Parser_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -48949,10 +48687,9 @@ Object .assign (Object .setPrototypeOf (GLTF2Parser .prototype, Parser_X3DParser
 const GLTF2Parser_default_ = GLTF2Parser;
 ;
 
-x_ite_Namespace .add ("GLTF2Parser", "x_ite/Parser/GLTF2Parser", GLTF2Parser_default_);
-/* harmony default export */ const Parser_GLTF2Parser = (GLTF2Parser_default_);
+/* harmony default export */ const Parser_GLTF2Parser = (x_ite_Namespace .add ("GLTF2Parser", GLTF2Parser_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GLB2Parser.js
-/* provided dependency */ var GLB2Parser_$ = __webpack_require__(812);
+/* provided dependency */ var GLB2Parser_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -49101,10 +48838,9 @@ Object .assign (Object .setPrototypeOf (GLB2Parser .prototype, Parser_X3DParser 
 const GLB2Parser_default_ = GLB2Parser;
 ;
 
-x_ite_Namespace .add ("GLB2Parser", "x_ite/Parser/GLB2Parser", GLB2Parser_default_);
-/* harmony default export */ const Parser_GLB2Parser = (GLB2Parser_default_);
+/* harmony default export */ const Parser_GLB2Parser = (x_ite_Namespace .add ("GLB2Parser", GLB2Parser_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/OBJParser.js
-/* provided dependency */ var OBJParser_$ = __webpack_require__(812);
+/* provided dependency */ var OBJParser_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -50197,8 +49933,7 @@ Object .assign (MaterialParser .prototype,
 const OBJParser_default_ = OBJParser;
 ;
 
-x_ite_Namespace .add ("OBJParser", "x_ite/Parser/OBJParser", OBJParser_default_);
-/* harmony default export */ const Parser_OBJParser = (OBJParser_default_);
+/* harmony default export */ const Parser_OBJParser = (x_ite_Namespace .add ("OBJParser", OBJParser_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/STLAParser.js
 /*******************************************************************************
  *
@@ -50579,8 +50314,7 @@ Object .assign (Object .setPrototypeOf (STLAParser .prototype, Parser_X3DParser 
 const STLAParser_default_ = STLAParser;
 ;
 
-x_ite_Namespace .add ("STLAParser", "x_ite/Parser/STLAParser", STLAParser_default_);
-/* harmony default export */ const Parser_STLAParser = (STLAParser_default_);
+/* harmony default export */ const Parser_STLAParser = (x_ite_Namespace .add ("STLAParser", STLAParser_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/STLBParser.js
 /*******************************************************************************
  *
@@ -50739,8 +50473,7 @@ Object .assign (Object .setPrototypeOf (STLBParser .prototype, Parser_X3DParser 
 const STLBParser_default_ = STLBParser;
 ;
 
-x_ite_Namespace .add ("STLBParser", "x_ite/Parser/STLBParser", STLBParser_default_);
-/* harmony default export */ const Parser_STLBParser = (STLBParser_default_);
+/* harmony default export */ const Parser_STLBParser = (x_ite_Namespace .add ("STLBParser", STLBParser_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/PLYAParser.js
 /*******************************************************************************
  *
@@ -51347,8 +51080,7 @@ Object .assign (Object .setPrototypeOf (PLYAParser .prototype, Parser_X3DParser 
 const PLYAParser_default_ = PLYAParser;
 ;
 
-x_ite_Namespace .add ("PLYAParser", "x_ite/Parser/PLYAParser", PLYAParser_default_);
-/* harmony default export */ const Parser_PLYAParser = (PLYAParser_default_);
+/* harmony default export */ const Parser_PLYAParser = (x_ite_Namespace .add ("PLYAParser", PLYAParser_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/PLYBParser.js
 /*******************************************************************************
  *
@@ -51574,8 +51306,7 @@ Object .assign (Object .setPrototypeOf (PLYBParser .prototype, Parser_PLYAParser
 const PLYBParser_default_ = PLYBParser;
 ;
 
-x_ite_Namespace .add ("PLYBParser", "x_ite/Parser/PLYBParser", PLYBParser_default_);
-/* harmony default export */ const Parser_PLYBParser = (PLYBParser_default_);
+/* harmony default export */ const Parser_PLYBParser = (x_ite_Namespace .add ("PLYBParser", PLYBParser_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Numbers/Complex.js
 /*******************************************************************************
  *
@@ -51828,8 +51559,7 @@ Object .assign (Complex,
 const Complex_default_ = Complex;
 ;
 
-x_ite_Namespace .add ("Complex", "standard/Math/Numbers/Complex", Complex_default_);
-/* harmony default export */ const Numbers_Complex = (Complex_default_);
+/* harmony default export */ const Numbers_Complex = (x_ite_Namespace .add ("Complex", Complex_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Box2.js
 /*******************************************************************************
  *
@@ -52090,8 +51820,7 @@ Object .defineProperties (Box2 .prototype,
 const Box2_default_ = Box2;
 ;
 
-x_ite_Namespace .add ("Box2", "standard/Math/Geometry/Box2", Box2_default_);
-/* harmony default export */ const Geometry_Box2 = (Box2_default_);
+/* harmony default export */ const Geometry_Box2 = (x_ite_Namespace .add ("Box2", Box2_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Algorithms/Bezier.js
 /*******************************************************************************
  *
@@ -52327,8 +52056,7 @@ const Bezier =
 const Bezier_default_ = Bezier;
 ;
 
-x_ite_Namespace .add ("Bezier", "standard/Math/Algorithms/Bezier", Bezier_default_);
-/* harmony default export */ const Algorithms_Bezier = (Bezier_default_);
+/* harmony default export */ const Algorithms_Bezier = (x_ite_Namespace .add ("Bezier", Bezier_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Utility/MatrixStack.js
 /*******************************************************************************
  *
@@ -52446,11 +52174,10 @@ function MatrixStack (Type)
 const MatrixStack_default_ = MatrixStack;
 ;
 
-x_ite_Namespace .add ("MatrixStack", "standard/Math/Utility/MatrixStack", MatrixStack_default_);
-/* harmony default export */ const Utility_MatrixStack = (MatrixStack_default_);
+/* harmony default export */ const Utility_MatrixStack = (x_ite_Namespace .add ("MatrixStack", MatrixStack_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/SVGParser.js
-/* provided dependency */ var SVGParser_$ = __webpack_require__(812);
-/* provided dependency */ var SVGParser_libtess = __webpack_require__(193);
+/* provided dependency */ var SVGParser_$ = __webpack_require__(703);
+/* provided dependency */ var SVGParser_libtess = __webpack_require__(860);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -55218,10 +54945,9 @@ Object .defineProperty (SVGParser .prototype, "style",
 const SVGParser_default_ = SVGParser;
 ;
 
-x_ite_Namespace .add ("SVGParser", "x_ite/Parser/SVGParser", SVGParser_default_);
-/* harmony default export */ const Parser_SVGParser = (SVGParser_default_);
+/* harmony default export */ const Parser_SVGParser = (x_ite_Namespace .add ("SVGParser", SVGParser_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Parser/GoldenGate.js
-/* provided dependency */ var GoldenGate_$ = __webpack_require__(812);
+/* provided dependency */ var GoldenGate_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -55404,8 +55130,7 @@ class GoldenGate extends Parser_X3DParser
 const GoldenGate_default_ = GoldenGate;
 ;
 
-x_ite_Namespace .add ("GoldenGate", "x_ite/Parser/GoldenGate", GoldenGate_default_);
-/* harmony default export */ const Parser_GoldenGate = (GoldenGate_default_);
+/* harmony default export */ const Parser_GoldenGate = (x_ite_Namespace .add ("GoldenGate", GoldenGate_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Plane3.js
 /*******************************************************************************
  *
@@ -55462,7 +55187,7 @@ const
    point     = new Numbers_Vector3 (),
    invMatrix = new Numbers_Matrix4 ();
 
-function Plane3 (point, normal)
+function Plane3 (point = Numbers_Vector3 .Zero, normal = Numbers_Vector3 .zAxis)
 {
    this .normal             = normal .copy ();
    this .distanceFromOrigin = normal .dot (point);
@@ -55585,8 +55310,7 @@ Object .assign (Plane3 .prototype,
 const Plane3_default_ = Plane3;
 ;
 
-x_ite_Namespace .add ("Plane3", "standard/Math/Geometry/Plane3", Plane3_default_);
-/* harmony default export */ const Geometry_Plane3 = (Plane3_default_);
+/* harmony default export */ const Geometry_Plane3 = (x_ite_Namespace .add ("Plane3", Plane3_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/ViewVolume.js
 /*******************************************************************************
  *
@@ -55694,12 +55418,12 @@ function ViewVolume (projectionMatrix, viewport, scissor)
    ];
 
    this .planes = [
-      new Geometry_Plane3 (Numbers_Vector3 .Zero, Numbers_Vector3 .Zero), // front
-      new Geometry_Plane3 (Numbers_Vector3 .Zero, Numbers_Vector3 .Zero), // left
-      new Geometry_Plane3 (Numbers_Vector3 .Zero, Numbers_Vector3 .Zero), // right
-      new Geometry_Plane3 (Numbers_Vector3 .Zero, Numbers_Vector3 .Zero), // top
-      new Geometry_Plane3 (Numbers_Vector3 .Zero, Numbers_Vector3 .Zero), // bottom
-      new Geometry_Plane3 (Numbers_Vector3 .Zero, Numbers_Vector3 .Zero), // back
+      new Geometry_Plane3 (), // front
+      new Geometry_Plane3 (), // left
+      new Geometry_Plane3 (), // right
+      new Geometry_Plane3 (), // top
+      new Geometry_Plane3 (), // bottom
+      new Geometry_Plane3 (), // back
    ];
 
    if (arguments .length)
@@ -56012,8 +55736,7 @@ Object .assign (ViewVolume,
 const ViewVolume_default_ = ViewVolume;
 ;
 
-x_ite_Namespace .add ("ViewVolume", "standard/Math/Geometry/ViewVolume", ViewVolume_default_);
-/* harmony default export */ const Geometry_ViewVolume = (ViewVolume_default_);
+/* harmony default export */ const Geometry_ViewVolume = (x_ite_Namespace .add ("ViewVolume", ViewVolume_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Rendering/TextureBuffer.js
 /*******************************************************************************
  *
@@ -56156,6 +55879,10 @@ function TextureBuffer (browser, width, height, float = false, mipMaps = false)
 
 Object .assign (TextureBuffer .prototype,
 {
+   getOIT ()
+   {
+      return false;
+   },
    getWidth ()
    {
       return this .width;
@@ -56245,8 +55972,7 @@ for (const key of Object .keys (TextureBuffer .prototype))
 const TextureBuffer_default_ = TextureBuffer;
 ;
 
-x_ite_Namespace .add ("TextureBuffer", "x_ite/Rendering/TextureBuffer", TextureBuffer_default_);
-/* harmony default export */ const Rendering_TextureBuffer = (TextureBuffer_default_);
+/* harmony default export */ const Rendering_TextureBuffer = (x_ite_Namespace .add ("TextureBuffer", TextureBuffer_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Rendering/TraverseType.js
 /*******************************************************************************
  *
@@ -56309,8 +56035,7 @@ const TraverseType = Object .freeze ({
 const TraverseType_default_ = TraverseType;
 ;
 
-x_ite_Namespace .add ("TraverseType", "x_ite/Rendering/TraverseType", TraverseType_default_);
-/* harmony default export */ const Rendering_TraverseType = (TraverseType_default_);
+/* harmony default export */ const Rendering_TraverseType = (x_ite_Namespace .add ("TraverseType", TraverseType_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Algorithms/MergeSort.js
 /*******************************************************************************
  *
@@ -56418,8 +56143,7 @@ Object .assign (MergeSort .prototype,
 const MergeSort_default_ = MergeSort;
 ;
 
-x_ite_Namespace .add ("MergeSort", "standard/Math/Algorithms/MergeSort", MergeSort_default_);
-/* harmony default export */ const Algorithms_MergeSort = (MergeSort_default_);
+/* harmony default export */ const Algorithms_MergeSort = (x_ite_Namespace .add ("MergeSort", MergeSort_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Camera.js
 /*******************************************************************************
  *
@@ -56550,8 +56274,7 @@ const Camera =
 const Camera_default_ = Camera;
 ;
 
-x_ite_Namespace .add ("Camera", "standard/Math/Geometry/Camera", Camera_default_);
-/* harmony default export */ const Geometry_Camera = (Camera_default_);
+/* harmony default export */ const Geometry_Camera = (x_ite_Namespace .add ("Camera", Camera_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Line3.js
 /*******************************************************************************
  *
@@ -56790,8 +56513,7 @@ Object .assign (Line3,
 const Line3_default_ = Line3;
 ;
 
-x_ite_Namespace .add ("Line3", "standard/Math/Geometry/Line3", Line3_default_);
-/* harmony default export */ const Geometry_Line3 = (Line3_default_);
+/* harmony default export */ const Geometry_Line3 = (x_ite_Namespace .add ("Line3", Line3_default_));
 ;// CONCATENATED MODULE: ./src/standard/Time/StopWatch.js
 /*******************************************************************************
  *
@@ -56879,8 +56601,7 @@ class StopWatch
 const StopWatch_default_ = StopWatch;
 ;
 
-x_ite_Namespace .add ("StopWatch", "standard/Time/StopWatch", StopWatch_default_);
-/* harmony default export */ const Time_StopWatch = (StopWatch_default_);
+/* harmony default export */ const Time_StopWatch = (x_ite_Namespace .add ("StopWatch", StopWatch_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Rendering/X3DRenderObject.js
 /*******************************************************************************
  *
@@ -56952,6 +56673,7 @@ function X3DRenderObject (executionContext)
    this .renderKey                      = "";
    this .renderAndGlobalLightsKey       = "";
    this .renderCount                    = 0;
+   this .view                           = null;
    this .viewVolumes                    = [ ];
    this .projectionMatrix               = new Utility_MatrixStack (Numbers_Matrix4);
    this .modelViewMatrix                = new Utility_MatrixStack (Numbers_Matrix4);
@@ -57088,16 +56810,24 @@ Object .assign (X3DRenderObject .prototype,
    {
       return this .renderCount;
    },
-   getNextRenderCount: (function ()
+   advanceRenderCount: (function ()
    {
       let renderCount = 0;
 
       return function ()
       {
          renderCount >>>= 0; // uintesize
-         return ++ renderCount;
+         this .renderCount = ++ renderCount;
       }
    })(),
+   getFrameBuffers ()
+   {
+      return this .getBrowser () .getFrameBuffers ();
+   },
+   getView ()
+   {
+      return this .view;
+   },
    getViewVolumes ()
    {
       return this .viewVolumes;
@@ -57109,6 +56839,10 @@ Object .assign (X3DRenderObject .prototype,
    getProjectionMatrix ()
    {
       return this .projectionMatrix;
+   },
+   getProjectionMatrixWithLimits (nearValue, farValue, viewport)
+   {
+      return this .getViewpoint () .getProjectionMatrixWithLimits (nearValue, farValue, viewport);
    },
    getModelViewMatrix ()
    {
@@ -57999,20 +57733,18 @@ Object .assign (X3DRenderObject .prototype,
    draw ()
    {
       const
+         independent              = this .isIndependent (),
          browser                  = this .getBrowser (),
          gl                       = browser .getContext (),
-         frameBuffer              = browser .getFrameBuffer (),
-         independent              = this .isIndependent (),
+         frameBuffers             = this .getFrameBuffers (),
+         numFrameBuffers          = frameBuffers .length,
          viewport                 = this .getViewVolume () .getViewport (),
          lights                   = this .lights,
          globalLightsKeys         = this .globalLightsKeys,
          globalLights             = this .globalLights,
          generatedCubeMapTextures = this .generatedCubeMapTextures,
          globalShadows            = this .globalShadows,
-         headlight                = this .getNavigationInfo () ._headlight .getValue (),
-         oit                      = frameBuffer .getOIT () && independent;
-
-      this .renderCount = this .getNextRenderCount ();
+         headlight                = this .getNavigationInfo () ._headlight .getValue ();
 
       // PREPARATIONS
 
@@ -58040,38 +57772,58 @@ Object .assign (X3DRenderObject .prototype,
       this .renderAndGlobalLightsKey = `.${this .renderKey}.${globalLightsKeys .sort () .join ("")}.`;
       this .globalShadow             = globalShadows .at (-1);
 
-      // Set global uniforms.
-
-      this .viewportArray          .set (viewport);
-      this .projectionMatrixArray  .set (this .getProjectionMatrix () .get ());
-      this .viewMatrixArray        .set (this .getViewMatrix () .get ());
-      this .cameraSpaceMatrixArray .set (this .getCameraSpaceMatrix () .get ());
-
       // DRAW
 
-      if (independent && this .transmission)
+      for (let i = 0; i < numFrameBuffers; ++ i)
       {
-         // Transmission
+         const frameBuffer = frameBuffers [i];
 
-         const
-            transmissionBuffer               = browser .getTransmissionBuffer (),
-            transmissionOpaqueShapes         = this .transmissionOpaqueShapes,
-            transmissionTransparentShapes    = this .transmissionTransparentShapes,
-            numTransmissionOpaqueShapes      = transmissionOpaqueShapes .length,
-            numTransmissionTransparentShapes = transmissionTransparentShapes .length;
+         // XR support
 
-         this .drawShapes (gl, browser, true, transmissionBuffer, gl .COLOR_BUFFER_BIT, false, viewport, transmissionOpaqueShapes, numTransmissionOpaqueShapes, transmissionTransparentShapes, numTransmissionTransparentShapes, this .transmissionTransparencySorter);
+         this .view = browser .getPose () ?.views [i];
 
-         gl .bindTexture (gl .TEXTURE_2D, transmissionBuffer .getColorTexture ());
-         gl .generateMipmap (gl .TEXTURE_2D);
+         // Set global uniforms.
 
-         this .drawShapes (gl, browser, true, frameBuffer, 0, oit, viewport, this .opaqueShapes, this .numOpaqueShapes, this .transparentShapes, this .numTransparentShapes, this .transparencySorter);
-      }
-      else
-      {
-         // Draw with sorted blend or OIT.
+         this .viewportArray         .set (viewport);
+         this .projectionMatrixArray .set (this .getProjectionMatrix () .get ());
 
-         this .drawShapes (gl, browser, independent, frameBuffer, 0, oit, viewport, this .opaqueShapes, this .numOpaqueShapes, this .transparentShapes, this .numTransparentShapes, this .transparencySorter);
+         if (this .view && browser .getBrowserOption ("XRMovementControl") === "VIEWER_POSE")
+         {
+            this .viewMatrixArray        .set (this .view .viewMatrix);
+            this .cameraSpaceMatrixArray .set (this .view .cameraSpaceMatrix);
+         }
+         else
+         {
+            this .viewMatrixArray        .set (this .getViewMatrix () .get ());
+            this .cameraSpaceMatrixArray .set (this .getCameraSpaceMatrix () .get ());
+         }
+
+         if (independent && this .transmission)
+         {
+            // Transmission
+
+            const
+               transmissionBuffer               = browser .getTransmissionBuffer (),
+               transmissionOpaqueShapes         = this .transmissionOpaqueShapes,
+               transmissionTransparentShapes    = this .transmissionTransparentShapes,
+               numTransmissionOpaqueShapes      = transmissionOpaqueShapes .length,
+               numTransmissionTransparentShapes = transmissionTransparentShapes .length;
+
+            this .drawShapes (gl, browser, true, transmissionBuffer, gl .COLOR_BUFFER_BIT, false, viewport, transmissionOpaqueShapes, numTransmissionOpaqueShapes, transmissionTransparentShapes, numTransmissionTransparentShapes, this .transmissionTransparencySorter);
+
+            gl .bindTexture (gl .TEXTURE_2D, transmissionBuffer .getColorTexture ());
+            gl .generateMipmap (gl .TEXTURE_2D);
+
+            // Draw with sorted blend or OIT.
+
+            this .drawShapes (gl, browser, frameBuffer, 0, frameBuffer .getOIT (), viewport, this .opaqueShapes, this .numOpaqueShapes, this .transparentShapes, this .numTransparentShapes, this .transparencySorter);
+         }
+         else
+         {
+            // Draw with sorted blend or OIT.
+
+            this .drawShapes (gl, browser, frameBuffer, 0, frameBuffer .getOIT (), viewport, this .opaqueShapes, this .numOpaqueShapes, this .transparentShapes, this .numTransparentShapes, this .transparencySorter);
+         }
       }
 
       // POST DRAW
@@ -58101,10 +57853,9 @@ Object .assign (X3DRenderObject .prototype,
       globalShadows            .length = 1;
       generatedCubeMapTextures .length = 0;
    },
-   drawShapes (gl, browser, independent, frameBuffer, clear, oit, viewport, opaqueShapes, numOpaqueShapes, transparentShapes, numTransparentShapes, transparencySorter)
+   drawShapes (gl, browser, frameBuffer, clear, oit, viewport, opaqueShapes, numOpaqueShapes, transparentShapes, numTransparentShapes, transparencySorter)
    {
-      if (independent)
-         frameBuffer .bind ();
+      frameBuffer .bind ();
 
       // Configure viewport and background
 
@@ -58113,6 +57864,8 @@ Object .assign (X3DRenderObject .prototype,
 
       // Draw background.
 
+      this .advanceRenderCount ();
+
       gl .clearColor (0, 0, 0, 0);
       gl .clear (gl .DEPTH_BUFFER_BIT | clear);
       gl .blendFuncSeparate (gl .SRC_ALPHA, gl .ONE_MINUS_SRC_ALPHA, gl .ONE, gl .ONE_MINUS_SRC_ALPHA);
@@ -58120,6 +57873,8 @@ Object .assign (X3DRenderObject .prototype,
       this .getBackground () .display (gl, this, viewport);
 
       // Sorted blend or order independent transparency
+
+      this .advanceRenderCount ();
 
       // Render opaque objects first
 
@@ -58172,8 +57927,7 @@ function X3DRenderObject_assign (lhs, rhs)
 const X3DRenderObject_default_ = X3DRenderObject;
 ;
 
-x_ite_Namespace .add ("X3DRenderObject", "x_ite/Rendering/X3DRenderObject", X3DRenderObject_default_);
-/* harmony default export */ const Rendering_X3DRenderObject = (X3DRenderObject_default_);
+/* harmony default export */ const Rendering_X3DRenderObject = (x_ite_Namespace .add ("X3DRenderObject", X3DRenderObject_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/BindableStack.js
 /*******************************************************************************
  *
@@ -58340,8 +58094,7 @@ Object .defineProperties (BindableStack,
 const BindableStack_default_ = BindableStack;
 ;
 
-x_ite_Namespace .add ("BindableStack", "x_ite/Execution/BindableStack", BindableStack_default_);
-/* harmony default export */ const Execution_BindableStack = (BindableStack_default_);
+/* harmony default export */ const Execution_BindableStack = (x_ite_Namespace .add ("BindableStack", BindableStack_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/BindableList.js
 /*******************************************************************************
  *
@@ -58548,8 +58301,7 @@ Object .defineProperties (BindableList,
 const BindableList_default_ = BindableList;
 ;
 
-x_ite_Namespace .add ("BindableList", "x_ite/Execution/BindableList", BindableList_default_);
-/* harmony default export */ const Execution_BindableList = (BindableList_default_);
+/* harmony default export */ const Execution_BindableList = (x_ite_Namespace .add ("BindableList", BindableList_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Base/X3DCast.js
 /*******************************************************************************
  *
@@ -58628,8 +58380,7 @@ function X3DCast (type, node, innerNode = true)
 const X3DCast_default_ = X3DCast;
 ;
 
-x_ite_Namespace .add ("X3DCast", "x_ite/Base/X3DCast", X3DCast_default_);
-/* harmony default export */ const Base_X3DCast = (X3DCast_default_);
+/* harmony default export */ const Base_X3DCast = (x_ite_Namespace .add ("X3DCast", X3DCast_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping/X3DGroupingNode.js
 /*******************************************************************************
  *
@@ -58677,6 +58428,7 @@ x_ite_Namespace .add ("X3DCast", "x_ite/Base/X3DCast", X3DCast_default_);
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -59293,25 +59045,12 @@ Object .assign (Object .setPrototypeOf (X3DGroupingNode .prototype, Core_X3DChil
    },
 });
 
-Object .defineProperties (X3DGroupingNode,
-{
-   typeName:
-   {
-      value: "X3DGroupingNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Grouping", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DGroupingNode, Core_X3DNode .getStaticProperties ("X3DGroupingNode", "Grouping", 1));
 
 const X3DGroupingNode_default_ = X3DGroupingNode;
 ;
 
-x_ite_Namespace .add ("X3DGroupingNode", "x_ite/Components/Grouping/X3DGroupingNode", X3DGroupingNode_default_);
-/* harmony default export */ const Grouping_X3DGroupingNode = (X3DGroupingNode_default_);
+/* harmony default export */ const Grouping_X3DGroupingNode = (x_ite_Namespace .add ("X3DGroupingNode", X3DGroupingNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping/Group.js
 /*******************************************************************************
  *
@@ -59366,6 +59105,7 @@ x_ite_Namespace .add ("X3DGroupingNode", "x_ite/Components/Grouping/X3DGroupingN
 
 
 
+
 function Group (executionContext)
 {
    Grouping_X3DGroupingNode .call (this, executionContext);
@@ -59377,26 +59117,7 @@ Object .setPrototypeOf (Group .prototype, Grouping_X3DGroupingNode .prototype);
 
 Object .defineProperties (Group,
 {
-   typeName:
-   {
-      value: "Group",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Grouping", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Group", "Grouping", 1, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -59416,8 +59137,7 @@ Object .defineProperties (Group,
 const Group_default_ = Group;
 ;
 
-x_ite_Namespace .add ("Group", "x_ite/Components/Grouping/Group", Group_default_);
-/* harmony default export */ const Grouping_Group = (Group_default_);
+/* harmony default export */ const Grouping_Group = (x_ite_Namespace .add ("Group", Group_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Navigation/NavigationInfo.js
 /*******************************************************************************
  *
@@ -59465,6 +59185,7 @@ x_ite_Namespace .add ("Group", "x_ite/Components/Grouping/Group", Group_default_
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -59727,26 +59448,7 @@ Object .assign (Object .setPrototypeOf (NavigationInfo .prototype, Core_X3DBinda
 
 Object .defineProperties (NavigationInfo,
 {
-   typeName:
-   {
-      value: "NavigationInfo",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Navigation", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("NavigationInfo", "Navigation", 1, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -59770,8 +59472,7 @@ Object .defineProperties (NavigationInfo,
 const NavigationInfo_default_ = NavigationInfo;
 ;
 
-x_ite_Namespace .add ("NavigationInfo", "x_ite/Components/Navigation/NavigationInfo", NavigationInfo_default_);
-/* harmony default export */ const Navigation_NavigationInfo = (NavigationInfo_default_);
+/* harmony default export */ const Navigation_NavigationInfo = (x_ite_Namespace .add ("NavigationInfo", NavigationInfo_default_));
 ;// CONCATENATED MODULE: ./src/standard/Utility/ObjectCache.js
 /*******************************************************************************
  *
@@ -59847,8 +59548,7 @@ function ObjectCache (Type)
 const ObjectCache_default_ = ObjectCache;
 ;
 
-x_ite_Namespace .add ("ObjectCache", "standard/Utility/ObjectCache", ObjectCache_default_);
-/* harmony default export */ const Utility_ObjectCache = (ObjectCache_default_);
+/* harmony default export */ const Utility_ObjectCache = (x_ite_Namespace .add ("ObjectCache", ObjectCache_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalEffects/X3DFogObject.js
 /*******************************************************************************
  *
@@ -59896,6 +59596,7 @@ x_ite_Namespace .add ("ObjectCache", "standard/Utility/ObjectCache", ObjectCache
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -60013,25 +59714,12 @@ Object .assign (X3DFogObject .prototype,
    dispose () { },
 });
 
-Object .defineProperties (X3DFogObject,
-{
-   typeName:
-   {
-      value: "X3DFogObject",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "EnvironmentalEffects", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DFogObject, Core_X3DNode .getStaticProperties ("X3DFogObject", "EnvironmentalEffects", 1));
 
 const X3DFogObject_default_ = X3DFogObject;
 ;
 
-x_ite_Namespace .add ("X3DFogObject", "x_ite/Components/EnvironmentalEffects/X3DFogObject", X3DFogObject_default_);
-/* harmony default export */ const EnvironmentalEffects_X3DFogObject = (X3DFogObject_default_);
+/* harmony default export */ const EnvironmentalEffects_X3DFogObject = (x_ite_Namespace .add ("X3DFogObject", X3DFogObject_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalEffects/Fog.js
 /*******************************************************************************
  *
@@ -60089,6 +59777,7 @@ x_ite_Namespace .add ("X3DFogObject", "x_ite/Components/EnvironmentalEffects/X3D
 
 
 
+
 function Fog (executionContext)
 {
    Core_X3DBindableNode .call (this, executionContext);
@@ -60129,26 +59818,7 @@ Object .assign (Object .setPrototypeOf (Fog .prototype, Core_X3DBindableNode .pr
 
 Object .defineProperties (Fog,
 {
-   typeName:
-   {
-      value: "Fog",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "EnvironmentalEffects", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Fog", "EnvironmentalEffects", 2, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -60167,8 +59837,7 @@ Object .defineProperties (Fog,
 const Fog_default_ = Fog;
 ;
 
-x_ite_Namespace .add ("Fog", "x_ite/Components/EnvironmentalEffects/Fog", Fog_default_);
-/* harmony default export */ const EnvironmentalEffects_Fog = (Fog_default_);
+/* harmony default export */ const EnvironmentalEffects_Fog = (x_ite_Namespace .add ("Fog", Fog_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Rendering/VertexArray.js
 /*******************************************************************************
  *
@@ -60234,25 +59903,27 @@ Object .assign (VertexArray .prototype,
    },
    enable (program)
    {
-      const vertexArray = this .vertexArrays .get (program);
+      const { gl, vertexArrays } = this;
+
+      const vertexArray = vertexArrays .get (program);
 
       if (vertexArray)
       {
-         this .gl .bindVertexArray (vertexArray);
+         gl .bindVertexArray (vertexArray);
 
          return false;
       }
       else
       {
          // Memory leak prevention when shaders are reloaded. There should normally be no more than maybe 10 VAOs, except when shaders are often reloaded.
-         if (this .vertexArrays .size > 100)
+         if (vertexArrays .size > 100)
             this .dispose ();
 
-         const vertexArray = this .gl .createVertexArray ();
+         const vertexArray = gl .createVertexArray ();
 
-         this .vertexArrays .set (program, vertexArray)
+         vertexArrays .set (program, vertexArray)
 
-         this .gl .bindVertexArray (vertexArray);
+         gl .bindVertexArray (vertexArray);
 
          // console .log ("rebuild vao");
 
@@ -60261,18 +59932,19 @@ Object .assign (VertexArray .prototype,
    },
    dispose ()
    {
-      for (const vertexArray of this .vertexArrays .values ())
-         this .gl .deleteVertexArray (vertexArray);
+      const { gl, vertexArrays } = this;
 
-      this .vertexArrays .clear ();
+      for (const vertexArray of vertexArrays .values ())
+         gl .deleteVertexArray (vertexArray);
+
+      vertexArrays .clear ();
    },
 });
 
 const VertexArray_default_ = VertexArray;
 ;
 
-x_ite_Namespace .add ("VertexArray", "x_ite/Rendering/VertexArray", VertexArray_default_);
-/* harmony default export */ const Rendering_VertexArray = (VertexArray_default_);
+/* harmony default export */ const Rendering_VertexArray = (x_ite_Namespace .add ("VertexArray", VertexArray_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Rendering/MikkTSpace.js
 
 
@@ -60478,8 +60150,7 @@ const MikkTSpace_default_ = new class MikkTSpace
 };
 ;
 
-x_ite_Namespace .add ("MikkTSpace", "x_ite/Browser/Rendering/MikkTSpace", MikkTSpace_default_);
-/* harmony default export */ const MikkTSpace = (MikkTSpace_default_);
+/* harmony default export */ const MikkTSpace = (x_ite_Namespace .add ("MikkTSpace", MikkTSpace_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/Shading.js
 /*******************************************************************************
  *
@@ -60542,8 +60213,7 @@ const Shading =
 const Shading_default_ = Shading;
 ;
 
-x_ite_Namespace .add ("Shading", "x_ite/Browser/Core/Shading", Shading_default_);
-/* harmony default export */ const Core_Shading = (Shading_default_);
+/* harmony default export */ const Core_Shading = (x_ite_Namespace .add ("Shading", Shading_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/X3DGeometryNode.js
 /*******************************************************************************
  *
@@ -60657,7 +60327,7 @@ function X3DGeometryNode (executionContext)
    this .planes                   = [ ];
 
    for (let i = 0; i < 5; ++ i)
-      this .planes [i] = new Geometry_Plane3 (Numbers_Vector3 .Zero, Numbers_Vector3 .zAxis);
+      this .planes [i] = new Geometry_Plane3 ();
 }
 
 Object .defineProperty (X3DGeometryNode, "createArray",
@@ -61134,7 +60804,7 @@ Object .assign (Object .setPrototypeOf (X3DGeometryNode .prototype, Core_X3DNode
          planes = [ ];
 
       for (let i = 0; i < 5; ++ i)
-         planes [i] = new Geometry_Plane3 (Numbers_Vector3 .Zero, Numbers_Vector3 .zAxis);
+         planes [i] = new Geometry_Plane3 ();
 
       return function (minX, minY, minZ, maxX, maxY, maxZ)
       {
@@ -61848,25 +61518,12 @@ Object .assign (Object .setPrototypeOf (X3DGeometryNode .prototype, Core_X3DNode
    },
 });
 
-Object .defineProperties (X3DGeometryNode,
-{
-   typeName:
-   {
-      value: "X3DGeometryNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DGeometryNode, Core_X3DNode .getStaticProperties ("X3DGeometryNode", "Rendering", 1));
 
 const X3DGeometryNode_default_ = X3DGeometryNode;
 ;
 
-x_ite_Namespace .add ("X3DGeometryNode", "x_ite/Components/Rendering/X3DGeometryNode", X3DGeometryNode_default_);
-/* harmony default export */ const Rendering_X3DGeometryNode = (X3DGeometryNode_default_);
+/* harmony default export */ const Rendering_X3DGeometryNode = (x_ite_Namespace .add ("X3DGeometryNode", X3DGeometryNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Shape/AlphaMode.js
 /*******************************************************************************
  *
@@ -61928,8 +61585,7 @@ const AlphaMode =
 const AlphaMode_default_ = AlphaMode;
 ;
 
-x_ite_Namespace .add ("AlphaMode", "x_ite/Browser/Shape/AlphaMode", AlphaMode_default_);
-/* harmony default export */ const Shape_AlphaMode = (AlphaMode_default_);
+/* harmony default export */ const Shape_AlphaMode = (x_ite_Namespace .add ("AlphaMode", AlphaMode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Rendering/GeometryContext.js
 /*******************************************************************************
  *
@@ -62017,8 +61673,7 @@ Object .assign (GeometryContext .prototype,
 const GeometryContext_default_ = GeometryContext;
 ;
 
-x_ite_Namespace .add ("GeometryContext", "x_ite/Browser/Rendering/GeometryContext", GeometryContext_default_);
-/* harmony default export */ const Rendering_GeometryContext = (GeometryContext_default_);
+/* harmony default export */ const Rendering_GeometryContext = (x_ite_Namespace .add ("GeometryContext", GeometryContext_default_));
 ;// CONCATENATED MODULE: ./src/standard/Utility/BitSet.js
 /*******************************************************************************
  *
@@ -62149,8 +61804,7 @@ Object .defineProperty (BitSet .prototype, "size",
 const BitSet_default_ = BitSet;
 ;
 
-x_ite_Namespace .add ("BitSet", "standard/Utility/BitSet", BitSet_default_);
-/* harmony default export */ const Utility_BitSet = (BitSet_default_);
+/* harmony default export */ const Utility_BitSet = (x_ite_Namespace .add ("BitSet", BitSet_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalEffects/X3DBackgroundNode.js
 /*******************************************************************************
  *
@@ -62198,6 +61852,7 @@ x_ite_Namespace .add ("BitSet", "standard/Utility/BitSet", BitSet_default_);
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -62628,7 +62283,7 @@ Object .assign (Object .setPrototypeOf (X3DBackgroundNode .prototype, Core_X3DBi
 
          // Get projection matrix.
 
-         this .projectionMatrixArray .set (renderObject .getViewpoint () .getProjectionMatrixWithLimits (0.125, 200_000, viewport));
+         this .projectionMatrixArray .set (renderObject .getProjectionMatrixWithLimits (0.125, 200_000, viewport));
 
          // Rotate and scale background.
 
@@ -62768,19 +62423,7 @@ Object .assign (Object .setPrototypeOf (X3DBackgroundNode .prototype, Core_X3DBi
    },
 });
 
-Object .defineProperties (X3DBackgroundNode,
-{
-   typeName:
-   {
-      value: "X3DBackgroundNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "EnvironmentalEffects", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DBackgroundNode, Core_X3DNode .getStaticProperties ("X3DBackgroundNode", "EnvironmentalEffects", 1));
 
 for (let index = 0; index < 6; ++ index)
 {
@@ -62793,8 +62436,7 @@ for (let index = 0; index < 6; ++ index)
 const X3DBackgroundNode_default_ = X3DBackgroundNode;
 ;
 
-x_ite_Namespace .add ("X3DBackgroundNode", "x_ite/Components/EnvironmentalEffects/X3DBackgroundNode", X3DBackgroundNode_default_);
-/* harmony default export */ const EnvironmentalEffects_X3DBackgroundNode = (X3DBackgroundNode_default_);
+/* harmony default export */ const EnvironmentalEffects_X3DBackgroundNode = (x_ite_Namespace .add ("X3DBackgroundNode", X3DBackgroundNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/X3DAppearanceChildNode.js
 /*******************************************************************************
  *
@@ -62855,25 +62497,12 @@ function X3DAppearanceChildNode (executionContext)
 
 Object .setPrototypeOf (X3DAppearanceChildNode .prototype, Core_X3DNode .prototype);
 
-Object .defineProperties (X3DAppearanceChildNode,
-{
-   typeName:
-   {
-      value: "X3DAppearanceChildNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shape", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DAppearanceChildNode, Core_X3DNode .getStaticProperties ("X3DAppearanceChildNode", "Shape", 1));
 
 const X3DAppearanceChildNode_default_ = X3DAppearanceChildNode;
 ;
 
-x_ite_Namespace .add ("X3DAppearanceChildNode", "x_ite/Components/Shape/X3DAppearanceChildNode", X3DAppearanceChildNode_default_);
-/* harmony default export */ const Shape_X3DAppearanceChildNode = (X3DAppearanceChildNode_default_);
+/* harmony default export */ const Shape_X3DAppearanceChildNode = (x_ite_Namespace .add ("X3DAppearanceChildNode", X3DAppearanceChildNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/X3DTextureNode.js
 /*******************************************************************************
  *
@@ -62926,6 +62555,7 @@ x_ite_Namespace .add ("X3DAppearanceChildNode", "x_ite/Components/Shape/X3DAppea
 
 
 
+
 function X3DTextureNode (executionContext)
 {
    Shape_X3DAppearanceChildNode .call (this, executionContext);
@@ -62948,25 +62578,12 @@ Object .assign (Object .setPrototypeOf (X3DTextureNode .prototype, Shape_X3DAppe
    },
 });
 
-Object .defineProperties (X3DTextureNode,
-{
-   typeName:
-   {
-      value: "X3DTextureNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Texturing", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DTextureNode, Core_X3DNode .getStaticProperties ("X3DTextureNode", "Texturing", 1));
 
 const X3DTextureNode_default_ = X3DTextureNode;
 ;
 
-x_ite_Namespace .add ("X3DTextureNode", "x_ite/Components/Texturing/X3DTextureNode", X3DTextureNode_default_);
-/* harmony default export */ const Texturing_X3DTextureNode = (X3DTextureNode_default_);
+/* harmony default export */ const Texturing_X3DTextureNode = (x_ite_Namespace .add ("X3DTextureNode", X3DTextureNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/X3DSingleTextureNode.js
 /*******************************************************************************
  *
@@ -63014,6 +62631,7 @@ x_ite_Namespace .add ("X3DTextureNode", "x_ite/Components/Texturing/X3DTextureNo
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -63222,25 +62840,12 @@ Object .assign (Object .setPrototypeOf (X3DSingleTextureNode .prototype, Texturi
    },
 });
 
-Object .defineProperties (X3DSingleTextureNode,
-{
-   typeName:
-   {
-      value: "X3DSingleTextureNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Texturing", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DSingleTextureNode, Core_X3DNode .getStaticProperties ("X3DSingleTextureNode", "Texturing", 1));
 
 const X3DSingleTextureNode_default_ = X3DSingleTextureNode;
 ;
 
-x_ite_Namespace .add ("X3DSingleTextureNode", "x_ite/Components/Texturing/X3DSingleTextureNode", X3DSingleTextureNode_default_);
-/* harmony default export */ const Texturing_X3DSingleTextureNode = (X3DSingleTextureNode_default_);
+/* harmony default export */ const Texturing_X3DSingleTextureNode = (x_ite_Namespace .add ("X3DSingleTextureNode", X3DSingleTextureNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/X3DTexture2DNode.js
 /*******************************************************************************
  *
@@ -63288,6 +62893,7 @@ x_ite_Namespace .add ("X3DSingleTextureNode", "x_ite/Components/Texturing/X3DSin
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -63414,27 +63020,14 @@ Object .assign (Object .setPrototypeOf (X3DTexture2DNode .prototype, Texturing_X
    },
 });
 
-Object .defineProperties (X3DTexture2DNode,
-{
-   typeName:
-   {
-      value: "X3DTexture2DNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Texturing", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DTexture2DNode, Core_X3DNode .getStaticProperties ("X3DTexture2DNode", "Texturing", 1));
 
 const X3DTexture2DNode_default_ = X3DTexture2DNode;
 ;
 
-x_ite_Namespace .add ("X3DTexture2DNode", "x_ite/Components/Texturing/X3DTexture2DNode", X3DTexture2DNode_default_);
-/* harmony default export */ const Texturing_X3DTexture2DNode = (X3DTexture2DNode_default_);
+/* harmony default export */ const Texturing_X3DTexture2DNode = (x_ite_Namespace .add ("X3DTexture2DNode", X3DTexture2DNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/ImageTexture.js
-/* provided dependency */ var ImageTexture_$ = __webpack_require__(812);
+/* provided dependency */ var ImageTexture_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -63481,6 +63074,7 @@ x_ite_Namespace .add ("X3DTexture2DNode", "x_ite/Components/Texturing/X3DTexture
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -63680,26 +63274,7 @@ Object .assign (Object .setPrototypeOf (ImageTexture .prototype, Texturing_X3DTe
 
 Object .defineProperties (ImageTexture,
 {
-   typeName:
-   {
-      value: "ImageTexture",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Texturing", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "texture",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ImageTexture", "Texturing", 1, "texture", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -63721,8 +63296,7 @@ Object .defineProperties (ImageTexture,
 const ImageTexture_default_ = ImageTexture;
 ;
 
-x_ite_Namespace .add ("ImageTexture", "x_ite/Components/Texturing/ImageTexture", ImageTexture_default_);
-/* harmony default export */ const Texturing_ImageTexture = (ImageTexture_default_);
+/* harmony default export */ const Texturing_ImageTexture = (x_ite_Namespace .add ("ImageTexture", ImageTexture_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalEffects/Background.js
 /*******************************************************************************
  *
@@ -63770,6 +63344,7 @@ x_ite_Namespace .add ("ImageTexture", "x_ite/Components/Texturing/ImageTexture",
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -63840,26 +63415,7 @@ Object .assign (Object .setPrototypeOf (Background .prototype, EnvironmentalEffe
 
 Object .defineProperties (Background,
 {
-   typeName:
-   {
-      value: "Background",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "EnvironmentalEffects", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Background", "EnvironmentalEffects", 1, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -63886,8 +63442,7 @@ Object .defineProperties (Background,
 const Background_default_ = Background;
 ;
 
-x_ite_Namespace .add ("Background", "x_ite/Components/EnvironmentalEffects/Background", Background_default_);
-/* harmony default export */ const EnvironmentalEffects_Background = (Background_default_);
+/* harmony default export */ const EnvironmentalEffects_Background = (x_ite_Namespace .add ("Background", Background_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Layering/X3DLayerNode.js
 /*******************************************************************************
  *
@@ -63974,6 +63529,8 @@ function X3DLayerNode (executionContext, defaultViewpoint, groupNode)
    groupNodes ._children = [groupNode];
    groupNodes .setPrivate (true);
 
+   this .active       = false;
+   this .layer0       = false;
    this .groupNodes   = groupNodes;
    this .viewportNode = null;
 
@@ -64041,6 +63598,18 @@ Object .assign (Object .setPrototypeOf (X3DLayerNode .prototype, Core_X3DNode .p
    getBBox (bbox, shadows)
    {
       return this .groupNodes .getBBox (bbox, shadows);
+   },
+   isActive ()
+   {
+      return this .active;
+   },
+   setActive (value)
+   {
+      this .active = value;
+   },
+   isLayer0 ()
+   {
+      return this .layer0;
    },
    setLayer0 (value)
    {
@@ -64174,11 +63743,24 @@ Object .assign (Object .setPrototypeOf (X3DLayerNode .prototype, Core_X3DNode .p
    },
    traverse (type, renderObject = this)
    {
-      const viewpointNode = this .getViewpoint ();
+      const
+         browser = this .getBrowser (),
+         pose    = browser .getPose ();
 
-      this .getProjectionMatrix ()  .pushMatrix (viewpointNode .getProjectionMatrix (this));
-      this .getCameraSpaceMatrix () .pushMatrix (viewpointNode .getCameraSpaceMatrix ());
-      this .getViewMatrix ()        .pushMatrix (viewpointNode .getViewMatrix ());
+      if (pose && this .active && browser .getBrowserOption ("XRMovementControl") !== "VIEWPOINT")
+      {
+         this .getProjectionMatrix ()  .pushMatrix (pose .projectionMatrix);
+         this .getCameraSpaceMatrix () .pushMatrix (pose .cameraSpaceMatrix);
+         this .getViewMatrix ()        .pushMatrix (pose .viewMatrix);
+      }
+      else
+      {
+         const viewpointNode = this .getViewpoint ();
+
+         this .getProjectionMatrix ()  .pushMatrix (viewpointNode .getProjectionMatrix (this));
+         this .getCameraSpaceMatrix () .pushMatrix (viewpointNode .getCameraSpaceMatrix ());
+         this .getViewMatrix ()        .pushMatrix (viewpointNode .getViewMatrix ());
+      }
 
       switch (type)
       {
@@ -64313,25 +63895,12 @@ Object .assign (Object .setPrototypeOf (X3DLayerNode .prototype, Core_X3DNode .p
    },
 });
 
-Object .defineProperties (X3DLayerNode,
-{
-   typeName:
-   {
-      value: "X3DLayerNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Layering", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DLayerNode, Core_X3DNode .getStaticProperties ("X3DLayerNode", "Layering", 1));
 
 const X3DLayerNode_default_ = X3DLayerNode;
 ;
 
-x_ite_Namespace .add ("X3DLayerNode", "x_ite/Components/Layering/X3DLayerNode", X3DLayerNode_default_);
-/* harmony default export */ const Layering_X3DLayerNode = (X3DLayerNode_default_);
+/* harmony default export */ const Layering_X3DLayerNode = (x_ite_Namespace .add ("X3DLayerNode", X3DLayerNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/X3DSensorNode.js
 /*******************************************************************************
  *
@@ -64383,6 +63952,7 @@ x_ite_Namespace .add ("X3DLayerNode", "x_ite/Components/Layering/X3DLayerNode", 
 
 
 
+
 function X3DSensorNode (executionContext)
 {
    Core_X3DChildNode .call (this, executionContext);
@@ -64392,25 +63962,12 @@ function X3DSensorNode (executionContext)
 
 Object .setPrototypeOf (X3DSensorNode .prototype, Core_X3DChildNode .prototype);
 
-Object .defineProperties (X3DSensorNode,
-{
-   typeName:
-   {
-      value: "X3DSensorNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Core", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DSensorNode, Core_X3DNode .getStaticProperties ("X3DSensorNode", "Core", 1));
 
 const X3DSensorNode_default_ = X3DSensorNode;
 ;
 
-x_ite_Namespace .add ("X3DSensorNode", "x_ite/Components/Core/X3DSensorNode", X3DSensorNode_default_);
-/* harmony default export */ const Core_X3DSensorNode = (X3DSensorNode_default_);
+/* harmony default export */ const Core_X3DSensorNode = (x_ite_Namespace .add ("X3DSensorNode", X3DSensorNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Time/X3DTimeDependentNode.js
 /*******************************************************************************
  *
@@ -64458,6 +64015,7 @@ x_ite_Namespace .add ("X3DSensorNode", "x_ite/Components/Core/X3DSensorNode", X3
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -64756,25 +64314,12 @@ Object .assign (Object .setPrototypeOf (X3DTimeDependentNode .prototype, Core_X3
    },
 });
 
-Object .defineProperties (X3DTimeDependentNode,
-{
-   typeName:
-   {
-      value: "X3DTimeDependentNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Time", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DTimeDependentNode, Core_X3DNode .getStaticProperties ("X3DTimeDependentNode", "Time", 1));
 
 const X3DTimeDependentNode_default_ = X3DTimeDependentNode;
 ;
 
-x_ite_Namespace .add ("X3DTimeDependentNode", "x_ite/Components/Time/X3DTimeDependentNode", X3DTimeDependentNode_default_);
-/* harmony default export */ const Time_X3DTimeDependentNode = (X3DTimeDependentNode_default_);
+/* harmony default export */ const Time_X3DTimeDependentNode = (x_ite_Namespace .add ("X3DTimeDependentNode", X3DTimeDependentNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Time/TimeSensor.js
 /*******************************************************************************
  *
@@ -64822,6 +64367,7 @@ x_ite_Namespace .add ("X3DTimeDependentNode", "x_ite/Components/Time/X3DTimeDepe
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -64955,26 +64501,7 @@ Object .assign (Object .setPrototypeOf (TimeSensor .prototype, Core_X3DSensorNod
 
 Object .defineProperties (TimeSensor,
 {
-   typeName:
-   {
-      value: "TimeSensor",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Time", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("TimeSensor", "Time", 1, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -65001,8 +64528,7 @@ Object .defineProperties (TimeSensor,
 const TimeSensor_default_ = TimeSensor;
 ;
 
-x_ite_Namespace .add ("TimeSensor", "x_ite/Components/Time/TimeSensor", TimeSensor_default_);
-/* harmony default export */ const Time_TimeSensor = (TimeSensor_default_);
+/* harmony default export */ const Time_TimeSensor = (x_ite_Namespace .add ("TimeSensor", TimeSensor_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/X3DInterpolatorNode.js
 /*******************************************************************************
  *
@@ -65050,6 +64576,7 @@ x_ite_Namespace .add ("TimeSensor", "x_ite/Components/Time/TimeSensor", TimeSens
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -65126,25 +64653,12 @@ Object .assign (Object .setPrototypeOf (X3DInterpolatorNode .prototype, Core_X3D
    interpolate () { },
 });
 
-Object .defineProperties (X3DInterpolatorNode,
-{
-   typeName:
-   {
-      value: "X3DInterpolatorNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Interpolation", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DInterpolatorNode, Core_X3DNode .getStaticProperties ("X3DInterpolatorNode", "Interpolation", 1));
 
 const X3DInterpolatorNode_default_ = X3DInterpolatorNode;
 ;
 
-x_ite_Namespace .add ("X3DInterpolatorNode", "x_ite/Components/Interpolation/X3DInterpolatorNode", X3DInterpolatorNode_default_);
-/* harmony default export */ const Interpolation_X3DInterpolatorNode = (X3DInterpolatorNode_default_);
+/* harmony default export */ const Interpolation_X3DInterpolatorNode = (x_ite_Namespace .add ("X3DInterpolatorNode", X3DInterpolatorNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/EaseInEaseOut.js
 /*******************************************************************************
  *
@@ -65192,6 +64706,7 @@ x_ite_Namespace .add ("X3DInterpolatorNode", "x_ite/Components/Interpolation/X3D
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -65261,26 +64776,7 @@ Object .assign (Object .setPrototypeOf (EaseInEaseOut .prototype, Interpolation_
 
 Object .defineProperties (EaseInEaseOut,
 {
-   typeName:
-   {
-      value: "EaseInEaseOut",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Interpolation", level: 4 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("EaseInEaseOut", "Interpolation", 4, "children", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -65297,8 +64793,7 @@ Object .defineProperties (EaseInEaseOut,
 const EaseInEaseOut_default_ = EaseInEaseOut;
 ;
 
-x_ite_Namespace .add ("EaseInEaseOut", "x_ite/Components/Interpolation/EaseInEaseOut", EaseInEaseOut_default_);
-/* harmony default export */ const Interpolation_EaseInEaseOut = (EaseInEaseOut_default_);
+/* harmony default export */ const Interpolation_EaseInEaseOut = (x_ite_Namespace .add ("EaseInEaseOut", EaseInEaseOut_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/PositionInterpolator.js
 /*******************************************************************************
  *
@@ -65354,6 +64849,7 @@ x_ite_Namespace .add ("EaseInEaseOut", "x_ite/Components/Interpolation/EaseInEas
 
 
 
+
 function PositionInterpolator (executionContext)
 {
    Interpolation_X3DInterpolatorNode .call (this, executionContext);
@@ -65391,26 +64887,7 @@ Object .assign (Object .setPrototypeOf (PositionInterpolator .prototype, Interpo
 
 Object .defineProperties (PositionInterpolator,
 {
-   typeName:
-   {
-      value: "PositionInterpolator",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Interpolation", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("PositionInterpolator", "Interpolation", 1, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -65427,8 +64904,7 @@ Object .defineProperties (PositionInterpolator,
 const PositionInterpolator_default_ = PositionInterpolator;
 ;
 
-x_ite_Namespace .add ("PositionInterpolator", "x_ite/Components/Interpolation/PositionInterpolator", PositionInterpolator_default_);
-/* harmony default export */ const Interpolation_PositionInterpolator = (PositionInterpolator_default_);
+/* harmony default export */ const Interpolation_PositionInterpolator = (x_ite_Namespace .add ("PositionInterpolator", PositionInterpolator_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/OrientationInterpolator.js
 /*******************************************************************************
  *
@@ -65484,6 +64960,7 @@ x_ite_Namespace .add ("PositionInterpolator", "x_ite/Components/Interpolation/Po
 
 
 
+
 function OrientationInterpolator (executionContext)
 {
    Interpolation_X3DInterpolatorNode .call (this, executionContext);
@@ -65530,26 +65007,7 @@ Object .assign (Object .setPrototypeOf (OrientationInterpolator .prototype, Inte
 
 Object .defineProperties (OrientationInterpolator,
 {
-   typeName:
-   {
-      value: "OrientationInterpolator",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Interpolation", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("OrientationInterpolator", "Interpolation", 1, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -65566,8 +65024,7 @@ Object .defineProperties (OrientationInterpolator,
 const OrientationInterpolator_default_ = OrientationInterpolator;
 ;
 
-x_ite_Namespace .add ("OrientationInterpolator", "x_ite/Components/Interpolation/OrientationInterpolator", OrientationInterpolator_default_);
-/* harmony default export */ const Interpolation_OrientationInterpolator = (OrientationInterpolator_default_);
+/* harmony default export */ const Interpolation_OrientationInterpolator = (x_ite_Namespace .add ("OrientationInterpolator", OrientationInterpolator_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/ScalarInterpolator.js
 /*******************************************************************************
  *
@@ -65623,6 +65080,7 @@ x_ite_Namespace .add ("OrientationInterpolator", "x_ite/Components/Interpolation
 
 
 
+
 function ScalarInterpolator (executionContext)
 {
    Interpolation_X3DInterpolatorNode .call (this, executionContext);
@@ -65655,26 +65113,7 @@ Object .assign (Object .setPrototypeOf (ScalarInterpolator .prototype, Interpola
 
 Object .defineProperties (ScalarInterpolator,
 {
-   typeName:
-   {
-      value: "ScalarInterpolator",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Interpolation", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ScalarInterpolator", "Interpolation", 1, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -65691,8 +65130,7 @@ Object .defineProperties (ScalarInterpolator,
 const ScalarInterpolator_default_ = ScalarInterpolator;
 ;
 
-x_ite_Namespace .add ("ScalarInterpolator", "x_ite/Components/Interpolation/ScalarInterpolator", ScalarInterpolator_default_);
-/* harmony default export */ const Interpolation_ScalarInterpolator = (ScalarInterpolator_default_);
+/* harmony default export */ const Interpolation_ScalarInterpolator = (x_ite_Namespace .add ("ScalarInterpolator", ScalarInterpolator_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Navigation/X3DViewpointNode.js
 /*******************************************************************************
  *
@@ -65740,6 +65178,7 @@ x_ite_Namespace .add ("ScalarInterpolator", "x_ite/Components/Interpolation/Scal
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -66282,25 +65721,12 @@ Object .assign (Object .setPrototypeOf (X3DViewpointNode .prototype, Core_X3DBin
    }
 });
 
-Object .defineProperties (X3DViewpointNode,
-{
-   typeName:
-   {
-      value: "X3DViewpointNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Navigation", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DViewpointNode, Core_X3DNode .getStaticProperties ("X3DViewpointNode", "Navigation", 1));
 
 const X3DViewpointNode_default_ = X3DViewpointNode;
 ;
 
-x_ite_Namespace .add ("X3DViewpointNode", "x_ite/Components/Navigation/X3DViewpointNode", X3DViewpointNode_default_);
-/* harmony default export */ const Navigation_X3DViewpointNode = (X3DViewpointNode_default_);
+/* harmony default export */ const Navigation_X3DViewpointNode = (x_ite_Namespace .add ("X3DViewpointNode", X3DViewpointNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Navigation/Viewpoint.js
 /*******************************************************************************
  *
@@ -66348,6 +65774,7 @@ x_ite_Namespace .add ("X3DViewpointNode", "x_ite/Components/Navigation/X3DViewpo
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -66468,26 +65895,7 @@ Object .assign (Object .setPrototypeOf (Viewpoint .prototype, Navigation_X3DView
 
 Object .defineProperties (Viewpoint,
 {
-   typeName:
-   {
-      value: "Viewpoint",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Navigation", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Viewpoint", "Navigation", 1, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -66514,8 +65922,7 @@ Object .defineProperties (Viewpoint,
 const Viewpoint_default_ = Viewpoint;
 ;
 
-x_ite_Namespace .add ("Viewpoint", "x_ite/Components/Navigation/Viewpoint", Viewpoint_default_);
-/* harmony default export */ const Navigation_Viewpoint = (Viewpoint_default_);
+/* harmony default export */ const Navigation_Viewpoint = (x_ite_Namespace .add ("Viewpoint", Viewpoint_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Layering/Layer.js
 /*******************************************************************************
  *
@@ -66572,6 +65979,7 @@ x_ite_Namespace .add ("Viewpoint", "x_ite/Components/Navigation/Viewpoint", View
 
 
 
+
 function Layer (executionContext)
 {
    Layering_X3DLayerNode .call (this,
@@ -66605,26 +66013,7 @@ Object .assign (Object .setPrototypeOf (Layer .prototype, Layering_X3DLayerNode 
 
 Object .defineProperties (Layer,
 {
-   typeName:
-   {
-      value: "Layer",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Layering", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "layers",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Layer", "Layering", 1, "layers", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -66644,8 +66033,7 @@ Object .defineProperties (Layer,
 const Layer_default_ = Layer;
 ;
 
-x_ite_Namespace .add ("Layer", "x_ite/Components/Layering/Layer", Layer_default_);
-/* harmony default export */ const Layering_Layer = (Layer_default_);
+/* harmony default export */ const Layering_Layer = (x_ite_Namespace .add ("Layer", Layer_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Layering/LayerSet.js
 /*******************************************************************************
  *
@@ -66821,26 +66209,7 @@ Object .assign (Object .setPrototypeOf (LayerSet .prototype, Core_X3DNode .proto
 
 Object .defineProperties (LayerSet,
 {
-   typeName:
-   {
-      value: "LayerSet",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Layering", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("LayerSet", "Layering", 1, "children", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -66856,8 +66225,7 @@ Object .defineProperties (LayerSet,
 const LayerSet_default_ = LayerSet;
 ;
 
-x_ite_Namespace .add ("LayerSet", "x_ite/Components/Layering/LayerSet", LayerSet_default_);
-/* harmony default export */ const Layering_LayerSet = (LayerSet_default_);
+/* harmony default export */ const Layering_LayerSet = (x_ite_Namespace .add ("LayerSet", LayerSet_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/X3DWorld.js
 /*******************************************************************************
  *
@@ -67021,10 +66389,9 @@ Base_X3DConstants .addConstant (X3DWorld .typeName);
 const X3DWorld_default_ = X3DWorld;
 ;
 
-x_ite_Namespace .add ("X3DWorld", "x_ite/Execution/X3DWorld", X3DWorld_default_);
-/* harmony default export */ const Execution_X3DWorld = (X3DWorld_default_);
+/* harmony default export */ const Execution_X3DWorld = (x_ite_Namespace .add ("X3DWorld", X3DWorld_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/InputOutput/FileLoader.js
-/* provided dependency */ var FileLoader_$ = __webpack_require__(812);
+/* provided dependency */ var FileLoader_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -67344,8 +66711,7 @@ for (const key of Object .keys (FileLoader .prototype))
 const FileLoader_default_ = FileLoader;
 ;
 
-x_ite_Namespace .add ("FileLoader", "x_ite/InputOutput/FileLoader", FileLoader_default_);
-/* harmony default export */ const InputOutput_FileLoader = (FileLoader_default_);
+/* harmony default export */ const InputOutput_FileLoader = (x_ite_Namespace .add ("FileLoader", FileLoader_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Prototype/X3DExternProtoDeclaration.js
 /*******************************************************************************
  *
@@ -67805,8 +67171,7 @@ Base_X3DConstants .addConstant (X3DExternProtoDeclaration .typeName);
 const X3DExternProtoDeclaration_default_ = X3DExternProtoDeclaration;
 ;
 
-x_ite_Namespace .add ("X3DExternProtoDeclaration", "x_ite/Prototype/X3DExternProtoDeclaration", X3DExternProtoDeclaration_default_);
-/* harmony default export */ const Prototype_X3DExternProtoDeclaration = (X3DExternProtoDeclaration_default_);
+/* harmony default export */ const Prototype_X3DExternProtoDeclaration = (x_ite_Namespace .add ("X3DExternProtoDeclaration", X3DExternProtoDeclaration_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Prototype/ExternProtoDeclarationArray.js
 /*******************************************************************************
  *
@@ -67880,8 +67245,7 @@ Object .defineProperties (ExternProtoDeclarationArray,
 const ExternProtoDeclarationArray_default_ = ExternProtoDeclarationArray;
 ;
 
-x_ite_Namespace .add ("ExternProtoDeclarationArray", "x_ite/Prototype/ExternProtoDeclarationArray", ExternProtoDeclarationArray_default_);
-/* harmony default export */ const Prototype_ExternProtoDeclarationArray = (ExternProtoDeclarationArray_default_);
+/* harmony default export */ const Prototype_ExternProtoDeclarationArray = (x_ite_Namespace .add ("ExternProtoDeclarationArray", ExternProtoDeclarationArray_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Prototype/ProtoDeclarationArray.js
 /*******************************************************************************
  *
@@ -67955,10 +67319,9 @@ Object .defineProperties (ProtoDeclarationArray,
 const ProtoDeclarationArray_default_ = ProtoDeclarationArray;
 ;
 
-x_ite_Namespace .add ("ProtoDeclarationArray", "x_ite/Prototype/ProtoDeclarationArray", ProtoDeclarationArray_default_);
-/* harmony default export */ const Prototype_ProtoDeclarationArray = (ProtoDeclarationArray_default_);
+/* harmony default export */ const Prototype_ProtoDeclarationArray = (x_ite_Namespace .add ("ProtoDeclarationArray", ProtoDeclarationArray_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Routing/X3DRoute.js
-/* provided dependency */ var X3DRoute_$ = __webpack_require__(812);
+/* provided dependency */ var X3DRoute_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -68419,8 +67782,7 @@ Object .assign (X3DRoute,
 const X3DRoute_default_ = X3DRoute;
 ;
 
-x_ite_Namespace .add ("X3DRoute", "x_ite/Routing/X3DRoute", X3DRoute_default_);
-/* harmony default export */ const Routing_X3DRoute = (X3DRoute_default_);
+/* harmony default export */ const Routing_X3DRoute = (x_ite_Namespace .add ("X3DRoute", X3DRoute_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Routing/RouteArray.js
 /*******************************************************************************
  *
@@ -68494,8 +67856,7 @@ Object .defineProperties (RouteArray,
 const RouteArray_default_ = RouteArray;
 ;
 
-x_ite_Namespace .add ("RouteArray", "x_ite/Routing/RouteArray", RouteArray_default_);
-/* harmony default export */ const Routing_RouteArray = (RouteArray_default_);
+/* harmony default export */ const Routing_RouteArray = (x_ite_Namespace .add ("RouteArray", RouteArray_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/X3DExecutionContext.js
 /*******************************************************************************
  *
@@ -69495,8 +68856,7 @@ Base_X3DConstants .addConstant (X3DExecutionContext .typeName);
 const X3DExecutionContext_default_ = X3DExecutionContext;
 ;
 
-x_ite_Namespace .add ("X3DExecutionContext", "x_ite/Execution/X3DExecutionContext", X3DExecutionContext_default_);
-/* harmony default export */ const Execution_X3DExecutionContext = (X3DExecutionContext_default_);
+/* harmony default export */ const Execution_X3DExecutionContext = (x_ite_Namespace .add ("X3DExecutionContext", X3DExecutionContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Core/X3DPrototypeInstance.js
 /*******************************************************************************
  *
@@ -70557,36 +69917,13 @@ Object .assign (Object .setPrototypeOf (X3DPrototypeInstance .prototype, Core_X3
    },
 });
 
-Object .defineProperties (X3DPrototypeInstance,
-{
-   typeName:
-   {
-      value: "X3DPrototypeInstance",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Core", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DPrototypeInstance, Core_X3DNode .getStaticProperties ("X3DPrototypeInstance", "Core", 2, "children", "2.0"));
 
 const X3DPrototypeInstance_default_ = X3DPrototypeInstance;
 ;
 
-x_ite_Namespace .add ("X3DPrototypeInstance", "x_ite/Components/Core/X3DPrototypeInstance", X3DPrototypeInstance_default_);
-/* harmony default export */ const Core_X3DPrototypeInstance = (X3DPrototypeInstance_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/Core.js
+/* harmony default export */ const Core_X3DPrototypeInstance = (x_ite_Namespace .add ("X3DPrototypeInstance", X3DPrototypeInstance_default_));
+;// CONCATENATED MODULE: ./src/x_ite/Components/CoreComponent.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -70649,7 +69986,7 @@ x_ite_Namespace .add ("X3DPrototypeInstance", "x_ite/Components/Core/X3DPrototyp
 
 
 
-const Core_default_ = {
+const CoreComponent_default_ = {
    name: "Core",
    concreteNodes:
    [
@@ -70674,8 +70011,7 @@ const Core_default_ = {
 };
 ;
 
-x_ite_Namespace .add ("Core", "x_ite/Components/Core", Core_default_);
-/* harmony default export */ const Core = (Core_default_);
+/* harmony default export */ const CoreComponent = (x_ite_Namespace .add ("CoreComponent", CoreComponent_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/X3DGeometricPropertyNode.js
 /*******************************************************************************
  *
@@ -70736,25 +70072,12 @@ function X3DGeometricPropertyNode (executionContext)
 
 Object .setPrototypeOf (X3DGeometricPropertyNode .prototype, Core_X3DNode .prototype);
 
-Object .defineProperties (X3DGeometricPropertyNode,
-{
-   typeName:
-   {
-      value: "X3DGeometricPropertyNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DGeometricPropertyNode, Core_X3DNode .getStaticProperties ("X3DGeometricPropertyNode", "Rendering", 1));
 
 const X3DGeometricPropertyNode_default_ = X3DGeometricPropertyNode;
 ;
 
-x_ite_Namespace .add ("X3DGeometricPropertyNode", "x_ite/Components/Rendering/X3DGeometricPropertyNode", X3DGeometricPropertyNode_default_);
-/* harmony default export */ const Rendering_X3DGeometricPropertyNode = (X3DGeometricPropertyNode_default_);
+/* harmony default export */ const Rendering_X3DGeometricPropertyNode = (x_ite_Namespace .add ("X3DGeometricPropertyNode", X3DGeometricPropertyNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalEffects/FogCoordinate.js
 /*******************************************************************************
  *
@@ -70802,6 +70125,7 @@ x_ite_Namespace .add ("X3DGeometricPropertyNode", "x_ite/Components/Rendering/X3
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -70875,26 +70199,7 @@ Object .assign (Object .setPrototypeOf (FogCoordinate .prototype, Rendering_X3DG
 
 Object .defineProperties (FogCoordinate,
 {
-   typeName:
-   {
-      value: "FogCoordinate",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "EnvironmentalEffects", level: 4 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "fogCoord",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("FogCoordinate", "EnvironmentalEffects", 4, "fogCoord", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -70908,8 +70213,7 @@ Object .defineProperties (FogCoordinate,
 const FogCoordinate_default_ = FogCoordinate;
 ;
 
-x_ite_Namespace .add ("FogCoordinate", "x_ite/Components/EnvironmentalEffects/FogCoordinate", FogCoordinate_default_);
-/* harmony default export */ const EnvironmentalEffects_FogCoordinate = (FogCoordinate_default_);
+/* harmony default export */ const EnvironmentalEffects_FogCoordinate = (x_ite_Namespace .add ("FogCoordinate", FogCoordinate_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalEffects/LocalFog.js
 /*******************************************************************************
  *
@@ -70965,6 +70269,7 @@ x_ite_Namespace .add ("FogCoordinate", "x_ite/Components/EnvironmentalEffects/Fo
 
 
 
+
 function LocalFog (executionContext)
 {
    Core_X3DChildNode .call (this, executionContext);
@@ -71006,26 +70311,7 @@ Object .assign (Object .setPrototypeOf (LocalFog .prototype, Core_X3DChildNode .
 
 Object .defineProperties (LocalFog,
 {
-   typeName:
-   {
-      value: "LocalFog",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "EnvironmentalEffects", level: 4 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("LocalFog", "EnvironmentalEffects", 4, "children", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -71042,8 +70328,7 @@ Object .defineProperties (LocalFog,
 const LocalFog_default_ = LocalFog;
 ;
 
-x_ite_Namespace .add ("LocalFog", "x_ite/Components/EnvironmentalEffects/LocalFog", LocalFog_default_);
-/* harmony default export */ const EnvironmentalEffects_LocalFog = (LocalFog_default_);
+/* harmony default export */ const EnvironmentalEffects_LocalFog = (x_ite_Namespace .add ("LocalFog", LocalFog_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalEffects/TextureBackground.js
 /*******************************************************************************
  *
@@ -71100,6 +70385,7 @@ x_ite_Namespace .add ("LocalFog", "x_ite/Components/EnvironmentalEffects/LocalFo
 
 
 
+
 function TextureBackground (executionContext)
 {
    EnvironmentalEffects_X3DBackgroundNode .call (this, executionContext);
@@ -71135,26 +70421,7 @@ Object .assign (Object .setPrototypeOf (TextureBackground .prototype, Environmen
 
 Object .defineProperties (TextureBackground,
 {
-   typeName:
-   {
-      value: "TextureBackground",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "EnvironmentalEffects", level: 3 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("TextureBackground", "EnvironmentalEffects", 3, "children", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -71181,9 +70448,8 @@ Object .defineProperties (TextureBackground,
 const TextureBackground_default_ = TextureBackground;
 ;
 
-x_ite_Namespace .add ("TextureBackground", "x_ite/Components/EnvironmentalEffects/TextureBackground", TextureBackground_default_);
-/* harmony default export */ const EnvironmentalEffects_TextureBackground = (TextureBackground_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalEffects.js
+/* harmony default export */ const EnvironmentalEffects_TextureBackground = (x_ite_Namespace .add ("TextureBackground", TextureBackground_default_));
+;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalEffectsComponent.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -71239,7 +70505,7 @@ x_ite_Namespace .add ("TextureBackground", "x_ite/Components/EnvironmentalEffect
 
 
 
-const EnvironmentalEffects_default_ = {
+const EnvironmentalEffectsComponent_default_ = {
    name: "EnvironmentalEffects",
    concreteNodes:
    [
@@ -71257,8 +70523,7 @@ const EnvironmentalEffects_default_ = {
 };
 ;
 
-x_ite_Namespace .add ("EnvironmentalEffects", "x_ite/Components/EnvironmentalEffects", EnvironmentalEffects_default_);
-/* harmony default export */ const EnvironmentalEffects = (EnvironmentalEffects_default_);
+/* harmony default export */ const EnvironmentalEffectsComponent = (x_ite_Namespace .add ("EnvironmentalEffectsComponent", EnvironmentalEffectsComponent_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalSensor/X3DEnvironmentalSensorNode.js
 /*******************************************************************************
  *
@@ -71306,6 +70571,7 @@ x_ite_Namespace .add ("EnvironmentalEffects", "x_ite/Components/EnvironmentalEff
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -71388,25 +70654,12 @@ Object .assign (Object .setPrototypeOf (X3DEnvironmentalSensorNode .prototype, C
    update () { },
 });
 
-Object .defineProperties (X3DEnvironmentalSensorNode,
-{
-   typeName:
-   {
-      value: "X3DEnvironmentalSensorNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "EnvironmentalSensor", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DEnvironmentalSensorNode, Core_X3DNode .getStaticProperties ("X3DEnvironmentalSensorNode", "EnvironmentalSensor", 1));
 
 const X3DEnvironmentalSensorNode_default_ = X3DEnvironmentalSensorNode;
 ;
 
-x_ite_Namespace .add ("X3DEnvironmentalSensorNode", "x_ite/Components/EnvironmentalSensor/X3DEnvironmentalSensorNode", X3DEnvironmentalSensorNode_default_);
-/* harmony default export */ const EnvironmentalSensor_X3DEnvironmentalSensorNode = (X3DEnvironmentalSensorNode_default_);
+/* harmony default export */ const EnvironmentalSensor_X3DEnvironmentalSensorNode = (x_ite_Namespace .add ("X3DEnvironmentalSensorNode", X3DEnvironmentalSensorNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalSensor/ProximitySensor.js
 /*******************************************************************************
  *
@@ -71454,6 +70707,7 @@ x_ite_Namespace .add ("X3DEnvironmentalSensorNode", "x_ite/Components/Environmen
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -71539,6 +70793,7 @@ Object .assign (Object .setPrototypeOf (ProximitySensor .prototype, Environmenta
             if (this .layerNode)
             {
                const
+                  pose           = this .getBrowser () .getPose (),
                   viewpointNode  = this .layerNode .getViewpoint (),
                   invModelMatrix = this .modelMatrix .inverse ()
 
@@ -71548,9 +70803,12 @@ Object .assign (Object .setPrototypeOf (ProximitySensor .prototype, Environmenta
                   .multRight (invModelMatrix)
                   .get (centerOfRotation);
 
-               invModelMatrix
-                  .multLeft (viewpointNode .getCameraSpaceMatrix ())
-                  .get (position, orientation);
+               if (pose && this .layerNode .isActive ())
+                  invModelMatrix .multLeft (pose .cameraSpaceMatrix);
+               else
+                  invModelMatrix .multLeft (viewpointNode .getCameraSpaceMatrix ());
+
+               invModelMatrix .get (position, orientation);
 
                if (this ._isActive .getValue ())
                {
@@ -71644,26 +70902,7 @@ Object .assign (Object .setPrototypeOf (ProximitySensor .prototype, Environmenta
 
 Object .defineProperties (ProximitySensor,
 {
-   typeName:
-   {
-      value: "ProximitySensor",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "EnvironmentalSensor", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ProximitySensor", "EnvironmentalSensor", 1, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -71686,8 +70925,7 @@ Object .defineProperties (ProximitySensor,
 const ProximitySensor_default_ = ProximitySensor;
 ;
 
-x_ite_Namespace .add ("ProximitySensor", "x_ite/Components/EnvironmentalSensor/ProximitySensor", ProximitySensor_default_);
-/* harmony default export */ const EnvironmentalSensor_ProximitySensor = (ProximitySensor_default_);
+/* harmony default export */ const EnvironmentalSensor_ProximitySensor = (x_ite_Namespace .add ("ProximitySensor", ProximitySensor_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalSensor/TransformSensor.js
 /*******************************************************************************
  *
@@ -71735,6 +70973,7 @@ x_ite_Namespace .add ("ProximitySensor", "x_ite/Components/EnvironmentalSensor/P
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -71969,26 +71208,7 @@ Object .assign (Object .setPrototypeOf (TransformSensor .prototype, Environmenta
 
 Object .defineProperties (TransformSensor,
 {
-   typeName:
-   {
-      value: "TransformSensor",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "EnvironmentalSensor", level: 3 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("TransformSensor", "EnvironmentalSensor", 3, "children", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -72011,8 +71231,7 @@ Object .defineProperties (TransformSensor,
 const TransformSensor_default_ = TransformSensor;
 ;
 
-x_ite_Namespace .add ("TransformSensor", "x_ite/Components/EnvironmentalSensor/TransformSensor", TransformSensor_default_);
-/* harmony default export */ const EnvironmentalSensor_TransformSensor = (TransformSensor_default_);
+/* harmony default export */ const EnvironmentalSensor_TransformSensor = (x_ite_Namespace .add ("TransformSensor", TransformSensor_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalSensor/VisibilitySensor.js
 /*******************************************************************************
  *
@@ -72060,6 +71279,7 @@ x_ite_Namespace .add ("TransformSensor", "x_ite/Components/EnvironmentalSensor/T
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -72155,26 +71375,7 @@ Object .assign (Object .setPrototypeOf (VisibilitySensor .prototype, Environment
 
 Object .defineProperties (VisibilitySensor,
 {
-   typeName:
-   {
-      value: "VisibilitySensor",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "EnvironmentalSensor", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("VisibilitySensor", "EnvironmentalSensor", 2, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -72194,9 +71395,8 @@ Object .defineProperties (VisibilitySensor,
 const VisibilitySensor_default_ = VisibilitySensor;
 ;
 
-x_ite_Namespace .add ("VisibilitySensor", "x_ite/Components/EnvironmentalSensor/VisibilitySensor", VisibilitySensor_default_);
-/* harmony default export */ const EnvironmentalSensor_VisibilitySensor = (VisibilitySensor_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalSensor.js
+/* harmony default export */ const EnvironmentalSensor_VisibilitySensor = (x_ite_Namespace .add ("VisibilitySensor", VisibilitySensor_default_));
+;// CONCATENATED MODULE: ./src/x_ite/Components/EnvironmentalSensorComponent.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -72249,7 +71449,7 @@ x_ite_Namespace .add ("VisibilitySensor", "x_ite/Components/EnvironmentalSensor/
 
 
 
-const EnvironmentalSensor_default_ = {
+const EnvironmentalSensorComponent_default_ = {
    name: "EnvironmentalSensor",
    concreteNodes:
    [
@@ -72264,8 +71464,7 @@ const EnvironmentalSensor_default_ = {
 };
 ;
 
-x_ite_Namespace .add ("EnvironmentalSensor", "x_ite/Components/EnvironmentalSensor", EnvironmentalSensor_default_);
-/* harmony default export */ const EnvironmentalSensor = (EnvironmentalSensor_default_);
+/* harmony default export */ const EnvironmentalSensorComponent = (x_ite_Namespace .add ("EnvironmentalSensorComponent", EnvironmentalSensorComponent_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/X3DFollowerNode.js
 /*******************************************************************************
  *
@@ -72313,6 +71512,7 @@ x_ite_Namespace .add ("EnvironmentalSensor", "x_ite/Components/EnvironmentalSens
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -72403,25 +71603,12 @@ Object .assign (Object .setPrototypeOf (X3DFollowerNode .prototype, Core_X3DChil
    },
 });
 
-Object .defineProperties (X3DFollowerNode,
-{
-   typeName:
-   {
-      value: "X3DFollowerNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Followers", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DFollowerNode, Core_X3DNode .getStaticProperties ("X3DFollowerNode", "Followers", 1));
 
 const X3DFollowerNode_default_ = X3DFollowerNode;
 ;
 
-x_ite_Namespace .add ("X3DFollowerNode", "x_ite/Components/Followers/X3DFollowerNode", X3DFollowerNode_default_);
-/* harmony default export */ const Followers_X3DFollowerNode = (X3DFollowerNode_default_);
+/* harmony default export */ const Followers_X3DFollowerNode = (x_ite_Namespace .add ("X3DFollowerNode", X3DFollowerNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/X3DChaserNode.js
 /*******************************************************************************
  *
@@ -72469,6 +71656,7 @@ x_ite_Namespace .add ("X3DFollowerNode", "x_ite/Components/Followers/X3DFollower
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -72649,25 +71837,12 @@ Object .assign (Object .setPrototypeOf (X3DChaserNode .prototype, Followers_X3DF
    },
 });
 
-Object .defineProperties (X3DChaserNode,
-{
-   typeName:
-   {
-      value: "X3DChaserNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Followers", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DChaserNode, Core_X3DNode .getStaticProperties ("X3DChaserNode", "Followers", 1));
 
 const X3DChaserNode_default_ = X3DChaserNode;
 ;
 
-x_ite_Namespace .add ("X3DChaserNode", "x_ite/Components/Followers/X3DChaserNode", X3DChaserNode_default_);
-/* harmony default export */ const Followers_X3DChaserNode = (X3DChaserNode_default_);
+/* harmony default export */ const Followers_X3DChaserNode = (x_ite_Namespace .add ("X3DChaserNode", X3DChaserNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/ColorChaser.js
 /*******************************************************************************
  *
@@ -72715,6 +71890,7 @@ x_ite_Namespace .add ("X3DChaserNode", "x_ite/Components/Followers/X3DChaserNode
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -72779,26 +71955,7 @@ Object .assign (Object .setPrototypeOf (ColorChaser .prototype, Followers_X3DCha
 
 Object .defineProperties (ColorChaser,
 {
-   typeName:
-   {
-      value: "ColorChaser",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Followers", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ColorChaser", "Followers", 1, "children", "3.3"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -72818,8 +71975,7 @@ Object .defineProperties (ColorChaser,
 const ColorChaser_default_ = ColorChaser;
 ;
 
-x_ite_Namespace .add ("ColorChaser", "x_ite/Components/Followers/ColorChaser", ColorChaser_default_);
-/* harmony default export */ const Followers_ColorChaser = (ColorChaser_default_);
+/* harmony default export */ const Followers_ColorChaser = (x_ite_Namespace .add ("ColorChaser", ColorChaser_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/X3DDamperNode.js
 /*******************************************************************************
  *
@@ -72867,6 +72023,7 @@ x_ite_Namespace .add ("ColorChaser", "x_ite/Components/Followers/ColorChaser", C
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -72982,25 +72139,12 @@ Object .assign (Object .setPrototypeOf (X3DDamperNode .prototype, Followers_X3DF
    },
 });
 
-Object .defineProperties (X3DDamperNode,
-{
-   typeName:
-   {
-      value: "X3DDamperNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Followers", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DDamperNode, Core_X3DNode .getStaticProperties ("X3DDamperNode", "Followers", 1));
 
 const X3DDamperNode_default_ = X3DDamperNode;
 ;
 
-x_ite_Namespace .add ("X3DDamperNode", "x_ite/Components/Followers/X3DDamperNode", X3DDamperNode_default_);
-/* harmony default export */ const Followers_X3DDamperNode = (X3DDamperNode_default_);
+/* harmony default export */ const Followers_X3DDamperNode = (x_ite_Namespace .add ("X3DDamperNode", X3DDamperNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/ColorDamper.js
 /*******************************************************************************
  *
@@ -73048,6 +72192,7 @@ x_ite_Namespace .add ("X3DDamperNode", "x_ite/Components/Followers/X3DDamperNode
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -73108,26 +72253,7 @@ Object .assign (Object .setPrototypeOf (ColorDamper .prototype, Followers_X3DDam
 
 Object .defineProperties (ColorDamper,
 {
-   typeName:
-   {
-      value: "ColorDamper",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Followers", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ColorDamper", "Followers", 1, "children", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -73149,8 +72275,7 @@ Object .defineProperties (ColorDamper,
 const ColorDamper_default_ = ColorDamper;
 ;
 
-x_ite_Namespace .add ("ColorDamper", "x_ite/Components/Followers/ColorDamper", ColorDamper_default_);
-/* harmony default export */ const Followers_ColorDamper = (ColorDamper_default_);
+/* harmony default export */ const Followers_ColorDamper = (x_ite_Namespace .add ("ColorDamper", ColorDamper_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Followers/X3DArrayFollowerTemplate.js
 /*******************************************************************************
  *
@@ -73330,8 +72455,7 @@ function X3DArrayFollowerTemplate (Type)
 const X3DArrayFollowerTemplate_default_ = X3DArrayFollowerTemplate;
 ;
 
-x_ite_Namespace .add ("X3DArrayFollowerTemplate", "x_ite/Browser/Followers/X3DArrayFollowerTemplate", X3DArrayFollowerTemplate_default_);
-/* harmony default export */ const Followers_X3DArrayFollowerTemplate = (X3DArrayFollowerTemplate_default_);
+/* harmony default export */ const Followers_X3DArrayFollowerTemplate = (x_ite_Namespace .add ("X3DArrayFollowerTemplate", X3DArrayFollowerTemplate_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Followers/X3DArrayChaserTemplate.js
 /*******************************************************************************
  *
@@ -73413,8 +72537,7 @@ function X3DArrayChaserTemplate (Type)
 const X3DArrayChaserTemplate_default_ = X3DArrayChaserTemplate;
 ;
 
-x_ite_Namespace .add ("X3DArrayChaserTemplate", "x_ite/Browser/Followers/X3DArrayChaserTemplate", X3DArrayChaserTemplate_default_);
-/* harmony default export */ const Followers_X3DArrayChaserTemplate = (X3DArrayChaserTemplate_default_);
+/* harmony default export */ const Followers_X3DArrayChaserTemplate = (x_ite_Namespace .add ("X3DArrayChaserTemplate", X3DArrayChaserTemplate_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/CoordinateChaser.js
 /*******************************************************************************
  *
@@ -73471,6 +72594,7 @@ x_ite_Namespace .add ("X3DArrayChaserTemplate", "x_ite/Browser/Followers/X3DArra
 
 
 
+
 var X3DArrayChaserObject = Followers_X3DArrayChaserTemplate (Followers_X3DChaserNode);
 
 function CoordinateChaser (executionContext)
@@ -73492,26 +72616,7 @@ Object .assign (Object .setPrototypeOf (CoordinateChaser .prototype, Followers_X
 
 Object .defineProperties (CoordinateChaser,
 {
-   typeName:
-   {
-      value: "CoordinateChaser",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Followers", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("CoordinateChaser", "Followers", 1, "children", "3.3"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -73531,8 +72636,7 @@ Object .defineProperties (CoordinateChaser,
 const CoordinateChaser_default_ = CoordinateChaser;
 ;
 
-x_ite_Namespace .add ("CoordinateChaser", "x_ite/Components/Followers/CoordinateChaser", CoordinateChaser_default_);
-/* harmony default export */ const Followers_CoordinateChaser = (CoordinateChaser_default_);
+/* harmony default export */ const Followers_CoordinateChaser = (x_ite_Namespace .add ("CoordinateChaser", CoordinateChaser_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/CoordinateDamper.js
 /*******************************************************************************
  *
@@ -73589,6 +72693,7 @@ x_ite_Namespace .add ("CoordinateChaser", "x_ite/Components/Followers/Coordinate
 
 
 
+
 var X3DArrayFollowerObject = Followers_X3DArrayFollowerTemplate (Followers_X3DDamperNode);
 
 function CoordinateDamper (executionContext)
@@ -73610,26 +72715,7 @@ Object .assign (Object .setPrototypeOf (CoordinateDamper .prototype, Followers_X
 
 Object .defineProperties (CoordinateDamper,
 {
-   typeName:
-   {
-      value: "CoordinateDamper",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Followers", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("CoordinateDamper", "Followers", 1, "children", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -73651,8 +72737,7 @@ Object .defineProperties (CoordinateDamper,
 const CoordinateDamper_default_ = CoordinateDamper;
 ;
 
-x_ite_Namespace .add ("CoordinateDamper", "x_ite/Components/Followers/CoordinateDamper", CoordinateDamper_default_);
-/* harmony default export */ const Followers_CoordinateDamper = (CoordinateDamper_default_);
+/* harmony default export */ const Followers_CoordinateDamper = (x_ite_Namespace .add ("CoordinateDamper", CoordinateDamper_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/OrientationChaser.js
 /*******************************************************************************
  *
@@ -73708,6 +72793,7 @@ x_ite_Namespace .add ("CoordinateDamper", "x_ite/Components/Followers/Coordinate
 
 
 
+
 var
    OrientationChaser_a        = new Numbers_Rotation4 (),
    rotation = new Numbers_Rotation4 ();
@@ -73751,26 +72837,7 @@ Object .assign (Object .setPrototypeOf (OrientationChaser .prototype, Followers_
 
 Object .defineProperties (OrientationChaser,
 {
-   typeName:
-   {
-      value: "OrientationChaser",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Followers", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("OrientationChaser", "Followers", 1, "children", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -73790,8 +72857,7 @@ Object .defineProperties (OrientationChaser,
 const OrientationChaser_default_ = OrientationChaser;
 ;
 
-x_ite_Namespace .add ("OrientationChaser", "x_ite/Components/Followers/OrientationChaser", OrientationChaser_default_);
-/* harmony default export */ const Followers_OrientationChaser = (OrientationChaser_default_);
+/* harmony default export */ const Followers_OrientationChaser = (x_ite_Namespace .add ("OrientationChaser", OrientationChaser_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/OrientationDamper.js
 /*******************************************************************************
  *
@@ -73847,6 +72913,7 @@ x_ite_Namespace .add ("OrientationChaser", "x_ite/Components/Followers/Orientati
 
 
 
+
 var
    OrientationDamper_a        = new Numbers_Rotation4 (),
    OrientationDamper_rotation = new Numbers_Rotation4 ();
@@ -73884,26 +72951,7 @@ Object .assign (Object .setPrototypeOf (OrientationDamper .prototype, Followers_
 
 Object .defineProperties (OrientationDamper,
 {
-   typeName:
-   {
-      value: "OrientationDamper",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Followers", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("OrientationDamper", "Followers", 1, "children", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -73925,8 +72973,7 @@ Object .defineProperties (OrientationDamper,
 const OrientationDamper_default_ = OrientationDamper;
 ;
 
-x_ite_Namespace .add ("OrientationDamper", "x_ite/Components/Followers/OrientationDamper", OrientationDamper_default_);
-/* harmony default export */ const Followers_OrientationDamper = (OrientationDamper_default_);
+/* harmony default export */ const Followers_OrientationDamper = (x_ite_Namespace .add ("OrientationDamper", OrientationDamper_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/PositionChaser.js
 /*******************************************************************************
  *
@@ -73982,6 +73029,7 @@ x_ite_Namespace .add ("OrientationDamper", "x_ite/Components/Followers/Orientati
 
 
 
+
 function PositionChaser (executionContext)
 {
    Followers_X3DChaserNode .call (this, executionContext);
@@ -73999,26 +73047,7 @@ Object .assign (Object .setPrototypeOf (PositionChaser .prototype, Followers_X3D
 
 Object .defineProperties (PositionChaser,
 {
-   typeName:
-   {
-      value: "PositionChaser",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Followers", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("PositionChaser", "Followers", 1, "children", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -74038,8 +73067,7 @@ Object .defineProperties (PositionChaser,
 const PositionChaser_default_ = PositionChaser;
 ;
 
-x_ite_Namespace .add ("PositionChaser", "x_ite/Components/Followers/PositionChaser", PositionChaser_default_);
-/* harmony default export */ const Followers_PositionChaser = (PositionChaser_default_);
+/* harmony default export */ const Followers_PositionChaser = (x_ite_Namespace .add ("PositionChaser", PositionChaser_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/PositionChaser2D.js
 /*******************************************************************************
  *
@@ -74095,6 +73123,7 @@ x_ite_Namespace .add ("PositionChaser", "x_ite/Components/Followers/PositionChas
 
 
 
+
 function PositionChaser2D (executionContext)
 {
    Followers_X3DChaserNode .call (this, executionContext);
@@ -74112,26 +73141,7 @@ Object .assign (Object .setPrototypeOf (PositionChaser2D .prototype, Followers_X
 
 Object .defineProperties (PositionChaser2D,
 {
-   typeName:
-   {
-      value: "PositionChaser2D",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Followers", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("PositionChaser2D", "Followers", 1, "children", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -74151,8 +73161,7 @@ Object .defineProperties (PositionChaser2D,
 const PositionChaser2D_default_ = PositionChaser2D;
 ;
 
-x_ite_Namespace .add ("PositionChaser2D", "x_ite/Components/Followers/PositionChaser2D", PositionChaser2D_default_);
-/* harmony default export */ const Followers_PositionChaser2D = (PositionChaser2D_default_);
+/* harmony default export */ const Followers_PositionChaser2D = (x_ite_Namespace .add ("PositionChaser2D", PositionChaser2D_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/PositionDamper.js
 /*******************************************************************************
  *
@@ -74208,6 +73217,7 @@ x_ite_Namespace .add ("PositionChaser2D", "x_ite/Components/Followers/PositionCh
 
 
 
+
 function PositionDamper (executionContext)
 {
    Followers_X3DDamperNode .call (this, executionContext);
@@ -74225,26 +73235,7 @@ Object .assign (Object .setPrototypeOf (PositionDamper .prototype, Followers_X3D
 
 Object .defineProperties (PositionDamper,
 {
-   typeName:
-   {
-      value: "PositionDamper",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Followers", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("PositionDamper", "Followers", 1, "children", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -74266,8 +73257,7 @@ Object .defineProperties (PositionDamper,
 const PositionDamper_default_ = PositionDamper;
 ;
 
-x_ite_Namespace .add ("PositionDamper", "x_ite/Components/Followers/PositionDamper", PositionDamper_default_);
-/* harmony default export */ const Followers_PositionDamper = (PositionDamper_default_);
+/* harmony default export */ const Followers_PositionDamper = (x_ite_Namespace .add ("PositionDamper", PositionDamper_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/PositionDamper2D.js
 /*******************************************************************************
  *
@@ -74323,6 +73313,7 @@ x_ite_Namespace .add ("PositionDamper", "x_ite/Components/Followers/PositionDamp
 
 
 
+
 function PositionDamper2D (executionContext)
 {
    Followers_X3DDamperNode .call (this, executionContext);
@@ -74340,26 +73331,7 @@ Object .assign (Object .setPrototypeOf (PositionDamper2D .prototype, Followers_X
 
 Object .defineProperties (PositionDamper2D,
 {
-   typeName:
-   {
-      value: "PositionDamper2D",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Followers", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("PositionDamper2D", "Followers", 1, "children", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -74381,8 +73353,7 @@ Object .defineProperties (PositionDamper2D,
 const PositionDamper2D_default_ = PositionDamper2D;
 ;
 
-x_ite_Namespace .add ("PositionDamper2D", "x_ite/Components/Followers/PositionDamper2D", PositionDamper2D_default_);
-/* harmony default export */ const Followers_PositionDamper2D = (PositionDamper2D_default_);
+/* harmony default export */ const Followers_PositionDamper2D = (x_ite_Namespace .add ("PositionDamper2D", PositionDamper2D_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/ScalarChaser.js
 /*******************************************************************************
  *
@@ -74438,6 +73409,7 @@ x_ite_Namespace .add ("PositionDamper2D", "x_ite/Components/Followers/PositionDa
 
 
 
+
 function ScalarChaser (executionContext)
 {
    Followers_X3DChaserNode .call (this, executionContext);
@@ -74483,26 +73455,7 @@ Object .assign (Object .setPrototypeOf (ScalarChaser .prototype, Followers_X3DCh
 
 Object .defineProperties (ScalarChaser,
 {
-   typeName:
-   {
-      value: "ScalarChaser",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Followers", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ScalarChaser", "Followers", 1, "children", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -74522,8 +73475,7 @@ Object .defineProperties (ScalarChaser,
 const ScalarChaser_default_ = ScalarChaser;
 ;
 
-x_ite_Namespace .add ("ScalarChaser", "x_ite/Components/Followers/ScalarChaser", ScalarChaser_default_);
-/* harmony default export */ const Followers_ScalarChaser = (ScalarChaser_default_);
+/* harmony default export */ const Followers_ScalarChaser = (x_ite_Namespace .add ("ScalarChaser", ScalarChaser_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/ScalarDamper.js
 /*******************************************************************************
  *
@@ -74579,6 +73531,7 @@ x_ite_Namespace .add ("ScalarChaser", "x_ite/Components/Followers/ScalarChaser",
 
 
 
+
 function ScalarDamper (executionContext)
 {
    Followers_X3DDamperNode .call (this, executionContext);
@@ -74612,26 +73565,7 @@ Object .assign (Object .setPrototypeOf (ScalarDamper .prototype, Followers_X3DDa
 
 Object .defineProperties (ScalarDamper,
 {
-   typeName:
-   {
-      value: "ScalarDamper",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Followers", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ScalarDamper", "Followers", 1, "children", "3.3"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -74653,8 +73587,7 @@ Object .defineProperties (ScalarDamper,
 const ScalarDamper_default_ = ScalarDamper;
 ;
 
-x_ite_Namespace .add ("ScalarDamper", "x_ite/Components/Followers/ScalarDamper", ScalarDamper_default_);
-/* harmony default export */ const Followers_ScalarDamper = (ScalarDamper_default_);
+/* harmony default export */ const Followers_ScalarDamper = (x_ite_Namespace .add ("ScalarDamper", ScalarDamper_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/TexCoordChaser2D.js
 /*******************************************************************************
  *
@@ -74711,6 +73644,7 @@ x_ite_Namespace .add ("ScalarDamper", "x_ite/Components/Followers/ScalarDamper",
 
 
 
+
 var TexCoordChaser2D_X3DArrayChaserObject = Followers_X3DArrayChaserTemplate (Followers_X3DChaserNode);
 
 function TexCoordChaser2D (executionContext)
@@ -74732,26 +73666,7 @@ Object .assign (Object .setPrototypeOf (TexCoordChaser2D .prototype, Followers_X
 
 Object .defineProperties (TexCoordChaser2D,
 {
-   typeName:
-   {
-      value: "TexCoordChaser2D",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Followers", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.3", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("TexCoordChaser2D", "Followers", 1, "children", "3.3"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -74771,8 +73686,7 @@ Object .defineProperties (TexCoordChaser2D,
 const TexCoordChaser2D_default_ = TexCoordChaser2D;
 ;
 
-x_ite_Namespace .add ("TexCoordChaser2D", "x_ite/Components/Followers/TexCoordChaser2D", TexCoordChaser2D_default_);
-/* harmony default export */ const Followers_TexCoordChaser2D = (TexCoordChaser2D_default_);
+/* harmony default export */ const Followers_TexCoordChaser2D = (x_ite_Namespace .add ("TexCoordChaser2D", TexCoordChaser2D_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Followers/TexCoordDamper2D.js
 /*******************************************************************************
  *
@@ -74829,6 +73743,7 @@ x_ite_Namespace .add ("TexCoordChaser2D", "x_ite/Components/Followers/TexCoordCh
 
 
 
+
 var TexCoordDamper2D_X3DArrayFollowerObject = Followers_X3DArrayFollowerTemplate (Followers_X3DDamperNode);
 
 function TexCoordDamper2D (executionContext)
@@ -74850,26 +73765,7 @@ Object .assign (Object .setPrototypeOf (TexCoordDamper2D .prototype, Followers_X
 
 Object .defineProperties (TexCoordDamper2D,
 {
-   typeName:
-   {
-      value: "TexCoordDamper2D",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Followers", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("TexCoordDamper2D", "Followers", 1, "children", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -74891,9 +73787,8 @@ Object .defineProperties (TexCoordDamper2D,
 const TexCoordDamper2D_default_ = TexCoordDamper2D;
 ;
 
-x_ite_Namespace .add ("TexCoordDamper2D", "x_ite/Components/Followers/TexCoordDamper2D", TexCoordDamper2D_default_);
-/* harmony default export */ const Followers_TexCoordDamper2D = (TexCoordDamper2D_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/Followers.js
+/* harmony default export */ const Followers_TexCoordDamper2D = (x_ite_Namespace .add ("TexCoordDamper2D", TexCoordDamper2D_default_));
+;// CONCATENATED MODULE: ./src/x_ite/Components/FollowersComponent.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -74959,7 +73854,7 @@ x_ite_Namespace .add ("TexCoordDamper2D", "x_ite/Components/Followers/TexCoordDa
 
 
 
-const Followers_default_ = {
+const FollowersComponent_default_ = {
    name: "Followers",
    concreteNodes:
    [
@@ -74987,8 +73882,7 @@ const Followers_default_ = {
 };
 ;
 
-x_ite_Namespace .add ("Followers", "x_ite/Components/Followers", Followers_default_);
-/* harmony default export */ const Followers = (Followers_default_);
+/* harmony default export */ const FollowersComponent = (x_ite_Namespace .add ("FollowersComponent", FollowersComponent_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geometry3D/Box.js
 /*******************************************************************************
  *
@@ -75036,6 +73930,7 @@ x_ite_Namespace .add ("Followers", "x_ite/Components/Followers", Followers_defau
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -75105,26 +74000,7 @@ Object .assign (Object .setPrototypeOf (Box .prototype, Rendering_X3DGeometryNod
 
 Object .defineProperties (Box,
 {
-   typeName:
-   {
-      value: "Box",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Geometry3D", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "geometry",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Box", "Geometry3D", 1, "geometry", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -75139,8 +74015,7 @@ Object .defineProperties (Box,
 const Box_default_ = Box;
 ;
 
-x_ite_Namespace .add ("Box", "x_ite/Components/Geometry3D/Box", Box_default_);
-/* harmony default export */ const Geometry3D_Box = (Box_default_);
+/* harmony default export */ const Geometry3D_Box = (x_ite_Namespace .add ("Box", Box_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geometry3D/Cone.js
 /*******************************************************************************
  *
@@ -75188,6 +74063,7 @@ x_ite_Namespace .add ("Box", "x_ite/Components/Geometry3D/Box", Box_default_);
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -75314,26 +74190,7 @@ Object .assign (Object .setPrototypeOf (Cone .prototype, Rendering_X3DGeometryNo
 
 Object .defineProperties (Cone,
 {
-   typeName:
-   {
-      value: "Cone",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Geometry3D", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "geometry",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Cone", "Geometry3D", 1, "geometry", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -75351,8 +74208,7 @@ Object .defineProperties (Cone,
 const Cone_default_ = Cone;
 ;
 
-x_ite_Namespace .add ("Cone", "x_ite/Components/Geometry3D/Cone", Cone_default_);
-/* harmony default export */ const Geometry3D_Cone = (Cone_default_);
+/* harmony default export */ const Geometry3D_Cone = (x_ite_Namespace .add ("Cone", Cone_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geometry3D/Cylinder.js
 /*******************************************************************************
  *
@@ -75400,6 +74256,7 @@ x_ite_Namespace .add ("Cone", "x_ite/Components/Geometry3D/Cone", Cone_default_)
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -75553,26 +74410,7 @@ Object .assign (Object .setPrototypeOf (Cylinder .prototype, Rendering_X3DGeomet
 
 Object .defineProperties (Cylinder,
 {
-   typeName:
-   {
-      value: "Cylinder",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Geometry3D", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "geometry",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Cylinder", "Geometry3D", 1, "geometry", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -75591,8 +74429,7 @@ Object .defineProperties (Cylinder,
 const Cylinder_default_ = Cylinder;
 ;
 
-x_ite_Namespace .add ("Cylinder", "x_ite/Components/Geometry3D/Cylinder", Cylinder_default_);
-/* harmony default export */ const Geometry3D_Cylinder = (Cylinder_default_);
+/* harmony default export */ const Geometry3D_Cylinder = (x_ite_Namespace .add ("Cylinder", Cylinder_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geometry3D/ElevationGrid.js
 /*******************************************************************************
  *
@@ -75640,6 +74477,7 @@ x_ite_Namespace .add ("Cylinder", "x_ite/Components/Geometry3D/Cylinder", Cylind
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -75980,26 +74818,7 @@ Object .assign (Object .setPrototypeOf (ElevationGrid .prototype, Rendering_X3DG
 
 Object .defineProperties (ElevationGrid,
 {
-   typeName:
-   {
-      value: "ElevationGrid",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Geometry3D", level: 3 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "geometry",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ElevationGrid", "Geometry3D", 3, "geometry", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -76029,8 +74848,7 @@ Object .defineProperties (ElevationGrid,
 const ElevationGrid_default_ = ElevationGrid;
 ;
 
-x_ite_Namespace .add ("ElevationGrid", "x_ite/Components/Geometry3D/ElevationGrid", ElevationGrid_default_);
-/* harmony default export */ const Geometry3D_ElevationGrid = (ElevationGrid_default_);
+/* harmony default export */ const Geometry3D_ElevationGrid = (x_ite_Namespace .add ("ElevationGrid", ElevationGrid_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geometry3D/Extrusion.js
 /*******************************************************************************
  *
@@ -76078,6 +74896,7 @@ x_ite_Namespace .add ("ElevationGrid", "x_ite/Components/Geometry3D/ElevationGri
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -76717,26 +75536,7 @@ Object .assign (Object .setPrototypeOf (Extrusion .prototype, Rendering_X3DGeome
 
 Object .defineProperties (Extrusion,
 {
-   typeName:
-   {
-      value: "Extrusion",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Geometry3D", level: 4 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "geometry",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Extrusion", "Geometry3D", 4, "geometry", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -76763,8 +75563,7 @@ Object .defineProperties (Extrusion,
 const Extrusion_default_ = Extrusion;
 ;
 
-x_ite_Namespace .add ("Extrusion", "x_ite/Components/Geometry3D/Extrusion", Extrusion_default_);
-/* harmony default export */ const Geometry3D_Extrusion = (Extrusion_default_);
+/* harmony default export */ const Geometry3D_Extrusion = (x_ite_Namespace .add ("Extrusion", Extrusion_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/X3DComposedGeometryNode.js
 /*******************************************************************************
  *
@@ -76812,6 +75611,7 @@ x_ite_Namespace .add ("Extrusion", "x_ite/Components/Geometry3D/Extrusion", Extr
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -77120,25 +75920,12 @@ Object .assign (Object .setPrototypeOf (X3DComposedGeometryNode .prototype, Rend
    })(),
 });
 
-Object .defineProperties (X3DComposedGeometryNode,
-{
-   typeName:
-   {
-      value: "X3DComposedGeometryNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DComposedGeometryNode, Core_X3DNode .getStaticProperties ("X3DComposedGeometryNode", "Rendering", 1));
 
 const X3DComposedGeometryNode_default_ = X3DComposedGeometryNode;
 ;
 
-x_ite_Namespace .add ("X3DComposedGeometryNode", "x_ite/Components/Rendering/X3DComposedGeometryNode", X3DComposedGeometryNode_default_);
-/* harmony default export */ const Rendering_X3DComposedGeometryNode = (X3DComposedGeometryNode_default_);
+/* harmony default export */ const Rendering_X3DComposedGeometryNode = (x_ite_Namespace .add ("X3DComposedGeometryNode", X3DComposedGeometryNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geometry3D/IndexedFaceSet.js
 /*******************************************************************************
  *
@@ -77186,6 +75973,7 @@ x_ite_Namespace .add ("X3DComposedGeometryNode", "x_ite/Components/Rendering/X3D
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -77544,26 +76332,7 @@ Object .assign (Object .setPrototypeOf (IndexedFaceSet .prototype, Rendering_X3D
 
 Object .defineProperties (IndexedFaceSet,
 {
-   typeName:
-   {
-      value: "IndexedFaceSet",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Geometry3D", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "geometry",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("IndexedFaceSet", "Geometry3D", 2, "geometry", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -77597,8 +76366,7 @@ Object .defineProperties (IndexedFaceSet,
 const IndexedFaceSet_default_ = IndexedFaceSet;
 ;
 
-x_ite_Namespace .add ("IndexedFaceSet", "x_ite/Components/Geometry3D/IndexedFaceSet", IndexedFaceSet_default_);
-/* harmony default export */ const Geometry3D_IndexedFaceSet = (IndexedFaceSet_default_);
+/* harmony default export */ const Geometry3D_IndexedFaceSet = (x_ite_Namespace .add ("IndexedFaceSet", IndexedFaceSet_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Geometry3D/Sphere.js
 /*******************************************************************************
  *
@@ -77646,6 +76414,7 @@ x_ite_Namespace .add ("IndexedFaceSet", "x_ite/Components/Geometry3D/IndexedFace
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -77717,26 +76486,7 @@ Object .assign (Object .setPrototypeOf (Sphere .prototype, Rendering_X3DGeometry
 
 Object .defineProperties (Sphere,
 {
-   typeName:
-   {
-      value: "Sphere",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Geometry3D", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "geometry",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Sphere", "Geometry3D", 1, "geometry", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -77751,9 +76501,8 @@ Object .defineProperties (Sphere,
 const Sphere_default_ = Sphere;
 ;
 
-x_ite_Namespace .add ("Sphere", "x_ite/Components/Geometry3D/Sphere", Sphere_default_);
-/* harmony default export */ const Geometry3D_Sphere = (Sphere_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/Geometry3D.js
+/* harmony default export */ const Geometry3D_Sphere = (x_ite_Namespace .add ("Sphere", Sphere_default_));
+;// CONCATENATED MODULE: ./src/x_ite/Components/Geometry3DComponent.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -77809,7 +76558,7 @@ x_ite_Namespace .add ("Sphere", "x_ite/Components/Geometry3D/Sphere", Sphere_def
 
 
 
-const Geometry3D_default_ = {
+const Geometry3DComponent_default_ = {
    name: "Geometry3D",
    concreteNodes:
    [
@@ -77827,8 +76576,7 @@ const Geometry3D_default_ = {
 };
 ;
 
-x_ite_Namespace .add ("Geometry3D", "x_ite/Components/Geometry3D", Geometry3D_default_);
-/* harmony default export */ const Geometry3D = (Geometry3D_default_);
+/* harmony default export */ const Geometry3DComponent = (x_ite_Namespace .add ("Geometry3DComponent", Geometry3DComponent_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping/StaticGroup.js
 /*******************************************************************************
  *
@@ -77876,6 +76624,7 @@ x_ite_Namespace .add ("Geometry3D", "x_ite/Components/Geometry3D", Geometry3D_de
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -78039,26 +76788,7 @@ Object .assign (Object .setPrototypeOf (StaticGroup .prototype, Core_X3DChildNod
 
 Object .defineProperties (StaticGroup,
 {
-   typeName:
-   {
-      value: "StaticGroup",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Grouping", level: 3 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("StaticGroup", "Grouping", 3, "children", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -78076,8 +76806,7 @@ Object .defineProperties (StaticGroup,
 const StaticGroup_default_ = StaticGroup;
 ;
 
-x_ite_Namespace .add ("StaticGroup", "x_ite/Components/Grouping/StaticGroup", StaticGroup_default_);
-/* harmony default export */ const Grouping_StaticGroup = (StaticGroup_default_);
+/* harmony default export */ const Grouping_StaticGroup = (x_ite_Namespace .add ("StaticGroup", StaticGroup_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping/Switch.js
 /*******************************************************************************
  *
@@ -78125,6 +76854,7 @@ x_ite_Namespace .add ("StaticGroup", "x_ite/Components/Grouping/StaticGroup", St
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -78302,26 +77032,7 @@ Object .assign (Object .setPrototypeOf (Switch .prototype, Grouping_X3DGroupingN
 
 Object .defineProperties (Switch,
 {
-   typeName:
-   {
-      value: "Switch",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Grouping", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Switch", "Grouping", 2, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -78342,8 +77053,7 @@ Object .defineProperties (Switch,
 const Switch_default_ = Switch;
 ;
 
-x_ite_Namespace .add ("Switch", "x_ite/Components/Grouping/Switch", Switch_default_);
-/* harmony default export */ const Grouping_Switch = (Switch_default_);
+/* harmony default export */ const Grouping_Switch = (x_ite_Namespace .add ("Switch", Switch_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping/X3DTransformMatrix3DNode.js
 /*******************************************************************************
  *
@@ -78391,6 +77101,7 @@ x_ite_Namespace .add ("Switch", "x_ite/Components/Grouping/Switch", Switch_defau
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -78468,25 +77179,12 @@ Object .assign (Object .setPrototypeOf (X3DTransformMatrix3DNode .prototype, Gro
    groupTraverse: Grouping_X3DGroupingNode .prototype .traverse,
 });
 
-Object .defineProperties (X3DTransformMatrix3DNode,
-{
-   typeName:
-   {
-      value: "X3DTransformMatrix3DNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Grouping", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DTransformMatrix3DNode, Core_X3DNode .getStaticProperties ("X3DTransformMatrix3DNode", "Grouping", 1));
 
 const X3DTransformMatrix3DNode_default_ = X3DTransformMatrix3DNode;
 ;
 
-x_ite_Namespace .add ("X3DTransformMatrix3DNode", "x_ite/Components/Grouping/X3DTransformMatrix3DNode", X3DTransformMatrix3DNode_default_);
-/* harmony default export */ const Grouping_X3DTransformMatrix3DNode = (X3DTransformMatrix3DNode_default_);
+/* harmony default export */ const Grouping_X3DTransformMatrix3DNode = (x_ite_Namespace .add ("X3DTransformMatrix3DNode", X3DTransformMatrix3DNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping/X3DTransformNode.js
 /*******************************************************************************
  *
@@ -78538,6 +77236,7 @@ x_ite_Namespace .add ("X3DTransformMatrix3DNode", "x_ite/Components/Grouping/X3D
 
 
 
+
 function X3DTransformNode (executionContext)
 {
    Grouping_X3DTransformMatrix3DNode .call (this, executionContext);
@@ -78568,25 +77267,12 @@ Object .assign (Object .setPrototypeOf (X3DTransformNode .prototype, Grouping_X3
    },
 });
 
-Object .defineProperties (X3DTransformNode,
-{
-   typeName:
-   {
-      value: "X3DTransformNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Grouping", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DTransformNode, Core_X3DNode .getStaticProperties ("X3DTransformNode", "Grouping", 1));
 
 const X3DTransformNode_default_ = X3DTransformNode;
 ;
 
-x_ite_Namespace .add ("X3DTransformNode", "x_ite/Components/Grouping/X3DTransformNode", X3DTransformNode_default_);
-/* harmony default export */ const Grouping_X3DTransformNode = (X3DTransformNode_default_);
+/* harmony default export */ const Grouping_X3DTransformNode = (x_ite_Namespace .add ("X3DTransformNode", X3DTransformNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping/Transform.js
 /*******************************************************************************
  *
@@ -78641,6 +77327,7 @@ x_ite_Namespace .add ("X3DTransformNode", "x_ite/Components/Grouping/X3DTransfor
 
 
 
+
 function Transform (executionContext)
 {
    Grouping_X3DTransformNode .call (this, executionContext);
@@ -78652,26 +77339,7 @@ Object .setPrototypeOf (Transform .prototype, Grouping_X3DTransformNode .prototy
 
 Object .defineProperties (Transform,
 {
-   typeName:
-   {
-      value: "Transform",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Grouping", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Transform", "Grouping", 1, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -78696,9 +77364,8 @@ Object .defineProperties (Transform,
 const Transform_default_ = Transform;
 ;
 
-x_ite_Namespace .add ("Transform", "x_ite/Components/Grouping/Transform", Transform_default_);
-/* harmony default export */ const Grouping_Transform = (Transform_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/Grouping.js
+/* harmony default export */ const Grouping_Transform = (x_ite_Namespace .add ("Transform", Transform_default_));
+;// CONCATENATED MODULE: ./src/x_ite/Components/GroupingComponent.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -78755,7 +77422,7 @@ x_ite_Namespace .add ("Transform", "x_ite/Components/Grouping/Transform", Transf
 
 
 
-const Grouping_default_ = {
+const GroupingComponent_default_ = {
    name: "Grouping",
    concreteNodes:
    [
@@ -78774,8 +77441,7 @@ const Grouping_default_ = {
 };
 ;
 
-x_ite_Namespace .add ("Grouping", "x_ite/Components/Grouping", Grouping_default_);
-/* harmony default export */ const Grouping = (Grouping_default_);
+/* harmony default export */ const GroupingComponent = (x_ite_Namespace .add ("GroupingComponent", GroupingComponent_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/ColorInterpolator.js
 /*******************************************************************************
  *
@@ -78831,6 +77497,7 @@ x_ite_Namespace .add ("Grouping", "x_ite/Components/Grouping", Grouping_default_
 
 
 
+
 function ColorInterpolator (executionContext)
 {
    Interpolation_X3DInterpolatorNode .call (this, executionContext);
@@ -78875,26 +77542,7 @@ Object .assign (Object .setPrototypeOf (ColorInterpolator .prototype, Interpolat
 
 Object .defineProperties (ColorInterpolator,
 {
-   typeName:
-   {
-      value: "ColorInterpolator",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Interpolation", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ColorInterpolator", "Interpolation", 2, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -78911,8 +77559,7 @@ Object .defineProperties (ColorInterpolator,
 const ColorInterpolator_default_ = ColorInterpolator;
 ;
 
-x_ite_Namespace .add ("ColorInterpolator", "x_ite/Components/Interpolation/ColorInterpolator", ColorInterpolator_default_);
-/* harmony default export */ const Interpolation_ColorInterpolator = (ColorInterpolator_default_);
+/* harmony default export */ const Interpolation_ColorInterpolator = (x_ite_Namespace .add ("ColorInterpolator", ColorInterpolator_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/CoordinateInterpolator.js
 /*******************************************************************************
  *
@@ -78968,6 +77615,7 @@ x_ite_Namespace .add ("ColorInterpolator", "x_ite/Components/Interpolation/Color
 
 
 
+
 function CoordinateInterpolator (executionContext)
 {
    Interpolation_X3DInterpolatorNode .call (this, executionContext);
@@ -79012,26 +77660,7 @@ Object .assign (Object .setPrototypeOf (CoordinateInterpolator .prototype, Inter
 
 Object .defineProperties (CoordinateInterpolator,
 {
-   typeName:
-   {
-      value: "CoordinateInterpolator",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Interpolation", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("CoordinateInterpolator", "Interpolation", 1, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -79048,8 +77677,7 @@ Object .defineProperties (CoordinateInterpolator,
 const CoordinateInterpolator_default_ = CoordinateInterpolator;
 ;
 
-x_ite_Namespace .add ("CoordinateInterpolator", "x_ite/Components/Interpolation/CoordinateInterpolator", CoordinateInterpolator_default_);
-/* harmony default export */ const Interpolation_CoordinateInterpolator = (CoordinateInterpolator_default_);
+/* harmony default export */ const Interpolation_CoordinateInterpolator = (x_ite_Namespace .add ("CoordinateInterpolator", CoordinateInterpolator_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/CoordinateInterpolator2D.js
 /*******************************************************************************
  *
@@ -79105,6 +77733,7 @@ x_ite_Namespace .add ("CoordinateInterpolator", "x_ite/Components/Interpolation/
 
 
 
+
 function CoordinateInterpolator2D (executionContext)
 {
    Interpolation_X3DInterpolatorNode .call (this, executionContext);
@@ -79146,26 +77775,7 @@ Object .assign (Object .setPrototypeOf (CoordinateInterpolator2D .prototype, Int
 
 Object .defineProperties (CoordinateInterpolator2D,
 {
-   typeName:
-   {
-      value: "CoordinateInterpolator2D",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Interpolation", level: 3 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("CoordinateInterpolator2D", "Interpolation", 3, "children", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -79182,8 +77792,7 @@ Object .defineProperties (CoordinateInterpolator2D,
 const CoordinateInterpolator2D_default_ = CoordinateInterpolator2D;
 ;
 
-x_ite_Namespace .add ("CoordinateInterpolator2D", "x_ite/Components/Interpolation/CoordinateInterpolator2D", CoordinateInterpolator2D_default_);
-/* harmony default export */ const Interpolation_CoordinateInterpolator2D = (CoordinateInterpolator2D_default_);
+/* harmony default export */ const Interpolation_CoordinateInterpolator2D = (x_ite_Namespace .add ("CoordinateInterpolator2D", CoordinateInterpolator2D_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/NormalInterpolator.js
 /*******************************************************************************
  *
@@ -79231,6 +77840,7 @@ x_ite_Namespace .add ("CoordinateInterpolator2D", "x_ite/Components/Interpolatio
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -79309,26 +77919,7 @@ Object .assign (Object .setPrototypeOf (NormalInterpolator .prototype, Interpola
 
 Object .defineProperties (NormalInterpolator,
 {
-   typeName:
-   {
-      value: "NormalInterpolator",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Interpolation", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("NormalInterpolator", "Interpolation", 2, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -79345,8 +77936,7 @@ Object .defineProperties (NormalInterpolator,
 const NormalInterpolator_default_ = NormalInterpolator;
 ;
 
-x_ite_Namespace .add ("NormalInterpolator", "x_ite/Components/Interpolation/NormalInterpolator", NormalInterpolator_default_);
-/* harmony default export */ const Interpolation_NormalInterpolator = (NormalInterpolator_default_);
+/* harmony default export */ const Interpolation_NormalInterpolator = (x_ite_Namespace .add ("NormalInterpolator", NormalInterpolator_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/PositionInterpolator2D.js
 /*******************************************************************************
  *
@@ -79402,6 +77992,7 @@ x_ite_Namespace .add ("NormalInterpolator", "x_ite/Components/Interpolation/Norm
 
 
 
+
 function PositionInterpolator2D (executionContext)
 {
    Interpolation_X3DInterpolatorNode .call (this, executionContext);
@@ -79439,26 +78030,7 @@ Object .assign (Object .setPrototypeOf (PositionInterpolator2D .prototype, Inter
 
 Object .defineProperties (PositionInterpolator2D,
 {
-   typeName:
-   {
-      value: "PositionInterpolator2D",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Interpolation", level: 3 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("PositionInterpolator2D", "Interpolation", 3, "children", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -79475,8 +78047,7 @@ Object .defineProperties (PositionInterpolator2D,
 const PositionInterpolator2D_default_ = PositionInterpolator2D;
 ;
 
-x_ite_Namespace .add ("PositionInterpolator2D", "x_ite/Components/Interpolation/PositionInterpolator2D", PositionInterpolator2D_default_);
-/* harmony default export */ const Interpolation_PositionInterpolator2D = (PositionInterpolator2D_default_);
+/* harmony default export */ const Interpolation_PositionInterpolator2D = (x_ite_Namespace .add ("PositionInterpolator2D", PositionInterpolator2D_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Interpolation/CatmullRomSplineInterpolator.js
 /*******************************************************************************
  *
@@ -79666,8 +78237,7 @@ Object .assign (CatmullRomSplineInterpolator .prototype,
 const CatmullRomSplineInterpolator_default_ = CatmullRomSplineInterpolator;
 ;
 
-x_ite_Namespace .add ("CatmullRomSplineInterpolator", "x_ite/Browser/Interpolation/CatmullRomSplineInterpolator", CatmullRomSplineInterpolator_default_);
-/* harmony default export */ const Interpolation_CatmullRomSplineInterpolator = (CatmullRomSplineInterpolator_default_);
+/* harmony default export */ const Interpolation_CatmullRomSplineInterpolator = (x_ite_Namespace .add ("CatmullRomSplineInterpolator", CatmullRomSplineInterpolator_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Interpolation/CatmullRomSplineInterpolatorTemplate.js
 /*******************************************************************************
  *
@@ -79778,8 +78348,7 @@ function CatmullRomSplineInterpolatorTemplate (Type)
 const CatmullRomSplineInterpolatorTemplate_default_ = CatmullRomSplineInterpolatorTemplate;
 ;
 
-x_ite_Namespace .add ("CatmullRomSplineInterpolatorTemplate", "x_ite/Browser/Interpolation/CatmullRomSplineInterpolatorTemplate", CatmullRomSplineInterpolatorTemplate_default_);
-/* harmony default export */ const Interpolation_CatmullRomSplineInterpolatorTemplate = (CatmullRomSplineInterpolatorTemplate_default_);
+/* harmony default export */ const Interpolation_CatmullRomSplineInterpolatorTemplate = (x_ite_Namespace .add ("CatmullRomSplineInterpolatorTemplate", CatmullRomSplineInterpolatorTemplate_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Interpolation/CatmullRomSplineInterpolator3.js
 /*******************************************************************************
  *
@@ -79836,8 +78405,7 @@ const CatmullRomSplineInterpolator3 = Interpolation_CatmullRomSplineInterpolator
 const CatmullRomSplineInterpolator3_default_ = CatmullRomSplineInterpolator3;
 ;
 
-x_ite_Namespace .add ("CatmullRomSplineInterpolator3", "x_ite/Browser/Interpolation/CatmullRomSplineInterpolator3", CatmullRomSplineInterpolator3_default_);
-/* harmony default export */ const Interpolation_CatmullRomSplineInterpolator3 = (CatmullRomSplineInterpolator3_default_);
+/* harmony default export */ const Interpolation_CatmullRomSplineInterpolator3 = (x_ite_Namespace .add ("CatmullRomSplineInterpolator3", CatmullRomSplineInterpolator3_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/SplinePositionInterpolator.js
 /*******************************************************************************
  *
@@ -79885,6 +78453,7 @@ x_ite_Namespace .add ("CatmullRomSplineInterpolator3", "x_ite/Browser/Interpolat
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -79949,26 +78518,7 @@ Object .assign (Object .setPrototypeOf (SplinePositionInterpolator .prototype, I
 
 Object .defineProperties (SplinePositionInterpolator,
 {
-   typeName:
-   {
-      value: "SplinePositionInterpolator",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Interpolation", level: 4 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("SplinePositionInterpolator", "Interpolation", 4, "children", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -79988,8 +78538,7 @@ Object .defineProperties (SplinePositionInterpolator,
 const SplinePositionInterpolator_default_ = SplinePositionInterpolator;
 ;
 
-x_ite_Namespace .add ("SplinePositionInterpolator", "x_ite/Components/Interpolation/SplinePositionInterpolator", SplinePositionInterpolator_default_);
-/* harmony default export */ const Interpolation_SplinePositionInterpolator = (SplinePositionInterpolator_default_);
+/* harmony default export */ const Interpolation_SplinePositionInterpolator = (x_ite_Namespace .add ("SplinePositionInterpolator", SplinePositionInterpolator_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Interpolation/CatmullRomSplineInterpolator2.js
 /*******************************************************************************
  *
@@ -80046,8 +78595,7 @@ const CatmullRomSplineInterpolator2 = Interpolation_CatmullRomSplineInterpolator
 const CatmullRomSplineInterpolator2_default_ = CatmullRomSplineInterpolator2;
 ;
 
-x_ite_Namespace .add ("CatmullRomSplineInterpolator2", "x_ite/Browser/Interpolation/CatmullRomSplineInterpolator2", CatmullRomSplineInterpolator2_default_);
-/* harmony default export */ const Interpolation_CatmullRomSplineInterpolator2 = (CatmullRomSplineInterpolator2_default_);
+/* harmony default export */ const Interpolation_CatmullRomSplineInterpolator2 = (x_ite_Namespace .add ("CatmullRomSplineInterpolator2", CatmullRomSplineInterpolator2_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/SplinePositionInterpolator2D.js
 /*******************************************************************************
  *
@@ -80095,6 +78643,7 @@ x_ite_Namespace .add ("CatmullRomSplineInterpolator2", "x_ite/Browser/Interpolat
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -80159,26 +78708,7 @@ Object .assign (Object .setPrototypeOf (SplinePositionInterpolator2D .prototype,
 
 Object .defineProperties (SplinePositionInterpolator2D,
 {
-   typeName:
-   {
-      value: "SplinePositionInterpolator2D",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Interpolation", level: 4 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("SplinePositionInterpolator2D", "Interpolation", 4, "children", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -80198,8 +78728,7 @@ Object .defineProperties (SplinePositionInterpolator2D,
 const SplinePositionInterpolator2D_default_ = SplinePositionInterpolator2D;
 ;
 
-x_ite_Namespace .add ("SplinePositionInterpolator2D", "x_ite/Components/Interpolation/SplinePositionInterpolator2D", SplinePositionInterpolator2D_default_);
-/* harmony default export */ const Interpolation_SplinePositionInterpolator2D = (SplinePositionInterpolator2D_default_);
+/* harmony default export */ const Interpolation_SplinePositionInterpolator2D = (x_ite_Namespace .add ("SplinePositionInterpolator2D", SplinePositionInterpolator2D_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Interpolation/CatmullRomSplineInterpolator1.js
 /*******************************************************************************
  *
@@ -80290,8 +78819,7 @@ Object .assign (Object .setPrototypeOf (CatmullRomSplineInterpolator1 .prototype
 const CatmullRomSplineInterpolator1_default_ = CatmullRomSplineInterpolator1;
 ;
 
-x_ite_Namespace .add ("CatmullRomSplineInterpolator1", "x_ite/Browser/Interpolation/CatmullRomSplineInterpolator1", CatmullRomSplineInterpolator1_default_);
-/* harmony default export */ const Interpolation_CatmullRomSplineInterpolator1 = (CatmullRomSplineInterpolator1_default_);
+/* harmony default export */ const Interpolation_CatmullRomSplineInterpolator1 = (x_ite_Namespace .add ("CatmullRomSplineInterpolator1", CatmullRomSplineInterpolator1_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/SplineScalarInterpolator.js
 /*******************************************************************************
  *
@@ -80339,6 +78867,7 @@ x_ite_Namespace .add ("CatmullRomSplineInterpolator1", "x_ite/Browser/Interpolat
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -80403,26 +78932,7 @@ Object .assign (Object .setPrototypeOf (SplineScalarInterpolator .prototype, Int
 
 Object .defineProperties (SplineScalarInterpolator,
 {
-   typeName:
-   {
-      value: "SplineScalarInterpolator",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Interpolation", level: 4 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("SplineScalarInterpolator", "Interpolation", 4, "children", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -80442,8 +78952,7 @@ Object .defineProperties (SplineScalarInterpolator,
 const SplineScalarInterpolator_default_ = SplineScalarInterpolator;
 ;
 
-x_ite_Namespace .add ("SplineScalarInterpolator", "x_ite/Components/Interpolation/SplineScalarInterpolator", SplineScalarInterpolator_default_);
-/* harmony default export */ const Interpolation_SplineScalarInterpolator = (SplineScalarInterpolator_default_);
+/* harmony default export */ const Interpolation_SplineScalarInterpolator = (x_ite_Namespace .add ("SplineScalarInterpolator", SplineScalarInterpolator_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Interpolation/SquatInterpolator.js
 /*******************************************************************************
  *
@@ -80559,8 +79068,7 @@ Object .assign (SquatInterpolator .prototype,
 const SquatInterpolator_default_ = SquatInterpolator;
 ;
 
-x_ite_Namespace .add ("SquatInterpolator", "x_ite/Browser/Interpolation/SquatInterpolator", SquatInterpolator_default_);
-/* harmony default export */ const Interpolation_SquatInterpolator = (SquatInterpolator_default_);
+/* harmony default export */ const Interpolation_SquatInterpolator = (x_ite_Namespace .add ("SquatInterpolator", SquatInterpolator_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation/SquadOrientationInterpolator.js
 /*******************************************************************************
  *
@@ -80608,6 +79116,7 @@ x_ite_Namespace .add ("SquatInterpolator", "x_ite/Browser/Interpolation/SquatInt
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -80664,26 +79173,7 @@ Object .assign (Object .setPrototypeOf (SquadOrientationInterpolator .prototype,
 
 Object .defineProperties (SquadOrientationInterpolator,
 {
-   typeName:
-   {
-      value: "SquadOrientationInterpolator",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Interpolation", level: 5 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("SquadOrientationInterpolator", "Interpolation", 5, "children", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -80701,9 +79191,8 @@ Object .defineProperties (SquadOrientationInterpolator,
 const SquadOrientationInterpolator_default_ = SquadOrientationInterpolator;
 ;
 
-x_ite_Namespace .add ("SquadOrientationInterpolator", "x_ite/Components/Interpolation/SquadOrientationInterpolator", SquadOrientationInterpolator_default_);
-/* harmony default export */ const Interpolation_SquadOrientationInterpolator = (SquadOrientationInterpolator_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/Interpolation.js
+/* harmony default export */ const Interpolation_SquadOrientationInterpolator = (x_ite_Namespace .add ("SquadOrientationInterpolator", SquadOrientationInterpolator_default_));
+;// CONCATENATED MODULE: ./src/x_ite/Components/InterpolationComponent.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -80766,7 +79255,7 @@ x_ite_Namespace .add ("SquadOrientationInterpolator", "x_ite/Components/Interpol
 
 
 
-const Interpolation_default_ = {
+const InterpolationComponent_default_ = {
    name: "Interpolation",
    concreteNodes:
    [
@@ -80791,8 +79280,7 @@ const Interpolation_default_ = {
 };
 ;
 
-x_ite_Namespace .add ("Interpolation", "x_ite/Components/Interpolation", Interpolation_default_);
-/* harmony default export */ const Interpolation = (Interpolation_default_);
+/* harmony default export */ const InterpolationComponent = (x_ite_Namespace .add ("InterpolationComponent", InterpolationComponent_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Layering/X3DViewportNode.js
 /*******************************************************************************
  *
@@ -80844,6 +79332,7 @@ x_ite_Namespace .add ("Interpolation", "x_ite/Components/Interpolation", Interpo
 
 
 
+
 function X3DViewportNode (executionContext)
 {
    Grouping_X3DGroupingNode .call (this, executionContext);
@@ -80853,25 +79342,12 @@ function X3DViewportNode (executionContext)
 
 Object .setPrototypeOf (X3DViewportNode .prototype, Grouping_X3DGroupingNode .prototype);
 
-Object .defineProperties (X3DViewportNode,
-{
-   typeName:
-   {
-      value: "X3DViewportNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Layering", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DViewportNode, Core_X3DNode .getStaticProperties ("X3DViewportNode", "Layering", 1));
 
 const X3DViewportNode_default_ = X3DViewportNode;
 ;
 
-x_ite_Namespace .add ("X3DViewportNode", "x_ite/Components/Layering/X3DViewportNode", X3DViewportNode_default_);
-/* harmony default export */ const Layering_X3DViewportNode = (X3DViewportNode_default_);
+/* harmony default export */ const Layering_X3DViewportNode = (x_ite_Namespace .add ("X3DViewportNode", X3DViewportNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Layering/Viewport.js
 /*******************************************************************************
  *
@@ -80919,6 +79395,7 @@ x_ite_Namespace .add ("X3DViewportNode", "x_ite/Components/Layering/X3DViewportN
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -81015,26 +79492,7 @@ Object .assign (Object .setPrototypeOf (Viewport .prototype, Layering_X3DViewpor
 
 Object .defineProperties (Viewport,
 {
-   typeName:
-   {
-      value: "Viewport",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Layering", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "viewport",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Viewport", "Layering", 1, "viewport", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -81055,9 +79513,8 @@ Object .defineProperties (Viewport,
 const Viewport_default_ = Viewport;
 ;
 
-x_ite_Namespace .add ("Viewport", "x_ite/Components/Layering/Viewport", Viewport_default_);
-/* harmony default export */ const Layering_Viewport = (Viewport_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/Layering.js
+/* harmony default export */ const Layering_Viewport = (x_ite_Namespace .add ("Viewport", Viewport_default_));
+;// CONCATENATED MODULE: ./src/x_ite/Components/LayeringComponent.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -81111,7 +79568,7 @@ x_ite_Namespace .add ("Viewport", "x_ite/Components/Layering/Viewport", Viewport
 
 
 
-const Layering_default_ = {
+const LayeringComponent_default_ = {
    name: "Layering",
    concreteNodes:
    [
@@ -81127,8 +79584,7 @@ const Layering_default_ = {
 };
 ;
 
-x_ite_Namespace .add ("Layering", "x_ite/Components/Layering", Layering_default_);
-/* harmony default export */ const Layering = (Layering_default_);
+/* harmony default export */ const LayeringComponent = (x_ite_Namespace .add ("LayeringComponent", LayeringComponent_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Lighting/X3DLightNode.js
 /*******************************************************************************
  *
@@ -81176,6 +79632,7 @@ x_ite_Namespace .add ("Layering", "x_ite/Components/Layering", Layering_default_
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -81350,25 +79807,12 @@ Object .assign (Object .setPrototypeOf (X3DLightNode .prototype, Core_X3DChildNo
    },
 });
 
-Object .defineProperties (X3DLightNode,
-{
-   typeName:
-   {
-      value: "X3DLightNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Lighting", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DLightNode, Core_X3DNode .getStaticProperties ("X3DLightNode", "Lighting", 1));
 
 const X3DLightNode_default_ = X3DLightNode;
 ;
 
-x_ite_Namespace .add ("X3DLightNode", "x_ite/Components/Lighting/X3DLightNode", X3DLightNode_default_);
-/* harmony default export */ const Lighting_X3DLightNode = (X3DLightNode_default_);
+/* harmony default export */ const Lighting_X3DLightNode = (x_ite_Namespace .add ("X3DLightNode", X3DLightNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Lighting/DirectionalLight.js
 /*******************************************************************************
  *
@@ -81416,6 +79860,7 @@ x_ite_Namespace .add ("X3DLightNode", "x_ite/Components/Lighting/X3DLightNode", 
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -81619,26 +80064,7 @@ Object .assign (Object .setPrototypeOf (DirectionalLight .prototype, Lighting_X3
 
 Object .defineProperties (DirectionalLight,
 {
-   typeName:
-   {
-      value: "DirectionalLight",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Lighting", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("DirectionalLight", "Lighting", 1, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -81663,8 +80089,7 @@ Object .defineProperties (DirectionalLight,
 const DirectionalLight_default_ = DirectionalLight;
 ;
 
-x_ite_Namespace .add ("DirectionalLight", "x_ite/Components/Lighting/DirectionalLight", DirectionalLight_default_);
-/* harmony default export */ const Lighting_DirectionalLight = (DirectionalLight_default_);
+/* harmony default export */ const Lighting_DirectionalLight = (x_ite_Namespace .add ("DirectionalLight", DirectionalLight_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Lighting/EnvironmentLight.js
 /*******************************************************************************
  *
@@ -81712,6 +80137,7 @@ x_ite_Namespace .add ("DirectionalLight", "x_ite/Components/Lighting/Directional
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -81881,26 +80307,7 @@ Object .assign (Object .setPrototypeOf (EnvironmentLight .prototype, Lighting_X3
 
 Object .defineProperties (EnvironmentLight,
 {
-   typeName:
-   {
-      value: "EnvironmentLight",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Lighting", level: 3 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("EnvironmentLight", "Lighting", 3, "children", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -81929,8 +80336,7 @@ Object .defineProperties (EnvironmentLight,
 const EnvironmentLight_default_ = EnvironmentLight;
 ;
 
-x_ite_Namespace .add ("EnvironmentLight", "x_ite/Components/Lighting/EnvironmentLight", EnvironmentLight_default_);
-/* harmony default export */ const Lighting_EnvironmentLight = (EnvironmentLight_default_);
+/* harmony default export */ const Lighting_EnvironmentLight = (x_ite_Namespace .add ("EnvironmentLight", EnvironmentLight_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Lighting/PointLight.js
 /*******************************************************************************
  *
@@ -81978,6 +80384,7 @@ x_ite_Namespace .add ("EnvironmentLight", "x_ite/Components/Lighting/Environment
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -82227,26 +80634,7 @@ Object .assign (Object .setPrototypeOf (PointLight .prototype, Lighting_X3DLight
 
 Object .defineProperties (PointLight,
 {
-   typeName:
-   {
-      value: "PointLight",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Lighting", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("PointLight", "Lighting", 2, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -82273,8 +80661,7 @@ Object .defineProperties (PointLight,
 const PointLight_default_ = PointLight;
 ;
 
-x_ite_Namespace .add ("PointLight", "x_ite/Components/Lighting/PointLight", PointLight_default_);
-/* harmony default export */ const Lighting_PointLight = (PointLight_default_);
+/* harmony default export */ const Lighting_PointLight = (x_ite_Namespace .add ("PointLight", PointLight_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Lighting/SpotLight.js
 /*******************************************************************************
  *
@@ -82322,6 +80709,7 @@ x_ite_Namespace .add ("PointLight", "x_ite/Components/Lighting/PointLight", Poin
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -82594,26 +80982,7 @@ Object .assign (Object .setPrototypeOf (SpotLight .prototype, Lighting_X3DLightN
 
 Object .defineProperties (SpotLight,
 {
-   typeName:
-   {
-      value: "SpotLight",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Lighting", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("SpotLight", "Lighting", 2, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -82643,9 +81012,8 @@ Object .defineProperties (SpotLight,
 const SpotLight_default_ = SpotLight;
 ;
 
-x_ite_Namespace .add ("SpotLight", "x_ite/Components/Lighting/SpotLight", SpotLight_default_);
-/* harmony default export */ const Lighting_SpotLight = (SpotLight_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/Lighting.js
+/* harmony default export */ const Lighting_SpotLight = (x_ite_Namespace .add ("SpotLight", SpotLight_default_));
+;// CONCATENATED MODULE: ./src/x_ite/Components/LightingComponent.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -82699,7 +81067,7 @@ x_ite_Namespace .add ("SpotLight", "x_ite/Components/Lighting/SpotLight", SpotLi
 
 
 
-const Lighting_default_ = {
+const LightingComponent_default_ = {
    name: "Lighting",
    concreteNodes:
    [
@@ -82715,8 +81083,7 @@ const Lighting_default_ = {
 };
 ;
 
-x_ite_Namespace .add ("Lighting", "x_ite/Components/Lighting", Lighting_default_);
-/* harmony default export */ const Lighting = (Lighting_default_);
+/* harmony default export */ const LightingComponent = (x_ite_Namespace .add ("LightingComponent", LightingComponent_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Navigation/Billboard.js
 /*******************************************************************************
  *
@@ -82764,6 +81131,7 @@ x_ite_Namespace .add ("Lighting", "x_ite/Components/Lighting", Lighting_default_
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -82868,26 +81236,7 @@ Object .assign (Object .setPrototypeOf (Billboard .prototype, Grouping_X3DGroupi
 
 Object .defineProperties (Billboard,
 {
-   typeName:
-   {
-      value: "Billboard",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Navigation", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Billboard", "Navigation", 2, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -82908,8 +81257,7 @@ Object .defineProperties (Billboard,
 const Billboard_default_ = Billboard;
 ;
 
-x_ite_Namespace .add ("Billboard", "x_ite/Components/Navigation/Billboard", Billboard_default_);
-/* harmony default export */ const Navigation_Billboard = (Billboard_default_);
+/* harmony default export */ const Navigation_Billboard = (x_ite_Namespace .add ("Billboard", Billboard_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Navigation/Collision.js
 /*******************************************************************************
  *
@@ -82957,6 +81305,7 @@ x_ite_Namespace .add ("Billboard", "x_ite/Components/Navigation/Billboard", Bill
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -83056,26 +81405,7 @@ Object .assign (Object .setPrototypeOf (Collision .prototype, Grouping_X3DGroupi
 
 Object .defineProperties (Collision,
 {
-   typeName:
-   {
-      value: "Collision",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Navigation", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Collision", "Navigation", 2, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -83100,8 +81430,7 @@ Object .defineProperties (Collision,
 const Collision_default_ = Collision;
 ;
 
-x_ite_Namespace .add ("Collision", "x_ite/Components/Navigation/Collision", Collision_default_);
-/* harmony default export */ const Navigation_Collision = (Collision_default_);
+/* harmony default export */ const Navigation_Collision = (x_ite_Namespace .add ("Collision", Collision_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Navigation/LOD.js
 /*******************************************************************************
  *
@@ -83149,6 +81478,7 @@ x_ite_Namespace .add ("Collision", "x_ite/Components/Navigation/Collision", Coll
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -83403,26 +81733,7 @@ Object .assign (Object .setPrototypeOf (LOD .prototype, Grouping_X3DGroupingNode
 
 Object .defineProperties (LOD,
 {
-   typeName:
-   {
-      value: "LOD",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Navigation", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("LOD", "Navigation", 2, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -83446,8 +81757,7 @@ Object .defineProperties (LOD,
 const LOD_default_ = LOD;
 ;
 
-x_ite_Namespace .add ("LOD", "x_ite/Components/Navigation/LOD", LOD_default_);
-/* harmony default export */ const Navigation_LOD = (LOD_default_);
+/* harmony default export */ const Navigation_LOD = (x_ite_Namespace .add ("LOD", LOD_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Navigation/OrthoViewpoint.js
 /*******************************************************************************
  *
@@ -83495,6 +81805,7 @@ x_ite_Namespace .add ("LOD", "x_ite/Components/Navigation/LOD", LOD_default_);
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -83783,26 +82094,7 @@ Object .assign (Object .setPrototypeOf (OrthoViewpoint .prototype, Navigation_X3
 
 Object .defineProperties (OrthoViewpoint,
 {
-   typeName:
-   {
-      value: "OrthoViewpoint",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Navigation", level: 3 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("OrthoViewpoint", "Navigation", 3, "children", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -83829,8 +82121,7 @@ Object .defineProperties (OrthoViewpoint,
 const OrthoViewpoint_default_ = OrthoViewpoint;
 ;
 
-x_ite_Namespace .add ("OrthoViewpoint", "x_ite/Components/Navigation/OrthoViewpoint", OrthoViewpoint_default_);
-/* harmony default export */ const Navigation_OrthoViewpoint = (OrthoViewpoint_default_);
+/* harmony default export */ const Navigation_OrthoViewpoint = (x_ite_Namespace .add ("OrthoViewpoint", OrthoViewpoint_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Navigation/ViewpointGroup.js
 /*******************************************************************************
  *
@@ -83878,6 +82169,7 @@ x_ite_Namespace .add ("OrthoViewpoint", "x_ite/Components/Navigation/OrthoViewpo
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -84002,26 +82294,7 @@ Object .assign (Object .setPrototypeOf (ViewpointGroup .prototype, Core_X3DChild
 
 Object .defineProperties (ViewpointGroup,
 {
-   typeName:
-   {
-      value: "ViewpointGroup",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Navigation", level: 3 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ViewpointGroup", "Navigation", 3, "children", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -84040,9 +82313,8 @@ Object .defineProperties (ViewpointGroup,
 const ViewpointGroup_default_ = ViewpointGroup;
 ;
 
-x_ite_Namespace .add ("ViewpointGroup", "x_ite/Components/Navigation/ViewpointGroup", ViewpointGroup_default_);
-/* harmony default export */ const Navigation_ViewpointGroup = (ViewpointGroup_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/Navigation.js
+/* harmony default export */ const Navigation_ViewpointGroup = (x_ite_Namespace .add ("ViewpointGroup", ViewpointGroup_default_));
+;// CONCATENATED MODULE: ./src/x_ite/Components/NavigationComponent.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -84099,7 +82371,7 @@ x_ite_Namespace .add ("ViewpointGroup", "x_ite/Components/Navigation/ViewpointGr
 
 
 
-const Navigation_default_ = {
+const NavigationComponent_default_ = {
    name: "Navigation",
    concreteNodes:
    [
@@ -84118,8 +82390,7 @@ const Navigation_default_ = {
 };
 ;
 
-x_ite_Namespace .add ("Navigation", "x_ite/Components/Navigation", Navigation_default_);
-/* harmony default export */ const Navigation = (Navigation_default_);
+/* harmony default export */ const NavigationComponent = (x_ite_Namespace .add ("NavigationComponent", NavigationComponent_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/PointingDeviceSensor/PointingDeviceSensorContainer.js
 /*******************************************************************************
  *
@@ -84208,8 +82479,7 @@ Object .assign (PointingDeviceSensorContainer .prototype,
 const PointingDeviceSensorContainer_default_ = PointingDeviceSensorContainer;
 ;
 
-x_ite_Namespace .add ("PointingDeviceSensorContainer", "x_ite/Browser/PointingDeviceSensor/PointingDeviceSensorContainer", PointingDeviceSensorContainer_default_);
-/* harmony default export */ const PointingDeviceSensor_PointingDeviceSensorContainer = (PointingDeviceSensorContainer_default_);
+/* harmony default export */ const PointingDeviceSensor_PointingDeviceSensorContainer = (x_ite_Namespace .add ("PointingDeviceSensorContainer", PointingDeviceSensorContainer_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/PointingDeviceSensor/X3DPointingDeviceSensorNode.js
 /*******************************************************************************
  *
@@ -84257,6 +82527,7 @@ x_ite_Namespace .add ("PointingDeviceSensorContainer", "x_ite/Browser/PointingDe
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -84328,25 +82599,12 @@ Object .assign (Object .setPrototypeOf (X3DPointingDeviceSensorNode .prototype, 
    },
 });
 
-Object .defineProperties (X3DPointingDeviceSensorNode,
-{
-   typeName:
-   {
-      value: "X3DPointingDeviceSensorNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "PointingDeviceSensor", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DPointingDeviceSensorNode, Core_X3DNode .getStaticProperties ("X3DPointingDeviceSensorNode", "PointingDeviceSensor", 1));
 
 const X3DPointingDeviceSensorNode_default_ = X3DPointingDeviceSensorNode;
 ;
 
-x_ite_Namespace .add ("X3DPointingDeviceSensorNode", "x_ite/Components/PointingDeviceSensor/X3DPointingDeviceSensorNode", X3DPointingDeviceSensorNode_default_);
-/* harmony default export */ const PointingDeviceSensor_X3DPointingDeviceSensorNode = (X3DPointingDeviceSensorNode_default_);
+/* harmony default export */ const PointingDeviceSensor_X3DPointingDeviceSensorNode = (x_ite_Namespace .add ("X3DPointingDeviceSensorNode", X3DPointingDeviceSensorNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/PointingDeviceSensor/X3DTouchSensorNode.js
 /*******************************************************************************
  *
@@ -84400,6 +82658,7 @@ x_ite_Namespace .add ("X3DPointingDeviceSensorNode", "x_ite/Components/PointingD
 
 
 
+
 function X3DTouchSensorNode (executionContext)
 {
    PointingDeviceSensor_X3DPointingDeviceSensorNode .call (this, executionContext);
@@ -84439,25 +82698,12 @@ Object .assign (Object .setPrototypeOf (X3DTouchSensorNode .prototype, PointingD
    })(),
 });
 
-Object .defineProperties (X3DTouchSensorNode,
-{
-   typeName:
-   {
-      value: "X3DTouchSensorNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "PointingDeviceSensor", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DTouchSensorNode, Core_X3DNode .getStaticProperties ("X3DTouchSensorNode", "PointingDeviceSensor", 1));
 
 const X3DTouchSensorNode_default_ = X3DTouchSensorNode;
 ;
 
-x_ite_Namespace .add ("X3DTouchSensorNode", "x_ite/Components/PointingDeviceSensor/X3DTouchSensorNode", X3DTouchSensorNode_default_);
-/* harmony default export */ const PointingDeviceSensor_X3DTouchSensorNode = (X3DTouchSensorNode_default_);
+/* harmony default export */ const PointingDeviceSensor_X3DTouchSensorNode = (x_ite_Namespace .add ("X3DTouchSensorNode", X3DTouchSensorNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/PointingDeviceSensor/TouchSensor.js
 /*******************************************************************************
  *
@@ -84512,6 +82758,7 @@ x_ite_Namespace .add ("X3DTouchSensorNode", "x_ite/Components/PointingDeviceSens
 
 
 
+
 function TouchSensor (executionContext)
 {
    PointingDeviceSensor_X3DTouchSensorNode .call (this, executionContext);
@@ -84525,26 +82772,7 @@ Object .setPrototypeOf (TouchSensor .prototype, PointingDeviceSensor_X3DTouchSen
 
 Object .defineProperties (TouchSensor,
 {
-   typeName:
-   {
-      value: "TouchSensor",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "PointingDeviceSensor", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("TouchSensor", "PointingDeviceSensor", 1, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -84565,8 +82793,7 @@ Object .defineProperties (TouchSensor,
 const TouchSensor_default_ = TouchSensor;
 ;
 
-x_ite_Namespace .add ("TouchSensor", "x_ite/Components/PointingDeviceSensor/TouchSensor", TouchSensor_default_);
-/* harmony default export */ const PointingDeviceSensor_TouchSensor = (TouchSensor_default_);
+/* harmony default export */ const PointingDeviceSensor_TouchSensor = (x_ite_Namespace .add ("TouchSensor", TouchSensor_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Networking/Anchor.js
 /*******************************************************************************
  *
@@ -84614,6 +82841,7 @@ x_ite_Namespace .add ("TouchSensor", "x_ite/Components/PointingDeviceSensor/Touc
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -84745,26 +82973,7 @@ Object .assign (Object .setPrototypeOf (Anchor .prototype, Grouping_X3DGroupingN
 
 Object .defineProperties (Anchor,
 {
-   typeName:
-   {
-      value: "Anchor",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Networking", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Anchor", "Networking", 2, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -84790,8 +82999,7 @@ Object .defineProperties (Anchor,
 const Anchor_default_ = Anchor;
 ;
 
-x_ite_Namespace .add ("Anchor", "x_ite/Components/Networking/Anchor", Anchor_default_);
-/* harmony default export */ const Networking_Anchor = (Anchor_default_);
+/* harmony default export */ const Networking_Anchor = (x_ite_Namespace .add ("Anchor", Anchor_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Networking/Inline.js
 /*******************************************************************************
  *
@@ -84839,6 +83047,7 @@ x_ite_Namespace .add ("Anchor", "x_ite/Components/Networking/Anchor", Anchor_def
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -85074,26 +83283,7 @@ Object .assign (Object .setPrototypeOf (Inline .prototype, Core_X3DChildNode .pr
 
 Object .defineProperties (Inline,
 {
-   typeName:
-   {
-      value: "Inline",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Networking", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Inline", "Networking", 2, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -85116,8 +83306,7 @@ Object .defineProperties (Inline,
 const Inline_default_ = Inline;
 ;
 
-x_ite_Namespace .add ("Inline", "x_ite/Components/Networking/Inline", Inline_default_);
-/* harmony default export */ const Networking_Inline = (Inline_default_);
+/* harmony default export */ const Networking_Inline = (x_ite_Namespace .add ("Inline", Inline_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Networking/X3DNetworkSensorNode.js
 /*******************************************************************************
  *
@@ -85169,6 +83358,7 @@ x_ite_Namespace .add ("Inline", "x_ite/Components/Networking/Inline", Inline_def
 
 
 
+
 function X3DNetworkSensorNode (executionContext)
 {
    Core_X3DSensorNode .call (this, executionContext);
@@ -85178,25 +83368,12 @@ function X3DNetworkSensorNode (executionContext)
 
 Object .setPrototypeOf (X3DNetworkSensorNode .prototype, Core_X3DSensorNode .prototype);
 
-Object .defineProperties (X3DNetworkSensorNode,
-{
-   typeName:
-   {
-      value: "X3DNetworkSensorNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Networking", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DNetworkSensorNode, Core_X3DNode .getStaticProperties ("X3DNetworkSensorNode", "Networking", 1));
 
 const X3DNetworkSensorNode_default_ = X3DNetworkSensorNode;
 ;
 
-x_ite_Namespace .add ("X3DNetworkSensorNode", "x_ite/Components/Networking/X3DNetworkSensorNode", X3DNetworkSensorNode_default_);
-/* harmony default export */ const Networking_X3DNetworkSensorNode = (X3DNetworkSensorNode_default_);
+/* harmony default export */ const Networking_X3DNetworkSensorNode = (x_ite_Namespace .add ("X3DNetworkSensorNode", X3DNetworkSensorNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Networking/LoadSensor.js
 /*******************************************************************************
  *
@@ -85244,6 +83421,7 @@ x_ite_Namespace .add ("X3DNetworkSensorNode", "x_ite/Components/Networking/X3DNe
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -85430,26 +83608,7 @@ Object .assign (Object .setPrototypeOf (LoadSensor .prototype, Networking_X3DNet
 
 Object .defineProperties (LoadSensor,
 {
-   typeName:
-   {
-      value: "LoadSensor",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Networking", level: 3 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("LoadSensor", "Networking", 3, "children", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -85470,9 +83629,8 @@ Object .defineProperties (LoadSensor,
 const LoadSensor_default_ = LoadSensor;
 ;
 
-x_ite_Namespace .add ("LoadSensor", "x_ite/Components/Networking/LoadSensor", LoadSensor_default_);
-/* harmony default export */ const Networking_LoadSensor = (LoadSensor_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/Networking.js
+/* harmony default export */ const Networking_LoadSensor = (x_ite_Namespace .add ("LoadSensor", LoadSensor_default_));
+;// CONCATENATED MODULE: ./src/x_ite/Components/NetworkingComponent.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -85526,7 +83684,7 @@ x_ite_Namespace .add ("LoadSensor", "x_ite/Components/Networking/LoadSensor", Lo
 
 
 
-const Networking_default_ = {
+const NetworkingComponent_default_ = {
    name: "Networking",
    concreteNodes:
    [
@@ -85542,8 +83700,7 @@ const Networking_default_ = {
 };
 ;
 
-x_ite_Namespace .add ("Networking", "x_ite/Components/Networking", Networking_default_);
-/* harmony default export */ const Networking = (Networking_default_);
+/* harmony default export */ const NetworkingComponent = (x_ite_Namespace .add ("NetworkingComponent", NetworkingComponent_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/PointingDeviceSensor/X3DDragSensorNode.js
 /*******************************************************************************
  *
@@ -85595,6 +83752,7 @@ x_ite_Namespace .add ("Networking", "x_ite/Components/Networking", Networking_de
 
 
 
+
 function X3DDragSensorNode (executionContext)
 {
    PointingDeviceSensor_X3DPointingDeviceSensorNode .call (this, executionContext);
@@ -85606,25 +83764,12 @@ function X3DDragSensorNode (executionContext)
 
 Object .setPrototypeOf (X3DDragSensorNode .prototype, PointingDeviceSensor_X3DPointingDeviceSensorNode .prototype);
 
-Object .defineProperties (X3DDragSensorNode,
-{
-   typeName:
-   {
-      value: "X3DDragSensorNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "PointingDeviceSensor", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DDragSensorNode, Core_X3DNode .getStaticProperties ("X3DDragSensorNode", "PointingDeviceSensor", 1));
 
 const X3DDragSensorNode_default_ = X3DDragSensorNode;
 ;
 
-x_ite_Namespace .add ("X3DDragSensorNode", "x_ite/Components/PointingDeviceSensor/X3DDragSensorNode", X3DDragSensorNode_default_);
-/* harmony default export */ const PointingDeviceSensor_X3DDragSensorNode = (X3DDragSensorNode_default_);
+/* harmony default export */ const PointingDeviceSensor_X3DDragSensorNode = (x_ite_Namespace .add ("X3DDragSensorNode", X3DDragSensorNode_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Cylinder3.js
 /*******************************************************************************
  *
@@ -85787,8 +83932,7 @@ Object .assign (Cylinder3 .prototype,
 const Cylinder3_default_ = Cylinder3;
 ;
 
-x_ite_Namespace .add ("Cylinder3", "standard/Math/Geometry/Cylinder3", Cylinder3_default_);
-/* harmony default export */ const Geometry_Cylinder3 = (Cylinder3_default_);
+/* harmony default export */ const Geometry_Cylinder3 = (x_ite_Namespace .add ("Cylinder3", Cylinder3_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/PointingDeviceSensor/CylinderSensor.js
 /*******************************************************************************
  *
@@ -85836,6 +83980,7 @@ x_ite_Namespace .add ("Cylinder3", "standard/Math/Geometry/Cylinder3", Cylinder3
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -85976,7 +84121,7 @@ Object .assign (Object .setPrototypeOf (CylinderSensor .prototype, PointingDevic
          billboardToViewer = this .invModelViewMatrix .origin,
          sxNormal          = yAxis .copy () .cross (billboardToViewer) .normalize ();
 
-      this .sxPlane  = new Geometry_Plane3 (new Numbers_Vector3 (), sxNormal);   // Billboarded special x-plane made parallel to sensors axis.
+      this .sxPlane  = new Geometry_Plane3 (Numbers_Vector3 .Zero, sxNormal);   // Billboarded special x-plane made parallel to sensors axis.
       this .szNormal = sxNormal .copy () .cross (yAxis) .normalize (); // Billboarded special z-normal made parallel to sensors axis.
 
       const trackPoint = new Numbers_Vector3 ();
@@ -86070,26 +84215,7 @@ Object .assign (Object .setPrototypeOf (CylinderSensor .prototype, PointingDevic
 
 Object .defineProperties (CylinderSensor,
 {
-   typeName:
-   {
-      value: "CylinderSensor",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "PointingDeviceSensor", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("CylinderSensor", "PointingDeviceSensor", 1, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -86114,8 +84240,7 @@ Object .defineProperties (CylinderSensor,
 const CylinderSensor_default_ = CylinderSensor;
 ;
 
-x_ite_Namespace .add ("CylinderSensor", "x_ite/Components/PointingDeviceSensor/CylinderSensor", CylinderSensor_default_);
-/* harmony default export */ const PointingDeviceSensor_CylinderSensor = (CylinderSensor_default_);
+/* harmony default export */ const PointingDeviceSensor_CylinderSensor = (x_ite_Namespace .add ("CylinderSensor", CylinderSensor_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Line2.js
 /*******************************************************************************
  *
@@ -86274,8 +84399,7 @@ Object .assign (Line2,
 const Line2_default_ = Line2;
 ;
 
-x_ite_Namespace .add ("Line2", "standard/Math/Geometry/Line2", Line2_default_);
-/* harmony default export */ const Geometry_Line2 = (Line2_default_);
+/* harmony default export */ const Geometry_Line2 = (x_ite_Namespace .add ("Line2", Line2_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/PointingDeviceSensor/PlaneSensor.js
 /*******************************************************************************
  *
@@ -86323,6 +84447,7 @@ x_ite_Namespace .add ("Line2", "standard/Math/Geometry/Line2", Line2_default_);
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -86453,7 +84578,7 @@ Object .assign (Object .setPrototypeOf (PlaneSensor .prototype, PointingDeviceSe
             this .trackStart (this .startPoint);
          }
 
-         // new Plane3 (new Vector3 (), this .plane .normal) .intersectsLine (hitRay, trackPoint);
+         // new Plane3 (Vector3 .Zero, this .plane .normal) .intersectsLine (hitRay, trackPoint);
       }
       else
       {
@@ -86557,26 +84682,7 @@ Object .assign (Object .setPrototypeOf (PlaneSensor .prototype, PointingDeviceSe
 
 Object .defineProperties (PlaneSensor,
 {
-   typeName:
-   {
-      value: "PlaneSensor",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "PointingDeviceSensor", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("PlaneSensor", "PointingDeviceSensor", 1, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -86600,8 +84706,7 @@ Object .defineProperties (PlaneSensor,
 const PlaneSensor_default_ = PlaneSensor;
 ;
 
-x_ite_Namespace .add ("PlaneSensor", "x_ite/Components/PointingDeviceSensor/PlaneSensor", PlaneSensor_default_);
-/* harmony default export */ const PointingDeviceSensor_PlaneSensor = (PlaneSensor_default_);
+/* harmony default export */ const PointingDeviceSensor_PlaneSensor = (x_ite_Namespace .add ("PlaneSensor", PlaneSensor_default_));
 ;// CONCATENATED MODULE: ./src/standard/Math/Geometry/Sphere3.js
 /*******************************************************************************
  *
@@ -86796,8 +84901,7 @@ Object .assign (Sphere3 .prototype,
 const Sphere3_default_ = Sphere3;
 ;
 
-x_ite_Namespace .add ("Sphere3", "standard/Math/Geometry/Sphere3", Sphere3_default_);
-/* harmony default export */ const Geometry_Sphere3 = (Sphere3_default_);
+/* harmony default export */ const Geometry_Sphere3 = (x_ite_Namespace .add ("Sphere3", Sphere3_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/PointingDeviceSensor/SphereSensor.js
 /*******************************************************************************
  *
@@ -86845,6 +84949,7 @@ x_ite_Namespace .add ("Sphere3", "standard/Math/Geometry/Sphere3", Sphere3_defau
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -86980,26 +85085,7 @@ Object .assign (Object .setPrototypeOf (SphereSensor .prototype, PointingDeviceS
 
 Object .defineProperties (SphereSensor,
 {
-   typeName:
-   {
-      value: "SphereSensor",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "PointingDeviceSensor", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("SphereSensor", "PointingDeviceSensor", 1, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -87020,9 +85106,8 @@ Object .defineProperties (SphereSensor,
 const SphereSensor_default_ = SphereSensor;
 ;
 
-x_ite_Namespace .add ("SphereSensor", "x_ite/Components/PointingDeviceSensor/SphereSensor", SphereSensor_default_);
-/* harmony default export */ const PointingDeviceSensor_SphereSensor = (SphereSensor_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/PointingDeviceSensor.js
+/* harmony default export */ const PointingDeviceSensor_SphereSensor = (x_ite_Namespace .add ("SphereSensor", SphereSensor_default_));
+;// CONCATENATED MODULE: ./src/x_ite/Components/PointingDeviceSensorComponent.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -87078,7 +85163,7 @@ x_ite_Namespace .add ("SphereSensor", "x_ite/Components/PointingDeviceSensor/Sph
 
 
 
-const PointingDeviceSensor_default_ = {
+const PointingDeviceSensorComponent_default_ = {
    name: "PointingDeviceSensor",
    concreteNodes:
    [
@@ -87096,8 +85181,7 @@ const PointingDeviceSensor_default_ = {
 };
 ;
 
-x_ite_Namespace .add ("PointingDeviceSensor", "x_ite/Components/PointingDeviceSensor", PointingDeviceSensor_default_);
-/* harmony default export */ const PointingDeviceSensor = (PointingDeviceSensor_default_);
+/* harmony default export */ const PointingDeviceSensorComponent = (x_ite_Namespace .add ("PointingDeviceSensorComponent", PointingDeviceSensorComponent_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/ClipPlane.js
 /*******************************************************************************
  *
@@ -87156,11 +85240,12 @@ x_ite_Namespace .add ("PointingDeviceSensor", "x_ite/Components/PointingDeviceSe
 
 
 
+
 const ClipPlanes = Utility_ObjectCache (ClipPlaneContainer);
 
 function ClipPlaneContainer ()
 {
-   this .plane = new Geometry_Plane3 (Numbers_Vector3 .Zero, Numbers_Vector3 .Zero);
+   this .plane = new Geometry_Plane3 ();
 }
 
 Object .assign (ClipPlaneContainer .prototype,
@@ -87249,26 +85334,7 @@ Object .assign (Object .setPrototypeOf (ClipPlane .prototype, Core_X3DChildNode 
 
 Object .defineProperties (ClipPlane,
 {
-   typeName:
-   {
-      value: "ClipPlane",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 5 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ClipPlane", "Rendering", 5, "children", "3.2"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -87283,8 +85349,7 @@ Object .defineProperties (ClipPlane,
 const ClipPlane_default_ = ClipPlane;
 ;
 
-x_ite_Namespace .add ("ClipPlane", "x_ite/Components/Rendering/ClipPlane", ClipPlane_default_);
-/* harmony default export */ const Rendering_ClipPlane = (ClipPlane_default_);
+/* harmony default export */ const Rendering_ClipPlane = (x_ite_Namespace .add ("ClipPlane", ClipPlane_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/X3DColorNode.js
 /*******************************************************************************
  *
@@ -87337,6 +85402,7 @@ x_ite_Namespace .add ("ClipPlane", "x_ite/Components/Rendering/ClipPlane", ClipP
 
 
 
+
 function X3DColorNode (executionContext)
 {
    Rendering_X3DGeometricPropertyNode .call (this, executionContext);
@@ -87359,25 +85425,12 @@ Object .assign (Object .setPrototypeOf (X3DColorNode .prototype, Rendering_X3DGe
    },
 });
 
-Object .defineProperties (X3DColorNode,
-{
-   typeName:
-   {
-      value: "X3DColorNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DColorNode, Core_X3DNode .getStaticProperties ("X3DColorNode", "Rendering", 1));
 
 const X3DColorNode_default_ = X3DColorNode;
 ;
 
-x_ite_Namespace .add ("X3DColorNode", "x_ite/Components/Rendering/X3DColorNode", X3DColorNode_default_);
-/* harmony default export */ const Rendering_X3DColorNode = (X3DColorNode_default_);
+/* harmony default export */ const Rendering_X3DColorNode = (x_ite_Namespace .add ("X3DColorNode", X3DColorNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/Color.js
 /*******************************************************************************
  *
@@ -87425,6 +85478,7 @@ x_ite_Namespace .add ("X3DColorNode", "x_ite/Components/Rendering/X3DColorNode",
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -87496,26 +85550,7 @@ Object .assign (Object .setPrototypeOf (Color .prototype, Rendering_X3DColorNode
 
 Object .defineProperties (Color,
 {
-   typeName:
-   {
-      value: "Color",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "color",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Color", "Rendering", 1, "color", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -87529,8 +85564,7 @@ Object .defineProperties (Color,
 const Color_default_ = Color;
 ;
 
-x_ite_Namespace .add ("Color", "x_ite/Components/Rendering/Color", Color_default_);
-/* harmony default export */ const Rendering_Color = (Color_default_);
+/* harmony default export */ const Rendering_Color = (x_ite_Namespace .add ("Color", Color_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/ColorRGBA.js
 /*******************************************************************************
  *
@@ -87578,6 +85612,7 @@ x_ite_Namespace .add ("Color", "x_ite/Components/Rendering/Color", Color_default
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -87651,26 +85686,7 @@ Object .assign (Object .setPrototypeOf (ColorRGBA .prototype, Rendering_X3DColor
 
 Object .defineProperties (ColorRGBA,
 {
-   typeName:
-   {
-      value: "ColorRGBA",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "color",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ColorRGBA", "Rendering", 1, "color", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -87684,8 +85700,7 @@ Object .defineProperties (ColorRGBA,
 const ColorRGBA_default_ = ColorRGBA;
 ;
 
-x_ite_Namespace .add ("ColorRGBA", "x_ite/Components/Rendering/ColorRGBA", ColorRGBA_default_);
-/* harmony default export */ const Rendering_ColorRGBA = (ColorRGBA_default_);
+/* harmony default export */ const Rendering_ColorRGBA = (x_ite_Namespace .add ("ColorRGBA", ColorRGBA_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/X3DCoordinateNode.js
 /*******************************************************************************
  *
@@ -87733,6 +85748,7 @@ x_ite_Namespace .add ("ColorRGBA", "x_ite/Components/Rendering/ColorRGBA", Color
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -87868,25 +85884,12 @@ Object .assign (Object .setPrototypeOf (X3DCoordinateNode .prototype, Rendering_
    })(),
 });
 
-Object .defineProperties (X3DCoordinateNode,
-{
-   typeName:
-   {
-      value: "X3DCoordinateNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DCoordinateNode, Core_X3DNode .getStaticProperties ("X3DCoordinateNode", "Rendering", 1));
 
 const X3DCoordinateNode_default_ = X3DCoordinateNode;
 ;
 
-x_ite_Namespace .add ("X3DCoordinateNode", "x_ite/Components/Rendering/X3DCoordinateNode", X3DCoordinateNode_default_);
-/* harmony default export */ const Rendering_X3DCoordinateNode = (X3DCoordinateNode_default_);
+/* harmony default export */ const Rendering_X3DCoordinateNode = (x_ite_Namespace .add ("X3DCoordinateNode", X3DCoordinateNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/Coordinate.js
 /*******************************************************************************
  *
@@ -87941,6 +85944,7 @@ x_ite_Namespace .add ("X3DCoordinateNode", "x_ite/Components/Rendering/X3DCoordi
 
 
 
+
 function Coordinate (executionContext)
 {
    Rendering_X3DCoordinateNode .call (this, executionContext);
@@ -87954,26 +85958,7 @@ Object .setPrototypeOf (Coordinate .prototype, Rendering_X3DCoordinateNode .prot
 
 Object .defineProperties (Coordinate,
 {
-   typeName:
-   {
-      value: "Coordinate",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "coord",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Coordinate", "Rendering", 1, "coord", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -87987,8 +85972,7 @@ Object .defineProperties (Coordinate,
 const Coordinate_default_ = Coordinate;
 ;
 
-x_ite_Namespace .add ("Coordinate", "x_ite/Components/Rendering/Coordinate", Coordinate_default_);
-/* harmony default export */ const Rendering_Coordinate = (Coordinate_default_);
+/* harmony default export */ const Rendering_Coordinate = (x_ite_Namespace .add ("Coordinate", Coordinate_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/CoordinateDouble.js
 /*******************************************************************************
  *
@@ -88043,6 +86027,7 @@ x_ite_Namespace .add ("Coordinate", "x_ite/Components/Rendering/Coordinate", Coo
 
 
 
+
 function CoordinateDouble (executionContext)
 {
    Rendering_X3DCoordinateNode .call (this, executionContext);
@@ -88054,26 +86039,7 @@ Object .setPrototypeOf (CoordinateDouble .prototype, Rendering_X3DCoordinateNode
 
 Object .defineProperties (CoordinateDouble,
 {
-   typeName:
-   {
-      value: "CoordinateDouble",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "coord",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("CoordinateDouble", "Rendering", 1, "coord", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -88087,8 +86053,7 @@ Object .defineProperties (CoordinateDouble,
 const CoordinateDouble_default_ = CoordinateDouble;
 ;
 
-x_ite_Namespace .add ("CoordinateDouble", "x_ite/Components/Rendering/CoordinateDouble", CoordinateDouble_default_);
-/* harmony default export */ const Rendering_CoordinateDouble = (CoordinateDouble_default_);
+/* harmony default export */ const Rendering_CoordinateDouble = (x_ite_Namespace .add ("CoordinateDouble", CoordinateDouble_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/X3DLineGeometryNode.js
 /*******************************************************************************
  *
@@ -88136,6 +86101,7 @@ x_ite_Namespace .add ("CoordinateDouble", "x_ite/Components/Rendering/Coordinate
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -88786,25 +86752,12 @@ Object .assign (Object .setPrototypeOf (X3DLineGeometryNode .prototype, Renderin
    })(),
 });
 
-Object .defineProperties (X3DLineGeometryNode,
-{
-   typeName:
-   {
-      value: "X3DLineGeometryNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DLineGeometryNode, Core_X3DNode .getStaticProperties ("X3DLineGeometryNode", "Rendering", 1));
 
 const X3DLineGeometryNode_default_ = X3DLineGeometryNode;
 ;
 
-x_ite_Namespace .add ("X3DLineGeometryNode", "x_ite/Components/Rendering/X3DLineGeometryNode", X3DLineGeometryNode_default_);
-/* harmony default export */ const Rendering_X3DLineGeometryNode = (X3DLineGeometryNode_default_);
+/* harmony default export */ const Rendering_X3DLineGeometryNode = (x_ite_Namespace .add ("X3DLineGeometryNode", X3DLineGeometryNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/IndexedLineSet.js
 /*******************************************************************************
  *
@@ -88852,6 +86805,7 @@ x_ite_Namespace .add ("X3DLineGeometryNode", "x_ite/Components/Rendering/X3DLine
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -89081,26 +87035,7 @@ Object .assign (Object .setPrototypeOf (IndexedLineSet .prototype, Rendering_X3D
 
 Object .defineProperties (IndexedLineSet,
 {
-   typeName:
-   {
-      value: "IndexedLineSet",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "geometry",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("IndexedLineSet", "Rendering", 1, "geometry", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -89124,8 +87059,7 @@ Object .defineProperties (IndexedLineSet,
 const IndexedLineSet_default_ = IndexedLineSet;
 ;
 
-x_ite_Namespace .add ("IndexedLineSet", "x_ite/Components/Rendering/IndexedLineSet", IndexedLineSet_default_);
-/* harmony default export */ const Rendering_IndexedLineSet = (IndexedLineSet_default_);
+/* harmony default export */ const Rendering_IndexedLineSet = (x_ite_Namespace .add ("IndexedLineSet", IndexedLineSet_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/IndexedTriangleFanSet.js
 /*******************************************************************************
  *
@@ -89173,6 +87107,7 @@ x_ite_Namespace .add ("IndexedLineSet", "x_ite/Components/Rendering/IndexedLineS
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -89258,26 +87193,7 @@ Object .assign (Object .setPrototypeOf (IndexedTriangleFanSet .prototype, Render
 
 Object .defineProperties (IndexedTriangleFanSet,
 {
-   typeName:
-   {
-      value: "IndexedTriangleFanSet",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 3 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "geometry",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("IndexedTriangleFanSet", "Rendering", 3, "geometry", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -89303,8 +87219,7 @@ Object .defineProperties (IndexedTriangleFanSet,
 const IndexedTriangleFanSet_default_ = IndexedTriangleFanSet;
 ;
 
-x_ite_Namespace .add ("IndexedTriangleFanSet", "x_ite/Components/Rendering/IndexedTriangleFanSet", IndexedTriangleFanSet_default_);
-/* harmony default export */ const Rendering_IndexedTriangleFanSet = (IndexedTriangleFanSet_default_);
+/* harmony default export */ const Rendering_IndexedTriangleFanSet = (x_ite_Namespace .add ("IndexedTriangleFanSet", IndexedTriangleFanSet_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/IndexedTriangleSet.js
 /*******************************************************************************
  *
@@ -89359,6 +87274,7 @@ x_ite_Namespace .add ("IndexedTriangleFanSet", "x_ite/Components/Rendering/Index
 
 
 
+
 function IndexedTriangleSet (executionContext)
 {
    Rendering_X3DComposedGeometryNode .call (this, executionContext);
@@ -89394,26 +87310,7 @@ Object .assign (Object .setPrototypeOf (IndexedTriangleSet .prototype, Rendering
 
 Object .defineProperties (IndexedTriangleSet,
 {
-   typeName:
-   {
-      value: "IndexedTriangleSet",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 3 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "geometry",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("IndexedTriangleSet", "Rendering", 3, "geometry", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -89439,8 +87336,7 @@ Object .defineProperties (IndexedTriangleSet,
 const IndexedTriangleSet_default_ = IndexedTriangleSet;
 ;
 
-x_ite_Namespace .add ("IndexedTriangleSet", "x_ite/Components/Rendering/IndexedTriangleSet", IndexedTriangleSet_default_);
-/* harmony default export */ const Rendering_IndexedTriangleSet = (IndexedTriangleSet_default_);
+/* harmony default export */ const Rendering_IndexedTriangleSet = (x_ite_Namespace .add ("IndexedTriangleSet", IndexedTriangleSet_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/IndexedTriangleStripSet.js
 /*******************************************************************************
  *
@@ -89488,6 +87384,7 @@ x_ite_Namespace .add ("IndexedTriangleSet", "x_ite/Components/Rendering/IndexedT
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -89581,26 +87478,7 @@ Object .assign (Object .setPrototypeOf (IndexedTriangleStripSet .prototype, Rend
 
 Object .defineProperties (IndexedTriangleStripSet,
 {
-   typeName:
-   {
-      value: "IndexedTriangleStripSet",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 3 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "geometry",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("IndexedTriangleStripSet", "Rendering", 3, "geometry", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -89626,8 +87504,7 @@ Object .defineProperties (IndexedTriangleStripSet,
 const IndexedTriangleStripSet_default_ = IndexedTriangleStripSet;
 ;
 
-x_ite_Namespace .add ("IndexedTriangleStripSet", "x_ite/Components/Rendering/IndexedTriangleStripSet", IndexedTriangleStripSet_default_);
-/* harmony default export */ const Rendering_IndexedTriangleStripSet = (IndexedTriangleStripSet_default_);
+/* harmony default export */ const Rendering_IndexedTriangleStripSet = (x_ite_Namespace .add ("IndexedTriangleStripSet", IndexedTriangleStripSet_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/LineSet.js
 /*******************************************************************************
  *
@@ -89675,6 +87552,7 @@ x_ite_Namespace .add ("IndexedTriangleStripSet", "x_ite/Components/Rendering/Ind
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -89846,26 +87724,7 @@ Object .assign (Object .setPrototypeOf (LineSet .prototype, Rendering_X3DLineGeo
 
 Object .defineProperties (LineSet,
 {
-   typeName:
-   {
-      value: "LineSet",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "geometry",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("LineSet", "Rendering", 1, "geometry", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -89885,8 +87744,7 @@ Object .defineProperties (LineSet,
 const LineSet_default_ = LineSet;
 ;
 
-x_ite_Namespace .add ("LineSet", "x_ite/Components/Rendering/LineSet", LineSet_default_);
-/* harmony default export */ const Rendering_LineSet = (LineSet_default_);
+/* harmony default export */ const Rendering_LineSet = (x_ite_Namespace .add ("LineSet", LineSet_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/X3DNormalNode.js
 /*******************************************************************************
  *
@@ -89938,6 +87796,7 @@ x_ite_Namespace .add ("LineSet", "x_ite/Components/Rendering/LineSet", LineSet_d
 
 
 
+
 function X3DNormalNode (executionContext)
 {
    Rendering_X3DGeometricPropertyNode .call (this, executionContext);
@@ -89947,25 +87806,12 @@ function X3DNormalNode (executionContext)
 
 Object .setPrototypeOf (X3DNormalNode .prototype, Rendering_X3DGeometricPropertyNode .prototype);
 
-Object .defineProperties (X3DNormalNode,
-{
-   typeName:
-   {
-      value: "X3DNormalNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 2 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DNormalNode, Core_X3DNode .getStaticProperties ("X3DNormalNode", "Rendering", 2));
 
 const X3DNormalNode_default_ = X3DNormalNode;
 ;
 
-x_ite_Namespace .add ("X3DNormalNode", "x_ite/Components/Rendering/X3DNormalNode", X3DNormalNode_default_);
-/* harmony default export */ const Rendering_X3DNormalNode = (X3DNormalNode_default_);
+/* harmony default export */ const Rendering_X3DNormalNode = (x_ite_Namespace .add ("X3DNormalNode", X3DNormalNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/Normal.js
 /*******************************************************************************
  *
@@ -90013,6 +87859,7 @@ x_ite_Namespace .add ("X3DNormalNode", "x_ite/Components/Rendering/X3DNormalNode
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -90084,26 +87931,7 @@ Object .assign (Object .setPrototypeOf (Normal .prototype, Rendering_X3DNormalNo
 
 Object .defineProperties (Normal,
 {
-   typeName:
-   {
-      value: "Normal",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "normal",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Normal", "Rendering", 2, "normal", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -90117,8 +87945,7 @@ Object .defineProperties (Normal,
 const Normal_default_ = Normal;
 ;
 
-x_ite_Namespace .add ("Normal", "x_ite/Components/Rendering/Normal", Normal_default_);
-/* harmony default export */ const Rendering_Normal = (Normal_default_);
+/* harmony default export */ const Rendering_Normal = (x_ite_Namespace .add ("Normal", Normal_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/X3DPointGeometryNode.js
 /*******************************************************************************
  *
@@ -90166,6 +87993,7 @@ x_ite_Namespace .add ("Normal", "x_ite/Components/Rendering/Normal", Normal_defa
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -90308,25 +88136,12 @@ Object .assign (Object .setPrototypeOf (X3DPointGeometryNode .prototype, Renderi
    },
 });
 
-Object .defineProperties (X3DPointGeometryNode,
-{
-   typeName:
-   {
-      value: "X3DPointGeometryNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DPointGeometryNode, Core_X3DNode .getStaticProperties ("X3DPointGeometryNode", "Rendering", 1));
 
 const X3DPointGeometryNode_default_ = X3DPointGeometryNode;
 ;
 
-x_ite_Namespace .add ("X3DPointGeometryNode", "x_ite/Components/Rendering/X3DPointGeometryNode", X3DPointGeometryNode_default_);
-/* harmony default export */ const Rendering_X3DPointGeometryNode = (X3DPointGeometryNode_default_);
+/* harmony default export */ const Rendering_X3DPointGeometryNode = (x_ite_Namespace .add ("X3DPointGeometryNode", X3DPointGeometryNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/PointSet.js
 /*******************************************************************************
  *
@@ -90374,6 +88189,7 @@ x_ite_Namespace .add ("X3DPointGeometryNode", "x_ite/Components/Rendering/X3DPoi
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -90528,26 +88344,7 @@ Object .assign (Object .setPrototypeOf (PointSet .prototype, Rendering_X3DPointG
 
 Object .defineProperties (PointSet,
 {
-   typeName:
-   {
-      value: "PointSet",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "geometry",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("PointSet", "Rendering", 1, "geometry", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -90566,8 +88363,7 @@ Object .defineProperties (PointSet,
 const PointSet_default_ = PointSet;
 ;
 
-x_ite_Namespace .add ("PointSet", "x_ite/Components/Rendering/PointSet", PointSet_default_);
-/* harmony default export */ const Rendering_PointSet = (PointSet_default_);
+/* harmony default export */ const Rendering_PointSet = (x_ite_Namespace .add ("PointSet", PointSet_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/Tangent.js
 /*******************************************************************************
  *
@@ -90615,6 +88411,7 @@ x_ite_Namespace .add ("PointSet", "x_ite/Components/Rendering/PointSet", PointSe
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -90690,26 +88487,7 @@ Object .assign (Object .setPrototypeOf (Tangent .prototype, Rendering_X3DGeometr
 
 Object .defineProperties (Tangent,
 {
-   typeName:
-   {
-      value: "Tangent",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 5 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "tangent",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Tangent", "Rendering", 5, "tangent", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -90723,8 +88501,7 @@ Object .defineProperties (Tangent,
 const Tangent_default_ = Tangent;
 ;
 
-x_ite_Namespace .add ("Tangent", "x_ite/Components/Rendering/Tangent", Tangent_default_);
-/* harmony default export */ const Rendering_Tangent = (Tangent_default_);
+/* harmony default export */ const Rendering_Tangent = (x_ite_Namespace .add ("Tangent", Tangent_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/TriangleFanSet.js
 /*******************************************************************************
  *
@@ -90772,6 +88549,7 @@ x_ite_Namespace .add ("Tangent", "x_ite/Components/Rendering/Tangent", Tangent_d
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -90840,26 +88618,7 @@ Object .assign (Object .setPrototypeOf (TriangleFanSet .prototype, Rendering_X3D
 
 Object .defineProperties (TriangleFanSet,
 {
-   typeName:
-   {
-      value: "TriangleFanSet",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 3 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "geometry",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("TriangleFanSet", "Rendering", 3, "geometry", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -90884,8 +88643,7 @@ Object .defineProperties (TriangleFanSet,
 const TriangleFanSet_default_ = TriangleFanSet;
 ;
 
-x_ite_Namespace .add ("TriangleFanSet", "x_ite/Components/Rendering/TriangleFanSet", TriangleFanSet_default_);
-/* harmony default export */ const Rendering_TriangleFanSet = (TriangleFanSet_default_);
+/* harmony default export */ const Rendering_TriangleFanSet = (x_ite_Namespace .add ("TriangleFanSet", TriangleFanSet_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/TriangleSet.js
 /*******************************************************************************
  *
@@ -90940,6 +88698,7 @@ x_ite_Namespace .add ("TriangleFanSet", "x_ite/Components/Rendering/TriangleFanS
 
 
 
+
 function TriangleSet (executionContext)
 {
    Rendering_X3DComposedGeometryNode .call (this, executionContext);
@@ -90972,26 +88731,7 @@ Object .assign (Object .setPrototypeOf (TriangleSet .prototype, Rendering_X3DCom
 
 Object .defineProperties (TriangleSet,
 {
-   typeName:
-   {
-      value: "TriangleSet",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 3 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "geometry",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("TriangleSet", "Rendering", 3, "geometry", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -91015,8 +88755,7 @@ Object .defineProperties (TriangleSet,
 const TriangleSet_default_ = TriangleSet;
 ;
 
-x_ite_Namespace .add ("TriangleSet", "x_ite/Components/Rendering/TriangleSet", TriangleSet_default_);
-/* harmony default export */ const Rendering_TriangleSet = (TriangleSet_default_);
+/* harmony default export */ const Rendering_TriangleSet = (x_ite_Namespace .add ("TriangleSet", TriangleSet_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering/TriangleStripSet.js
 /*******************************************************************************
  *
@@ -91064,6 +88803,7 @@ x_ite_Namespace .add ("TriangleSet", "x_ite/Components/Rendering/TriangleSet", T
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -91136,26 +88876,7 @@ Object .assign (Object .setPrototypeOf (TriangleStripSet .prototype, Rendering_X
 
 Object .defineProperties (TriangleStripSet,
 {
-   typeName:
-   {
-      value: "TriangleStripSet",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Rendering", level: 3 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "geometry",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("TriangleStripSet", "Rendering", 3, "geometry", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -91180,9 +88901,8 @@ Object .defineProperties (TriangleStripSet,
 const TriangleStripSet_default_ = TriangleStripSet;
 ;
 
-x_ite_Namespace .add ("TriangleStripSet", "x_ite/Components/Rendering/TriangleStripSet", TriangleStripSet_default_);
-/* harmony default export */ const Rendering_TriangleStripSet = (TriangleStripSet_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/Rendering.js
+/* harmony default export */ const Rendering_TriangleStripSet = (x_ite_Namespace .add ("TriangleStripSet", TriangleStripSet_default_));
+;// CONCATENATED MODULE: ./src/x_ite/Components/RenderingComponent.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -91253,7 +88973,7 @@ x_ite_Namespace .add ("TriangleStripSet", "x_ite/Components/Rendering/TriangleSt
 
 
 
-const Rendering_default_ = {
+const RenderingComponent_default_ = {
    name: "Rendering",
    concreteNodes:
    [
@@ -91286,8 +89006,7 @@ const Rendering_default_ = {
 };
 ;
 
-x_ite_Namespace .add ("Rendering", "x_ite/Components/Rendering", Rendering_default_);
-/* harmony default export */ const Rendering = (Rendering_default_);
+/* harmony default export */ const RenderingComponent = (x_ite_Namespace .add ("RenderingComponent", RenderingComponent_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/X3DShaderNode.js
 /*******************************************************************************
  *
@@ -91339,6 +89058,7 @@ x_ite_Namespace .add ("Rendering", "x_ite/Components/Rendering", Rendering_defau
 
 
 
+
 function X3DShaderNode (executionContext)
 {
    Shape_X3DAppearanceChildNode .call (this, executionContext);
@@ -91378,25 +89098,12 @@ Object .assign (Object .setPrototypeOf (X3DShaderNode .prototype, Shape_X3DAppea
    },
 });
 
-Object .defineProperties (X3DShaderNode,
-{
-   typeName:
-   {
-      value: "X3DShaderNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shaders", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DShaderNode, Core_X3DNode .getStaticProperties ("X3DShaderNode", "Shaders", 1));
 
 const X3DShaderNode_default_ = X3DShaderNode;
 ;
 
-x_ite_Namespace .add ("X3DShaderNode", "x_ite/Components/Shaders/X3DShaderNode", X3DShaderNode_default_);
-/* harmony default export */ const Shaders_X3DShaderNode = (X3DShaderNode_default_);
+/* harmony default export */ const Shaders_X3DShaderNode = (x_ite_Namespace .add ("X3DShaderNode", X3DShaderNode_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/MaterialTextures.js
 const MaterialTextures_default_ = {
    names: [
@@ -91518,10 +89225,9 @@ mediump samplerCube textureCube;
 };
 ;
 
-x_ite_Namespace .add ("MaterialTextures", "assets/shaders/MaterialTextures", MaterialTextures_default_);
-/* harmony default export */ const MaterialTextures = (MaterialTextures_default_);
+/* harmony default export */ const MaterialTextures = (x_ite_Namespace .add ("MaterialTextures", MaterialTextures_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/X3DProgrammableShaderObject.js
-/* provided dependency */ var X3DProgrammableShaderObject_$ = __webpack_require__(812);
+/* provided dependency */ var X3DProgrammableShaderObject_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -91568,6 +89274,8 @@ x_ite_Namespace .add ("MaterialTextures", "assets/shaders/MaterialTextures", Mat
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
+
 
 
 
@@ -92555,7 +90263,9 @@ Object .assign (X3DProgrammableShaderObject .prototype,
    },
    setUniforms: (() =>
    {
-      const normalMatrix = new Float32Array (9);
+      const
+         xrModelViewMatrix = new Float32Array (16),
+         normalMatrix      = new Float32Array (9);
 
       return function (gl, geometryContext, renderContext, front = true)
       {
@@ -92613,7 +90323,19 @@ Object .assign (X3DProgrammableShaderObject .prototype,
 
          // Model view matrix
 
-         gl .uniformMatrix4fv (this .x3d_ModelViewMatrix, false, modelViewMatrix);
+         const view = renderObject .getView ();
+
+         if (view)
+         {
+            xrModelViewMatrix .set (modelViewMatrix);
+            Numbers_Matrix4 .prototype .multRight .call (xrModelViewMatrix, view .matrix);
+
+            gl .uniformMatrix4fv (this .x3d_ModelViewMatrix, false, xrModelViewMatrix);
+         }
+         else
+         {
+            gl .uniformMatrix4fv (this .x3d_ModelViewMatrix, false, modelViewMatrix);
+         }
 
          // Normal matrix
 
@@ -92959,25 +90681,12 @@ Object .assign (X3DProgrammableShaderObject .prototype,
    dispose () { },
 });
 
-Object .defineProperties (X3DProgrammableShaderObject,
-{
-   typeName:
-   {
-      value: "X3DProgrammableShaderObject",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shaders", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DProgrammableShaderObject, Core_X3DNode .getStaticProperties ("X3DProgrammableShaderObject", "Shaders", 1));
 
 const X3DProgrammableShaderObject_default_ = X3DProgrammableShaderObject;
 ;
 
-x_ite_Namespace .add ("X3DProgrammableShaderObject", "x_ite/Components/Shaders/X3DProgrammableShaderObject", X3DProgrammableShaderObject_default_);
-/* harmony default export */ const Shaders_X3DProgrammableShaderObject = (X3DProgrammableShaderObject_default_);
+/* harmony default export */ const Shaders_X3DProgrammableShaderObject = (x_ite_Namespace .add ("X3DProgrammableShaderObject", X3DProgrammableShaderObject_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/ComposedShader.js
 /*******************************************************************************
  *
@@ -93025,6 +90734,7 @@ x_ite_Namespace .add ("X3DProgrammableShaderObject", "x_ite/Components/Shaders/X
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -93173,26 +90883,7 @@ Object .assign (Object .setPrototypeOf (ComposedShader .prototype, Shaders_X3DSh
 
 Object .defineProperties (ComposedShader,
 {
-   typeName:
-   {
-      value: "ComposedShader",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shaders", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "shaders",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ComposedShader", "Shaders", 1, "shaders", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -93210,8 +90901,7 @@ Object .defineProperties (ComposedShader,
 const ComposedShader_default_ = ComposedShader;
 ;
 
-x_ite_Namespace .add ("ComposedShader", "x_ite/Components/Shaders/ComposedShader", ComposedShader_default_);
-/* harmony default export */ const Shaders_ComposedShader = (ComposedShader_default_);
+/* harmony default export */ const Shaders_ComposedShader = (x_ite_Namespace .add ("ComposedShader", ComposedShader_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/X3DVertexAttributeNode.js
 /*******************************************************************************
  *
@@ -93264,6 +90954,7 @@ x_ite_Namespace .add ("ComposedShader", "x_ite/Components/Shaders/ComposedShader
 
 
 
+
 function X3DVertexAttributeNode (executionContext)
 {
    Rendering_X3DGeometricPropertyNode .call (this, executionContext);
@@ -93287,25 +90978,12 @@ Object .assign (Object .setPrototypeOf (X3DVertexAttributeNode .prototype, Rende
    },
 });
 
-Object .defineProperties (X3DVertexAttributeNode,
-{
-   typeName:
-   {
-      value: "X3DVertexAttributeNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shaders", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DVertexAttributeNode, Core_X3DNode .getStaticProperties ("X3DVertexAttributeNode", "Shaders", 1));
 
 const X3DVertexAttributeNode_default_ = X3DVertexAttributeNode;
 ;
 
-x_ite_Namespace .add ("X3DVertexAttributeNode", "x_ite/Components/Shaders/X3DVertexAttributeNode", X3DVertexAttributeNode_default_);
-/* harmony default export */ const Shaders_X3DVertexAttributeNode = (X3DVertexAttributeNode_default_);
+/* harmony default export */ const Shaders_X3DVertexAttributeNode = (x_ite_Namespace .add ("X3DVertexAttributeNode", X3DVertexAttributeNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/FloatVertexAttribute.js
 /*******************************************************************************
  *
@@ -93353,6 +91031,7 @@ x_ite_Namespace .add ("X3DVertexAttributeNode", "x_ite/Components/Shaders/X3DVer
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -93425,26 +91104,7 @@ Object .assign (Object .setPrototypeOf (FloatVertexAttribute .prototype, Shaders
 
 Object .defineProperties (FloatVertexAttribute,
 {
-   typeName:
-   {
-      value: "FloatVertexAttribute",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shaders", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "attrib",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("FloatVertexAttribute", "Shaders", 1, "attrib", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -93460,8 +91120,7 @@ Object .defineProperties (FloatVertexAttribute,
 const FloatVertexAttribute_default_ = FloatVertexAttribute;
 ;
 
-x_ite_Namespace .add ("FloatVertexAttribute", "x_ite/Components/Shaders/FloatVertexAttribute", FloatVertexAttribute_default_);
-/* harmony default export */ const Shaders_FloatVertexAttribute = (FloatVertexAttribute_default_);
+/* harmony default export */ const Shaders_FloatVertexAttribute = (x_ite_Namespace .add ("FloatVertexAttribute", FloatVertexAttribute_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/Matrix3VertexAttribute.js
 /*******************************************************************************
  *
@@ -93509,6 +91168,7 @@ x_ite_Namespace .add ("FloatVertexAttribute", "x_ite/Components/Shaders/FloatVer
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -93573,26 +91233,7 @@ Object .assign (Object .setPrototypeOf (Matrix3VertexAttribute .prototype, Shade
 
 Object .defineProperties (Matrix3VertexAttribute,
 {
-   typeName:
-   {
-      value: "Matrix3VertexAttribute",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shaders", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "attrib",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Matrix3VertexAttribute", "Shaders", 1, "attrib", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -93607,8 +91248,7 @@ Object .defineProperties (Matrix3VertexAttribute,
 const Matrix3VertexAttribute_default_ = Matrix3VertexAttribute;
 ;
 
-x_ite_Namespace .add ("Matrix3VertexAttribute", "x_ite/Components/Shaders/Matrix3VertexAttribute", Matrix3VertexAttribute_default_);
-/* harmony default export */ const Shaders_Matrix3VertexAttribute = (Matrix3VertexAttribute_default_);
+/* harmony default export */ const Shaders_Matrix3VertexAttribute = (x_ite_Namespace .add ("Matrix3VertexAttribute", Matrix3VertexAttribute_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/Matrix4VertexAttribute.js
 /*******************************************************************************
  *
@@ -93656,6 +91296,7 @@ x_ite_Namespace .add ("Matrix3VertexAttribute", "x_ite/Components/Shaders/Matrix
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -93719,26 +91360,7 @@ Object .assign (Object .setPrototypeOf (Matrix4VertexAttribute .prototype, Shade
 
 Object .defineProperties (Matrix4VertexAttribute,
 {
-   typeName:
-   {
-      value: "Matrix4VertexAttribute",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shaders", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "attrib",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Matrix4VertexAttribute", "Shaders", 1, "attrib", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -93753,8 +91375,7 @@ Object .defineProperties (Matrix4VertexAttribute,
 const Matrix4VertexAttribute_default_ = Matrix4VertexAttribute;
 ;
 
-x_ite_Namespace .add ("Matrix4VertexAttribute", "x_ite/Components/Shaders/Matrix4VertexAttribute", Matrix4VertexAttribute_default_);
-/* harmony default export */ const Shaders_Matrix4VertexAttribute = (Matrix4VertexAttribute_default_);
+/* harmony default export */ const Shaders_Matrix4VertexAttribute = (x_ite_Namespace .add ("Matrix4VertexAttribute", Matrix4VertexAttribute_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/PackagedShader.js
 /*******************************************************************************
  *
@@ -93811,6 +91432,7 @@ x_ite_Namespace .add ("Matrix4VertexAttribute", "x_ite/Components/Shaders/Matrix
 
 
 
+
 /**
  * THIS NODE IS NOT SUPPORTED.
  */
@@ -93850,26 +91472,7 @@ Object .assign (Object .setPrototypeOf (PackagedShader .prototype, Shaders_X3DSh
 
 Object .defineProperties (PackagedShader,
 {
-   typeName:
-   {
-      value: "PackagedShader",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shaders", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "shaders",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("PackagedShader", "Shaders", 1, "shaders", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -93891,8 +91494,7 @@ Object .defineProperties (PackagedShader,
 const PackagedShader_default_ = PackagedShader;
 ;
 
-x_ite_Namespace .add ("PackagedShader", "x_ite/Components/Shaders/PackagedShader", PackagedShader_default_);
-/* harmony default export */ const Shaders_PackagedShader = (PackagedShader_default_);
+/* harmony default export */ const Shaders_PackagedShader = (x_ite_Namespace .add ("PackagedShader", PackagedShader_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/ProgramShader.js
 /*******************************************************************************
  *
@@ -93947,6 +91549,7 @@ x_ite_Namespace .add ("PackagedShader", "x_ite/Components/Shaders/PackagedShader
 
 
 
+
 /**
  * THIS NODE IS NOT SUPPORTED.
  */
@@ -93962,26 +91565,7 @@ Object .setPrototypeOf (ProgramShader .prototype, Shaders_X3DShaderNode .prototy
 
 Object .defineProperties (ProgramShader,
 {
-   typeName:
-   {
-      value: "ProgramShader",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shaders", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "shaders",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ProgramShader", "Shaders", 1, "shaders", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -93999,8 +91583,7 @@ Object .defineProperties (ProgramShader,
 const ProgramShader_default_ = ProgramShader;
 ;
 
-x_ite_Namespace .add ("ProgramShader", "x_ite/Components/Shaders/ProgramShader", ProgramShader_default_);
-/* harmony default export */ const Shaders_ProgramShader = (ProgramShader_default_);
+/* harmony default export */ const Shaders_ProgramShader = (x_ite_Namespace .add ("ProgramShader", ProgramShader_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Texturing/ModeType.js
 /*******************************************************************************
  *
@@ -94078,8 +91661,7 @@ const ModeType =
 const ModeType_default_ = ModeType;
 ;
 
-x_ite_Namespace .add ("ModeType", "x_ite/Browser/Texturing/ModeType", ModeType_default_);
-/* harmony default export */ const Texturing_ModeType = (ModeType_default_);
+/* harmony default export */ const Texturing_ModeType = (x_ite_Namespace .add ("ModeType", ModeType_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Texturing/SourceType.js
 /*******************************************************************************
  *
@@ -94141,8 +91723,7 @@ const SourceType =
 const SourceType_default_ = SourceType;
 ;
 
-x_ite_Namespace .add ("SourceType", "x_ite/Browser/Texturing/SourceType", SourceType_default_);
-/* harmony default export */ const Texturing_SourceType = (SourceType_default_);
+/* harmony default export */ const Texturing_SourceType = (x_ite_Namespace .add ("SourceType", SourceType_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Texturing/FunctionType.js
 /*******************************************************************************
  *
@@ -94203,8 +91784,7 @@ const FunctionType =
 const FunctionType_default_ = FunctionType;
 ;
 
-x_ite_Namespace .add ("FunctionType", "x_ite/Browser/Texturing/FunctionType", FunctionType_default_);
-/* harmony default export */ const Texturing_FunctionType = (FunctionType_default_);
+/* harmony default export */ const Texturing_FunctionType = (x_ite_Namespace .add ("FunctionType", FunctionType_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Texturing/TextureCoordinateGeneratorModeType.js
 /*******************************************************************************
  *
@@ -94274,8 +91854,7 @@ const TextureCoordinateGeneratorModeType_ModeType =
 const TextureCoordinateGeneratorModeType_default_ = TextureCoordinateGeneratorModeType_ModeType;
 ;
 
-x_ite_Namespace .add ("TextureCoordinateGeneratorModeType", "x_ite/Browser/Texturing/TextureCoordinateGeneratorModeType", TextureCoordinateGeneratorModeType_default_);
-/* harmony default export */ const TextureCoordinateGeneratorModeType = (TextureCoordinateGeneratorModeType_default_);
+/* harmony default export */ const TextureCoordinateGeneratorModeType = (x_ite_Namespace .add ("TextureCoordinateGeneratorModeType", TextureCoordinateGeneratorModeType_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Rendering/RenderingConfiguration.js
 // The numbers must remain in single digits, otherwise the number base must
 // be increased in the number output for the material shader key.
@@ -94418,8 +91997,7 @@ struct x3d_TextureCoordinateGeneratorParameters{mediump int mode;mediump float p
 `
 ;
 
-x_ite_Namespace .add ("Types.glsl", "assets/shaders/Types.glsl", Types_glsl_default_);
-/* harmony default export */ const Types_glsl = (Types_glsl_default_);
+/* harmony default export */ const Types_glsl = (x_ite_Namespace .add ("Types.glsl", Types_glsl_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Shaders/ShaderSource.js
 /*******************************************************************************
  *
@@ -94542,8 +92120,7 @@ function depreciatedWarning (source, depreciated, current)
 const ShaderSource_default_ = ShaderSource;
 ;
 
-x_ite_Namespace .add ("ShaderSource", "x_ite/Browser/Shaders/ShaderSource", ShaderSource_default_);
-/* harmony default export */ const Shaders_ShaderSource = (ShaderSource_default_);
+/* harmony default export */ const Shaders_ShaderSource = (x_ite_Namespace .add ("ShaderSource", ShaderSource_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/common/Fragment1.glsl.js
 
 
@@ -94637,8 +92214,7 @@ gl_FragDepthEXT=log2(depth)*x3d_LogarithmicFarFactor1_2;
 }`
 ;
 
-x_ite_Namespace .add ("Fragment1.glsl", "assets/shaders/webgl1/common/Fragment1.glsl", Fragment1_glsl_default_);
-/* harmony default export */ const Fragment1_glsl = (Fragment1_glsl_default_);
+/* harmony default export */ const Fragment1_glsl = (x_ite_Namespace .add ("Fragment1.glsl", Fragment1_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/common/Texture1.glsl.js
 
 
@@ -94754,8 +92330,7 @@ currentColor*=mix(vec3(1.0),T.rgb*x3d_TextureProjectorColor[i],T.a*x3d_TexturePr
 `
 ;
 
-x_ite_Namespace .add ("Texture1.glsl", "assets/shaders/webgl1/common/Texture1.glsl", Texture1_glsl_default_);
-/* harmony default export */ const Texture1_glsl = (Texture1_glsl_default_);
+/* harmony default export */ const Texture1_glsl = (x_ite_Namespace .add ("Texture1.glsl", Texture1_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/common/Vertex1.glsl.js
 
 
@@ -94849,8 +92424,7 @@ depth=1.0+gl_Position.w;
 }`
 ;
 
-x_ite_Namespace .add ("Vertex1.glsl", "assets/shaders/webgl1/common/Vertex1.glsl", Vertex1_glsl_default_);
-/* harmony default export */ const Vertex1_glsl = (Vertex1_glsl_default_);
+/* harmony default export */ const Vertex1_glsl = (x_ite_Namespace .add ("Vertex1.glsl", Vertex1_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/ClipPlanes2.glsl.js
 const ClipPlanes2_glsl_default_ = /* glsl */ `
 #if defined(X3D_CLIP_PLANES)
@@ -94859,8 +92433,7 @@ uniform vec4 x3d_ClipPlane[X3D_NUM_CLIP_PLANES];void clip(){for(int i=0;i<X3D_NU
 `
 ;
 
-x_ite_Namespace .add ("ClipPlanes2.glsl", "assets/shaders/webgl2/common/ClipPlanes2.glsl", ClipPlanes2_glsl_default_);
-/* harmony default export */ const ClipPlanes2_glsl = (ClipPlanes2_glsl_default_);
+/* harmony default export */ const ClipPlanes2_glsl = (x_ite_Namespace .add ("ClipPlanes2.glsl", ClipPlanes2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Fog2.glsl.js
 const Fog2_glsl_default_ = /* glsl */ `
 #if defined(X3D_FOG)
@@ -94880,8 +92453,7 @@ return exp(-dV/max(0.001,visibilityRange-dV));
 `
 ;
 
-x_ite_Namespace .add ("Fog2.glsl", "assets/shaders/webgl2/common/Fog2.glsl", Fog2_glsl_default_);
-/* harmony default export */ const Fog2_glsl = (Fog2_glsl_default_);
+/* harmony default export */ const Fog2_glsl = (x_ite_Namespace .add ("Fog2.glsl", Fog2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Fragment2.glsl.js
 
 
@@ -94989,8 +92561,7 @@ gl_FragDepth=log2(depth)*x3d_LogarithmicFarFactor1_2;
 }`
 ;
 
-x_ite_Namespace .add ("Fragment2.glsl", "assets/shaders/webgl2/common/Fragment2.glsl", Fragment2_glsl_default_);
-/* harmony default export */ const Fragment2_glsl = (Fragment2_glsl_default_);
+/* harmony default export */ const Fragment2_glsl = (x_ite_Namespace .add ("Fragment2.glsl", Fragment2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Hatch2.glsl.js
 const Hatch2_glsl_default_ = /* glsl */ `
 #if(defined(X3D_GEOMETRY_2D)||defined(X3D_GEOMETRY_3D))&&defined(X3D_STYLE_PROPERTIES)
@@ -95009,8 +92580,7 @@ return finalColor;}
 `
 ;
 
-x_ite_Namespace .add ("Hatch2.glsl", "assets/shaders/webgl2/common/Hatch2.glsl", Hatch2_glsl_default_);
-/* harmony default export */ const Hatch2_glsl = (Hatch2_glsl_default_);
+/* harmony default export */ const Hatch2_glsl = (x_ite_Namespace .add ("Hatch2.glsl", Hatch2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Lighting2.glsl.js
 const Lighting2_glsl_default_ = /* glsl */ `
 #if defined(X3D_LIGHTING)
@@ -95019,15 +92589,13 @@ float getAttenuation(const in vec3 attenuation,const in float distanceToLight){r
 `
 ;
 
-x_ite_Namespace .add ("Lighting2.glsl", "assets/shaders/webgl2/common/Lighting2.glsl", Lighting2_glsl_default_);
-/* harmony default export */ const Lighting2_glsl = (Lighting2_glsl_default_);
+/* harmony default export */ const Lighting2_glsl = (x_ite_Namespace .add ("Lighting2.glsl", Lighting2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Line22.glsl.js
 const Line22_glsl_default_ = /* glsl */ `
 struct Line2{vec2 point;vec2 direction;};Line2 line2(const in vec2 point1,const in vec2 point2){return Line2(point1,normalize(point2-point1));}vec2 closest_point(const in Line2 line,const in vec2 point){vec2 r=point-line.point;float d=dot(r,line.direction);return line.direction*d+line.point;}`
 ;
 
-x_ite_Namespace .add ("Line22.glsl", "assets/shaders/webgl2/common/Line22.glsl", Line22_glsl_default_);
-/* harmony default export */ const Line22_glsl = (Line22_glsl_default_);
+/* harmony default export */ const Line22_glsl = (x_ite_Namespace .add ("Line22.glsl", Line22_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Material2.glsl.js
 const Material2_glsl_default_ = /* glsl */ `
 uniform x3d_MaterialParameters x3d_Material;
@@ -95043,8 +92611,7 @@ finalColor+=attenuationSpotFactor*light.color*(ambientTerm+diffuseSpecularTerm);
 `
 ;
 
-x_ite_Namespace .add ("Material2.glsl", "assets/shaders/webgl2/common/Material2.glsl", Material2_glsl_default_);
-/* harmony default export */ const Material2_glsl = (Material2_glsl_default_);
+/* harmony default export */ const Material2_glsl = (x_ite_Namespace .add ("Material2.glsl", Material2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Normal2.glsl.js
 const Normal2_glsl_default_ = /* glsl */ `
 struct NormalInfo{vec3 ng;vec3 ntex;vec3 n;vec3 t;vec3 b;};
@@ -95090,8 +92657,7 @@ info.n=ng;
 info.t=t;info.b=b;return info;}vec3 getNormalVector(const in float normalScale){return getNormalInfo(normalScale).n;}`
 ;
 
-x_ite_Namespace .add ("Normal2.glsl", "assets/shaders/webgl2/common/Normal2.glsl", Normal2_glsl_default_);
-/* harmony default export */ const Normal2_glsl = (Normal2_glsl_default_);
+/* harmony default export */ const Normal2_glsl = (x_ite_Namespace .add ("Normal2.glsl", Normal2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Instancing2.glsl.js
 const Instancing2_glsl_default_ = /* glsl */ `
 #if defined(X3D_INSTANCING)
@@ -95114,15 +92680,13 @@ in mat4 x3d_InstanceMatrix;vec4 getInstanceVertex(const in vec4 vertex){return x
 `
 ;
 
-x_ite_Namespace .add ("Instancing2.glsl", "assets/shaders/webgl2/common/Instancing2.glsl", Instancing2_glsl_default_);
-/* harmony default export */ const Instancing2_glsl = (Instancing2_glsl_default_);
+/* harmony default export */ const Instancing2_glsl = (x_ite_Namespace .add ("Instancing2.glsl", Instancing2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Perlin2.glsl.js
 const Perlin2_glsl_default_ = /* glsl */ `
 float rand(const in vec2 co){return fract(sin(dot(co.xy,vec2(12.9898,78.233)))*43758.5453);}float rand(const in vec2 co,const in float l){return rand(vec2(rand(co),l));}float rand(const in vec2 co,const in float l,const in float t){return rand(vec2(rand(co,l),t));}float perlin(const in vec2 p,const in float dim,const in float time){const float M_PI=3.14159265358979323846;vec2 pos=floor(p*dim);vec2 posx=pos+vec2(1.0,0.0);vec2 posy=pos+vec2(0.0,1.0);vec2 posxy=pos+vec2(1.0);float c=rand(pos,dim,time);float cx=rand(posx,dim,time);float cy=rand(posy,dim,time);float cxy=rand(posxy,dim,time);vec2 d=fract(p*dim);d=-0.5*cos(d*M_PI)+0.5;float ccx=mix(c,cx,d.x);float cycxy=mix(cy,cxy,d.x);float center=mix(ccx,cycxy,d.y);return center*2.0-1.0;}vec3 perlin(const in vec3 p){return vec3(perlin(p.xy,1.0,0.0),perlin(p.yz,1.0,0.0),perlin(p.zx,1.0,0.0));}`
 ;
 
-x_ite_Namespace .add ("Perlin2.glsl", "assets/shaders/webgl2/common/Perlin2.glsl", Perlin2_glsl_default_);
-/* harmony default export */ const Perlin2_glsl = (Perlin2_glsl_default_);
+/* harmony default export */ const Perlin2_glsl = (x_ite_Namespace .add ("Perlin2.glsl", Perlin2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Point2.glsl.js
 
 
@@ -95154,8 +92718,7 @@ vec4 getPointColor(in vec4 color){if(pointSize>1.0)color.a*=clamp(pointSize*(0.5
 `
 ;
 
-x_ite_Namespace .add ("Point2.glsl", "assets/shaders/webgl2/common/Point2.glsl", Point2_glsl_default_);
-/* harmony default export */ const Point2_glsl = (Point2_glsl_default_);
+/* harmony default export */ const Point2_glsl = (x_ite_Namespace .add ("Point2.glsl", Point2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/PointSize2.glsl.js
 const PointSize2_glsl_default_ = /* glsl */ `
 #if defined(X3D_GEOMETRY_0D)&&defined(X3D_STYLE_PROPERTIES)
@@ -95176,8 +92739,7 @@ return pointSize+1.0-step(pointSize,1.0);
 `
 ;
 
-x_ite_Namespace .add ("PointSize2.glsl", "assets/shaders/webgl2/common/PointSize2.glsl", PointSize2_glsl_default_);
-/* harmony default export */ const PointSize2_glsl = (PointSize2_glsl_default_);
+/* harmony default export */ const PointSize2_glsl = (x_ite_Namespace .add ("PointSize2.glsl", PointSize2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Shadow2.glsl.js
 const Shadow2_glsl_default_ = /* glsl */ `
 #if defined(X3D_FRAGMENT_SHADER)&&defined(X3D_SHADOWS)
@@ -95256,8 +92818,7 @@ vec4 shadowCoord=light.shadowMatrix*vec4(vertex,1.0);shadowCoord.z-=light.shadow
 `
 ;
 
-x_ite_Namespace .add ("Shadow2.glsl", "assets/shaders/webgl2/common/Shadow2.glsl", Shadow2_glsl_default_);
-/* harmony default export */ const Shadow2_glsl = (Shadow2_glsl_default_);
+/* harmony default export */ const Shadow2_glsl = (x_ite_Namespace .add ("Shadow2.glsl", Shadow2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Skin2.glsl.js
 const Skin2_glsl_default_ = /* glsl */ `
 #if defined(X3D_SKINNING)
@@ -95302,8 +92863,7 @@ skinTangent+=(jointNormalMatrix*tangent-tangent)*weight;
 `
 ;
 
-x_ite_Namespace .add ("Skin2.glsl", "assets/shaders/webgl2/common/Skin2.glsl", Skin2_glsl_default_);
-/* harmony default export */ const Skin2_glsl = (Skin2_glsl_default_);
+/* harmony default export */ const Skin2_glsl = (x_ite_Namespace .add ("Skin2.glsl", Skin2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Stipple2.glsl.js
 const Stipple2_glsl_default_ = /* glsl */ `
 #if defined(X3D_GEOMETRY_1D)&&defined(X3D_STYLE_PROPERTIES)
@@ -95325,8 +92885,7 @@ if(x3d_LineProperties.linetype==16)return;int linetype=x3d_LineProperties.linety
 `
 ;
 
-x_ite_Namespace .add ("Stipple2.glsl", "assets/shaders/webgl2/common/Stipple2.glsl", Stipple2_glsl_default_);
-/* harmony default export */ const Stipple2_glsl = (Stipple2_glsl_default_);
+/* harmony default export */ const Stipple2_glsl = (x_ite_Namespace .add ("Stipple2.glsl", Stipple2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Texture2.glsl.js
 
 
@@ -95418,8 +92977,7 @@ currentColor*=mix(vec3(1.0),T.rgb*x3d_TextureProjectorColor[i],T.a*x3d_TexturePr
 `
 ;
 
-x_ite_Namespace .add ("Texture2.glsl", "assets/shaders/webgl2/common/Texture2.glsl", Texture2_glsl_default_);
-/* harmony default export */ const Texture2_glsl = (Texture2_glsl_default_);
+/* harmony default export */ const Texture2_glsl = (x_ite_Namespace .add ("Texture2.glsl", Texture2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Utils2.glsl.js
 const Utils2_glsl_default_ = /* glsl */ `
 #if defined(X3D_SKINNING)||defined(X3D_INSTANCING)
@@ -95428,8 +92986,7 @@ vec4 texelFetch(const in sampler2D _sampler,const in int index,const in int lod)
 `
 ;
 
-x_ite_Namespace .add ("Utils2.glsl", "assets/shaders/webgl2/common/Utils2.glsl", Utils2_glsl_default_);
-/* harmony default export */ const Utils2_glsl = (Utils2_glsl_default_);
+/* harmony default export */ const Utils2_glsl = (x_ite_Namespace .add ("Utils2.glsl", Utils2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/common/Vertex2.glsl.js
 
 
@@ -95546,15 +93103,13 @@ depth=1.0+gl_Position.w;
 }`
 ;
 
-x_ite_Namespace .add ("Vertex2.glsl", "assets/shaders/webgl2/common/Vertex2.glsl", Vertex2_glsl_default_);
-/* harmony default export */ const Vertex2_glsl = (Vertex2_glsl_default_);
+/* harmony default export */ const Vertex2_glsl = (x_ite_Namespace .add ("Vertex2.glsl", Vertex2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/FullScreen1.vs.js
 const FullScreen1_vs_default_ = /* glsl */ `
 precision highp float;precision highp int;precision highp sampler2D;attribute vec2 x3d_Vertex;varying vec2 texCoord;void main(){texCoord=x3d_Vertex;gl_Position=vec4(x3d_Vertex,0.0,1.0);}`
 ;
 
-x_ite_Namespace .add ("FullScreen1.vs", "assets/shaders/webgl1/FullScreen1.vs", FullScreen1_vs_default_);
-/* harmony default export */ const FullScreen1_vs = (FullScreen1_vs_default_);
+/* harmony default export */ const FullScreen1_vs = (x_ite_Namespace .add ("FullScreen1.vs", FullScreen1_vs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Default1.vs.js
 const Default1_vs_default_ = /* glsl */ `
 precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
@@ -95562,8 +93117,7 @@ precision highp float;precision highp int;precision highp sampler2D;precision hi
 void main(){vertex_main();}`
 ;
 
-x_ite_Namespace .add ("Default1.vs", "assets/shaders/webgl1/Default1.vs", Default1_vs_default_);
-/* harmony default export */ const Default1_vs = (Default1_vs_default_);
+/* harmony default export */ const Default1_vs = (x_ite_Namespace .add ("Default1.vs", Default1_vs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Depth1.fs.js
 const Depth1_fs_default_ = /* glsl */ `
 precision highp float;precision highp int;precision highp sampler2D;varying vec3 vertex;
@@ -95579,8 +93133,7 @@ if(getPointColor(vec4(1.0)).a<0.5)discard;
 gl_FragColor=vec4(gl_FragCoord.z);}`
 ;
 
-x_ite_Namespace .add ("Depth1.fs", "assets/shaders/webgl1/Depth1.fs", Depth1_fs_default_);
-/* harmony default export */ const Depth1_fs = (Depth1_fs_default_);
+/* harmony default export */ const Depth1_fs = (x_ite_Namespace .add ("Depth1.fs", Depth1_fs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Depth1.vs.js
 const Depth1_vs_default_ = /* glsl */ `
 precision highp float;precision highp int;uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;attribute vec4 x3d_Vertex;varying vec3 vertex;
@@ -95594,8 +93147,7 @@ gl_PointSize=1.0;
 gl_Position=x3d_ProjectionMatrix*position;}`
 ;
 
-x_ite_Namespace .add ("Depth1.vs", "assets/shaders/webgl1/Depth1.vs", Depth1_vs_default_);
-/* harmony default export */ const Depth1_vs = (Depth1_vs_default_);
+/* harmony default export */ const Depth1_vs = (x_ite_Namespace .add ("Depth1.vs", Depth1_vs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Gouraud1.fs.js
 const Gouraud1_fs_default_ = /* glsl */ `
 precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
@@ -95619,8 +93171,7 @@ finalColor.rgb*=getTextureProjectorColor();
 return finalColor;}void main(){fragment_main();}`
 ;
 
-x_ite_Namespace .add ("Gouraud1.fs", "assets/shaders/webgl1/Gouraud1.fs", Gouraud1_fs_default_);
-/* harmony default export */ const Gouraud1_fs = (Gouraud1_fs_default_);
+/* harmony default export */ const Gouraud1_fs = (x_ite_Namespace .add ("Gouraud1.fs", Gouraud1_fs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Gouraud1.vs.js
 const Gouraud1_vs_default_ = /* glsl */ `
 precision highp float;precision highp int;precision highp sampler2D;precision highp samplerCube;
@@ -95654,8 +93205,7 @@ backColor=getMaterialColor(-normal,vertex,x3d_Material);
 }`
 ;
 
-x_ite_Namespace .add ("Gouraud1.vs", "assets/shaders/webgl1/Gouraud1.vs", Gouraud1_vs_default_);
-/* harmony default export */ const Gouraud1_vs = (Gouraud1_vs_default_);
+/* harmony default export */ const Gouraud1_vs = (x_ite_Namespace .add ("Gouraud1.vs", Gouraud1_vs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Physical1.fs.js
 const Physical1_fs_default_ = /* glsl */ `
 #extension GL_OES_standard_derivatives:enable
@@ -95666,8 +93216,7 @@ precision highp float;precision highp int;precision highp sampler2D;precision hi
 `
 ;
 
-x_ite_Namespace .add ("Physical1.fs", "assets/shaders/webgl1/Physical1.fs", Physical1_fs_default_);
-/* harmony default export */ const Physical1_fs = (Physical1_fs_default_);
+/* harmony default export */ const Physical1_fs = (x_ite_Namespace .add ("Physical1.fs", Physical1_fs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Phong1.fs.js
 
 
@@ -95739,8 +93288,7 @@ finalColor=mix(finalColor,finalColor*getOcclusionFactor(),x3d_Material.occlusion
 finalColor+=getEmissiveColor();return vec4(finalColor,alpha);}void main(){fragment_main();}`
 ;
 
-x_ite_Namespace .add ("Phong1.fs", "assets/shaders/webgl1/Phong1.fs", Phong1_fs_default_);
-/* harmony default export */ const Phong1_fs = (Phong1_fs_default_);
+/* harmony default export */ const Phong1_fs = (x_ite_Namespace .add ("Phong1.fs", Phong1_fs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Pointing1.fs.js
 const Pointing1_fs_default_ = /* glsl */ `
 #extension GL_EXT_draw_buffers:enable
@@ -95762,8 +93310,7 @@ if(getPointColor(vec4(1.0)).a<0.5)discard;texCoord0=vec4(gl_PointCoord.x,1.0-gl_
 gl_FragData[0]=vec4(vertex,x3d_Id);gl_FragData[1]=vec4(normal,0.0);gl_FragData[2]=texCoord0;}`
 ;
 
-x_ite_Namespace .add ("Pointing1.fs", "assets/shaders/webgl1/Pointing1.fs", Pointing1_fs_default_);
-/* harmony default export */ const Pointing1_fs = (Pointing1_fs_default_);
+/* harmony default export */ const Pointing1_fs = (x_ite_Namespace .add ("Pointing1.fs", Pointing1_fs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Pointing1.vs.js
 const Pointing1_vs_default_ = /* glsl */ `
 precision highp float;precision highp int;uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;attribute vec4 x3d_Vertex;attribute vec3 x3d_Normal;
@@ -95788,8 +93335,7 @@ texCoord0=x3d_TexCoord0;
 gl_Position=x3d_ProjectionMatrix*position;}`
 ;
 
-x_ite_Namespace .add ("Pointing1.vs", "assets/shaders/webgl1/Pointing1.vs", Pointing1_vs_default_);
-/* harmony default export */ const Pointing1_vs = (Pointing1_vs_default_);
+/* harmony default export */ const Pointing1_vs = (x_ite_Namespace .add ("Pointing1.vs", Pointing1_vs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl1/Unlit1.fs.js
 
 
@@ -95818,15 +93364,13 @@ finalColor.rgb*=getTextureProjectorColor();
 return finalColor;}void main(){fragment_main();}`
 ;
 
-x_ite_Namespace .add ("Unlit1.fs", "assets/shaders/webgl1/Unlit1.fs", Unlit1_fs_default_);
-/* harmony default export */ const Unlit1_fs = (Unlit1_fs_default_);
+/* harmony default export */ const Unlit1_fs = (x_ite_Namespace .add ("Unlit1.fs", Unlit1_fs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/FullScreen2.vs.js
 const FullScreen2_vs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;in vec2 x3d_Vertex;out vec2 texCoord;void main(){texCoord=x3d_Vertex;gl_Position=vec4(x3d_Vertex,0.0,1.0);}`
 ;
 
-x_ite_Namespace .add ("FullScreen2.vs", "assets/shaders/webgl2/FullScreen2.vs", FullScreen2_vs_default_);
-/* harmony default export */ const FullScreen2_vs = (FullScreen2_vs_default_);
+/* harmony default export */ const FullScreen2_vs = (x_ite_Namespace .add ("FullScreen2.vs", FullScreen2_vs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Default2.vs.js
 const Default2_vs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;precision highp sampler3D;precision highp samplerCube;
@@ -95834,8 +93378,7 @@ precision highp float;precision highp int;precision highp sampler2D;precision hi
 void main(){vertex_main();}`
 ;
 
-x_ite_Namespace .add ("Default2.vs", "assets/shaders/webgl2/Default2.vs", Default2_vs_default_);
-/* harmony default export */ const Default2_vs = (Default2_vs_default_);
+/* harmony default export */ const Default2_vs = (x_ite_Namespace .add ("Default2.vs", Default2_vs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Depth2.fs.js
 const Depth2_fs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;in vec3 vertex;out vec4 x3d_FragColor;
@@ -95851,8 +93394,7 @@ if(getPointColor(vec4(1.0)).a<0.5)discard;
 x3d_FragColor=vec4(gl_FragCoord.z);}`
 ;
 
-x_ite_Namespace .add ("Depth2.fs", "assets/shaders/webgl2/Depth2.fs", Depth2_fs_default_);
-/* harmony default export */ const Depth2_fs = (Depth2_fs_default_);
+/* harmony default export */ const Depth2_fs = (x_ite_Namespace .add ("Depth2.fs", Depth2_fs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Depth2.vs.js
 const Depth2_vs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;in vec4 x3d_Vertex;out vec3 vertex;
@@ -95869,8 +93411,7 @@ gl_PointSize=1.0;
 gl_Position=x3d_ProjectionMatrix*position;}`
 ;
 
-x_ite_Namespace .add ("Depth2.vs", "assets/shaders/webgl2/Depth2.vs", Depth2_vs_default_);
-/* harmony default export */ const Depth2_vs = (Depth2_vs_default_);
+/* harmony default export */ const Depth2_vs = (x_ite_Namespace .add ("Depth2.vs", Depth2_vs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Gouraud2.fs.js
 const Gouraud2_fs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;precision highp sampler3D;precision highp samplerCube;
@@ -95894,8 +93435,7 @@ finalColor.rgb*=getTextureProjectorColor();
 return finalColor;}void main(){fragment_main();}`
 ;
 
-x_ite_Namespace .add ("Gouraud2.fs", "assets/shaders/webgl2/Gouraud2.fs", Gouraud2_fs_default_);
-/* harmony default export */ const Gouraud2_fs = (Gouraud2_fs_default_);
+/* harmony default export */ const Gouraud2_fs = (x_ite_Namespace .add ("Gouraud2.fs", Gouraud2_fs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Gouraud2.vs.js
 const Gouraud2_vs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;precision highp sampler3D;precision highp samplerCube;
@@ -95929,15 +93469,13 @@ backColor=getMaterialColor(-normal,vertex,x3d_Material);
 }`
 ;
 
-x_ite_Namespace .add ("Gouraud2.vs", "assets/shaders/webgl2/Gouraud2.vs", Gouraud2_vs_default_);
-/* harmony default export */ const Gouraud2_vs = (Gouraud2_vs_default_);
+/* harmony default export */ const Gouraud2_vs = (x_ite_Namespace .add ("Gouraud2.vs", Gouraud2_vs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/LineTransform2.fs.js
 const LineTransform2_fs_default_ = /* glsl */ `#version 300 es
 precision highp float;void main(){}`
 ;
 
-x_ite_Namespace .add ("LineTransform2.fs", "assets/shaders/webgl2/LineTransform2.fs", LineTransform2_fs_default_);
-/* harmony default export */ const LineTransform2_fs = (LineTransform2_fs_default_);
+/* harmony default export */ const LineTransform2_fs = (x_ite_Namespace .add ("LineTransform2.fs", LineTransform2_fs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/LineTransform2.vs.js
 const LineTransform2_vs_default_ = /* glsl */ `#version 300 es
 precision highp float;uniform vec4 viewport;uniform mat4 modelViewProjectionMatrix;uniform mat4 invModelViewProjectionMatrix;uniform float linewidthScaleFactor1_2;
@@ -95953,15 +93491,13 @@ vec3 projected0=projectPoint(x3d_Vertex0,modelViewProjectionMatrix,viewport);vec
 vec2 direction=normalize(projected1.xy-projected0.xy);vec2 offset=vec2(-direction.y,direction.x)*linewidthScaleFactor1_2;vec3 l0=vec3(projected1.xy,x3d_LengthSoFar);vec3 l1=vec3(projected0.xy,x3d_LengthSoFar);if(gl_InstanceID % 2==0){vec2 pq0=projected0.xy+offset;vec2 pq1=projected0.xy-offset;vec2 pq2=projected1.xy-offset;vec4 p0=unProjectPoint(vec3(pq0.xy,projected0.z),invModelViewProjectionMatrix,viewport);vec4 p1=unProjectPoint(vec3(pq1.xy,projected0.z),invModelViewProjectionMatrix,viewport);vec4 p2=unProjectPoint(vec3(pq2.xy,projected1.z),invModelViewProjectionMatrix,viewport);coordIndex0=x3d_CoordIndex0;lineStipple0=l0;fogDepth0=x3d_FogDepth0;color0=x3d_Color0;normal0=x3d_Normal0;vertex0=p0;coordIndex1=x3d_CoordIndex0;lineStipple1=l0;fogDepth1=x3d_FogDepth0;color1=x3d_Color0;normal1=x3d_Normal0;vertex1=p1;coordIndex2=x3d_CoordIndex1;lineStipple2=l1;fogDepth2=x3d_FogDepth1;color2=x3d_Color1;normal2=x3d_Normal1;vertex2=p2;}else{vec2 pq0=projected0.xy+offset;vec2 pq2=projected1.xy-offset;vec2 pq3=projected1.xy+offset;vec4 p0=unProjectPoint(vec3(pq0.xy,projected0.z),invModelViewProjectionMatrix,viewport);vec4 p2=unProjectPoint(vec3(pq2.xy,projected1.z),invModelViewProjectionMatrix,viewport);vec4 p3=unProjectPoint(vec3(pq3.xy,projected1.z),invModelViewProjectionMatrix,viewport);coordIndex0=x3d_CoordIndex0;lineStipple0=l0;fogDepth0=x3d_FogDepth0;color0=x3d_Color0;normal0=x3d_Normal0;vertex0=p0;coordIndex1=x3d_CoordIndex1;lineStipple1=l1;fogDepth1=x3d_FogDepth1;color1=x3d_Color1;normal1=x3d_Normal1;vertex1=p2;coordIndex2=x3d_CoordIndex1;lineStipple2=l1;fogDepth2=x3d_FogDepth1;color2=x3d_Color1;normal2=x3d_Normal1;vertex2=p3;}}`
 ;
 
-x_ite_Namespace .add ("LineTransform2.vs", "assets/shaders/webgl2/LineTransform2.vs", LineTransform2_vs_default_);
-/* harmony default export */ const LineTransform2_vs = (LineTransform2_vs_default_);
+/* harmony default export */ const LineTransform2_vs = (x_ite_Namespace .add ("LineTransform2.vs", LineTransform2_vs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/OITCompose2.fs.js
 const OITCompose2_fs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;uniform sampler2D x3d_AccumRevealageTexture;uniform sampler2D x3d_AlphaTexture;out vec4 x3d_FragColor;void main(){ivec2 fragCoord=ivec2(gl_FragCoord.xy);vec4 accum=texelFetch(x3d_AccumRevealageTexture,fragCoord,0);if(accum.a>=1.0)discard;float alpha=texelFetch(x3d_AlphaTexture,fragCoord,0).r;float revealage=1.0-accum.a;x3d_FragColor=vec4(revealage*accum.rgb/clamp(alpha,0.001,50000.0),revealage);}`
 ;
 
-x_ite_Namespace .add ("OITCompose2.fs", "assets/shaders/webgl2/OITCompose2.fs", OITCompose2_fs_default_);
-/* harmony default export */ const OITCompose2_fs = (OITCompose2_fs_default_);
+/* harmony default export */ const OITCompose2_fs = (x_ite_Namespace .add ("OITCompose2.fs", OITCompose2_fs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Physical2.js
 const Physical2_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;precision highp sampler3D;precision highp samplerCube;
@@ -95969,8 +93505,7 @@ precision highp float;precision highp int;precision highp sampler2D;precision hi
 `
 ;
 
-x_ite_Namespace .add ("Physical2", "assets/shaders/webgl2/Physical2", Physical2_default_);
-/* harmony default export */ const Physical2 = (Physical2_default_);
+/* harmony default export */ const Physical2 = (x_ite_Namespace .add ("Physical2", Physical2_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Phong2.fs.js
 
 
@@ -96038,8 +93573,7 @@ finalColor=mix(finalColor,finalColor*getOcclusionFactor(),x3d_Material.occlusion
 finalColor+=getEmissiveColor();return vec4(finalColor,alpha);}void main(){fragment_main();}`
 ;
 
-x_ite_Namespace .add ("Phong2.fs", "assets/shaders/webgl2/Phong2.fs", Phong2_fs_default_);
-/* harmony default export */ const Phong2_fs = (Phong2_fs_default_);
+/* harmony default export */ const Phong2_fs = (x_ite_Namespace .add ("Phong2.fs", Phong2_fs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Pointing2.fs.js
 const Pointing2_fs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;in vec3 vertex;in vec3 normal;in vec4 texCoord;
@@ -96065,8 +93599,7 @@ stipple();
 x3d_FragData0=vec4(vertex,x3d_Id);x3d_FragData1=vec4(normal,0.0);x3d_FragData2=texCoord0;}`
 ;
 
-x_ite_Namespace .add ("Pointing2.fs", "assets/shaders/webgl2/Pointing2.fs", Pointing2_fs_default_);
-/* harmony default export */ const Pointing2_fs = (Pointing2_fs_default_);
+/* harmony default export */ const Pointing2_fs = (x_ite_Namespace .add ("Pointing2.fs", Pointing2_fs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Pointing2.vs.js
 const Pointing2_vs_default_ = /* glsl */ `#version 300 es
 precision highp float;precision highp int;precision highp sampler2D;uniform mat4 x3d_ProjectionMatrix;uniform mat4 x3d_ModelViewMatrix;in vec4 x3d_Vertex;
@@ -96108,8 +93641,7 @@ texCoord0=x3d_TexCoord0;
 gl_Position=x3d_ProjectionMatrix*position;}`
 ;
 
-x_ite_Namespace .add ("Pointing2.vs", "assets/shaders/webgl2/Pointing2.vs", Pointing2_vs_default_);
-/* harmony default export */ const Pointing2_vs = (Pointing2_vs_default_);
+/* harmony default export */ const Pointing2_vs = (x_ite_Namespace .add ("Pointing2.vs", Pointing2_vs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/Unlit2.fs.js
 
 
@@ -96136,8 +93668,7 @@ finalColor.rgb*=getTextureProjectorColor();
 return finalColor;}void main(){fragment_main();}`
 ;
 
-x_ite_Namespace .add ("Unlit2.fs", "assets/shaders/webgl2/Unlit2.fs", Unlit2_fs_default_);
-/* harmony default export */ const Unlit2_fs = (Unlit2_fs_default_);
+/* harmony default export */ const Unlit2_fs = (x_ite_Namespace .add ("Unlit2.fs", Unlit2_fs_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/pbr/BRDF2.glsl.js
 const BRDF2_glsl_default_ = /* glsl */ `
 const float M_PI=3.1415926535897932384626433832795;float max3(const in vec3 value){return max(max(value.x,value.y),value.z);}vec3 rgb_mix(const in vec3 base,const in vec3 layer,const in vec3 rgb_alpha){float rgb_alpha_max=max(rgb_alpha.r,max(rgb_alpha.g,rgb_alpha.b));return(1.0-rgb_alpha_max)*base+rgb_alpha*layer;}vec3 F_Schlick(const in vec3 f0,const in vec3 f90,const in float VdotH){return f0+(f90-f0)*pow(clamp(1.0-VdotH,0.0,1.0),5.0);}float F_Schlick(const in float f0,const in float f90,const in float VdotH){float x=clamp(1.0-VdotH,0.0,1.0);float x2=x*x;float x5=x*x2*x2;return f0+(f90-f0)*x5;}float F_Schlick(const in float f0,const in float VdotH){float f90=1.0;return F_Schlick(f0,f90,VdotH);}vec3 F_Schlick(const in vec3 f0,const in float f90,const in float VdotH){float x=clamp(1.0-VdotH,0.0,1.0);float x2=x*x;float x5=x*x2*x2;return f0+(f90-f0)*x5;}vec3 F_Schlick(const in vec3 f0,const in float VdotH){float f90=1.0;return F_Schlick(f0,f90,VdotH);}vec3 Schlick_to_F0(const in vec3 f,const in vec3 f90,const in float VdotH){float x=clamp(1.0-VdotH,0.0,1.0);float x2=x*x;float x5=clamp(x*x2*x2,0.0,0.9999);return(f-f90*x5)/(1.0-x5);}float Schlick_to_F0(const in float f,const in float f90,const in float VdotH){float x=clamp(1.0-VdotH,0.0,1.0);float x2=x*x;float x5=clamp(x*x2*x2,0.0,0.9999);return(f-f90*x5)/(1.0-x5);}vec3 Schlick_to_F0(const in vec3 f,const in float VdotH){return Schlick_to_F0(f,vec3(1.0),VdotH);}float Schlick_to_F0(const in float f,const in float VdotH){return Schlick_to_F0(f,1.0,VdotH);}float V_GGX(const in float NdotL,const in float NdotV,const in float alphaRoughness){float alphaRoughnessSq=alphaRoughness*alphaRoughness;float GGXV=NdotL*sqrt(NdotV*NdotV*(1.0-alphaRoughnessSq)+alphaRoughnessSq);float GGXL=NdotV*sqrt(NdotL*NdotL*(1.0-alphaRoughnessSq)+alphaRoughnessSq);float GGX=GGXV+GGXL;if(GGX>0.0){return 0.5/GGX;}return 0.0;}float D_GGX(const in float NdotH,const in float alphaRoughness){float alphaRoughnessSq=alphaRoughness*alphaRoughness;float f=(NdotH*NdotH)*(alphaRoughnessSq-1.0)+1.0;return alphaRoughnessSq/(M_PI*f*f);}
@@ -96156,8 +93687,7 @@ float lambdaSheenNumericHelper(const in float x,const in float alphaG){float one
 `
 ;
 
-x_ite_Namespace .add ("BRDF2.glsl", "assets/shaders/webgl2/pbr/BRDF2.glsl", BRDF2_glsl_default_);
-/* harmony default export */ const BRDF2_glsl = (BRDF2_glsl_default_);
+/* harmony default export */ const BRDF2_glsl = (x_ite_Namespace .add ("BRDF2.glsl", BRDF2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/pbr/IBL2.glsl.js
 const IBL2_glsl_default_ = /* glsl */ `
 #if defined(X3D_USE_IBL)
@@ -96247,8 +93777,7 @@ vec3 sheenLight=getSheenLight(reflection,lod);return sheenLight*sheenColor*brdf;
 `
 ;
 
-x_ite_Namespace .add ("IBL2.glsl", "assets/shaders/webgl2/pbr/IBL2.glsl", IBL2_glsl_default_);
-/* harmony default export */ const IBL2_glsl = (IBL2_glsl_default_);
+/* harmony default export */ const IBL2_glsl = (x_ite_Namespace .add ("IBL2.glsl", IBL2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/pbr/Iridescence2.glsl.js
 const Iridescence2_glsl_default_ = /* glsl */ `
 #if defined(X3D_IRIDESCENCE_MATERIAL_EXT)
@@ -96257,8 +93786,7 @@ const mat3 XYZ_TO_REC709=mat3(3.2404542,-0.9692660,0.0556434,-1.5371385,1.876010
 `
 ;
 
-x_ite_Namespace .add ("Iridescence2.glsl", "assets/shaders/webgl2/pbr/Iridescence2.glsl", Iridescence2_glsl_default_);
-/* harmony default export */ const Iridescence2_glsl = (Iridescence2_glsl_default_);
+/* harmony default export */ const Iridescence2_glsl = (x_ite_Namespace .add ("Iridescence2.glsl", Iridescence2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/pbr/MaterialInfo2.glsl.js
 
 
@@ -96449,8 +93977,7 @@ vec2 directionRotation=x3d_AnisotropyEXT.xy;mat2 rotationMatrix=mat2(directionRo
 `
 ;
 
-x_ite_Namespace .add ("MaterialInfo2.glsl", "assets/shaders/webgl2/pbr/MaterialInfo2.glsl", MaterialInfo2_glsl_default_);
-/* harmony default export */ const MaterialInfo2_glsl = (MaterialInfo2_glsl_default_);
+/* harmony default export */ const MaterialInfo2_glsl = (x_ite_Namespace .add ("MaterialInfo2.glsl", MaterialInfo2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/pbr/PBR2.glsl.js
 const PBR2_glsl_default_ = /* glsl */ `
 #pragma X3D include "../common/Fragment.glsl"
@@ -96602,8 +94129,7 @@ color=f_emissive*(1.0-clearcoatFactor*clearcoatFresnel)+color;
 return vec4(color,baseColor.a);}void main(){fragment_main();}`
 ;
 
-x_ite_Namespace .add ("PBR2.glsl", "assets/shaders/webgl2/pbr/PBR2.glsl", PBR2_glsl_default_);
-/* harmony default export */ const PBR2_glsl = (PBR2_glsl_default_);
+/* harmony default export */ const PBR2_glsl = (x_ite_Namespace .add ("PBR2.glsl", PBR2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/pbr/Punctual2.glsl.js
 const Punctual2_glsl_default_ = /* glsl */ `
 #if defined(X3D_TRANSMISSION_MATERIAL_EXT)
@@ -96625,8 +94151,7 @@ vec3 getPunctualRadianceTransmission(const in vec3 n,const in vec3 v,const in ve
 `
 ;
 
-x_ite_Namespace .add ("Punctual2.glsl", "assets/shaders/webgl2/pbr/Punctual2.glsl", Punctual2_glsl_default_);
-/* harmony default export */ const Punctual2_glsl = (Punctual2_glsl_default_);
+/* harmony default export */ const Punctual2_glsl = (x_ite_Namespace .add ("Punctual2.glsl", Punctual2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/assets/shaders/webgl2/pbr/ToneMapping2.glsl.js
 const ToneMapping2_glsl_default_ = /* glsl */ `
 const float GAMMA=2.2;const float INV_GAMMA=1.0/GAMMA;vec3 linearToSRGB(const in vec3 color){return pow(color,vec3(INV_GAMMA));}vec4 linearToSRGB(const in vec4 color){return vec4(linearToSRGB(color.rgb),color.a);}vec3 sRGBToLinear(const in vec3 color){return pow(color,vec3(GAMMA));}vec4 sRGBToLinear(const in vec4 color){return vec4(sRGBToLinear(color.rgb),color.a);}
@@ -96666,8 +94191,7 @@ return linearToSRGB(color);
 }`
 ;
 
-x_ite_Namespace .add ("ToneMapping2.glsl", "assets/shaders/webgl2/pbr/ToneMapping2.glsl", ToneMapping2_glsl_default_);
-/* harmony default export */ const ToneMapping2_glsl = (ToneMapping2_glsl_default_);
+/* harmony default export */ const ToneMapping2_glsl = (x_ite_Namespace .add ("ToneMapping2.glsl", ToneMapping2_glsl_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Shaders/ShaderRegistry.js
 /*******************************************************************************
  *
@@ -96875,8 +94399,7 @@ const ShaderRegistry = {
 const ShaderRegistry_default_ = ShaderRegistry;
 ;
 
-x_ite_Namespace .add ("ShaderRegistry", "x_ite/Browser/Shaders/ShaderRegistry", ShaderRegistry_default_);
-/* harmony default export */ const Shaders_ShaderRegistry = (ShaderRegistry_default_);
+/* harmony default export */ const Shaders_ShaderRegistry = (x_ite_Namespace .add ("ShaderRegistry", ShaderRegistry_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Shaders/ShaderCompiler.js
 /*******************************************************************************
  *
@@ -96975,10 +94498,9 @@ Object .assign (ShaderCompiler .prototype,
 const ShaderCompiler_default_ = ShaderCompiler;
 ;
 
-x_ite_Namespace .add ("ShaderCompiler", "x_ite/Browser/Shaders/ShaderCompiler", ShaderCompiler_default_);
-/* harmony default export */ const Shaders_ShaderCompiler = (ShaderCompiler_default_);
+/* harmony default export */ const Shaders_ShaderCompiler = (x_ite_Namespace .add ("ShaderCompiler", ShaderCompiler_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/ShaderPart.js
-/* provided dependency */ var ShaderPart_$ = __webpack_require__(812);
+/* provided dependency */ var ShaderPart_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -97181,26 +94703,7 @@ Object .assign (Object .setPrototypeOf (ShaderPart .prototype, Core_X3DNode .pro
 
 Object .defineProperties (ShaderPart,
 {
-   typeName:
-   {
-      value: "ShaderPart",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shaders", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "parts",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ShaderPart", "Shaders", 1, "parts", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -97219,8 +94722,7 @@ Object .defineProperties (ShaderPart,
 const ShaderPart_default_ = ShaderPart;
 ;
 
-x_ite_Namespace .add ("ShaderPart", "x_ite/Components/Shaders/ShaderPart", ShaderPart_default_);
-/* harmony default export */ const Shaders_ShaderPart = (ShaderPart_default_);
+/* harmony default export */ const Shaders_ShaderPart = (x_ite_Namespace .add ("ShaderPart", ShaderPart_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders/ShaderProgram.js
 /*******************************************************************************
  *
@@ -97316,26 +94818,7 @@ Object .assign (Object .setPrototypeOf (ShaderProgram .prototype, Core_X3DNode .
 
 Object .defineProperties (ShaderProgram,
 {
-   typeName:
-   {
-      value: "ShaderProgram",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shaders", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "programs",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ShaderProgram", "Shaders", 1, "programs", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -97354,9 +94837,8 @@ Object .defineProperties (ShaderProgram,
 const ShaderProgram_default_ = ShaderProgram;
 ;
 
-x_ite_Namespace .add ("ShaderProgram", "x_ite/Components/Shaders/ShaderProgram", ShaderProgram_default_);
-/* harmony default export */ const Shaders_ShaderProgram = (ShaderProgram_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/Shaders.js
+/* harmony default export */ const Shaders_ShaderProgram = (x_ite_Namespace .add ("ShaderProgram", ShaderProgram_default_));
+;// CONCATENATED MODULE: ./src/x_ite/Components/ShadersComponent.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -97416,7 +94898,7 @@ x_ite_Namespace .add ("ShaderProgram", "x_ite/Components/Shaders/ShaderProgram",
 
 
 
-const Shaders_default_ = {
+const ShadersComponent_default_ = {
    name: "Shaders",
    concreteNodes:
    [
@@ -97438,8 +94920,7 @@ const Shaders_default_ = {
 };
 ;
 
-x_ite_Namespace .add ("Shaders", "x_ite/Components/Shaders", Shaders_default_);
-/* harmony default export */ const Shaders = (Shaders_default_);
+/* harmony default export */ const ShadersComponent = (x_ite_Namespace .add ("ShadersComponent", ShadersComponent_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/AcousticProperties.js
 /*******************************************************************************
  *
@@ -97494,6 +94975,7 @@ x_ite_Namespace .add ("Shaders", "x_ite/Components/Shaders", Shaders_default_);
 
 
 
+
 function AcousticProperties (executionContext)
 {
    Shape_X3DAppearanceChildNode .call (this, executionContext);
@@ -97505,26 +94987,7 @@ Object .setPrototypeOf (AcousticProperties .prototype, Shape_X3DAppearanceChildN
 
 Object .defineProperties (AcousticProperties,
 {
-   typeName:
-   {
-      value: "AcousticProperties",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shape", level: 5 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "acousticProperties",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("AcousticProperties", "Shape", 5, "acousticProperties", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -97543,8 +95006,7 @@ Object .defineProperties (AcousticProperties,
 const AcousticProperties_default_ = AcousticProperties;
 ;
 
-x_ite_Namespace .add ("AcousticProperties", "x_ite/Components/Shape/AcousticProperties", AcousticProperties_default_);
-/* harmony default export */ const Shape_AcousticProperties = (AcousticProperties_default_);
+/* harmony default export */ const Shape_AcousticProperties = (x_ite_Namespace .add ("AcousticProperties", AcousticProperties_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/X3DAppearanceNode.js
 /*******************************************************************************
  *
@@ -97629,27 +95091,14 @@ Object .assign (Object .setPrototypeOf (X3DAppearanceNode .prototype, Core_X3DNo
    },
 });
 
-Object .defineProperties (X3DAppearanceNode,
-{
-   typeName:
-   {
-      value: "X3DAppearanceNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shape", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DAppearanceNode, Core_X3DNode .getStaticProperties ("X3DAppearanceNode", "Shape", 1));
 
 const X3DAppearanceNode_default_ = X3DAppearanceNode;
 ;
 
-x_ite_Namespace .add ("X3DAppearanceNode", "x_ite/Components/Shape/X3DAppearanceNode", X3DAppearanceNode_default_);
-/* harmony default export */ const Shape_X3DAppearanceNode = (X3DAppearanceNode_default_);
+/* harmony default export */ const Shape_X3DAppearanceNode = (x_ite_Namespace .add ("X3DAppearanceNode", X3DAppearanceNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/Appearance.js
-/* provided dependency */ var Appearance_$ = __webpack_require__(812);
+/* provided dependency */ var Appearance_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -97696,6 +95145,7 @@ x_ite_Namespace .add ("X3DAppearanceNode", "x_ite/Components/Shape/X3DAppearance
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -98070,26 +95520,7 @@ Object .assign (Object .setPrototypeOf (Appearance .prototype, Shape_X3DAppearan
 
 Object .defineProperties (Appearance,
 {
-   typeName:
-   {
-      value: "Appearance",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shape", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "appearance",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Appearance", "Shape", 1, "appearance", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -98115,8 +95546,7 @@ Object .defineProperties (Appearance,
 const Appearance_default_ = Appearance;
 ;
 
-x_ite_Namespace .add ("Appearance", "x_ite/Components/Shape/Appearance", Appearance_default_);
-/* harmony default export */ const Shape_Appearance = (Appearance_default_);
+/* harmony default export */ const Shape_Appearance = (x_ite_Namespace .add ("Appearance", Appearance_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/FillProperties.js
 /*******************************************************************************
  *
@@ -98164,6 +95594,7 @@ x_ite_Namespace .add ("Appearance", "x_ite/Components/Shape/Appearance", Appeara
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -98265,26 +95696,7 @@ Object .assign (Object .setPrototypeOf (FillProperties .prototype, Shape_X3DAppe
 
 Object .defineProperties (FillProperties,
 {
-   typeName:
-   {
-      value: "FillProperties",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shape", level: 3 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "fillProperties",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("FillProperties", "Shape", 3, "fillProperties", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -98301,8 +95713,7 @@ Object .defineProperties (FillProperties,
 const FillProperties_default_ = FillProperties;
 ;
 
-x_ite_Namespace .add ("FillProperties", "x_ite/Components/Shape/FillProperties", FillProperties_default_);
-/* harmony default export */ const Shape_FillProperties = (FillProperties_default_);
+/* harmony default export */ const Shape_FillProperties = (x_ite_Namespace .add ("FillProperties", FillProperties_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/LineProperties.js
 /*******************************************************************************
  *
@@ -98350,6 +95761,7 @@ x_ite_Namespace .add ("FillProperties", "x_ite/Components/Shape/FillProperties",
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -98455,26 +95867,7 @@ Object .assign (Object .setPrototypeOf (LineProperties .prototype, Shape_X3DAppe
 
 Object .defineProperties (LineProperties,
 {
-   typeName:
-   {
-      value: "LineProperties",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shape", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "lineProperties",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("LineProperties", "Shape", 2, "lineProperties", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -98490,8 +95883,7 @@ Object .defineProperties (LineProperties,
 const LineProperties_default_ = LineProperties;
 ;
 
-x_ite_Namespace .add ("LineProperties", "x_ite/Components/Shape/LineProperties", LineProperties_default_);
-/* harmony default export */ const Shape_LineProperties = (LineProperties_default_);
+/* harmony default export */ const Shape_LineProperties = (x_ite_Namespace .add ("LineProperties", LineProperties_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/X3DMaterialNode.js
 /*******************************************************************************
  *
@@ -98539,6 +95931,7 @@ x_ite_Namespace .add ("LineProperties", "x_ite/Components/Shape/LineProperties",
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -98871,25 +96264,12 @@ Object .assign (Object .setPrototypeOf (X3DMaterialNode .prototype, Shape_X3DApp
    },
 });
 
-Object .defineProperties (X3DMaterialNode,
-{
-   typeName:
-   {
-      value: "X3DMaterialNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shape", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DMaterialNode, Core_X3DNode .getStaticProperties ("X3DMaterialNode", "Shape", 1));
 
 const X3DMaterialNode_default_ = X3DMaterialNode;
 ;
 
-x_ite_Namespace .add ("X3DMaterialNode", "x_ite/Components/Shape/X3DMaterialNode", X3DMaterialNode_default_);
-/* harmony default export */ const Shape_X3DMaterialNode = (X3DMaterialNode_default_);
+/* harmony default export */ const Shape_X3DMaterialNode = (x_ite_Namespace .add ("X3DMaterialNode", X3DMaterialNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/X3DOneSidedMaterialNode.js
 /*******************************************************************************
  *
@@ -98937,6 +96317,7 @@ x_ite_Namespace .add ("X3DMaterialNode", "x_ite/Components/Shape/X3DMaterialNode
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -99065,25 +96446,12 @@ Object .assign (Object .setPrototypeOf (X3DOneSidedMaterialNode .prototype, Shap
    },
 });
 
-Object .defineProperties (X3DOneSidedMaterialNode,
-{
-   typeName:
-   {
-      value: "X3DOneSidedMaterialNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shape", level: 4 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DOneSidedMaterialNode, Core_X3DNode .getStaticProperties ("X3DOneSidedMaterialNode", "Shape", 4));
 
 const X3DOneSidedMaterialNode_default_ = X3DOneSidedMaterialNode;
 ;
 
-x_ite_Namespace .add ("X3DOneSidedMaterialNode", "x_ite/Components/Shape/X3DOneSidedMaterialNode", X3DOneSidedMaterialNode_default_);
-/* harmony default export */ const Shape_X3DOneSidedMaterialNode = (X3DOneSidedMaterialNode_default_);
+/* harmony default export */ const Shape_X3DOneSidedMaterialNode = (x_ite_Namespace .add ("X3DOneSidedMaterialNode", X3DOneSidedMaterialNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/Material.js
 /*******************************************************************************
  *
@@ -99131,6 +96499,7 @@ x_ite_Namespace .add ("X3DOneSidedMaterialNode", "x_ite/Components/Shape/X3DOneS
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -99434,26 +96803,7 @@ function getMaterialKey ()
 
 Object .defineProperties (Material,
 {
-   typeName:
-   {
-      value: "Material",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shape", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "material",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Material", "Shape", 1, "material", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -99496,8 +96846,7 @@ for (const index of Object .values (Material .prototype .getTextureIndices ()))
 const Material_default_ = Material;
 ;
 
-x_ite_Namespace .add ("Material", "x_ite/Components/Shape/Material", Material_default_);
-/* harmony default export */ const Shape_Material = (Material_default_);
+/* harmony default export */ const Shape_Material = (x_ite_Namespace .add ("Material", Material_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/PhysicalMaterial.js
 /*******************************************************************************
  *
@@ -99545,6 +96894,7 @@ x_ite_Namespace .add ("Material", "x_ite/Components/Shape/Material", Material_de
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -99781,26 +97131,7 @@ Object .assign (Object .setPrototypeOf (PhysicalMaterial .prototype, Shape_X3DOn
 
 Object .defineProperties (PhysicalMaterial,
 {
-   typeName:
-   {
-      value: "PhysicalMaterial",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shape", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "material",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("PhysicalMaterial", "Shape", 2, "material", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -99839,8 +97170,7 @@ for (const index of Object .values (PhysicalMaterial .prototype .getTextureIndic
 const PhysicalMaterial_default_ = PhysicalMaterial;
 ;
 
-x_ite_Namespace .add ("PhysicalMaterial", "x_ite/Components/Shape/PhysicalMaterial", PhysicalMaterial_default_);
-/* harmony default export */ const Shape_PhysicalMaterial = (PhysicalMaterial_default_);
+/* harmony default export */ const Shape_PhysicalMaterial = (x_ite_Namespace .add ("PhysicalMaterial", PhysicalMaterial_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/PointProperties.js
 /*******************************************************************************
  *
@@ -99888,6 +97218,7 @@ x_ite_Namespace .add ("PhysicalMaterial", "x_ite/Components/Shape/PhysicalMateri
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -99975,26 +97306,7 @@ Object .assign (Object .setPrototypeOf (PointProperties .prototype, Shape_X3DApp
 
 Object .defineProperties (PointProperties,
 {
-   typeName:
-   {
-      value: "PointProperties",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shape", level: 5 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "pointProperties",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("PointProperties", "Shape", 5, "pointProperties", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -100011,8 +97323,7 @@ Object .defineProperties (PointProperties,
 const PointProperties_default_ = PointProperties;
 ;
 
-x_ite_Namespace .add ("PointProperties", "x_ite/Components/Shape/PointProperties", PointProperties_default_);
-/* harmony default export */ const Shape_PointProperties = (PointProperties_default_);
+/* harmony default export */ const Shape_PointProperties = (x_ite_Namespace .add ("PointProperties", PointProperties_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/X3DShapeNode.js
 /*******************************************************************************
  *
@@ -100060,6 +97371,7 @@ x_ite_Namespace .add ("PointProperties", "x_ite/Components/Shape/PointProperties
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -100251,25 +97563,12 @@ Object .assign (Object .setPrototypeOf (X3DShapeNode .prototype, Core_X3DChildNo
    },
 });
 
-Object .defineProperties (X3DShapeNode,
-{
-   typeName:
-   {
-      value: "X3DShapeNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shape", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DShapeNode, Core_X3DNode .getStaticProperties ("X3DShapeNode", "Shape", 1));
 
 const X3DShapeNode_default_ = X3DShapeNode;
 ;
 
-x_ite_Namespace .add ("X3DShapeNode", "x_ite/Components/Shape/X3DShapeNode", X3DShapeNode_default_);
-/* harmony default export */ const Shape_X3DShapeNode = (X3DShapeNode_default_);
+/* harmony default export */ const Shape_X3DShapeNode = (x_ite_Namespace .add ("X3DShapeNode", X3DShapeNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/Shape.js
 /*******************************************************************************
  *
@@ -100317,6 +97616,7 @@ x_ite_Namespace .add ("X3DShapeNode", "x_ite/Components/Shape/X3DShapeNode", X3D
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -100448,26 +97748,7 @@ Object .assign (Object .setPrototypeOf (Shape .prototype, Shape_X3DShapeNode .pr
 
 Object .defineProperties (Shape,
 {
-   typeName:
-   {
-      value: "Shape",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shape", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Shape", "Shape", 1, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -100488,8 +97769,7 @@ Object .defineProperties (Shape,
 const Shape_default_ = Shape;
 ;
 
-x_ite_Namespace .add ("Shape", "x_ite/Components/Shape/Shape", Shape_default_);
-/* harmony default export */ const Shape_Shape = (Shape_default_);
+/* harmony default export */ const Shape_Shape = (x_ite_Namespace .add ("Shape", Shape_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/TwoSidedMaterial.js
 /*******************************************************************************
  *
@@ -100537,6 +97817,7 @@ x_ite_Namespace .add ("Shape", "x_ite/Components/Shape/Shape", Shape_default_);
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -100744,26 +98025,7 @@ Object .assign (Object .setPrototypeOf (TwoSidedMaterial .prototype, Shape_X3DMa
 
 Object .defineProperties (TwoSidedMaterial,
 {
-   typeName:
-   {
-      value: "TwoSidedMaterial",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shape", level: 4 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "material",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.2", to: "4.0" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("TwoSidedMaterial", "Shape", 4, "material", "3.2", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -100789,8 +98051,7 @@ Object .defineProperties (TwoSidedMaterial,
 const TwoSidedMaterial_default_ = TwoSidedMaterial;
 ;
 
-x_ite_Namespace .add ("TwoSidedMaterial", "x_ite/Components/Shape/TwoSidedMaterial", TwoSidedMaterial_default_);
-/* harmony default export */ const Shape_TwoSidedMaterial = (TwoSidedMaterial_default_);
+/* harmony default export */ const Shape_TwoSidedMaterial = (x_ite_Namespace .add ("TwoSidedMaterial", TwoSidedMaterial_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Shape/UnlitMaterial.js
 /*******************************************************************************
  *
@@ -100838,6 +98099,7 @@ x_ite_Namespace .add ("TwoSidedMaterial", "x_ite/Components/Shape/TwoSidedMateri
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -100910,26 +98172,7 @@ Object .assign (Object .setPrototypeOf (UnlitMaterial .prototype, Shape_X3DOneSi
 
 Object .defineProperties (UnlitMaterial,
 {
-   typeName:
-   {
-      value: "UnlitMaterial",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Shape", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "material",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("UnlitMaterial", "Shape", 1, "material", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -100957,9 +98200,8 @@ for (const index of Object .values (UnlitMaterial .prototype .getTextureIndices 
 const UnlitMaterial_default_ = UnlitMaterial;
 ;
 
-x_ite_Namespace .add ("UnlitMaterial", "x_ite/Components/Shape/UnlitMaterial", UnlitMaterial_default_);
-/* harmony default export */ const Shape_UnlitMaterial = (UnlitMaterial_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/Shape.js
+/* harmony default export */ const Shape_UnlitMaterial = (x_ite_Namespace .add ("UnlitMaterial", UnlitMaterial_default_));
+;// CONCATENATED MODULE: ./src/x_ite/Components/ShapeComponent.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -101023,7 +98265,7 @@ x_ite_Namespace .add ("UnlitMaterial", "x_ite/Components/Shape/UnlitMaterial", U
 
 
 
-const Components_Shape_default_ = {
+const ShapeComponent_default_ = {
    name: "Shape",
    concreteNodes:
    [
@@ -101049,8 +98291,7 @@ const Components_Shape_default_ = {
 };
 ;
 
-x_ite_Namespace .add ("Shape", "x_ite/Components/Shape", Components_Shape_default_);
-/* harmony default export */ const Components_Shape = (Components_Shape_default_);
+/* harmony default export */ const ShapeComponent = (x_ite_Namespace .add ("ShapeComponent", ShapeComponent_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/X3DSoundNode.js
 /*******************************************************************************
  *
@@ -101102,6 +98343,7 @@ x_ite_Namespace .add ("Shape", "x_ite/Components/Shape", Components_Shape_defaul
 
 
 
+
 function X3DSoundNode (executionContext)
 {
    Core_X3DChildNode .call (this, executionContext);
@@ -101111,25 +98353,12 @@ function X3DSoundNode (executionContext)
 
 Object .setPrototypeOf (X3DSoundNode .prototype, Core_X3DChildNode .prototype);
 
-Object .defineProperties (X3DSoundNode,
-{
-   typeName:
-   {
-      value: "X3DSoundNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DSoundNode, Core_X3DNode .getStaticProperties ("X3DSoundNode", "Sound", 1));
 
 const X3DSoundNode_default_ = X3DSoundNode;
 ;
 
-x_ite_Namespace .add ("X3DSoundNode", "x_ite/Components/Sound/X3DSoundNode", X3DSoundNode_default_);
-/* harmony default export */ const Sound_X3DSoundNode = (X3DSoundNode_default_);
+/* harmony default export */ const Sound_X3DSoundNode = (x_ite_Namespace .add ("X3DSoundNode", X3DSoundNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/X3DSoundProcessingNode.js
 /*******************************************************************************
  *
@@ -101177,6 +98406,7 @@ x_ite_Namespace .add ("X3DSoundNode", "x_ite/Components/Sound/X3DSoundNode", X3D
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -101353,25 +98583,12 @@ Object .assign (Object .setPrototypeOf (X3DSoundProcessingNode .prototype, Sound
    },
 });
 
-Object .defineProperties (X3DSoundProcessingNode,
-{
-   typeName:
-   {
-      value: "X3DSoundProcessingNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DSoundProcessingNode, Core_X3DNode .getStaticProperties ("X3DSoundProcessingNode", "Sound", 2));
 
 const X3DSoundProcessingNode_default_ = X3DSoundProcessingNode;
 ;
 
-x_ite_Namespace .add ("X3DSoundProcessingNode", "x_ite/Components/Sound/X3DSoundProcessingNode", X3DSoundProcessingNode_default_);
-/* harmony default export */ const Sound_X3DSoundProcessingNode = (X3DSoundProcessingNode_default_);
+/* harmony default export */ const Sound_X3DSoundProcessingNode = (x_ite_Namespace .add ("X3DSoundProcessingNode", X3DSoundProcessingNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/Analyser.js
 /*******************************************************************************
  *
@@ -101419,6 +98636,7 @@ x_ite_Namespace .add ("X3DSoundProcessingNode", "x_ite/Components/Sound/X3DSound
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -101515,26 +98733,7 @@ Object .assign (Object .setPrototypeOf (Analyser .prototype, Sound_X3DSoundProce
 
 Object .defineProperties (Analyser,
 {
-   typeName:
-   {
-      value: "Analyser",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Analyser", "Sound", 2, "children", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -101575,8 +98774,7 @@ Object .defineProperties (Analyser,
 const Analyser_default_ = Analyser;
 ;
 
-x_ite_Namespace .add ("Analyser", "x_ite/Components/Sound/Analyser", Analyser_default_);
-/* harmony default export */ const Sound_Analyser = (Analyser_default_);
+/* harmony default export */ const Sound_Analyser = (x_ite_Namespace .add ("Analyser", Analyser_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/X3DSoundSourceNode.js
 /*******************************************************************************
  *
@@ -101624,6 +98822,7 @@ x_ite_Namespace .add ("Analyser", "x_ite/Components/Sound/Analyser", Analyser_de
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -101758,25 +98957,12 @@ Object .assign (Object .setPrototypeOf (X3DSoundSourceNode .prototype, Sound_X3D
    },
 });
 
-Object .defineProperties (X3DSoundSourceNode,
-{
-   typeName:
-   {
-      value: "X3DSoundSourceNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DSoundSourceNode, Core_X3DNode .getStaticProperties ("X3DSoundSourceNode", "Sound", 1));
 
 const X3DSoundSourceNode_default_ = X3DSoundSourceNode;
 ;
 
-x_ite_Namespace .add ("X3DSoundSourceNode", "x_ite/Components/Sound/X3DSoundSourceNode", X3DSoundSourceNode_default_);
-/* harmony default export */ const Sound_X3DSoundSourceNode = (X3DSoundSourceNode_default_);
+/* harmony default export */ const Sound_X3DSoundSourceNode = (x_ite_Namespace .add ("X3DSoundSourceNode", X3DSoundSourceNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Sound/AudioElement.js
 
 /*******************************************************************************
@@ -101991,8 +99177,7 @@ const AudioElement_default_ = {
 };
 ;
 
-x_ite_Namespace .add ("AudioElement", "x_ite/Browser/Sound/AudioElement", AudioElement_default_);
-/* harmony default export */ const AudioElement = (AudioElement_default_);
+/* harmony default export */ const AudioElement = (x_ite_Namespace .add ("AudioElement", AudioElement_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/AudioClip.js
 /*******************************************************************************
  *
@@ -102040,6 +99225,7 @@ x_ite_Namespace .add ("AudioElement", "x_ite/Browser/Sound/AudioElement", AudioE
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -102123,26 +99309,7 @@ Object .assign (Object .setPrototypeOf (AudioClip .prototype, Sound_X3DSoundSour
 
 Object .defineProperties (AudioClip,
 {
-   typeName:
-   {
-      value: "AudioClip",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "source",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("AudioClip", "Sound", 1, "source", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -102172,8 +99339,7 @@ Object .defineProperties (AudioClip,
 const AudioClip_default_ = AudioClip;
 ;
 
-x_ite_Namespace .add ("AudioClip", "x_ite/Components/Sound/AudioClip", AudioClip_default_);
-/* harmony default export */ const Sound_AudioClip = (AudioClip_default_);
+/* harmony default export */ const Sound_AudioClip = (x_ite_Namespace .add ("AudioClip", AudioClip_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/X3DSoundDestinationNode.js
 /*******************************************************************************
  *
@@ -102221,6 +99387,7 @@ x_ite_Namespace .add ("AudioClip", "x_ite/Components/Sound/AudioClip", AudioClip
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -102351,25 +99518,12 @@ Object .assign (Object .setPrototypeOf (X3DSoundDestinationNode .prototype, Soun
    },
 });
 
-Object .defineProperties (X3DSoundDestinationNode,
-{
-   typeName:
-   {
-      value: "X3DSoundDestinationNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DSoundDestinationNode, Core_X3DNode .getStaticProperties ("X3DSoundDestinationNode", "Sound", 2));
 
 const X3DSoundDestinationNode_default_ = X3DSoundDestinationNode;
 ;
 
-x_ite_Namespace .add ("X3DSoundDestinationNode", "x_ite/Components/Sound/X3DSoundDestinationNode", X3DSoundDestinationNode_default_);
-/* harmony default export */ const Sound_X3DSoundDestinationNode = (X3DSoundDestinationNode_default_);
+/* harmony default export */ const Sound_X3DSoundDestinationNode = (x_ite_Namespace .add ("X3DSoundDestinationNode", X3DSoundDestinationNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/AudioDestination.js
 /*******************************************************************************
  *
@@ -102417,6 +99571,7 @@ x_ite_Namespace .add ("X3DSoundDestinationNode", "x_ite/Components/Sound/X3DSoun
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -102497,26 +99652,7 @@ Object .assign (Object .setPrototypeOf (AudioDestination .prototype, Sound_X3DSo
 
 Object .defineProperties (AudioDestination,
 {
-   typeName:
-   {
-      value: "AudioDestination",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("AudioDestination", "Sound", 2, "children", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -102542,8 +99678,7 @@ Object .defineProperties (AudioDestination,
 const AudioDestination_default_ = AudioDestination;
 ;
 
-x_ite_Namespace .add ("AudioDestination", "x_ite/Components/Sound/AudioDestination", AudioDestination_default_);
-/* harmony default export */ const Sound_AudioDestination = (AudioDestination_default_);
+/* harmony default export */ const Sound_AudioDestination = (x_ite_Namespace .add ("AudioDestination", AudioDestination_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/BiquadFilter.js
 /*******************************************************************************
  *
@@ -102591,6 +99726,7 @@ x_ite_Namespace .add ("AudioDestination", "x_ite/Components/Sound/AudioDestinati
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -102664,26 +99800,7 @@ Object .assign (Object .setPrototypeOf (BiquadFilter .prototype, Sound_X3DSoundP
 
 Object .defineProperties (BiquadFilter,
 {
-   typeName:
-   {
-      value: "BiquadFilter",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("BiquadFilter", "Sound", 2, "children", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -102719,8 +99836,7 @@ Object .defineProperties (BiquadFilter,
 const BiquadFilter_default_ = BiquadFilter;
 ;
 
-x_ite_Namespace .add ("BiquadFilter", "x_ite/Components/Sound/BiquadFilter", BiquadFilter_default_);
-/* harmony default export */ const Sound_BiquadFilter = (BiquadFilter_default_);
+/* harmony default export */ const Sound_BiquadFilter = (x_ite_Namespace .add ("BiquadFilter", BiquadFilter_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/BufferAudioSource.js
 /*******************************************************************************
  *
@@ -102768,6 +99884,7 @@ x_ite_Namespace .add ("BiquadFilter", "x_ite/Components/Sound/BiquadFilter", Biq
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -102947,26 +100064,7 @@ Object .assign (Object .setPrototypeOf (BufferAudioSource .prototype, Sound_X3DS
 
 Object .defineProperties (BufferAudioSource,
 {
-   typeName:
-   {
-      value: "BufferAudioSource",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("BufferAudioSource", "Sound", 2, "children", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -103010,8 +100108,7 @@ Object .defineProperties (BufferAudioSource,
 const BufferAudioSource_default_ = BufferAudioSource;
 ;
 
-x_ite_Namespace .add ("BufferAudioSource", "x_ite/Components/Sound/BufferAudioSource", BufferAudioSource_default_);
-/* harmony default export */ const Sound_BufferAudioSource = (BufferAudioSource_default_);
+/* harmony default export */ const Sound_BufferAudioSource = (x_ite_Namespace .add ("BufferAudioSource", BufferAudioSource_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/X3DSoundChannelNode.js
 /*******************************************************************************
  *
@@ -103059,6 +100156,7 @@ x_ite_Namespace .add ("BufferAudioSource", "x_ite/Components/Sound/BufferAudioSo
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -103230,25 +100328,12 @@ Object .assign (Object .setPrototypeOf (X3DSoundChannelNode .prototype, Sound_X3
    },
 });
 
-Object .defineProperties (X3DSoundChannelNode,
-{
-   typeName:
-   {
-      value: "X3DSoundChannelNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DSoundChannelNode, Core_X3DNode .getStaticProperties ("X3DSoundChannelNode", "Sound", 2));
 
 const X3DSoundChannelNode_default_ = X3DSoundChannelNode;
 ;
 
-x_ite_Namespace .add ("X3DSoundChannelNode", "x_ite/Components/Sound/X3DSoundChannelNode", X3DSoundChannelNode_default_);
-/* harmony default export */ const Sound_X3DSoundChannelNode = (X3DSoundChannelNode_default_);
+/* harmony default export */ const Sound_X3DSoundChannelNode = (x_ite_Namespace .add ("X3DSoundChannelNode", X3DSoundChannelNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/ChannelMerger.js
 /*******************************************************************************
  *
@@ -103296,6 +100381,7 @@ x_ite_Namespace .add ("X3DSoundChannelNode", "x_ite/Components/Sound/X3DSoundCha
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -103367,26 +100453,7 @@ Object .assign (Object .setPrototypeOf (ChannelMerger .prototype, Sound_X3DSound
 
 Object .defineProperties (ChannelMerger,
 {
-   typeName:
-   {
-      value: "ChannelMerger",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ChannelMerger", "Sound", 2, "children", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -103409,8 +100476,7 @@ Object .defineProperties (ChannelMerger,
 const ChannelMerger_default_ = ChannelMerger;
 ;
 
-x_ite_Namespace .add ("ChannelMerger", "x_ite/Components/Sound/ChannelMerger", ChannelMerger_default_);
-/* harmony default export */ const Sound_ChannelMerger = (ChannelMerger_default_);
+/* harmony default export */ const Sound_ChannelMerger = (x_ite_Namespace .add ("ChannelMerger", ChannelMerger_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/ChannelSelector.js
 /*******************************************************************************
  *
@@ -103466,6 +100532,7 @@ x_ite_Namespace .add ("ChannelMerger", "x_ite/Components/Sound/ChannelMerger", C
 
 
 
+
 function ChannelSelector (executionContext)
 {
    Sound_X3DSoundChannelNode .call (this, executionContext);
@@ -103503,26 +100570,7 @@ Object .assign (Object .setPrototypeOf (ChannelSelector .prototype, Sound_X3DSou
 
 Object .defineProperties (ChannelSelector,
 {
-   typeName:
-   {
-      value: "ChannelSelector",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ChannelSelector", "Sound", 2, "children", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -103546,8 +100594,7 @@ Object .defineProperties (ChannelSelector,
 const ChannelSelector_default_ = ChannelSelector;
 ;
 
-x_ite_Namespace .add ("ChannelSelector", "x_ite/Components/Sound/ChannelSelector", ChannelSelector_default_);
-/* harmony default export */ const Sound_ChannelSelector = (ChannelSelector_default_);
+/* harmony default export */ const Sound_ChannelSelector = (x_ite_Namespace .add ("ChannelSelector", ChannelSelector_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/ChannelSplitter.js
 /*******************************************************************************
  *
@@ -103595,6 +100642,7 @@ x_ite_Namespace .add ("ChannelSelector", "x_ite/Components/Sound/ChannelSelector
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -103699,26 +100747,7 @@ Object .assign (Object .setPrototypeOf (ChannelSplitter .prototype, Sound_X3DSou
 
 Object .defineProperties (ChannelSplitter,
 {
-   typeName:
-   {
-      value: "ChannelSplitter",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ChannelSplitter", "Sound", 2, "children", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -103742,8 +100771,7 @@ Object .defineProperties (ChannelSplitter,
 const ChannelSplitter_default_ = ChannelSplitter;
 ;
 
-x_ite_Namespace .add ("ChannelSplitter", "x_ite/Components/Sound/ChannelSplitter", ChannelSplitter_default_);
-/* harmony default export */ const Sound_ChannelSplitter = (ChannelSplitter_default_);
+/* harmony default export */ const Sound_ChannelSplitter = (x_ite_Namespace .add ("ChannelSplitter", ChannelSplitter_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/Convolver.js
 /*******************************************************************************
  *
@@ -103791,6 +100819,7 @@ x_ite_Namespace .add ("ChannelSplitter", "x_ite/Components/Sound/ChannelSplitter
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -103857,26 +100886,7 @@ Object .assign (Object .setPrototypeOf (Convolver .prototype, Sound_X3DSoundProc
 
 Object .defineProperties (Convolver,
 {
-   typeName:
-   {
-      value: "Convolver",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Convolver", "Sound", 2, "children", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -103912,8 +100922,7 @@ Object .defineProperties (Convolver,
 const Convolver_default_ = Convolver;
 ;
 
-x_ite_Namespace .add ("Convolver", "x_ite/Components/Sound/Convolver", Convolver_default_);
-/* harmony default export */ const Sound_Convolver = (Convolver_default_);
+/* harmony default export */ const Sound_Convolver = (x_ite_Namespace .add ("Convolver", Convolver_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/Delay.js
 /*******************************************************************************
  *
@@ -103961,6 +100970,7 @@ x_ite_Namespace .add ("Convolver", "x_ite/Components/Sound/Convolver", Convolver
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -104019,26 +101029,7 @@ Object .assign (Object .setPrototypeOf (Delay .prototype, Sound_X3DSoundProcessi
 
 Object .defineProperties (Delay,
 {
-   typeName:
-   {
-      value: "Delay",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Delay", "Sound", 2, "children", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -104072,8 +101063,7 @@ Object .defineProperties (Delay,
 const Delay_default_ = Delay;
 ;
 
-x_ite_Namespace .add ("Delay", "x_ite/Components/Sound/Delay", Delay_default_);
-/* harmony default export */ const Sound_Delay = (Delay_default_);
+/* harmony default export */ const Sound_Delay = (x_ite_Namespace .add ("Delay", Delay_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/DynamicsCompressor.js
 /*******************************************************************************
  *
@@ -104121,6 +101111,7 @@ x_ite_Namespace .add ("Delay", "x_ite/Components/Sound/Delay", Delay_default_);
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -104192,26 +101183,7 @@ Object .assign (Object .setPrototypeOf (DynamicsCompressor .prototype, Sound_X3D
 
 Object .defineProperties (DynamicsCompressor,
 {
-   typeName:
-   {
-      value: "DynamicsCompressor",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("DynamicsCompressor", "Sound", 2, "children", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -104249,8 +101221,7 @@ Object .defineProperties (DynamicsCompressor,
 const DynamicsCompressor_default_ = DynamicsCompressor;
 ;
 
-x_ite_Namespace .add ("DynamicsCompressor", "x_ite/Components/Sound/DynamicsCompressor", DynamicsCompressor_default_);
-/* harmony default export */ const Sound_DynamicsCompressor = (DynamicsCompressor_default_);
+/* harmony default export */ const Sound_DynamicsCompressor = (x_ite_Namespace .add ("DynamicsCompressor", DynamicsCompressor_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/Gain.js
 /*******************************************************************************
  *
@@ -104305,6 +101276,7 @@ x_ite_Namespace .add ("DynamicsCompressor", "x_ite/Components/Sound/DynamicsComp
 
 
 
+
 function Gain (executionContext)
 {
    Sound_X3DSoundProcessingNode .call (this, executionContext);
@@ -104316,26 +101288,7 @@ Object .setPrototypeOf (Gain .prototype, Sound_X3DSoundProcessingNode .prototype
 
 Object .defineProperties (Gain,
 {
-   typeName:
-   {
-      value: "Gain",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Gain", "Sound", 2, "children", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -104367,8 +101320,7 @@ Object .defineProperties (Gain,
 const Gain_default_ = Gain;
 ;
 
-x_ite_Namespace .add ("Gain", "x_ite/Components/Sound/Gain", Gain_default_);
-/* harmony default export */ const Sound_Gain = (Gain_default_);
+/* harmony default export */ const Sound_Gain = (x_ite_Namespace .add ("Gain", Gain_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/ListenerPointSource.js
 /*******************************************************************************
  *
@@ -104416,6 +101368,7 @@ x_ite_Namespace .add ("Gain", "x_ite/Components/Sound/Gain", Gain_default_);
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -104521,26 +101474,7 @@ Object .assign (Object .setPrototypeOf (ListenerPointSource .prototype, Sound_X3
 
 Object .defineProperties (ListenerPointSource,
 {
-   typeName:
-   {
-      value: "ListenerPointSource",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("ListenerPointSource", "Sound", 2, "children", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -104562,8 +101496,7 @@ Object .defineProperties (ListenerPointSource,
 const ListenerPointSource_default_ = ListenerPointSource;
 ;
 
-x_ite_Namespace .add ("ListenerPointSource", "x_ite/Components/Sound/ListenerPointSource", ListenerPointSource_default_);
-/* harmony default export */ const Sound_ListenerPointSource = (ListenerPointSource_default_);
+/* harmony default export */ const Sound_ListenerPointSource = (x_ite_Namespace .add ("ListenerPointSource", ListenerPointSource_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/MicrophoneSource.js
 /*******************************************************************************
  *
@@ -104611,6 +101544,7 @@ x_ite_Namespace .add ("ListenerPointSource", "x_ite/Components/Sound/ListenerPoi
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -104734,26 +101668,7 @@ Object .assign (Object .setPrototypeOf (MicrophoneSource .prototype, Sound_X3DSo
 
 Object .defineProperties (MicrophoneSource,
 {
-   typeName:
-   {
-      value: "MicrophoneSource",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("MicrophoneSource", "Sound", 2, "children", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -104779,8 +101694,7 @@ Object .defineProperties (MicrophoneSource,
 const MicrophoneSource_default_ = MicrophoneSource;
 ;
 
-x_ite_Namespace .add ("MicrophoneSource", "x_ite/Components/Sound/MicrophoneSource", MicrophoneSource_default_);
-/* harmony default export */ const Sound_MicrophoneSource = (MicrophoneSource_default_);
+/* harmony default export */ const Sound_MicrophoneSource = (x_ite_Namespace .add ("MicrophoneSource", MicrophoneSource_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/OscillatorSource.js
 /*******************************************************************************
  *
@@ -104828,6 +101742,7 @@ x_ite_Namespace .add ("MicrophoneSource", "x_ite/Components/Sound/MicrophoneSour
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -104954,26 +101869,7 @@ Object .assign (Object .setPrototypeOf (OscillatorSource .prototype, Sound_X3DSo
 
 Object .defineProperties (OscillatorSource,
 {
-   typeName:
-   {
-      value: "OscillatorSource",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("OscillatorSource", "Sound", 2, "children", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -105001,8 +101897,7 @@ Object .defineProperties (OscillatorSource,
 const OscillatorSource_default_ = OscillatorSource;
 ;
 
-x_ite_Namespace .add ("OscillatorSource", "x_ite/Components/Sound/OscillatorSource", OscillatorSource_default_);
-/* harmony default export */ const Sound_OscillatorSource = (OscillatorSource_default_);
+/* harmony default export */ const Sound_OscillatorSource = (x_ite_Namespace .add ("OscillatorSource", OscillatorSource_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/PeriodicWave.js
 /*******************************************************************************
  *
@@ -105057,6 +101952,7 @@ x_ite_Namespace .add ("OscillatorSource", "x_ite/Components/Sound/OscillatorSour
 
 
 
+
 function PeriodicWave (executionContext)
 {
    Sound_X3DSoundNode .call (this, executionContext);
@@ -105092,26 +101988,7 @@ Object .assign (Object .setPrototypeOf (PeriodicWave .prototype, Sound_X3DSoundN
 
 Object .defineProperties (PeriodicWave,
 {
-   typeName:
-   {
-      value: "PeriodicWave",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "periodicWave",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("PeriodicWave", "Sound", 2, "periodicWave", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -105129,8 +102006,7 @@ Object .defineProperties (PeriodicWave,
 const PeriodicWave_default_ = PeriodicWave;
 ;
 
-x_ite_Namespace .add ("PeriodicWave", "x_ite/Components/Sound/PeriodicWave", PeriodicWave_default_);
-/* harmony default export */ const Sound_PeriodicWave = (PeriodicWave_default_);
+/* harmony default export */ const Sound_PeriodicWave = (x_ite_Namespace .add ("PeriodicWave", PeriodicWave_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/Sound.js
 /*******************************************************************************
  *
@@ -105178,6 +102054,7 @@ x_ite_Namespace .add ("PeriodicWave", "x_ite/Components/Sound/PeriodicWave", Per
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -105508,26 +102385,7 @@ Object .assign (Object .setPrototypeOf (Sound .prototype, Sound_X3DSoundNode .pr
 
 Object .defineProperties (Sound,
 {
-   typeName:
-   {
-      value: "Sound",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("Sound", "Sound", 1, "children", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -105553,8 +102411,7 @@ Object .defineProperties (Sound,
 const Sound_default_ = Sound;
 ;
 
-x_ite_Namespace .add ("Sound", "x_ite/Components/Sound/Sound", Sound_default_);
-/* harmony default export */ const Sound_Sound = (Sound_default_);
+/* harmony default export */ const Sound_Sound = (x_ite_Namespace .add ("Sound", Sound_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/SpatialSound.js
 /*******************************************************************************
  *
@@ -105602,6 +102459,7 @@ x_ite_Namespace .add ("Sound", "x_ite/Components/Sound/Sound", Sound_default_);
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -105853,26 +102711,7 @@ Object .assign (Object .setPrototypeOf (SpatialSound .prototype, Sound_X3DSoundN
 
 Object .defineProperties (SpatialSound,
 {
-   typeName:
-   {
-      value: "SpatialSound",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("SpatialSound", "Sound", 2, "children", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -105905,8 +102744,7 @@ Object .defineProperties (SpatialSound,
 const SpatialSound_default_ = SpatialSound;
 ;
 
-x_ite_Namespace .add ("SpatialSound", "x_ite/Components/Sound/SpatialSound", SpatialSound_default_);
-/* harmony default export */ const Sound_SpatialSound = (SpatialSound_default_);
+/* harmony default export */ const Sound_SpatialSound = (x_ite_Namespace .add ("SpatialSound", SpatialSound_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/StreamAudioDestination.js
 /*******************************************************************************
  *
@@ -105961,6 +102799,7 @@ x_ite_Namespace .add ("SpatialSound", "x_ite/Components/Sound/SpatialSound", Spa
 
 
 
+
 /**
  * THIS NODE IS NOT SUPPORTED.
  */
@@ -105995,26 +102834,7 @@ Object .assign (Object .setPrototypeOf (StreamAudioDestination .prototype, Sound
 
 Object .defineProperties (StreamAudioDestination,
 {
-   typeName:
-   {
-      value: "StreamAudioDestination",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("StreamAudioDestination", "Sound", 2, "children", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -106040,8 +102860,7 @@ Object .defineProperties (StreamAudioDestination,
 const StreamAudioDestination_default_ = StreamAudioDestination;
 ;
 
-x_ite_Namespace .add ("StreamAudioDestination", "x_ite/Components/Sound/StreamAudioDestination", StreamAudioDestination_default_);
-/* harmony default export */ const Sound_StreamAudioDestination = (StreamAudioDestination_default_);
+/* harmony default export */ const Sound_StreamAudioDestination = (x_ite_Namespace .add ("StreamAudioDestination", StreamAudioDestination_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/StreamAudioSource.js
 /*******************************************************************************
  *
@@ -106096,6 +102915,7 @@ x_ite_Namespace .add ("StreamAudioDestination", "x_ite/Components/Sound/StreamAu
 
 
 
+
 /**
  * THIS NODE IS NOT SUPPORTED.
  */
@@ -106120,26 +102940,7 @@ Object .assign (Object .setPrototypeOf (StreamAudioSource .prototype, Sound_X3DS
 
 Object .defineProperties (StreamAudioSource,
 {
-   typeName:
-   {
-      value: "StreamAudioSource",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("StreamAudioSource", "Sound", 2, "children", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -106165,8 +102966,7 @@ Object .defineProperties (StreamAudioSource,
 const StreamAudioSource_default_ = StreamAudioSource;
 ;
 
-x_ite_Namespace .add ("StreamAudioSource", "x_ite/Components/Sound/StreamAudioSource", StreamAudioSource_default_);
-/* harmony default export */ const Sound_StreamAudioSource = (StreamAudioSource_default_);
+/* harmony default export */ const Sound_StreamAudioSource = (x_ite_Namespace .add ("StreamAudioSource", StreamAudioSource_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Sound/WaveShaper.js
 /*******************************************************************************
  *
@@ -106214,6 +103014,7 @@ x_ite_Namespace .add ("StreamAudioSource", "x_ite/Components/Sound/StreamAudioSo
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -106272,26 +103073,7 @@ Object .assign (Object .setPrototypeOf (WaveShaper .prototype, Sound_X3DSoundPro
 
 Object .defineProperties (WaveShaper,
 {
-   typeName:
-   {
-      value: "WaveShaper",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Sound", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "children",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "4.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("WaveShaper", "Sound", 2, "children", "4.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -106325,9 +103107,8 @@ Object .defineProperties (WaveShaper,
 const WaveShaper_default_ = WaveShaper;
 ;
 
-x_ite_Namespace .add ("WaveShaper", "x_ite/Components/Sound/WaveShaper", WaveShaper_default_);
-/* harmony default export */ const Sound_WaveShaper = (WaveShaper_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/Sound.js
+/* harmony default export */ const Sound_WaveShaper = (x_ite_Namespace .add ("WaveShaper", WaveShaper_default_));
+;// CONCATENATED MODULE: ./src/x_ite/Components/SoundComponent.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -106402,7 +103183,7 @@ x_ite_Namespace .add ("WaveShaper", "x_ite/Components/Sound/WaveShaper", WaveSha
 
 
 
-const Components_Sound_default_ = {
+const SoundComponent_default_ = {
    name: "Sound",
    concreteNodes:
    [
@@ -106439,8 +103220,7 @@ const Components_Sound_default_ = {
 };
 ;
 
-x_ite_Namespace .add ("Sound", "x_ite/Components/Sound", Components_Sound_default_);
-/* harmony default export */ const Components_Sound = (Components_Sound_default_);
+/* harmony default export */ const SoundComponent = (x_ite_Namespace .add ("SoundComponent", SoundComponent_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Texturing/GifMedia.js
 /*******************************************************************************
  *
@@ -106571,11 +103351,10 @@ function GifMedia (gif, movieTexture)
 const GifMedia_default_ = GifMedia;
 ;
 
-x_ite_Namespace .add ("GifMedia", "x_ite/Browser/Texturing/GifMedia", GifMedia_default_);
-/* harmony default export */ const Texturing_GifMedia = (GifMedia_default_);
+/* harmony default export */ const Texturing_GifMedia = (x_ite_Namespace .add ("GifMedia", GifMedia_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/MovieTexture.js
-/* provided dependency */ var MovieTexture_$ = __webpack_require__(812);
-/* provided dependency */ var SuperGif = __webpack_require__(807);
+/* provided dependency */ var MovieTexture_$ = __webpack_require__(703);
+/* provided dependency */ var SuperGif = __webpack_require__(296);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -106622,6 +103401,7 @@ x_ite_Namespace .add ("GifMedia", "x_ite/Browser/Texturing/GifMedia", GifMedia_d
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -106833,26 +103613,7 @@ Object .assign (Object .setPrototypeOf (MovieTexture .prototype, Texturing_X3DTe
 
 Object .defineProperties (MovieTexture,
 {
-   typeName:
-   {
-      value: "MovieTexture",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Texturing", level: 3 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "texture",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("MovieTexture", "Texturing", 3, "texture", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -106886,8 +103647,7 @@ Object .defineProperties (MovieTexture,
 const MovieTexture_default_ = MovieTexture;
 ;
 
-x_ite_Namespace .add ("MovieTexture", "x_ite/Components/Texturing/MovieTexture", MovieTexture_default_);
-/* harmony default export */ const Texturing_MovieTexture = (MovieTexture_default_);
+/* harmony default export */ const Texturing_MovieTexture = (x_ite_Namespace .add ("MovieTexture", MovieTexture_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/MultiTexture.js
 /*******************************************************************************
  *
@@ -106935,6 +103695,7 @@ x_ite_Namespace .add ("MovieTexture", "x_ite/Components/Texturing/MovieTexture",
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -107199,26 +103960,7 @@ Object .assign (Object .setPrototypeOf (MultiTexture .prototype, Texturing_X3DTe
 
 Object .defineProperties (MultiTexture,
 {
-   typeName:
-   {
-      value: "MultiTexture",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Texturing", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "texture",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("MultiTexture", "Texturing", 2, "texture", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -107238,8 +103980,7 @@ Object .defineProperties (MultiTexture,
 const MultiTexture_default_ = MultiTexture;
 ;
 
-x_ite_Namespace .add ("MultiTexture", "x_ite/Components/Texturing/MultiTexture", MultiTexture_default_);
-/* harmony default export */ const Texturing_MultiTexture = (MultiTexture_default_);
+/* harmony default export */ const Texturing_MultiTexture = (x_ite_Namespace .add ("MultiTexture", MultiTexture_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/X3DTextureCoordinateNode.js
 /*******************************************************************************
  *
@@ -107291,6 +104032,7 @@ x_ite_Namespace .add ("MultiTexture", "x_ite/Components/Texturing/MultiTexture",
 
 
 
+
 function X3DTextureCoordinateNode (executionContext)
 {
    Rendering_X3DGeometricPropertyNode .call (this, executionContext);
@@ -107300,25 +104042,12 @@ function X3DTextureCoordinateNode (executionContext)
 
 Object .setPrototypeOf (X3DTextureCoordinateNode .prototype, Rendering_X3DGeometricPropertyNode .prototype);
 
-Object .defineProperties (X3DTextureCoordinateNode,
-{
-   typeName:
-   {
-      value: "X3DTextureCoordinateNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Texturing", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DTextureCoordinateNode, Core_X3DNode .getStaticProperties ("X3DTextureCoordinateNode", "Texturing", 1));
 
 const X3DTextureCoordinateNode_default_ = X3DTextureCoordinateNode;
 ;
 
-x_ite_Namespace .add ("X3DTextureCoordinateNode", "x_ite/Components/Texturing/X3DTextureCoordinateNode", X3DTextureCoordinateNode_default_);
-/* harmony default export */ const Texturing_X3DTextureCoordinateNode = (X3DTextureCoordinateNode_default_);
+/* harmony default export */ const Texturing_X3DTextureCoordinateNode = (x_ite_Namespace .add ("X3DTextureCoordinateNode", X3DTextureCoordinateNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/MultiTextureCoordinate.js
 /*******************************************************************************
  *
@@ -107366,6 +104095,7 @@ x_ite_Namespace .add ("X3DTextureCoordinateNode", "x_ite/Components/Texturing/X3
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -107482,26 +104212,7 @@ Object .assign (Object .setPrototypeOf (MultiTextureCoordinate .prototype, Textu
 
 Object .defineProperties (MultiTextureCoordinate,
 {
-   typeName:
-   {
-      value: "MultiTextureCoordinate",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Texturing", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "texCoord",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("MultiTextureCoordinate", "Texturing", 2, "texCoord", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -107515,8 +104226,7 @@ Object .defineProperties (MultiTextureCoordinate,
 const MultiTextureCoordinate_default_ = MultiTextureCoordinate;
 ;
 
-x_ite_Namespace .add ("MultiTextureCoordinate", "x_ite/Components/Texturing/MultiTextureCoordinate", MultiTextureCoordinate_default_);
-/* harmony default export */ const Texturing_MultiTextureCoordinate = (MultiTextureCoordinate_default_);
+/* harmony default export */ const Texturing_MultiTextureCoordinate = (x_ite_Namespace .add ("MultiTextureCoordinate", MultiTextureCoordinate_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/X3DTextureTransformNode.js
 /*******************************************************************************
  *
@@ -107568,6 +104278,7 @@ x_ite_Namespace .add ("MultiTextureCoordinate", "x_ite/Components/Texturing/Mult
 
 
 
+
 function X3DTextureTransformNode (executionContext)
 {
    Shape_X3DAppearanceChildNode .call (this, executionContext);
@@ -107577,25 +104288,12 @@ function X3DTextureTransformNode (executionContext)
 
 Object .setPrototypeOf (X3DTextureTransformNode .prototype, Shape_X3DAppearanceChildNode .prototype);
 
-Object .defineProperties (X3DTextureTransformNode,
-{
-   typeName:
-   {
-      value: "X3DTextureTransformNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Texturing", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DTextureTransformNode, Core_X3DNode .getStaticProperties ("X3DTextureTransformNode", "Texturing", 1));
 
 const X3DTextureTransformNode_default_ = X3DTextureTransformNode;
 ;
 
-x_ite_Namespace .add ("X3DTextureTransformNode", "x_ite/Components/Texturing/X3DTextureTransformNode", X3DTextureTransformNode_default_);
-/* harmony default export */ const Texturing_X3DTextureTransformNode = (X3DTextureTransformNode_default_);
+/* harmony default export */ const Texturing_X3DTextureTransformNode = (x_ite_Namespace .add ("X3DTextureTransformNode", X3DTextureTransformNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/MultiTextureTransform.js
 /*******************************************************************************
  *
@@ -107643,6 +104341,7 @@ x_ite_Namespace .add ("X3DTextureTransformNode", "x_ite/Components/Texturing/X3D
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -107720,26 +104419,7 @@ Object .assign (Object .setPrototypeOf (MultiTextureTransform .prototype, Textur
 
 Object .defineProperties (MultiTextureTransform,
 {
-   typeName:
-   {
-      value: "MultiTextureTransform",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Texturing", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "textureTransform",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("MultiTextureTransform", "Texturing", 2, "textureTransform", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -107753,8 +104433,7 @@ Object .defineProperties (MultiTextureTransform,
 const MultiTextureTransform_default_ = MultiTextureTransform;
 ;
 
-x_ite_Namespace .add ("MultiTextureTransform", "x_ite/Components/Texturing/MultiTextureTransform", MultiTextureTransform_default_);
-/* harmony default export */ const Texturing_MultiTextureTransform = (MultiTextureTransform_default_);
+/* harmony default export */ const Texturing_MultiTextureTransform = (x_ite_Namespace .add ("MultiTextureTransform", MultiTextureTransform_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/PixelTexture.js
 /*******************************************************************************
  *
@@ -107802,6 +104481,7 @@ x_ite_Namespace .add ("MultiTextureTransform", "x_ite/Components/Texturing/Multi
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -108007,26 +104687,7 @@ Object .assign (Object .setPrototypeOf (PixelTexture .prototype, Texturing_X3DTe
 
 Object .defineProperties (PixelTexture,
 {
-   typeName:
-   {
-      value: "PixelTexture",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Texturing", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "texture",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("PixelTexture", "Texturing", 1, "texture", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -108044,8 +104705,7 @@ Object .defineProperties (PixelTexture,
 const PixelTexture_default_ = PixelTexture;
 ;
 
-x_ite_Namespace .add ("PixelTexture", "x_ite/Components/Texturing/PixelTexture", PixelTexture_default_);
-/* harmony default export */ const Texturing_PixelTexture = (PixelTexture_default_);
+/* harmony default export */ const Texturing_PixelTexture = (x_ite_Namespace .add ("PixelTexture", PixelTexture_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/X3DSingleTextureCoordinateNode.js
 /*******************************************************************************
  *
@@ -108098,6 +104758,7 @@ x_ite_Namespace .add ("PixelTexture", "x_ite/Components/Texturing/PixelTexture",
 
 
 
+
 function X3DSingleTextureCoordinateNode (executionContext)
 {
    Texturing_X3DTextureCoordinateNode .call (this, executionContext);
@@ -108130,25 +104791,12 @@ Object .assign (Object .setPrototypeOf (X3DSingleTextureCoordinateNode .prototyp
    },
 });
 
-Object .defineProperties (X3DSingleTextureCoordinateNode,
-{
-   typeName:
-   {
-      value: "X3DSingleTextureCoordinateNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Texturing", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DSingleTextureCoordinateNode, Core_X3DNode .getStaticProperties ("X3DSingleTextureCoordinateNode", "Texturing", 1));
 
 const X3DSingleTextureCoordinateNode_default_ = X3DSingleTextureCoordinateNode;
 ;
 
-x_ite_Namespace .add ("X3DSingleTextureCoordinateNode", "x_ite/Components/Texturing/X3DSingleTextureCoordinateNode", X3DSingleTextureCoordinateNode_default_);
-/* harmony default export */ const Texturing_X3DSingleTextureCoordinateNode = (X3DSingleTextureCoordinateNode_default_);
+/* harmony default export */ const Texturing_X3DSingleTextureCoordinateNode = (x_ite_Namespace .add ("X3DSingleTextureCoordinateNode", X3DSingleTextureCoordinateNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/TextureCoordinate.js
 /*******************************************************************************
  *
@@ -108196,6 +104844,7 @@ x_ite_Namespace .add ("X3DSingleTextureCoordinateNode", "x_ite/Components/Textur
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -108288,26 +104937,7 @@ Object .assign (Object .setPrototypeOf (TextureCoordinate .prototype, Texturing_
 
 Object .defineProperties (TextureCoordinate,
 {
-   typeName:
-   {
-      value: "TextureCoordinate",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Texturing", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "texCoord",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("TextureCoordinate", "Texturing", 1, "texCoord", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -108322,8 +104952,7 @@ Object .defineProperties (TextureCoordinate,
 const TextureCoordinate_default_ = TextureCoordinate;
 ;
 
-x_ite_Namespace .add ("TextureCoordinate", "x_ite/Components/Texturing/TextureCoordinate", TextureCoordinate_default_);
-/* harmony default export */ const Texturing_TextureCoordinate = (TextureCoordinate_default_);
+/* harmony default export */ const Texturing_TextureCoordinate = (x_ite_Namespace .add ("TextureCoordinate", TextureCoordinate_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/TextureCoordinateGenerator.js
 /*******************************************************************************
  *
@@ -108371,6 +105000,7 @@ x_ite_Namespace .add ("TextureCoordinate", "x_ite/Components/Texturing/TextureCo
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -108451,26 +105081,7 @@ Object .assign (Object .setPrototypeOf (TextureCoordinateGenerator .prototype, T
 
 Object .defineProperties (TextureCoordinateGenerator,
 {
-   typeName:
-   {
-      value: "TextureCoordinateGenerator",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Texturing", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "texCoord",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("TextureCoordinateGenerator", "Texturing", 2, "texCoord", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -108486,8 +105097,7 @@ Object .defineProperties (TextureCoordinateGenerator,
 const TextureCoordinateGenerator_default_ = TextureCoordinateGenerator;
 ;
 
-x_ite_Namespace .add ("TextureCoordinateGenerator", "x_ite/Components/Texturing/TextureCoordinateGenerator", TextureCoordinateGenerator_default_);
-/* harmony default export */ const Texturing_TextureCoordinateGenerator = (TextureCoordinateGenerator_default_);
+/* harmony default export */ const Texturing_TextureCoordinateGenerator = (x_ite_Namespace .add ("TextureCoordinateGenerator", TextureCoordinateGenerator_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/TextureProperties.js
 /*******************************************************************************
  *
@@ -108655,26 +105265,7 @@ Object .assign (Object .setPrototypeOf (TextureProperties .prototype, Core_X3DNo
 
 Object .defineProperties (TextureProperties,
 {
-   typeName:
-   {
-      value: "TextureProperties",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Texturing", level: 2 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "textureProperties",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "3.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("TextureProperties", "Texturing", 2, "textureProperties", "3.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -108698,8 +105289,7 @@ Object .defineProperties (TextureProperties,
 const TextureProperties_default_ = TextureProperties;
 ;
 
-x_ite_Namespace .add ("TextureProperties", "x_ite/Components/Texturing/TextureProperties", TextureProperties_default_);
-/* harmony default export */ const Texturing_TextureProperties = (TextureProperties_default_);
+/* harmony default export */ const Texturing_TextureProperties = (x_ite_Namespace .add ("TextureProperties", TextureProperties_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/X3DSingleTextureTransformNode.js
 /*******************************************************************************
  *
@@ -108752,6 +105342,7 @@ x_ite_Namespace .add ("TextureProperties", "x_ite/Components/Texturing/TexturePr
 
 
 
+
 function X3DSingleTextureTransformNode (executionContext)
 {
    Texturing_X3DTextureTransformNode .call (this, executionContext);
@@ -108789,25 +105380,12 @@ Object .assign (Object .setPrototypeOf (X3DSingleTextureTransformNode .prototype
    },
 });
 
-Object .defineProperties (X3DSingleTextureTransformNode,
-{
-   typeName:
-   {
-      value: "X3DSingleTextureTransformNode",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Texturing", level: 1 }),
-      enumerable: true,
-   },
-});
+Object .defineProperties (X3DSingleTextureTransformNode, Core_X3DNode .getStaticProperties ("X3DSingleTextureTransformNode", "Texturing", 1));
 
 const X3DSingleTextureTransformNode_default_ = X3DSingleTextureTransformNode;
 ;
 
-x_ite_Namespace .add ("X3DSingleTextureTransformNode", "x_ite/Components/Texturing/X3DSingleTextureTransformNode", X3DSingleTextureTransformNode_default_);
-/* harmony default export */ const Texturing_X3DSingleTextureTransformNode = (X3DSingleTextureTransformNode_default_);
+/* harmony default export */ const Texturing_X3DSingleTextureTransformNode = (x_ite_Namespace .add ("X3DSingleTextureTransformNode", X3DSingleTextureTransformNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing/TextureTransform.js
 /*******************************************************************************
  *
@@ -108855,6 +105433,7 @@ x_ite_Namespace .add ("X3DSingleTextureTransformNode", "x_ite/Components/Texturi
  * For Silvio, Joy and Adi.
  *
  ******************************************************************************/
+
 
 
 
@@ -108932,26 +105511,7 @@ Object .assign (Object .setPrototypeOf (TextureTransform .prototype, Texturing_X
 
 Object .defineProperties (TextureTransform,
 {
-   typeName:
-   {
-      value: "TextureTransform",
-      enumerable: true,
-   },
-   componentInfo:
-   {
-      value: Object .freeze ({ name: "Texturing", level: 1 }),
-      enumerable: true,
-   },
-   containerField:
-   {
-      value: "textureTransform",
-      enumerable: true,
-   },
-   specificationRange:
-   {
-      value: Object .freeze ({ from: "2.0", to: "Infinity" }),
-      enumerable: true,
-   },
+   ... Core_X3DNode .getStaticProperties ("TextureTransform", "Texturing", 1, "textureTransform", "2.0"),
    fieldDefinitions:
    {
       value: new Base_FieldDefinitionArray ([
@@ -108969,9 +105529,8 @@ Object .defineProperties (TextureTransform,
 const TextureTransform_default_ = TextureTransform;
 ;
 
-x_ite_Namespace .add ("TextureTransform", "x_ite/Components/Texturing/TextureTransform", TextureTransform_default_);
-/* harmony default export */ const Texturing_TextureTransform = (TextureTransform_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/Texturing.js
+/* harmony default export */ const Texturing_TextureTransform = (x_ite_Namespace .add ("TextureTransform", TextureTransform_default_));
+;// CONCATENATED MODULE: ./src/x_ite/Components/TexturingComponent.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -109037,7 +105596,7 @@ x_ite_Namespace .add ("TextureTransform", "x_ite/Components/Texturing/TextureTra
 
 
 
-const Texturing_default_ = {
+const TexturingComponent_default_ = {
    name: "Texturing",
    concreteNodes:
    [
@@ -109065,9 +105624,8 @@ const Texturing_default_ = {
 };
 ;
 
-x_ite_Namespace .add ("Texturing", "x_ite/Components/Texturing", Texturing_default_);
-/* harmony default export */ const Texturing = (Texturing_default_);
-;// CONCATENATED MODULE: ./src/x_ite/Components/Time.js
+/* harmony default export */ const TexturingComponent = (x_ite_Namespace .add ("TexturingComponent", TexturingComponent_default_));
+;// CONCATENATED MODULE: ./src/x_ite/Components/TimeComponent.js
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -109118,7 +105676,7 @@ x_ite_Namespace .add ("Texturing", "x_ite/Components/Texturing", Texturing_defau
 
 
 
-const Time_default_ = {
+const TimeComponent_default_ = {
    name: "Time",
    concreteNodes:
    [
@@ -109131,8 +105689,7 @@ const Time_default_ = {
 };
 ;
 
-x_ite_Namespace .add ("Time", "x_ite/Components/Time", Time_default_);
-/* harmony default export */ const Time = (Time_default_);
+/* harmony default export */ const TimeComponent = (x_ite_Namespace .add ("TimeComponent", TimeComponent_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/Context.js
 /*******************************************************************************
  *
@@ -109306,8 +105863,7 @@ const Context =
 const Context_default_ = Context;
 ;
 
-x_ite_Namespace .add ("Context", "x_ite/Browser/Core/Context", Context_default_);
-/* harmony default export */ const Core_Context = (Context_default_);
+/* harmony default export */ const Core_Context = (x_ite_Namespace .add ("Context", Context_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/ParticleSystems/GeometryTypes.js
 /*******************************************************************************
  *
@@ -109370,8 +105926,7 @@ const GeometryTypes = {
 const GeometryTypes_default_ = GeometryTypes;
 ;
 
-x_ite_Namespace .add ("GeometryTypes", "x_ite/Browser/ParticleSystems/GeometryTypes", GeometryTypes_default_);
-/* harmony default export */ const ParticleSystems_GeometryTypes = (GeometryTypes_default_);
+/* harmony default export */ const ParticleSystems_GeometryTypes = (x_ite_Namespace .add ("GeometryTypes", GeometryTypes_default_));
 ;// CONCATENATED MODULE: ./src/locale/de.js
 const de_default_ = [
    [
@@ -109601,8 +106156,7 @@ const de_default_ = [
 ];
 ;
 
-x_ite_Namespace .add ("de", "locale/de", de_default_);
-/* harmony default export */ const de = (de_default_);
+/* harmony default export */ const de = (x_ite_Namespace .add ("de", de_default_));
 ;// CONCATENATED MODULE: ./src/locale/fr.js
 const fr_default_ = [
    [
@@ -109828,8 +106382,7 @@ const fr_default_ = [
 ];
 ;
 
-x_ite_Namespace .add ("fr", "locale/fr", fr_default_);
-/* harmony default export */ const fr = (fr_default_);
+/* harmony default export */ const fr = (x_ite_Namespace .add ("fr", fr_default_));
 ;// CONCATENATED MODULE: ./src/locale/gettext.js
 /*******************************************************************************
  *
@@ -109905,10 +106458,9 @@ const locale = new Map (locales .get (getLanguage ()) ?? [ ]);
 const gettext_default_ = (string) => locale .get (string) || string;
 ;
 
-x_ite_Namespace .add ("gettext", "locale/gettext", gettext_default_);
-/* harmony default export */ const gettext = (gettext_default_);
+/* harmony default export */ const gettext = (x_ite_Namespace .add ("gettext", gettext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/BrowserTimings.js
-/* provided dependency */ var BrowserTimings_$ = __webpack_require__(812);
+/* provided dependency */ var BrowserTimings_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -110128,7 +106680,7 @@ Object .assign (Object .setPrototypeOf (BrowserTimings .prototype, Base_X3DBaseN
    {
       this .getBrowser () .addBrowserEvent ();
 
-      requestAnimationFrame (() =>
+      this .getBrowser () .getSession () .requestAnimationFrame (() =>
       {
          this .fps .reset ();
          this .build ();
@@ -110354,8 +106906,7 @@ const
 const BrowserTimings_default_ = BrowserTimings;
 ;
 
-x_ite_Namespace .add ("BrowserTimings", "x_ite/Browser/Core/BrowserTimings", BrowserTimings_default_);
-/* harmony default export */ const Core_BrowserTimings = (BrowserTimings_default_);
+/* harmony default export */ const Core_BrowserTimings = (x_ite_Namespace .add ("BrowserTimings", BrowserTimings_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/PrimitiveQuality.js
 /*******************************************************************************
  *
@@ -110416,8 +106967,7 @@ const PrimitiveQuality =
 const PrimitiveQuality_default_ = PrimitiveQuality;
 ;
 
-x_ite_Namespace .add ("PrimitiveQuality", "x_ite/Browser/Core/PrimitiveQuality", PrimitiveQuality_default_);
-/* harmony default export */ const Core_PrimitiveQuality = (PrimitiveQuality_default_);
+/* harmony default export */ const Core_PrimitiveQuality = (x_ite_Namespace .add ("PrimitiveQuality", PrimitiveQuality_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/TextureQuality.js
 /*******************************************************************************
  *
@@ -110478,8 +107028,7 @@ const TextureQuality =
 const TextureQuality_default_ = TextureQuality;
 ;
 
-x_ite_Namespace .add ("TextureQuality", "x_ite/Browser/Core/TextureQuality", TextureQuality_default_);
-/* harmony default export */ const Core_TextureQuality = (TextureQuality_default_);
+/* harmony default export */ const Core_TextureQuality = (x_ite_Namespace .add ("TextureQuality", TextureQuality_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/TextCompression.js
 /*******************************************************************************
  *
@@ -110539,10 +107088,9 @@ const TextCompression =
 const TextCompression_default_ = TextCompression;
 ;
 
-x_ite_Namespace .add ("TextCompression", "x_ite/Browser/Core/TextCompression", TextCompression_default_);
-/* harmony default export */ const Core_TextCompression = (TextCompression_default_);
+/* harmony default export */ const Core_TextCompression = (x_ite_Namespace .add ("TextCompression", TextCompression_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/BrowserOptions.js
-/* provided dependency */ var BrowserOptions_$ = __webpack_require__(812);
+/* provided dependency */ var BrowserOptions_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -110644,6 +107192,8 @@ Object .assign (Object .setPrototypeOf (BrowserOptions .prototype, Base_X3DBaseN
       this ._Multisampling                .addInterest ("set_Multisampling__",                this);
       this ._OrderIndependentTransparency .addInterest ("set_OrderIndependentTransparency__", this);
       this ._Timings                      .addInterest ("set_Timings__",                      this);
+      this ._XRButton                     .addInterest ("set_XRButton__",                     this);
+      this ._XRSessionMode                .addInterest ("set_XRButton__",                     this);
 
       this .set_Antialiased__                  (this ._Antialiased);
       this .set_Shading__                      (this ._Shading);
@@ -110652,6 +107202,7 @@ Object .assign (Object .setPrototypeOf (BrowserOptions .prototype, Base_X3DBaseN
       this .set_LogarithmicDepthBuffer__       (this ._LogarithmicDepthBuffer);
       this .set_Multisampling__                (this ._Multisampling);
       this .set_OrderIndependentTransparency__ (this ._OrderIndependentTransparency);
+      this .set_XRButton__                     ();
 
       this .reset ();
    },
@@ -110673,10 +107224,16 @@ Object .assign (Object .setPrototypeOf (BrowserOptions .prototype, Base_X3DBaseN
          "SplashScreen",
          "TextCompression",
          "ToneMapping",
+         "XRButton",
+         "XRMovementControl",
+         "XRSessionMode",
       ]);
 
       const mappings = new Map ([
-         ["AutoUpdate", "Update"],
+         ["AutoUpdate",        "update"],
+         ["XRButton",          "xrButton"],
+         ["XRMovementControl", "xrMovementControl"],
+         ["XRSessionMode",     "xrSessionMode"],
       ]);
 
       const restorable = new Set ([
@@ -110698,7 +107255,7 @@ Object .assign (Object .setPrototypeOf (BrowserOptions .prototype, Base_X3DBaseN
             if (attributes .has (name))
             {
                const
-                  attribute = BrowserOptions_$.toLowerCaseFirst (mappings .get (name) ?? name),
+                  attribute = mappings .get (name) ?? BrowserOptions_$.toLowerCaseFirst (name),
                   value     = browser .getElement () .attr (attribute);
 
                if (value !== undefined)
@@ -110921,6 +107478,10 @@ Object .assign (Object .setPrototypeOf (BrowserOptions .prototype, Base_X3DBaseN
    {
       this .localStorage .Timings = timings .getValue ();
    },
+   set_XRButton__ (mode)
+   {
+      this .getBrowser () .updateXRButton ();
+   },
 });
 
 Object .defineProperties (BrowserOptions,
@@ -110965,6 +107526,9 @@ Object .defineProperties (BrowserOptions,
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "TextCompression",              new x_ite_Fields .SFString ("CHAR_SPACING")),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "Timings",                      new x_ite_Fields .SFBool ()),
          new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "ToneMapping",                  new x_ite_Fields .SFString ("NONE")),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "XRButton",                     new x_ite_Fields .SFBool (true)),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "XRMovementControl",            new x_ite_Fields .SFString ("VIEWER_POSE")),
+         new Base_X3DFieldDefinition (Base_X3DConstants .inputOutput, "XRSessionMode",                new x_ite_Fields .SFString ("IMMERSIVE_VR")),
       ]),
       enumerable: true,
    },
@@ -110973,8 +107537,7 @@ Object .defineProperties (BrowserOptions,
 const BrowserOptions_default_ = BrowserOptions;
 ;
 
-x_ite_Namespace .add ("BrowserOptions", "x_ite/Browser/Core/BrowserOptions", BrowserOptions_default_);
-/* harmony default export */ const Core_BrowserOptions = (BrowserOptions_default_);
+/* harmony default export */ const Core_BrowserOptions = (x_ite_Namespace .add ("BrowserOptions", BrowserOptions_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/BrowserProperties.js
 /*******************************************************************************
  *
@@ -111062,8 +107625,7 @@ Object .defineProperties (BrowserProperties,
 const BrowserProperties_default_ = BrowserProperties;
 ;
 
-x_ite_Namespace .add ("BrowserProperties", "x_ite/Browser/Core/BrowserProperties", BrowserProperties_default_);
-/* harmony default export */ const Core_BrowserProperties = (BrowserProperties_default_);
+/* harmony default export */ const Core_BrowserProperties = (x_ite_Namespace .add ("BrowserProperties", BrowserProperties_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/RenderingProperties.js
 /*******************************************************************************
  *
@@ -111173,10 +107735,9 @@ Object .defineProperties (RenderingProperties,
 const RenderingProperties_default_ = RenderingProperties;
 ;
 
-x_ite_Namespace .add ("RenderingProperties", "x_ite/Browser/Core/RenderingProperties", RenderingProperties_default_);
-/* harmony default export */ const Core_RenderingProperties = (RenderingProperties_default_);
+/* harmony default export */ const Core_RenderingProperties = (x_ite_Namespace .add ("RenderingProperties", RenderingProperties_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/Notification.js
-/* provided dependency */ var Notification_$ = __webpack_require__(812);
+/* provided dependency */ var Notification_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -111296,11 +107857,10 @@ Object .defineProperties (Notification,
 const Notification_default_ = Notification;
 ;
 
-x_ite_Namespace .add ("Notification", "x_ite/Browser/Core/Notification", Notification_default_);
-/* harmony default export */ const Core_Notification = (Notification_default_);
+/* harmony default export */ const Core_Notification = (x_ite_Namespace .add ("Notification", Notification_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/ContextMenu.js
-/* provided dependency */ var jquery_fullscreen = __webpack_require__(48);
-/* provided dependency */ var ContextMenu_$ = __webpack_require__(812);
+/* provided dependency */ var jquery_fullscreen = __webpack_require__(491);
+/* provided dependency */ var ContextMenu_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -111353,7 +107913,9 @@ x_ite_Namespace .add ("Notification", "x_ite/Browser/Core/Notification", Notific
 
 typeof jquery_fullscreen; // import plugin
 
-const _userMenu = Symbol ();
+const
+   _options  = Symbol (),
+   _userMenu = Symbol ();
 
 function ContextMenu (executionContext)
 {
@@ -111370,12 +107932,14 @@ Object .assign (Object .setPrototypeOf (ContextMenu .prototype, Base_X3DBaseNode
 
       const browser = this .getBrowser ();
 
-      this .init ({
+      this [_options] = {
          element: browser .getElement (),
          appendTo: browser .getShadow (),
          build: this .build .bind (this),
-         animation: {duration: 500, show: "fadeIn", hide: "fadeOut"},
-      });
+         animation: { duration: 500, show: "fadeIn", hide: "fadeOut" },
+      };
+
+      this [_options] .element .on ("contextmenu.ContextMenu", event => this .show (event));
    },
    getUserMenu ()
    {
@@ -111401,6 +107965,196 @@ Object .assign (Object .setPrototypeOf (ContextMenu .prototype, Base_X3DBaseNode
       }
 
       return userMenu;
+   },
+   hide (event)
+   {
+      // Will be overridden by a generated function on show.
+   },
+   show (event)
+   {
+      const
+         options = this [_options],
+         menu    = options .build (event),
+         level   = 1;
+
+      if (!menu) return;
+
+      // Layer
+
+      const layer = ContextMenu_$("<div></div>")
+         .addClass ("context-menu-layer")
+         .addClass (menu .className)
+         .appendTo (options .appendTo);
+
+      const hide = this .hide = () =>
+      {
+         delete this .hide;
+
+         layer .remove ();
+
+         ul [options .animation .hide] (options .animation .duration, function ()
+         {
+            ul .remove ();
+
+            if (options .events && typeof options .events .hide === "function")
+               options .events .hide ();
+         });
+
+         return false;
+      };
+
+      // Menu
+
+      const ul = ContextMenu_$("<ul></ul>")
+         .hide ()
+         .addClass ("context-menu-root")
+         .addClass ("context-menu-list")
+         .addClass (menu .className)
+         .appendTo (options .appendTo)
+         .offset ({ "left": event .pageX, "top": event .pageY });
+
+      for (const k in menu .items)
+         ul .append (this .createItem (menu .items [k], "context-menu-root", k, level + 1, hide));
+
+      ul [options .animation .show] (options .animation .duration);
+
+      // Reposition menu if to right or to low.
+
+      ul .offset ({ "left": event .pageX, "top": event .pageY }); // Do it again!
+
+      if (ul .offset () .left - ContextMenu_$(document) .scrollLeft () + ul .outerWidth () > ContextMenu_$(window) .width ())
+         ul .offset ({ "left":  ContextMenu_$(document) .scrollLeft () + Math .max (0, ContextMenu_$(window) .width () - ul .outerWidth ()) });
+
+      if (ul .offset () .top - ContextMenu_$(document) .scrollTop () + ul .outerHeight () > ContextMenu_$(window) .height ())
+         ul .offset ({ "top": ContextMenu_$(document) .scrollTop () + Math .max (0, ContextMenu_$(window) .height () - ul .outerHeight ()) });
+
+      // Display submenus on the left or right side.
+      // If the submenu is higher than vh, add scrollbars.
+
+      ul .find ("ul") .each ((i, e) =>
+      {
+         e = ContextMenu_$(e);
+
+         const
+            width    = e .outerWidth () + ul .outerWidth (),
+            position = ul .offset () .left - ContextMenu_$(document) .scrollLeft () + width > ContextMenu_$(window) .width () ? "right" : "left";
+
+         e .css ("width", e .outerWidth ());
+         e .css (position, e .parent () .closest ("ul") .width ());
+
+         if (e .outerHeight () >= ContextMenu_$(window) .height ())
+            e .css ({ "max-height": "100vh", "overflow-y": "scroll" });
+      });
+
+      // If the submenu is higher than vh, reposition it.
+
+      ul .find ("li") .on ("mouseenter touchstart", function (event)
+      {
+         event .stopImmediatePropagation ();
+
+         const
+            t = ContextMenu_$(event .target) .closest ("li"),
+            e = t .children ("ul");
+
+         if (!e .length)
+            return;
+
+         e .css ("top", "");
+
+         const bottom = e .offset () .top + e .outerHeight () - ContextMenu_$(window) .scrollTop () - ContextMenu_$(window) .height ();
+
+         if (bottom > 0)
+            e .offset ({ "top": e .offset () .top - bottom });
+      });
+
+      // Layer
+
+      layer .on ("click contextmenu", hide);
+      ul .on ("contextmenu", hide);
+
+      // Show
+
+      if (options .events && typeof options .events .show === "function")
+         options .events .show (ul);
+
+      return false;
+   },
+   createItem (item, parent, key, level, hide)
+   {
+      const li = ContextMenu_$("<li></li>") .addClass ("context-menu-item");
+
+      switch (typeof item)
+      {
+         case "string":
+         {
+            if (item .match (/^-+$/))
+               li .addClass (["context-menu-separator", "context-menu-not-selectable"]);
+
+            break;
+         }
+         case "object":
+         {
+            if (item .className)
+               li .addClass (item .className);
+
+            switch (item .type)
+            {
+               case "radio":
+               case "checkbox":
+               {
+                  const
+                     label = ContextMenu_$("<label></label>") .appendTo (li),
+                     input = ContextMenu_$("<input></input>") .appendTo (label);
+
+                  input
+                     .attr ("type", item .type)
+                     .attr ("name", "context-menu-input-" + (item .radio || parent));
+
+                  ContextMenu_$("<span></span>") .text (item .name) .appendTo (label);
+
+                  if (item .selected)
+                     input .attr ("checked", "checked");
+
+                  for (const k in item .events)
+                  {
+                     if (typeof item .events [k] === "function")
+                        input .on (k, item .events [k]);
+                  }
+
+                  li .addClass ("context-menu-input");
+
+                  break;
+               }
+               default:
+               {
+                  if (item .name)
+                     ContextMenu_$("<span></span>") .text (item .name) .appendTo (li);
+
+                  if (typeof item .callback === "function")
+                     li .on ("click", item .callback) .on ("click", hide);
+
+                  break;
+               }
+            }
+
+            break;
+         }
+      }
+
+      if (typeof item .items === "object" && level < 3)
+      {
+         const ul = ContextMenu_$("<ul></ul>")
+            .addClass ("context-menu-list")
+            .css ({ "z-index": level })
+            .appendTo (li);
+
+         for (const k in item .items)
+            ul .append (this .createItem (item .items [k], key, k, level + 1, hide));
+
+         li .addClass ("context-menu-submenu");
+      }
+
+      return li;
    },
    build (event)
    {
@@ -111803,201 +108557,6 @@ Object .assign (Object .setPrototypeOf (ContextMenu .prototype, Base_X3DBaseNode
             return gettext("None Viewer");
       }
    },
-   init (options)
-   {
-      this .show = this .createRoot .bind (this, options);
-
-      options .element .on ("contextmenu", this .show);
-   },
-   show (event)
-   { },
-   hide (event)
-   { },
-   createRoot (options, event)
-   {
-      const
-         menu  = options .build (event),
-         level = 1;
-
-      if (!menu) return;
-
-      // Layer
-
-      const layer = ContextMenu_$("<div></div>")
-         .addClass ("context-menu-layer")
-         .addClass (menu .className)
-         .appendTo (options .appendTo);
-
-      const hide = this .hide = () =>
-      {
-         delete this .hide;
-
-         layer .remove ();
-
-         ul [options .animation .hide] (options .animation .duration, function ()
-         {
-            ul .remove ();
-
-            if (options .events && typeof options .events .hide === "function")
-               options .events .hide ();
-         });
-
-         return false;
-      };
-
-      // Menu
-
-      const ul = ContextMenu_$("<ul></ul>")
-         .hide ()
-         .addClass ("context-menu-root")
-         .addClass ("context-menu-list")
-         .addClass (menu .className)
-         .appendTo (options .appendTo)
-         .offset ({ "left": event .pageX, "top": event .pageY });
-
-      for (const k in menu .items)
-         ul .append (this .createItem (menu .items [k], "context-menu-root", k, level + 1, hide));
-
-      ul [options .animation .show] (options .animation .duration);
-
-      // Reposition menu if to right or to low.
-
-      ul .offset ({ "left": event .pageX, "top": event .pageY }); // Do it again!
-
-      if (ul .offset () .left - ContextMenu_$(document) .scrollLeft () + ul .outerWidth () > ContextMenu_$(window) .width ())
-         ul .offset ({ "left":  ContextMenu_$(document) .scrollLeft () + Math .max (0, ContextMenu_$(window) .width () - ul .outerWidth ()) });
-
-      if (ul .offset () .top - ContextMenu_$(document) .scrollTop () + ul .outerHeight () > ContextMenu_$(window) .height ())
-         ul .offset ({ "top": ContextMenu_$(document) .scrollTop () + Math .max (0, ContextMenu_$(window) .height () - ul .outerHeight ()) });
-
-      // Display submenus on the left or right side.
-      // If the submenu is higher than vh, add scrollbars.
-
-      ul .find ("ul") .each ((i, e) =>
-      {
-         e = ContextMenu_$(e);
-
-         const
-            width    = e .outerWidth () + ul .outerWidth (),
-            position = ul .offset () .left - ContextMenu_$(document) .scrollLeft () + width > ContextMenu_$(window) .width () ? "right" : "left";
-
-         e .css ("width", e .outerWidth ());
-         e .css (position, e .parent () .closest ("ul") .width ());
-
-         if (e .outerHeight () >= ContextMenu_$(window) .height ())
-            e .css ({ "max-height": "100vh", "overflow-y": "scroll" });
-      });
-
-      // If the submenu is higher than vh, reposition it.
-
-      ul .find ("li") .on ("mouseenter touchstart", function (event)
-      {
-         event .stopImmediatePropagation ();
-
-         const
-            t = ContextMenu_$(event .target) .closest ("li"),
-            e = t .children ("ul");
-
-         if (!e .length)
-            return;
-
-         e .css ("top", "");
-
-         const bottom = e .offset () .top + e .outerHeight () - ContextMenu_$(window) .scrollTop () - ContextMenu_$(window) .height ();
-
-         if (bottom > 0)
-            e .offset ({ "top": e .offset () .top - bottom });
-      });
-
-      // Layer
-
-      layer .on ("click contextmenu", hide);
-      ul .on ("contextmenu", hide);
-
-      // Show
-
-      if (options .events && typeof options .events .show === "function")
-         options .events .show (ul);
-
-      return false;
-   },
-   createItem (item, parent, key, level, hide)
-   {
-      const li = ContextMenu_$("<li></li>") .addClass ("context-menu-item");
-
-      switch (typeof item)
-      {
-         case "string":
-         {
-            if (item .match (/^-+$/))
-               li .addClass (["context-menu-separator", "context-menu-not-selectable"]);
-
-            break;
-         }
-         case "object":
-         {
-            if (item .className)
-               li .addClass (item .className);
-
-            switch (item .type)
-            {
-               case "radio":
-               case "checkbox":
-               {
-                  const
-                     label = ContextMenu_$("<label></label>") .appendTo (li),
-                     input = ContextMenu_$("<input></input>") .appendTo (label);
-
-                  input
-                     .attr ("type", item .type)
-                     .attr ("name", "context-menu-input-" + (item .radio || parent));
-
-                  ContextMenu_$("<span></span>") .text (item .name) .appendTo (label);
-
-                  if (item .selected)
-                     input .attr ("checked", "checked");
-
-                  for (const k in item .events)
-                  {
-                     if (typeof item .events [k] === "function")
-                        input .on (k, item .events [k]);
-                  }
-
-                  li .addClass ("context-menu-input");
-
-                  break;
-               }
-               default:
-               {
-                  if (item .name)
-                     ContextMenu_$("<span></span>") .text (item .name) .appendTo (li);
-
-                  if (typeof item .callback === "function")
-                     li .on ("click", item .callback) .on ("click", hide);
-
-                  break;
-               }
-            }
-
-            break;
-         }
-      }
-
-      if (typeof item .items === "object" && level < 3)
-      {
-         const ul = ContextMenu_$("<ul></ul>")
-            .addClass ("context-menu-list")
-            .css ({ "z-index": level })
-            .appendTo (li);
-
-         for (const k in item .items)
-            ul .append (this .createItem (item .items [k], key, k, level + 1, hide));
-
-         li .addClass ("context-menu-submenu");
-      }
-
-      return li;
-   },
 });
 
 Object .defineProperties (ContextMenu,
@@ -112012,8 +108571,7 @@ Object .defineProperties (ContextMenu,
 const ContextMenu_default_ = ContextMenu;
 ;
 
-x_ite_Namespace .add ("ContextMenu", "x_ite/Browser/Core/ContextMenu", ContextMenu_default_);
-/* harmony default export */ const Core_ContextMenu = (ContextMenu_default_);
+/* harmony default export */ const Core_ContextMenu = (x_ite_Namespace .add ("ContextMenu", ContextMenu_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/ComponentInfo.js
 /*******************************************************************************
  *
@@ -112162,8 +108720,7 @@ Object .defineProperties (ComponentInfo .prototype,
 const ComponentInfo_default_ = ComponentInfo;
 ;
 
-x_ite_Namespace .add ("ComponentInfo", "x_ite/Configuration/ComponentInfo", ComponentInfo_default_);
-/* harmony default export */ const Configuration_ComponentInfo = (ComponentInfo_default_);
+/* harmony default export */ const Configuration_ComponentInfo = (x_ite_Namespace .add ("ComponentInfo", ComponentInfo_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/ComponentInfoArray.js
 /*******************************************************************************
  *
@@ -112243,8 +108800,7 @@ Object .defineProperties (ComponentInfoArray,
 const ComponentInfoArray_default_ = ComponentInfoArray;
 ;
 
-x_ite_Namespace .add ("ComponentInfoArray", "x_ite/Configuration/ComponentInfoArray", ComponentInfoArray_default_);
-/* harmony default export */ const Configuration_ComponentInfoArray = (ComponentInfoArray_default_);
+/* harmony default export */ const Configuration_ComponentInfoArray = (x_ite_Namespace .add ("ComponentInfoArray", ComponentInfoArray_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/UnitInfo.js
 /*******************************************************************************
  *
@@ -112406,8 +108962,7 @@ Object .defineProperties (UnitInfo,
 const UnitInfo_default_ = UnitInfo;
 ;
 
-x_ite_Namespace .add ("UnitInfo", "x_ite/Configuration/UnitInfo", UnitInfo_default_);
-/* harmony default export */ const Configuration_UnitInfo = (UnitInfo_default_);
+/* harmony default export */ const Configuration_UnitInfo = (x_ite_Namespace .add ("UnitInfo", UnitInfo_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/UnitInfoArray.js
 /*******************************************************************************
  *
@@ -112481,8 +109036,7 @@ Object .defineProperties (UnitInfoArray,
 const UnitInfoArray_default_ = UnitInfoArray;
 ;
 
-x_ite_Namespace .add ("UnitInfoArray", "x_ite/Configuration/UnitInfoArray", UnitInfoArray_default_);
-/* harmony default export */ const Configuration_UnitInfoArray = (UnitInfoArray_default_);
+/* harmony default export */ const Configuration_UnitInfoArray = (x_ite_Namespace .add ("UnitInfoArray", UnitInfoArray_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/X3DExportedNode.js
 /*******************************************************************************
  *
@@ -112693,8 +109247,7 @@ Object .defineProperties (X3DExportedNode,
 const X3DExportedNode_default_ = X3DExportedNode;
 ;
 
-x_ite_Namespace .add ("X3DExportedNode", "x_ite/Execution/X3DExportedNode", X3DExportedNode_default_);
-/* harmony default export */ const Execution_X3DExportedNode = (X3DExportedNode_default_);
+/* harmony default export */ const Execution_X3DExportedNode = (x_ite_Namespace .add ("X3DExportedNode", X3DExportedNode_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/ExportedNodesArray.js
 /*******************************************************************************
  *
@@ -112768,8 +109321,7 @@ Object .defineProperties (ExportedNodesArray,
 const ExportedNodesArray_default_ = ExportedNodesArray;
 ;
 
-x_ite_Namespace .add ("ExportedNodesArray", "x_ite/Execution/ExportedNodesArray", ExportedNodesArray_default_);
-/* harmony default export */ const Execution_ExportedNodesArray = (ExportedNodesArray_default_);
+/* harmony default export */ const Execution_ExportedNodesArray = (x_ite_Namespace .add ("ExportedNodesArray", ExportedNodesArray_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Execution/X3DScene.js
 /*******************************************************************************
  *
@@ -113907,8 +110459,7 @@ Base_X3DConstants .addConstant (X3DScene .typeName);
 const X3DScene_default_ = X3DScene;
 ;
 
-x_ite_Namespace .add ("X3DScene", "x_ite/Execution/X3DScene", X3DScene_default_);
-/* harmony default export */ const Execution_X3DScene = (X3DScene_default_);
+/* harmony default export */ const Execution_X3DScene = (x_ite_Namespace .add ("X3DScene", X3DScene_default_));
 ;// CONCATENATED MODULE: ./src/standard/Utility/DataStorage.js
 /*******************************************************************************
  *
@@ -114042,10 +110593,9 @@ Object .assign (DataStorage .prototype,
 const DataStorage_default_ = DataStorage;
 ;
 
-x_ite_Namespace .add ("DataStorage", "standard/Utility/DataStorage", DataStorage_default_);
-/* harmony default export */ const Utility_DataStorage = (DataStorage_default_);
+/* harmony default export */ const Utility_DataStorage = (x_ite_Namespace .add ("DataStorage", DataStorage_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Core/X3DCoreContext.js
-/* provided dependency */ var X3DCoreContext_$ = __webpack_require__(812);
+/* provided dependency */ var X3DCoreContext_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -114136,6 +110686,14 @@ let instanceId = 0;
 
 function X3DCoreContext (element)
 {
+   // Events
+
+   this .addChildObjects (Base_X3DConstants .outputOnly, "controlKey", new x_ite_Fields .SFBool (),
+                          Base_X3DConstants .outputOnly, "shiftKey",   new x_ite_Fields .SFBool (),
+                          Base_X3DConstants .outputOnly, "altKey",     new x_ite_Fields .SFBool (),
+                          Base_X3DConstants .outputOnly, "commandKey", new x_ite_Fields .SFBool (),
+                          Base_X3DConstants .outputOnly, "altGrKey",   new x_ite_Fields .SFBool ());
+
    // Get canvas & context.
 
    const
@@ -114147,18 +110705,16 @@ function X3DCoreContext (element)
 
    if (element .prop ("nodeName") .toLowerCase () === "x3d-canvas")
    {
-      const
-         shadow = X3DCoreContext_$(element [0] .attachShadow ({ mode: "open", delegatesFocus: true })),
-         link   = X3DCoreContext_$("<link/>");
+      const shadow = X3DCoreContext_$(element [0] .attachShadow ({ mode: "open", delegatesFocus: true }));
 
-      link
+      X3DCoreContext_$("<link/>")
          .on ("load", () => browser .show ())
          .attr ("rel", "stylesheet")
          .attr ("type", "text/css")
-         .attr ("href", new URL ("x_ite.css", Networking_URLs .getScriptURL ()) .href);
+         .attr ("href", new URL ("x_ite.css", Networking_URLs .getScriptURL ()) .href)
+         .appendTo (shadow);
 
       this [_shadow] = shadow
-         .append (link)
          .append (browser .hide ());
    }
    else
@@ -114189,12 +110745,6 @@ function X3DCoreContext (element)
    const inches = X3DCoreContext_$("<div></div>") .hide () .css ("height", "10in") .appendTo (X3DCoreContext_$("body"));
    this [_pixelsPerPoint] = inches .height () / 720 || 1;
    inches .remove ();
-
-   this .addChildObjects (Base_X3DConstants .outputOnly, "controlKey", new x_ite_Fields .SFBool (),
-                          Base_X3DConstants .outputOnly, "shiftKey",   new x_ite_Fields .SFBool (),
-                          Base_X3DConstants .outputOnly, "altKey",     new x_ite_Fields .SFBool (),
-                          Base_X3DConstants .outputOnly, "commandKey", new x_ite_Fields .SFBool (),
-                          Base_X3DConstants .outputOnly, "altGrKey",   new x_ite_Fields .SFBool ());
 }
 
 Object .assign (X3DCoreContext .prototype,
@@ -114445,7 +110995,7 @@ Object .assign (X3DCoreContext .prototype,
          case "textCompression":
          case "textcompression":
          {
-            this .setBrowserOption ("TextCompression", newValue);
+            this .setBrowserOption ("TextCompression", newValue || "CHAR_SPACINGS");
             break;
          }
          case "timings":
@@ -114456,7 +111006,7 @@ Object .assign (X3DCoreContext .prototype,
          case "toneMapping":
          case "tonemapping":
          {
-            this .setBrowserOption ("ToneMapping", newValue);
+            this .setBrowserOption ("ToneMapping", newValue || "NONE");
             break;
          }
          case "update":
@@ -114485,6 +111035,24 @@ Object .assign (X3DCoreContext .prototype,
                   .catch (error => console .error (error));
             }
 
+            break;
+         }
+         case "xrButton":
+         case "xrbutton":
+         {
+            this .setBrowserOption ("XRButton", this .parseBooleanAttribute (newValue, true));
+            break;
+         }
+         case "xrMovementControl":
+         case "xrmovementcontrol":
+         {
+            this .setBrowserOption ("XRMovementControl", newValue || "VIEWER_POSE");
+            break;
+         }
+         case "xrSessionMode":
+         case "xrsessionmode":
+         {
+            this .setBrowserOption ("XRSessionMode", newValue || "IMMERSIVE_VR");
             break;
          }
       }
@@ -114857,15 +111425,19 @@ Object .assign (X3DCoreContext .prototype,
    },
    dispose ()
    {
+      this .getElement ()
+         .prop ("browser", null)
+         .off (".X3DCoreContext .ContextMenu");
+
       this [_context] .getExtension ("WEBGL_lose_context") ?.loseContext ();
+      this [_shadow] .find ("*") .remove ();
    },
 });
 
 const X3DCoreContext_default_ = X3DCoreContext;
 ;
 
-x_ite_Namespace .add ("X3DCoreContext", "x_ite/Browser/Core/X3DCoreContext", X3DCoreContext_default_);
-/* harmony default export */ const Core_X3DCoreContext = (X3DCoreContext_default_);
+/* harmony default export */ const Core_X3DCoreContext = (x_ite_Namespace .add ("X3DCoreContext", X3DCoreContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/EnvironmentalEffects/X3DEnvironmentalEffectsContext.js
 /*******************************************************************************
  *
@@ -114945,8 +111517,7 @@ Object .assign (X3DEnvironmentalEffectsContext .prototype,
 const X3DEnvironmentalEffectsContext_default_ = X3DEnvironmentalEffectsContext;
 ;
 
-x_ite_Namespace .add ("X3DEnvironmentalEffectsContext", "x_ite/Browser/EnvironmentalEffects/X3DEnvironmentalEffectsContext", X3DEnvironmentalEffectsContext_default_);
-/* harmony default export */ const EnvironmentalEffects_X3DEnvironmentalEffectsContext = (X3DEnvironmentalEffectsContext_default_);
+/* harmony default export */ const EnvironmentalEffects_X3DEnvironmentalEffectsContext = (x_ite_Namespace .add ("X3DEnvironmentalEffectsContext", X3DEnvironmentalEffectsContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Geometry3D/BoxOptions.js
 /*******************************************************************************
  *
@@ -115070,8 +111641,7 @@ Object .defineProperties (BoxOptions,
 const BoxOptions_default_ = BoxOptions;
 ;
 
-x_ite_Namespace .add ("BoxOptions", "x_ite/Browser/Geometry3D/BoxOptions", BoxOptions_default_);
-/* harmony default export */ const Geometry3D_BoxOptions = (BoxOptions_default_);
+/* harmony default export */ const Geometry3D_BoxOptions = (x_ite_Namespace .add ("BoxOptions", BoxOptions_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Geometry3D/ConeOptions.js
 /*******************************************************************************
  *
@@ -115357,8 +111927,7 @@ Object .defineProperties (ConeOptions,
 const ConeOptions_default_ = ConeOptions;
 ;
 
-x_ite_Namespace .add ("ConeOptions", "x_ite/Browser/Geometry3D/ConeOptions", ConeOptions_default_);
-/* harmony default export */ const Geometry3D_ConeOptions = (ConeOptions_default_);
+/* harmony default export */ const Geometry3D_ConeOptions = (x_ite_Namespace .add ("ConeOptions", ConeOptions_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Geometry3D/CylinderOptions.js
 /*******************************************************************************
  *
@@ -115698,8 +112267,7 @@ Object .defineProperties (CylinderOptions,
 const CylinderOptions_default_ = CylinderOptions;
 ;
 
-x_ite_Namespace .add ("CylinderOptions", "x_ite/Browser/Geometry3D/CylinderOptions", CylinderOptions_default_);
-/* harmony default export */ const Geometry3D_CylinderOptions = (CylinderOptions_default_);
+/* harmony default export */ const Geometry3D_CylinderOptions = (x_ite_Namespace .add ("CylinderOptions", CylinderOptions_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Geometry3D/QuadSphereOptions.js
 /*******************************************************************************
  *
@@ -115994,8 +112562,7 @@ Object .defineProperties (QuadSphereOptions,
 const QuadSphereOptions_default_ = QuadSphereOptions;
 ;
 
-x_ite_Namespace .add ("QuadSphereOptions", "x_ite/Browser/Geometry3D/QuadSphereOptions", QuadSphereOptions_default_);
-/* harmony default export */ const Geometry3D_QuadSphereOptions = (QuadSphereOptions_default_);
+/* harmony default export */ const Geometry3D_QuadSphereOptions = (x_ite_Namespace .add ("QuadSphereOptions", QuadSphereOptions_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Geometry3D/X3DGeometry3DContext.js
 /*******************************************************************************
  *
@@ -116127,8 +112694,7 @@ function getOptionNode (key, OptionNode)
 const X3DGeometry3DContext_default_ = X3DGeometry3DContext;
 ;
 
-x_ite_Namespace .add ("X3DGeometry3DContext", "x_ite/Browser/Geometry3D/X3DGeometry3DContext", X3DGeometry3DContext_default_);
-/* harmony default export */ const Geometry3D_X3DGeometry3DContext = (X3DGeometry3DContext_default_);
+/* harmony default export */ const Geometry3D_X3DGeometry3DContext = (x_ite_Namespace .add ("X3DGeometry3DContext", X3DGeometry3DContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Grouping/X3DGroupingContext.js
 /*******************************************************************************
  *
@@ -116216,8 +112782,7 @@ Object .assign (X3DGroupingContext .prototype,
 const X3DGroupingContext_default_ = X3DGroupingContext;
 ;
 
-x_ite_Namespace .add ("X3DGroupingContext", "x_ite/Browser/Grouping/X3DGroupingContext", X3DGroupingContext_default_);
-/* harmony default export */ const Grouping_X3DGroupingContext = (X3DGroupingContext_default_);
+/* harmony default export */ const Grouping_X3DGroupingContext = (x_ite_Namespace .add ("X3DGroupingContext", X3DGroupingContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Layering/X3DLayeringContext.js
 /*******************************************************************************
  *
@@ -116291,8 +112856,7 @@ Object .assign (X3DLayeringContext .prototype,
 const X3DLayeringContext_default_ = X3DLayeringContext;
 ;
 
-x_ite_Namespace .add ("X3DLayeringContext", "x_ite/Browser/Layering/X3DLayeringContext", X3DLayeringContext_default_);
-/* harmony default export */ const Layering_X3DLayeringContext = (X3DLayeringContext_default_);
+/* harmony default export */ const Layering_X3DLayeringContext = (x_ite_Namespace .add ("X3DLayeringContext", X3DLayeringContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Lighting/X3DLightingContext.js
 /*******************************************************************************
  *
@@ -116434,8 +112998,7 @@ Object .assign (X3DLightingContext .prototype,
 const X3DLightingContext_default_ = X3DLightingContext;
 ;
 
-x_ite_Namespace .add ("X3DLightingContext", "x_ite/Browser/Lighting/X3DLightingContext", X3DLightingContext_default_);
-/* harmony default export */ const Lighting_X3DLightingContext = (X3DLightingContext_default_);
+/* harmony default export */ const Lighting_X3DLightingContext = (x_ite_Namespace .add ("X3DLightingContext", X3DLightingContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/X3DViewer.js
 /*******************************************************************************
  *
@@ -116643,11 +113206,10 @@ function tbProjectToSphere (r, x, y)
 const X3DViewer_default_ = X3DViewer;
 ;
 
-x_ite_Namespace .add ("X3DViewer", "x_ite/Browser/Navigation/X3DViewer", X3DViewer_default_);
-/* harmony default export */ const Navigation_X3DViewer = (X3DViewer_default_);
+/* harmony default export */ const Navigation_X3DViewer = (x_ite_Namespace .add ("X3DViewer", X3DViewer_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/ExamineViewer.js
-/* provided dependency */ var jquery_mousewheel = __webpack_require__(354);
-/* provided dependency */ var ExamineViewer_$ = __webpack_require__(812);
+/* provided dependency */ var jquery_mousewheel = __webpack_require__(839);
+/* provided dependency */ var ExamineViewer_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -117560,11 +114122,10 @@ Object .defineProperties (ExamineViewer,
 const ExamineViewer_default_ = ExamineViewer;
 ;
 
-x_ite_Namespace .add ("ExamineViewer", "x_ite/Browser/Navigation/ExamineViewer", ExamineViewer_default_);
-/* harmony default export */ const Navigation_ExamineViewer = (ExamineViewer_default_);
+/* harmony default export */ const Navigation_ExamineViewer = (x_ite_Namespace .add ("ExamineViewer", ExamineViewer_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/X3DFlyViewer.js
-/* provided dependency */ var X3DFlyViewer_jquery_mousewheel = __webpack_require__(354);
-/* provided dependency */ var X3DFlyViewer_$ = __webpack_require__(812);
+/* provided dependency */ var X3DFlyViewer_jquery_mousewheel = __webpack_require__(839);
+/* provided dependency */ var X3DFlyViewer_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -118221,89 +114782,92 @@ Object .assign (Object .setPrototypeOf (X3DFlyViewer .prototype, Navigation_X3DV
             height       = viewport [3],
             contentScale = browser .getRenderingProperty ("ContentScale");
 
-         browser .getFrameBuffer () .bind ();
-
-         gl .viewport (... viewport);
-         gl .scissor (... viewport);
-
-         projectionMatrixArray .set (Geometry_Camera .ortho (0, width, 0, height, -1, 1, projectionMatrix));
-
-         // Display Rubberband.
-
-         switch (type)
+         for (const frameBuffer of browser .getFrameBuffers ())
          {
-            case MOVE:
+            frameBuffer .bind ();
+
+            gl .viewport (... viewport);
+            gl .scissor (... viewport);
+
+            projectionMatrixArray .set (Geometry_Camera .ortho (0, width, 0, height, -1, 1, projectionMatrix));
+
+            // Display Rubberband.
+
+            switch (type)
             {
-               fromPoint .set (this .fromVector .x, -this .fromVector .z, 0);
-               toPoint   .set (this .toVector   .x, -this .toVector   .z, 0);
-               break;
+               case MOVE:
+               {
+                  fromPoint .set (this .fromVector .x, -this .fromVector .z, 0);
+                  toPoint   .set (this .toVector   .x, -this .toVector   .z, 0);
+                  break;
+               }
+               case PAN:
+               {
+                  fromPoint .set (this .fromVector .x, this .fromVector .y, 0);
+                  toPoint   .set (this .toVector   .x, this .toVector   .y, 0);
+                  break;
+               }
             }
-            case PAN:
+
+            // Set black line quad vertices.
+
+            normal .assign (toPoint)
+               .subtract (fromPoint)
+               .normalize ()
+               .multiply (contentScale)
+               .set (-normal .y, normal .x, 0);
+
+            this .lineVertexArray .set (vertex .assign (fromPoint) .add (normal),      0);
+            this .lineVertexArray .set (vertex .assign (fromPoint) .subtract (normal), 4);
+            this .lineVertexArray .set (vertex .assign (toPoint)   .subtract (normal), 8);
+            this .lineVertexArray .set (vertex .assign (toPoint)   .add (normal),      12);
+
+            // Set white line quad vertices.
+
+            normal .assign (toPoint)
+               .subtract (fromPoint)
+               .normalize ()
+               .multiply (contentScale / 2)
+               .set (-normal .y, normal .x, 0);
+
+            this .lineVertexArray .set (vertex .assign (fromPoint) .add (normal),      16);
+            this .lineVertexArray .set (vertex .assign (fromPoint) .subtract (normal), 20);
+            this .lineVertexArray .set (vertex .assign (toPoint)   .subtract (normal), 24);
+            this .lineVertexArray .set (vertex .assign (toPoint)   .add (normal),      28);
+
+            // Transfer line.
+
+            gl .bindBuffer (gl .ARRAY_BUFFER, this .lineVertexBuffer);
+            gl .bufferData (gl .ARRAY_BUFFER, this .lineVertexArray, gl .DYNAMIC_DRAW);
+
+            // Set uniforms and attributes.
+
+            const shaderNode = browser .getDefaultMaterial () .getShader (this .geometryContext);
+
+            shaderNode .enable (gl);
+            shaderNode .setClipPlanes (gl, clipPlanes);
+
+            gl .uniformMatrix4fv (shaderNode .x3d_ProjectionMatrix, false, projectionMatrixArray);
+            gl .uniformMatrix4fv (shaderNode .x3d_ModelViewMatrix,  false, modelViewMatrixArray);
+            gl .uniform3f        (shaderNode .x3d_EmissiveColor, 1, 1, 1);
+            gl .uniform1f        (shaderNode .x3d_Transparency,  0);
+
+            if (this .lineVertexArrayObject .enable (shaderNode .getProgram ()))
             {
-               fromPoint .set (this .fromVector .x, this .fromVector .y, 0);
-               toPoint   .set (this .toVector   .x, this .toVector   .y, 0);
-               break;
+               gl .bindBuffer (gl .ELEMENT_ARRAY_BUFFER, this .lineIndexBuffer);
+
+               shaderNode .enableColorAttribute  (gl, this .lineColorBuffer,  0, 0);
+               shaderNode .enableVertexAttribute (gl, this .lineVertexBuffer, 0, 0);
             }
+
+            // Draw a black and a white line.
+
+            gl .disable (gl .DEPTH_TEST);
+            gl .enable (gl .CULL_FACE);
+            gl .frontFace (gl .CCW);
+            gl .drawElements (gl .TRIANGLES, 12, gl .UNSIGNED_BYTE, 0);
+            gl .enable (gl .DEPTH_TEST);
          }
-
-         // Set black line quad vertices.
-
-         normal .assign (toPoint)
-            .subtract (fromPoint)
-            .normalize ()
-            .multiply (contentScale)
-            .set (-normal .y, normal .x, 0);
-
-         this .lineVertexArray .set (vertex .assign (fromPoint) .add (normal),      0);
-         this .lineVertexArray .set (vertex .assign (fromPoint) .subtract (normal), 4);
-         this .lineVertexArray .set (vertex .assign (toPoint)   .subtract (normal), 8);
-         this .lineVertexArray .set (vertex .assign (toPoint)   .add (normal),      12);
-
-         // Set white line quad vertices.
-
-         normal .assign (toPoint)
-            .subtract (fromPoint)
-            .normalize ()
-            .multiply (contentScale / 2)
-            .set (-normal .y, normal .x, 0);
-
-         this .lineVertexArray .set (vertex .assign (fromPoint) .add (normal),      16);
-         this .lineVertexArray .set (vertex .assign (fromPoint) .subtract (normal), 20);
-         this .lineVertexArray .set (vertex .assign (toPoint)   .subtract (normal), 24);
-         this .lineVertexArray .set (vertex .assign (toPoint)   .add (normal),      28);
-
-         // Transfer line.
-
-         gl .bindBuffer (gl .ARRAY_BUFFER, this .lineVertexBuffer);
-         gl .bufferData (gl .ARRAY_BUFFER, this .lineVertexArray, gl .DYNAMIC_DRAW);
-
-         // Set uniforms and attributes.
-
-         const shaderNode = browser .getDefaultMaterial () .getShader (this .geometryContext);
-
-         shaderNode .enable (gl);
-         shaderNode .setClipPlanes (gl, clipPlanes);
-
-         gl .uniformMatrix4fv (shaderNode .x3d_ProjectionMatrix, false, projectionMatrixArray);
-         gl .uniformMatrix4fv (shaderNode .x3d_ModelViewMatrix,  false, modelViewMatrixArray);
-         gl .uniform3f        (shaderNode .x3d_EmissiveColor, 1, 1, 1);
-         gl .uniform1f        (shaderNode .x3d_Transparency,  0);
-
-         if (this .lineVertexArrayObject .enable (shaderNode .getProgram ()))
-         {
-            gl .bindBuffer (gl .ELEMENT_ARRAY_BUFFER, this .lineIndexBuffer);
-
-            shaderNode .enableColorAttribute  (gl, this .lineColorBuffer,  0, 0);
-            shaderNode .enableVertexAttribute (gl, this .lineVertexBuffer, 0, 0);
-         }
-
-         // Draw a black and a white line.
-
-         gl .disable (gl .DEPTH_TEST);
-         gl .enable (gl .CULL_FACE);
-         gl .frontFace (gl .CCW);
-         gl .drawElements (gl .TRIANGLES, 12, gl .UNSIGNED_BYTE, 0);
-         gl .enable (gl .DEPTH_TEST);
       };
    })(),
    disconnect ()
@@ -118337,8 +114901,7 @@ Object .assign (Object .setPrototypeOf (X3DFlyViewer .prototype, Navigation_X3DV
 const X3DFlyViewer_default_ = X3DFlyViewer;
 ;
 
-x_ite_Namespace .add ("X3DFlyViewer", "x_ite/Browser/Navigation/X3DFlyViewer", X3DFlyViewer_default_);
-/* harmony default export */ const Navigation_X3DFlyViewer = (X3DFlyViewer_default_);
+/* harmony default export */ const Navigation_X3DFlyViewer = (x_ite_Namespace .add ("X3DFlyViewer", X3DFlyViewer_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/WalkViewer.js
 /*******************************************************************************
  *
@@ -118472,8 +115035,7 @@ Object .defineProperties (WalkViewer,
 const WalkViewer_default_ = WalkViewer;
 ;
 
-x_ite_Namespace .add ("WalkViewer", "x_ite/Browser/Navigation/WalkViewer", WalkViewer_default_);
-/* harmony default export */ const Navigation_WalkViewer = (WalkViewer_default_);
+/* harmony default export */ const Navigation_WalkViewer = (x_ite_Namespace .add ("WalkViewer", WalkViewer_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/FlyViewer.js
 /*******************************************************************************
  *
@@ -118576,11 +115138,10 @@ Object .defineProperties (FlyViewer,
 const FlyViewer_default_ = FlyViewer;
 ;
 
-x_ite_Namespace .add ("FlyViewer", "x_ite/Browser/Navigation/FlyViewer", FlyViewer_default_);
-/* harmony default export */ const Navigation_FlyViewer = (FlyViewer_default_);
+/* harmony default export */ const Navigation_FlyViewer = (x_ite_Namespace .add ("FlyViewer", FlyViewer_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/PlaneViewer.js
-/* provided dependency */ var PlaneViewer_jquery_mousewheel = __webpack_require__(354);
-/* provided dependency */ var PlaneViewer_$ = __webpack_require__(812);
+/* provided dependency */ var PlaneViewer_jquery_mousewheel = __webpack_require__(839);
+/* provided dependency */ var PlaneViewer_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -118826,8 +115387,7 @@ Object .defineProperties (PlaneViewer,
 const PlaneViewer_default_ = PlaneViewer;
 ;
 
-x_ite_Namespace .add ("PlaneViewer", "x_ite/Browser/Navigation/PlaneViewer", PlaneViewer_default_);
-/* harmony default export */ const Navigation_PlaneViewer = (PlaneViewer_default_);
+/* harmony default export */ const Navigation_PlaneViewer = (x_ite_Namespace .add ("PlaneViewer", PlaneViewer_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/NoneViewer.js
 /*******************************************************************************
  *
@@ -118908,11 +115468,10 @@ Object .defineProperties (NoneViewer,
 const NoneViewer_default_ = NoneViewer;
 ;
 
-x_ite_Namespace .add ("NoneViewer", "x_ite/Browser/Navigation/NoneViewer", NoneViewer_default_);
-/* harmony default export */ const Navigation_NoneViewer = (NoneViewer_default_);
+/* harmony default export */ const Navigation_NoneViewer = (x_ite_Namespace .add ("NoneViewer", NoneViewer_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/LookAtViewer.js
-/* provided dependency */ var LookAtViewer_jquery_mousewheel = __webpack_require__(354);
-/* provided dependency */ var LookAtViewer_$ = __webpack_require__(812);
+/* provided dependency */ var LookAtViewer_jquery_mousewheel = __webpack_require__(839);
+/* provided dependency */ var LookAtViewer_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -119434,8 +115993,7 @@ Object .defineProperties (LookAtViewer,
 const LookAtViewer_default_ = LookAtViewer;
 ;
 
-x_ite_Namespace .add ("LookAtViewer", "x_ite/Browser/Navigation/LookAtViewer", LookAtViewer_default_);
-/* harmony default export */ const Navigation_LookAtViewer = (LookAtViewer_default_);
+/* harmony default export */ const Navigation_LookAtViewer = (x_ite_Namespace .add ("LookAtViewer", LookAtViewer_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Navigation/X3DNavigationContext.js
 /*******************************************************************************
  *
@@ -119585,18 +116143,28 @@ Object .assign (X3DNavigationContext .prototype,
    },
    set_activeLayer__ ()
    {
-      if (this ._activeLayer .getValue ())
+      // Remove active layer.
       {
-         this ._activeLayer .getValue () .getNavigationInfoStack () .removeInterest ("set_activeNavigationInfo__", this);
-         this ._activeLayer .getValue () .getViewpointStack ()      .removeInterest ("set_activeViewpoint__",      this);
+         const activeLayer = this ._activeLayer .getValue ();
+
+         if (activeLayer)
+         {
+            activeLayer .setActive (false);
+            activeLayer .getNavigationInfoStack () .removeInterest ("set_activeNavigationInfo__", this);
+            activeLayer .getViewpointStack ()      .removeInterest ("set_activeViewpoint__",      this);
+         }
       }
 
-      this ._activeLayer = this .getWorld () .getActiveLayer ();
-
-      if (this ._activeLayer .getValue ())
+      // Add active layer.
       {
-         this ._activeLayer .getValue () .getNavigationInfoStack () .addInterest ("set_activeNavigationInfo__", this);
-         this ._activeLayer .getValue () .getViewpointStack ()      .addInterest ("set_activeViewpoint__",      this);
+         const activeLayer = this ._activeLayer = this .getWorld () .getActiveLayer ();
+
+         if (activeLayer)
+         {
+            activeLayer .setActive (true);
+            activeLayer .getNavigationInfoStack () .addInterest ("set_activeNavigationInfo__", this);
+            activeLayer .getViewpointStack ()      .addInterest ("set_activeViewpoint__",      this);
+         }
       }
 
       this .set_activeNavigationInfo__ ();
@@ -119680,8 +116248,7 @@ Object .assign (X3DNavigationContext .prototype,
 const X3DNavigationContext_default_ = X3DNavigationContext;
 ;
 
-x_ite_Namespace .add ("X3DNavigationContext", "x_ite/Browser/Navigation/X3DNavigationContext", X3DNavigationContext_default_);
-/* harmony default export */ const Navigation_X3DNavigationContext = (X3DNavigationContext_default_);
+/* harmony default export */ const Navigation_X3DNavigationContext = (x_ite_Namespace .add ("X3DNavigationContext", X3DNavigationContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Networking/X3DNetworkingContext.js
 /*******************************************************************************
  *
@@ -119911,8 +116478,7 @@ Object .assign (X3DNetworkingContext .prototype,
 const X3DNetworkingContext_default_ = X3DNetworkingContext;
 ;
 
-x_ite_Namespace .add ("X3DNetworkingContext", "x_ite/Browser/Networking/X3DNetworkingContext", X3DNetworkingContext_default_);
-/* harmony default export */ const Networking_X3DNetworkingContext = (X3DNetworkingContext_default_);
+/* harmony default export */ const Networking_X3DNetworkingContext = (x_ite_Namespace .add ("X3DNetworkingContext", X3DNetworkingContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Picking/X3DPickingContext.js
 /*******************************************************************************
  *
@@ -120048,11 +116614,10 @@ Object .assign (X3DPickingContext .prototype,
 const X3DPickingContext_default_ = X3DPickingContext;
 ;
 
-x_ite_Namespace .add ("X3DPickingContext", "x_ite/Browser/Picking/X3DPickingContext", X3DPickingContext_default_);
-/* harmony default export */ const Picking_X3DPickingContext = (X3DPickingContext_default_);
+/* harmony default export */ const Picking_X3DPickingContext = (x_ite_Namespace .add ("X3DPickingContext", X3DPickingContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/PointingDeviceSensor/PointingDevice.js
-/* provided dependency */ var PointingDevice_jquery_mousewheel = __webpack_require__(354);
-/* provided dependency */ var PointingDevice_$ = __webpack_require__(812);
+/* provided dependency */ var PointingDevice_jquery_mousewheel = __webpack_require__(839);
+/* provided dependency */ var PointingDevice_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -120305,7 +116870,7 @@ Object .assign (Object .setPrototypeOf (PointingDevice .prototype, Base_X3DBaseN
       // and the new child has a sensor node inside. This sensor node must be updated to
       // reflect the correct isOver state.
 
-      requestAnimationFrame (() => this .onmotion (x, y));
+      this .getBrowser () .getSession () .requestAnimationFrame (() => this .onmotion (x, y));
    },
    showContextMenu (event)
    {
@@ -120325,8 +116890,7 @@ Object .defineProperties (PointingDevice,
 const PointingDevice_default_ = PointingDevice;
 ;
 
-x_ite_Namespace .add ("PointingDevice", "x_ite/Browser/PointingDeviceSensor/PointingDevice", PointingDevice_default_);
-/* harmony default export */ const PointingDeviceSensor_PointingDevice = (PointingDevice_default_);
+/* harmony default export */ const PointingDeviceSensor_PointingDevice = (x_ite_Namespace .add ("PointingDevice", PointingDevice_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Rendering/PointingBuffer.js
 /*******************************************************************************
  *
@@ -120508,8 +117072,7 @@ Object .assign (PointingBuffer .prototype,
 const PointingBuffer_default_ = PointingBuffer;
 ;
 
-x_ite_Namespace .add ("PointingBuffer", "x_ite/Rendering/PointingBuffer", PointingBuffer_default_);
-/* harmony default export */ const Rendering_PointingBuffer = (PointingBuffer_default_);
+/* harmony default export */ const Rendering_PointingBuffer = (x_ite_Namespace .add ("PointingBuffer", PointingBuffer_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/PointingDeviceSensor/X3DPointingDeviceSensorContext.js
 /*******************************************************************************
  *
@@ -120950,8 +117513,7 @@ Object .assign (X3DPointingDeviceSensorContext .prototype,
 const X3DPointingDeviceSensorContext_default_ = X3DPointingDeviceSensorContext;
 ;
 
-x_ite_Namespace .add ("X3DPointingDeviceSensorContext", "x_ite/Browser/PointingDeviceSensor/X3DPointingDeviceSensorContext", X3DPointingDeviceSensorContext_default_);
-/* harmony default export */ const PointingDeviceSensor_X3DPointingDeviceSensorContext = (X3DPointingDeviceSensorContext_default_);
+/* harmony default export */ const PointingDeviceSensor_X3DPointingDeviceSensorContext = (x_ite_Namespace .add ("X3DPointingDeviceSensorContext", X3DPointingDeviceSensorContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Rendering/MultiSampleFrameBuffer.js
 /*******************************************************************************
  *
@@ -121000,7 +117562,7 @@ x_ite_Namespace .add ("X3DPointingDeviceSensorContext", "x_ite/Browser/PointingD
  *
  ******************************************************************************/
 
-function MultiSampleFrameBuffer (browser, width, height, samples, oit)
+function MultiSampleFrameBuffer (browser, x, y, width, height, samples, oit)
 {
    const gl = browser .getContext ();
 
@@ -121009,6 +117571,8 @@ function MultiSampleFrameBuffer (browser, width, height, samples, oit)
 
    this .browser = browser;
    this .context = gl;
+   this .x       = x;
+   this .y       = y;
    this .width   = width;
    this .height  = height;
    this .samples = samples;
@@ -121046,12 +117610,32 @@ function MultiSampleFrameBuffer (browser, width, height, samples, oit)
 
    gl .framebufferRenderbuffer (gl .FRAMEBUFFER, gl .DEPTH_ATTACHMENT, gl .RENDERBUFFER, this .depthBuffer);
 
-   const status1 = gl .checkFramebufferStatus (gl .FRAMEBUFFER) === gl .FRAMEBUFFER_COMPLETE;
-
    // Always check that our frame buffer is ok.
 
-   if (!status1)
+   if (gl .checkFramebufferStatus (gl .FRAMEBUFFER) !== gl .FRAMEBUFFER_COMPLETE)
       throw new Error ("Couldn't create frame buffer.");
+
+   if (x || y)
+   {
+      // Create frame buffer.
+
+      this .auxBuffer = gl .createFramebuffer ();
+
+      gl .bindFramebuffer (gl .FRAMEBUFFER, this .auxBuffer);
+
+      // Create color buffer.
+
+      this .auxColorBuffer = gl .createRenderbuffer ();
+
+      gl .bindRenderbuffer (gl .RENDERBUFFER, this .auxColorBuffer);
+      gl .renderbufferStorage (gl .RENDERBUFFER, gl .RGBA8, width, height);
+      gl .framebufferRenderbuffer (gl .FRAMEBUFFER, gl .COLOR_ATTACHMENT0, gl .RENDERBUFFER, this .auxColorBuffer);
+
+      // Always check that our frame buffer is ok.
+
+      if (gl .checkFramebufferStatus (gl .FRAMEBUFFER) !== gl .FRAMEBUFFER_COMPLETE)
+         throw new Error ("Couldn't create frame buffer.");
+   }
 
    if (!oit)
       return;
@@ -121162,11 +117746,9 @@ function MultiSampleFrameBuffer (browser, width, height, samples, oit)
       gl .framebufferRenderbuffer (gl .FRAMEBUFFER, gl .DEPTH_ATTACHMENT, gl .RENDERBUFFER, this .depthBuffer);
    }
 
-   const status2 = gl .checkFramebufferStatus (gl .FRAMEBUFFER) === gl .FRAMEBUFFER_COMPLETE;
-
    // Always check that our frame buffer is ok.
 
-   if (!status2)
+   if (gl .checkFramebufferStatus (gl .FRAMEBUFFER) !== gl .FRAMEBUFFER_COMPLETE)
       throw new Error ("Couldn't create frame buffer.");
 
    // Get compose shader and texture units.
@@ -121186,6 +117768,14 @@ function MultiSampleFrameBuffer (browser, width, height, samples, oit)
 
 Object .assign (MultiSampleFrameBuffer .prototype,
 {
+   getX ()
+   {
+      return this .x;
+   },
+   getY ()
+   {
+      return this .y;
+   },
    getWidth ()
    {
       return this .width;
@@ -121278,18 +117868,28 @@ Object .assign (MultiSampleFrameBuffer .prototype,
    },
    blit ()
    {
-      const { context: gl, width, height, samples } = this;
+      const { browser, context: gl, x, y, width, height, samples, frameBuffer, auxBuffer } = this;
 
       // Reset viewport before blit, otherwise only last layer size is used.
-      gl .viewport (0, 0, width, height);
-      gl .scissor  (0, 0, width, height);
+      gl .viewport (0, 0, x + width, y + height);
+      gl .scissor  (0, 0, x + width, y + height);
 
-      gl .bindFramebuffer (gl .READ_FRAMEBUFFER, this .frameBuffer);
-      gl .bindFramebuffer (gl .DRAW_FRAMEBUFFER, null);
+      gl .bindFramebuffer (gl .READ_FRAMEBUFFER, frameBuffer);
+      gl .bindFramebuffer (gl .DRAW_FRAMEBUFFER, auxBuffer ?? browser .getDefaultFrameBuffer ());
 
       gl .blitFramebuffer (0, 0, width, height,
                            0, 0, width, height,
                            gl .COLOR_BUFFER_BIT, samples ? gl .LINEAR : gl .NEAREST);
+
+      if (!auxBuffer)
+         return;
+
+      gl .bindFramebuffer (gl .READ_FRAMEBUFFER, auxBuffer);
+      gl .bindFramebuffer (gl .DRAW_FRAMEBUFFER, browser .getDefaultFrameBuffer ());
+
+      gl .blitFramebuffer (0, 0, width, height,
+                           x, y, x + width, y + height,
+                           gl .COLOR_BUFFER_BIT, gl .NEAREST);
    },
    dispose ()
    {
@@ -121298,6 +117898,9 @@ Object .assign (MultiSampleFrameBuffer .prototype,
       gl .deleteFramebuffer (this .frameBuffer);
       gl .deleteRenderbuffer (this .colorBuffer);
       gl .deleteRenderbuffer (this .depthBuffer);
+
+      gl .deleteFramebuffer (this .auxFrameBuffer);
+      gl .deleteRenderbuffer (this .auxColorBuffer);
 
       gl .deleteFramebuffer (this .oitFrameBuffer);
       gl .deleteFramebuffer (this .accumRevealageTextureBuffer);
@@ -121309,36 +117912,45 @@ Object .assign (MultiSampleFrameBuffer .prototype,
    },
 });
 
-function Fallback (browser, width, height, samples)
+function Fallback (browser, x, y, width, height, samples)
 {
    const gl = browser .getContext ();
 
-   this .browser = browser;
-   this .context = gl;
-   this .width   = width;
-   this .height  = height;
-   this .samples = samples;
+   this .browser     = browser;
+   this .context     = gl;
+   this .x           = x;
+   this .y           = y;
+   this .width       = width;
+   this .height      = height;
+   this .samples     = samples;
+   this .frameBuffer = browser .getDefaultFrameBuffer ();
 }
 
 Object .assign (Fallback .prototype,
 {
+   getX () { return this .x; },
+   getY () { return this .y; },
    getWidth () { return this .width; },
    getHeight () { return this .height; },
    getSamples () { return this .samples; },
    getOIT () { return false; },
    bind ()
    {
-      const { context: gl } = this;
+      const { context: gl, frameBuffer } = this;
 
-      gl .bindFramebuffer (gl .FRAMEBUFFER, null);
+      gl .bindFramebuffer (gl .FRAMEBUFFER, frameBuffer);
    },
    clear ()
    {
-      const { context: gl, width, height } = this;
+      const { context: gl, width, height, frameBuffer } = this;
+
+      gl .bindFramebuffer (gl .FRAMEBUFFER, frameBuffer);
+
+      gl .bindFramebuffer (gl .FRAMEBUFFER, null);
 
       gl .viewport (0, 0, width, height);
       gl .scissor  (0, 0, width, height);
-      gl .clearColor (0, 0, 0, 1);
+      gl .clearColor (0, 0, 0, 0);
       gl .clear (gl .COLOR_BUFFER_BIT);
       gl .blendFuncSeparate (gl .ONE, gl .ONE, gl .ZERO, gl .ONE_MINUS_SRC_ALPHA);
    },
@@ -121350,10 +117962,95 @@ Object .assign (Fallback .prototype,
 const MultiSampleFrameBuffer_default_ = MultiSampleFrameBuffer;
 ;
 
-x_ite_Namespace .add ("MultiSampleFrameBuffer", "x_ite/Rendering/MultiSampleFrameBuffer", MultiSampleFrameBuffer_default_);
-/* harmony default export */ const Rendering_MultiSampleFrameBuffer = (MultiSampleFrameBuffer_default_);
+/* harmony default export */ const Rendering_MultiSampleFrameBuffer = (x_ite_Namespace .add ("MultiSampleFrameBuffer", MultiSampleFrameBuffer_default_));
+;// CONCATENATED MODULE: ./src/standard/Utility/Lock.js
+/*******************************************************************************
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
+ *
+ * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * The copyright notice above does not evidence any actual of intended
+ * publication of such source code, and is an unpublished work by create3000.
+ * This material contains CONFIDENTIAL INFORMATION that is the property of
+ * create3000.
+ *
+ * No permission is granted to copy, distribute, or create derivative works from
+ * the contents of this software, in whole or in part, without the prior written
+ * permission of create3000.
+ *
+ * NON-MILITARY USE ONLY
+ *
+ * All create3000 software are effectively free software with a non-military use
+ * restriction. It is free. Well commented source is provided. You may reuse the
+ * source in any way you please with the exception anything that uses it must be
+ * marked to indicate is contains 'non-military use only' components.
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * This file is part of the X_ITE Project.
+ *
+ * X_ITE is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License version 3 only, as published by the
+ * Free Software Foundation.
+ *
+ * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
+ * details (a copy is included in the LICENSE file that accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version 3
+ * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
+ * copy of the GPLv3 License.
+ *
+ * For Silvio, Joy and Adi.
+ *
+ ******************************************************************************/
+
+class Lock
+{
+   static #promises = new Map ();
+
+   static acquire (key, callback)
+   {
+      if (!this .#promises .has (key))
+         this .#promises .set (key, [ ]);
+
+      const
+         promises = this .#promises .get (key),
+         current  = promises .slice ();
+
+      const p = new Promise (async (resolve, reject) =>
+      {
+         if (current .length)
+            await Promise .allSettled (current);
+
+         callback () .then (resolve) .catch (reject);
+      })
+      .finally (() =>
+      {
+         promises .splice (promises .indexOf (p), 1);
+
+         if (!promises .length)
+            this .#promises .delete (key);
+      });
+
+      promises .push (p);
+
+      return p;
+   }
+};
+
+const Lock_default_ = Lock;
+;
+
+/* harmony default export */ const Utility_Lock = (x_ite_Namespace .add ("Lock", Lock_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Rendering/X3DRenderingContext.js
-/* provided dependency */ var X3DRenderingContext_$ = __webpack_require__(812);
+/* provided dependency */ var X3DRenderingContext_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -121407,9 +118104,14 @@ x_ite_Namespace .add ("MultiSampleFrameBuffer", "x_ite/Rendering/MultiSampleFram
 
 
 
+
+
+
+
 const
-   _frameBuffer        = Symbol (),
+   _frameBuffers       = Symbol (),
    _transmissionBuffer = Symbol (),
+   _observer           = Symbol (),
    _resizer            = Symbol (),
    _localObjects       = Symbol (),
    _fullscreenArray    = Symbol (),
@@ -121417,13 +118119,37 @@ const
    _composeShader      = Symbol (),
    _depthShaders       = Symbol ();
 
+const
+   _session            = Symbol (),
+   _baseReferenceSpace = Symbol (),
+   _referenceSpace     = Symbol (),
+   _baseLayer          = Symbol (),
+   _defaultFrameBuffer = Symbol (),
+   _pose               = Symbol ();
+
+// WebXR Emulator and polyfill:
+const canvasCSS = {
+   position: "fixed",
+   top: "0px",
+   left: "0px",
+   width: "100vw",
+   height: "100vh",
+};
+
 function X3DRenderingContext ()
 {
    this .addChildObjects (Base_X3DConstants .outputOnly, "viewport", new x_ite_Fields .MFInt32 (0, 0, 300, 150));
 
-   this [_frameBuffer]  = new Rendering_MultiSampleFrameBuffer (this, 300, 150, 4);
+   this [_frameBuffers] = [ ];
    this [_depthShaders] = new Map ();
    this [_localObjects] = [ ]; // shader objects dumpster
+
+   // XR support
+
+   this [_session]            = window;
+   this [_defaultFrameBuffer] = null;
+
+   this .updateXRButton ();
 }
 
 Object .assign (X3DRenderingContext .prototype,
@@ -121442,14 +118168,29 @@ Object .assign (X3DRenderingContext .prototype,
       gl .blendFuncSeparate (gl .SRC_ALPHA, gl .ONE_MINUS_SRC_ALPHA, gl .ONE, gl .ONE_MINUS_SRC_ALPHA);
       gl .blendEquationSeparate (gl .FUNC_ADD, gl .FUNC_ADD);
 
-      // Configure viewport.
+      // Events
 
-      X3DRenderingContext_$(document) .on ('webkitfullscreenchange mozfullscreenchange fullscreenchange MSFullscreenChange', this .onfullscreen .bind (this));
+      this ._activeViewpoint .addInterest ("setReferenceSpace", this);
 
-      this [_resizer] = new ResizeObserver (this .reshape .bind (this));
-      this [_resizer] .observe (this .getSurface () [0]);
+      // Observe resize and parent changes of <canvas> and configure viewport.
 
-      this .reshape ();
+      this [_observer] = new MutationObserver (() => this .setResizeTarget (this .getCanvas () .parent ()));
+      this [_resizer]  = new ResizeObserver (() => this .reshape ());
+
+      this .setResizeTarget (this .getCanvas () .parent ());
+
+      X3DRenderingContext_$(window) .on (`orientationchange.X3DRenderingContext-${this .getInstanceId ()}`, () => this .reshape ());
+
+      // Observe fullscreen changes of <x3d-canvas>.
+
+      X3DRenderingContext_$(document) .on ([
+         "webkitfullscreenchange",
+         "mozfullscreenchange",
+         "fullscreenchange",
+         "MSFullscreenChange",
+      ]
+      .map (event => `${event}.X3DRenderingContext-${this .getInstanceId ()}`)
+      .join (" "), () => this .onfullscreen ());
    },
    getRenderer ()
    {
@@ -121518,15 +118259,15 @@ Object .assign (X3DRenderingContext .prototype,
    {
       return this [_localObjects];
    },
-   getFrameBuffer ()
+   getFrameBuffers ()
    {
-      return this [_frameBuffer];
+      return this [_frameBuffers];
    },
    getTransmissionBuffer ()
    {
       this [_transmissionBuffer] = new Rendering_TextureBuffer (this,
-         this [_frameBuffer] .getWidth (),
-         this [_frameBuffer] .getHeight (),
+         this ._viewport [2],
+         this ._viewport [3],
          false,
          true);
 
@@ -121627,14 +118368,38 @@ Object .assign (X3DRenderingContext .prototype,
 
       return shaderNode;
    },
+   setResizeTarget (element)
+   {
+      if (!element .length)
+      {
+         // WebXR polyfill: parent can be null.
+         this .stopXRSession ();
+         this .getCanvas () .prependTo (this .getSurface ());
+         this .setResizeTarget (this .getSurface ());
+         return;
+      }
+
+      if (element .is (this .getSurface ()))
+         this .getCanvas () .removeAttr ("style");
+      else // WebXR Emulator or polyfill.
+         this .getCanvas () .css (canvasCSS);
+
+      this [_observer] .disconnect ();
+      this [_observer] .observe (element [0], { childList: true });
+
+      this [_resizer] .disconnect ();
+      this [_resizer] .observe (element [0]);
+
+      this .reshape ();
+   },
    resize (width, height)
    {
       return new Promise (resolve =>
       {
          const
             contentScale   = this .getRenderingProperty ("ContentScale"),
-            viewportWidth  = Math .max (width * contentScale, 1),
-            viewportHeight = Math .max (height * contentScale, 1),
+            viewportWidth  = Math .max (width * contentScale, 1)|0,
+            viewportHeight = Math .max (height * contentScale, 1)|0,
             key            = Symbol ();
 
          const test = () =>
@@ -121662,32 +118427,55 @@ Object .assign (X3DRenderingContext .prototype,
       const
          canvas       = this .getCanvas (),
          contentScale = this .getRenderingProperty ("ContentScale"),
-         samples      = this .getRenderingProperty ("Multisampling"),
-         oit          = this .getBrowserOption ("OrderIndependentTransparency"),
-         width        = Math .max (canvas .width () * contentScale, 1),
-         height       = Math .max (canvas .height () * contentScale, 1);
+         width        = Math .max (canvas .parent () .width ()  * contentScale, 1)|0,
+         height       = Math .max (canvas .parent () .height () * contentScale, 1)|0;
+
+      canvas
+         .prop ("width",  width)
+         .prop ("height", height);
+
+      if (this [_frameBuffers] .length < 2)
+         this .reshapeFrameBuffer (0, 0, 0, width, height);
 
       this .addBrowserEvent ();
+   },
+   reshapeFrameBuffer (i, x, y, width, height)
+   {
+      const
+         samples     = this .getRenderingProperty ("Multisampling"),
+         oit         = this .getBrowserOption ("OrderIndependentTransparency"),
+         frameBuffer = this [_frameBuffers] [i];
 
-      canvas .prop ("width",  width);
-      canvas .prop ("height", height);
-
-      this ._viewport [2] = width;
-      this ._viewport [3] = height;
-
-      if (width   === this [_frameBuffer] .getWidth ()   &&
-          height  === this [_frameBuffer] .getHeight ()  &&
-          samples === this [_frameBuffer] .getSamples () &&
-          oit     === this [_frameBuffer] .getOIT ())
+      if (frameBuffer &&
+          x       === frameBuffer .getX () &&
+          y       === frameBuffer .getY () &&
+          width   === frameBuffer .getWidth () &&
+          height  === frameBuffer .getHeight () &&
+          samples === frameBuffer .getSamples () &&
+          oit     === frameBuffer .getOIT ())
       {
          return;
       }
 
-      this [_frameBuffer] .dispose ();
-      this [_frameBuffer] = new Rendering_MultiSampleFrameBuffer (this, width, height, samples, oit);
+      this ._viewport [2] = width;
+      this ._viewport [3] = height;
 
+      frameBuffer ?.dispose ();
+
+      this [_frameBuffers] [i] = new Rendering_MultiSampleFrameBuffer (this, x, y, width, height, samples, oit);
+
+      this .reshapeTransmissionBuffer (width, height);
+   },
+   reshapeTransmissionBuffer (width, height)
+   {
       if (!this [_transmissionBuffer])
          return;
+
+      if (width  === this [_transmissionBuffer] .getWidth () &&
+          height === this [_transmissionBuffer] .getHeight ())
+      {
+         return;
+      }
 
       this [_transmissionBuffer] .dispose ();
       this [_transmissionBuffer] = new Rendering_TextureBuffer (this, width, height, false, true);
@@ -121701,17 +118489,221 @@ Object .assign (X3DRenderingContext .prototype,
       else
          element .removeClass ("x_ite-fullscreen");
    },
+   async checkXRSupport ()
+   {
+      if (this .getContext () .getVersion () <= 1)
+         return false;
+
+      if (!("xr" in navigator))
+         return false;
+
+      const mode = this .getBrowserOption ("XRSessionMode") .toLowerCase () .replaceAll ("_", "-");
+
+      if (!mode .match (/^(?:immersive-vr|immersive-ar)$/))
+         return false;
+
+      return await navigator .xr .isSessionSupported (mode);
+   },
+   updateXRButton ()
+   {
+      return Utility_Lock .acquire (`X3DRenderingContext.updateXRButton-${this .getId ()}`, async () =>
+      {
+         this .getSurface () .children (".x_ite-private-xr-button") .remove ();
+
+         if (!this .getBrowserOption ("XRButton"))
+            return;
+
+         if (!await this .checkXRSupport ())
+            return;
+
+         X3DRenderingContext_$("<div></div>")
+            .attr ("part", "xr-button")
+            .addClass ("x_ite-private-xr-button")
+            .on ("mousedown touchstart", false)
+            .on ("mouseup touchend", event => this .startXRSession (event))
+            .appendTo (this .getSurface ());
+      });
+   },
+   startXRSession (event)
+   {
+      event ?.preventDefault ();
+      event ?.stopImmediatePropagation ();
+      event ?.stopPropagation ();
+
+      return Utility_Lock .acquire (`X3DRenderingContext.session-${this .getId ()}`, async () =>
+      {
+         if (!await this .checkXRSupport ())
+            return;
+
+         if (this [_session] !== window)
+            return;
+
+         const
+            gl             = this .getContext (),
+            mode           = this .getBrowserOption ("XRSessionMode") .toLowerCase () .replaceAll ("_", "-"),
+            compatible     = await gl .makeXRCompatible (),
+            session        = await navigator .xr .requestSession (mode),
+            referenceSpace = await session .requestReferenceSpace ("local");
+
+         // WebXR Emulator: must bind default framebuffer, to get xr emulator working.
+         gl .bindFramebuffer (gl .FRAMEBUFFER, null);
+
+         const baseLayer = new XRWebGLLayer (session, gl,
+         {
+            antialias: false,
+            alpha: true,
+            depth: false,
+            ignoreDepthValues: true,
+         });
+
+         this .endEvents () .addInterest ("endFrame", this);
+
+         session .updateRenderState ({ baseLayer });
+         session .addEventListener ("end", () => this .stopXRSession ());
+
+         this [_session]            = session;
+         this [_baseReferenceSpace] = referenceSpace;
+         this [_baseLayer]          = baseLayer;
+         this [_defaultFrameBuffer] = baseLayer .framebuffer;
+
+         this [_pose] = {
+            projectionMatrix: new Numbers_Matrix4 (),
+            cameraSpaceMatrix: new Numbers_Matrix4 (),
+            viewMatrix: new Numbers_Matrix4 (),
+            views: [
+               { cameraSpaceMatrix: new Numbers_Matrix4 (), viewMatrix: new Numbers_Matrix4 (), matrix: new Numbers_Matrix4 () },
+               { cameraSpaceMatrix: new Numbers_Matrix4 (), viewMatrix: new Numbers_Matrix4 (), matrix: new Numbers_Matrix4 () },
+            ],
+         };
+
+         this .setReferenceSpace ();
+         this .addBrowserEvent ();
+         this .reshape ();
+      });
+   },
+   stopXRSession ()
+   {
+      return Utility_Lock .acquire (`X3DRenderingContext.session-${this .getId ()}`, async () =>
+      {
+         if (this [_session] === window)
+            return;
+
+         this .endEvents () .removeInterest ("endFrame", this);
+
+         this [_session] .end () .catch (Function .prototype);
+
+         for (const frameBuffer of this [_frameBuffers])
+            frameBuffer .dispose ();
+
+         this [_frameBuffers] .length = 0;
+
+         this [_session]            = window;
+         this [_baseReferenceSpace] = null;
+         this [_referenceSpace]     = null;
+         this [_baseLayer]          = null;
+         this [_defaultFrameBuffer] = null;
+         this [_pose]               = null;
+
+         this .addBrowserEvent ();
+         this .reshape ();
+      });
+   },
+   getSession ()
+   {
+      return this [_session];
+   },
+   getReferenceSpace ()
+   {
+      return this [_referenceSpace];
+   },
+   setReferenceSpace ()
+   {
+      if (!this [_baseReferenceSpace])
+         return;
+
+      const
+         translation = new Numbers_Vector3 (),
+         rotation    = new Numbers_Rotation4 ();
+
+      this .getActiveViewpoint () ?.getViewMatrix () .get (translation, rotation)
+
+      const offsetTransform = new XRRigidTransform (translation, rotation .getQuaternion ());
+
+      this [_referenceSpace] = this [_baseReferenceSpace] .getOffsetReferenceSpace (offsetTransform);
+   },
+   getDefaultFrameBuffer ()
+   {
+      return this [_defaultFrameBuffer];
+   },
+   setFrame (frame)
+   {
+      if (!frame)
+         return;
+
+      const
+         pose     = frame .getViewerPose (this [_referenceSpace]),
+         numViews = pose .views .length;
+
+      this [_pose] .cameraSpaceMatrix .assign (pose .transform .matrix);
+      this [_pose] .viewMatrix        .assign (pose .transform .inverse .matrix);
+
+      let v = 0;
+
+      for (let i = 0; i < numViews; ++ i)
+      {
+         const
+            view                    = pose .views [i],
+            { x, y, width, height } = this [_baseLayer] .getViewport (view);
+
+         // WebXR Emulator: second view has width zero if in non-stereo mode.
+         if (!width)
+            continue;
+
+         this .reshapeFrameBuffer (v, x|0, y|0, width|0, height|0);
+
+         this [_pose] .projectionMatrix .assign (view .projectionMatrix);
+         this [_pose] .views [v] .cameraSpaceMatrix .assign (view .transform .matrix);
+         this [_pose] .views [v] .viewMatrix .assign (view .transform .inverse .matrix);
+         this [_pose] .views [v] .matrix .assign (pose .transform .matrix) .multRight (view .transform .inverse .matrix);
+
+         ++ v;
+      }
+
+      this [_frameBuffers] .length = v;
+
+      // WebXR Emulator or polyfill.
+      if (!this .getCanvas () .parent () .is (this .getSurface ()))
+         this .getCanvas () .css (canvasCSS);
+
+      this .addBrowserEvent ();
+   },
+   endFrame ()
+   {
+      const gl = this .getContext ();
+
+      // WebXR Emulator and polyfill: bind to null, to prevent changes.
+      gl .bindVertexArray (null);
+   },
+   getPose ()
+   {
+      return this [_pose];
+   },
    dispose ()
    {
-      this [_resizer] .disconnect ();
+      this [_session] = window;
+
+      this [_observer] .disconnect ();
+      this [_resizer]  .disconnect ();
+
+      X3DRenderingContext_$(window) .off (`.X3DRenderingContext-${this .getInstanceId ()}`);
+      X3DRenderingContext_$(document) .off (`.X3DRenderingContext-${this .getInstanceId ()}`);
    },
 });
 
 const X3DRenderingContext_default_ = X3DRenderingContext;
 ;
 
-x_ite_Namespace .add ("X3DRenderingContext", "x_ite/Browser/Rendering/X3DRenderingContext", X3DRenderingContext_default_);
-/* harmony default export */ const Rendering_X3DRenderingContext = (X3DRenderingContext_default_);
+/* harmony default export */ const Rendering_X3DRenderingContext = (x_ite_Namespace .add ("X3DRenderingContext", X3DRenderingContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Scripting/X3DScriptingContext.js
 /*******************************************************************************
  *
@@ -121777,8 +118769,7 @@ Object .assign (X3DScriptingContext .prototype,
 const X3DScriptingContext_default_ = X3DScriptingContext;
 ;
 
-x_ite_Namespace .add ("X3DScriptingContext", "x_ite/Browser/Scripting/X3DScriptingContext", X3DScriptingContext_default_);
-/* harmony default export */ const Scripting_X3DScriptingContext = (X3DScriptingContext_default_);
+/* harmony default export */ const Scripting_X3DScriptingContext = (x_ite_Namespace .add ("X3DScriptingContext", X3DScriptingContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Shaders/X3DShadersContext.js
 /*******************************************************************************
  *
@@ -121973,8 +118964,7 @@ Object .assign (X3DShadersContext .prototype,
 const X3DShadersContext_default_ = X3DShadersContext;
 ;
 
-x_ite_Namespace .add ("X3DShadersContext", "x_ite/Browser/Shaders/X3DShadersContext", X3DShadersContext_default_);
-/* harmony default export */ const Shaders_X3DShadersContext = (X3DShadersContext_default_);
+/* harmony default export */ const Shaders_X3DShadersContext = (x_ite_Namespace .add ("X3DShadersContext", X3DShadersContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Shape/X3DShapeContext.js
 /*******************************************************************************
  *
@@ -122222,8 +119212,7 @@ Object .assign (X3DShapeContext .prototype,
 const X3DShapeContext_default_ = X3DShapeContext;
 ;
 
-x_ite_Namespace .add ("X3DShapeContext", "x_ite/Browser/Shape/X3DShapeContext", X3DShapeContext_default_);
-/* harmony default export */ const Shape_X3DShapeContext = (X3DShapeContext_default_);
+/* harmony default export */ const Shape_X3DShapeContext = (x_ite_Namespace .add ("X3DShapeContext", X3DShapeContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Sound/X3DSoundContext.js
 /*******************************************************************************
  *
@@ -122356,10 +119345,9 @@ Object .assign (X3DSoundContext .prototype,
 const X3DSoundContext_default_ = X3DSoundContext;
 ;
 
-x_ite_Namespace .add ("X3DSoundContext", "x_ite/Browser/Sound/X3DSoundContext", X3DSoundContext_default_);
-/* harmony default export */ const Sound_X3DSoundContext = (X3DSoundContext_default_);
+/* harmony default export */ const Sound_X3DSoundContext = (x_ite_Namespace .add ("X3DSoundContext", X3DSoundContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Texturing/KTXDecoder.js
-/* provided dependency */ var KTXDecoder_$ = __webpack_require__(812);
+/* provided dependency */ var KTXDecoder_$ = __webpack_require__(703);
 const KTXDecoder_default_ = class KTXDecoder
 {
    constructor (gl, externalKtxlib, scriptDir)
@@ -122447,8 +119435,7 @@ const KTXDecoder_default_ = class KTXDecoder
 }
 ;
 
-x_ite_Namespace .add ("KTXDecoder", "x_ite/Browser/Texturing/KTXDecoder", KTXDecoder_default_);
-/* harmony default export */ const KTXDecoder = (KTXDecoder_default_);
+/* harmony default export */ const KTXDecoder = (x_ite_Namespace .add ("KTXDecoder", KTXDecoder_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Texturing/X3DTexturingContext.js
 /*******************************************************************************
  *
@@ -122878,8 +119865,7 @@ Object .assign (X3DTexturingContext .prototype,
 const X3DTexturingContext_default_ = X3DTexturingContext;
 ;
 
-x_ite_Namespace .add ("X3DTexturingContext", "x_ite/Browser/Texturing/X3DTexturingContext", X3DTexturingContext_default_);
-/* harmony default export */ const Texturing_X3DTexturingContext = (X3DTexturingContext_default_);
+/* harmony default export */ const Texturing_X3DTexturingContext = (x_ite_Namespace .add ("X3DTexturingContext", X3DTexturingContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/Time/X3DTimeContext.js
 /*******************************************************************************
  *
@@ -122992,8 +119978,7 @@ Object .assign (X3DTimeContext .prototype,
 const X3DTimeContext_default_ = X3DTimeContext;
 ;
 
-x_ite_Namespace .add ("X3DTimeContext", "x_ite/Browser/Time/X3DTimeContext", X3DTimeContext_default_);
-/* harmony default export */ const Time_X3DTimeContext = (X3DTimeContext_default_);
+/* harmony default export */ const Time_X3DTimeContext = (x_ite_Namespace .add ("X3DTimeContext", X3DTimeContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Routing/X3DRoutingContext.js
 /*******************************************************************************
  *
@@ -123113,8 +120098,7 @@ Object .assign (X3DRoutingContext .prototype,
 const X3DRoutingContext_default_ = X3DRoutingContext;
 ;
 
-x_ite_Namespace .add ("X3DRoutingContext", "x_ite/Routing/X3DRoutingContext", X3DRoutingContext_default_);
-/* harmony default export */ const Routing_X3DRoutingContext = (X3DRoutingContext_default_);
+/* harmony default export */ const Routing_X3DRoutingContext = (x_ite_Namespace .add ("X3DRoutingContext", X3DRoutingContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/AbstractNodesArray.js
 /*******************************************************************************
  *
@@ -123196,8 +120180,7 @@ Object .defineProperties (AbstractNodesArray,
 const AbstractNodesArray_default_ = AbstractNodesArray;
 ;
 
-x_ite_Namespace .add ("AbstractNodesArray", "x_ite/Configuration/AbstractNodesArray", AbstractNodesArray_default_);
-/* harmony default export */ const Configuration_AbstractNodesArray = (AbstractNodesArray_default_);
+/* harmony default export */ const Configuration_AbstractNodesArray = (x_ite_Namespace .add ("AbstractNodesArray", AbstractNodesArray_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/AbstractNodes.js
 /*******************************************************************************
  *
@@ -123251,8 +120234,7 @@ x_ite_Namespace .add ("AbstractNodesArray", "x_ite/Configuration/AbstractNodesAr
 const AbstractNodes_default_ = new Configuration_AbstractNodesArray ();
 ;
 
-x_ite_Namespace .add ("AbstractNodes", "x_ite/Configuration/AbstractNodes", AbstractNodes_default_);
-/* harmony default export */ const AbstractNodes = (AbstractNodes_default_);
+/* harmony default export */ const AbstractNodes = (x_ite_Namespace .add ("AbstractNodes", AbstractNodes_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/ConcreteNodesArray.js
 /*******************************************************************************
  *
@@ -123343,8 +120325,7 @@ Object .defineProperties (ConcreteNodesArray,
 const ConcreteNodesArray_default_ = ConcreteNodesArray;
 ;
 
-x_ite_Namespace .add ("ConcreteNodesArray", "x_ite/Configuration/ConcreteNodesArray", ConcreteNodesArray_default_);
-/* harmony default export */ const Configuration_ConcreteNodesArray = (ConcreteNodesArray_default_);
+/* harmony default export */ const Configuration_ConcreteNodesArray = (x_ite_Namespace .add ("ConcreteNodesArray", ConcreteNodesArray_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/ConcreteNodes.js
 /*******************************************************************************
  *
@@ -123398,8 +120379,7 @@ x_ite_Namespace .add ("ConcreteNodesArray", "x_ite/Configuration/ConcreteNodesAr
 const ConcreteNodes_default_ = new Configuration_ConcreteNodesArray ();
 ;
 
-x_ite_Namespace .add ("ConcreteNodes", "x_ite/Configuration/ConcreteNodes", ConcreteNodes_default_);
-/* harmony default export */ const ConcreteNodes = (ConcreteNodes_default_);
+/* harmony default export */ const ConcreteNodes = (x_ite_Namespace .add ("ConcreteNodes", ConcreteNodes_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/X3DBrowserContext.js
 /*******************************************************************************
  *
@@ -123477,59 +120457,60 @@ x_ite_Namespace .add ("ConcreteNodes", "x_ite/Configuration/ConcreteNodes", Conc
 
 
 const
-   _world           = Symbol (),
-   X3DBrowserContext_tainted         = Symbol (),
-   _limitFrameRate  = Symbol (),
-   _traverse        = Symbol (),
-   _renderCallback  = Symbol (),
-   _animFrame       = Symbol (),
-   _previousTime    = Symbol (),
-   _systemTime      = Symbol (),
-   _browserTime     = Symbol (),
-   _cameraTime      = Symbol (),
-   _collisionTime   = Symbol (),
-   _displayTime     = Symbol (),
-   X3DBrowserContext_processEvents   = Symbol .for ("X_ITE.X3DRoutingContext.processEvents");
+   _world          = Symbol (),
+   X3DBrowserContext_tainted        = Symbol (),
+   _limitFrameRate = Symbol (),
+   _traverse       = Symbol (),
+   _renderCallback = Symbol (),
+   _animFrame      = Symbol (),
+   _previousTime   = Symbol (),
+   _systemTime     = Symbol (),
+   _browserTime    = Symbol (),
+   _cameraTime     = Symbol (),
+   _collisionTime  = Symbol (),
+   _displayTime    = Symbol (),
+   X3DBrowserContext_processEvents  = Symbol .for ("X_ITE.X3DRoutingContext.processEvents");
 
 const
    browsers        = new Set (),
-   browserContexts = [ ];
+   browserContexts = [
+      Routing_X3DRoutingContext,
+      Scripting_X3DScriptingContext,
+      Core_X3DCoreContext,
+      Networking_X3DNetworkingContext,
+      Texturing_X3DTexturingContext,
+      Shaders_X3DShadersContext,
+      Rendering_X3DRenderingContext,
+      Shape_X3DShapeContext,
+      Grouping_X3DGroupingContext,
+      Geometry3D_X3DGeometry3DContext,
+      PointingDeviceSensor_X3DPointingDeviceSensorContext,
+      Navigation_X3DNavigationContext,
+      Layering_X3DLayeringContext,
+      EnvironmentalEffects_X3DEnvironmentalEffectsContext,
+      Lighting_X3DLightingContext,
+      Picking_X3DPickingContext,
+      Sound_X3DSoundContext,
+      Time_X3DTimeContext,
+   ];
 
 function X3DBrowserContext (element)
 {
-   Base_X3DBaseNode                    .call (this, this);
-   Routing_X3DRoutingContext              .call (this);
-   Scripting_X3DScriptingContext            .call (this);
-   Core_X3DCoreContext                 .call (this, element);
-   Networking_X3DNetworkingContext           .call (this);
-   Texturing_X3DTexturingContext            .call (this);
-   Shaders_X3DShadersContext              .call (this);
-   Rendering_X3DRenderingContext            .call (this);
-   Shape_X3DShapeContext                .call (this);
-   Grouping_X3DGroupingContext             .call (this);
-   Geometry3D_X3DGeometry3DContext           .call (this);
-   PointingDeviceSensor_X3DPointingDeviceSensorContext .call (this);
-   Navigation_X3DNavigationContext           .call (this);
-   Layering_X3DLayeringContext             .call (this);
-   EnvironmentalEffects_X3DEnvironmentalEffectsContext .call (this);
-   Lighting_X3DLightingContext             .call (this);
-   Picking_X3DPickingContext              .call (this);
-   Sound_X3DSoundContext                .call (this);
-   Time_X3DTimeContext                 .call (this);
-
    browsers .add (this);
 
-   for (const browserContext of browserContexts)
-      browserContext .call (this);
+   Base_X3DBaseNode .call (this, this);
 
-   this .addChildObjects (Base_X3DConstants .outputOnly, "initialized",    new Fields_SFTime (),
-                          Base_X3DConstants .outputOnly, "shutdown",       new Fields_SFTime (),
-                          Base_X3DConstants .outputOnly, "prepareEvents",  new Fields_SFTime (),
-                          Base_X3DConstants .outputOnly, "timeEvents",     new Fields_SFTime (),
-                          Base_X3DConstants .outputOnly, "sensorEvents",   new Fields_SFTime (),
-                          Base_X3DConstants .outputOnly, "displayEvents",  new Fields_SFTime (),
-                          Base_X3DConstants .outputOnly, "finishedEvents", new Fields_SFTime (),
-                          Base_X3DConstants .outputOnly, "endEvents",      new Fields_SFTime ());
+   for (const browserContext of browserContexts)
+      browserContext .call (this, element);
+
+   this .addChildObjects (Base_X3DConstants .outputOnly, "initialized",    new x_ite_Fields .SFTime (),
+                          Base_X3DConstants .outputOnly, "shutdown",       new x_ite_Fields .SFTime (),
+                          Base_X3DConstants .outputOnly, "prepareEvents",  new x_ite_Fields .SFTime (),
+                          Base_X3DConstants .outputOnly, "timeEvents",     new x_ite_Fields .SFTime (),
+                          Base_X3DConstants .outputOnly, "sensorEvents",   new x_ite_Fields .SFTime (),
+                          Base_X3DConstants .outputOnly, "displayEvents",  new x_ite_Fields .SFTime (),
+                          Base_X3DConstants .outputOnly, "finishedEvents", new x_ite_Fields .SFTime (),
+                          Base_X3DConstants .outputOnly, "endEvents",      new x_ite_Fields .SFTime ());
 
    this [X3DBrowserContext_tainted]        = false;
    this [_previousTime]   = 0;
@@ -123542,46 +120523,11 @@ function X3DBrowserContext (element)
 };
 
 Object .assign (Object .setPrototypeOf (X3DBrowserContext .prototype, Base_X3DBaseNode .prototype),
-   Core_X3DCoreContext .prototype,
-   EnvironmentalEffects_X3DEnvironmentalEffectsContext .prototype,
-   Geometry3D_X3DGeometry3DContext .prototype,
-   Grouping_X3DGroupingContext .prototype,
-   Layering_X3DLayeringContext .prototype,
-   Lighting_X3DLightingContext .prototype,
-   Navigation_X3DNavigationContext .prototype,
-   Networking_X3DNetworkingContext .prototype,
-   Picking_X3DPickingContext .prototype,
-   PointingDeviceSensor_X3DPointingDeviceSensorContext .prototype,
-   Rendering_X3DRenderingContext .prototype,
-   Routing_X3DRoutingContext .prototype,
-   Scripting_X3DScriptingContext .prototype,
-   Shaders_X3DShadersContext .prototype,
-   Shape_X3DShapeContext .prototype,
-   Sound_X3DSoundContext .prototype,
-   Texturing_X3DTexturingContext .prototype,
-   Time_X3DTimeContext .prototype,
+   ... browserContexts .map (browserContext => browserContext .prototype),
 {
    initialize ()
    {
-      Base_X3DBaseNode                    .prototype .initialize ?.call (this);
-      Routing_X3DRoutingContext              .prototype .initialize ?.call (this);
-      Scripting_X3DScriptingContext            .prototype .initialize ?.call (this);
-      Core_X3DCoreContext                 .prototype .initialize ?.call (this);
-      Networking_X3DNetworkingContext           .prototype .initialize ?.call (this);
-      Texturing_X3DTexturingContext            .prototype .initialize ?.call (this);
-      Shaders_X3DShadersContext              .prototype .initialize ?.call (this);
-      Rendering_X3DRenderingContext            .prototype .initialize ?.call (this);
-      Shape_X3DShapeContext                .prototype .initialize ?.call (this);
-      Grouping_X3DGroupingContext             .prototype .initialize ?.call (this);
-      Geometry3D_X3DGeometry3DContext           .prototype .initialize ?.call (this);
-      PointingDeviceSensor_X3DPointingDeviceSensorContext .prototype .initialize ?.call (this);
-      Navigation_X3DNavigationContext           .prototype .initialize ?.call (this);
-      Layering_X3DLayeringContext             .prototype .initialize ?.call (this);
-      EnvironmentalEffects_X3DEnvironmentalEffectsContext .prototype .initialize ?.call (this);
-      Lighting_X3DLightingContext             .prototype .initialize ?.call (this);
-      Picking_X3DPickingContext              .prototype .initialize ?.call (this);
-      Sound_X3DSoundContext                .prototype .initialize ?.call (this);
-      Time_X3DTimeContext                 .prototype .initialize ?.call (this);
+      Base_X3DBaseNode .prototype .initialize .call (this);
 
       for (const browserContext of browserContexts)
          browserContext .prototype .initialize ?.call (this);
@@ -123641,7 +120587,7 @@ Object .assign (Object .setPrototypeOf (X3DBrowserContext .prototype, Base_X3DBa
          return;
 
       this [X3DBrowserContext_tainted]   = true;
-      this [_animFrame] = requestAnimationFrame (this [_renderCallback]);
+      this [_animFrame] = this .getSession () .requestAnimationFrame (this [_renderCallback]);
    },
    nextFrame ()
    {
@@ -123669,12 +120615,12 @@ Object .assign (Object .setPrototypeOf (X3DBrowserContext .prototype, Base_X3DBa
       }
       else
       {
-         requestAnimationFrame (this [_renderCallback]);
+         this .getSession () .requestAnimationFrame (this [_renderCallback]);
 
          return true;
       }
    },
-   [_traverse] (now)
+   [_traverse] (now, frame)
    {
       // Limit frame rate.
 
@@ -123688,6 +120634,7 @@ Object .assign (Object .setPrototypeOf (X3DBrowserContext .prototype, Base_X3DBa
 
       // Time
 
+      this .setFrame (frame);
       this .advanceTime ();
 
       // Events
@@ -123724,13 +120671,17 @@ Object .assign (Object .setPrototypeOf (X3DBrowserContext .prototype, Base_X3DBa
       this .addTaintedField (this ._displayEvents);
       this [X3DBrowserContext_processEvents] ();
 
-      this .getFrameBuffer () .clear ();
+      for (const frameBuffer of this .getFrameBuffers ())
+         frameBuffer .clear ();
+
       this [_world] .traverse (Rendering_TraverseType .DISPLAY);
 
       this .addTaintedField (this ._finishedEvents);
       this [X3DBrowserContext_processEvents] ();
 
-      this .getFrameBuffer () .blit ();
+      for (const frameBuffer of this .getFrameBuffers ())
+         frameBuffer .blit ();
+
       this [_displayTime] .stop ();
 
       this .addTaintedField (this ._endEvents);
@@ -123761,38 +120712,26 @@ Object .assign (Object .setPrototypeOf (X3DBrowserContext .prototype, Base_X3DBa
    {
       return this [_displayTime];
    },
+   stopXRSession ()
+   {
+      this [X3DBrowserContext_tainted] = false;
+
+      this .getSession () .cancelAnimationFrame (this [_animFrame]);
+
+      Rendering_X3DRenderingContext .prototype .stopXRSession .call (this);
+   },
    dispose ()
    {
       browsers .delete (this);
 
-      for (const browserContext of browserContexts)
-         browserContext .prototype .dispose ?.call (this);
-
-      Time_X3DTimeContext                 .prototype .dispose ?.call (this);
-      Sound_X3DSoundContext                .prototype .dispose ?.call (this);
-      Picking_X3DPickingContext              .prototype .dispose ?.call (this);
-      Lighting_X3DLightingContext             .prototype .dispose ?.call (this);
-      EnvironmentalEffects_X3DEnvironmentalEffectsContext .prototype .dispose ?.call (this);
-      Layering_X3DLayeringContext             .prototype .dispose ?.call (this);
-      Navigation_X3DNavigationContext           .prototype .dispose ?.call (this);
-      PointingDeviceSensor_X3DPointingDeviceSensorContext .prototype .dispose ?.call (this);
-      Geometry3D_X3DGeometry3DContext           .prototype .dispose ?.call (this);
-      Grouping_X3DGroupingContext             .prototype .dispose ?.call (this);
-      Shape_X3DShapeContext                .prototype .dispose ?.call (this);
-      Rendering_X3DRenderingContext            .prototype .dispose ?.call (this);
-      Shaders_X3DShadersContext              .prototype .dispose ?.call (this);
-      Texturing_X3DTexturingContext            .prototype .dispose ?.call (this);
-      Networking_X3DNetworkingContext           .prototype .dispose ?.call (this);
-      Core_X3DCoreContext                 .prototype .dispose ?.call (this);
-      Scripting_X3DScriptingContext            .prototype .dispose ?.call (this);
-      Routing_X3DRoutingContext              .prototype .dispose ?.call (this);
-      Base_X3DBaseNode                    .prototype .dispose ?.call (this);
-
       this [X3DBrowserContext_tainted] = true;
 
-      cancelAnimationFrame (this [_animFrame]);
+      this .getSession () .cancelAnimationFrame (this [_animFrame]);
 
-      this .getContext () .getExtension ("WEBGL_lose_context") ?.loseContext ();
+      for (const browserContext of browserContexts .slice () .reverse ())
+         browserContext .prototype .dispose ?.call (this);
+
+      Base_X3DBaseNode .prototype .dispose .call (this);
    },
 });
 
@@ -123866,8 +120805,7 @@ Object .assign (X3DBrowserContext,
 const X3DBrowserContext_default_ = X3DBrowserContext;
 ;
 
-x_ite_Namespace .add ("X3DBrowserContext", "x_ite/Browser/X3DBrowserContext", X3DBrowserContext_default_);
-/* harmony default export */ const Browser_X3DBrowserContext = (X3DBrowserContext_default_);
+/* harmony default export */ const Browser_X3DBrowserContext = (x_ite_Namespace .add ("X3DBrowserContext", X3DBrowserContext_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Components.js
 /*******************************************************************************
  *
@@ -123946,34 +120884,33 @@ const Components =
    },
 };
 
-Components .add (Core);
-Components .add (EnvironmentalEffects);
-Components .add (EnvironmentalSensor);
-Components .add (Followers);
-Components .add (Geometry3D);
-Components .add (Grouping);
-Components .add (Interpolation);
-Components .add (Layering);
-Components .add (Lighting);
-Components .add (Navigation);
-Components .add (Networking);
-Components .add (PointingDeviceSensor);
-Components .add (Rendering);
-Components .add (Shaders);
-Components .add (Components_Shape);
-Components .add (Components_Sound);
-Components .add (Texturing);
-Components .add (Time);
+Components .add (CoreComponent);
+Components .add (EnvironmentalEffectsComponent);
+Components .add (EnvironmentalSensorComponent);
+Components .add (FollowersComponent);
+Components .add (Geometry3DComponent);
+Components .add (GroupingComponent);
+Components .add (InterpolationComponent);
+Components .add (LayeringComponent);
+Components .add (LightingComponent);
+Components .add (NavigationComponent);
+Components .add (NetworkingComponent);
+Components .add (PointingDeviceSensorComponent);
+Components .add (RenderingComponent);
+Components .add (ShadersComponent);
+Components .add (ShapeComponent);
+Components .add (SoundComponent);
+Components .add (TexturingComponent);
+Components .add (TimeComponent);
 
 external = true;
 
 const Components_default_ = Components;
 ;
 
-x_ite_Namespace .add ("Components", "x_ite/Components", Components_default_);
-/* harmony default export */ const x_ite_Components = ((/* unused pure expression or super */ null && (Components_default_)));
+/* harmony default export */ const x_ite_Components = (x_ite_Namespace .add ("Components", Components_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/DOMIntegration.js
-/* provided dependency */ var DOMIntegration_$ = __webpack_require__(812);
+/* provided dependency */ var DOMIntegration_$ = __webpack_require__(703);
 /*******************************************************************************
  * MIT License
  *
@@ -124361,13 +121298,17 @@ class DOMIntegration
 
       element .dispatchEvent (event);
    }
+
+   dispose ()
+   {
+      this .canvasObserver .disconnect ();
+   }
 };
 
 const DOMIntegration_default_ = DOMIntegration;
 ;
 
-x_ite_Namespace .add ("DOMIntegration", "x_ite/Browser/DOMIntegration", DOMIntegration_default_);
-/* harmony default export */ const Browser_DOMIntegration = (DOMIntegration_default_);
+/* harmony default export */ const Browser_DOMIntegration = (x_ite_Namespace .add ("DOMIntegration", DOMIntegration_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/ProfileInfo.js
 /*******************************************************************************
  *
@@ -124472,8 +121413,7 @@ Object .defineProperties (ProfileInfo .prototype,
 const ProfileInfo_default_ = ProfileInfo;
 ;
 
-x_ite_Namespace .add ("ProfileInfo", "x_ite/Configuration/ProfileInfo", ProfileInfo_default_);
-/* harmony default export */ const Configuration_ProfileInfo = (ProfileInfo_default_);
+/* harmony default export */ const Configuration_ProfileInfo = (x_ite_Namespace .add ("ProfileInfo", ProfileInfo_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/ProfileInfoArray.js
 /*******************************************************************************
  *
@@ -124554,8 +121494,7 @@ Object .defineProperties (ProfileInfoArray,
 const ProfileInfoArray_default_ = ProfileInfoArray;
 ;
 
-x_ite_Namespace .add ("ProfileInfoArray", "x_ite/Configuration/ProfileInfoArray", ProfileInfoArray_default_);
-/* harmony default export */ const Configuration_ProfileInfoArray = (ProfileInfoArray_default_);
+/* harmony default export */ const Configuration_ProfileInfoArray = (x_ite_Namespace .add ("ProfileInfoArray", ProfileInfoArray_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/SupportedComponents.js
 /*******************************************************************************
  *
@@ -124867,8 +121806,7 @@ SupportedComponents .add ("X_ITE",
 const SupportedComponents_default_ = SupportedComponents;
 ;
 
-x_ite_Namespace .add ("SupportedComponents", "x_ite/Configuration/SupportedComponents", SupportedComponents_default_);
-/* harmony default export */ const Configuration_SupportedComponents = (SupportedComponents_default_);
+/* harmony default export */ const Configuration_SupportedComponents = (x_ite_Namespace .add ("SupportedComponents", SupportedComponents_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/SupportedProfiles.js
 /*******************************************************************************
  *
@@ -125108,8 +122046,7 @@ SupportedProfiles .add ("MPEG-4",
 const SupportedProfiles_default_ = SupportedProfiles;
 ;
 
-x_ite_Namespace .add ("SupportedProfiles", "x_ite/Configuration/SupportedProfiles", SupportedProfiles_default_);
-/* harmony default export */ const Configuration_SupportedProfiles = (SupportedProfiles_default_);
+/* harmony default export */ const Configuration_SupportedProfiles = (x_ite_Namespace .add ("SupportedProfiles", SupportedProfiles_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/FieldTypesArray.js
 /*******************************************************************************
  *
@@ -125182,8 +122119,7 @@ Object .defineProperties (FieldTypesArray,
 const FieldTypesArray_default_ = FieldTypesArray;
 ;
 
-x_ite_Namespace .add ("FieldTypesArray", "x_ite/Configuration/FieldTypesArray", FieldTypesArray_default_);
-/* harmony default export */ const Configuration_FieldTypesArray = (FieldTypesArray_default_);
+/* harmony default export */ const Configuration_FieldTypesArray = (x_ite_Namespace .add ("FieldTypesArray", FieldTypesArray_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Configuration/FieldTypes.js
 /*******************************************************************************
  *
@@ -125238,10 +122174,9 @@ x_ite_Namespace .add ("FieldTypesArray", "x_ite/Configuration/FieldTypesArray", 
 const FieldTypes_default_ = new Configuration_FieldTypesArray (Object .values (x_ite_Fields));
 ;
 
-x_ite_Namespace .add ("FieldTypes", "x_ite/Configuration/FieldTypes", FieldTypes_default_);
-/* harmony default export */ const FieldTypes = (FieldTypes_default_);
+/* harmony default export */ const FieldTypes = (x_ite_Namespace .add ("FieldTypes", FieldTypes_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/Browser/X3DBrowser.js
-/* provided dependency */ var X3DBrowser_$ = __webpack_require__(812);
+/* provided dependency */ var X3DBrowser_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -125391,6 +122326,7 @@ Object .assign (Object .setPrototypeOf (X3DBrowser .prototype, Browser_X3DBrowse
              `      Name: ${this .getVendor ()} ${this .getRenderer ()}\n` +
              `      WebGL version: ${this .getWebGLVersion ()}\n` +
              `      Shading language: ${this .getShadingLanguageVersion ()}\n` +
+             `      WebXR: ${"xr" in navigator}\n` +
              `   Rendering Properties\n` +
              `      Antialiased: ${this .getRenderingProperty ("Antialiased")}\n` +
              `      Max samples: ${this .getMaxSamples ()}\n` +
@@ -125429,9 +122365,7 @@ Object .assign (Object .setPrototypeOf (X3DBrowser .prototype, Browser_X3DBrowse
    },
    getProfile (name)
    {
-      name = String (name);
-
-      const profile = this [_supportedProfiles] .get (name);
+      const profile = this [_supportedProfiles] .get (String (name));
 
       if (profile)
          return profile;
@@ -125565,7 +122499,8 @@ Object .assign (Object .setPrototypeOf (X3DBrowser .prototype, Browser_X3DBrowse
          return Promise .all ([
             MikkTSpace .initialize (), // Required by Rendering component.
             loadComponents .call (this, component, new Set ()),
-         ]);
+         ])
+         .then (Function .prototype);
       };
    })(),
    addConcreteNode (ConcreteNode)
@@ -126194,6 +123129,12 @@ Object .assign (Object .setPrototypeOf (X3DBrowser .prototype, Browser_X3DBrowse
    {
       this .currentScene .toJSONStream (generator);
    },
+   dispose ()
+   {
+      this [_DOMIntegration] .dispose ();
+
+      Browser_X3DBrowserContext .prototype .dispose .call (this);
+   },
 });
 
 for (const key of Object .keys (X3DBrowser .prototype))
@@ -126300,10 +123241,9 @@ Base_X3DConstants .addConstant (X3DBrowser .typeName);
 const X3DBrowser_default_ = X3DBrowser;
 ;
 
-x_ite_Namespace .add ("X3DBrowser", "x_ite/Browser/X3DBrowser", X3DBrowser_default_);
-/* harmony default export */ const Browser_X3DBrowser = (X3DBrowser_default_);
+/* harmony default export */ const Browser_X3DBrowser = (x_ite_Namespace .add ("X3DBrowser", X3DBrowser_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/X3DCanvasElement.js
-/* provided dependency */ var X3DCanvasElement_$ = __webpack_require__(812);
+/* provided dependency */ var X3DCanvasElement_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -126417,6 +123357,12 @@ class X3DCanvasElement extends HTMLElement
          "tonemapping",
          "update",
          "url",
+         "xrButton",
+         "xrbutton",
+         "xrMovementControl",
+         "xrmovementcontrol",
+         "xrSessionMode",
+         "xrsessionmode",
       ];
    }
 
@@ -126452,11 +123398,120 @@ document .createElement ("X3DCanvas");
 const X3DCanvasElement_default_ = X3DCanvasElement;
 ;
 
-x_ite_Namespace .add ("X3DCanvasElement", "x_ite/X3DCanvasElement", X3DCanvasElement_default_);
-/* harmony default export */ const x_ite_X3DCanvasElement = (X3DCanvasElement_default_);
+/* harmony default export */ const x_ite_X3DCanvasElement = (x_ite_Namespace .add ("X3DCanvasElement", X3DCanvasElement_default_));
+;// CONCATENATED MODULE: ./src/standard/Math/Algorithms/QuickSort.js
+/*******************************************************************************
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright create3000, Scheffelstraße 31a, Leipzig, Germany 2011 - 2022.
+ *
+ * All rights reserved. Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * The copyright notice above does not evidence any actual of intended
+ * publication of such source code, and is an unpublished work by create3000.
+ * This material contains CONFIDENTIAL INFORMATION that is the property of
+ * create3000.
+ *
+ * No permission is granted to copy, distribute, or create derivative works from
+ * the contents of this software, in whole or in part, without the prior written
+ * permission of create3000.
+ *
+ * NON-MILITARY USE ONLY
+ *
+ * All create3000 software are effectively free software with a non-military use
+ * restriction. It is free. Well commented source is provided. You may reuse the
+ * source in any way you please with the exception anything that uses it must be
+ * marked to indicate is contains 'non-military use only' components.
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * Copyright 2011 - 2022, Holger Seelig <holger.seelig@yahoo.de>.
+ *
+ * This file is part of the X_ITE Project.
+ *
+ * X_ITE is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License version 3 only, as published by the
+ * Free Software Foundation.
+ *
+ * X_ITE is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ * A PARTICULAR PURPOSE. See the GNU General Public License version 3 for more
+ * details (a copy is included in the LICENSE file that accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version 3
+ * along with X_ITE.  If not, see <https://www.gnu.org/licenses/gpl.html> for a
+ * copy of the GPLv3 License.
+ *
+ * For Silvio, Joy and Adi.
+ *
+ ******************************************************************************/
+
+function QuickSort (array, compare)
+{
+   this .array = array;
+
+   if (compare)
+      this .compare = compare;
+}
+
+Object .assign (QuickSort .prototype,
+{
+   compare (lhs, rhs)
+   {
+      return lhs < rhs;
+   },
+   sort (first, last)
+   {
+      if (last - first > 1)
+         this .quicksort (first, last - 1);
+   },
+   quicksort (lo, hi)
+   {
+      let
+         i = lo,
+         j = hi;
+
+      const { array, compare } = this;
+
+      // Vergleichs­element x
+      const x = array [(lo + hi) >>> 1];
+
+      for (;;)
+      {
+         while (compare (array [i], x)) ++ i;
+         while (compare (x, array [j])) -- j;
+
+         if (i < j)
+         {
+            // Exchange
+
+            const t = array [i];
+            array [i] = array [j];
+            array [j] = t;
+
+            i ++; j --;
+         }
+         else
+         {
+            if (i === j) ++ i, -- j;
+            break;
+         }
+      }
+
+      // Rekursion
+      if (lo < j) this .quicksort (lo, j);
+      if (i < hi) this .quicksort (i, hi);
+   },
+});
+
+const QuickSort_default_ = QuickSort;
+;
+
+/* harmony default export */ const Algorithms_QuickSort = (x_ite_Namespace .add ("QuickSort", QuickSort_default_));
 ;// CONCATENATED MODULE: ./src/lib/jquery.js
-/* provided dependency */ var jquery_$ = __webpack_require__(812);
-/* provided dependency */ var pako = __webpack_require__(552);
+/* provided dependency */ var jquery_$ = __webpack_require__(703);
+/* provided dependency */ var pako = __webpack_require__(943);
 Object .assign (jquery_$,
 {
    decodeText (input)
@@ -126530,17 +123585,15 @@ Object .assign (jquery_$.fn,
 const jquery_default_ = jquery_$;
 ;
 
-x_ite_Namespace .add ("jquery", "lib/jquery", jquery_default_);
-/* harmony default export */ const jquery = ((/* unused pure expression or super */ null && (jquery_default_)));
+/* harmony default export */ const jquery = (x_ite_Namespace .add ("jquery", jquery_default_));
 ;// CONCATENATED MODULE: ./src/lib/libtess.js
-/* provided dependency */ var libtess_libtess = __webpack_require__(193);
+/* provided dependency */ var libtess_libtess = __webpack_require__(860);
 const libtess_default_ = libtess_libtess;
 ;
 
-x_ite_Namespace .add ("libtess", "lib/libtess", libtess_default_);
-/* harmony default export */ const lib_libtess = ((/* unused pure expression or super */ null && (libtess_default_)));
+/* harmony default export */ const lib_libtess = (x_ite_Namespace .add ("libtess", libtess_default_));
 ;// CONCATENATED MODULE: ./src/x_ite/X3D.js
-/* provided dependency */ var X3D_$ = __webpack_require__(812);
+/* provided dependency */ var X3D_$ = __webpack_require__(703);
 /*******************************************************************************
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -126624,6 +123677,7 @@ x_ite_Namespace .add ("libtess", "lib/libtess", libtess_default_);
 
 
 
+
 const
    callbacks = X3D_$.Deferred (),
    fallbacks = X3D_$.Deferred ();
@@ -126631,12 +123685,12 @@ const
 let initialized = false;
 
 /**
- *
- * @param {function?} callback
- * @param {function?} fallback
- * @returns {Promise<void>} Promise
- */
-function X3D (callback, fallback)
+*
+* @param {function?} callback
+* @param {function?} fallback
+* @returns {Promise<void>} Promise
+*/
+/* harmony default export */ const x_ite_X3D = (Object .assign (function (callback, fallback)
 {
    return new Promise ((resolve, reject) =>
    {
@@ -126672,52 +123726,8 @@ function X3D (callback, fallback)
          }
       });
    });
-}
-
-Object .assign (X3D, x_ite_Namespace, x_ite_Namespace .Fields,
-{
-   require (id)
-   {
-      if (!x_ite_Namespace .has (id))
-         throw new Error (`Unknown module '${id}'.`);
-
-      return x_ite_Namespace .get (id);
-   },
-   noConflict: (() =>
-   {
-      const
-         _had = window .hasOwnProperty ("X3D"),
-         _X3D = window .X3D;
-
-      return function ()
-      {
-         if (window .X3D === X3D)
-         {
-            if (_had)
-               window .X3D = _X3D;
-            else
-               delete window .X3D;
-         }
-
-         return X3D;
-      };
-   })(),
-   getBrowser (element)
-   {
-      return X3D_$(element || "x3d-canvas, X3DCanvas") .prop ("browser");
-   },
-   createBrowser (url, parameter)
-   {
-      const element = document .createElement ("x3d-canvas");
-
-      if (arguments .length)
-         element .browser .loadURL (url, parameter);
-
-      return element;
-   },
-});
-
-Object .assign (X3D,
+},
+x_ite_Namespace, x_ite_Namespace .Fields,
 {
    X3DConstants:                Base_X3DConstants,
    X3DBrowser:                  Browser_X3DBrowser,
@@ -126790,9 +123800,48 @@ Object .assign (X3D,
    MFVec3f:                     x_ite_Fields .MFVec3f,
    MFVec4d:                     x_ite_Fields .MFVec4d,
    MFVec4f:                     x_ite_Fields .MFVec4f,
-});
+},
+{
+   /**
+   * @deprecated Use X3D.ModuleName instead.
+   */
+   require (path)
+   {
+      return x_ite_Namespace [path .match (/([^\/]+)$/) ?.[1]];
+   },
+   noConflict: (() =>
+   {
+      const
+         _had = window .hasOwnProperty ("X3D"),
+         _X3D = window .X3D;
 
-/* harmony default export */ const x_ite_X3D = (X3D);
+      return function ()
+      {
+         if (window .X3D === X3D)
+         {
+            if (_had)
+               window .X3D = _X3D;
+            else
+               delete window .X3D;
+         }
+
+         return X3D;
+      };
+   })(),
+   getBrowser (element)
+   {
+      return X3D_$(element || "x3d-canvas, X3DCanvas") .prop ("browser");
+   },
+   createBrowser (url, parameter)
+   {
+      const element = document .createElement ("x3d-canvas");
+
+      if (arguments .length)
+         element .browser .loadURL (url, parameter);
+
+      return element;
+   },
+}));
 
 ;// CONCATENATED MODULE: ./src/x_ite.js
 /*******************************************************************************
@@ -126848,17 +123897,14 @@ Object .assign (X3D,
 
 // Assign X3D to global namespace.
 
-window [Symbol .for ("X_ITE.X3D-10.2.0")] = x_ite_X3D;
+window [Symbol .for ("X_ITE.X3D-10.3.0")] = x_ite_X3D;
 
 customElements .define ("x3d-canvas", x_ite_X3DCanvasElement);
 
 x_ite_X3D ();
 
-const x_ite_default_ = x_ite_X3D;
-;
+/* harmony default export */ const x_ite = (x_ite_X3D);
 
-x_ite_Namespace .add ("x_ite", "x_ite", x_ite_default_);
-/* harmony default export */ const x_ite = (x_ite_default_);
 })();
 
 __webpack_exports__ = __webpack_exports__["default"];
