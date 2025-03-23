@@ -2,7 +2,7 @@
 
 Code hosting for releases of X_ITE.
 
-Although this repository exists and can be used, we ask you to use the [jsDelivr](https://create3000.github.io/x_ite/#jsdelivr-cdn) domain instead.
+Use of this files is discouraged. Although this repository exists and can be used, we ask you to use the [jsDelivr](https://create3000.github.io/x_ite/#jsdelivr-cdn) domain instead.
 
 ## GitHub
 
