@@ -1,5 +1,5 @@
-/* X_ITE v11.4.2 */
-const __X_ITE_X3D__ = window [Symbol .for ("X_ITE.X3D-11.4.2")];
+/* X_ITE v11.5.0 */
+const __X_ITE_X3D__ = window [Symbol .for ("X_ITE.X3D-11.5.0")];
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
@@ -892,15 +892,15 @@ Object .assign (X3DParticleSystemsContext .prototype,
 {
    getDefaultEmitter ()
    {
-      this [_defaultEmitter] = new ParticleSystems_PointEmitter (this .getPrivateScene ());
-      this [_defaultEmitter] .setPrivate (true);
-      this [_defaultEmitter] .setup ();
+      return this [_defaultEmitter] ??= (() =>
+      {
+         const defaultEmitter = new ParticleSystems_PointEmitter (this .getPrivateScene ());
 
-      this .getDefaultEmitter = function () { return this [_defaultEmitter]; };
+         defaultEmitter .setPrivate (true);
+         defaultEmitter .setup ();
 
-      Object .defineProperty (this, "getDefaultEmitter", { enumerable: false });
-
-      return this [_defaultEmitter];
+         return defaultEmitter;
+      })();
    },
 });
 
