@@ -1,5 +1,5 @@
-/* X_ITE v11.5.3 */
-const __X_ITE_X3D__ = window [Symbol .for ("X_ITE.X3D-11.5.3")];
+/* X_ITE v11.5.4 */
+const __X_ITE_X3D__ = window [Symbol .for ("X_ITE.X3D-11.5.4")];
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
@@ -2096,7 +2096,7 @@ var external_X_ITE_X3D_X3DOneSidedMaterialNode_default = /*#__PURE__*/__webpack_
 
 
 /**
- * THIS NODE IS DEPRECIATED.
+ * THIS NODE IS DEPRECIATED SINCE X3D VERSION 4.0.
  */
 
 function SpecularGlossinessMaterial (executionContext)
@@ -2300,15 +2300,17 @@ Object .assign (Object .setPrototypeOf (SpecularGlossinessMaterial .prototype, (
          textureCoordinateMapping);
 
       if (this .occlusionTextureNode)
+      {
          gl .uniform1f (shaderObject .x3d_OcclusionStrength, this .occlusionStrength);
 
-      this .occlusionTextureNode ?.setNamedShaderUniforms (gl,
-         shaderObject,
-         renderObject,
-         shaderObject .x3d_OcclusionTexture,
-         this ._occlusionTextureMapping .getValue (),
-         textureTransformMapping,
-         textureCoordinateMapping);
+         this .occlusionTextureNode .setNamedShaderUniforms (gl,
+            shaderObject,
+            renderObject,
+            shaderObject .x3d_OcclusionTexture,
+            this ._occlusionTextureMapping .getValue (),
+            textureTransformMapping,
+            textureCoordinateMapping);
+      }
    },
 });
 
