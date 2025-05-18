@@ -1,5 +1,5 @@
-/* X_ITE v11.5.8 */
-const __X_ITE_X3D__ = window [Symbol .for ("X_ITE.X3D-11.5.8")];
+/* X_ITE v11.5.9 */
+const __X_ITE_X3D__ = window [Symbol .for ("X_ITE.X3D-11.5.9")];
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
@@ -1512,7 +1512,6 @@ Object .assign (Object .setPrototypeOf (InstancedShape .prototype, (external_X_I
 
       this .set_bbox__ ();
       this .set_objects__ ();
-      this .set_traverse__ ();
    },
    intersectsBox (box, clipPlanes, modelViewMatrix)
    { },
