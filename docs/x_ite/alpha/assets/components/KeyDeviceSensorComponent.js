@@ -1,4 +1,4 @@
-/* X_ITE v15.1.12 */
+/* X_ITE v16.0.0 */
 const __X_ITE_X3D__ = window [Symbol .for ("X_ITE.X3D")];
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
@@ -78,8 +78,8 @@ Object .assign (X3DKeyDeviceSensorContext .prototype,
    {
       const element = this .getElement ();
 
-      element .on ("keydown.X3DKeyDeviceSensorContext", this [_keydown] .bind (this));
-      element .on ("keyup.X3DKeyDeviceSensorContext",   this [_keyup]   .bind (this));
+      element .addEventListener ("keydown", this [_keydown] .bind (this));
+      element .addEventListener ("keyup",   this [_keyup]   .bind (this));
    },
    addKeyDeviceSensorNode (keyDeviceSensorNode)
    {
@@ -120,9 +120,7 @@ Object .assign (X3DKeyDeviceSensorContext .prototype,
       this [_processEvents] ();
    },
    dispose ()
-   {
-      this .getElement () .off (".X3DKeyDeviceSensorContext");
-   },
+   { },
 });
 
 const __default__ = X3DKeyDeviceSensorContext;
