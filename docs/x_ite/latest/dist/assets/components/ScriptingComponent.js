@@ -1,41 +1,9 @@
-/* X_ITE v15.1.12 */
+/* X_ITE v16.0.0 */
 const __X_ITE_X3D__ = window [Symbol .for ("X_ITE.X3D")];
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ({
-
-/***/ 254
-(module) {
-
-module.exports = __X_ITE_X3D__ .jquery;
-
-/***/ }
-
-/******/ 	});
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	const __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		const cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		const module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
+/******/ 	// The require scope
+/******/ 	const __webpack_require__ = {};
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
@@ -257,8 +225,11 @@ var external_X_ITE_X3D_FileLoader_default = /*#__PURE__*/__webpack_require__.n(e
 ;// external "__X_ITE_X3D__ .SFNodeCache"
 const external_X_ITE_X3D_SFNodeCache_namespaceObject = __X_ITE_X3D__ .SFNodeCache;
 var external_X_ITE_X3D_SFNodeCache_default = /*#__PURE__*/__webpack_require__.n(external_X_ITE_X3D_SFNodeCache_namespaceObject);
+;// external "__X_ITE_X3D__ .helper"
+const external_X_ITE_X3D_helper_namespaceObject = __X_ITE_X3D__ .helper;
+var external_X_ITE_X3D_helper_default = /*#__PURE__*/__webpack_require__.n(external_X_ITE_X3D_helper_namespaceObject);
 ;// ./src/x_ite/Components/Scripting/Script.js
-/* provided dependency */ var $ = __webpack_require__(254);
+
 
 
 
@@ -346,16 +317,13 @@ Object .assign (Object .setPrototypeOf (Script .prototype, Scripting_X3DScriptNo
    },
    async unloadData ()
    {
-      // Call shutdown.
+      // Call shutdown and disconnect.
 
-      const shutdown = this .context ?.get ("shutdown");
+      this .shutdown ?.();
 
-      if (typeof shutdown === "function")
-         this .call__ (shutdown, "shutdown");
+      window .removeEventListener ("unload", this .shutdown);
 
-      // Disconnect shutdown.
-
-      $(window) .off (`.Script-${this .getId ()}`);
+      this .shutdown = null;
 
       // Disconnect prepareEvents.
 
@@ -385,7 +353,7 @@ Object .assign (Object .setPrototypeOf (Script .prototype, Scripting_X3DScriptNo
          }
          else
          {
-            await this .initialize__ ($.decodeText (data));
+            await this .initialize__ (external_X_ITE_X3D_helper_default().decodeText (data));
             this .setLoadState ((external_X_ITE_X3D_X3DConstants_default()).COMPLETE_STATE);
          }
       });
@@ -587,7 +555,15 @@ Object .assign (Object .setPrototypeOf (Script .prototype, Scripting_X3DScriptNo
       const shutdown = this .context .get ("shutdown");
 
       if (typeof shutdown === "function")
-         $(window) .on (`unload.Script-${this .getId ()}`, () => this .call__ (shutdown, "shutdown"));
+      {
+         this .shutdown = () =>
+         {
+            if (!browser .isContextLost ())
+               this .call__ (shutdown, "shutdown");
+         };
+
+         window .addEventListener ("unload", this .shutdown, { once: true });
+      }
 
       // Connect prepareEvents.
 
