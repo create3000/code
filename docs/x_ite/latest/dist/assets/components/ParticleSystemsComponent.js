@@ -1,4 +1,4 @@
-/* X_ITE v16.0.5 */
+/* X_ITE v16.1.0 */
 const __X_ITE_X3D__ = window [Symbol .for ("X_ITE.X3D")];
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
@@ -1632,8 +1632,9 @@ Object .assign (Object .setPrototypeOf (ParticleSystem .prototype, (external_X_I
       this ._color             .addInterest ("set_colorRamp__",         this);
       this ._texCoordKey       .addInterest ("set_texCoord__",          this);
       this ._texCoord          .addInterest ("set_texCoordRamp__",      this);
-      this ._scaleKey          .addInterest ("set_scale__",              this);
-      this ._scale             .addInterest ("set_scaleRamp__",          this);
+      this ._scaleKey          .addInterest ("set_scale__",             this);
+      this ._scale             .addInterest ("set_scaleRamp__",         this);
+      this ._geometry          .addInterest ("updateVertexArrays",      this);
 
       // Create particles stuff.
 
