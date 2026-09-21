@@ -1,4 +1,4 @@
-/* X_ITE v16.3.1 */
+/* X_ITE v16.4.0 */
 const __X_ITE_X3D__ = window [Symbol .for ("X_ITE.X3D")];
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
@@ -420,7 +420,7 @@ Object .assign (X3DWebXRContext .prototype,
    },
    xrAddButton ()
    {
-      this [_xrButton] = (() =>
+      this [_xrButton] ??= (() =>
       {
          const xrButton = document .createElement ("div");
 
@@ -434,7 +434,7 @@ Object .assign (X3DWebXRContext .prototype,
                this .xrStopSession ();
          };
 
-         xrButton .classList .add ("x_ite-private-xr-button", "x_ite-private-button");
+         xrButton .classList .add ("x_ite-private-xr-button", "x_ite-private-button", "x_ite-private-fade");
          xrButton .part ?.add ("xr-button");
 
          xrButton .title      = external_X_ITE_X3D_gettext_default()("Start WebXR session.");
@@ -445,6 +445,8 @@ Object .assign (X3DWebXRContext .prototype,
 
          return xrButton;
       })();
+
+      this [_xrButton] .classList .remove ("x_ite-private-hidden");
    },
    async xrStartSession ()
    {
