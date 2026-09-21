@@ -1,4 +1,4 @@
-/* X_ITE v16.3.1 */
+/* X_ITE v16.4.0 */
 const __X_ITE_X3D__ = window [Symbol .for ("X_ITE.X3D")];
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
@@ -86,11 +86,10 @@ Object .assign (Object .setPrototypeOf (BooleanFilter .prototype, (external_X_IT
 
       if (value)
          this ._inputTrue = true;
-
       else
          this ._inputFalse = false;
 
-      this ._inputNegate = ! value;
+      this ._inputNegate = !value;
    },
 });
 
@@ -468,7 +467,8 @@ Object .assign (Object .setPrototypeOf (IntegerTrigger .prototype, EventUtilitie
    },
    set_boolean__ ()
    {
-      this ._triggerValue = this ._integerKey;
+      if (this ._set_boolean .getValue () || this .getExecutionContext () .getSpecificationVersion () <= 3.3)
+         this ._triggerValue = this ._integerKey;
    },
 });
 
@@ -516,7 +516,8 @@ Object .assign (Object .setPrototypeOf (TimeTrigger .prototype, EventUtilities_X
    },
    set_boolean__ ()
    {
-      this ._triggerTime = this .getBrowser () .getCurrentTime ();
+      if (this ._set_boolean .getValue () || this .getExecutionContext () .getSpecificationVersion () <= 3.3)
+         this ._triggerTime = this .getBrowser () .getCurrentTime ();
    },
 });
 
