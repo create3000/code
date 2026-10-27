@@ -1,4 +1,4 @@
-/* X_ITE v16.6.0 */
+/* X_ITE v16.6.1 */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
@@ -12,7 +12,7 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 23
+/***/ 292
 (module, exports) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -1017,7 +1017,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ },
 
-/***/ 197
+/***/ 686
 (module) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -2013,7 +2013,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 
-/***/ 901
+/***/ 470
 (module) {
 
 /**
@@ -18894,7 +18894,7 @@ const Legacy_default_ = Legacy;
 
 /* harmony default export */ const Browser_Legacy = (x_ite_Namespace .add ("Legacy", Legacy_default_));
 ;// ./src/x_ite/BROWSER_VERSION.js
-const BROWSER_VERSION_default_ = "16.6.0";
+const BROWSER_VERSION_default_ = "16.6.1";
 ;
 
 /* harmony default export */ const BROWSER_VERSION = (x_ite_Namespace .add ("BROWSER_VERSION", BROWSER_VERSION_default_));
@@ -31235,7 +31235,7 @@ const Plane3_default_ = Plane3;
 
 /* harmony default export */ const Geometry_Plane3 = (x_ite_Namespace .add ("Plane3", Plane3_default_));
 ;// ./src/standard/Math/Geometry/Triangle3.js
-/* provided dependency */ var libtess = __webpack_require__(901);
+/* provided dependency */ var libtess = __webpack_require__(470);
 
 
 const Triangle3 =
@@ -34068,10 +34068,9 @@ Object .assign (Object .setPrototypeOf (X3DGroupingNode .prototype, Core_X3DChil
 
       this .set_children__ ();
    },
-   addAllowedTypes (... types)
+   setAllowedTypes (types)
    {
-      for (const type of types)
-         this .allowedTypes .add (type);
+      this .allowedTypes = new Set (types);
    },
    getBBox (bbox, shadows)
    {
@@ -42785,13 +42784,13 @@ function eventsProcessed ()
             {
                if (childNode .getType () .at (-1) !== Base_X3DConstants .HAnimJoint)
                {
-                  const siteNode = scene .createNode ("HAnimSite", false);
+                  const groupNode = scene .createNode ("Group", false);
 
-                  siteNode ._children .push (childNode);
+                  groupNode ._children .push (childNode);
 
-                  siteNode .setup ();
+                  groupNode .setup ();
 
-                  return siteNode;
+                  return groupNode;
                }
                else
                {
@@ -47923,7 +47922,7 @@ const Bezier_default_ = Bezier;
 
 /* harmony default export */ const Algorithms_Bezier = (x_ite_Namespace .add ("Bezier", Bezier_default_));
 ;// ./src/x_ite/Parser/SVGParser.js
-/* provided dependency */ var SVGParser_libtess = __webpack_require__(901);
+/* provided dependency */ var SVGParser_libtess = __webpack_require__(470);
 
 
 
@@ -54699,7 +54698,7 @@ function X3DCoreContext (element)
          const link = document .createElement ("link");
 
          if (!DEVELOPMENT)
-            link .integrity = "sha384-6OXJlHzXsf/wUqb6nZzYEmTdwO5SKkQn/PDr8Ax82LGFXKZqL7ojVZCBBNFnuYOt";
+            link .integrity = "sha384-5QNytsGOR+x4Lktk2H3BZeSjaKh++ePfGfqaf4XbJLRO+qI+1HF1HNSBW6XKzqK2";
 
          link .rel         = "stylesheet";
          link .crossOrigin = "anonymous";
@@ -91576,8 +91575,8 @@ const PNGMedia_default_ = PNGMedia;
 
 /* harmony default export */ const Texturing_PNGMedia = (x_ite_Namespace .add ("PNGMedia", PNGMedia_default_));
 ;// ./src/x_ite/Components/Texturing/MovieTexture.js
-/* provided dependency */ var SuperGif = __webpack_require__(23);
-/* provided dependency */ var APNG = __webpack_require__(197);
+/* provided dependency */ var SuperGif = __webpack_require__(292);
+/* provided dependency */ var APNG = __webpack_require__(686);
 
 
 
@@ -94221,7 +94220,7 @@ const QuickSort_default_ = QuickSort;
 
 /* harmony default export */ const Algorithms_QuickSort = (x_ite_Namespace .add ("QuickSort", QuickSort_default_));
 ;// ./src/lib/libtess.js
-/* provided dependency */ var libtess_libtess = __webpack_require__(901);
+/* provided dependency */ var libtess_libtess = __webpack_require__(470);
 const libtess_default_ = libtess_libtess;
 ;
 

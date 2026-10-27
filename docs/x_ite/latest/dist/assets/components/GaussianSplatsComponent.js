@@ -1,4 +1,4 @@
-/* X_ITE v16.6.0 */
+/* X_ITE v16.6.1 */
 const __X_ITE_X3D__ = window [Symbol .for ("X_ITE.X3D")];
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
@@ -808,12 +808,9 @@ Object .assign (Object .setPrototypeOf (GaussianSplatsShape .prototype, (externa
 
       const
          browser = this .getBrowser (),
-         scene   = this .getScene (),
          gl      = browser .getContext (),
          content = `import "${external_X_ITE_X3D_URLs_default().getLibraryURL ("mkkellogg-sort.worker.js")}";`,
          url     = URL .createObjectURL (new Blob ([content], { type: "text/javascript" }));
-
-      scene .addLoadingObject (this);
 
       this .sortWorker = new Worker (url, { type: "module" });
 
@@ -833,7 +830,6 @@ Object .assign (Object .setPrototypeOf (GaussianSplatsShape .prototype, (externa
             {
                this .sortModelViewMatrix .fill (0);
 
-               scene .removeLoadingObject (this);
                browser .addBrowserEvent ();
                break;
             }
@@ -859,34 +855,6 @@ Object .assign (Object .setPrototypeOf (GaussianSplatsShape .prototype, (externa
 
          this .sortPending = false;
       };
-
-      const loading = event =>
-      {
-         switch (event .data .type)
-         {
-            case "ready":
-            {
-               browser .loading () .then (() =>
-               {
-                  if (event .target .sorted)
-                     return;
-
-                  scene .addLoadingObject (this);
-               });
-               break;
-            }
-            case "sorted":
-            {
-               scene .removeLoadingObject (this);
-               event .target .removeEventListener ("message", loading);
-
-               event .target .sorted = true;
-               break;
-            }
-         }
-      };
-
-      this .sortWorker .addEventListener ("message", loading);
 
       // Transfer positions buffer to the worker.
 
